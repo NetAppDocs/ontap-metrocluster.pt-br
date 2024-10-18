@@ -1,0 +1,91 @@
+---
+permalink: upgrade/task_create_unmirrored_data_aggregates_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, create, unmirrored, data, aggregates 
+summary: Você pode, opcionalmente, criar agregados de dados sem espelhamento para dados que não exigem o espelhamento redundante fornecido pelas configurações do MetroCluster. 
+---
+= Criação de agregados de dados sem espelhamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode, opcionalmente, criar agregados de dados sem espelhamento para dados que não exigem o espelhamento redundante fornecido pelas configurações do MetroCluster.
+
+.Sobre esta tarefa
+* Você deve saber quais unidades ou LUNs de array serão usados no novo agregado.
+* Se você tiver vários tipos de unidade no sistema (armazenamento heterogêneo), você deve entender como pode verificar se o tipo de unidade correto está selecionado.
+
+
+
+IMPORTANT: Nas configurações IP do MetroCluster, agregados remotos sem espelhamento não são acessíveis após um switchover
+
+
+NOTE: Os agregados sem espelhamento devem ser locais para o nó que os possui.
+
+* As unidades e LUNs de array são de propriedade de um nó específico. Quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
+* Os nomes agregados devem estar em conformidade com o esquema de nomenclatura que você determinou quando você planejou sua configuração do MetroCluster.
+* _Gerenciamento de discos e agregados_ contém mais informações sobre o espelhamento de agregados.
+
+
+.Passos
+. Instale e faça o cabeamento das gavetas de disco que conterão os agregados sem espelhamento.
++
+Você pode usar os procedimentos na documentação _Instalação e Configuração_ para sua plataforma e prateleiras de disco.
+
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+. Atribua manualmente todos os discos na nova gaveta ao nó apropriado:
++
+`disk assign -disk _disk-id_ -owner _owner-node-name_`
+
+. Criar o agregado:
++
+`storage aggregate create`
+
++
+Se você estiver conetado ao cluster na interface de gerenciamento de cluster, poderá criar um agregado em qualquer nó do cluster. Para verificar se o agregado é criado em um nó específico, você deve usar o `-node` parâmetro ou especificar unidades que são de propriedade desse nó.
+
++
+Você também precisa garantir que você inclua somente unidades na gaveta sem espelhamento do agregado.
+
++
+Você pode especificar as seguintes opções:
+
++
+** Nó inicial do agregado (ou seja, o nó que possui o agregado em operação normal)
+** Lista de unidades específicas ou LUNs de storage que devem ser adicionados ao agregado
+** Número de unidades a incluir
+** Estilo de checksum para usar para o agregado
+** Tipo de unidades a utilizar
+** Tamanho das unidades a utilizar
+** Velocidade de condução a utilizar
+** Tipo RAID para grupos RAID no agregado
+** Número máximo de unidades ou LUNs de storage que podem ser incluídos em um grupo RAID
+** Se unidades com RPM diferentes são permitidas
++
+Para obter mais informações sobre essas opções, consulte a `storage aggregate create` página de manual.
+
++
+O comando a seguir cria um agregado sem espelhamento com 10 discos:
+
++
+[listing]
+----
+controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -node controller_A_1
+[Job 15] Job is queued: Create aggr1_controller_A_1.
+[Job 15] The job is starting.
+[Job 15] Job succeeded: DONE
+----
+
+
+. Verifique o grupo RAID e as unidades do seu novo agregado:
++
+`storage aggregate show-status -aggregate _aggregate-name_`
+
+
+
+.Informações relacionadas
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"]

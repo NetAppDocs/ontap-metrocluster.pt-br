@@ -1,0 +1,73 @@
+---
+permalink: disaster-recovery/task_verify_port_mcfc.html 
+sidebar: sidebar 
+keywords: verify, port, environmental, metrocluster, configuration 
+summary: Você deve definir as variáveis ambientais no nó e desligá-lo para prepará-lo para a configuração do MetroCluster. 
+---
+= Verificação da configuração da porta (somente configurações MetroCluster FC)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve definir as variáveis ambientais no nó e desligá-lo para prepará-lo para a configuração do MetroCluster.
+
+.Sobre esta tarefa
+Este procedimento é executado com os módulos do controlador de substituição no modo de manutenção.
+
+As etapas para verificar a configuração das portas são necessárias somente em sistemas nos quais as portas FC ou CNA são usadas no modo iniciador.
+
+.Passos
+. No modo Manutenção, restaure a configuração da porta FC:
++
+`ucadmin modify -m fc -t initiatoradapter_name`
+
++
+Se você quiser usar apenas um de um par de portas na configuração do iniciador, insira um nome preciso do adaptador.
+
+. Execute uma das seguintes ações, dependendo da configuração:
++
+|===
+
+
+| Se a configuração da porta FC for... | Então... 
+
+
+ a| 
+O mesmo para ambas as portas
+ a| 
+Responda "y" quando solicitado pelo sistema, porque modificar uma porta em um par de portas também modifica a outra porta.
+
+
+
+ a| 
+Diferente
+ a| 
+.. Responda "n" quando solicitado pelo sistema.
+.. Restaure a configuração da porta FC:
+
+
+`ucadmin modify -m fc -t initiator|targetadapter_name`
+
+|===
+. Sair do modo de manutenção:
++
+`halt`
+
++
+Depois de emitir o comando, aguarde até que o sistema pare no prompt DO Loader.
+
+. Inicialize o nó novamente no modo Manutenção para que as alterações de configuração entrem em vigor:
++
+`boot_ontap maint`
+
+. Verifique os valores das variáveis:
++
+`ucadmin show`
+
+. Saia do modo de manutenção e exiba o prompt Loader:
++
+`halt`
+
+

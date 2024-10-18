@@ -1,0 +1,91 @@
+= 
+:allow-uri-read: 
+
+
+[role="lead"]
+Redefinir e restaurar padrões nos módulos do controlador.
+
+. No prompt Loader, retorne variáveis ambientais à configuração padrão: `set-defaults`
+. Inicialize o nó no menu de inicialização: `boot_ontap menu`
++
+Depois de executar este comando, aguarde até que o menu de inicialização seja exibido.
+
+. Limpe a configuração do nó:
++
+--
+** Se você estiver usando sistemas configurados para ADP, selecione a opção `9a` no menu de inicialização e responda `no` quando solicitado.
++
+
+NOTE: Este processo é disruptivo.
+
++
+A tela a seguir mostra o prompt do menu de inicialização:
+
++
+[listing]
+----
+
+Please choose one of the following:
+
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? 9a
+...
+
+########## WARNING: AGGREGATES WILL BE DESTROYED ##########
+This is a disruptive operation that applies to all the disks
+that are attached and visible to this node.
+
+Before proceeding further, make sure that:
+
+The aggregates visible from this node do not contain
+data that needs to be preserved.
+This option (9a) has been executed or will be executed
+on the HA partner node (and DR/DR-AUX partner nodes if
+applicable), prior to reinitializing any system in the
+HA-pair or MetroCluster configuration.
+The HA partner node (and DR/DR-AUX partner nodes if
+applicable) is currently waiting at the boot menu.
+Do you want to abort this operation (yes/no)? no
+----
+
+
+--
++
+** Se o sistema não estiver configurado para ADP, digite `wipeconfig` no prompt do menu de inicialização e pressione Enter.
++
+A tela a seguir mostra o prompt do menu de inicialização:
+
++
+[listing]
+----
+
+Please choose one of the following:
+
+    (1) Normal Boot.
+    (2) Boot without /etc/rc.
+    (3) Change password.
+    (4) Clean configuration and initialize all disks.
+    (5) Maintenance mode boot.
+    (6) Update flash from backup config.
+    (7) Install new software first.
+    (8) Reboot node.
+    (9) Configure Advanced Drive Partitioning.
+    Selection (1-9)?  wipeconfig
+This option deletes critical system configuration, including cluster membership.
+Warning: do not run this option on a HA node that has been taken over.
+Are you sure you want to continue?: yes
+Rebooting to finish wipeconfig request.
+----
+
+
+

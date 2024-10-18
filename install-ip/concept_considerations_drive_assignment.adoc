@@ -1,0 +1,738 @@
+---
+permalink: install-ip/concept_considerations_drive_assignment.html 
+sidebar: sidebar 
+keywords: drive auto-assignment, drive, adp, advanced disk partitioning, root disk, unmirrored root, data partition, root partition, shelf-by-shelf, AFF A320, AFF A220, AFF A250, C250, AFF A300, AFF A400, C400, AFF A700, AFF A800, FAS2750, FAS8200, FAS500f, FAS9000 
+summary: 'A partir do ONTAP 9.4, as configurações IP do MetroCluster suportam novas instalações com sistemas AFF usando ADP (particionamento avançado de unidade).' 
+---
+= Considerações para atribuição automática de acionamento e sistemas ADP no ONTAP 9.4 e posterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.4, as configurações IP do MetroCluster suportam novas instalações usando atribuição automática de disco e ADP (particionamento avançado de unidade).
+
+Você deve estar ciente das seguintes considerações ao usar ADP com configurações IP do MetroCluster:
+
+* O ONTAP 9.4 e posterior são necessários para usar o ADP com configurações MetroCluster IP em sistemas AFF e ASA.
+* O ADPv2 é compatível com configurações IP do MetroCluster.
+* O agregado raiz deve estar localizado na partição 3 para todos os nós em ambos os locais.
+* O particionamento e a atribuição de disco são executados automaticamente durante a configuração inicial dos sites do MetroCluster.
+* As atribuições de disco do pool 0 são feitas na fábrica.
+* A raiz sem espelhamento é criada na fábrica.
+* A atribuição de partição de dados é feita no local do cliente durante o procedimento de configuração.
+* Na maioria dos casos, a atribuição e o particionamento de unidades são feitos automaticamente durante os procedimentos de configuração.
+* Um disco e todas as partições precisam ser de propriedade de nós no mesmo par de alta disponibilidade (HA). A propriedade de partição ou unidade em uma única unidade não pode ser misturada entre o par de HA local e o parceiro de recuperação de desastres (DR) ou parceiro auxiliar de DR.
++
+Exemplo de uma configuração suportada:
+
++
+|===
+
+
+| Unidade/partição | Proprietário 
+
+
+| Unidade: | `ClusterA-Node01` 
+
+
+| Partição 1: | `ClusterA-Node01` 
+
+
+| Partição 2: | `ClusterA-Node02` 
+
+
+| Partição 3: | `ClusterA-Node01` 
+|===
+
+
+
+NOTE: Ao atualizar do ONTAP 9.4 para o 9,5, o sistema reconhece as atribuições de disco existentes.
+
+
+
+== Particionamento automático
+
+O ADP é executado automaticamente durante a configuração inicial do sistema.
+
+
+NOTE: A partir do ONTAP 9.5, a atribuição automática de discos deve ser ativada com o `storage disk option modify -autoassign on` comando.
+
+Você deve definir o estado ha-config como `mccip` antes do provisionamento automático para garantir que os tamanhos de partição corretos estejam selecionados para permitir o tamanho de volume raiz apropriado. Para obter mais informações, link:task_sw_config_verify_haconfig.html["Verificando o estado ha-config dos componentes"]consulte .
+
+Um máximo de 96 unidades pode ser particionado automaticamente durante a instalação. Você pode adicionar unidades extras após a instalação inicial.
+
+[NOTE]
+====
+Se você estiver usando unidades internas e externas, primeiro inicialize o MetroCluster apenas com as unidades internas usando ADP. Em seguida, conete manualmente o compartimento externo após concluir a tarefa de instalação ou configuração.
+
+Você deve garantir que os compartimentos internos tenham o número mínimo recomendado de unidades, conforme descrito <<adp-disk-assign,Diferenças de atribuição de ADP e disco por sistema>>em .
+
+Para as unidades internas e externas, é necessário preencher os compartimentos parcialmente completos, conforme descrito em <<populate-partially-full-shelves,Como preencher compartimentos parcialmente cheios>>.
+
+====
+
+
+== Como funciona a atribuição automática prateleira a prateleira
+
+Se houver quatro compartimentos externos por local, cada compartimento será atribuído a um nó diferente e um pool diferente, como mostrado no exemplo a seguir:
+
+* Todos os discos no site_A-shelf_1 são atribuídos automaticamente ao pool 0 do node_A_1
+* Todos os discos no site_A-shelf_3 são atribuídos automaticamente ao pool 0 do node_A_2
+* Todos os discos no site_B-shelf_1 são atribuídos automaticamente ao pool 0 do node_B_1
+* Todos os discos no site_B-shelf_3 são atribuídos automaticamente ao pool 0 do node_B_2
+* Todos os discos no site_B-shelf_2 são atribuídos automaticamente ao pool 1 do node_A_1
+* Todos os discos no site_B-shelf_4 são atribuídos automaticamente ao pool 1 do node_A_2
+* Todos os discos no site_A-shelf_2 são atribuídos automaticamente ao pool 1 do node_B_1
+* Todos os discos no site_A-shelf_4 são atribuídos automaticamente ao pool 1 do node_B_2
+
+
+
+
+== Como preencher compartimentos parcialmente cheios
+
+Se a configuração estiver usando compartimentos que não estejam totalmente preenchidos (com compartimentos de unidade vazios), você deverá distribuir as unidades uniformemente por todo o compartimento, dependendo da política de atribuição de disco. A política de atribuição de disco depende de quantas gavetas estão em cada local do MetroCluster.
+
+Se você estiver usando uma única gaveta em cada local (ou apenas a gaveta interna em um sistema AFF A800), os discos serão atribuídos usando uma política de quarto de compartimento. Se o compartimento não estiver totalmente preenchido, instale as unidades igualmente em todos os trimestres.
+
+A tabela a seguir mostra um exemplo de como colocar 24 discos em um compartimento interno de 48 unidades. A propriedade das unidades também é mostrada.
+
+|===
+
+
+| Os 48 compartimentos de unidades estão divididos em quatro quartos: | Instale seis unidades nos primeiros seis compartimentos em cada trimestre... 
+
+
+ a| 
+Trimestre de 1: Baías 0-11
+ a| 
+Baías 0-5
+
+
+
+ a| 
+Trimestre de 2: Baías 12-23
+ a| 
+Baías 12-17
+
+
+
+ a| 
+Trimestre de 3: Baías 24-35
+ a| 
+Baías 24-29
+
+
+
+ a| 
+Trimestre de 4: Baías 36-47
+ a| 
+Baías 36-41
+
+|===
+A tabela a seguir mostra um exemplo de como colocar 16 discos em um compartimento interno de 24 unidades.
+
+|===
+
+
+| Os 24 compartimentos de unidades estão divididos em quatro quartos: | Instale quatro unidades nos primeiros quatro compartimentos em cada trimestre... 
+
+
+ a| 
+Trimestre de 1: Baías 0-5
+ a| 
+Baías 0-3
+
+
+
+ a| 
+Trimestre de 2: Baías 6-11
+ a| 
+Baías 6-9
+
+
+
+ a| 
+Trimestre de 3: Baías 12-17
+ a| 
+Baías 12-15
+
+
+
+ a| 
+Trimestre de 4: Baías 18-23
+ a| 
+Baías 18-21
+
+|===
+Se você estiver usando duas gavetas externas em cada local, os discos serão atribuídos usando uma política de meia gaveta. Se as gavetas não estiverem totalmente preenchidas, instale as unidades igualmente de uma das extremidades da gaveta.
+
+Por exemplo, se você estiver instalando unidades de 12 TB em um compartimento de 24 unidades, instale as unidades nos compartimentos 0-5 e 18-23.
+
+
+
+== Atribuição manual de acionamento (ONTAP 9.5)
+
+No ONTAP 9.5, a atribuição manual de unidades é necessária em sistemas com as seguintes configurações de gaveta:
+
+* Três gavetas externas por local.
++
+Duas gavetas são atribuídas automaticamente usando uma política de atribuição de meia prateleira, mas o terceiro compartimento deve ser atribuído manualmente.
+
+* Mais de quatro gavetas por local e o número total de gavetas externas não são várias de quatro.
++
+Gavetas extras acima do múltiplo mais próximo de quatro são deixadas sem atribuição e as unidades devem ser atribuídas manualmente. Por exemplo, se houver cinco compartimentos externos no local, o compartimento cinco deve ser atribuído manualmente.
+
+
+
+Você só precisa atribuir manualmente uma única unidade em cada gaveta não atribuída. As outras unidades na gaveta são atribuídas automaticamente.
+
+
+
+== Atribuição manual de acionamento (ONTAP 9.4)
+
+No ONTAP 9.4, a atribuição manual de unidades é necessária em sistemas com as seguintes configurações de gaveta:
+
+* Menos de quatro gavetas externas por local.
++
+As unidades devem ser atribuídas manualmente para garantir a atribuição simétrica das unidades, com cada pool tendo um número igual de unidades.
+
+* Mais de quatro gavetas externas por local e o número total de gavetas externas não são várias de quatro.
++
+Gavetas extras acima do múltiplo mais próximo de quatro são deixadas sem atribuição e as unidades devem ser atribuídas manualmente.
+
+
+
+Ao atribuir manualmente unidades, você deve atribuir discos simetricamente, com um número igual de unidades atribuídas a cada pool. Por exemplo, se a configuração tiver dois compartimentos de storage em cada local, você faria uma gaveta para o par de HA local e uma gaveta para o par de HA remoto:
+
+* Atribua metade dos discos no site_A-shelf_1 ao pool 0 do node_A_1.
+* Atribua metade dos discos no site_A-shelf_1 ao pool 0 do node_A_2.
+* Atribua metade dos discos no site_A-shelf_2 ao pool 1 do node_B_1.
+* Atribua metade dos discos no site_A-shelf_2 ao pool 1 do node_B_2.
+* Atribua metade dos discos no site_B-shelf_1 ao pool 0 do node_B_1.
+* Atribua metade dos discos no site_B-shelf_1 ao pool 0 do node_B_2.
+* Atribua metade dos discos no site_B-shelf_2 ao pool 1 do node_A_1.
+* Atribua metade dos discos no site_B-shelf_2 ao pool 1 do node_A_2.
+
+
+
+
+== Adição de compartimentos a uma configuração existente
+
+A atribuição automática de unidades dá suporte à adição simétrica de gavetas a uma configuração existente.
+
+Quando novas gavetas são adicionadas, o sistema aplica a mesma política de atribuição a gavetas recém-adicionadas. Por exemplo, com uma única gaveta por local, se um compartimento adicional for adicionado, os sistemas aplicarão as regras de atribuição de um quarto de compartimento à nova gaveta.
+
+.Informações relacionadas
+link:concept_required_mcc_ip_components_and_naming_guidelines_mcc_ip.html["Componentes IP do MetroCluster necessários e convenções de nomenclatura"]
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"^]
+
+
+
+== Diferenças de atribuição de ADP e disco por sistema em configurações IP do MetroCluster
+
+A operação de Advanced Drive Partitioning (ADP) e atribuição automática de disco nas configurações MetroCluster IP varia dependendo do modelo do sistema.
+
+
+NOTE: Em sistemas que usam ADP, agregados são criados usando partições nas quais cada unidade é particionada em partições P1, P2 e P3. O agregado raiz é criado usando partições P3.
+
+Você deve atender aos limites do MetroCluster para o número máximo de unidades compatíveis e outras diretrizes.
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+
+
+=== ADP e atribuição de disco em sistemas AFF A320
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+48 unidades
+ a| 
+As unidades em cada compartimento externo são divididas em dois grupos iguais (metades). Cada meia prateleira é atribuída automaticamente a um pool separado.
+ a| 
+Uma gaveta é usada pelo par de HA local. O segundo compartimento é usado pelo par de HA remoto.
+
+Partições em cada prateleira são usadas para criar o agregado raiz. Cada um dos dois plexes no agregado raiz inclui as seguintes partições::
++
+--
+* Oito partições para dados
+* Duas partições de paridade
+* Duas partições de reposição
+
+
+--
+
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+24 unidades
+ a| 
+As unidades são divididas em quatro grupos iguais. Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Cada um dos dois plexes no agregado raiz inclui as seguintes partições:
+
+* Três partições para dados
+* Duas partições de paridade
+* Uma partição sobressalente
+
+
+|===
+
+
+=== ADP e atribuição de disco em sistemas AFF A150, ASA A150 e AFF A220
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+Apenas unidades internas
+ a| 
+As unidades internas são divididas em quatro grupos iguais. Cada grupo é atribuído automaticamente a um pool separado e cada pool é atribuído a um controlador separado na configuração.
+
+
+NOTE: Metade das unidades internas permanecem sem atribuição antes de o MetroCluster ser configurado.
+ a| 
+Dois trimestres são usados pelo par de HA local. Os outros dois trimestres são usados pelo par de HA remoto.
+
+O agregado raiz inclui as seguintes partições em cada Plex:
+
+* Três partições para dados
+* Duas partições de paridade
+* Uma partição sobressalente
+
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+16 unidades internas
+ a| 
+As unidades são divididas em quatro grupos iguais. Cada compartimento é atribuído automaticamente a um pool separado.
+
+Dois quartos em uma prateleira podem ter o mesmo pool. O pool é escolhido com base no nó proprietário do trimestre:
+
+* Se for propriedade do nó local, pool0 é usado.
+* Se for propriedade do nó remoto, pool1 será usado.
+
+
+Por exemplo: Uma gaveta com trimestres de Q1 a Q4 pode ter as seguintes atribuições:
+
+* Q1: Node_A_1 pool0
+* Q2: Node_A_2 pool0
+* Q3: Nó_B_1 pool1
+* Q4:node_B_2 pool1
+
+
+
+NOTE: Metade das unidades internas permanecem sem atribuição antes de o MetroCluster ser configurado.
+ a| 
+Cada um dos dois plexes no agregado raiz inclui as seguintes partições:
+
+* Duas partições para dados
+* Duas partições de paridade
+* Sem peças sobressalentes
+
+
+|===
+
+
+=== ADP e atribuição de disco em sistemas AFF C250, AFF A250, ASA A250, ASA C250 e FAS500f
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+48 unidades
+ a| 
+As unidades em cada compartimento externo são divididas em dois grupos iguais (metades). Cada meia prateleira é atribuída automaticamente a um pool separado.
+ a| 
+Uma gaveta é usada pelo par de HA local. O segundo compartimento é usado pelo par de HA remoto.
+
+Partições em cada prateleira são usadas para criar o agregado raiz. O agregado raiz inclui as seguintes partições em cada Plex:
+
+* Oito partições para dados
+* Duas partições de paridade
+* Duas partições de reposição
+
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+16 unidades internas
+ a| 
+As unidades são divididas em quatro grupos iguais. Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Cada um dos dois plexes no agregado raiz inclui as seguintes partições:
+
+* Duas partições para dados
+* Duas partições de paridade
+* Sem partições de reposição
+
+
+|===
+
+
+=== ADP e atribuição de disco em sistemas AFF A300
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+48 unidades
+ a| 
+As unidades em cada compartimento externo são divididas em dois grupos iguais (metades). Cada meia prateleira é atribuída automaticamente a um pool separado.
+ a| 
+Uma gaveta é usada pelo par de HA local. O segundo compartimento é usado pelo par de HA remoto.
+
+Partições em cada prateleira são usadas para criar o agregado raiz. O agregado raiz inclui as seguintes partições em cada Plex:
+
+* Oito partições para dados
+* Duas partições de paridade
+* Duas partições de reposição
+
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+24 unidades
+ a| 
+As unidades são divididas em quatro grupos iguais. Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Cada um dos dois plexes no agregado raiz inclui as seguintes partições:
+
+* Três partições para dados
+* Duas partições de paridade
+* Uma partição sobressalente
+
+
+|===
+
+
+=== ADP e atribuição de disco em sistemas AFF C400, AFF A400, ASA C400 e ASA A400
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+96 unidades
+ a| 
+As unidades são atribuídas automaticamente gaveta a gaveta.
+ a| 
+Cada um dos dois plexos no agregado raiz inclui:
+
+* 20 partições para dados
+* Duas partições de paridade
+* Duas partições de reposição
+
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+24 unidades
+ a| 
+As unidades são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Cada um dos dois plexos no agregado raiz inclui:
+
+* Três partições para dados
+* Duas partições de paridade
+* Uma partição sobressalente
+
+
+|===
+
+
+=== ADP e atribuição de disco em sistemas AFF A700
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+96 unidades
+ a| 
+As unidades são atribuídas automaticamente gaveta a gaveta.
+ a| 
+Cada um dos dois plexos no agregado raiz inclui:
+
+* 20 partições para dados
+* Duas partições de paridade
+* Duas partições de reposição
+
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+24 unidades
+ a| 
+As unidades são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Cada um dos dois plexos no agregado raiz inclui:
+
+* Três partições para dados
+* Duas partições de paridade
+* Uma partição sobressalente
+
+
+|===
+
+
+=== ADP e atribuição de disco em sistemas AFF C800, ASA C800, ASA A800, AFF A800, AFF A70 e AFF A90
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para agregado de raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+Unidades internas e 96 unidades externas
+ a| 
+As partições internas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado. As unidades nas gavetas externas são atribuídas automaticamente a cada gaveta, com todas as unidades em cada gaveta atribuídas a um dos quatro nós da configuração MetroCluster.
+ a| 
+O agregado raiz é criado com 12 partições raiz no compartimento interno.
+
+Cada um dos dois plexos no agregado raiz inclui:
+
+* Oito partições para dados
+* Duas partições de paridade
+* Duas partições de reposição
+
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+24 unidades internas
+ a| 
+As partições internas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado.
+ a| 
+O agregado raiz é criado com 12 partições raiz no compartimento interno.
+
+Cada um dos dois plexos no agregado raiz inclui:
+
+* Três partições para dados
+* Duas partições de paridade
+* Uma partição sobressalente
+
+
+|===
+
+
+=== ADP e atribuição de disco em sistemas AFF A900, ASA A900 e AFF A1K
+
+|===
+
+
+| Diretriz | Compartimentos por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+96 unidades
+ a| 
+As unidades são atribuídas automaticamente gaveta a gaveta.
+ a| 
+Cada um dos dois plexos no agregado raiz inclui:
+
+* 20 partições para dados
+* Duas partições de paridade
+* Duas partições de reposição
+
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+24 unidades
+ a| 
+As unidades são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Cada um dos dois plexos no agregado raiz inclui:
+
+* Três partições para dados
+* Duas partições de paridade
+* Uma partição sobressalente
+
+
+|===
+
+
+=== Atribuição de disco em sistemas FAS2750
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+24 unidades internas e 24 unidades externas
+ a| 
+As prateleiras internas e externas são divididas em duas metades iguais. Cada metade é atribuída automaticamente a um pool diferente
+ a| 
+Não aplicável
+
+
+
+ a| 
+Mínimo de unidades suportadas (por local) (configuração de HA ativa/passiva)
+ a| 
+Apenas unidades internas
+ a| 
+Atribuição manual necessária
+ a| 
+Não aplicável
+
+|===
+
+
+=== Atribuição de disco em sistemas FAS8200
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+48 unidades
+ a| 
+As unidades nas prateleiras externas são divididas em dois grupos iguais (metades). Cada meia prateleira é atribuída automaticamente a um pool separado.
+ a| 
+Não aplicável
+
+
+
+ a| 
+Mínimo de unidades suportadas (por local) (configuração de HA ativa/passiva)
+ a| 
+24 unidades
+ a| 
+Atribuição manual necessária.
+ a| 
+Não aplicável
+
+|===
+
+
+=== Atribuição de disco em sistemas FAS500f
+
+As mesmas diretrizes e regras de atribuição de disco para sistemas AFF C250 e AFF A250 se aplicam aos sistemas FAS500f. Para atribuição de discos em sistemas FAS500f, consulte a <<ADP_FAS500f>>tabela.
+
+
+
+=== Atribuição de disco em sistemas FAS9000
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+96 unidades
+ a| 
+As unidades são atribuídas automaticamente gaveta a gaveta.
+ a| 
+Não aplicável
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+48 unidades
+ a| 
+As unidades nas prateleiras são divididas em dois grupos iguais (metades). Cada meia prateleira é atribuída automaticamente a um pool separado.
+ a| 
+Não aplicável
+
+|===
+
+
+=== Atribuição de disco em sistemas FAS9500
+
+|===
+
+
+| Diretriz | Compartimentos por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+ a| 
+Mínimo de unidades recomendadas (por local)
+ a| 
+96 unidades
+ a| 
+As unidades são atribuídas automaticamente gaveta a gaveta.
+ a| 
+Não aplicável
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+24 unidades
+ a| 
+As unidades são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Não aplicável
+
+|===

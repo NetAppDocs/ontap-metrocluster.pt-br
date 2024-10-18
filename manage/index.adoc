@@ -1,0 +1,16 @@
+---
+permalink: manage/index.html 
+sidebar: sidebar 
+keywords: metrocluster, mcc, management, disaster, recover, switchover, switchback 
+summary: Você pode executar o switchover e as operações de switchback do MetroCluster, tanto em operações de manutenção planejada como em caso de um desastre. 
+---
+= Gestão MetroCluster
+:allow-uri-read: 
+
+
+
+
+== Execute switchover, cura e switchback
+
+[role="lead"]
+Você pode executar o switchover e as operações de switchback do MetroCluster, tanto em operações de manutenção planejada como em caso de um desastre.

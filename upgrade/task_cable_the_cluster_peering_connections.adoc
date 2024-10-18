@@ -1,0 +1,23 @@
+---
+permalink: upgrade/task_cable_the_cluster_peering_connections.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, cable, new, controller, modules, cluster, peering, connections 
+summary: Você deve enviar o novo módulo de controladora à rede de peering de cluster para que ele tenha conetividade com o cluster no site do parceiro. 
+---
+= Cabeamento das conexões de peering de cluster do novo módulo de controladora
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve enviar o novo módulo de controladora à rede de peering de cluster para que ele tenha conetividade com o cluster no site do parceiro.
+
+.Sobre esta tarefa
+Pelo menos duas portas em cada módulo de controlador devem ser usadas para peering de cluster.
+
+A largura de banda mínima recomendada para as portas e a conetividade de rede é de 1 GbE.
+
+.Passos
+. Identifique e faça a cabeamento de pelo menos duas portas para peering de cluster e verifique se elas têm conetividade de rede com o cluster do parceiro.
+

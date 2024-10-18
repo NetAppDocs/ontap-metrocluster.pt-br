@@ -1,0 +1,94 @@
+---
+permalink: maintain/reference_where_to_find_additional_information_mcc_service_guide.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, additional, information 
+summary: Você pode saber mais sobre como configurar, operar e monitorar uma configuração do MetroCluster na extensa documentação do NetApp. 
+---
+= Onde encontrar informações adicionais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode saber mais sobre como configurar, operar e monitorar uma configuração do MetroCluster na extensa documentação do NetApp.
+
+|===
+
+
+| Informações | Assunto 
+
+
+ a| 
+link:../index.html["Documentação do MetroCluster"]
+ a| 
+* Todas as informações do MetroCluster
+
+
+
+
+ a| 
+https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf["Arquitetura e design da solução NetApp MetroCluster"^]
+ a| 
+* Uma visão geral técnica da configuração e operação do MetroCluster.
+* Práticas recomendadas para a configuração do MetroCluster.
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]
+ a| 
+* Arquitetura MetroCluster conectada à malha
+* Fazer o cabeamento da configuração
+* Configuração de pontes FC para SAS
+* Configuração dos switches FC
+* Configurando o MetroCluster no ONTAP
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-stretch/concept_considerations_differences.html["Instalação e configuração do Stretch MetroCluster"]
+ a| 
+* Arquitetura Stretch MetroCluster
+* Fazer o cabeamento da configuração
+* Configuração de pontes FC para SAS
+* Configurando o MetroCluster no ONTAP
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_differences.html["Instalação e configuração IP do MetroCluster"]
+ a| 
+* Arquitetura IP do MetroCluster
+* Cabeamento da configuração IP do MetroCluster
+* Configurando o MetroCluster no ONTAP
+
+
+
+
+ a| 
+https://www.netapp.com/support-and-training/documentation/["Documentação do NetApp: Guias de produto e recursos"^]
+ a| 
+* Monitoramento da configuração e do desempenho do MetroCluster
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/tiebreaker/concept_overview_of_the_tiebreaker_software.html["Instalação e configuração do software MetroCluster Tiebreaker"]
+ a| 
+* Monitoramento da configuração do MetroCluster com o software tiebreaker da MetroCluster
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-7mode-transition/copy-based/index.html["Transição baseada em cópia"]
+ a| 
+* Transição de dados de sistemas de storage 7-Mode para sistemas de armazenamento em cluster
+
+
+|===

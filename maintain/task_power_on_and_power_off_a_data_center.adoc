@@ -1,0 +1,337 @@
+---
+permalink: maintain/task_power_on_and_power_off_a_data_center.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, power, off, on, data, center, relocate, reconfigure, maintenance 
+summary: Se você precisar executar a manutenção do local ou realocar um único local em uma configuração IP do MetroCluster, você deve saber como desligar e ligar o local. 
+---
+= Desligue e ligue um único local numa configuração IP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você precisar executar a manutenção do local ou realocar um único local em uma configuração IP do MetroCluster, você deve saber como desligar e ligar o local.
+
+Se você precisar realocar e reconfigurar um local (por exemplo, se precisar expandir de um cluster de quatro nós para um cluster de oito nós), não será possível concluir essas tarefas ao mesmo tempo. Este procedimento abrange apenas as etapas necessárias para realizar a manutenção do local ou para realocar um local sem alterar sua configuração.
+
+O diagrama a seguir mostra uma configuração do MetroCluster. Cluster_B está desligado para manutenção.
+
+image::power-on-off-data-center.gif[ligar fora do data center]
+
+
+
+== Desligue um site da MetroCluster
+
+Você deve desligar um local e todo o equipamento antes que a manutenção ou realocação do local possa começar.
+
+.Sobre esta tarefa
+Todos os comandos nas etapas a seguir são emitidos a partir do site que permanece ligado.
+
+.Passos
+. Antes de começar, verifique se todos os agregados não espelhados no site estão offline.
+. Verifique a operação da configuração do MetroCluster no ONTAP:
++
+.. Verifique se o sistema é multipathed:
++
+`node run -node _node-name_ sysconfig -a`
+
+.. Verifique se há alertas de integridade em ambos os clusters:
++
+`system health alert show`
+
+.. Confirme a configuração do MetroCluster e se o modo operacional está normal:
++
+`metrocluster show`
+
+.. Execute uma verificação MetroCluster
+`metrocluster check run`
+.. Apresentar os resultados da verificação MetroCluster:
++
+`metrocluster check show`
+
+.. Verifique se existem alertas de estado nos interrutores (se presentes):
++
+`storage switch show`
+
+.. Execute o Config Advisor.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"]
+
+.. Depois de executar o Config Advisor, revise a saída da ferramenta e siga as recomendações na saída para resolver quaisquer problemas descobertos.
+
+
+. A partir do local em que você deseja permanecer ativo, implemente o switchover:
++
+`metrocluster switchover`
+
++
+[listing]
+----
+cluster_A::*> metrocluster switchover
+----
++
+A operação pode levar vários minutos para ser concluída.
+
+. Monitorize e verifique a conclusão do switchover:
++
+`metrocluster operation show`
+
++
+[listing]
+----
+cluster_A::*> metrocluster operation show
+  Operation: Switchover
+ Start time: 10/4/2012 19:04:13
+State: in-progress
+   End time: -
+     Errors:
+
+cluster_A::*> metrocluster operation show
+  Operation: Switchover
+ Start time: 10/4/2012 19:04:13
+      State: successful
+   End time: 10/4/2012 19:04:22
+     Errors: -
+----
+. Se você tiver uma configuração IP do MetroCluster executando o ONTAP 9.6 ou posterior, aguarde que os plexes do local de desastre fiquem online e as operações de recuperação sejam concluídas automaticamente.
++
+Nas configurações IP do MetroCluster executando o ONTAP 9.5 ou anterior, os nós do local de desastre não são inicializados automaticamente no ONTAP e os plexos permanecem offline.
+
+. Mova todos os volumes e LUNs que pertençam a agregados sem espelhamento offline.
++
+.. Mova os volumes offline.
++
+[listing]
+----
+cluster_A::* volume offline <volume name>
+----
+.. Mova os LUNs off-line.
++
+[listing]
+----
+cluster_A::* lun offline lun_path <lun_path>
+----
+
+
+. Mover agregados sem espelhamento offline: `storage aggregate offline`
++
+[listing]
+----
+cluster_A*::> storage aggregate offline -aggregate <aggregate-name>
+----
+. Dependendo da configuração e da versão do ONTAP, identifique e mova os plexos afetados offline que estão localizados no local de desastre (Cluster_B).
++
+Você deve mover os seguintes plexes off-line:
+
++
+--
+** Plexos não espelhados residentes em discos localizados no local de desastre.
++
+Se você não mover os plexos não espelhados no local de desastre off-line, uma interrupção pode ocorrer quando o local de desastre for desligado mais tarde.
+
+** Plexos espelhados que residem em discos localizados no local de desastre para espelhamento agregado. Depois que eles são movidos off-line, os plexes são inacessíveis.
+
+
+--
++
+.. Identificar os plexos afetados.
++
+Os plexes que são propriedade de nós no local sobrevivente consistem em Pool1 discos. Os plexes que são propriedade de nós no local de desastre consistem em Pool0 discos.
+
++
+[listing]
+----
+Cluster_A::> storage aggregate plex show -fields aggregate,status,is-online,Plex,pool
+aggregate    plex  status        is-online pool
+------------ ----- ------------- --------- ----
+Node_B_1_aggr0 plex0 normal,active true     0
+Node_B_1_aggr0 plex1 normal,active true     1
+
+Node_B_2_aggr0 plex0 normal,active true     0
+Node_B_2_aggr0 plex5 normal,active true     1
+
+Node_B_1_aggr1 plex0 normal,active true     0
+Node_B_1_aggr1 plex3 normal,active true     1
+
+Node_B_2_aggr1 plex0 normal,active true     0
+Node_B_2_aggr1 plex1 normal,active true     1
+
+Node_A_1_aggr0 plex0 normal,active true     0
+Node_A_1_aggr0 plex4 normal,active true     1
+
+Node_A_1_aggr1 plex0 normal,active true     0
+Node_A_1_aggr1 plex1 normal,active true     1
+
+Node_A_2_aggr0 plex0 normal,active true     0
+Node_A_2_aggr0 plex4 normal,active true     1
+
+Node_A_2_aggr1 plex0 normal,active true     0
+Node_A_2_aggr1 plex1 normal,active true     1
+14 entries were displayed.
+
+Cluster_A::>
+----
++
+Os plexos afetados são aqueles que são remotos para o cluster A. a tabela a seguir mostra se os discos são locais ou remotos em relação ao cluster A:
+
++
+[cols="20,25,30,25"]
+|===
+
+
+| Nó | Discos no pool | Os discos devem ser configurados offline? | Exemplo de plexes a serem movidos off-line 
+
+
+ a| 
+Nó _A_1 e nó _A_2
+ a| 
+Discos no pool 0
+ a| 
+Os discos não são locais para o cluster A..
+ a| 
+-
+
+
+
+ a| 
+Discos no pool 1
+ a| 
+Sim. Os discos são remotos para o cluster A.
+ a| 
+Node_A_1_aggr0/plex4
+
+Node_A_1_aggr1/plex1
+
+Node_A_2_aggr0/plex4
+
+Node_A_2_aggr1/plex1
+
+
+
+ a| 
+Nó _B_1 e nó _B_2
+ a| 
+Discos no pool 0
+ a| 
+Sim. Os discos são remotos para o cluster A.
+ a| 
+Node_B_1_aggr1/plex0
+
+Node_B_1_aggr0/plex0
+
+Node_B_2_aggr0/plex0
+
+Node_B_2_aggr1/plex0
+
+
+
+ a| 
+Discos no pool 1
+ a| 
+Os discos não são locais para o cluster A..
+ a| 
+-
+
+|===
+.. Mova os plexes afetados offline:
++
+`storage aggregate plex offline`
+
++
+[listing]
+----
+storage aggregate plex offline -aggregate Node_B_1_aggr0 -plex plex0
+----
++
+
+NOTE: Execute esta etapa para todos os plexos que têm discos remotos para Cluster_A.
+
+
+
+. Persistentemente offline as portas do switch ISL de acordo com o tipo de switch.
+. Interrompa os nós executando o seguinte comando em cada nó:
++
+`node halt -inhibit-takeover true -skip-lif-migration true -node <node-name>`
+
+. Desligue o equipamento no local do desastre.
++
+Tem de desligar o seguinte equipamento pela ordem indicada:
+
++
+** Controladores de armazenamento - os controladores de armazenamento devem estar `LOADER` no prompt, você deve desligá-los completamente.
+** Switches IP MetroCluster
+** Prateleiras de storage
+
+
+
+
+
+
+== Mudar o local desligado do MetroCluster
+
+Depois de o site ser desligado, você pode começar o trabalho de manutenção. O procedimento é o mesmo se os componentes do MetroCluster forem relocados no mesmo data center ou relocados para um data center diferente.
+
+* O hardware deve ser cabeado da mesma forma que o site anterior.
+* Se a velocidade, o comprimento ou o número do enlace inter-switch (ISL) tiverem sido alterados, todos eles precisam ser reconfigurados.
+
+
+.Passos
+. Verifique se o cabeamento de todos os componentes é cuidadosamente gravado para que ele possa ser reconetado corretamente no novo local.
+. Realocar fisicamente todo o hardware, controladores de armazenamento, switches IP, FibreBridges e compartimentos de armazenamento.
+. Configure as portas ISL e verifique a conetividade entre sites.
++
+.. Ligue os interrutores IP.
++
+
+NOTE: *Não* ligue nenhum outro equipamento.
+
+
+
+. Use ferramentas nos switches (conforme disponíveis) para verificar a conetividade entre sites.
++
+
+NOTE: Você só deve prosseguir se os links estiverem corretamente configurados e estáveis.
+
+. Desative os links novamente se eles forem encontrados estáveis.
+
+
+
+
+== Ligar a configuração do MetroCluster e regressar ao funcionamento normal
+
+Após a manutenção ter sido concluída ou o site ter sido movido, você deve ligar o site e restabelecer a configuração do MetroCluster.
+
+.Sobre esta tarefa
+Todos os comandos nas etapas a seguir são emitidos a partir do site em que você liga.
+
+.Passos
+. Ligue os interrutores.
++
+Deve ligar primeiro os interrutores. Eles podem ter sido ligados durante a etapa anterior se o local foi transferido.
+
++
+.. Reconfigure a ligação entre interrutores (ISL), se necessário, ou se esta não tiver sido concluída como parte da realocação.
+.. Ative o ISL se a vedação tiver sido concluída.
+.. Verifique o ISL.
+
+
+. Ligue os controladores de armazenamento e aguarde até que você veja o `LOADER` prompt. Os controladores não devem ser totalmente inicializados.
++
+Se a inicialização automática estiver ativada, pressione `Ctrl+C` para impedir que os controladores iniciem automaticamente.
+
+. Ligue as prateleiras, permitindo tempo suficiente para que elas se liguem completamente.
+. Verifique se o armazenamento está visível.
++
+.. Verifique se o armazenamento está visível a partir do local sobrevivente. Coloque os plexes offline novamente online para reiniciar a operação ressincronizada e restabelecer o SyncMirror.
+.. Verifique se o armazenamento local está visível a partir do nó no modo Manutenção:
++
+`disk show -v`
+
+
+
+. Restabelecer a configuração do MetroCluster.
++
+Siga as instruções em link:../disaster-recovery/task_recover_from_a_non_controller_failure_mcc_dr.html#verifying-that-your-system-is-ready-for-a-switchback["Verificando se o sistema está pronto para um switchback"] para executar operações de recuperação e switchback de acordo com sua configuração do MetroCluster.
+
+

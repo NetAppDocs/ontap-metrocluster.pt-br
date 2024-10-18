@@ -1,0 +1,19 @@
+---
+permalink: disaster-recovery/task_prepare_for_switchback_in_a_mcc_ip_configuration_supertask.html 
+sidebar: sidebar 
+keywords: perform, task, prepare, metrocluster, ip, configuration, switchback, operation 
+summary: Você deve executar certas tarefas para preparar a configuração IP do MetroCluster para a operação de switchback. 
+---
+= Prepare-se para switchback em uma configuração IP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve executar certas tarefas para preparar a configuração IP do MetroCluster para a operação de switchback.
+
+.Sobre esta tarefa
+&nbsp;
+
+image::../media/workflow_preparing_for_switchback_in_mcc_ip_dr.gif[fluxo de trabalho preparando para switchback no mcc ip dr]

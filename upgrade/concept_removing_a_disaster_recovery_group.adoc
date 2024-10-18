@@ -1,0 +1,205 @@
+---
+permalink: upgrade/concept_removing_a_disaster_recovery_group.html 
+sidebar: sidebar 
+keywords:  
+summary: A partir do ONTAP 9.8, é possível remover um grupo de DR de uma configuração MetroCluster de oito nós para criar uma configuração MetroCluster de quatro nós. 
+---
+= Removendo um grupo de recuperação de desastres
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.8, é possível remover um grupo de DR de uma configuração MetroCluster de oito nós para criar uma configuração MetroCluster de quatro nós.
+
+Este procedimento é suportado no ONTAP 9.8 e posterior. Para sistemas que executam o ONTAP 9.7 ou anterior, consulte o artigo da base de dados de Conhecimento
+
+link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_a_DR-Group_from_a_MetroCluster["Como remover um grupo de DR de uma configuração do MetroCluster"]
+
+https://mysupport.netapp.com/site/global/dashboard["Suporte à NetApp"]
+
+Uma configuração de oito nós inclui oito nós organizados como dois grupos de RD de quatro nós.
+
+image::../media/mcc_dr_groups_8_node.gif[nó de grupos de dr de mcc 8]
+
+Ao remover um grupo de DR, quatro nós permanecem na configuração.
+
+image::../media/mcc_dr_groups_4_node.gif[nó de grupos de dr de mcc 4]
+
+
+
+== Ativar o registo da consola
+
+O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
+
+* Deixe o AutoSupport ativado durante a manutenção.
+* Acione uma mensagem de manutenção do AutoSupport antes e depois da manutenção para desativar a criação de casos durante a atividade de manutenção.
++
+Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["Como suprimir a criação automática de casos durante as janelas de manutenção programada"^].
+
+* Ative o registo de sessão para qualquer sessão CLI. Para obter instruções sobre como ativar o registo de sessão, consulte a secção "saída de sessão de registo" no artigo da base de dados de conhecimento link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["Como configurar o PuTTY para uma conetividade ideal aos sistemas ONTAP"^].
+
+
+
+
+== Remoção dos nós do grupo de DR de cada cluster
+
+.Antes de começar
+* É necessário executar esta etapa em ambos os clusters.
+* O `metrocluster remove-dr-group` comando é suportado apenas no ONTAP 9.8 e posterior.
+
+
+.Passos
+. Prepare-se para a remoção do grupo DR, se ainda não o fez.
++
+.. Mover todos os volumes de dados para outro grupo de recuperação de desastres.
+.. Se o grupo de DR a ser removido contiver volumes de espelhamento de compartilhamento de carga, eles não poderão ser movidos. Crie novamente todos os volumes de espelhamento de compartilhamento de carga em outro grupo de DR e exclua os volumes de espelhamento de compartilhamento de carga no grupo de DR a serem removidos.
+.. Mova todos os volumes de metadados MDV_CRS para outro grupo DR seguindo o link:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_move_a_metadata_volume_in_mcc_configurations.html["Movimentação de um volume de metadados nas configurações do MetroCluster"] procedimento.
+.. Exclua todos os volumes de metadados MDV_aud que possam existir no grupo DR a serem removidos.
+.. Exclua todos os agregados de dados no grupo DR a serem removidos, como mostrado no exemplo a seguir:
++
+[listing]
+----
+ClusterA::> storage aggregate show -node ClusterA-01, ClusterA-02 -fields aggregate ,node
+ClusterA::> aggr delete -aggregate aggregate_name
+ClusterB::> storage aggregate show -node ClusterB-01, ClusterB-02 -fields aggregate ,node
+ClusterB::> aggr delete -aggregate aggregate_name
+----
++
+
+NOTE: Agregados raiz não são excluídos.
+
+.. Mova os LIFs de dados off-line.
+`network interface modify -vserver _svm-name_ -lif _data-lif_ -status-admin down`
+.. Migre todas as LIFs de dados para nós iniciais em outro grupo de DR. E
+`network interface show -home-node _old_node_`
++
+`network interface modify -vserver _svm-name_ -lif _data-lif_ -home-node _new_node_ -home-port _port-id_`
+
+.. Mova os LIFs de dados de volta online.
+`network interface modify -vserver _svm-name_ -lif _data-lif_ -status-admin up`
+.. Migre o LIF de gerenciamento de cluster para um nó inicial em outro grupo de DR.
++
+`network interface show -role cluster-mgmt`
+
++
+`network interface modify -vserver _svm-name_ -lif _cluster_mgmt_ -home-node _new_node_ -home-port _port-id_`
+
++
+O gerenciamento de nós e LIFs entre clusters não são migrados.
+
+.. Transfira o epsilon para um nó em outro grupo DR, se necessário.
++
+[listing]
+----
+ClusterA::> set advanced
+ClusterA::*> cluster show
+Move epsilon if needed
+ClusterA::*> cluster modify -node nodename -epsilon false
+ClusterA::*> cluster modify -node nodename -epsilon true
+
+ClusterB::> set advanced
+ClusterB::*> cluster show
+ClusterB::*> cluster modify -node nodename -epsilon false
+ClusterB::*> cluster modify -node nodename -epsilon true
+ClusterB::*> set admin
+----
+
+
+. Identifique e remova o grupo de DR.
++
+.. Identifique o grupo DR correto para remoção:
++
+`metrocluster node show`
+
+.. Remova os nós do grupo de DR
+`metrocluster remove-dr-group -dr-group-id 1`
++
+O exemplo a seguir mostra a remoção da configuração do grupo DR no cluster_A.
+
++
+[listing]
+----
+cluster_A::*>
+
+Warning: Nodes in the DR group that are removed from the MetroCluster
+         configuration will lose their disaster recovery protection.
+
+         Local nodes "node_A_1-FC, node_A_2-FC"will be removed from the
+         MetroCluster configuration. You must repeat the operation on the
+         partner cluster "cluster_B"to remove the remote nodes in the DR group.
+Do you want to continue? {y|n}: y
+
+Info: The following preparation steps must be completed on the local and partner
+      clusters before removing a DR group.
+
+      1. Move all data volumes to another DR group.
+      2. Move all MDV_CRS metadata volumes to another DR group.
+      3. Delete all MDV_aud metadata volumes that may exist in the DR group to
+      be removed.
+      4. Delete all data aggregates in the DR group to be removed. Root
+      aggregates are not deleted.
+      5. Migrate all data LIFs to home nodes in another DR group.
+      6. Migrate the cluster management LIF to a home node in another DR group.
+      Node management and inter-cluster LIFs are not migrated.
+      7. Transfer epsilon to a node in another DR group.
+
+      The command is vetoed if the preparation steps are not completed on the
+      local and partner clusters.
+Do you want to continue? {y|n}: y
+[Job 513] Job succeeded: Remove DR Group is successful.
+
+cluster_A::*>
+----
+
+
+. Repita a etapa anterior no cluster de parceiros.
+. Se estiver em uma configuração IP do MetroCluster, remova as conexões MetroCluster nos nós do grupo de DR antigo.
++
+Esses comandos podem ser emitidos de qualquer cluster e aplicados a todo o grupo de DR que abrange ambos os clusters.
+
++
+.. Desligar as ligações:
++
+`metrocluster configuration-settings connection disconnect _dr-group-id_`
+
+.. Exclua as interfaces MetroCluster nos nós do antigo grupo DR:
++
+`metrocluster configuration-settings interface delete`
+
+.. Exclua a configuração do antigo grupo DR. E
+`metrocluster configuration-settings dr-group delete`
+
+
+. Desmarque os nós no grupo DR antigo.
++
+Você deve executar esta etapa em cada cluster.
+
++
+.. Defina o nível de privilégio avançado:
++
+`set -privilege advanced`
+
+.. Desativar o failover de armazenamento:
++
+`storage failover modify -node _node-name_ -enable false`
+
+.. Unjoin the node
+`cluster unjoin -node _node-name_`
++
+Repita esta etapa para o outro nó local no grupo DR antigo.
+
+.. Defina o nível de privilégio de administrador
+`set -privilege admin`
+
+
+. Reative a HA do cluster no novo grupo de DR:
++
+`cluster ha modify -configured true`
+
++
+Você deve executar esta etapa em cada cluster.
+
+. Pare, desligue e remova os antigos módulos de controladora e compartimentos de storage.
+

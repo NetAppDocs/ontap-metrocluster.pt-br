@@ -1,0 +1,188 @@
+---
+permalink: upgrade/task_prepare_cluster_ports_on_the_exist_controller.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, prepare, cluster, ports, existing, controller, module 
+summary: Antes de instalar um novo módulo de controlador, tem de configurar as portas do cluster no módulo de controlador existente para que as portas do cluster possam fornecer comunicação do cluster com o novo módulo de controlador. 
+---
+= Preparando portas do cluster em um módulo do controlador existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de instalar um novo módulo de controlador, tem de configurar as portas do cluster no módulo de controlador existente para que as portas do cluster possam fornecer comunicação do cluster com o novo módulo de controlador.
+
+.Sobre esta tarefa
+Se estiver criando um cluster de dois nós (sem switches de rede de cluster), você deverá ativar o modo de rede sem switch de cluster.
+
+Para obter informações detalhadas sobre a configuração de porta, LIF e rede no ONTAP, link:https://docs.netapp.com/us-en/ontap/network-management/index.html["Gerenciamento de rede"^]consulte .
+
+.Passos
+. Determine quais portas devem ser usadas como portas de cluster do nó.
++
+Para obter uma lista das funções de porta padrão da sua plataforma, consulte a. https://hwu.netapp.com/["Hardware Universe"^]
+
++
+As _instruções de instalação e configuração_ da sua plataforma no site de suporte da NetApp contém informações sobre as portas para conexões de rede de cluster.
+
+. Para cada porta de cluster, identifique as funções de porta:
++
+`network port show`
+
++
+No exemplo a seguir, os portos "'e0a'", "'e0b'", "'e0c'" e "'e0d" devem ser alterados para portas de cluster:
+
++
+[listing]
+----
+cluster_A::> network port show
+
+Node: controller_A_1
+Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link  MTU    Admin/Oper  Status
+--------- ------------ ---------------- ----  ----   ----------- --------
+e0M       Default      mgmt_bd_1500     up    1500   auto/1000   healthy
+e0a       Default      Default          up    1500   auto/10000  healthy
+e0b       Default      Default          up    1500   auto/10000  healthy
+e0c       Default      Default          up    1500   auto/10000  healthy
+e0d       Default      Default          up    1500   auto/10000  healthy
+e0i       Default      Default          down  1500   auto/10     -
+e0j       Default      Default          down  1500   auto/10     -
+e0k       Default      Default          down  1500   auto/10     -
+e0l       Default      Default          down  1500   auto/10     -
+e2a       Default      Default          up    1500   auto/10000  healthy
+e2b       Default      Default          up    1500   auto/10000  healthy
+e4a       Default      Default          up    1500   auto/10000  healthy
+e4b       Default      Default          up    1500   auto/10000  healthy
+13 entries were displayed.
+----
+. Para qualquer LIF de dados que esteja usando uma porta de cluster como porta inicial ou porta atual, modifique o LIF para usar uma porta de dados como porta inicial:
++
+`network interface modify`
+
++
+O exemplo a seguir altera a porta inicial de um LIF de dados para uma porta de dados:
+
++
+[listing]
+----
+cluster1::> network interface modify -lif datalif1 -vserver vs1 -home-port e1b
+----
+. Para cada LIF que você modificou, reverta o LIF para sua nova porta inicial:
++
+`network interface revert`
+
++
+O exemplo a seguir reverte o LIF "d.atalif1" para sua nova porta inicial "'e1b":
+
++
+[listing]
+----
+cluster1::> network interface revert -lif datalif1 -vserver vs1
+----
+. Remova quaisquer portas VLAN usando portas de cluster como portas membro e ifgrps usando portas de cluster como portas membro.
++
+.. Excluir portas VLAN
+`network port vlan delete -node _node-name_ -vlan-name _portid-vlandid_`
++
+Por exemplo:
+
++
+[listing]
+----
+network port vlan delete -node node1 -vlan-name e1c-80
+----
+.. Remover portas físicas dos grupos de interface:
++
+`network port ifgrp remove-port -node _node-name_ -ifgrp _interface-group-name_ -port _portid_`
+
++
+Por exemplo:
+
++
+[listing]
+----
+network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
+----
+.. Remover portas VLAN e grupo de interfaces do domínio de broadcast::
++
+`network port broadcast-domain remove-ports -ipspace _ipspace_ -broadcast-domain _broadcast-domain-name_ -ports _nodename:portname,nodename:portname_,..`
+
+.. Modifique as portas do grupo de interfaces para usar outras portas físicas como membro, conforme necessário
+`ifgrp add-port -node _node-name_ -ifgrp _interface-group-name_ -port _port-id_`
+
+
+. Verifique se as funções de porta foram alteradas:
++
+`network port show`
+
++
+O exemplo a seguir mostra que as portas "'e0a"", "'e0b"", "'e0c" e "'e0d" são agora portas de cluster:
+
++
+[listing]
+----
+Node: controller_A_1
+Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link  MTU    Admin/Oper  Status
+--------- ------------ ---------------- ----  ----   ----------- --------
+e0M       Default      mgmt_bd_1500     up    1500   auto/1000   healthy
+e0a       Cluster      Cluster          up    9000   auto/10000  healthy
+e0b       Cluster      Cluster          up    9000   auto/10000  healthy
+e0c       Cluster      Cluster          up    9000   auto/10000  healthy
+e0d       Cluster      Cluster          up    9000   auto/10000  healthy
+e0i       Default      Default          down  1500   auto/10 -
+e0j       Default      Default          down  1500   auto/10 -
+e0k       Default      Default          down  1500   auto/10 -
+e0l       Default      Default          down  1500   auto/10 -
+e2a       Default      Default          up    1500   auto/10000  healthy
+e2b       Default      Default          up    1500   auto/10000  healthy
+e4a       Default      Default          up    1500   auto/10000  healthy
+e4b       Default      Default          up    1500   auto/10000  healthy
+13 entries were displayed.
+----
+. Adicione as portas ao domínio de broadcast do cluster:
++
+`broadcast-domain add-ports -ipspace Cluster -broadcast-domain Cluster -ports _port-id_, _port-id_, _port-id_...`
+
++
+Por exemplo:
+
++
+[listing]
+----
+broadcast-domain add-ports -ipspace Cluster -broadcast-domain Cluster -ports cluster1-01:e0a
+----
+. Se o sistema fizer parte de um cluster comutado, crie LIFs de cluster nas portas do cluster: `network interface create`
++
+O exemplo a seguir cria um LIF de cluster em uma das portas de cluster do nó. O `-auto` parâmetro configura o LIF para usar um endereço IP local de link.
+
++
+[listing]
+----
+cluster1::> network interface create -vserver Cluster -lif clus1 -role cluster -home-node node0 -home-port e1a -auto true
+----
+. Se você estiver criando um cluster sem switch de dois nós, ative o modo de rede sem switch de cluster:
++
+.. Altere para o nível de privilégio avançado de qualquer nó:
++
+`set -privilege advanced`
+
++
+Você pode responder `y` quando solicitado se deseja continuar no modo avançado. O prompt do modo avançado é (`*>`exibido ).
+
+.. Ative o modo de rede do cluster sem switch:
++
+`network options switchless-cluster modify -enabled true`
+
+.. Voltar ao nível de privilégio de administrador:
++
+`set -privilege admin`
+
+
+
+
+
+
+IMPORTANT: A criação da interface do cluster para o nó existente em um sistema de cluster sem switch de dois nós é concluída após a instalação do cluster ser concluída por meio de um netboot no novo módulo do controlador.

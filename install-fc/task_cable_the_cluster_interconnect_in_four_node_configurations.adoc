@@ -1,0 +1,28 @@
+---
+permalink: install-fc/task_cable_the_cluster_interconnect_in_four_node_configurations.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, cluster, interconnect, four, node 
+summary: Em configurações de MetroCluster de oito ou quatro nós, você deve fazer o cabeamento da interconexão de cluster entre os módulos de controladora local em cada local. 
+---
+= Cabeamento da interconexão de cluster em configurações de oito ou quatro nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Em configurações de MetroCluster de oito ou quatro nós, você deve fazer o cabeamento da interconexão de cluster entre os módulos de controladora local em cada local.
+
+.Sobre esta tarefa
+Esta tarefa não é necessária em configurações de MetroCluster de dois nós.
+
+Esta tarefa deve ser executada em ambos os locais do MetroCluster.
+
+.Passo
+. Faça a interconexão de cluster de um módulo de controladora para o outro, ou se forem usados switches de interconexão de cluster, de cada módulo de controladora para os switches.
+
+
+.Informações relacionadas
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+link:https://docs.netapp.com/us-en/ontap/network-management/index.html["Gerenciamento de rede e LIF"^]

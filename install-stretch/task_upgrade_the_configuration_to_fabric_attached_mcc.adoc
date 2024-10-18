@@ -1,0 +1,66 @@
+---
+permalink: install-stretch/task_upgrade_the_configuration_to_fabric_attached_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, transition, stretch, fabric, attacjed, configuration 
+summary: Em uma configuração MetroCluster conectada à malha, os nós estão em diferentes locais. Essa diferença geográfica aumenta a proteção contra desastres. Para fazer a transição de uma configuração Stretch para uma MetroCluster conectada à malha, é necessário adicionar switches FC e, se necessário, pontes FC para SAS à configuração. 
+---
+= Transição de uma configuração MetroCluster elástica para uma configuração de malha
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Em uma configuração MetroCluster conectada à malha, os nós estão em diferentes locais. Essa diferença geográfica aumenta a proteção contra desastres. Para fazer a transição de uma configuração Stretch para uma MetroCluster conectada à malha, é necessário adicionar switches FC e, se necessário, pontes FC para SAS à configuração.
+
+* Você deve desativar o switchover automático em ambos os clusters executando o `metrocluster modify -auto-switchover-failure-domain auto-disabled` comando.
+* Você precisa ter encerrado os nós.
++
+Este procedimento é disruptivo.
+
+
+
+A configuração do MetroCluster deve ser transferida em ambos os sites. Após atualizar a configuração do MetroCluster, você precisa habilitar o switchover automático nos dois clusters. Também é necessário validar a configuração executando o `metrocluster check run` comando.
+
+Este procedimento fornece uma visão geral dos passos necessários. Para obter instruções detalhadas, consulte as seções específicas do link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]. Você não precisa fazer uma instalação e configuração completas.
+
+.Passos
+. Prepare-se para a atualização revisando cuidadosamente a seção "preparação para a instalação do MetroCluster" do link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"].
+. Instale, faça cabos e configure os switches e as bridges FC-para-SAS necessários.
++
+
+NOTE: Você deve usar os procedimentos na seção "cabeamento de uma configuração de MetroCluster conetada à malha" do link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"].
+
+. Atualize a configuração do MetroCluster usando as etapas a seguir.
++
+Não use os procedimentos na seção "Configurando o software MetroCluster no ONTAP" localizada no link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"].
+
++
+.. Entre no modo de privilégio avançado
+`*set -privilege advanced*`
+.. Atualize a configuração do MetroCluster
+`*metrocluster configure -refresh true*`
++
+O comando a seguir atualiza a configuração do MetroCluster em todos os nós do grupo DR que contém controller_A_1:
+
++
+[listing]
+----
+controller_A_1::*> metrocluster configure -refresh true
+[Job 009] Job succeeded: Configure is successful.
+----
+.. Voltar ao modo de privilégio de administrador
+`*set -privilege admin*`
+
+
+. Verifique se há erros na configuração do MetroCluster e verifique se ela está operacional.
++
+Você deve usar os procedimentos nas seções a seguir do link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]:
+
++
+** Verificando erros de configuração do MetroCluster com o Config Advisor
+** Verificação da operação local de HA
+** Verificando switchover, cura e switchback
+
+
+

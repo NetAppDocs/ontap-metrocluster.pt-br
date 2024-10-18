@@ -1,0 +1,114 @@
+---
+permalink: transition/task_verify_mcc_health_fc_to_ip.html 
+sidebar: sidebar 
+keywords: Verifying the health of the MetroCluster configuration, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: Você deve verificar a integridade e a conectividade da configuração do MetroCluster antes de executar a transição. 
+---
+= Verificando a integridade da configuração do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve verificar a integridade e a conectividade da configuração do MetroCluster antes de executar a transição
+
+. Verifique a operação da configuração do MetroCluster no ONTAP:
++
+.. Verifique se o sistema é multipathed:``node run -node node-name sysconfig -a``
+.. Verifique se há alertas de integridade em ambos os clusters: `system health alert show`
+.. Confirme a configuração do MetroCluster e se o modo operacional está normal: `metrocluster show`
+.. Execute uma verificação MetroCluster: `metrocluster check run`
+.. Apresentar os resultados da verificação MetroCluster: `metrocluster check show`
+.. Verifique se existem alertas de estado nos interrutores (se presentes): `storage switch show`
+.. Execute o Config Advisor.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"]
+
+.. Depois de executar o Config Advisor, revise a saída da ferramenta e siga as recomendações na saída para resolver quaisquer problemas descobertos.
+
+
+. Verifique se o cluster está em bom estado: `cluster show`
++
+....
+cluster_A::> cluster show
+Node           Health  Eligibility   Epsilon
+-------------- ------  -----------   -------
+node_A_1_FC    true    true          false
+node_A_2_FC    true    true          false
+
+cluster_A::>
+....
+. Verifique se todas as portas do cluster estão ativas: `network port show -ipspace cluster`
++
+....
+cluster_A::> network port show -ipspace cluster
+
+Node: node_A_1_FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: node_A_2_FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+
+cluster_A::>
+....
+. Verifique se todas as LIFs de cluster estão ativas e operacionais: `network interface show -vserver cluster`
++
+Cada LIF de cluster deve exibir "true" para "is Home" e "up/up" para "Status Admin/Oper".
+
++
+....
+cluster_A::> network interface show -vserver cluster
+
+            Logical      Status     Network          Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- -----
+Cluster
+            node_A-1_FC_clus1
+                       up/up      169.254.209.69/16  node_A-1_FC   e0a     true
+            node_A_1_FC_clus2
+                       up/up      169.254.49.125/16  node_A_1_FC   e0b     true
+            node_A_2_FC_clus1
+                       up/up      169.254.47.194/16  node_A_2_FC   e0a     true
+            node_A_2_FC_clus2
+                       up/up      169.254.19.183/16  node_A_2_FC   e0b     true
+
+4 entries were displayed.
+
+cluster_A::>
+....
+. Verifique se a reversão automática está ativada em todas as LIFs do cluster: `network interface show -vserver Cluster -fields auto-revert`
++
+....
+cluster_A::> network interface show -vserver Cluster -fields auto-revert
+
+          Logical
+Vserver   Interface     Auto-revert
+--------- ------------- ------------
+Cluster
+           node_A_1_FC_clus1
+                        true
+           node_A_1_FC_clus2
+                        true
+           node_A_2_FC_clus1
+                        true
+           node_A_2_FC_clus2
+                        true
+
+    4 entries were displayed.
+
+cluster_A::>
+....
+

@@ -1,0 +1,105 @@
+---
+permalink: releasenotes/mcc-config-support-features.html 
+sidebar: sidebar 
+keywords: metrocluster, configuration, support for ontap features 
+summary:  
+---
+= Novidades no suporte à configuração do MetroCluster para recursos do ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cada versão do software de gerenciamento de dados ONTAP 9 oferece recursos novos e aprimorados que melhoram os recursos, a capacidade de gerenciamento e o desempenho das configurações do ONTAP MetroCluster.
+
+Para obter detalhes sobre problemas conhecidos, limitações e precauções de atualização que afetam as configurações do ONTAP MetroCluster, consulte o https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["ONTAP 9 Notas de versão"^]. Você deve entrar com sua conta do NetApp ou criar uma conta para acessar as Notas de versão.
+
+[cols="20,65,15"]
+|===
+| Recursos suportados na configuração do MetroCluster | Descrição | Disponível a partir do início 
+
+
+ a| 
+Compatibilidade com MetroCluster IP para NVMe
+ a| 
+O protocolo de host front-end NVMe/TCP é compatível com configurações IP MetroCluster de quatro nós.
+
+link:https://docs.netapp.com/us-en/ontap/san-admin/san-config-mcc-concept.html["Configurações DE SAN em um ambiente MetroCluster"^]
+ a| 
+ONTAP 9.15,1
+
+
+
+ a| 
+Suporte a storage de objetos S3 em agregados espelhados e sem espelhamento
+ a| 
+Você pode habilitar um servidor de storage de objetos S3 em uma SVM em um agregado espelhado ou sem espelhamento em configurações MetroCluster IP e FC.
+
+https://docs.netapp.com/us-en/ontap/s3-config/index.html["Visão geral da configuração do S3"]
+ a| 
+ONTAP 9.14,1
+
+
+
+ a| 
+Suporte para provisionamento de um bucket do S3 em agregados espelhados e sem espelhamento em um cluster MetroCluster
+ a| 
+Você pode criar um bucket em um agregado espelhado ou sem espelhamento nas configurações do MetroCluster.
+
+https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-mcc-task.html["Crie um bucket em um agregado espelhado ou sem espelhamento em uma configuração do MetroCluster"]
+ a| 
+ONTAP 9.12,1
+
+
+
+ a| 
+Compatibilidade com MetroCluster IP para NVMe
+ a| 
+O protocolo NVMe/FC é compatível com configurações MetroCluster IP de quatro nós.
+
+link:https://docs.netapp.com/us-en/ontap/san-admin/san-config-mcc-concept.html["Configurações DE SAN em um ambiente MetroCluster"^]
+ a| 
+ONTAP 9.12,1
+
+
+
+ a| 
+Suporte a IPsec para protocolo de host front-end em configurações de conexão de malha MetroCluster IP e MetroCluster
+ a| 
+O suporte IPsec para protocolo de host front-end (como NFS e iSCSI) está disponível nas configurações de conexão de malha do MetroCluster IP e MetroCluster.
+
+https://docs.netapp.com/us-en/ontap/networking/configure_ip_security_@ipsec@_over_wire_encryption.html["Configurar a segurança IP (IPsec) através da criptografia por fio"]
+ a| 
+ONTAP 9.11,1
+
+
+
+ a| 
+Grupos de consistência
+ a| 
+Os grupos de consistência são compatíveis com as configurações do MetroCluster.
+ a| 
+ONTAP 9,7
+
+
+
+ a| 
+Espelhos FabricPool nas configurações do MetroCluster
+ a| 
+Você pode configurar um FabricPool espelhado nas configurações do MetroCluster para categorizar dados inativos em duas zonas de falha diferentes.
+
+https://docs.netapp.com/us-en/ontap/fabricpool/setup-object-stores-mcc-task.html["Configurando armazenamentos de objetos para FabricPool em uma configuração MetroCluster"]
+ a| 
+ONTAP 9,7
+
+
+
+ a| 
+Recuperação de desastres da SVM
+ a| 
+As máquinas virtuais de storage ativo (SVMs) em uma configuração do MetroCluster podem ser usadas como fontes com o recurso de recuperação de desastres do SnapMirror SVM.
+ a| 
+ONTAP 9,5
+
+|===

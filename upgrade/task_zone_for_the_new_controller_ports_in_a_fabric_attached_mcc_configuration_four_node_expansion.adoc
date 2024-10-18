@@ -1,0 +1,16 @@
+---
+permalink: upgrade/task_zone_for_the_new_controller_ports_in_a_fabric_attached_mcc_configuration_four_node_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, zone, controller, fabric, attached, ports, add 
+summary: 'O zoneamento do switch FC deve acomodar as novas conexões do controlador. Se você usou os arquivos de configuração de referência fornecidos pelo NetApp (RCFs) para configurar seus switches, o zoneamento é pré-configurado e você não precisa fazer alterações.' 
+---
+= Zoneamento para as novas portas do controlador ao adicionar um módulo de controlador em uma configuração MetroCluster conetada à malha
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O zoneamento do switch FC deve acomodar as novas conexões do controlador. Se você usou os arquivos de configuração de referência (RCFs) fornecidos pelo NetApp para configurar seus switches, o zoneamento é pré-configurado e você não precisa fazer alterações.
+
+Se você configurou manualmente seus switches FC, deve garantir que o zoneamento esteja correto para as conexões do iniciador dos novos módulos do controlador. Consulte as seções sobre zoneamento em link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"].

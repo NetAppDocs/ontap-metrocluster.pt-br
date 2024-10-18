@@ -1,0 +1,32 @@
+---
+permalink: maintain/task_hot_add_a_sas_disk_shelf_in_a_direct_attached_mcc_configuration_us_sas_optical_cables.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, add, sas, disk, shelf, direct, attached, fc, configuration, optical, cables 
+summary: Você pode usar cabos óticos SAS para adicionar um compartimento de disco SAS a uma stack existente de gavetas de disco SAS em uma configuração de MetroCluster FC com conexão direta ou como uma nova stack de um HBA SAS ou uma porta SAS integrada na controladora. 
+---
+= Adição automática de um compartimento de disco SAS em uma configuração de MetroCluster FC com conexão direta usando cabos óticos SAS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar cabos óticos SAS para adicionar um compartimento de disco SAS a uma stack existente de gavetas de disco SAS em uma configuração de MetroCluster FC com conexão direta ou como uma nova stack de um HBA SAS ou uma porta SAS integrada na controladora.
+
+* Esse procedimento não causa interrupções e leva aproximadamente duas horas para ser concluído.
+* Você precisa da senha de administrador e acesso a um servidor FTP ou SCP.
+* Se estiver adicionando uma gaveta de IOM12 TB a uma stack de IOM6 gavetas, link:https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Adição automática de IOM12 gavetas a uma stack de IOM6 gavetas"]consulte .
+
+
+Essa tarefa se aplica a uma configuração de FC MetroCluster na qual o storage é conetado diretamente às controladoras de storage com cabos SAS. Isso não se aplica a configurações de FC MetroCluster que usam pontes FC para SAS ou malhas de switches FC.
+
+.Passos
+. Siga as instruções para adicionar um compartimento de disco SAS a quente no _Installation Guide_ para o modelo de compartimento de disco para executar as seguintes tarefas para adicionar um compartimento de disco a quente:
++
+.. Instale um compartimento de disco para adicionar um hot-add.
+.. Ligue as fontes de alimentação e defina a ID do compartimento para adicionar um hot-add.
+.. Coloque o cabo na gaveta de disco hot-Added.
+.. Verifique a conetividade SAS.
+
+
+

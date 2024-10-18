@@ -1,0 +1,226 @@
+---
+permalink: disaster-recovery/task_boot_ontap_mcip.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, configuration, replacement, controller, module, disaster, site, boot 
+summary: Você precisa inicializar os nós de substituição no local de desastre para o sistema operacional ONTAP. 
+---
+= Inicializando no ONTAP em módulos de controlador de substituição em configurações IP do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa inicializar os nós de substituição no local de desastre para o sistema operacional ONTAP.
+
+.Sobre esta tarefa
+Esta tarefa começa com os nós no local de desastre no modo Manutenção.
+
+.Passos
+. Em um dos nós de substituição, saia para o prompt Loader: `halt`
+. Apresentar o menu de arranque: `boot_ontap menu`
+. No menu de inicialização, selecione a opção 6, *Atualizar flash a partir da configuração de backup*.
++
+O sistema arranca duas vezes. Você deve responder `yes` quando solicitado a continuar. Após a segunda inicialização, você deve responder `y` quando solicitado sobre a incompatibilidade da ID do sistema.
+
++
+
+NOTE: Se você não tiver limpado o conteúdo do NVRAM de um módulo de controlador de substituição usado, poderá ver a seguinte mensagem de pânico: `PANIC: NVRAM contents are invalid....` Se isso ocorrer, inicialize o sistema no prompt do ONTAP novamente (`boot_ontap menu`). Então você precisa <<Reset-the-boot-recovery,Redefina os bootargs boot_recovery e rdb_corrupt>>
+
++
+** Confirmação para continuar prompt:
++
+[listing]
+----
+Selection (1-9)? 6
+
+This will replace all flash-based configuration with the last backup to
+disks. Are you sure you want to continue?: yes
+----
+** Aviso de incompatibilidade da ID do sistema:
++
+[listing]
+----
+WARNING: System ID mismatch. This usually occurs when replacing a boot device or NVRAM cards!
+Override system ID? {y|n} y
+----
+
+
+. No local que sobreviveu, verifique se as IDs de sistema do parceiro corretas foram aplicadas aos nós:
++
+`metrocluster node show -fields node-systemid,ha-partner-systemid,dr-partner-systemid,dr-auxiliary-systemid`
+
++
+--
+Neste exemplo, os seguintes novos IDs de sistema devem aparecer na saída:
+
+** Node_A_1: 1574774970
+** Node_A_2: 1574774991
+
+
+A coluna "ha-Partner-systemid" deve mostrar os novos IDs do sistema.
+
+[listing]
+----
+metrocluster node show -fields node-systemid,ha-partner-systemid,dr-partner-systemid,dr-auxiliary-systemid
+
+dr-group-id cluster    node      node-systemid ha-partner-systemid dr-partner-systemid dr-auxiliary-systemid
+----------- ---------- --------  ------------- ------ ------------ ------ ------------ ------ --------------
+1           Cluster_A  Node_A_1  1574774970    1574774991          4068741254          4068741256
+1           Cluster_A  Node_A_2  1574774991    1574774970          4068741256          4068741254
+1           Cluster_B  Node_B_1  -             -                   -                   -
+1           Cluster_B  Node_B_2  -             -                   -                   -
+4 entries were displayed.
+----
+--
+. Se as IDs do sistema do parceiro não foram definidas corretamente, você deve definir manualmente o valor correto:
++
+.. Interrompa e exiba o prompt Loader no nó.
+.. Verifique o valor atual do bootarg do Partner-sysID:
++
+`printenv`
+
+.. Defina o valor para a ID correta do sistema do parceiro:
++
+`setenv partner-sysid partner-sysID`
+
+.. Inicialize o nó:
++
+`boot_ontap`
+
+.. Repita essas subetapas no outro nó, se necessário.
+
+
+. Confirme se os nós de substituição no local de desastre estão prontos para o switchback:
++
+`metrocluster node show`
+
++
+Os nós de substituição devem estar aguardando o modo de recuperação de switchback. Se eles estiverem no modo normal, você pode reinicializar os nós de substituição. Após essa inicialização, os nós devem estar aguardando o modo de recuperação de switchback.
+
++
+O exemplo a seguir mostra que os nós de substituição estão prontos para switchback:
+
++
+[listing]
+----
+cluster_B::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_B
+              node_B_1           configured     enabled   switchover completed
+              node_B_2           configured     enabled   switchover completed
+      cluster_A
+              node_A_1           configured     enabled   waiting for switchback recovery
+              node_A_2           configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+
+cluster_B::>
+----
+. Verifique as configurações da conexão MetroCluster:
++
+`metrocluster configuration-settings connection show`
+
++
+O estado de configuração deve indicar Concluído.
+
++
+[listing]
+----
+cluster_B::*> metrocluster configuration-settings connection show
+DR                    Source          Destination
+Group Cluster Node    Network Address Network Address Partner Type Config State
+----- ------- ------- --------------- --------------- ------------ ------------
+1     cluster_B
+              node_B_2
+                 Home Port: e5a
+                      172.17.26.13    172.17.26.12    HA Partner   completed
+                 Home Port: e5a
+                      172.17.26.13    172.17.26.10    DR Partner   completed
+                 Home Port: e5a
+                      172.17.26.13    172.17.26.11    DR Auxiliary completed
+                 Home Port: e5b
+                      172.17.27.13    172.17.27.12    HA Partner   completed
+                 Home Port: e5b
+                      172.17.27.13    172.17.27.10    DR Partner   completed
+                 Home Port: e5b
+                      172.17.27.13    172.17.27.11    DR Auxiliary completed
+              node_B_1
+                 Home Port: e5a
+                      172.17.26.12    172.17.26.13    HA Partner   completed
+                 Home Port: e5a
+                      172.17.26.12    172.17.26.11    DR Partner   completed
+                 Home Port: e5a
+                      172.17.26.12    172.17.26.10    DR Auxiliary completed
+                 Home Port: e5b
+                      172.17.27.12    172.17.27.13    HA Partner   completed
+                 Home Port: e5b
+                      172.17.27.12    172.17.27.11    DR Partner   completed
+                 Home Port: e5b
+                      172.17.27.12    172.17.27.10    DR Auxiliary completed
+      cluster_A
+              node_A_2
+                 Home Port: e5a
+                      172.17.26.11    172.17.26.10    HA Partner   completed
+                 Home Port: e5a
+                      172.17.26.11    172.17.26.12    DR Partner   completed
+                 Home Port: e5a
+                      172.17.26.11    172.17.26.13    DR Auxiliary completed
+                 Home Port: e5b
+                      172.17.27.11    172.17.27.10    HA Partner   completed
+                 Home Port: e5b
+                      172.17.27.11    172.17.27.12    DR Partner   completed
+                 Home Port: e5b
+                      172.17.27.11    172.17.27.13    DR Auxiliary completed
+              node_A_1
+                 Home Port: e5a
+                      172.17.26.10    172.17.26.11    HA Partner   completed
+                 Home Port: e5a
+                      172.17.26.10    172.17.26.13    DR Partner   completed
+                 Home Port: e5a
+                      172.17.26.10    172.17.26.12    DR Auxiliary completed
+                 Home Port: e5b
+                      172.17.27.10    172.17.27.11    HA Partner   completed
+                 Home Port: e5b
+                      172.17.27.10    172.17.27.13    DR Partner   completed
+                 Home Port: e5b
+                      172.17.27.10    172.17.27.12    DR Auxiliary completed
+24 entries were displayed.
+
+cluster_B::*>
+----
+. Repita as etapas anteriores no outro nó no local do desastre.
+
+
+
+
+=== [[Reset-the-boot-recovery]]Reponha os bootargs boot_recovery e rdb_corrupt
+
+[role="lead"]
+Se necessário, você pode redefinir o boot_recovery e o rdb_corrupt_bootargs
+
+.Passos
+. Interrompa o nó de volta ao prompt DO Loader:
++
+[listing]
+----
+node_A_1::*> halt -node _node-name_
+----
+. Verifique se os seguintes bootargs foram definidos:
++
+[listing]
+----
+LOADER> printenv bootarg.init.boot_recovery
+LOADER> printenv bootarg.rdb_corrupt
+----
+. Se qualquer bootarg tiver sido definido como um valor, desconfigure-o e inicie o ONTAP:
++
+[listing]
+----
+LOADER> unsetenv bootarg.init.boot_recovery
+LOADER> unsetenv bootarg.rdb_corrupt
+LOADER> saveenv
+LOADER> bye
+----
+

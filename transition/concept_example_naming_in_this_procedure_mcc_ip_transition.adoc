@@ -1,0 +1,76 @@
+---
+permalink: transition/concept_example_naming_in_this_procedure_mcc_ip_transition.html 
+sidebar: sidebar 
+keywords: procedure, example, name, throughout, identify, dr, group, node, switch, naming 
+summary: Este procedimento usa nomes de exemplo em todo o para identificar os grupos de DR, nós e switches envolvidos. 
+---
+= Exemplo de nomeação neste procedimento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Este procedimento usa nomes de exemplo em todo o para identificar os grupos de DR, nós e switches envolvidos.
+
+[cols="1,2,2"]
+|===
+
+
+| Grupos DR | Cluster_A no site_A | Cluster_B no local_B 
+
+
+ a| 
+DR_Group_1-FC
+ a| 
+* Node_A_1-FC
+* Node_A_2-FC
+
+ a| 
+* Nó_B_1-FC
+* Nó_B_2-FC
+
+
+
+
+ a| 
+DR_Group_2-IP
+ a| 
+* Node_A_3-IP
+* Node_A_4-IP
+
+ a| 
+* Node_B_3-IP
+* Node_B_4-IP
+
+
+
+
+ a| 
+Interrutores
+ a| 
+Switches iniciais (se a configuração conetada à malha:)
+
+* Switch_A_1-FC
+* Switch_A_2-FC
+
+
+Switches IP MetroCluster:
+
+* Switch_A_1-IP
+* Switch_A_2-IP
+
+ a| 
+Switches iniciais (se a configuração conetada à malha):
+
+* Switch_B_1-FC
+* Switch_B_2-FC
+
+
+Switches IP MetroCluster:
+
+* Switch_B_1-IP
+* Switch_B_2-IP
+
+
+|===

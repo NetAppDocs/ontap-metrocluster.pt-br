@@ -1,0 +1,112 @@
+---
+permalink: maintain/task_power_off_an_entire_mcc_fc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, power, off, entire, metrocluster, fc, configuration 
+summary: Você precisa desligar toda a configuração do MetroCluster FC e todos os equipamentos antes que a manutenção ou realocação do local possa começar. 
+---
+= Desativar toda uma configuração do MetroCluster FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa desligar toda a configuração do MetroCluster FC e todos os equipamentos antes que a manutenção ou realocação do local possa começar.
+
+.Sobre esta tarefa
+Tem de executar as etapas deste procedimento a partir de ambos os locais, ao mesmo tempo.
+
+
+NOTE: A partir de ONTAP 9.8, o `*storage switch*` comando é substituído por `*system switch*`. As etapas a seguir mostram o `*storage switch*` comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o `*system switch*` comando é preferido.
+
+.Passos
+. Verifique a configuração do MetroCluster de ambos os sites na configuração do MetroCluster.
++
+.. Confirme a configuração do MetroCluster e se o modo operacional está normal. E
+`*metrocluster show*`
+.. Confirme a conetividade com os discos inserindo o seguinte comando em qualquer um dos nós MetroCluster
+`*run local sysconfig -v*`
+.. Execute o seguinte comando
+`*storage bridge show*`
+.. Execute o seguinte comando
+`*storage port show*`
+.. Execute o seguinte comando
+`*storage switch show*`
+.. Execute o seguinte comando
+`*network port show*`
+.. Execute uma verificação MetroCluster
+`*metrocluster check run*`
+.. Exibir os resultados da verificação MetroCluster
+`*metrocluster check show*`
+
+
+. Desative o AUSO modificando o domínio de falha do AUSO para
++
+`*auso-disabled*`
+
++
+[listing]
+----
+cluster_A_site_A::*>metrocluster modify -auto-switchover-failure-domain auso-disabled
+----
+. Verifique a alteração usando o comando
++
+`*metrocluster operation show*`
+
++
+[listing]
+----
+
+	cluster_A_site_A::*> metrocluster operation show
+       Operation: modify
+           State: successful
+      Start Time: 4/25/2020 20:20:36
+        End Time: 4/25/2020 20:20:36
+          Errors: -
+----
+. Interrompa os nós usando o seguinte comando:
+`*halt*`
++
+** Para uma configuração de MetroCluster de quatro ou oito nós, use os `*inhibit-takeover*` parâmetros e `*skip-lif-migration-before-shutdown*`:
++
+[listing]
+----
+system node halt -node node1_SiteA -inhibit-takeover true -ignore-quorum-warnings true -skip-lif-migration-before-shutdown true
+----
+** Para uma configuração MetroCluster de dois nós, use o comando:
++
+[listing]
+----
+system node halt -node node1_SiteA -ignore-quorum-warnings true
+----
+
+
+. Desligue o seguinte equipamento no local:
++
+** Controladores de storage
+** Switches MetroCluster FC (se em uso e a configuração não for uma configuração de alongamento de dois nós)
+** ATTO FibreBridges
+** Prateleiras de storage
+
+
+. Aguarde trinta minutos e, em seguida, ligue o seguinte equipamento no local:
++
+** Prateleiras de storage
+** ATTO FibreBridges
+** Switches MetroCluster FC
+** Controladores de storage
+
+
+. Depois que os controladores estiverem ligados, verifique a configuração do MetroCluster de ambos os sites.
++
+Para verificar a configuração, repita a etapa 1.
+
+. Execute as verificações do ciclo de alimentação.
++
+.. Verifique se todas as SVMs de origem sincronizada estão online
+`*vserver show*`
+.. Inicie qualquer SVMs de origem sincronizada que não estejam online
+`*vserver start*`
+
+
+

@@ -1,0 +1,139 @@
+---
+permalink: install-stretch/reference_information_gathering_worksheet_for_fc_to_sas_bridges_2_node_atto.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, worksheet, fc, sas, bridges, information 
+summary: Antes de começar a configurar os sites do MetroCluster, você deve coletar as informações de configuração necessárias. 
+---
+= Planilha de coleta de informações para bridges FC-para-SAS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de começar a configurar os sites do MetroCluster, você deve coletar as informações de configuração necessárias.
+
+
+
+== Local A, ponte FC-para-SAS 1 (FC_bridge_A_1a)
+
+Cada stack SAS requer pelo menos duas pontes FC para SAS.
+
+Cada ponte se coneta ao Controller_A_1_``__port-number__`` e Controller_B_1_``__port-number__``.
+
+|===
+
+
+| Local A | O seu valor 
+
+
+ a| 
+Endereço IP Bridge_A_1a
+ a| 
+
+
+
+ a| 
+Nome de utilizador Bridge_A_1a
+ a| 
+
+
+
+ a| 
+Senha Bridge_A_1a
+ a| 
+
+|===
+
+
+== Local A, ponte FC-para-SAS 2 (FC_bridge_A_1b)
+
+Cada stack SAS requer pelo menos duas pontes FC para SAS.
+
+Cada ponte se coneta ao Controller_A_1_``__port-number__`` e Controller_B_1_``__port-number__``.
+
+|===
+
+
+| Local A | O seu valor 
+
+
+ a| 
+Endereço IP Bridge_A_1b
+ a| 
+
+
+
+ a| 
+Nome de utilizador Bridge_A_1b
+ a| 
+
+
+
+ a| 
+Senha Bridge_A_1b
+ a| 
+
+|===
+
+
+== Local B, ponte FC-para-SAS 1 (FC_bridge_B_1a)
+
+Cada stack SAS requer pelo menos duas pontes FC para SAS.
+
+Cada ponte coneta-se ao Controller_A_1____port-number__' e Controller_B_1____port-number_.
+
+|===
+
+
+| Local B | O seu valor 
+
+
+ a| 
+Endereço IP Bridge_B_1a
+ a| 
+
+
+
+ a| 
+Nome de utilizador Bridge_B_1a
+ a| 
+
+
+
+ a| 
+Bridge_B_1a Palavra-passe
+ a| 
+
+|===
+
+
+== Local B, ponte FC-para-SAS 2 (FC_bridge_B_1b)
+
+Cada stack SAS requer pelo menos duas pontes FC para SAS.
+
+Cada ponte coneta-se ao Controller_A_1____port-number__' e Controller_B_1____port-number_.
+
+|===
+
+
+| Local B | O seu valor 
+
+
+ a| 
+Endereço IP Bridge_B_1b
+ a| 
+
+
+
+ a| 
+Nome de utilizador Bridge_B_1b
+ a| 
+
+
+
+ a| 
+Bridge_B_1b Palavra-passe
+ a| 
+
+|===

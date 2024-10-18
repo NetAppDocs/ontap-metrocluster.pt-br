@@ -1,0 +1,18 @@
+---
+permalink: install-fc/task_fcsw_configure_the_fc_switches_choice_topic.html 
+sidebar: sidebar 
+keywords: fc, switch, configuring 
+summary: Você precisa configurar os switches FC para fornecer conectividade de MetroCluster FC no back-end. 
+---
+= Configure os switches
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa configurar os switches FC para fornecer conectividade de MetroCluster FC no back-end.
+
+* link:../install-fc/task_reset_the_brocade_fc_switch_to_factory_defaults.html["Configurar switches Brocade FC com arquivos RCF"]
+* link:../install-fc/task_reset_the_cisco_fc_switch_to_factory_defaults.html["Configure os switches Cisco FC com arquivos RCF"]
+

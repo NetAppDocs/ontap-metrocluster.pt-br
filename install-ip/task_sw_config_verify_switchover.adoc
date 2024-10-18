@@ -1,0 +1,24 @@
+---
+permalink: install-ip/task_sw_config_verify_switchover.html 
+sidebar: sidebar 
+keywords: metrocluster, switchover, verify 
+summary: Você deve verificar as operações de switchover, recuperação e switchback da configuração do MetroCluster. 
+---
+= Verificando switchover, cura e switchback
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+:firstname: [.lead]
+:author: [.lead]
+:authorinitials: [
+:authors: [.lead]
+:revnumber: 
+:revdate: and switchback operations of the MetroCluster configuration.
+
+
+.Passo
+. Use os procedimentos para comutação negociada, cura e switchback mencionados no _Guia de gerenciamento e recuperação de desastres do MetroCluster_.
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-mgmt-dr/home.html["Gerenciamento de MetroCluster e recuperação de desastres"]
+
+

@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: install-ip/set-up-mcc-site-system-manager.html 
+keywords: system manager, metrocluster, set up, setup, start, initialize, cluster, config, nodes 
+summary: A partir do ONTAP 9.8, você pode usar o Gerenciador do sistema para configurar um site IP do MetroCluster. 
+---
+= Configure um site IP do MetroCluster
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.8, você pode usar o Gerenciador do sistema para configurar um site IP do MetroCluster.
+
+Um local do MetroCluster consiste em dois clusters. Normalmente, os clusters estão localizados em diferentes locais geográficos.
+
+.Antes de começar
+* O sistema já deve estar instalado e cabeado de acordo com o https://docs.netapp.com/us-en/ontap-systems/index.html["Instruções de instalação e configuração"^] fornecido com o sistema.
+* As interfaces de rede do cluster devem ser configuradas em cada nó de cada cluster para comunicação intra-cluster.
+
+
+
+
+== Atribua um endereço IP de gerenciamento de nó
+
+
+
+=== Sistema Windows
+
+Você deve conetar seu computador Windows à mesma sub-rede que os controladores. Isso atribui automaticamente um endereço IP de gerenciamento de nó ao seu sistema.
+
+.Passos
+. No sistema Windows, abra a unidade *Network* para descobrir os nós.
+. Clique duas vezes no nó para iniciar o assistente de configuração do cluster.
+
+
+
+
+=== Outros sistemas
+
+Você deve configurar o endereço IP de gerenciamento de nós para um dos nós do cluster. Você pode usar esse endereço IP de gerenciamento de nó para iniciar o assistente de configuração de cluster.
+
+Consulte link:https://docs.netapp.com/us-en/ontap/software_setup/task_create_the_cluster_on_the_first_node.html["Criando o cluster no primeiro nó"^] para obter informações sobre como atribuir um endereço IP de gerenciamento de nó.
+
+
+
+== Inicialize e configure o cluster
+
+Inicializar o cluster definindo uma senha administrativa para o cluster e configurando as redes de gerenciamento de cluster e de gerenciamento de nós. Você também pode configurar serviços como um servidor de nome de domínio (DNS) para resolver nomes de host e um servidor NTP para sincronizar a hora.
+
+.Passos
+. Em um navegador da Web, insira o endereço IP de gerenciamento de nós que você configurou: "https://node-management-IP"[]
++
+O System Manager descobre automaticamente os nós restantes no cluster.
+
+. Na janela *Initialize Storage System*, execute o seguinte procedimento:
++
+.. Insira os dados de configuração da rede de gerenciamento de cluster.
+.. Insira os endereços IP de gerenciamento de nós para todos os nós.
+.. Forneça detalhes de DNS.
+.. Na seção *outro*, marque a caixa de seleção *Use Time Service (NTP)* para adicionar os servidores de horário.
+
+
+
+
+Quando clicar em *Submit*, aguarde até que o cluster seja criado e configurado. Em seguida, ocorre um processo de validação.
+
+.O que se segue?
+Depois que ambos os clusters tiverem sido configurados, inicializados e configurados, execute o procedimento [Configurar peering IP MetroCluster].
+
+
+
+== Configure o ONTAP em um novo vídeo de cluster
+
+video::PiX41bospbQ[youtube,width=848,height=480]

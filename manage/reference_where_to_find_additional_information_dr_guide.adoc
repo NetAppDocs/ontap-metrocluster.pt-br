@@ -1,0 +1,98 @@
+---
+permalink: manage/reference_where_to_find_additional_information_dr_guide.html 
+sidebar: sidebar 
+keywords: learn, metrocluster, configuration, operation, netapp, extensive, documentation, additional, information, miscellaneous, guide 
+summary: Você pode saber mais sobre a configuração e operação do MetroCluster na extensa documentação do NetApp. 
+---
+= Onde encontrar informações adicionais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode saber mais sobre a configuração e operação do MetroCluster.
+
+
+
+== MetroCluster e informações diversas
+
+|===
+
+
+| Informações | Assunto 
+
+
+ a| 
+link:../index.html["Documentação do MetroCluster"]
+ a| 
+* Todas as informações do MetroCluster
+
+
+
+
+ a| 
+https://www.netapp.com/pdf.html?item=/media/13482-tr4375pdf.pdf["Relatório Técnico da NetApp 4375: NetApp MetroCluster for ONTAP 9.3"^]
+ a| 
+* Uma visão geral técnica da configuração e operação do MetroCluster.
+* Práticas recomendadas para a configuração do MetroCluster.
+
+
+
+
+ a| 
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-fabric/home.html["Instalação e configuração do MetroCluster conectado à malha"]
+ a| 
+* Arquitetura MetroCluster conectada à malha
+* Fazer o cabeamento da configuração
+* Configuração de pontes FC para SAS
+* Configuração dos switches FC
+* Configurando o MetroCluster no ONTAP
+
+
+
+
+ a| 
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-stretch/home.html["Instalação e configuração do Stretch MetroCluster"]
+ a| 
+* Arquitetura Stretch MetroCluster
+* Fazer o cabeamento da configuração
+* Configuração de pontes FC para SAS
+* Configurando o MetroCluster no ONTAP
+
+
+
+
+ a| 
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-ip/home.html["Instalação e configuração IP do MetroCluster"]
+ a| 
+* Arquitetura IP do MetroCluster
+* Fazer o cabeamento da configuração
+* Configurando o MetroCluster no ONTAP
+
+
+
+
+ a| 
+link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["Instalação e configuração do software MetroCluster tiebreaker 1,21"]
+ a| 
+* Monitoramento da configuração do MetroCluster com o software tiebreaker da MetroCluster
+
+
+
+
+ a| 
+Documentação do Active IQ Unified Manager https://www.netapp.com/support-and-training/documentation/["Documentação do NetApp: Guias de produto e recursos"^]
+ a| 
+* Monitoramento da configuração e do desempenho do MetroCluster
+
+
+
+
+ a| 
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-7mtt-dctg/home.html["Transição baseada em cópia"]
+ a| 
+* Transição de dados de sistemas de storage 7-Mode para sistemas de armazenamento em cluster
+
+
+|===

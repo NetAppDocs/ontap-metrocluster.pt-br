@@ -1,0 +1,17 @@
+---
+permalink: install-fc/concept_setting_up_the_cluster.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, set, up, cluster 
+summary: A configuração do cluster envolve a configuração de cada nó, a criação do cluster no primeiro nó e a junção de todos os nós restantes ao cluster. 
+---
+= Configurar o cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A configuração do cluster envolve a configuração de cada nó, a criação do cluster no primeiro nó e a junção de todos os nós restantes ao cluster.
+
+.Informações relacionadas
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["Configuração do software"]

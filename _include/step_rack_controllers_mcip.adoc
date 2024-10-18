@@ -1,0 +1,39 @@
+= 
+:allow-uri-read: 
+
+
+. Instale os módulos do controlador no rack ou gabinete.
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2842666["Instruções de instalação e configuração dos sistemas AFF A220/FAS2700"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2870798["Instruções de instalação e configuração de sistemas AFF A250"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2469722["Instruções de instalação e configuração de sistemas AFF A300"^]
+
++
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-a320-install-setup/home.html["Sistemas AFF A320: Instalação e configuração"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2858854["Instruções de instalação e configuração de sistemas AFF A400"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2873445["Instruções de instalação e configuração de sistemas AFF A700"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2842668["Instruções de instalação e configuração de sistemas AFF A800"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2872833["Instruções de instalação e configuração de sistemas FAS500f"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2316769["Instruções de instalação e configuração de sistemas FAS8200"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2858856["Instruções de instalação e configuração dos sistemas FAS8300 e FAS8700"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2874463["Instruções de instalação e configuração de sistemas FAS9000"^]
+
+

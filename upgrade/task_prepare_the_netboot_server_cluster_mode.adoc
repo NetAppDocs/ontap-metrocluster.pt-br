@@ -1,0 +1,70 @@
+---
+permalink: upgrade/task_prepare_the_netboot_server_cluster_mode.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, prepare, netboot, server, download, image 
+summary: Quando estiver pronto para preparar o servidor netboot, você deve baixar a imagem correta do ONTAP netboot do site de suporte da NetApp para o servidor netboot e anotar o endereço IP. 
+---
+= Preparando o servidor netboot para baixar a imagem
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando estiver pronto para preparar o servidor netboot, você deve baixar a imagem correta do ONTAP netboot do site de suporte da NetApp para o servidor netboot e anotar o endereço IP.
+
+.Sobre esta tarefa
+* Você deve ser capaz de acessar um servidor HTTP do sistema antes e depois de adicionar o novo módulo de controlador.
+* Você deve ter acesso ao site de suporte da NetApp para baixar os arquivos de sistema necessários para sua plataforma e sua versão do ONTAP.
++
+https://mysupport.netapp.com/site/global/dashboard["Site de suporte da NetApp"]
+
+* Ambos os módulos de controladora no par de HA devem executar a mesma versão do ONTAP.
+
+
+.Passos
+. Transfira o software ONTAP adequado a partir da secção de transferência de software do site de suporte da NetApp e guarde o `<ontap_version>_image.tgz` ficheiro num diretório acessível pela Web.
++
+O `<ontap_version>_image.tgz` arquivo é usado para executar uma netboot do seu sistema.
+
+. Mude para o diretório acessível pela Web e verifique se os arquivos necessários estão disponíveis.
++
+|===
+
+
+| Para... | Então... 
+
+
+ a| 
+Sistemas das séries FAS2200, FAS2500, FAS3200, FAS6200, FAS/AFF8000
+ a| 
+Extraia o conteúdo do arquivo ONTAP_version>_image.tgz para o diretório de destino:
+
+`tar -zxvf <ontap_version>_image.tgz`
+
+
+NOTE: Se você estiver extraindo o conteúdo no Windows, use 7-Zip ou WinRAR para extrair a imagem netboot.
+
+Sua lista de diretórios deve conter uma pasta netboot com um arquivo do kernel:
+
+`netboot/kernel`
+
+
+
+ a| 
+Todos os outros sistemas
+ a| 
+Sua lista de diretórios deve conter o seguinte arquivo:
+
+`<ontap_version>_image.tgz`
+
+
+NOTE: Não há necessidade de extrair o conteúdo do arquivo.
+
+|===
+. Determine o endereço IP do módulo do controlador existente.
++
+Este endereço é referido posteriormente neste procedimento `_ip-address-of-existing controller_` como .
+
+. Ping `_ip-address-of-existing controller_` para verificar se o endereço IP está acessível.
+

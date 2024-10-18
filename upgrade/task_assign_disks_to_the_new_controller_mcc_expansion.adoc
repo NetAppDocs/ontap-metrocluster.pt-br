@@ -1,0 +1,46 @@
+---
+permalink: upgrade/task_assign_disks_to_the_new_controller_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, assign, disks, new, controller, module 
+summary: Antes de concluir a configuração do novo módulo de controladora através do netboot, você deve atribuir discos a ele. 
+---
+= Atribuindo discos ao novo módulo do controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de concluir a configuração do novo módulo de controladora através do netboot, você deve atribuir discos a ele.
+
+.Sobre esta tarefa
+Você precisa ter certeza de que há peças sobressalentes, discos não atribuídos ou discos atribuídos suficientes que não façam parte de um agregado existente.
+
+link:task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html["Preparando-se para a atualização"]
+
+Estas etapas são executadas no módulo do controlador existente.
+
+.Passos
+. Atribua o disco raiz ao novo módulo do controlador:
++
+`storage disk assign -disk _disk_name_ -sysid _new_controller_sysID_ -force true`
+
++
+Se o modelo da plataforma usar o recurso Advanced Drive Partitioning (ADP), você deve incluir o parâmetro -root True:
+
++
+`storage disk assign -disk _disk_name_ -root true -sysid _new_controller_sysID_ -force true`
+
+. Atribua os restantes discos necessários ao novo módulo do controlador introduzindo o seguinte comando para cada disco:
++
+`storage disk assign -disk _disk_name_ -sysid _new_controller_sysID_ -force true`
+
+. Verifique se as atribuições de disco estão corretas:
++
+`storage disk show -partitionownership*`
+
++
+
+NOTE: Certifique-se de que atribuiu todos os discos que pretende atribuir ao novo nó.
+
+

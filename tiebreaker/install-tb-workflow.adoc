@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: tiebreaker/install-tb-workflow.html 
+keywords: install, upgrade, tiebreaker, workflow, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, upgrade 
+summary: O software tiebreaker fornece recursos de monitoramento para um ambiente de storage em cluster. Ele também envia notificações SNMP em caso de problemas de conetividade de nó e desastres de site. 
+---
+= Fluxo de trabalho de instalação do tiebreaker
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O software tiebreaker fornece recursos de monitoramento para um ambiente de storage em cluster. Ele também envia notificações SNMP em caso de problemas de conetividade de nó e desastres de site.
+
+.Sobre este fluxo de trabalho
+Você pode usar esse fluxo de trabalho para instalar ou atualizar o software tiebreaker.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]link:install_prepare.html["Prepare-se para instalar o software tiebreaker"]
+[role="quick-margin-para"]
+Antes de instalar e configurar o software tiebreaker, verifique se o sistema atende a certos requisitos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Um"]link:install_security.html["Fixe a instalação"]
+[role="quick-margin-para"]
+Para configurações que executam o MetroCluster tiebreaker 1,5 e posterior, você pode proteger e proteger o sistema operacional do host e o banco de dados.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Um"]link:install-choose-procedure.html["Instale o pacote de software tiebreaker"]
+[role="quick-margin-para"]
+Execute uma nova instalação ou atualização do software tiebreaker. O procedimento de instalação a seguir depende da versão do tiebreaker que você deseja instalar.

@@ -1,0 +1,58 @@
+---
+permalink: upgrade/task_shut_down_the_exist_controller_when_add_a_2nd_controller_in_c_mode.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, shut, down, existing, controller, module 
+summary: Você deve executar um desligamento normal do módulo do controlador existente para verificar se todos os dados foram gravados no disco. Também tem de desligar as fontes de alimentação. 
+---
+= Encerrar o módulo de controladora existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve executar um desligamento normal do módulo do controlador existente para verificar se todos os dados foram gravados no disco. Também tem de desligar as fontes de alimentação.
+
+.Sobre esta tarefa
+--
+
+IMPORTANT: Você deve executar um desligamento normal do sistema antes de substituir os componentes do sistema para evitar a perda de dados não gravados no NVRAM ou no NVMEM.
+
+--
+.Passos
+. Interrompa o nó do prompt do módulo de controladora existente:
++
+`halt local -inhibit-takeover true`
+
++
+Se você for solicitado a continuar o procedimento de parada, digite `y` quando solicitado e aguarde até que o sistema pare no prompt DO Loader.
+
++
+Em um sistema 80xx, o LED NVRAM está localizado no módulo do controlador à direita das portas de rede, marcado com um símbolo de bateria.
+
++
+Este LED fica intermitente se existirem dados não gravados no NVRAM. Se este LED estiver piscando em âmbar depois de inserir o comando halt, você precisará reiniciar o sistema e tentar interrompê-lo novamente.
+
+. Se você ainda não está aterrado, aterre-se adequadamente.
+. Desligue as fontes de alimentação e desligue a alimentação, utilizando o método correto para o seu sistema e tipo de fonte de alimentação:
++
+|===
+
+
+| Se o seu sistema utilizar... | Então... 
+
+
+ a| 
+Fontes de alimentação CA
+ a| 
+Desconete os cabos de energia da fonte de alimentação e remova-os.
+
+
+
+ a| 
+Fontes de alimentação CC
+ a| 
+Retire a alimentação da fonte de CC e, em seguida, retire os fios DC, se necessário.
+
+|===
+

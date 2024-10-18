@@ -1,0 +1,52 @@
+---
+permalink: install-fc/concept_considerations_8510.html 
+sidebar: sidebar 
+keywords: preparing, prepare, metrocluster, mcc, installation, install, differences, configurations, between, considerations, all, san, array, asa, cluster, peering, prerequisites, dedicated, ports, sharing, data, ports, native, disk, shelves, array, luns, transitions, 7-mode, isls, tdm/wdm, fabric-attached, iod, ood, encryption, devices, unmirrored, aggregates, maintenance, requiring, power, shutdown, firewall, hardware, racking, cabling, setup, checklist, all san array, asa 
+summary: Ao se preparar para a instalação do MetroCluster, você deve entender a arquitetura de hardware do MetroCluster e os componentes necessários. 
+---
+= Requisitos para usar um switch Brocade DCX 8510-8
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao se preparar para a instalação do MetroCluster, você deve entender a arquitetura de hardware do MetroCluster e os componentes necessários.
+
+* Os switches DCX 8510-8 usados nas configurações do MetroCluster devem ser adquiridos na NetApp.
+* Para escalabilidade, você deve deixar uma parte de porta entre as configurações do MetroCluster se estiver cabendo apenas dois Metroclusters em módulos 4x48 portas. Isso permite que você expanda o uso de portas nas configurações do MetroCluster sem precisar reiniciar.
+* Cada switch Brocade DCX 8510-8 na configuração MetroCluster deve ser configurado corretamente para as portas ISL e conexões de armazenamento. Para o uso da porta, consulte a seção a seguirlink:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]: .
+* Os ISLs não podem ser compartilhados e cada MetroCluster requer dois ISLs para cada malha.
+* O switch DCX 8510-8 usado para conetividade MetroCluster de back-end não deve ser usado para qualquer outra conetividade.
++
+Dispositivos não MetroCluster não devem ser conetados a esses switches e o tráfego não MetroCluster não deve fluir através dos switches DCX 8510-8.
+
+* Uma placa de linha pode ser conetada a Metroclusters ONTAP *ou* ONTAP 7-Mode Metroclusters.
+
+
+
+NOTE: Os ficheiros RCF não estão disponíveis para este parâmetro.
+
+A seguir estão os requisitos para usar dois switches Brocade DCX 8510-8:
+
+* Você deve ter um switch DCX 8510-8 em cada local.
+* Você deve usar um mínimo de dois blades de 48 portas que contêm 16GB SFPs em cada switch.
+
+
+A seguir estão os requisitos para usar quatro switches DCX 8510-8 em cada local em uma configuração MetroCluster:
+
+* Você deve ter dois switches DCX 8510-8 em cada local.
+* Você deve usar pelo menos um blade de 48 portas para cada switch DCX 8510-8.
+* Cada blade é configurado como um switch virtual usando malhas virtuais.
+
+
+Os seguintes produtos NetApp não são suportados pelos switches Brocade DCX 8510-8:
+
+* Config Advisor
+* Monitor de integridade da malha
+* MyAutoSupport (riscos do sistema podem mostrar falsos positivos)
+* Active IQ Unified Manager (anteriormente Gerenciador Unificado da OnCommand)
+
+
+
+NOTE: Certifique-se de que todos os componentes necessários para esta configuração estão na https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"]. Leia a seção de notas na ferramenta de Matriz de interoperabilidade para obter informações sobre configurações suportadas.

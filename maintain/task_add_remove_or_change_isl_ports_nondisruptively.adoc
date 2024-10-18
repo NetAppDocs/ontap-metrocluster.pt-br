@@ -1,0 +1,139 @@
+---
+permalink: maintain/task_add_remove_or_change_isl_ports_nondisruptively.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, add, remove, change, isl, ports, nondisruptively 
+summary: Talvez seja necessário adicionar, remover ou alterar portas ISL. Você pode converter portas ISL dedicadas para portas ISL compartilhadas ou alterar a velocidade das portas ISL em um switch. ISLs que viajam distâncias maiores podem exigir velocidades mais baixas para melhorar a qualidade. Você também pode precisar aumentar a velocidade das portas ISL para aproveitar as atualizações do sistema e adicionar ISLs a um switch IP Cisco se estiver adicionando ou atualizando hardware. 
+---
+= Adicione, remova ou altere portas ISL sem interrupções nos switches IP Cisco
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Talvez seja necessário adicionar, remover ou alterar portas ISL em switches IP Cisco. Você pode converter portas ISL dedicadas para portas ISL compartilhadas ou alterar a velocidade das portas ISL em um switch IP Cisco.
+
+.Sobre esta tarefa
+Se você estiver convertendo portas ISL dedicadas para portas ISL compartilhadas, certifique-se de que as novas portas atendam ao link:../install-ip/concept_considerations_layer_2.html["Requisitos para portas ISL compartilhadas"].
+
+Você deve concluir todos os passos em ambos os switches para garantir a conetividade ISL.
+
+O procedimento a seguir pressupõe que você esteja substituindo um ISL de 10 GB conetado na porta do switch eth1/24/1 por dois ISLs de 100 GB conetados às portas do switch 17 e 18.
+
+
+NOTE: Se você estiver usando um switch Cisco 9336C-FX2 em uma configuração compartilhada conetando NS224 gavetas, a alteração dos ISLs pode exigir um novo arquivo RCF. Você não precisa de um novo arquivo RCF se sua velocidade atual e nova ISL for 40Gbps e 100Gbps. Todas as outras alterações à velocidade ISL requerem um novo ficheiro RCF. Por exemplo, alterar a velocidade ISL de 40Gbps para 100Gbps não requer um novo arquivo RCF, mas alterar a velocidade ISL de 10Gbps para 40Gbps requer um novo arquivo RCF.
+
+.Antes de começar
+Consulte a seção *switches* do link:https://hwu.netapp.com/["NetApp Hardware Universe"^] para verificar os transcetores suportados.
+
+link:enable-console-logging-before-maintenance.html["Ativar o registo da consola"] antes de executar esta tarefa.
+
+.Passos
+. Desative as portas ISL dos ISLs em ambos os switches na malha que você deseja alterar.
++
+--
+
+NOTE: Só é necessário desativar as portas ISL atuais se as estiver a deslocar para uma porta diferente ou se a velocidade do ISL estiver a mudar. Se estiver a adicionar uma porta ISL com a mesma velocidade que as ISLs existentes, avance para o passo 3.
+
+--
++
+Você deve inserir apenas um comando de configuração para cada linha e pressionar Ctrl-Z depois de inserir todos os comandos, como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+
+switch_A_1# conf t
+switch_A_1(config)# int eth1/24/1
+switch_A_1(config-if)# shut
+switch_A_1(config-if)#
+switch_A_1#
+
+switch_B_1# conf t
+switch_B_1(config)# int eth1/24/1
+switch_B_1(config-if)# shut
+switch_B_1(config-if)#
+switch_B_1#
+----
+. Remova os cabos e transcetores existentes.
+. Altere a porta ISL conforme necessário.
++
+
+NOTE: Se você estiver usando switches Cisco 9336C-FX2 em uma configuração compartilhada conetando NS224 gavetas e precisar atualizar o arquivo RCF e aplicar a nova configuração para as novas portas ISL, siga as etapas a. link:task_upgrade_rcf_files_on_mcc_ip_switches.html["Atualize os arquivos RCF em switches IP MetroCluster."]
+
++
+[cols="30,70"]
+|===
+
+
+| Opção | Passo 
+
+
+ a| 
+Para alterar a velocidade de uma porta ISL...
+ a| 
+Ligue os novos ISLs às portas designadas de acordo com as respetivas velocidades. Você deve garantir que essas portas ISL para seu switch estejam listadas em _Instalação e Configuração IP do MetroCluster_.
+
+
+
+ a| 
+Para adicionar um ISL...
+ a| 
+Insira QFSPs nas portas que você está adicionando como portas ISL. Certifique-se de que eles estão listados na _Instalação e Configuração IP do MetroCluster_ e faça o cabeamento adequado.
+
+|===
+. Ative todas as portas ISL (se não estiver ativado) em ambos os switches na estrutura começando com o seguinte comando:
++
+`switch_A_1# conf t`
+
++
+Você deve inserir apenas um comando de configuração por linha e pressionar Ctrl-Z depois de inserir todos os comandos:
+
++
+[listing]
+----
+switch_A_1# conf t
+switch_A_1(config)# int eth1/17
+switch_A_1(config-if)# no shut
+switch_A_1(config-if)# int eth1/18
+switch_A_1(config-if)# no shut
+switch_A_1(config-if)#
+switch_A_1#
+switch_A_1# copy running-config startup-config
+
+switch_B_1# conf t
+switch_B_1(config)# int eth1/17
+switch_B_1(config-if)# no shut
+switch_B_1(config-if)# int eth1/18
+switch_B_1(config-if)# no shut
+switch_B_1(config-if)#
+switch_B_1#
+switch_B_1# copy running-config startup-config
+----
+. Verifique se os ISLs e os canais de porta para os ISLs estão estabelecidos entre ambos os switches:
++
+`switch_A_1# show int brief`
+
++
+Você deve ver as interfaces ISL na saída do comando como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+Switch_A_1# show interface brief
+--------------------------------------------------------------------------------
+Ethernet        VLAN    Type Mode   Status  Reason                 Speed     Port
+Interface                                                                    Ch #
+--------------------------------------------------------------------------------
+Eth1/17         1       eth  access down    XCVR not inserted        auto(D) --
+Eth1/18         1       eth  access down    XCVR not inserted        auto(D) --
+
+------------------------------------------------------------------------------------------
+Port-channel VLAN    Type Mode   Status  Reason                              Speed   Protocol
+Interface
+------------------------------------------------------------------------------------------
+Po10         1       eth  trunk  up      none                                a-100G(D)  lacp
+Po11         1       eth  trunk  up      none                                a-100G(D)  lacp
+----
+. Repita o procedimento para o tecido 2.
+

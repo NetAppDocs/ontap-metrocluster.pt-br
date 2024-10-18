@@ -1,0 +1,144 @@
+---
+permalink: install-fc/task_download_and_install_the_cisco_fc_switch_rcf_files.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, download, install, cisco, fc, rcf, files 
+summary: É necessário fazer o download do arquivo RCF para cada switch na configuração do MetroCluster Fabric. 
+---
+= Download e instalação dos arquivos RCF do Cisco FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É necessário fazer o download do arquivo RCF para cada switch na configuração do MetroCluster Fabric.
+
+.Antes de começar
+Esta tarefa requer software de transferência de arquivos, como FTP, Trivial File Transfer Protocol (TFTP), SFTP ou Secure Copy Protocol (SCP), para copiar os arquivos para os switches.
+
+.Sobre esta tarefa
+Essas etapas devem ser repetidas em cada um dos switches Cisco FC na configuração da malha do MetroCluster.
+
+Tem de utilizar a versão do software de comutação suportada.
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+Há quatro arquivos RCF, um para cada um dos quatro switches na configuração da estrutura do MetroCluster. Você deve usar os arquivos RCF corretos para o modelo de switch que você está usando.
+
+|===
+
+
+| Interrutor | Ficheiro RCF 
+
+
+ a| 
+FC_switch_A_1
+ a| 
+`NX3232_v1.80_Switch-A1.txt`
+
+
+
+ a| 
+FC_switch_A_2
+ a| 
+`NX3232_v1.80_Switch-A2.txt`
+
+
+
+ a| 
+FC_switch_B_1
+ a| 
+`NX3232_v1.80_Switch-B1.txt`
+
+
+
+ a| 
+FC_switch_B_2
+ a| 
+`NX3232_v1.80_Switch-B2.txt`
+
+|===
+
+NOTE: As saídas mostradas são para switches IP Cisco; no entanto, estas etapas também são aplicáveis para switches FC Cisco.
+
+.Passos
+. Transfira os ficheiros RCF do Cisco FC a partir do https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["Página de download do MetroCluster RCF"].
+. Copie os arquivos RCF para os switches.
++
+.. Copie os arquivos RCF para o primeiro switch:
++
+`copy sftp://__root@FTP-server-IP-address/tftpboot/switch-specific-RCF__ bootflash: vrf management`
+
++
+Neste exemplo, o `NX3232_v1.80_Switch-A1.txt` arquivo RCF é copiado do servidor SFTP em `10.10.99.99` para o flash de inicialização local. Você deve usar o endereço IP do servidor TFTP/SFTP e o nome do arquivo RCF que você precisa instalar.
+
++
+[listing]
+----
+IP_switch_A_1# copy sftp://root@10.10.99.99/tftpboot/NX3232_v1.8T-X1_Switch-A1.txt bootflash: vrf management
+root@10.10.99.99's password: password
+sftp> progress
+Progress meter enabled
+sftp> get   /tftpboot/NX3232_v1.80_Switch-A1.txt /bootflash/NX3232_v1.80_Switch-A1.txt
+Fetching /tftpboot/NX3232_v1.80_Switch-A1.txt to /bootflash/NX3232_v1.80_Switch-A1.txt
+/tftpboot/NX3232_v1.80_Switch-A1.txt          100% 5141     5.0KB/s   00:00
+sftp> exit
+Copy complete, now saving to disk (please wait)...
+IP_switch_A_1#
+----
+.. Repita a subetapa anterior para cada uma das outras três centrais, certificando-se de copiar o arquivo RCF correspondente para a central correspondente.
+
+
+. Verifique em cada switch se o arquivo RCF está presente no diretório de cada switch `bootflash`:
++
+`dir bootflash:`
+
++
+O exemplo a seguir mostra que os arquivos estão presentes no IP_switch_A_1:
+
++
+[listing]
+----
+IP_switch_A_1# dir bootflash:
+                  .
+                  .
+                  .
+       5514    Jun 13 22:09:05 2017  NX3232_v1.80_Switch-A1.txt
+                  .
+                  .
+                  .
+
+Usage for bootflash://sup-local
+ 1779363840 bytes used
+13238841344 bytes free
+15018205184 bytes total
+IP_switch_A_1#
+----
+. Copie o arquivo RCF correspondente do flash de inicialização local para a configuração em execução em cada switch:
++
+`copy bootflash:__switch-specific-RCF__.txt running-config`
+
+. Copie os arquivos RCF da configuração em execução para a configuração de inicialização em cada switch:
++
+`copy running-config startup-config`
+
++
+Você deve ver saída semelhante ao seguinte:
+
++
+[listing]
+----
+IP_switch_A_1# copy bootflash:NX3232_v1.80_Switch-A1.txt running-config
+IP_switch_A_1# copy running-config startup-config
+----
+. Recarregue o interrutor:
++
+`reload`
+
++
+[listing]
+----
+IP_switch_A_1# reload
+----
+. Repita as etapas anteriores nos outros três switches na configuração IP do MetroCluster.
+

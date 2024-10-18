@@ -1,0 +1,144 @@
+---
+permalink: maintain/task_upgrade_rcf_files_on_mcc_ip_switches.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, upgrade, rcf, files, ip, switches 
+summary: Talvez seja necessário atualizar um arquivo RCF em um switch IP MetroCluster. Por exemplo, uma atualização do ONTAP ou uma atualização do firmware do switch exigem um novo arquivo RCF. 
+---
+= Atualize arquivos RCF em switches IP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Talvez seja necessário atualizar um arquivo RCF em um switch IP MetroCluster. Por exemplo, se a versão do arquivo RCF que você está executando nos switches não for suportada pela versão do ONTAP, pela versão do firmware do switch ou por ambos.
+
+
+
+== Verifique se o arquivo RCF é suportado
+
+Se você estiver alterando a versão do ONTAP ou a versão do firmware do switch, verifique se você tem um arquivo RCF compatível com essa versão. Se você usar o gerador RCF, o arquivo RCF correto será gerado para você.
+
+.Passos
+. Use os seguintes comandos dos switches para verificar a versão do arquivo RCF:
++
+[cols="30,70"]
+|===
+
+
+| A partir deste interrutor... | Emitir este comando... 
+
+
+ a| 
+Interrutor Broadcom
+ a| 
+`(IP_switch_A_1) # show clibanner`
+
+
+
+ a| 
+Interrutor Cisco
+ a| 
+`IP_switch_A_1# show banner motd`
+
+|===
++
+Para qualquer switch, localize a linha na saída que indica a versão do arquivo RCF. Por exemplo, a saída a seguir é de um switch Cisco, que indica que a versão do arquivo RCF é "'v1,80'".
+
++
+....
+Filename : NX3232_v1.80_Switch-A2.txt
+....
+. Para verificar quais arquivos são suportados para uma versão, switch e plataforma específica do ONTAP, use o RcfFileGenerator. Se você pode gerar o arquivo RCF para a configuração que você tem ou para a qual deseja atualizar, então ele é suportado.
+. Para verificar se o firmware do switch é suportado, consulte o seguinte:
++
+** https://hwu.netapp.com["Hardware Universe"]
+** https://imt.netapp.com/matrix/["Matriz de interoperabilidade do NetApp"^]
+
+
+
+
+
+
+== Atualize arquivos RCF
+
+Se você estiver instalando o novo firmware do switch, você deve instalar o firmware do switch antes de atualizar o arquivo RCF.
+
+.Sobre esta tarefa
+* Este procedimento interrompe o tráfego no switch onde o arquivo RCF é atualizado. O tráfego será retomado quando o novo arquivo RCF for aplicado.
+* Execute os passos em um interrutor de cada vez, na seguinte ordem: Switch_A_1, Switch_B_1, Switch_A_2, Switch_B_2.
+* link:enable-console-logging-before-maintenance.html["Ativar o registo da consola"] antes de executar esta tarefa.
+
+
+.Passos
+. Verifique a integridade da configuração.
++
+.. Verifique se os componentes do MetroCluster estão em bom estado:
++
+`metrocluster check run`
+
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+
+----
+
+
++
+A operação é executada em segundo plano.
+
++
+.. Após a `metrocluster check run` conclusão da operação, execute `metrocluster check show` para visualizar os resultados.
++
+Após cerca de cinco minutos, são apresentados os seguintes resultados:
+
++
+[listing]
+----
+-----------
+::*> metrocluster check show
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         not-applicable
+volumes             ok
+7 entries were displayed.
+----
+.. Verificar o estado do funcionamento da verificação do MetroCluster em curso:
++
+`metrocluster operation history show -job-id 38`
+
+.. Verifique se não há alertas de saúde:
++
+`system health alert show`
+
+
+
+. Preparar os comutadores IP para a aplicação dos novos ficheiros RCF.
++
+Siga as etapas para o fornecedor do switch:
+
++
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["Redefina o switch IP Broadcom para os padrões de fábrica"]
+** link:../install-ip/task_switch_config_cisco.html#resetting-the-cisco-ip-switch-to-factory-defaults["Redefina o switch IP Cisco para os padrões de fábrica"]
+** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["Redefina o switch NVIDIA IP SN2100 para os padrões de fábrica"]
+
+
+. Baixe e instale o arquivo RCF IP, dependendo do fornecedor do switch.
++
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["Baixe e instale os arquivos Broadcom IP RCF"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["Transfira e instale os ficheiros Cisco IP RCF"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["Transfira e instale os ficheiros NVIDIA IP RCF"]
++
+
+NOTE: Se você tiver uma configuração de rede L2 compartilhada ou L3, talvez seja necessário ajustar as portas ISL nos switches intermediários/clientes. O modo switchport pode mudar do modo 'Access' para o modo 'trunk'. Apenas prossiga para atualizar o segundo par de switches (A_2, B_2) se a conetividade de rede entre os switches A_1 e B_1 estiver totalmente operacional e a rede estiver em bom estado.
+
+
+
+

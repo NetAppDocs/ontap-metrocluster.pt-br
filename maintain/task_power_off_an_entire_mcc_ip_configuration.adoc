@@ -1,0 +1,102 @@
+---
+permalink: maintain/task_power_off_an_entire_mcc_ip_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, power, off, entire, metrocluster, ip, configuration 
+summary: Você deve desligar toda a configuração IP do MetroCluster e todo o equipamento antes que a manutenção ou realocação possa começar. 
+---
+= Desligar toda uma configuração IP do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve desligar toda a configuração IP do MetroCluster e todo o equipamento antes que a manutenção ou realocação possa começar.
+
+
+NOTE: A partir de ONTAP 9.8, o `*storage switch*` comando é substituído por `*system switch*`. As etapas a seguir mostram o `*storage switch*` comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o `*system switch*` comando é preferido.
+
+. Verifique a configuração do MetroCluster de ambos os sites na configuração do MetroCluster.
++
+.. Confirme se a configuração do MetroCluster e o modo operacional estão normais. E
+`*metrocluster show*`
+.. Execute o seguinte comando
+`*metrocluster interconnect show*`
+.. Confirme a conetividade com os discos inserindo o seguinte comando em qualquer um dos nós MetroCluster
+`*run local sysconfig -v*`
+.. Execute o seguinte comando
+`*storage port show*`
+.. Execute o seguinte comando
+`*storage switch show*`
+.. Execute o seguinte comando
+`*network interface show*`
+.. Execute o seguinte comando
+`*network port show*`
+.. Execute o seguinte comando
+`*network device-discovery show*`
+.. Execute uma verificação MetroCluster
+`*metrocluster check run*`
+.. Exibir os resultados da verificação MetroCluster
+`*metrocluster check show*`
+.. Execute o seguinte comando
+`*metrocluster configuration-settings interface show*`
+
+
+. Se necessário, desative o AUSO modificando o domínio de falha do AUSO para
++
+`*auso-disabled*`
+
++
+[listing]
+----
+cluster_A_site_A::*>metrocluster modify -auto-switchover-failure-domain auso-disabled
+----
++
+
+NOTE: Em uma configuração IP do MetroCluster, o domínio de falha do AUSO já está definido como 'AUSO-Disabled', a menos que a configuração seja configurada com o Mediador do ONTAP.
+
+. Verifique a alteração usando o comando
++
+`*metrocluster operation show*`
+
++
+[listing]
+----
+
+	cluster_A_site_A::*> metrocluster operation show
+       Operation: modify
+           State: successful
+      Start Time: 4/25/2020 20:20:36
+        End Time: 4/25/2020 20:20:36
+          Errors: -
+----
+. Parar os nós:
++
+`*halt*`
+
++
+[listing]
+----
+system node halt -node node1_SiteA -inhibit-takeover true -ignore-quorum-warnings true
+----
+. Desligue o seguinte equipamento no local:
++
+** Controladores de storage
+** Switches IP MetroCluster
+** Prateleiras de storage
+
+
+. Aguarde trinta minutos e ligue todos os compartimentos de storage, switches IP MetroCluster e controladores de storage.
+. Depois que os controladores estiverem ligados, verifique a configuração do MetroCluster de ambos os sites.
++
+Para verificar a configuração, repita a etapa 1.
+
+. Execute as verificações do ciclo de alimentação.
++
+.. Verifique se todas as SVMs de origem sincronizada estão online
+`*vserver show*`
+.. Inicie qualquer SVMs de origem sincronizada que não estejam online
+`*vserver start*`
+
+
+

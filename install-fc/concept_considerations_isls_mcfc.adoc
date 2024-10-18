@@ -1,0 +1,99 @@
+---
+permalink: install-fc/concept_considerations_isls_mcfc.html 
+sidebar: sidebar 
+keywords: preparing, prepare, metrocluster, mcc, installation, install, differences, configurations, between, considerations, all, san, array, asa, cluster, peering, prerequisites, dedicated, ports, sharing, data, ports, native, disk, shelves, array, luns, transitions, 7-mode, isls, tdm/wdm, fabric-attached, iod, ood, encryption, devices, unmirrored, aggregates, maintenance, requiring, power, shutdown, firewall, hardware, racking, cabling, setup, checklist, all san array, asa, san 
+summary: Você precisa determinar quantos ISLs você precisa para cada malha de switch FC na configuração do MetroCluster. 
+---
+= Considerações para ISLs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa determinar quantos ISLs você precisa para cada malha de switch FC na configuração do MetroCluster. A partir do ONTAP 9.2, em alguns casos, em vez de dedicar switches FC e ISLs a cada configuração individual do MetroCluster, você pode compartilhar os mesmos quatro switches.
+
+
+
+== Considerações sobre compartilhamento de ISL (ONTAP 9.2)
+
+A partir do ONTAP 9.2, você pode usar o compartilhamento ISL nos seguintes casos:
+
+* Configurações de um MetroCluster de dois nós e um de quatro nós
+* Duas configurações MetroCluster de quatro nós separadas
+* Duas configurações de MetroCluster de dois nós separadas
+* Dois grupos de DR em uma configuração de MetroCluster de oito nós
+
+
+O número de ISLs necessários entre os switches compartilhados depende da largura de banda dos modelos de plataforma conetados aos switches compartilhados.
+
+Considere os seguintes aspetos de sua configuração ao determinar quantos ISLs você precisa.
+
+* Dispositivos que não sejam MetroCluster não devem ser conetados a nenhum dos switches FC que fornecem a conectividade MetroCluster de back-end.
+* O compartilhamento ISL é suportado em todos os switches, exceto os switches Cisco 9250i e Cisco 9148.
+* Todos os nós precisam estar executando o ONTAP 9.2 ou posterior.
+* O cabeamento do switch FC para compartilhamento ISL é o mesmo que para o cabeamento MetroCluster de oito nós.
+* Os arquivos RCF para compartilhamento ISL são os mesmos que para o cabeamento MetroCluster de oito nós.
+* Você deve verificar se todas as versões de hardware e software são suportadas.
++
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+* A velocidade e o número de ISLs devem ser dimensionados para suportar a carga do cliente em ambos os sistemas MetroCluster.
+* Os ISLs de back-end e os componentes de back-end devem ser dedicados apenas à configuração do MetroCluster.
+* O ISL deve usar uma das velocidades suportadas: 4 Gbps, 8 Gbps, 16 Gbps ou 32 Gbps.
+* Os ISLs em um tecido devem ter a mesma velocidade e comprimento.
+* Os ISLs em uma malha devem ter a mesma topologia. Por exemplo, todos eles devem ser links diretos, ou se o seu sistema usa WDM, então todos eles devem usar WDM.
+
+
+
+
+== Considerações ISL específicas da plataforma
+
+O número de ISLs recomendados é específico do modelo de plataforma. A tabela a seguir mostra os requisitos ISL para cada modelo de tecido por plataforma. Assume que cada ISL tem uma capacidade de 16 Gbps.
+
+|===
+
+
+| Modelo de plataforma | Número recomendado de ISLs por grupo de RD de quatro nós (por malha de switch) 
+
+
+ a| 
+AFF A900 e FAS9500
+ a| 
+Oito
+
+
+
+ a| 
+AFF A700
+ a| 
+Seis
+
+
+
+ a| 
+FAS9000
+ a| 
+Seis
+
+
+
+ a| 
+8080
+ a| 
+Quatro
+
+
+
+ a| 
+Todos os outros
+ a| 
+Dois
+
+|===
+Se a malha do switch oferecer suporte a oito nós (parte de uma configuração de MetroCluster de oito nós ou duas configurações de quatro nós que estão compartilhando ISLs), o número total recomendado de ISLs para a malha é a soma necessária para cada grupo de DR de quatro nós. Por exemplo:
+
+* Se o grupo de RD 1 incluir quatro sistemas AFF A700, ele precisará de seis ISLs.
+* Se o grupo de RD 2 incluir quatro sistemas FAS8200, ele precisará de dois ISLs.
+* O número total de ISLs recomendados para a estrutura do switch é de oito.
+

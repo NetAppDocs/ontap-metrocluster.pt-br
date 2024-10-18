@@ -1,0 +1,168 @@
+---
+permalink: disaster-recovery/task_reassign_roots_mcfc.html 
+sidebar: sidebar 
+keywords: reassign, ownership, nvram, system, id, replaced 
+summary: Se um ou ambos os módulos da controladora ou placas NVRAM tiverem sido substituídos no local de desastre, você deverá reatribuir discos pertencentes aos agregados raiz aos módulos da controladora de substituição. 
+---
+= Reatribuir a propriedade do disco para agregados raiz a módulos de controladora de substituição (configurações MetroCluster FC)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se um ou ambos os módulos da controladora ou placas NVRAM tiverem sido substituídos no local de desastre, o ID do sistema foi alterado e você deve reatribuir discos pertencentes aos agregados raiz aos módulos da controladora de substituição.
+
+.Sobre esta tarefa
+Como os nós estão no modo de switchover e a recuperação foi feita, apenas os discos que contêm os agregados raiz de pool1 do local de desastre serão reatribuídos nesta seção. Eles são os únicos discos ainda possuídos pelo ID do sistema antigo neste momento.
+
+Esta seção fornece exemplos para configurações de dois e quatro nós. Para configurações de dois nós, você pode ignorar referências ao segundo nó em cada local. Para configurações de oito nós, você deve ter em conta os nós adicionais no segundo grupo de DR. Os exemplos fazem as seguintes suposições:
+
+* O local A é o local do desastre.
++
+** O nó_A_1 foi substituído.
+** O nó_A_2 foi substituído.
++
+Presente apenas em configurações de MetroCluster de quatro nós.
+
+
+
+* O local B é o local sobrevivente.
++
+** Node_B_1 está em bom estado.
+** Node_B_2 está em bom estado.
++
+Presente apenas em configurações de MetroCluster de quatro nós.
+
+
+
+
+
+Os IDs de sistema antigo e novo foram identificados no link:task_replace_hardware_and_boot_new_controllers.html["Substitua o hardware e inicialize novos controladores"].
+
+Os exemplos neste procedimento usam controladores com as seguintes IDs de sistema:
+
+|===
+
+
+| Número de nós | Nó | ID do sistema original | Nova ID do sistema 
+
+
+.4+| Quatro  a| 
+node_A_1
+ a| 
+4068741258
+ a| 
+1574774970
+
+
+
+ a| 
+node_A_2
+ a| 
+4068741260
+ a| 
+1574774991
+
+
+
+ a| 
+node_B_1
+ a| 
+4068741254
+ a| 
+inalterado
+
+
+
+ a| 
+node_B_2
+ a| 
+4068741256
+ a| 
+inalterado
+
+
+
+ a| 
+Dois
+ a| 
+node_A_1
+ a| 
+4068741258
+ a| 
+1574774970
+
+|===
+.Passos
+. Com o nó de substituição no modo Manutenção, reatribua os discos agregados raiz:
++
+`disk reassign -s old-system-ID -d new-system-ID`
+
++
+[listing]
+----
+*> disk reassign -s 4068741258 -d 1574774970
+----
+. Visualize os discos para confirmar a alteração de propriedade dos discos de pool1 raiz aggr do local de desastre para o nó de substituição:
++
+`disk show`
+
++
+A saída pode mostrar mais ou menos discos, dependendo de quantos discos estão no agregado raiz e se algum desses discos falhou e foi substituído. Se os discos foram substituídos, então Pool0 discos não aparecerão na saída.
+
++
+Os discos agregados de raiz pool1 do local de desastre agora devem ser atribuídos ao nó de substituição.
+
++
+[listing]
+----
+*> disk show
+Local System ID: 1574774970
+
+  DISK             OWNER                POOL   SERIAL NUMBER   HOME                DR HOME
+------------       -------------        -----  -------------   -------------       -------------
+sw_A_1:6.126L19    node_A_1(1574774970) Pool0  serial-number   node_A_1(1574774970)
+sw_A_1:6.126L3     node_A_1(1574774970) Pool0  serial-number   node_A_1(1574774970)
+sw_A_1:6.126L7     node_A_1(1574774970) Pool0  serial-number   node_A_1(1574774970)
+sw_B_1:6.126L8     node_A_1(1574774970) Pool1  serial-number   node_A_1(1574774970)
+sw_B_1:6.126L24    node_A_1(1574774970) Pool1  serial-number   node_A_1(1574774970)
+sw_B_1:6.126L2     node_A_1(1574774970) Pool1  serial-number   node_A_1(1574774970)
+
+*> aggr status
+         Aggr State           Status
+ node_A_1_root online          raid_dp, aggr
+                               mirror degraded
+                               64-bit
+*>
+----
+. Exibir o status agregado:
++
+`aggr status`
+
++
+A saída pode mostrar mais ou menos discos, dependendo de quantos discos estão no agregado raiz e se algum desses discos falhou e foi substituído. Se os discos tiverem sido substituídos, os discos Pool0 não aparecerão na saída.
+
++
+[listing]
+----
+*> aggr status
+          Aggr State           Status
+  node_A_1_root online          raid_dp, aggr
+                                mirror degraded
+                                64-bit
+*>
+----
+. Elimine o conteúdo dos discos da caixa de correio:
++
+`mailbox destroy local`
+
+. Se o agregado não estiver online, coloque-o online:
++
+`aggr online aggr_name`
+
+. Interrompa o nó para exibir o prompt DO Loader:
++
+`halt`
+
+

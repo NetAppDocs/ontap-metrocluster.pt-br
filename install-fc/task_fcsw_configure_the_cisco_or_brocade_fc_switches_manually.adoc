@@ -1,0 +1,8 @@
+---
+permalink: install-fc/task_fcsw_configure_the_cisco_or_brocade_fc_switches_manually.html 
+redirect: ontap-metrocluster/install-fc/concept-configure-fc-switches.html 
+---
+= 
+:allow-uri-read: 
+
+

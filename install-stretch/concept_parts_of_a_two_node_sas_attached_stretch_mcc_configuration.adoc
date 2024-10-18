@@ -1,0 +1,44 @@
+---
+permalink: install-stretch/concept_parts_of_a_two_node_sas_attached_stretch_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, parts, two, node, sas, attached, configuration 
+summary: A configuração de conexão SAS com MetroCluster de dois nós requer várias peças, incluindo dois clusters de nó único nos quais os controladores de storage são diretamente conectados ao storage usando cabos SAS. 
+---
+= Partes de uma configuração Stretch MetroCluster de dois nós conetada a SAS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A configuração de conexão SAS com MetroCluster de dois nós requer várias peças, incluindo dois clusters de nó único nos quais os controladores de storage são diretamente conectados ao storage usando cabos SAS.
+
+A configuração do MetroCluster inclui os seguintes elementos-chave de hardware:
+
+* Controladores de storage
++
+Os controladores de storage se conetam diretamente ao storage usando cabos SAS.
+
++
+Cada controlador de storage é configurado como parceiro de recuperação de desastres para um controlador de storage no local do parceiro.
+
++
+** Cabos SAS de cobre podem ser usados para distâncias mais curtas.
+** Os cabos SAS óticos podem ser usados para distâncias mais longas.
++
+
+NOTE: Em sistemas que usam LUNs de array e-Series, os controladores de storage podem ser diretamente conectados aos storage arrays e-Series. Para outros LUNs de array, são necessárias conexões por meio de switches FC.
+
++
+https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"]
+
++
+No IMT, você pode usar o campo solução de armazenamento para selecionar sua solução MetroCluster. Use o *Explorador de componentes* para selecionar os componentes e a versão do ONTAP para refinar sua pesquisa. Você pode clicar em *Mostrar resultados* para exibir a lista de configurações compatíveis que correspondem aos critérios.
+
+
+
+* Rede de peering de cluster
++
+A rede de peering de cluster fornece conetividade para espelhamento da configuração de máquina virtual de storage (SVM). A configuração de todos os SVMs em um cluster é espelhada para o cluster de parceiros.
+
+

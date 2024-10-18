@@ -1,0 +1,33 @@
+---
+permalink: transition/task_disruptively_transition_from_a_two_node_mcc_fc_to_a_four_node_mcc_ip_configuration.html 
+sidebar: sidebar 
+keywords: start, ontap, transition, workload, data, exist, two-node, metrocluster, fc, configuration, four-node, ip, disk, shelves, shelf, disruptive, fc 
+summary: A partir do ONTAP 9.8, você pode migrar workloads e dados de uma configuração MetroCluster FC de dois nós existente para uma nova configuração MetroCluster IP de quatro nós. As gavetas de disco dos nós FC do MetroCluster são movidas para os nós IP. 
+---
+= Transição de um MetroCluster FC de dois nós para uma configuração IP MetroCluster de quatro nós (ONTAP 9.8 e posterior) sem interrupções.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.8, você pode migrar workloads e dados de uma configuração MetroCluster FC de dois nós existente para uma nova configuração MetroCluster IP de quatro nós. As gavetas de disco dos nós FC do MetroCluster são movidas para os nós IP.
+
+A ilustração a seguir fornece uma visão simplificada da configuração antes e depois deste procedimento de transição.
+
+image::../media/transition_2n_begin_to_end.png[transição 2n começa a terminar]
+
+* Este procedimento é suportado em sistemas que executam o ONTAP 9.8 e posterior.
+* Este procedimento é disruptivo.
+* Esse procedimento se aplica apenas a uma configuração de FC MetroCluster de dois nós.
++
+Se você tiver uma configuração de FC MetroCluster de quatro nós, link:concept_choosing_your_transition_procedure_mcc_transition.html["Escolhendo seu procedimento de transição"]consulte .
+
+* ADP não é suportado na configuração IP MetroCluster de quatro nós criada por este procedimento.
+* Você deve atender a todos os requisitos e seguir todas as etapas do procedimento.
+* As gavetas de storage existentes são movidas para os novos nós IP do MetroCluster.
+* Prateleiras de armazenamento adicionais podem ser adicionadas à configuração, se necessário.
++
+link:concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html["Reutilização do compartimento de unidade e requisitos de unidade para uma transição FC para IP disruptiva"]Consulte .
+
+

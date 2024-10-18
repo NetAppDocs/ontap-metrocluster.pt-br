@@ -1,0 +1,16 @@
+---
+permalink: disaster-recovery/concept_dr_workflow.html 
+sidebar: sidebar 
+keywords: workflow, perform, disaster, recovery 
+summary: Use o fluxo de trabalho para executar a recuperação de desastres. 
+---
+= Fluxo de trabalho para recuperação de desastres
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Use o fluxo de trabalho para executar a recuperação de desastres.
+
+image::../media/workflow_disaster_recovery.svg[recuperação de desastres do fluxo de trabalho]

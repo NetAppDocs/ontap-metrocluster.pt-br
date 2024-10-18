@@ -1,0 +1,113 @@
+---
+permalink: upgrade/task_assign_disk_ownership_in_aff_systems_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, assign, disk, ownership, aff, systems 
+summary: 'Se você estiver usando sistemas AFF em uma configuração com agregados espelhados e os nós não tiverem os discos (SSDs) corretamente atribuídos, atribua metade dos discos em cada compartimento a um nó local e a outra metade dos discos a seu nó de parceiro de HA. Você deve criar uma configuração na qual cada nó tenha o mesmo número de discos em seus pools de discos locais e remotos.' 
+---
+= Atribuição de propriedade de disco em sistemas AFF
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você estiver usando sistemas AFF em uma configuração com agregados espelhados e os nós não tiverem os discos (SSDs) corretamente atribuídos, atribua metade dos discos em cada gaveta a um nó local e a outra metade dos discos a seu nó de parceiro de HA. Você deve criar uma configuração na qual cada nó tenha o mesmo número de discos em seus pools de discos locais e remotos.
+
+.Sobre esta tarefa
+Os controladores de armazenamento têm de estar no modo de manutenção.
+
+Isso não se aplica a configurações que tenham agregados sem espelhamento, uma configuração ativo/passivo ou que tenham um número desigual de discos em pools locais e remotos.
+
+Esta tarefa não é necessária se os discos tiverem sido corretamente atribuídos quando recebidos de fábrica.
+
+
+NOTE: O pool 0 sempre contém os discos que são encontrados no mesmo local do sistema de armazenamento que os possui, enquanto o Pool 1 sempre contém os discos que são remotos para o sistema de armazenamento que os possui.
+
+.Passos
+. Se você não tiver feito isso, inicialize cada sistema no modo Manutenção.
+. Atribua os discos aos nós localizados no primeiro local (local A):
++
+Você deve atribuir um número igual de discos a cada pool.
+
++
+.. No primeiro nó, atribua sistematicamente metade dos discos em cada gaveta ao pool 0 e a outra metade ao pool 0 do parceiro de HA: Mais
+`disk assign -disk _disk-name_ -p _pool_ -n _number-of-disks_`
++
+Se o controlador de storage Controller_A_1 tiver quatro gavetas, cada uma com SSDs de 8 TB, você emitirá os seguintes comandos:
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_A_1:1-4.shelf1 -p 0 -n 4
+*> disk assign -shelf FC_switch_A_1:1-4.shelf2 -p 0 -n 4
+
+*> disk assign -shelf FC_switch_B_1:1-4.shelf1 -p 1 -n 4
+*> disk assign -shelf FC_switch_B_1:1-4.shelf2 -p 1 -n 4
+----
+.. Repita o processo para o segundo nó no local, atribuindo sistematicamente metade dos discos em cada gaveta ao pool 1 e a outra metade ao pool 1 do parceiro de HA
+`disk assign -disk _disk-name_ -p _pool_`
++
+Se o controlador de storage Controller_A_1 tiver quatro gavetas, cada uma com SSDs de 8 TB, você emitirá os seguintes comandos:
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_A_1:1-4.shelf3 -p 0 -n 4
+*> disk assign -shelf FC_switch_B_1:1-4.shelf4 -p 1 -n 4
+
+*> disk assign -shelf FC_switch_A_1:1-4.shelf3 -p 0 -n 4
+*> disk assign -shelf FC_switch_B_1:1-4.shelf4 -p 1 -n 4
+----
+
+
+. Atribua os discos aos nós localizados no segundo local (local B):
++
+Você deve atribuir um número igual de discos a cada pool.
+
++
+.. No primeiro nó no local remoto, atribua sistematicamente metade dos discos em cada gaveta ao pool 0 e a outra metade ao pool 0 do parceiro de HA: Mais
+`disk assign -disk _disk-name_ -p _pool_`
++
+Se o controlador de storage Controller_B_1 tiver quatro gavetas, cada uma com SSDs de 8 TB, você emitirá os seguintes comandos:
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_B_1:1-5.shelf1 -p 0 -n 4
+*> disk assign -shelf FC_switch_B_1:1-5.shelf2 -p 0 -n 4
+
+*> disk assign -shelf FC_switch_A_1:1-5.shelf1 -p 1 -n 4
+*> disk assign -shelf FC_switch_A_1:1-5.shelf2 -p 1 -n 4
+----
+.. Repita o processo para o segundo nó no local remoto, atribuindo sistematicamente metade dos discos em cada gaveta ao pool 1 e a outra metade ao pool 1 do parceiro de HA:
++
+`disk assign -disk _disk-name_ -p _pool_`
+
++
+Se o controlador de storage Controller_B_2 tiver quatro gavetas, cada uma com SSDs de 8 TB, você emitirá os seguintes comandos:
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_B_1:1-5.shelf3 -p 0 -n 4
+*> disk assign -shelf FC_switch_B_1:1-5.shelf4 -p 0 -n 4
+
+*> disk assign -shelf FC_switch_A_1:1-5.shelf3 -p 1 -n 4
+*> disk assign -shelf FC_switch_A_1:1-5.shelf4 -p 1 -n 4
+----
+
+
+. Confirme as atribuições de disco:
++
+`storage show disk`
+
+. Sair do modo de manutenção:
++
+`halt`
+
+. Apresentar o menu de arranque:
++
+`boot_ontap menu`
+
+. Em cada nó, selecione a opção *4* para inicializar todos os discos.
+

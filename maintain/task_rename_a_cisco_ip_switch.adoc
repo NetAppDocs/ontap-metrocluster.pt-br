@@ -1,0 +1,119 @@
+---
+permalink: maintain/task_rename_a_cisco_ip_switch.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, rename, cisco, ip, switch 
+summary: Talvez seja necessário renomear um switch IP Cisco para fornecer nomes consistentes em toda a configuração. 
+---
+= Renomeando um switch IP Cisco
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Talvez seja necessário renomear um switch IP Cisco para fornecer nomes consistentes em toda a configuração.
+
+.Sobre esta tarefa
+* Nos exemplos desta tarefa, o nome do switch é alterado de `myswitch` para `IP_switch_A_1`.
+* link:enable-console-logging-before-maintenance.html["Ativar o registo da consola"] antes de executar esta tarefa.
+
+
+.Passos
+. Entre no modo de configuração global:
++
+`*configure terminal*`
+
++
+O exemplo a seguir mostra o prompt do modo de configuração. Ambos os prompts mostram o nome do switch `myswitch` de .
+
++
+[listing]
+----
+myswitch# configure terminal
+myswitch(config)#
+----
+. Mudar o nome do switch:
++
+`*switchname new-switch-name*`
+
++
+Se você estiver renomeando ambos os switches na malha, use o mesmo comando em cada switch.
+
++
+O prompt da CLI muda para refletir o novo nome:
+
++
+[listing]
+----
+myswitch(config)# switchname IP_switch_A_1
+IP_switch_A_1(config)#
+----
+. Sair do modo de configuração:
++
+`*exit*`
+
++
+O prompt do interrutor de nível superior é exibido:
+
++
+[listing]
+----
+IP_switch_A_1(config)# exit
+IP_switch_A_1#
+----
+. Copie a configuração atual em execução para o arquivo de configuração de inicialização:
++
+`*copy running-config startup-config*`
+
+. Verifique se a alteração do nome do switch está visível no prompt do cluster do ONTAP.
++
+Observe que o novo nome do switch é exibido e o antigo nome do switch (`myswitch`) não aparece.
+
++
+.. Entre no modo de privilégio avançado, pressionando `*y*` quando solicitado
+`*set -privilege advanced*`
+.. Exibir os dispositivos conetados
+`*network device-discovery show*`
+.. Voltar ao modo de privilégio de administrador
+`*set -privilege admin*`
++
+O exemplo a seguir mostra que o switch aparece com o novo nome `IP_switch_A_1`:
+
++
+[listing]
+----
+cluster_A::storage show> set advanced
+
+Warning: These advanced commands are potentially dangerous; use them only when directed to do so by NetApp personnel.
+Do you want to continue? {y|n}: y
+
+cluster_A::storage show*> network device-discovery show
+Node/       Local  Discovered
+Protocol    Port   Device                    Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node_A_2/cdp
+            e0M    LF01-410J53.mycompany.com(SAL18516DZY)
+                                             Ethernet125/1/28  N9K-C9372PX
+            e1a    IP_switch_A_1(FOC21211RBU)
+                                             Ethernet1/2       N3K-C3232C
+            e1b    IP_switch_A_1(FOC21211RBU)
+                                             Ethernet1/10      N3K-C3232C
+.
+.
+.                                             Ethernet1/18      N9K-C9372PX
+node_A_1/cdp
+            e0M    LF01-410J53.mycompany.com(SAL18516DZY)
+                                             Ethernet125/1/26  N9K-C9372PX
+            e0a    IP_switch_A_2(FOC21211RB5)
+                                             Ethernet1/1       N3K-C3232C
+            e0b    IP_switch_A_2(FOC21211RB5)
+                                             Ethernet1/9       N3K-C3232C
+            e1a    IP_switch_A_1(FOC21211RBU)
+.
+.
+.
+16 entries were displayed.
+----
+
+
+

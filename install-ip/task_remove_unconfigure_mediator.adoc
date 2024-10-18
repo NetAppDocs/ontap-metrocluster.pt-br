@@ -1,0 +1,67 @@
+---
+permalink: install-ip/task_remove_unconfigure_mediator.html 
+sidebar: sidebar 
+keywords: ontap, mediator, service, assist, remove, unconfigure, requirements, mediator requirements 
+summary: Você pode remover o serviço de mediador ONTAP da configuração IP do MetroCluster. 
+---
+= Desconfigure o serviço do Mediador ONTAP a partir da configuração IP do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode desconfigurar o serviço do Mediador ONTAP a partir da configuração IP do MetroCluster.
+
+.Antes de começar
+Você deve ter instalado e configurado com êxito o Mediador ONTAP em um local de rede que possa ser acessado por ambos os sites MetroCluster.
+
+.Passos
+. Desconfigure o serviço do Mediador ONTAP usando o seguinte comando:
++
+`metrocluster configuration-settings mediator remove`
+
++
+Você será solicitado a fornecer o nome de usuário e a senha para a conta de usuário do administrador do ONTAP Mediator.
+
++
+
+NOTE: Se o Mediador do ONTAP estiver inativo, o `metrocluster configuration-settings mediator remove` comando ainda solicitará que você insira o nome de usuário e a senha da conta de usuário admin do ONTAP Mediator e removerá o serviço Mediador do ONTAP da configuração do MetroCluster.
+
++
+.. Verifique se há discos quebrados usando o seguinte comando:
++
+`disk show -broken`
+
++
+*Exemplo*
+
++
+....
+There are no entries matching your query.
+....
+
+
+. Confirme se o serviço do Mediador ONTAP foi removido da configuração do MetroCluster executando os seguintes comandos em ambos os clusters:
++
+.. `metrocluster configuration-settings mediator show`
++
+*Exemplo*
+
++
+[listing]
+----
+This table is currently empty.
+----
+.. `storage iscsi-initiator show -label mediator`
++
+*Exemplo*
+
++
+[listing]
+----
+There are no entries matching your query.
+----
+
+
+

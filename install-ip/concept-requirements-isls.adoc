@@ -1,0 +1,197 @@
+---
+permalink: install-ip/concept-requirements-isls.html 
+sidebar: sidebar 
+keywords: isl, isls, layer 2, layer 3, shared switch 
+summary: 'Esta seção contém os requisitos para links interswitches (ISLs) que transportam tráfego MetroCluster em todas as configurações IP do MetroCluster e topologias de rede.' 
+---
+= Considerações para ISLs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Links interswitches (ISLs) que transportam tráfego MetroCluster em todas as configurações IP do MetroCluster e topologias de rede têm certos requisitos. Esses requisitos se aplicam a todos os ISLs que transportam tráfego MetroCluster, independentemente de os ISLs serem diretos ou compartilhados entre os switches do cliente.
+
+
+
+== Requisitos gerais do MetroCluster ISL
+
+O seguinte aplica-se a ISLs em todas as configurações IP do MetroCluster:
+
+* Ambos os tecidos devem ter o mesmo número de ISLs.
+* ISLs em um tecido devem ter a mesma velocidade e comprimento.
+* Os ISLs em ambos os tecidos devem ter a mesma velocidade e comprimento.
+* A diferença máxima suportada na distância entre o tecido 1 e o tecido 2 é 20km ou 0,2ms.
+* Os ISLs devem ter a mesma topologia. Por exemplo, todos devem ser links diretos, ou se a configuração usa WDM, então todos devem usar WDM.
+* A velocidade ISL deve ser, no mínimo, 10Gbps.
+* Deve haver pelo menos um porto de 10Gbps ISL por tecido.
+
+
+
+
+=== Limites de latência e perda de pacotes nos ISLs
+
+O seguinte se aplica ao tráfego de ida e volta entre os switches IP MetroCluster no site_A e site_B, com a configuração MetroCluster em operação de estado estável:
+
+* À medida que a distância entre dois locais de MetroCluster aumenta, a latência aumenta, geralmente no intervalo de 1 ms de tempo de atraso de ida e volta por 100 km (62 milhas). A latência também depende do acordo de nível de serviço de rede (SLA) em termos de largura de banda dos links ISL, taxa de queda de pacotes e jitter na rede. Baixa largura de banda, alta instabilidade e quedas aleatórias de pacotes levam a diferentes mecanismos de recuperação pelos switches, ou o mecanismo TCP nos módulos do controlador, para uma entrega de pacotes bem-sucedida. Esses mecanismos de recuperação podem aumentar a latência geral. Para obter informações específicas sobre a latência de ida e volta e os requisitos de distância máxima para a sua configuração, consulte a. link:https://hwu.netapp.com/["Hardware Universe."^]
+* Qualquer dispositivo que contribua para a latência deve ser contabilizado.
+* O link:https://hwu.netapp.com/["Hardware Universe."^] fornece a distância em km. Você deve alocar 1ms para cada 100km. A distância máxima é definida pelo que é atingido primeiro, seja o tempo máximo de ida e volta (RTT) em ms, ou a distância em km. Por exemplo, se _o Hardware Universe_ indicar uma distância de 300km, traduzindo para 3ms, o seu ISL não pode ser mais do que 300km e o RTT máximo não pode exceder 3ms – o que for atingido primeiro.
+* A perda de pacotes deve ser inferior ou igual a 0,01%. A perda máxima de pacotes é a soma de todas as perdas em todos os links no caminho entre os nós MetroCluster e a perda nas interfaces IP MetroCluster locais.
+* O valor de jitter suportado é 3ms para ida e volta (ou 1,5ms para ida e volta).
+* A rede deve alocar e manter a quantidade de largura de banda SLA necessária para o tráfego MetroCluster, independentemente de microexplosões e picos no tráfego.
+* Se você estiver usando o ONTAP 9.7 ou posterior, a rede intermediária entre os dois locais deve fornecer uma largura de banda mínima de 4,5Gbps Gbps para a configuração IP do MetroCluster.
+
+
+
+
+== Considerações sobre transcetor e cabo
+
+Todos os SFPs ou QSFPs suportados pelo fornecedor de equipamentos são suportados para os ISLs da MetroCluster. Os SFPs e QSFPs fornecidos pela NetApp ou pelo fornecedor do equipamento devem ser suportados pelo firmware do switch e do switch.
+
+Ao conetar os controladores aos switches e aos ISLs de cluster locais, você deve usar os transcetores e cabos fornecidos pela NetApp com o MetroCluster.
+
+Quando você usa um adaptador QSFP-SFP, a configuração da porta no modo breakout ou velocidade nativa depende do modelo do switch e do firmware. Por exemplo, o uso de um adaptador QSFP-SFP com switches Cisco 9336C que executam o firmware NX-os 9.x ou 10.x requer que você configure a porta no modo de velocidade nativo.
+
+
+NOTE: Se configurar um RCF, verifique se seleciona o modo de velocidade correto ou se utiliza uma porta com um modo de velocidade adequado.
+
+
+
+== Usando xWDM, TDM e dispositivos de criptografia externos
+
+Quando você usa dispositivos xWDM/TDM ou dispositivos que fornecem criptografia em uma configuração IP MetroCluster, seu ambiente deve atender aos seguintes requisitos:
+
+* Ao conetar os switches IP MetroCluster ao xWDM/TDM, os dispositivos de criptografia externos ou o equipamento xWDM/TDM devem ser certificados pelo fornecedor para o switch e o firmware. A certificação deve abranger o modo operacional (como entroncamento e criptografia).
+* A latência e o jitter totais de ponta a ponta, incluindo a criptografia, não podem ser maiores do que o valor máximo indicado no IMT e nesta documentação.
+
+
+
+
+== Número suportado de ISLs e cabos de arranque
+
+A tabela a seguir mostra o número máximo suportado de ISLs que podem ser configuradas em um switch IP MetroCluster usando a configuração Arquivo de Configuração de Referência (RCF).
+
+|===
+
+
+| Modelo de switch IP MetroCluster | Tipo de porta | Número máximo de ISLs 
+
+
+ a| 
+Switches BES-53248 compatíveis com Broadcom
+ a| 
+Portas nativas
+ a| 
+4 ISLs usando 10Gbps ou 25Gbps
+
+
+
+ a| 
+Switches BES-53248 compatíveis com Broadcom
+ a| 
+Portas nativas (Nota 1)
+ a| 
+2 ISLs usando 40Gbps ou 100Gbps
+
+
+
+ a| 
+Cisco 3132Q-V
+ a| 
+Portas nativas
+ a| 
+6 ISLs usando 40Gbps
+
+
+
+ a| 
+Cisco 3132Q-V
+ a| 
+Cabos de arranque
+ a| 
+16 ISLs usando 10Gbps
+
+
+
+ a| 
+Cisco 3232C
+ a| 
+Portas nativas
+ a| 
+6 ISLs usando 40Gbps ou 100Gbps
+
+
+
+ a| 
+Cisco 3232C
+ a| 
+Cabos de arranque
+ a| 
+16 ISLs usando 10Gbps
+
+
+
+ a| 
+Cisco 9336C-FX2 (não conecta gavetas NS224)
+ a| 
+Portas nativas
+ a| 
+6 ISLs usando 40Gbps ou 100Gbps
+
+
+
+ a| 
+Cisco 9336C-FX2 (não conecta gavetas NS224)
+ a| 
+Cabos de arranque
+ a| 
+16 ISLs usando 10
+
+
+
+ a| 
+Cisco 9336C-FX2 (conexão de NS224 gavetas)
+ a| 
+Portas nativas (Nota 2)
+ a| 
+4 ISLs usando 40Gbps ou 100Gbps
+
+
+
+ a| 
+Cisco 9336C-FX2 (conexão de NS224 gavetas)
+ a| 
+Cabos de arranque (Nota 2)
+ a| 
+16 ISLs usando 10Gbps
+
+
+
+ a| 
+NVIDIA SN2100
+ a| 
+Portas nativas (Nota 2)
+ a| 
+2 ISLs usando 40Gbps ou 100Gbps
+
+
+
+ a| 
+NVIDIA SN2100
+ a| 
+Cabos de arranque (Nota 2)
+ a| 
+8 ISLs usando 10Gbps ou 25Gbps
+
+|===
+*Nota 1*: O uso de 40Gbps ou 100Gbps ISLs em um switch BES-53248 requer uma licença adicional.
+
+*Nota 2*: As mesmas portas são usadas para velocidade nativa e modo de breakout. Você deve optar por usar portas no modo de velocidade nativa ou no modo de breakout ao criar o arquivo RCF.
+
+* Todos os ISLs em um switch IP MetroCluster devem ter a mesma velocidade. O uso de uma combinação de portas ISL com diferentes velocidades simultaneamente não é suportado.
+* Para um desempenho ideal, deve utilizar pelo menos um 40Gbps ISL por rede. Você não deve usar um único ISL 10Gbps por rede para FAS9000, AFF A700 ou outras plataformas de alta capacidade.
+
+
+
+NOTE: A NetApp recomenda que você configure um pequeno número de ISLs de alta largura de banda, em vez de um alto número de ISLs de baixa largura de banda. Por exemplo, é preferível configurar um ISL 40Gbps em vez de quatro ISLs 10Gbps. Ao usar vários ISLs, o balanceamento de carga estatístico pode afetar o rendimento máximo. O balanceamento desigual pode reduzir o rendimento para o de um único ISL.

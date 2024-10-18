@@ -1,0 +1,21 @@
+---
+permalink: install-ip/index.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, installation 
+summary: Para instalar sua configuração IP do MetroCluster, você deve executar vários procedimentos na ordem correta. 
+---
+= Visão geral
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para instalar sua configuração IP do MetroCluster, você deve executar vários procedimentos na ordem correta.
+
+* link:../install-ip/concept_considerations_differences.html["Prepare-se para a instalação e entenda todos os requisitos"].
+* link:../install-ip/concept_parts_of_an_ip_mcc_configuration_mcc_ip.html["Faça o cabo dos componentes"]
+* link:../install-ip/concept_configure_the_mcc_software_in_ontap.html["Configure o software"]
+* link:../install-ip/concept_mediator_requirements.html["Configurar o ONTAP Mediator"] (opcional)
+* link:../install-ip/task_test_the_mcc_configuration.html["Teste a configuração"]
+

@@ -1,0 +1,103 @@
+---
+permalink: maintain/task_upgrade_firmware_on_mcc_ip_switches.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, upgrade, firmware. ip, switches, cisco, broadcom, efos, nxos, nx-os, software, install 
+summary: Atualizando o firmware em switches IP MetroCluster. 
+---
+= Atualizando o firmware em switches IP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Talvez seja necessário atualizar o firmware em um switch IP MetroCluster.
+
+.Sobre esta tarefa
+Você deve repetir esta tarefa em cada uma das opções sucessivamente.
+
+link:enable-console-logging-before-maintenance.html["Ativar o registo da consola"] antes de executar esta tarefa.
+
+[[step_1_fw_upgrade]]
+.Passos
+. Verifique a integridade da configuração.
++
+.. Verifique se o MetroCluster está configurado e no modo normal em cada cluster:
++
+`metrocluster show`
+
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+.. Verifique se o espelhamento está ativado em cada nó:
++
+`metrocluster node show`
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                           Configuration  DR
+Group Cluster Node           State          Mirroring Mode
+----- ------- -------------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1       configured     enabled   normal
+      cluster_B
+              node_B_1       configured     enabled   normal
+2 entries were displayed.
+----
+.. Verifique se os componentes do MetroCluster estão em bom estado:
++
+`metrocluster check run`
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+
+Last Checked On: 10/1/2014 16:03:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+4 entries were displayed.
+
+Command completed. Use the "metrocluster check show -instance" command or sub-commands in "metrocluster check" directory for detailed results.
+To check if the nodes are ready to do a switchover or switchback operation, run "metrocluster switchover -simulate" or "metrocluster switchback -simulate", respectively.
+----
+.. Verifique se não existem alertas de saúde:
++
+`system health alert show`
+
+
+
+. Instale o software no primeiro interrutor.
++
+
+NOTE: Tem de instalar o software do interrutor nos interrutores pela seguinte ordem: Switch_A_1, switch_B_1, switch_A_2, switch_B_2.
+
++
+Siga as etapas para instalar o software do switch no tópico relevante, dependendo se o tipo de switch é Broadcom, Cisco ou NVIDIA:
+
++
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-switch-efos-software["Baixe e instale o software Broadcom switch EFOS"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-switch-nx-os-software["Baixe e instale o software Cisco switch NX-os"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-cumulus-software["Baixe e instale o software Cumulus switch NVIDIA SN2100"]
+
+
+. Repita o passo anterior para cada um dos interrutores.
+. Repita <<step_1_fw_upgrade,Passo 1>> para verificar a integridade da configuração.
+

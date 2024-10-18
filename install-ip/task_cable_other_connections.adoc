@@ -1,0 +1,37 @@
+---
+permalink: install-ip/task_cable_other_connections.html 
+sidebar: sidebar 
+keywords: cabling, cable, component, peering, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure 
+summary: Você deve fazer o cabeamento das portas do módulo do controlador usadas para peering de cluster, gerenciamento e conetividade de dados. 
+---
+= Cabeamento das portas de peering, dados e gerenciamento da controladora
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve fazer o cabeamento das portas do módulo do controlador usadas para peering de cluster, gerenciamento e conetividade de dados.
+
+Esta tarefa deve ser executada em cada módulo do controlador na configuração do MetroCluster.
+
+Pelo menos duas portas em cada módulo de controlador devem ser usadas para peering de cluster.
+
+A largura de banda mínima recomendada para as portas e a conetividade de rede é de 1 GbE.
+
+. Identifique e faça a cabeamento de pelo menos duas portas para peering de cluster e verifique se elas têm conetividade de rede com o cluster do parceiro.
++
+O peering de cluster pode ser feito em portas dedicadas ou em portas de dados. O uso de portas dedicadas fornece maior taxa de transferência para o tráfego de peering de cluster.
+
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["Configuração expressa de peering de cluster e SVM"]
+
+. Faça o cabeamento das portas de gerenciamento e dados do controlador para as redes de gerenciamento e dados no local.
++
+Use as instruções de instalação da sua plataforma no https://docs.netapp.com/us-en/ontap-systems/["Documentação dos sistemas de hardware da ONTAP"^].
+
++
+
+NOTE: Os sistemas IP da MetroCluster não têm portas de alta disponibilidade (HA) dedicadas. Dependendo da sua plataforma, o tráfego de HA é servido usando o MetroCluster, o cluster local ou a interface de cluster/MetroCluster compartilhado. Ao usar _Documentação de sistemas de hardware ONTAP_ para instalar sua plataforma, você não deve seguir as instruções para fazer o cabeamento do cluster e das portas HA.
+
+

@@ -1,0 +1,60 @@
+---
+permalink: install-fc/task_rack_the_hardware_components_mcc_fabric_and_ip.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, rack, hardware, components 
+summary: Se você não recebeu o equipamento já instalado em armários, você deve colocar os componentes em rack. 
+---
+= Colocar em pilha os componentes de hardware
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você não recebeu o equipamento já instalado em armários, você deve colocar os componentes em rack.
+
+.Sobre esta tarefa
+Esta tarefa tem de ser executada em ambos os sites da MetroCluster.
+
+.Passos
+. Planeie o posicionamento dos componentes do MetroCluster.
++
+O espaço em rack depende do modelo de plataforma dos módulos do controlador, dos tipos de switch e do número de pilhas de compartimento de disco na sua configuração.
+
+. Aterre-se corretamente.
+. Instale os módulos do controlador no rack ou gabinete.
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+. Instale os switches FC no rack ou gabinete.
+. Instale as gavetas de disco, ligue-as e, em seguida, defina as IDs das gaveta.
++
+** É necessário desligar cada compartimento de disco.
+** As IDs de gaveta devem ser exclusivas para cada gaveta de disco SAS em cada grupo de DR do MetroCluster (incluindo ambos os locais).
+
+
+. Instalar cada ponte FC para SAS:
++
+.. Fixe os suportes "L" na parte frontal da ponte à frente do rack (montagem embutida) com os quatro parafusos.
++
+As aberturas nos suportes da ponte "L" estão em conformidade com o padrão de rack ETA-310-X para racks de 19 polegadas (482,6 mm).
+
++
+O _ATTO FibreBridge Installation and Operation Manual_ do seu modelo de ponte contém mais informações e uma ilustração da instalação.
+
++
+
+NOTE: Para um acesso adequado ao espaço da porta e manutenção da FRU, você deve deixar espaço 1UD abaixo do par de pontes e cobrir esse espaço com um painel de supressão sem ferramentas.
+
+.. Conete cada ponte a uma fonte de alimentação que forneça um aterramento adequado.
+.. Ligue cada ponte.
++
+
+NOTE: Para obter a resiliência máxima, as bridges que estão conectadas à mesma stack de shelves de disco devem ser conectadas a diferentes fontes de energia.
+
++
+O LED bridge Ready pode demorar até 30 segundos a acender, indicando que a ponte concluiu a sequência de autoteste de ativação.
+
+
+
+

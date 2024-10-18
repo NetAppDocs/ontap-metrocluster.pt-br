@@ -1,0 +1,42 @@
+---
+permalink: upgrade/task_mirror_the_root_aggregates_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, mirror, root, aggregate 
+summary: É necessário espelhar os agregados raiz para fornecer proteção de dados. 
+---
+= Espelhamento dos agregados de raiz
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É necessário espelhar os agregados raiz para fornecer proteção de dados.
+
+Por padrão, o agregado raiz é criado como agregado do tipo RAID-DP. Você pode alterar o agregado raiz de RAID-DP para o agregado do tipo RAID4. O comando a seguir modifica o agregado raiz para o agregado do tipo RAID4:
+
+[listing]
+----
+storage aggregate modify –aggregate aggr_name -raidtype raid4
+----
+
+NOTE: Em sistemas que não sejam ADP, o tipo RAID do agregado pode ser modificado do RAID-DP padrão para RAID4 antes ou depois que o agregado é espelhado.
+
+.Passos
+. Espelhar o agregado raiz:
++
+`storage aggregate mirror _aggr_name_`
+
++
+O comando a seguir espelha o agregado raiz para controller_A_1:
+
++
+[listing]
+----
+controller_A_1::> storage aggregate mirror aggr0_controller_A_1
+----
++
+Isso reflete o agregado, por isso consiste em um Plex local e um Plex remoto localizado no local remoto de MetroCluster.
+
+. Repita a etapa anterior para cada nó na configuração do MetroCluster.
+

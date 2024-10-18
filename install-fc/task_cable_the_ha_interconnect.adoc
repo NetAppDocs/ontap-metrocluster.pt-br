@@ -1,0 +1,32 @@
+---
+permalink: install-fc/task_cable_the_ha_interconnect.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, ha, interconnect, cabling 
+summary: Se você tiver uma configuração de MetroCluster de oito ou quatro nós e os controladores de storage nos pares de HA estiverem em chassi separado, será necessário fazer o cabeamento da interconexão de HA entre as controladoras. 
+---
+= Cabeamento da interconexão de HA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você tiver uma configuração de MetroCluster de oito ou quatro nós e os controladores de storage nos pares de HA estiverem em chassi separado, será necessário fazer o cabeamento da interconexão de HA entre as controladoras.
+
+.Sobre esta tarefa
+* Esta tarefa não se aplica a configurações de MetroCluster de dois nós.
+* Esta tarefa deve ser executada em ambos os locais do MetroCluster.
+* A interconexão de HA só deve ser cabeada se as controladoras de storage dentro do par de HA estiverem em chassi separado.
++
+Alguns modelos de controladora de storage oferecem suporte a duas controladoras em um único chassi. Nesse caso, elas usam uma interconexão interna de HA.
+
+
+
+.Passos
+. Cable a interconexão de HA se o parceiro de HA da controladora de storage estiver em um chassi separado.
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+. Se o local do MetroCluster incluir dois pares de HA, repita as etapas anteriores no segundo par de HA.
+. Repita esta tarefa no site do parceiro MetroCluster.
+

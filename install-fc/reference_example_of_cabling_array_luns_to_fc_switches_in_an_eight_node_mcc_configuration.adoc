@@ -1,0 +1,36 @@
+---
+permalink: install-fc/reference_example_of_cabling_array_luns_to_fc_switches_in_an_eight_node_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cabling, storage, array, ports, fc, switches, eight, node 
+summary: Em uma configuração MetroCluster com LUNs de array, você precisa conectar as portas de storage array que formam um par de portas redundante a switches FC alternativos. 
+---
+= Exemplo de cabeamento de portas de storage array para switches FC em uma configuração de MetroCluster de oito nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Em uma configuração MetroCluster com LUNs de array, você precisa conectar as portas de storage array que formam um par de portas redundante a switches FC alternativos.
+
+Uma configuração do MetroCluster de oito nós consiste em dois grupos de DR de quatro nós. O primeiro grupo de DR consiste nos seguintes nós:
+
+* controller_A_1
+* controller_A_2
+* controller_B_1
+* controller_B_2
+
+
+O segundo grupo de DR consiste nos seguintes nós:
+
+* controller_A_3
+* controller_A_4
+* controller_B_3
+* controller_B_4
+
+
+Para fazer o cabeamento das portas do array para o primeiro grupo de DR, você pode usar os exemplos de cabeamento para uma configuração de MetroCluster de quatro nós para o primeiro grupo de DR.
+
+link:reference_example_of_cabling_array_luns_to_fc_switches_in_a_four_node_mcc_configuration.html["Exemplo de cabeamento de portas de storage array para switches FC em uma configuração de MetroCluster de quatro nós"]
+
+Para fazer o cabeamento das portas do array para o segundo grupo de DR, siga os mesmos exemplos e extrapolar para as portas FC-VI e portas iniciadores FC pertencentes às controladoras no segundo grupo de DR.

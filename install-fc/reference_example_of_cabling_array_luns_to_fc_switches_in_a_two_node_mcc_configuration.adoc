@@ -1,0 +1,131 @@
+---
+permalink: install-fc/reference_example_of_cabling_array_luns_to_fc_switches_in_a_two_node_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cabling, array, ports, fc, switches, two, node 
+summary: Em uma configuração MetroCluster com LUNs de array, você precisa conectar as portas de storage array que formam um par de portas redundante a switches FC alternativos. 
+---
+= Exemplo de cabeamento de portas de storage array para switches FC em uma configuração de MetroCluster de dois nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Em uma configuração MetroCluster com LUNs de array, você precisa conectar as portas de storage array que formam um par de portas redundante a switches FC alternativos.
+
+A ilustração a seguir mostra as conexões entre arrays de storage e switches FC em uma configuração de MetroCluster conetada à malha de dois nós com LUNs de storage:
+
+image::../media/two_node_fabric_attached_mcc_configuration.gif[configuração de mcc conectado à malha de dois nós]
+
+As conexões entre portas de storage array e portas de switch FC são semelhantes para variantes alongadas e conetadas a malha de configurações de MetroCluster de dois nós com LUNs de array.
+
+[NOTE]
+====
+Se você planeja usar discos além dos LUNs de storage na configuração do MetroCluster, use as portas de switch especificadas para a configuração com discos.
+
+link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+
+====
+Na ilustração, os pares de portas de matriz redundantes para ambos os sites são os seguintes:
+
+* Storage array no local A:
++
+** Portas 1A e 2A
+** Portas 1B e 2B
+
+
+* Storage array no local B:
++
+** Portas 1A' e 2A'
+** Portas 1B' e 2B'
+
+
+
+
+FC_switch_A_1 no local A e FC_switch_B_1 no local B estão conetados ao form Fabric_1. Da mesma forma, FC_switch_A_2 no local A e FC_switch_B_2 estão conetados ao form Fabric_2.
+
+A tabela a seguir lista as conexões entre as portas do storage array e os switches FC para a ilustração MetroCluster de exemplo:
+
+|===
+
+
+| Portas LUN de array | Portas de switch FC | Troque de tecidos 
+
+
+3+| *Site A* 
+
+
+ a| 
+1A
+ a| 
+FC_switch_A_1, porta 9
+ a| 
+fabric_1
+
+
+
+ a| 
+2A
+ a| 
+FC_switch_A_2, porta 10
+ a| 
+fabric_2
+
+
+
+ a| 
+1B
+ a| 
+FC_switch_A_1, porta 10
+ a| 
+fabric_1
+
+
+
+ a| 
+2B
+ a| 
+FC_switch_A_2, porta 9
+ a| 
+fabric_2
+
+
+
+3+| *Site B* 
+
+
+ a| 
+1A'
+ a| 
+FC_switch_B_1, porta 9
+ a| 
+fabric_1
+
+
+
+ a| 
+2A'
+ a| 
+FC_switch_B_2, porta 10
+ a| 
+fabric_2
+
+
+
+ a| 
+1B'
+ a| 
+FC_switch_B_1, porta 10
+ a| 
+fabric_1
+
+
+
+ a| 
+2B'
+ a| 
+FC_switch_B_2, porta 9
+ a| 
+fabric_2
+
+|===

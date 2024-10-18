@@ -1,0 +1,121 @@
+---
+permalink: tiebreaker/reference_firewall_requirements_for_mcc_tiebreaker.html 
+sidebar: sidebar 
+keywords: metrocluster, tiebreaker, port, communicate, specific, service, firewall, requirement 
+summary: O tiebreaker do MetroCluster usa várias portas para se comunicar com serviços específicos. 
+---
+= Requisitos de firewall para desempate do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O tiebreaker do MetroCluster usa várias portas para se comunicar com serviços específicos.
+
+A tabela a seguir lista as portas que você deve permitir no firewall:
+
+|===
+
+
+| Porta/serviços | Fonte | Destino | Finalidade 
+
+
+ a| 
+443 / TCP
+ a| 
+Desempate
+ a| 
+Internet
+ a| 
+Enviando mensagens AutoSupport para o NetApp
+
+
+
+ a| 
+22 / TCP
+ a| 
+Host de gerenciamento
+ a| 
+Desempate
+ a| 
+Gerenciamento de desempate
+
+
+
+ a| 
+443 / TCP
+ a| 
+Desempate
+ a| 
+LIFs de gerenciamento de clusters
+ a| 
+Comunicações seguras para cluster via HTTP (SSL)
+
+
+
+ a| 
+22 / TCP
+ a| 
+Desempate
+ a| 
+LIFs de gerenciamento de clusters
+ a| 
+Comunicações seguras para cluster via SSH
+
+
+
+ a| 
+443 / TCP
+ a| 
+Desempate
+ a| 
+LIFs de gerenciamento de nós
+ a| 
+Comunicações seguras para nó via HTTP (SSL)
+
+
+
+ a| 
+22 / TCP
+ a| 
+Desempate
+ a| 
+LIFs de gerenciamento de nós
+ a| 
+Comunicações seguras para nó via SSH
+
+
+
+ a| 
+162 / UDP
+ a| 
+Desempate
+ a| 
+Host de trap SNMP
+ a| 
+Usado para enviar armadilhas SNMP de notificação de alerta
+
+
+
+ a| 
+ICMP (ping)
+ a| 
+Desempate
+ a| 
+LIFs de gerenciamento de clusters
+ a| 
+Verifique se o IP do cluster está acessível
+
+
+
+ a| 
+ICMP (ping)
+ a| 
+Desempate
+ a| 
+LIFs de gerenciamento de nós
+ a| 
+Verifique se o IP do nó está acessível
+
+|===

@@ -1,0 +1,129 @@
+---
+permalink: install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, mediator, configure 
+summary: O serviço do Mediador ONTAP deve ser configurado no nó ONTAP para uso em uma configuração IP do MetroCluster. 
+---
+= Configure o serviço do Mediador ONTAP a partir de uma configuração IP do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O serviço do Mediador ONTAP deve ser configurado no nó ONTAP para uso em uma configuração IP do MetroCluster.
+
+.Antes de começar
+* O Mediador ONTAP deve ter sido instalado com sucesso em um local de rede que possa ser acessado por ambos os sites da MetroCluster.
++
+link:https://docs.netapp.com/us-en/ontap/mediator/index.html["Instale ou atualize o serviço do Mediador ONTAP"^]
+
+* Você deve ter o endereço IP do host que executa o serviço do Mediador ONTAP.
+* Você deve ter o nome de usuário e a senha para o serviço do Mediador ONTAP.
+* Todos os nós da configuração IP do MetroCluster devem estar online.
+
+
+
+CAUTION: A partir do ONTAP 9.12,1, você pode ativar o recurso de comutação forçada automática MetroCluster em uma configuração IP MetroCluster. Este recurso é uma extensão da comutação não planejada assistida por Mediator. Antes de ativar esta funcionalidade, reveja o link:concept-ontap-mediator-supports-automatic-unplanned-switchover.html#mauso-9-12-1["Riscos e limitações do uso do switchover forçado automático do MetroCluster"].
+
+.Sobre esta tarefa
+* Esta tarefa permite o switchover não planejado automático por padrão.
+* Esta tarefa pode ser executada na interface ONTAP de qualquer nó na configuração IP do MetroCluster.
+* Uma única instalação do serviço Mediador ONTAP pode ser configurada com até cinco configurações IP MetroCluster.
+
+
+.Passos
+. Adicione o serviço Mediador ONTAP ao ONTAP:
++
+`metrocluster configuration-settings mediator add -mediator-address _ip-address-of-mediator-host_`
+
++
+
+NOTE: Você será solicitado a fornecer o nome de usuário e a senha para a conta de usuário do administrador do Mediator.
+
+. Verifique se a funcionalidade de comutação automática está ativada:
++
+`metrocluster show`
+
+. Verifique se o Mediador está em execução.
++
+.. Mostrar os discos virtuais do Mediator:
++
+`storage disk show -container-type mediator`
+
++
+....
+ cluster_A::> storage disk show -container-type mediator
+                        Usable           Disk    Container   Container
+ Disk                   Size Shelf Bay Type    Type        Name      Owner
+ ---------------- ---------- ----- --- ------- ----------- --------- --------
+ NET-1.5                   -     -   - VMDISK  mediator    -         node_A_2
+ NET-1.6                   -     -   - VMDISK  mediator    -         node_B_1
+ NET-1.7                   -     -   - VMDISK  mediator    -         node_B_2
+ NET-1.8                   -     -   - VMDISK  mediator    -         node_A_1
+....
+.. Defina o modo de privilégio como avançado:
++
+`set advanced`
+
++
+....
+ cluster_A::> set advanced
+....
+.. Exiba os iniciadores rotulados como mediador:
++
+`storage iscsi-initiator show -label mediator`
+
++
+....
+ cluster_A::*> storage iscsi-initiator show -label mediator
+   (storage iscsi-initiator show)
+  +                                                                     Status
+ Node Type Label    Target Portal      Target Name                      Admin/Op
+ ---- ---- -------- ------------------ -------------------------------- --------
+ node_A_1
+      mailbox
+           mediator 1.1.1.1       iqn.2012-05.local:mailbox.target.6616cd3f-9ef1-11e9-aada-00a098ccf5d8:a05e1ffb-9ef1-11e9-8f68- 00a098cbca9e:1 up/up
+ node_A_2
+      mailbox
+           mediator 1.1.1.1       iqn.2012-05.local:mailbox.target.6616cd3f-9ef1-11e9-aada-00a098ccf5d8:a05e1ffb-9ef1-11e9-8f68-00a098cbca9e:1 up/up
+....
+.. Verifique o estado do domínio de falha de switchover não planejado automático (AUSO):
++
+`metrocluster show`
+
++
+
+NOTE: A saída de exemplo a seguir se aplica ao ONTAP 9.13,1 e posterior. Para o ONTAP 9.12,1 e anteriores, o estado do domínio de falha do AUSO deve ser `auso-on-cluster-disaster`.
+
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-dr-group-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-dr-group-disaster
+----
+
+
+. Opcionalmente, configure o switchover forçado automático do MetroCluster.
++
+Você só pode usar o seguinte comando em nível avançado de privilégio.
+
++
+
+IMPORTANT: Antes de utilizar este comando, reveja o link:concept-ontap-mediator-supports-automatic-unplanned-switchover.html#mauso-9-12-1["Riscos e limitações do uso do switchover forçado automático do MetroCluster"].
+
++
+`metrocluster modify -allow-auto-forced-switchover true`
+
++
+....
+cluster_A::*> metrocluster modify -allow-auto-forced-switchover true
+....
+

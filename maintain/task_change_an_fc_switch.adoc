@@ -1,0 +1,96 @@
+---
+permalink: maintain/task_change_an_fc_switch.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, change, fc, switch 
+summary: 'Talvez seja necessário alterar o fornecedor de um switch FC (Cisco para Brocade ou vice-versa), alterar o modelo do switch ou ambos.' 
+---
+= Alterar o fornecedor ou o modelo dos switches FC
+:allow-uri-read: 
+
+
+[role="lead"]
+Talvez seja necessário alterar o fornecedor de switches FC de Cisco para Brocade ou vice-versa, alterar o modelo do switch ou alterar ambos.
+
+.Sobre esta tarefa
+* Este procedimento aplica-se quando você estiver usando switches validados pela NetApp.
+* link:enable-console-logging-before-maintenance.html["Ativar o registo da consola"] antes de executar esta tarefa.
+* Siga as etapas deste procedimento em uma malha de cada vez, para ambas as malhas na configuração.
+
+
+.Passos
+. [[step_1,Step 1]]Verifique a integridade da configuração.
++
+.. Verifique se o MetroCluster está configurado e no modo normal em cada cluster: `*metrocluster show*`
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+.. Verifique se o espelhamento está ativado em cada nó: `*metrocluster node show*`
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                           Configuration  DR
+Group Cluster Node           State          Mirroring Mode
+----- ------- -------------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1       configured     enabled   normal
+      cluster_B
+              node_B_1       configured     enabled   normal
+2 entries were displayed.
+----
+.. Verifique se os componentes do MetroCluster estão em bom estado: `*metrocluster check run*`
++
+[listing]
+----
+cluster_A::> metrocluster check run
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+4 entries were displayed.
+
+Command completed. Use the "metrocluster check show -instance" command or sub-commands in "metrocluster check" directory for detailed results.
+To check if the nodes are ready to do a switchover or switchback operation, run "metrocluster switchover -simulate" or "metrocluster switchback -simulate", respectively.
+----
+.. Verifique se não existem alertas de saúde: `*system health alert show*`
+
+
+. Configure os novos switches antes da instalação.
++
+Siga as etapas em link:../install-fc/concept-configure-fc-switches.html["Configurar os switches FC"].
+
+. Desligar as ligações dos interrutores antigos, retirando as ligações pela seguinte ordem:
++
+.. Desconete as interfaces MetroCluster FC e FCVI.
+.. Desconete as pontes ATTO FibreBridge.
+.. Desligue os ISLs da MetroCluster.
+
+
+. Desligue os interrutores antigos, retire os cabos e substitua fisicamente os interrutores antigos pelo novo interrutor.
+. Faça o cabo dos interrutores pela seguinte ordem:
++
+Tem de seguir os passos em link:../install-fc/task_configure_the_mcc_hardware_components_fabric.html["Fazer o cabeamento de uma configuração MetroCluster conectada à malha"].
+
++
+.. Faça o cabo das ISLs para o local remoto.
+.. Faça o cabo das pontes ATTO FibreBridge.
+.. Faça o cabeamento das interfaces MetroCluster FC e FCVI.
+
+
+. Ligue os interrutores.
+. Verifique se a configuração do MetroCluster está saudável repetindo <<Passo 1>>.
+. Repita os passos 1 a 7 para a segunda estrutura na configuração.
+

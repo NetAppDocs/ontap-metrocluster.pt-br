@@ -1,0 +1,25 @@
+---
+permalink: manage/task_send_a_custom_autosupport_message_prior_to_negotiated_switchover.html 
+sidebar: sidebar 
+keywords: perform, negotiate, switchover, autosupport, message, netapp, technical, support, maintenance, underway, failure, trigger, support, prevent, disruption, custom, prior 
+summary: Antes de executar um switchover negociado, você deve emitir uma mensagem AutoSupport para notificar o suporte técnico da NetApp de que a manutenção está em andamento. O switchover negociado pode resultar em falhas de operação Plex ou MetroCluster que acionam mensagens AutoSupport. Informar o suporte técnico de que a manutenção está em andamento impede que ele abra um caso partindo do pressuposto de que ocorreu uma interrupção. 
+---
+= Envio de uma mensagem AutoSupport personalizada antes do switchover negociado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de executar um switchover negociado, você deve emitir uma mensagem AutoSupport para notificar o suporte técnico da NetApp de que a manutenção está em andamento. O switchover negociado pode resultar em falhas de operação Plex ou MetroCluster que acionam mensagens AutoSupport. Informar o suporte técnico de que a manutenção está em andamento impede que ele abra um caso partindo do pressuposto de que ocorreu uma interrupção.
+
+Esta tarefa deve ser executada em cada site do MetroCluster.
+
+.Passos
+. Faça login no cluster em Site_A.
+. Chame uma mensagem AutoSupport indicando o início da manutenção: `system node autosupport invoke -node * -type all -message MAINT=maintenance-window-in-hours`
++
+especifica a duração da janela de manutenção e pode ser um máximo de 72 horas. Se a manutenção for concluída antes do tempo decorrido, pode emitir um comando para indicar que o período de manutenção terminou:``system node autosupport invoke -node * -type all -message MAINT=end``
+
+. Repita esta etapa no site do parceiro.
+

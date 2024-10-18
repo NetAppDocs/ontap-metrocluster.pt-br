@@ -1,0 +1,32 @@
+---
+permalink: transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html 
+sidebar: sidebar 
+keywords: nondisruptive, transition, fc, ip 
+summary: A partir do ONTAP 9.13,1, você faz uma transição sem interrupções de workloads e dados de uma configuração MetroCluster FC de oito nós existente para uma nova configuração MetroCluster IP. 
+---
+= Transição de uma configuração IP do MetroCluster FC para uma configuração IP do MetroCluster sem interrupções (ONTAP 9.8 e posterior)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode fazer transições sem interrupções de workloads e dados de uma configuração MetroCluster FC existente para uma nova configuração MetroCluster IP.
+
+A partir do ONTAP 9.13,1, esse procedimento é compatível com configurações IP do MetroCluster nas quais o MetroCluster e os compartimentos de unidades são conetados aos mesmos switches IP (uma configuração de switch de armazenamento compartilhado).
+
+A partir do ONTAP 9.13,1, você faz uma transição sem interrupções de workloads e dados de uma configuração MetroCluster FC de oito nós existente para uma nova configuração MetroCluster IP.
+
+A partir do ONTAP 9.8, você faz uma transição sem interrupções de workloads e dados de uma configuração MetroCluster FC de quatro nós existente para uma nova configuração MetroCluster IP.
+
+* Esse procedimento não causa interrupções.
++
+A configuração do MetroCluster pode continuar fornecendo dados durante a operação.
+
+* Esse procedimento se aplica apenas a configurações de FC MetroCluster de quatro nós e oito nós.
++
+Se você tiver uma configuração MetroCluster FC de dois nós, link:concept_choosing_your_transition_procedure_mcc_transition.html["Escolhendo seu procedimento de transição"]consulte .
+
+* Este procedimento descreve as etapas necessárias para fazer a transição de um grupo de RD FC de quatro nós. Se você tiver uma configuração de oito nós (dois grupos de DR FC), repita todo o procedimento para cada grupo de DR FC.
+* Você deve atender a todos os requisitos e seguir todas as etapas do procedimento.
+

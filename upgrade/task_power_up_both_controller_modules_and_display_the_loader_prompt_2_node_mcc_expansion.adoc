@@ -1,0 +1,59 @@
+---
+permalink: upgrade/task_power_up_both_controller_modules_and_display_the_loader_prompt_2_node_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, power, up, controller. modules, display, loader, prompt 
+summary: Você liga o módulo do controlador existente e o novo módulo do controlador para exibir o prompt Loader. 
+---
+= Ligar ambos os módulos do controlador e apresentar o aviso Loader
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você liga o módulo do controlador existente e o novo módulo do controlador para exibir o prompt Loader.
+
+.Passos
+Ligue os módulos do controlador e interrompa o processo de arranque, seguindo os passos para a sua configuração:
+
+[cols="25,75"]
+|===
+
+
+| Se os módulos do controlador forem... | Então... 
+
+
+ a| 
+No mesmo chassi
+ a| 
+. Verifique se o novo módulo do controlador está *não* totalmente inserido no compartimento.
++
+O módulo do controlador existente deve ser totalmente inserido no compartimento porque nunca foi removido do chassi, mas o novo módulo do controlador não deve ser.
+
+. Ligue a alimentação e ligue as fontes de alimentação para que o módulo do controlador existente receba energia.
+. Interrompa o processo de inicialização no módulo do controlador existente pressionando Ctrl-C.
+. Empurre firmemente o novo módulo do controlador para dentro do compartimento.
++
+Quando totalmente sentado, o novo módulo do controlador recebe alimentação e arranca automaticamente.
+
+. Interrompa o processo de inicialização pressionando Ctrl-C.
+. Aperte o parafuso de aperto manual na pega do excêntrico, se presente.
+. Instale o dispositivo de gerenciamento de cabos, se houver.
+. Prenda os cabos ao dispositivo de gerenciamento de cabos com o gancho e a alça de loop.
+
+
+
+
+ a| 
+Em chassis separado
+ a| 
+. Ligue as fontes de alimentação no módulo do controlador existente.
+. Interrompa o processo de inicialização pressionando Ctrl-C.
+. Repita estes passos para o novo módulo do controlador
+
+
+|===
+Cada módulo do controlador deve exibir o prompt Loader (`LOADER>`, , `LOADER-A>` ou `LOADER-B>`).
+
+
+NOTE: Se não houver nenhum prompt DO Loader, Registre a mensagem de erro. Se o sistema exibir o menu de inicialização, reinicie e tente interromper o processo de inicialização novamente.

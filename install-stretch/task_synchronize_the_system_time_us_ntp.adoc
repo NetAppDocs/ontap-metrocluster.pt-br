@@ -1,0 +1,37 @@
+---
+permalink: install-stretch/task_synchronize_the_system_time_us_ntp.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, synchronize, system, time, ntp 
+summary: 'Cada cluster precisa de seu próprio servidor NTP (Network Time Protocol) para sincronizar o tempo entre os nós e seus clientes. Você pode usar a caixa de diálogo Editar DateTime no System Manager para configurar o servidor NTP.' 
+---
+= Sincronizar a hora do sistema usando NTP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cada cluster precisa de seu próprio servidor NTP (Network Time Protocol) para sincronizar o tempo entre os nós e seus clientes. Você pode usar a caixa de diálogo Editar DateTime no System Manager para configurar o servidor NTP.
+
+Verifique se você baixou e instalou o System Manager. O Gerenciador do sistema está disponível no site de suporte da NetApp.
+
+* Não é possível modificar as configurações de fuso horário para um nó com falha ou para o nó do parceiro após a aquisição ocorrer.
+* Cada cluster na configuração do MetroCluster FC deve ter seu próprio servidor NTP separado ou servidores usados pelos nós e (se houver) pontes FC para SAS nesse local do MetroCluster.
++
+Se você estiver usando o software tiebreaker do MetroCluster, ele também deve ter seu próprio servidor NTP separado.
+
+
+
+.Passos
+. Na página inicial, clique duas vezes no sistema de armazenamento apropriado.
+. Expanda a hierarquia *Cluster* no painel de navegação esquerdo.
+. No painel de navegação, clique em *Configuração* > *Ferramentas do sistema* > *DateTime*.
+. Clique em *Editar*.
+. Selecione o fuso horário.
+. Especifique os endereços IP dos servidores de hora e clique em *Adicionar*.
++
+Você deve adicionar um servidor NTP à lista de servidores de hora. O controlador de domínio pode ser um servidor autorizado.
+
+. Clique em *OK*.
+. Verifique as alterações feitas nas configurações de data e hora na janela Data e hora.
+

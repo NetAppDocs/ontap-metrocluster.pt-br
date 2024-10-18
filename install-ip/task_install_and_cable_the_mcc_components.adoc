@@ -1,0 +1,19 @@
+---
+permalink: install-ip/task_install_and_cable_the_mcc_components.html 
+sidebar: sidebar 
+keywords: ip, switch, configuring 
+summary: Você deve configurar os switches IP para fornecer conetividade IP do MetroCluster de back-end. 
+---
+= Configure os switches
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve configurar os switches IP para fornecer conetividade IP do MetroCluster de back-end.
+
+* link:../install-ip/task_switch_config_broadcom.html["Configurar switches IP Broadcom"]
+* link:../install-ip/task_switch_config_cisco.html["Configurar switches IP Cisco"]
+* link:../install-ip/task_switch_config_nvidia.html["Configurar switches IP NVIDIA"]
+

@@ -1,0 +1,90 @@
+---
+permalink: maintain/task_change_speed_of_isl_ports_on_a_cisco_fc_switch.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, change, speed, isl, ports, cisco, fc, switch 
+summary: Talvez seja necessário alterar a velocidade das portas ISL em um switch para melhorar a qualidade do ISL. ISLs viajando distâncias maiores podem precisar de sua velocidade reduzida para melhorar a qualidade. 
+---
+= Alteração da velocidade das portas ISL em um switch Cisco FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Talvez seja necessário alterar a velocidade das portas ISL em um switch para melhorar a qualidade do ISL. ISLs viajando distâncias maiores podem precisar de sua velocidade reduzida para melhorar a qualidade.
+
+.Sobre esta tarefa
+* Conclua todas as etapas em ambos os switches para garantir a conetividade ISL.
+* link:enable-console-logging-before-maintenance.html["Ativar o registo da consola"] antes de executar esta tarefa.
+
+
+.Passos
+. Desative as portas ISL das ISLs que você deseja alterar a velocidade de em ambos os switches na malha:
++
+`*FC_switch_A_1# config t*`
+
++
+Introduza os comandos de configuração, um por linha. Termine com CTRL-Z depois de ter introduzido todos os comandos de configuração.
+
++
+[listing]
+----
+
+ FC_switch_A_1(config)# interface fc1/36
+	FC_switch_A_1(config-if)# shut
+	FC_switch_A_1(config)# end
+----
+. Altere a velocidade das portas ISL em ambos os interrutores na estrutura:
++
+`*FC_switch_A_1# config t*`
+
++
+Introduza os comandos de configuração, um por linha. Termine com CTRL-Z depois de ter introduzido todos os comandos de configuração.
+
++
+[listing]
+----
+
+ FC_switch_A_1(config)# interface fc1/36
+	FC_switch_A_1(config-if)# switchport speed 16000
+----
++
+
+NOTE: As velocidades para portas são de 16 Gbps, 16.000 Gbps, 8 Gbps, 8.000 Gbps, 4 Gbps, 4.000 Gbps.
+
++
+Certifique-se de que essas portas ISL para seu switch estejam listadas no _Fabric-Attached MetroCluster Installation and Configuration Guide_.
+
+. Ative todas as portas ISL (se não estiver ativado) em ambos os switches na estrutura:
++
+`*FC_switch_A_1# config t*`
+
++
+Introduza os comandos de configuração, um por linha. Termine com CTRL-Z depois de ter introduzido todos os comandos de configuração.
+
++
+[listing]
+----
+
+ FC_switch_A_1(config)# interface fc1/36
+	FC_switch_A_1(config-if)# no shut
+	FC_switch_A_1(config)# end
+----
+. Verifique se as ISLs estão estabelecidas entre ambos os switches:
++
+`*show topology isl*`
+
++
+[listing]
+----
+--------------------------------------------------------------------------------
+	__________Local_________ _________Remote_________ VSAN Cost I/F  PC    I/F  Band
+	 PC Domain SwName   Port  Port   SwName Domain PC          Stat Stat Speed width
+	--------------------------------------------------------------------------------
+	  1   0x11 cisco9 fc1/36  fc1/36 cisco9 0xbc    1    1   15 up   up    16g   64g
+	  1   0x11 cisco9 fc1/40  fc1/40 cisco9 0xbc    1    1   15 up   up    16g   64g
+	  1   0x11 cisco9 fc1/44  fc1/44 cisco9 0xbc    1    1   15 up   up    16g   64g
+	  1   0x11 cisco9 fc1/48  fc1/48 cisco9 0xbc    1    1   15 up   up    16g   64g
+----
+. Repita o procedimento para a segunda tela do interrutor.
+

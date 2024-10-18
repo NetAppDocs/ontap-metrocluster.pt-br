@@ -1,0 +1,50 @@
+---
+permalink: manage/task_heal_the_root_aggregates_after_negotiated_switchover.html 
+sidebar: sidebar 
+keywords: data, aggregate, heal, root, preparation, switchback, operation, negotiate, switchover 
+summary: Depois que os agregados de dados tiverem sido curados, você deve curar os agregados de raiz em preparação para a operação de switchback. 
+---
+= Recuperação dos agregados raiz após o switchover negociado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois que os agregados de dados tiverem sido curados, você deve curar os agregados de raiz em preparação para a operação de switchback.
+
+A fase de agregados de dados do processo de recuperação do MetroCluster deve ter sido concluída com sucesso.
+
+.Passos
+. Alterne de volta os agregados espelhados executando o comando MetroCluster heal -phase root-aggregates.
++
+[listing]
+----
+cluster_A::> metrocluster heal -phase root-aggregates
+[Job 137] Job succeeded: Heal Root Aggregates is successful
+----
++
+Se a cura for vetada, você terá a opção de reemitir o comando MetroCluster heal com o parâmetro --override-vetos. Se você usar esse parâmetro opcional, o sistema substituirá quaisquer vetos de software que impeçam a operação de recuperação.
+
+. Confirme se a operação de cura está concluída executando o comando MetroCluster operation show no cluster saudável:
++
+[listing]
+----
+
+cluster_A::> metrocluster operation show
+  Operation: heal-root-aggregates
+      State: successful
+ Start Time: 7/29/2014 20:54:41
+   End Time: 7/29/2014 20:54:42
+     Errors: -
+----
+. Verifique e remova quaisquer discos com falha pertencentes ao local de desastre, emitindo o seguinte comando no local de integridade: `disk show -broken`
+. Ligue ou inicialize cada módulo do controlador no local de desastre.
++
+Se o sistema exibir o prompt Loader, execute o `boot_ontap` comando.
+
+. Depois que os nós forem inicializados, verifique se os agregados de raiz são espelhados.
++
+Se ambos os plexos estiverem presentes, a ressincronização ocorrerá automaticamente se os plexos não forem sincronizados. Se um Plex tiver falhado, esse Plex deve ser destruído e o espelho deve ser recriado usando o comando storage agred mirror -aggregate-name para restabelecer a relação de espelho.
+
+

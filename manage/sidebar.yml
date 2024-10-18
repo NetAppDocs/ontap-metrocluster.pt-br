@@ -1,0 +1,44 @@
+---
+section: manage
+title: Execute switchover, cura e switchback
+entries:
+- title: Execute o switchover para testes ou manutenção
+  entries:
+  - title: Visão geral
+    url: "/manage/task_perform_switchover_for_tests_or_maintenance.html"
+  - title: Verifique se o seu sistema está pronto para um switchover
+    url: "/manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html"
+  - title: Envie uma mensagem AutoSupport personalizada antes do switchover negociado
+    url: "/manage/task_send_a_custom_autosupport_message_prior_to_negotiated_switchover.html"
+  - title: Executar um switchover negociado
+    url: "/manage/task_perform_a_negotiated_switchover.html"
+  - title: Verifique se os SVMs estão em execução e se os agregados estão online
+    url: "/manage/task_verify_SVMs are_running_and_aggregates_are_online.html"
+  - title: Curar a configuração
+    entries:
+    - title: Curar a configuração em uma configuração do MetroCluster FC
+      entries:
+      - title: Visão geral
+        url: "/manage/task_heal_the_configuration_in_a_mcc_fc_configuration_supertask.html"
+      - title: Curar os agregados de dados após o switchover negociado
+        url: "/manage/task_heal_the_data_aggregates_after_negotiated_switchover.html"
+      - title: Curar os agregados de raiz após o switchover negociado
+        url: "/manage/task_heal_the_root_aggregates_after_negotiated_switchover.html"
+    - title: Curar a configuração em uma configuração IP do MetroCluster (ONTAP 9
+        .4 e anterior)
+      url: "/manage/task_heal_the_configuration_in_a_mcc_ip_configuration_ontap_9_4_and_earlier.html"
+  - title: Execute um switchback
+    url: "/manage/task_perform_a_switchback.html"
+  - title: Verifique um switchback bem-sucedido
+    url: "/manage/task_verify_a_successful_switchback.html"
+- title: Comandos para switchover, cura e switchback
+  url: "/manage/reference_commands_for_switchover_healing_and_switchback.html"
+- title: Use o Gerenciador do sistema para executar o switchover e o switchback (somente
+    configurações MetroCluster IP)
+  url: "/manage/system-manager-switchover-healing-switchback.html"
+- title: Monitore a configuração do MetroCluster
+  url: "/manage/concept_monitoring_the_mcc_configuration.html"
+- title: Monitore e proteja a consistência do sistema de arquivos usando NVFAIL
+  url: "/manage/concept_monitoring_and_protecting_database_validity_by_using_nvfail.html"
+- title: Onde encontrar informações adicionais
+  url: "/manage/reference_where_to_find_additional_information_dr_guide.html"

@@ -1,0 +1,509 @@
+---
+permalink: disaster-recovery/task_recover_from_a_non_controller_failure_mcc_dr.html 
+sidebar: sidebar 
+keywords: equipment, disaster, site, undergone, require, maintenance, replacement, controller, replace, process, metrocluster, configuration, data, aggregate, switchback, operation, recover, non-controller, failure, heal, configuration, metrocluster, fc, data, aggregate, root, disaster, verify, system, switchback, verification, result, perform, successful, delete, deleting, stale, listing 
+summary: 'Depois que o equipamento no local de desastre tiver sido submetido a qualquer manutenção ou substituição necessária, mas nenhum controlador tiver sido substituído, você poderá iniciar o processo de devolução da configuração do MetroCluster para um estado totalmente redundante. Isso inclui a recuperação da configuração (primeiro os agregados de dados e depois os agregados raiz) e a execução da operação de switchback.' 
+---
+= Recuperando-se de uma falha não controladora
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois que o equipamento no local de desastre tiver sido submetido a qualquer manutenção ou substituição necessária, mas nenhum controlador tiver sido substituído, você poderá iniciar o processo de devolução da configuração do MetroCluster para um estado totalmente redundante. Isso inclui a recuperação da configuração (primeiro os agregados de dados e depois os agregados raiz) e a execução da operação de switchback.
+
+.Antes de começar
+* Todo o hardware do MetroCluster no cluster de desastre deve estar funcional.
+* A configuração geral do MetroCluster deve estar em switchover.
+* Em uma configuração de MetroCluster conetada à malha, o ISL deve estar ativo e operar entre os locais do MetroCluster.
+
+
+
+
+== Ativar o registo da consola
+
+O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
+
+* Deixe o AutoSupport ativado durante a manutenção.
+* Acione uma mensagem de manutenção do AutoSupport antes e depois da manutenção para desativar a criação de casos durante a atividade de manutenção.
++
+Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["Como suprimir a criação automática de casos durante as janelas de manutenção programada"^].
+
+* Ative o registo de sessão para qualquer sessão CLI. Para obter instruções sobre como ativar o registo de sessão, consulte a secção "saída de sessão de registo" no artigo da base de dados de conhecimento link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["Como configurar o PuTTY para uma conetividade ideal aos sistemas ONTAP"^].
+
+
+
+
+== Recuperação da configuração em uma configuração do MetroCluster
+
+Nas configurações do MetroCluster FC, você realiza as operações de recuperação em uma ordem específica para restaurar o recurso MetroCluster após um switchover.
+
+Nas configurações do MetroCluster IP, as operações de recuperação devem começar automaticamente após um switchover. Se eles não fizerem isso, você pode executar as operações de cura manualmente.
+
+.Antes de começar
+* O switchover deve ter sido realizado e o local sobrevivente deve estar fornecendo dados.
+* Os nós no local de desastre devem ser interrompidos ou permanecer desligados.
++
+Eles não devem ser totalmente inicializados durante o processo de cura.
+
+* O storage no local de desastre deve estar acessível (as prateleiras são ativadas, funcionais e acessíveis).
+* Nas configurações MetroCluster conetadas à malha, os links entre switches (ISLs) devem estar ativos e operacionais.
+* Em configurações de MetroCluster de quatro nós, os nós do local que sobrevive não devem estar no estado de failover de HA (todos os nós precisam estar ativos e em execução para cada par de HA).
+
+
+.Sobre esta tarefa
+A operação de recuperação deve primeiro ser realizada nos agregados de dados e, em seguida, nos agregados de raiz.
+
+
+
+=== Recuperação dos agregados de dados
+
+Você deve curar os agregados de dados após reparar e substituir qualquer hardware no local de desastre. Esse processo ressincroniza os agregados de dados e prepara o local de desastre (agora reparado) para operação normal. Você precisa curar os agregados de dados antes de curar os agregados de raiz.
+
+.Sobre esta tarefa
+O exemplo a seguir mostra um switchover forçado, onde você coloca o agregado comutado on-line. Todas as atualizações de configuração no cluster remoto replicam com sucesso para o cluster local. Você liga o storage no local de desastre como parte deste procedimento, mas não deve nem ligar os módulos do controlador no local de desastre.
+
+.Passos
+. Verifique se o switchover foi concluído:
++
+`metrocluster operation show`
+
++
+[listing]
+----
+controller_A_1::> metrocluster operation show
+  Operation: switchover
+      State: successful
+ Start Time: 7/25/2014 20:01:48
+   End Time: 7/25/2014 20:02:14
+     Errors: -
+----
+. Ressincronize os agregados de dados executando o seguinte comando do cluster sobrevivente:
++
+`metrocluster heal -phase aggregates`
+
++
+[listing]
+----
+controller_A_1::> metrocluster heal -phase aggregates
+[Job 130] Job succeeded: Heal Aggregates is successful.
+----
++
+Se a cura for vetada, você tem a opção de reemitir o `metrocluster heal` comando com o `--override-vetoes` parâmetro. Se você usar esse parâmetro opcional, o sistema substituirá quaisquer vetos de software que impeçam a operação de recuperação.
+
+. Verifique se a operação foi concluída:
++
+`metrocluster operation show`
+
++
+[listing]
+----
+controller_A_1::> metrocluster operation show
+    Operation: heal-aggregates
+      State: successful
+Start Time: 7/25/2014 18:45:55
+   End Time: 7/25/2014 18:45:56
+     Errors: -
+----
+. Verifique o estado dos agregados:
++
+`storage aggregate show` comando.
+
++
+[listing]
+----
+controller_A_1::> storage aggregate show
+Aggregate Size     Available Used% State   #Vols  Nodes        RAID Status
+--------- -------- --------- ----- ------- ------ ------------ ------------
+...
+aggr_b2   227.1GB  227.1GB   0%    online  0      mcc1-a2      raid_dp, mirrored, normal...
+----
+. Se o storage tiver sido substituído no local de desastre, talvez seja necessário espelhar novamente os agregados.
+
+
+
+
+=== Cura dos agregados de raiz após um desastre
+
+Depois que os agregados de dados tiverem sido curados, você deve curar os agregados de raiz em preparação para a operação de switchback.
+
+.Antes de começar
+A fase de agregados de dados do processo de recuperação do MetroCluster deve ter sido concluída com sucesso.
+
+.Passos
+. Volte a alternar os agregados espelhados:
++
+`metrocluster heal -phase root-aggregates`
+
++
+[listing]
+----
+mcc1A::> metrocluster heal -phase root-aggregates
+[Job 137] Job succeeded: Heal Root Aggregates is successful
+----
++
+Se a cura for vetada, você tem a opção de reemitir o `metrocluster heal` comando com o `--override-vetoes` parâmetro. Se você usar esse parâmetro opcional, o sistema substituirá quaisquer vetos de software que impeçam a operação de recuperação.
+
+. Certifique-se de que a operação de cura está concluída executando o seguinte comando no cluster de destino:
++
+`metrocluster operation show`
+
++
+[listing]
+----
+
+mcc1A::> metrocluster operation show
+  Operation: heal-root-aggregates
+      State: successful
+ Start Time: 7/29/2014 20:54:41
+   End Time: 7/29/2014 20:54:42
+     Errors: -
+----
+
+
+
+
+== Verificando se o sistema está pronto para um switchback
+
+Se o seu sistema já estiver no estado de comutação, você pode usar a `-simulate` opção para visualizar os resultados de uma operação de switchback.
+
+.Passos
+. Ligue cada módulo do controlador no local de desastre.
++
+[role="tabbed-block"]
+====
+.Se os nós estiverem desligados:
+--
+Ligue os nós.
+
+--
+.Se os nós estiverem no prompt Loader:
+--
+Execute o comando: `boot_ontap`
+
+--
+====
+. Após a conclusão da inicialização do nó, verifique se os agregados raiz estão espelhados.
++
+Se ambos os plexos estiverem presentes, qualquer ressincronização será iniciada automaticamente. Se um Plex falhar, destrua-o e restabeleça a relação do espelho utilizando o seguinte comando para recriar o espelho:
+
++
+`storage aggregate mirror -aggregate <aggregate-name>`
+
+. Simule a operação de switchback:
++
+.. A partir do prompt de qualquer nó sobrevivente, altere para o nível de privilégio avançado:
++
+`set -privilege advanced`
+
++
+Você precisa responder com `y` quando solicitado para continuar no modo avançado e ver o prompt do modo avançado (*>).
+
+.. Execute a operação de switchback com o `-simulate` parâmetro:
++
+`metrocluster switchback -simulate`
+
+.. Voltar ao nível de privilégio de administrador:
++
+`set -privilege admin`
+
+
+
+. Revise a saída que é retornada.
++
+A saída mostra se a operação de switchback seria executada em erros.
+
+
+
+
+
+=== Exemplo de resultados de verificação
+
+O exemplo a seguir mostra a verificação bem-sucedida de uma operação de switchback:
+
+[listing]
+----
+cluster4::*> metrocluster switchback -simulate
+  (metrocluster switchback)
+[Job 130] Setting up the nodes and cluster components for the switchback operation...DBG:backup_api.c:327:backup_nso_sb_vetocheck : MetroCluster Switch Back
+[Job 130] Job succeeded: Switchback simulation is successful.
+
+cluster4::*> metrocluster op show
+  (metrocluster operation show)
+  Operation: switchback-simulate
+      State: successful
+ Start Time: 5/15/2014 16:14:34
+   End Time: 5/15/2014 16:15:04
+     Errors: -
+
+cluster4::*> job show -name Me*
+                            Owning
+Job ID Name                 Vserver    Node           State
+------ -------------------- ---------- -------------- ----------
+130    MetroCluster Switchback
+                            cluster4
+                                       cluster4-01
+                                                      Success
+       Description: MetroCluster Switchback Job - Simulation
+----
+
+
+== Executando um switchback
+
+Depois de curar a configuração do MetroCluster, você pode executar a operação MetroCluster switchback. A operação de switchback do MetroCluster retorna a configuração ao seu estado operacional normal, com as máquinas virtuais de armazenamento de origem sincronizada (SVMs) no local de desastre ativas e fornecendo dados dos pools de discos locais.
+
+.Antes de começar
+* O cluster de desastres deve ter mudado com sucesso para o cluster sobrevivente.
+* A recuperação deve ter sido realizada nos agregados de dados e raiz.
+* Os nós de cluster sobreviventes não devem estar no estado de failover de HA (todos os nós precisam estar ativos e em execução para cada par de HA).
+* Os módulos do controlador do local de desastre devem ser completamente inicializados e não no modo de aquisição de HA.
+* O agregado raiz deve ser espelhado.
+* Os links interswitches (ISLs) devem estar online.
+* Todas as licenças necessárias devem ser instaladas no sistema.
+
+
+.Passos
+. Confirme se todos os nós estão no estado ativado:
++
+`metrocluster node show`
+
++
+O exemplo a seguir exibe os nós que estão no estado "habilitado":
+
++
+[listing]
+----
+cluster_B::>  metrocluster node show
+
+DR                        Configuration  DR
+Group Cluster Node        State          Mirroring Mode
+----- ------- ----------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1    configured     enabled   heal roots completed
+              node_A_2    configured     enabled   heal roots completed
+      cluster_B
+              node_B_1    configured     enabled   waiting for switchback recovery
+              node_B_2    configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+----
+. Confirme se a ressincronização está concluída em todos os SVMs:
++
+`metrocluster vserver show`
+
+. Verifique se todas as migrações automáticas de LIF que estão sendo executadas pelas operações de recuperação foram concluídas com sucesso:
++
+`metrocluster check lif show`
+
+. Execute o switchback executando o seguinte comando a partir de qualquer nó no cluster sobrevivente.
++
+`metrocluster switchback`
+
+. Verifique o progresso do funcionamento do interrutor de comutação:
++
+`metrocluster show`
+
++
+A operação de switchback ainda está em andamento quando a saída exibe "Waiting-for-switchback":
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+A operação de comutação está concluída quando a saída exibe "normal":
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+Se um switchback levar muito tempo para terminar, você pode verificar o status das linhas de base em andamento usando o seguinte comando no nível avançado de privilégio.
+
++
+`metrocluster config-replication resync-status show`
+
+. Restabelecer qualquer configuração SnapMirror ou SnapVault.
++
+No ONTAP 8,3, você precisa restabelecer manualmente uma configuração de SnapMirror perdida após uma operação de switchback MetroCluster. No ONTAP 9.0 e mais tarde, o relacionamento é restabelecido automaticamente.
+
+
+
+
+
+== Verificando um switchback bem-sucedido
+
+Depois de executar o switchback, você deseja confirmar que todos os agregados e máquinas virtuais de storage (SVMs) são trocados de volta e on-line.
+
+.Passos
+. Verifique se os agregados de dados comutados estão invertidos:
++
+`storage aggregate show`
+
++
+No exemplo a seguir, aggr_B2 no nó B2 mudou de volta:
+
++
+[listing]
+----
+node_B_1::> storage aggregate show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2    227.1GB   227.1GB    0% online       0 node_B_2   raid_dp,
+                                                                   mirrored,
+                                                                   normal
+
+node_A_1::> aggr show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2          -         -     - unknown      - node_A_1
+----
++
+Se o local de desastre incluiu agregados sem espelhamento e os agregados sem espelhamento não estiverem mais presentes, o agregado pode aparecer com um estado de "desconhecido" na saída `storage aggregate show` do comando. Contacte o suporte técnico para remover as entradas desatualizadas para os agregados sem espelhamento e consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_stale_unmirrored_aggregate_entries_in_a_MetroCluster_following_disaster_where_storage_was_lost["Como remover entradas agregadas sem espelhamento obsoletas em um MetroCluster após desastre em que o armazenamento foi perdido."^]
+
+. Verifique se todos os SVMs de destino de sincronização no cluster sobrevivente estão inativos (mostrando um estado de administrador de "parado") e os SVMs de origem de sincronização no cluster de desastres estão ativos e em execução:
++
+`vserver show -subtype sync-source`
+
++
+[listing]
+----
+node_B_1::> vserver show -subtype sync-source
+                               Admin      Root                       Name    Name
+Vserver     Type    Subtype    State      Volume     Aggregate       Service Mapping
+----------- ------- ---------- ---------- ---------- ----------      ------- -------
+...
+vs1a        data    sync-source
+                               running    vs1a_vol   node_B_2        file    file
+                                                                     aggr_b2
+
+node_A_1::> vserver show -subtype sync-destination
+                               Admin      Root                         Name    Name
+Vserver            Type    Subtype    State      Volume     Aggregate  Service Mapping
+-----------        ------- ---------- ---------- ---------- ---------- ------- -------
+...
+cluster_A-vs1a-mc  data    sync-destination
+                                      stopped    vs1a_vol   sosb_      file    file
+                                                                       aggr_b2
+----
++
+Os agregados de destino de sincronização na configuração do MetroCluster têm o sufixo "-mc" automaticamente anexado ao seu nome para ajudar a identificá-los.
+
+. Confirme se as operações de switchback foram bem-sucedidas:
++
+`metrocluster operation show`
+
+
+
+|===
+
+
+| Se o comando output mostrar... | Então... 
+
+
+ a| 
+Que o estado de operação de comutação é bem-sucedido.
+ a| 
+O processo de switchback está concluído e você pode prosseguir com a operação do sistema.
+
+
+
+ a| 
+Que a operação ou operação de comutação `switchback-continuation-agent` é parcialmente bem-sucedida.
+ a| 
+Execute a correção sugerida fornecida na saída do `metrocluster operation show` comando.
+
+|===
+.Depois de terminar
+Você deve repetir as seções anteriores para executar o switchback na direção oposta. Se o site_A fez um switchover do site_B, faça um switchover do site_A.
+
+
+
+== Excluindo listagens agregadas obsoletas após o switchback
+
+Em algumas circunstâncias após o switchback, você pode notar a presença de agregados _stale_. Agregados obsoletos são agregados que foram removidos do ONTAP, mas cujas informações permanecem registradas no disco. Agregados obsoletos são exibidos com o `nodeshell aggr status -r` comando, mas não com o `storage aggregate show` comando. Você pode excluir esses Registros para que eles não apareçam mais.
+
+.Sobre esta tarefa
+Agregados obsoletos podem ocorrer se você relocou agregados enquanto a configuração do MetroCluster estava em switchover. Por exemplo:
+
+. Local A muda para local B..
+. Você exclui o espelhamento de um agregado e reposiciona o agregado de node_B_1 para node_B_2 para balanceamento de carga.
+. Você executa a recuperação agregada.
+
+
+Neste ponto, um agregado obsoleto aparece em node_B_1, mesmo que o agregado real tenha sido excluído desse nó. Esse agregado aparece na saída do `nodeshell aggr status -r` comando. Ele não aparece na saída `storage aggregate show` do comando.
+
+. Compare a saída dos seguintes comandos:
++
+`storage aggregate show`
+
++
+`run local aggr status -r`
+
++
+Agregados obsoletos aparecem na `run local aggr status -r` saída, mas não na `storage aggregate show` saída. Por exemplo, o seguinte agregado pode aparecer na `run local aggr status -r` saída:
+
++
+[listing]
+----
+
+Aggregate aggr05 (failed, raid_dp, partial) (block checksums)
+Plex /aggr05/plex0 (offline, failed, inactive)
+  RAID group /myaggr/plex0/rg0 (partial, block checksums)
+
+ RAID Disk Device  HA  SHELF BAY CHAN Pool Type  RPM  Used (MB/blks)  Phys (MB/blks)
+ --------- ------  ------------- ---- ---- ----  ----- --------------  --------------
+ dparity   FAILED          N/A                        82/ -
+ parity    0b.5    0b    -   -   SA:A   0 VMDISK  N/A 82/169472      88/182040
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ Raid group is missing 7 disks.
+----
+. Remova o agregado obsoleto:
++
+.. No prompt de qualquer nó, altere para o nível de privilégio avançado:
++
+`set -privilege advanced`
+
++
+Você precisa responder com `y` quando solicitado para continuar no modo avançado e ver o prompt do modo avançado (*>).
+
+.. Remova o agregado obsoleto:
++
+`aggregate remove-stale-record -aggregate aggregate_name`
+
+.. Voltar ao nível de privilégio de administrador:
++
+`set -privilege admin`
+
+
+
+. Confirme que o registo agregado obsoleto foi removido:
++
+`run local aggr status -r`
+
+

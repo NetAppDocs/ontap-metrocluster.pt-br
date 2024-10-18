@@ -1,0 +1,122 @@
+---
+permalink: manage/task_perform_a_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, configuration, switchback, operation, return, operating, operate, state, sync-source, storage, virtual, machine, svm, disaster, site, active, serving, local, disk, pool, perform 
+summary: 'Depois de curar a configuração do MetroCluster, você pode executar a operação MetroCluster switchback. A operação de switchback do MetroCluster retorna a configuração ao seu estado operacional normal, com as máquinas virtuais de armazenamento de fonte sincronizada (SVMs) no local de desastre ativas e fornecendo dados dos pools de discos locais.' 
+---
+= Executando um switchback
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de curar a configuração do MetroCluster, você pode executar a operação MetroCluster switchback. A operação de switchback do MetroCluster retorna a configuração ao seu estado operacional normal, com as máquinas virtuais de armazenamento de origem sincronizada (SVMs) no local de desastre ativas e fornecendo dados dos pools de discos locais.
+
+* O cluster de desastres deve ter mudado com sucesso para o cluster sobrevivente.
+* A recuperação deve ter sido realizada nos agregados de dados e raiz.
+* Os nós de cluster sobreviventes não devem estar no estado de failover de HA (todos os nós precisam estar ativos e em execução para cada par de HA).
+* Os módulos do controlador do local de desastre devem ser completamente inicializados e não no modo de aquisição de HA.
+* O agregado raiz deve ser espelhado.
+* Os links interswitches (ISLs) devem estar online.
+* Todas as licenças necessárias devem ser instaladas no sistema.
++
+.. Confirme se todos os nós estão no estado ativado: `metrocluster node show`
++
+O exemplo a seguir exibe os nós que estão no estado habilitado:
+
++
+[listing]
+----
+cluster_B::>  metrocluster node show
+
+DR                        Configuration  DR
+Group Cluster Node        State          Mirroring Mode
+----- ------- ----------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1    configured     enabled   heal roots completed
+              node_A_2    configured     enabled   heal roots completed
+      cluster_B
+              node_B_1    configured     enabled   waiting for switchback recovery
+              node_B_2    configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+----
+.. Confirme se a ressincronização está concluída em todos os SVMs: `metrocluster vserver show`
+.. Verifique se todas as migrações automáticas de LIF que estão sendo executadas pelas operações de recuperação foram concluídas com sucesso: `metrocluster check lif show`
+.. Execute um switchback simulado para verificar se o sistema está pronto: `metrocluster switchback -simulate`
+.. Verificar a configuração:
++
+`metrocluster check run`
+
++
+O comando é executado como um trabalho em segundo plano e pode não ser concluído imediatamente.
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+The operation has been started and is running in the background. Wait for
+it to complete and run "metrocluster check show" to view the results. To
+check the status of the running metrocluster check operation, use the command,
+"metrocluster operation history show -job-id 2245"
+----
++
+[listing]
+----
+cluster_A::> metrocluster check show
+Last Checked On: 9/13/2018 20:41:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         ok
+6 entries were displayed.
+----
+.. Execute o switchback executando o comando MetroCluster switchback de qualquer nó no cluster sobrevivente: `metrocluster switchback`
+.. Verifique o progresso do funcionamento do interrutor de comutação: `metrocluster show`
++
+A operação de switchback ainda está em andamento quando a saída exibe Waiting-for-switchback:
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+A operação de comutação está concluída quando a saída exibe normal:
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+Se um switchback levar muito tempo para terminar, você pode verificar o status das linhas de base em andamento usando o `metrocluster config-replication resync-status show` comando. Este comando está no nível de privilégio avançado.
+
+.. Restabelecer qualquer configuração SnapMirror ou SnapVault.
++
+No ONTAP 8,3, você precisa restabelecer manualmente uma configuração de SnapMirror perdida após uma operação de switchback MetroCluster. No ONTAP 9.0 e mais tarde, o relacionamento é restabelecido automaticamente.
+
+
+
+

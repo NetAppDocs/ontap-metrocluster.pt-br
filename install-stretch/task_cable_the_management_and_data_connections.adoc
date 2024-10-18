@@ -1,0 +1,25 @@
+---
+permalink: install-stretch/task_cable_the_management_and_data_connections.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, cable, management, data, connections 
+summary: Você deve encaminhar as portas de gerenciamento e dados em cada controlador de storage para as redes do local. 
+---
+= Cabeamento das conexões de dados e gerenciamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve encaminhar as portas de gerenciamento e dados em cada controlador de storage para as redes do local.
+
+Esta tarefa deve ser repetida para cada novo controlador em ambos os locais do MetroCluster.
+
+Pode ligar as portas de gestão do controlador e do comutador de cluster a comutadores existentes na rede. Além disso, você pode conetar o controlador a novos switches de rede dedicados, como os switches de gerenciamento de cluster NetApp CN1601.
+
+.Passos
+. Faça o cabeamento das portas de gerenciamento e dados do controlador para as redes de gerenciamento e dados no local.
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+

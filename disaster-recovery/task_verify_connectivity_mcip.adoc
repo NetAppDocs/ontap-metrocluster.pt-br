@@ -1,0 +1,46 @@
+---
+permalink: disaster-recovery/task_verify_connectivity_mcip.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, configuration, verify, storage, connectivity, remote 
+summary: Você precisa confirmar se os nós substituídos têm conectividade com as gavetas de disco no local que sobreviveu. 
+---
+= Verificar a conetividade do armazenamento ao local remoto (configurações IP do MetroCluster)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa confirmar se os nós substituídos têm conectividade com as gavetas de disco no local que sobreviveu.
+
+.Sobre esta tarefa
+Essa tarefa é realizada nos nós de substituição no local de desastre.
+
+Esta tarefa é executada no modo Manutenção.
+
+.Passos
+. Exiba os discos que são de propriedade da ID do sistema original.
++
+`disk show -s old-system-ID`
+
++
+Os discos remotos podem ser reconhecidos pelo dispositivo 0m. 0m indica que o disco está ligado através da ligação iSCSI MetroCluster. Esses discos devem ser reatribuídos posteriormente no procedimento de recuperação.
+
++
+[listing]
+----
+*> disk show -s 4068741256
+Local System ID: 1574774970
+
+  DISK     OWNER                 POOL  SERIAL NUMBER   HOME                  DR HOME
+---------- --------------------- ----- -------------   --------------------- ----------------------
+0m.i0.0L11 node_A_2 (4068741256) Pool1 S396NA0HA02128  node_A_2 (4068741256) node_A_2  (4068741256)
+0m.i0.1L38 node_A_2 (4068741256) Pool1 S396NA0J148778  node_A_2 (4068741256) node_A_2  (4068741256)
+0m.i0.0L52 node_A_2 (4068741256) Pool1 S396NA0J148777  node_A_2 (4068741256) node_A_2  (4068741256)
+...
+...
+NOTE: Currently 49 disks are unowned. Use 'disk show -n' for additional information.
+*>
+----
+. Repita esta etapa nos outros nós de substituição
+

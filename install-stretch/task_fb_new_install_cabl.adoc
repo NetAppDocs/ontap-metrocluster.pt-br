@@ -1,0 +1,14 @@
+---
+permalink: install-stretch/task_fb_new_install_cabl.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, cable, disk, shelves, bridges 
+summary: Você precisa usar as pontes FC para SAS corretas para fazer o cabeamento das gavetas de disco. 
+---
+= Cabeamento das gavetas de disco para as pontes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa usar as pontes FC para SAS corretas para fazer o cabeamento dessas gavetas de disco.

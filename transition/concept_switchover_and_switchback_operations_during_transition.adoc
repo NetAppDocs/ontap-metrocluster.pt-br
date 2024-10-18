@@ -1,0 +1,83 @@
+---
+permalink: transition/concept_switchover_and_switchback_operations_during_transition.html 
+sidebar: sidebar 
+keywords: stage, transition, process, metrocluster, switchover, heal, switchback, operation, fc, ip, workflow 
+summary: Dependendo da etapa do processo de transição, as operações de switchover, recuperação e switchback do MetroCluster usam o fluxo de trabalho MetroCluster FC ou MetroCluster IP. 
+---
+= Operações de switchover, recuperação e switchback durante a transição sem interrupções
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dependendo da etapa do processo de transição, as operações de switchover, recuperação e switchback do MetroCluster usam o fluxo de trabalho MetroCluster FC ou MetroCluster IP.
+
+A tabela a seguir mostra quais fluxos de trabalho são usados em diferentes estágios do processo de transição. Em alguns estágios, o switchover e o switchback não são suportados.
+
+* No fluxo de trabalho do MetroCluster FC, as etapas de switchover, recuperação e switchback são usadas por uma configuração de MetroCluster FC.
+* No fluxo de trabalho IP do MetroCluster, as etapas de comutação, recuperação e switchback são aquelas usadas por uma configuração IP do MetroCluster.
+* No fluxo de trabalho unificado, quando ambos os nós FC e IP são configurados, as etapas dependem se NSO ou USO é executado. Os detalhes são mostrados na tabela.
+
+
+Para obter informações sobre os workflows de MetroCluster FC e IP para switchover, recuperação e switchback, link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html["Compreender a proteção de dados e a recuperação de desastres da MetroCluster"]consulte .
+
+
+NOTE: O switchover não planejado automático não está disponível durante o processo de transição.
+
+[cols="2,1,3"]
+|===
+
+
+| Fase de transição | O switchover negociado usa este fluxo de trabalho... | O switchover não planejado usa esse fluxo de trabalho... 
+
+
+ a| 
+Antes que os nós IP do MetroCluster se juntem ao cluster
+ a| 
+FC MetroCluster
+ a| 
+FC MetroCluster
+
+
+
+ a| 
+Depois que os nós IP do MetroCluster se conetarem ao cluster, antes que o `metrocluster configure` comando seja executado
+ a| 
+Não suportado
+ a| 
+FC MetroCluster
+
+
+
+ a| 
+Após o `metrocluster configure` comando ter sido emitido. A movimentação de volume pode estar em andamento.
+ a| 
+Unificado: Todos os nós do local remoto permanecem ativos e a recuperação é feita automaticamente
+ a| 
+Unificado:
+
+* Agregados espelhados de propriedade do nó MetroCluster FC são espelhados se o storage estiver acessível, todos os outros são degradados após o switchover.
+* Todos os nós do local remoto são capazes de inicializar.
+* Os `heal aggregate` comandos e `heal root` devem ser executados manualmente.
+
+
+
+
+ a| 
+Os nós FC do MetroCluster não foram configurados.
+ a| 
+Não suportado
+ a| 
+IP MetroCluster
+
+
+
+ a| 
+O `cluster unjoin` comando foi executado nos nós MetroCluster FC.
+ a| 
+IP MetroCluster
+ a| 
+IP MetroCluster
+
+|===

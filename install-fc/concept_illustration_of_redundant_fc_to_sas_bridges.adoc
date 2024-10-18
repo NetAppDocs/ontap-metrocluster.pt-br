@@ -1,0 +1,23 @@
+---
+permalink: install-fc/concept_illustration_of_redundant_fc_to_sas_bridges.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, illustration, redundant, fc, sas, bridges 
+summary: As pontes FC para SAS fornecem pontes de protocolo entre os discos conectados a SAS e a malha do switch FC. 
+---
+= Ilustração de pontes FC para SAS redundantes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As pontes FC para SAS fornecem pontes de protocolo entre os discos conectados a SAS e a malha do switch FC.
+
+image::../media/mcc_hw_architecture_shelf_stacks.gif[pilhas de gaveta da arquitetura de hardware mcc]
+
+.Informações relacionadas
+link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["Ilustração dos pares de HA locais em uma configuração do MetroCluster"]
+
+link:concept_redundant_fc_switch_fabrics.html["Malhas de switches FC redundantes"]
+
+link:concept_cluster_peering_network_mcc.html["Ilustração da rede de peering de cluster"]

@@ -1,0 +1,143 @@
+---
+permalink: disaster-recovery/task_power_on_mcfc.html 
+sidebar: sidebar 
+keywords: power, sas, storage, direct, attached, configuration, fabric 
+summary: Você precisa ligar os componentes do MetroCluster no local de desastre quando estiver pronto para se preparar para o switchback. 
+---
+= Ligar o equipamento no local de desastre
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa ligar os componentes do MetroCluster no local de desastre quando estiver pronto para se preparar para o switchback. Além disso, você também precisa reabilitar as conexões de armazenamento SAS em configurações MetroCluster de conexão direta e habilitar portas de conexão não inter-switch em configurações MetroCluster conetadas à malha.
+
+.Antes de começar
+Você já deve ter substituído e cabeado os componentes do MetroCluster exatamente como os antigos.
+
+link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]
+
+link:../install-stretch/concept_considerations_differences.html["Instalação e configuração do Stretch MetroCluster"]
+
+.Sobre esta tarefa
+Os exemplos deste procedimento assumem o seguinte:
+
+* O local A é o local do desastre.
++
+** FC_switch_A_1 foi substituído.
+** FC_switch_A_2 foi substituído.
+
+
+* O local B é o local sobrevivente.
++
+** FC_switch_B_1 está em bom estado.
+** FC_switch_B_2 está em bom estado.
+
+
+
+
+Os switches FC estão presentes apenas nas configurações MetroCluster conectadas à malha.
+
+.Passos
+. Em uma configuração MetroCluster estendida usando cabeamento SAS (e sem malha de switch FC ou pontes FC para SAS), conecte todo o storage, incluindo o storage remoto, em ambos os locais.
++
+O controlador no local de desastre deve permanecer desligado ou no prompt DO Loader.
+
+. No site sobrevivente, desative a atribuição automática do disco:
++
+`storage disk option modify -autoassign off *`
+
++
+[listing]
+----
+cluster_B::> storage disk option modify -autoassign off *
+2 entries were modified.
+----
+. No site sobrevivente, confirme se a atribuição automática do disco está desativada:
++
+`storage disk option show`
+
++
+[listing]
+----
+cluster_B::> storage disk option show
+Node     BKg. FW. Upd.  Auto Copy   Auto Assign  Auto Assign Policy
+--------  -------------  -----------  -----------  ------------------
+node_B_1       on            on          off             default
+node_B_2       on            on          off             default
+2 entries were displayed.
+
+ cluster_B::>
+----
+. Ligue as gavetas de disco no local de desastre e verifique se todos os discos estão em execução.
+. Em uma configuração MetroCluster conectada a uma ponte ou conetada a malha, ative todas as pontes FC para SAS no local do desastre.
+. Se algum disco tiver sido substituído, deixe os controladores desligados ou no prompt DO Loader.
+. Em uma configuração MetroCluster conetada à malha, habilite as portas não ISL nos switches FC.
++
+|===
+
+
+| Se o fornecedor do switch for... | Em seguida, utilize estes passos para ativar as portas... 
+
+
+ a| 
+Brocade
+ a| 
+.. Habilite persistentemente as portas conetadas às bridges FC-para-SAS: `portpersistentenable port-number`
++
+No exemplo a seguir, as portas 6 e 7 estão ativadas:
+
++
+[listing]
+----
+FC_switch_A_1:admin> portpersistentenable 6
+FC_switch_A_1:admin> portpersistentenable 7
+
+FC_switch_A_1:admin>
+----
+.. Habilite persistentemente as portas conetadas aos HBAs e adaptadores FC-VI: `portpersistentenable port-number`
++
+No exemplo a seguir, as portas 6 e 7 estão ativadas:
+
++
+[listing]
+----
+FC_switch_A_1:admin> portpersistentenable 1
+FC_switch_A_1:admin> portpersistentenable 2
+FC_switch_A_1:admin> portpersistentenable 4
+FC_switch_A_1:admin> portpersistentenable 5
+FC_switch_A_1:admin>
+----
++
+
+NOTE: Para sistemas AFF A700 e FAS9000, você deve ativar persistentemente todas as quatro portas FC-VI usando o comando switchcfgpersistentemente.
+
+.. Repita os subpassos a e b para o segundo switch FC no local sobrevivente.
+
+
+
+
+ a| 
+Cisco
+ a| 
+.. Entre no modo de configuração para a interface e, em seguida, ative as portas com o comando no shut.
++
+No exemplo a seguir, a porta FC1/36 está desativada:
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# interface fc1/36
+FC_switch_A_1(config)# no shut
+FC_switch_A_1(config-if)# end
+FC_switch_A_1# copy running-config startup-config
+----
+.. Verifique se a porta do switch está ativada: `show interface brief`
+.. Repita as subetapas a e b nas outras portas conectadas às pontes FC-para-SAS, HBAs e adaptadores FC-VI.
+.. Repita os subpassos a, b e c para o segundo switch FC no local sobrevivente.
+
+
+|===
+

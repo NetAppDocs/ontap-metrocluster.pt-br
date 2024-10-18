@@ -1,0 +1,34 @@
+---
+settings:
+  name: ONTAP MetroCluster
+  harmony_integration: maestro
+  platform: ''
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  langs: pt-br,us-en,ja-jp,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
+sidebar:
+  entries:
+  - title: MetroCluster docs
+    url: "/index.html"
+  - section: releasenotes
+  - section: install-fc
+  - section: install-ip
+  - section: install-stretch
+  - section: tiebreaker
+  - title: Entenda a proteção de dados e a recuperação de desastres da MetroCluster
+    entries:
+    - title: Como o MetroCluster protege os dados e fornece recuperação de desastres
+      url: "/manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html"
+  - section: manage
+  - section: maintain
+  - section: transition
+  - section: upgrade
+  - section: disaster-recovery
+  - title: Avisos legais
+    url: "/legal-notices.html"
+product-family:
+  name: ONTAP
+  repo: ontap-family

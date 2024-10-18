@@ -1,0 +1,16 @@
+---
+permalink: maintain/task_hot_add_an_iom12_disk_shelf_to_a_stack_of_iom6_disk_shelves.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, add, iom12, stack, iom6, disk, shelves, bridge, attached 
+summary: Dependendo da sua versão do ONTAP, é possível adicionar um compartimento de disco de IOM12 TB a uma pilha de IOM6 compartimentos de disco em uma configuração MetroCluster conetada a uma ponte. 
+---
+= Adição automática de um compartimento de disco de IOM12 TB a uma stack de IOM6 shelves de disco em uma configuração MetroCluster conetada a uma ponte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dependendo da sua versão do ONTAP, é possível adicionar um compartimento de disco de IOM12 TB a uma pilha de IOM6 compartimentos de disco em uma configuração MetroCluster conetada a uma ponte.
+
+Para executar este procedimento, https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Gavetas de adição dinâmica com IOM12 módulos para uma stack de gavetas com IOM6 módulos"]consulte .

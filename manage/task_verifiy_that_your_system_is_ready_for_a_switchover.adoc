@@ -1,0 +1,44 @@
+---
+permalink: manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html 
+sidebar: sidebar 
+keywords: simulate, option, preview, result, switchover, operation, verification, check, precondition, succesful, verify, ready, example 
+summary: Você pode usar a opção -simular para visualizar os resultados de uma operação de comutação. Uma verificação fornece uma maneira de verificar se a maioria das pré-condições para uma execução bem-sucedida são atendidas antes de iniciar a operação. 
+---
+= Verificar se o seu sistema está pronto para um switchover
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a `-simulate` opção para visualizar os resultados de uma operação de switchover. Uma verificação fornece uma maneira de verificar se a maioria das pré-condições para uma execução bem-sucedida são atendidas antes de iniciar a operação. Emita estes comandos do site que permanecerão ativos e operacionais:
+
+. Defina o nível de privilégio como avançado: `set -privilege advanced`
+. A partir do local que permanecerá ativo e operacional, simule uma operação de switchover: `metrocluster switchover -simulate`
+. Revise a saída que é retornada.
++
+A saída mostra se algum vetos evitaria uma operação de comutação. Toda vez que você executar uma operação MetroCluster, você deve verificar um conjunto de critérios para o sucesso da operação. Um "ponto" é um mecanismo que proíbe a operação se um ou mais critérios não forem cumpridos. Existem dois tipos de veto: Um veto "suave" e um veto "duro". Você pode substituir um veto suave, mas não um veto difícil. Por exemplo, para executar um switchover negociado em uma configuração de MetroCluster de quatro nós, um critério é que todos os nós estão ativos e íntegros. Suponha que um nó esteja inativo e tenha sido tomado por seu parceiro de HA. A operação de comutação será fortemente vetada porque é um critério difícil que todos os nós devem estar ativos e saudáveis. Porque este é um veto difícil, você não pode substituir o veto.
+
++
+
+IMPORTANT: É melhor não substituir nenhum veto.
+
+
+
+
+
+== Exemplo: Resultados da verificação
+
+O exemplo a seguir mostra os erros encontrados em uma simulação de uma operação de comutação:
+
+[listing]
+----
+cluster4::*> metrocluster switchover -simulate
+
+[Job 126] Preparing the cluster for the switchover operation...
+[Job 126] Job failed: Failed to prepare the cluster for the switchover
+operation. Use the "metrocluster operation show" command to view detailed error
+information. Resolve the errors, then try the command again.
+----
+
+NOTE: O switchover negociado e o switchback falharão até que você substitua todos os discos com falha. Você pode executar a recuperação de desastres depois de substituir os discos com falha. Se você quiser ignorar o aviso para discos com falha, você pode adicionar um veto suave para o switchover negociado e switchback.

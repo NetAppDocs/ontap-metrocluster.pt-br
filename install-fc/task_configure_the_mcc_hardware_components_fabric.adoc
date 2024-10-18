@@ -1,0 +1,16 @@
+---
+permalink: install-fc/task_configure_the_mcc_hardware_components_fabric.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, configuration 
+summary: Os componentes do MetroCluster devem ser fisicamente instalados, cabeados e configurados em ambos os locais geográficos. As etapas são ligeiramente diferentes para um sistema com compartimentos de disco nativos, em vez de um sistema com LUNs de array. 
+---
+= Fazer o cabeamento de uma configuração MetroCluster conectada à malha
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os componentes do MetroCluster devem ser fisicamente instalados, cabeados e configurados em ambos os locais geográficos. As etapas são ligeiramente diferentes para um sistema com compartimentos de disco nativos, em vez de um sistema com LUNs de array.
+
+image::../media/workflow_hardware_installation_and_configuration_4_node_or_2_node_fabric.gif[instalação e configuração do hardware do fluxo de trabalho, 4 nós ou malha de 2 nós]

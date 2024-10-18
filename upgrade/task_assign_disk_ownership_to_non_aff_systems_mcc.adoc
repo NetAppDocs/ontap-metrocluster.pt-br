@@ -1,0 +1,164 @@
+---
+permalink: upgrade/task_assign_disk_ownership_to_non_aff_systems_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, assign, disk, ownership, aff, systems 
+summary: Se os nós do MetroCluster não tiverem os discos corretamente atribuídos ou se você estiver usando DS460C compartimentos de disco na sua configuração, será necessário atribuir discos a cada um dos nós na configuração do MetroCluster de acordo com compartimento a compartimento. Você criará uma configuração na qual cada nó tem o mesmo número de discos em seus pools de discos locais e remotos. 
+---
+= Atribuição de propriedade de disco em sistemas que não sejam AFF
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se os nós do MetroCluster não tiverem os discos corretamente atribuídos ou se você estiver usando DS460C compartimentos de disco na sua configuração, será necessário atribuir discos a cada um dos nós na configuração do MetroCluster de acordo com compartimento a compartimento. Você criará uma configuração na qual cada nó tem o mesmo número de discos em seus pools de discos locais e remotos.
+
+.Sobre esta tarefa
+Os controladores de armazenamento têm de estar no modo de manutenção.
+
+Se a configuração não incluir DS460C compartimentos de disco, essa tarefa não será necessária se os discos tiverem sido atribuídos corretamente quando recebidos de fábrica.
+
+[NOTE]
+====
+O pool 0 sempre contém os discos que são encontrados no mesmo local do sistema de armazenamento que os possui.
+
+O pool 1 sempre contém os discos que são remotos para o sistema de storage que os possui.
+
+====
+Se a configuração incluir DS460C compartimentos de disco, você deve atribuir manualmente os discos usando as seguintes diretrizes para cada gaveta de 12 discos:
+
+|===
+
+
+| Atribuir estes discos na gaveta... | Para este nó e pool... 
+
+
+ a| 
+0 - 2
+ a| 
+Pool do nó local 0
+
+
+
+ a| 
+3 - 5
+ a| 
+Pool do nó de PARCEIRO HA 0
+
+
+
+ a| 
+6 - 8
+ a| 
+Parceiro de DR do pool de nós locais 1
+
+
+
+ a| 
+9 - 11
+ a| 
+Parceiro de DR do pool de parceiros de HA 1
+
+|===
+Esse padrão de atribuição de disco garante que um agregado seja minimamente afetado caso uma gaveta fique offline.
+
+.Passos
+. Se você não tiver feito isso, inicialize cada sistema no modo Manutenção.
+. Atribua os compartimentos de disco aos nós localizados no primeiro local (local A):
++
+Os compartimentos de disco no mesmo local que o nó são atribuídos ao pool 0 e os compartimentos de disco localizados no local do parceiro são atribuídos ao pool 1.
+
++
+Você deve atribuir um número igual de prateleiras a cada pool.
+
++
+.. No primeiro nó, atribua sistematicamente as gavetas de disco locais ao pool 0 e às gavetas de disco remotas ao pool 1:
++
+`disk assign -shelf _local-switch-name:shelf-name.port_ -p _pool_`
+
++
+Se o controlador de storage Controller_A_1 tiver quatro compartimentos, você emitirá os seguintes comandos:
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_A_1:1-4.shelf1 -p 0
+*> disk assign -shelf FC_switch_A_1:1-4.shelf2 -p 0
+
+*> disk assign -shelf FC_switch_B_1:1-4.shelf1 -p 1
+*> disk assign -shelf FC_switch_B_1:1-4.shelf2 -p 1
+----
+.. Repita o processo para o segundo nó no local, atribuindo sistematicamente as gavetas de disco locais ao pool 0 e as gavetas de disco remotas ao pool 1:
++
+`disk assign -shelf _local-switch-name:shelf-name.port_ -p _pool_`
+
++
+Se o controlador de storage Controller_A_2 tiver quatro compartimentos, você emitirá os seguintes comandos:
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_A_1:1-4.shelf3 -p 0
+*> disk assign -shelf FC_switch_B_1:1-4.shelf4 -p 1
+
+*> disk assign -shelf FC_switch_A_1:1-4.shelf3 -p 0
+*> disk assign -shelf FC_switch_B_1:1-4.shelf4 -p 1
+----
+
+
+. Atribua os compartimentos de disco aos nós localizados no segundo local (local B):
++
+Os compartimentos de disco no mesmo local que o nó são atribuídos ao pool 0 e os compartimentos de disco localizados no local do parceiro são atribuídos ao pool 1.
+
++
+Você deve atribuir um número igual de prateleiras a cada pool.
+
++
+.. No primeiro nó no local remoto, atribua sistematicamente suas gavetas de disco locais ao pool 0 e suas gavetas de disco remotas ao pool 1:
++
+`disk assign -shelf _local-switch-nameshelf-name_ -p _pool_`
+
++
+Se o controlador de storage Controller_B_1 tiver quatro compartimentos, você emitirá os seguintes comandos:
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_B_1:1-5.shelf1 -p 0
+*> disk assign -shelf FC_switch_B_1:1-5.shelf2 -p 0
+
+*> disk assign -shelf FC_switch_A_1:1-5.shelf1 -p 1
+*> disk assign -shelf FC_switch_A_1:1-5.shelf2 -p 1
+----
+.. Repita o processo para o segundo nó no local remoto, atribuindo sistematicamente suas gavetas de disco locais ao pool 0 e suas gavetas de disco remotas ao pool 1:
++
+`disk assign -shelf _shelf-name_ -p _pool_`
+
++
+Se o controlador de storage Controller_B_2 tiver quatro compartimentos, você emitirá os seguintes comandos:
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_B_1:1-5.shelf3 -p 0
+*> disk assign -shelf FC_switch_B_1:1-5.shelf4 -p 0
+
+*> disk assign -shelf FC_switch_A_1:1-5.shelf3 -p 1
+*> disk assign -shelf FC_switch_A_1:1-5.shelf4 -p 1
+----
+
+
+. Confirme as atribuições do compartimento:
++
+`storage show shelf`
+
+. Sair do modo de manutenção:
++
+`halt`
+
+. Apresentar o menu de arranque:
++
+`boot_ontap menu`
+
+. Em cada nó, selecione a opção *4* para inicializar todos os discos.
+

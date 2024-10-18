@@ -1,0 +1,202 @@
+---
+permalink: disaster-recovery/concept_choosing_the_correct_recovery_procedure_parent_concept.html 
+sidebar: sidebar 
+keywords: failure, metrocluster, configuration, correct, recovery, procedure, choosing, choose, controller, module, scenarios, two-node 
+summary: Após uma falha em uma configuração do MetroCluster, você deve selecionar o procedimento de recuperação correto, dependendo da extensão da falha. 
+---
+= Escolher o procedimento de recuperação correto
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após uma falha em uma configuração do MetroCluster, você deve selecionar o procedimento de recuperação correto. Use a tabela a seguir e os exemplos para selecionar o procedimento de recuperação apropriado.
+
+Esta informação nesta tabela pressupõe que a instalação ou transição está concluída, o que significa que o `metrocluster configure` comando foi executado com sucesso.
+
+|===
+
+
+| Escopo das falhas no local de desastre | Procedimento 
+
+
+ a| 
+* Sem falha de hardware
+
+ a| 
+link:task_recover_from_a_non_controller_failure_mcc_dr.html["Recuperando-se de uma falha não controladora"]
+
+
+
+ a| 
+* Nenhuma falha no módulo do controlador
+* Outro hardware falhou
+
+ a| 
+link:task_recover_from_a_non_controller_failure_mcc_dr.html["Recuperando-se de uma falha não controladora"]
+
+
+
+ a| 
+* Falha ou falha de um único módulo de controlador de componentes FRU dentro do módulo do controlador
+* As unidades não falharam
+
+ a| 
+Se uma falha for limitada a um único módulo de controlador, você deve usar o procedimento de substituição FRU do módulo de controlador para o modelo de plataforma. Em uma configuração de MetroCluster de quatro ou oito nós, essa falha é isolada para o par de HA local.
+
+*Nota:* o procedimento de substituição FRU do módulo do controlador pode ser usado em uma configuração MetroCluster de dois nós se não houver falhas de unidade ou outras falhas de hardware.
+
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+
+
+ a| 
+* Falha ou falha de um único módulo de controlador de componentes FRU dentro do módulo do controlador
+* As unidades falharam
+
+ a| 
+link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperando-se de uma falha de vários controladores ou de armazenamento"]
+
+
+
+ a| 
+* Falha ou falha de um único módulo de controlador de componentes FRU dentro do módulo do controlador
+* As unidades não falharam
+* O hardware adicional fora do módulo do controlador falhou
+
+ a| 
+link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperando-se de uma falha de vários controladores ou de armazenamento"]
+
+Você deve ignorar todas as etapas para atribuição de unidade.
+
+
+
+ a| 
+* Falha de vários módulos de controladora (com ou sem falhas adicionais) em um grupo de DR
+
+ a| 
+link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperando-se de uma falha de vários controladores ou de armazenamento"]
+
+|===
+
+
+== Cenários de falha do módulo do controlador durante a instalação do MetroCluster
+
+Responder a uma falha do módulo do controlador durante o procedimento de configuração do MetroCluster depende se o `metrocluster configure` comando foi concluído com êxito.
+
+* Se o `metrocluster configure` comando ainda não foi executado ou falhou, você deve reiniciar o procedimento de configuração do software MetroCluster desde o início com um módulo de controlador de substituição.
++
+
+NOTE: Você deve ter certeza de executar as etapas em em link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_sw_config_restore_defaults.html["Restaurar padrões do sistema em um módulo do controlador"]cada controlador (incluindo o controlador de substituição) para verificar se a configuração anterior foi removida.
+
+* Se o `metrocluster configure` comando tiver sido concluído com êxito e o módulo do controlador falhar, utilize a tabela anterior para determinar o procedimento de recuperação correto.
+
+
+
+
+== Cenários de falha do módulo do controlador durante a transição MetroCluster FC para IP
+
+O procedimento de recuperação pode ser usado se ocorrer uma falha no local durante a transição. No entanto, ela só pode ser usada se a configuração for uma configuração mista estável, com o grupo de DR FC e o grupo de DR IP totalmente configurados. A saída `metrocluster node show` do comando deve mostrar ambos os grupos de DR com todos os oito nós.
+
+
+IMPORTANT: Se a falha ocorreu durante a transição quando os nós estão em processo de serem adicionados ou removidos, você deve entrar em Contato com o suporte técnico.
+
+
+
+== Cenários de falha do módulo do controlador em configurações de MetroCluster de oito nós
+
+Cenários de falha:
+
+* <<Falhas de módulo único de controladora em um único grupo de DR>>
+* <<Duas falhas no módulo de controladora em um único grupo de DR>>
+* <<Falhas de módulo único de controladora em grupos de DR separados>>
+* <<Três falhas no módulo do controlador distribuídas pelos grupos de DR>>
+
+
+
+
+=== Falhas de módulo único de controladora em um único grupo de DR
+
+Nesse caso, a falha é limitada a um par de HA.
+
+* Se nenhum armazenamento exigir substituição, você pode usar o procedimento de substituição FRU do módulo do controlador para o modelo da plataforma.
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+* Se o armazenamento necessitar de substituição, pode utilizar o procedimento de recuperação do módulo multi-controlador.
++
+link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperando-se de uma falha de vários controladores ou de armazenamento"]
+
++
+Esse cenário também se aplica a configurações de MetroCluster de quatro nós.
+
++
+image::../media/mcc_dr_groups_8_node_with_a_single_controller_failure.gif[o nó mcc dr agrupa o nó 8 com uma única falha de controladora]
+
+
+
+
+
+=== Duas falhas no módulo de controladora em um único grupo de DR
+
+Neste caso, a falha requer uma mudança. Pode utilizar o procedimento de recuperação de falhas do módulo multi-controlador.
+
+link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperando-se de uma falha de vários controladores ou de armazenamento"]
+
+Esse cenário também se aplica a configurações de MetroCluster de quatro nós.
+
+image::../media/mcc_dr_groups_8_node_with_a_multi_controller_failure.gif[o mcc dr agrupa o nó 8 com uma falha em vários controladores]
+
+
+
+=== Falhas de módulo único de controladora em grupos de DR separados
+
+Nesse caso, a falha é limitada a pares de HA separados.
+
+* Se nenhum armazenamento exigir substituição, você pode usar o procedimento de substituição FRU do módulo do controlador para o modelo da plataforma.
++
+O procedimento de substituição da FRU é realizado duas vezes, uma para cada módulo do controlador com falha.
+
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+* Se o armazenamento necessitar de substituição, pode utilizar o procedimento de recuperação do módulo multi-controlador.
++
+link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperando-se de uma falha de vários controladores ou de armazenamento"]
+
+
+
+image::../media/mcc_dr_groups_8_node_with_two_single_controller_failures.gif[nós do mcc dr agrupa o nó 8 com duas falhas de controladora única]
+
+
+
+=== Três falhas no módulo do controlador distribuídas pelos grupos de DR
+
+Neste caso, a falha requer uma mudança. Você pode usar o procedimento de recuperação de falha do módulo de vários controladores para o Grupo de RD 1.
+
+link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperando-se de uma falha de vários controladores ou de armazenamento"]
+
+Você pode usar o procedimento de substituição FRU do módulo do controlador específico da plataforma para o Grupo dois de RD.
+
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+image::../media/mcc_dr_groups_8_node_with_a_3_controller_failure.gif[o mcc dr agrupa o nó 8 com uma falha do controlador 3]
+
+
+
+== Cenários de falha do módulo do controlador em configurações de MetroCluster de dois nós
+
+O procedimento utilizado depende da extensão da falha.
+
+* Se nenhum armazenamento exigir substituição, você pode usar o procedimento de substituição FRU do módulo do controlador para o modelo da plataforma.
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+* Se o armazenamento necessitar de substituição, pode utilizar o procedimento de recuperação do módulo multi-controlador.
++
+link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperando-se de uma falha de vários controladores ou de armazenamento"]
+
+
+
+image::../media/mcc_dr_groups_2_node_with_a_single_controller_failure.gif[o nó mcc dr agrupa o nó 2 com uma única falha de controladora]

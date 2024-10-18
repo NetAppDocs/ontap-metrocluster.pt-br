@@ -1,0 +1,300 @@
+---
+permalink: releasenotes/mcc-new-features.html 
+sidebar: sidebar 
+keywords: new metrocluster features 
+summary:  
+---
+= Novidades nos recursos do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba mais sobre os novos recursos do MetroCluster.
+
+[cols="20,65,15"]
+|===
+| Recursos suportados na configuração do MetroCluster | Descrição e onde saber mais | Disponível a partir do início 
+
+
+ a| 
+Suporte IP MetroCluster para criptografia de ponta a ponta
+ a| 
+A criptografia de ponta a ponta é compatível com sistemas AFF A400, FAS8300 e FAS8700 para criptografar o tráfego de back-end, como NVlog e dados de replicação de storage, entre os locais em uma configuração IP do MetroCluster.
+
+link:../maintain/task-configure-encryption.html["Configurar criptografia de ponta a ponta em uma configuração IP do MetroCluster"]
+ a| 
+ONTAP 9.15,1
+
+
+
+ a| 
+Aumento do limite de volume para configurações de IP MetroCluster de quatro nós em sistemas AFF A800 e AFF C800
+ a| 
+Nas configurações IP do MetroCluster de quatro nós, os seguintes limites de volume para sistemas AFF A800 e AFF C800 aumentaram:
+
+* O número máximo de volumes FlexVol por agregado aumentou de 200 para 625.
+* O número máximo de volumes FlexVol por nó aumentou de 800 para 1250.
+* O número máximo de volumes FlexVol por par de alta disponibilidade (HA) aumentou de 1600 para 2500.
+
+ a| 
+ONTAP 9.15,1
+
+
+
+ a| 
+Aumento do limite de volume para configurações de IP MetroCluster de quatro nós em sistemas AFF A900
+ a| 
+Nas configurações IP do MetroCluster de quatro nós, os seguintes limites de volume para sistemas AFF A900 aumentaram:
+
+* O número máximo de volumes FlexVol por agregado aumentou de 200 para 625.
+* O número máximo de volumes FlexVol por nó aumentou de 800 para 1250.
+* O número máximo de volumes FlexVol por par de alta disponibilidade (HA) aumentou de 1600 para 2500.
+
+ a| 
+ONTAP 9.14,1
+
+
+
+ a| 
+Transição do MetroCluster FC para o MetroCluster IP usando um switch compartilhado para storage conetado MetroCluster IP e Ethernet
+ a| 
+Você pode fazer a transição de uma configuração MetroCluster FC para uma MetroCluster IP sem interrupções usando um switch de storage compartilhado.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["Transição de uma configuração IP do MetroCluster FC para uma configuração IP do MetroCluster sem interrupções (ONTAP 9.8 e posterior)"]
+ a| 
+ONTAP 9.13,1
+
+
+
+ a| 
+Transições ininterruptas de uma configuração de FC MetroCluster de oito nós para uma configuração IP MetroCluster
+ a| 
+Você pode migrar workloads e dados de uma configuração MetroCluster FC de oito nós existente para uma nova configuração MetroCluster IP sem interrupções.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["Transição de uma configuração MetroCluster FC para uma MetroCluster IP sem interrupções"]
+ a| 
+ONTAP 9.13,1
+
+
+
+ a| 
+Upgrades de configuração IP MetroCluster de quatro nós usando switchover e switchback
+ a| 
+Você pode atualizar controladores em uma configuração IP MetroCluster de quatro nós usando switchover e switchback com `system controller replace` comandos.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html["Atualize controladores em uma configuração IP MetroCluster de quatro nós"]
+ a| 
+ONTAP 9.13,1
+
+
+
+ a| 
+O switchover não planejado automático assistido por mediador (MAUSO) é acionado para um desligamento ambiental
+ a| 
+Se um site desligar graciosamente devido a um desligamento ambiental, MAUSO é acionado.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["Como o Mediador ONTAP suporta o switchover não planejado automático"]
+ a| 
+ONTAP 9.13,1
+
+
+
+ a| 
+Suporte para configurações de IP MetroCluster de oito nós
+ a| 
+Você pode atualizar os controladores e o storage em uma configuração IP do MetroCluster de oito nós expandindo a configuração para se tornar uma configuração temporária de doze nós e removendo os grupos de DR antigos.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_refresh_4n_mcc_ip.html["Atualizando uma configuração de IP MetroCluster de quatro nós"]
+ a| 
+ONTAP 9.13,1
+
+
+
+ a| 
+Conversão de configuração IP do MetroCluster para uma configuração de switch MetroCluster de armazenamento compartilhado
+ a| 
+Você pode converter uma configuração IP MetroCluster para uma configuração de switch MetroCluster de armazenamento compartilhado.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/maintain/task_replace_an_ip_switch.html["Substituição de um switch IP"]
+ a| 
+ONTAP 9.13,1
+
+
+
+ a| 
+Recurso de comutação forçada automática do MetroCluster em uma configuração IP do MetroCluster
+ a| 
+Você pode habilitar o recurso de switchover forçado automático do MetroCluster em uma configuração IP do MetroCluster. Este recurso é uma extensão do recurso de switchover não planejado assistido por Mediador (MAUSO).
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept-risks-limitations-automatic-switchover.html["Limitações de comutação automática"]
+ a| 
+ONTAP 9.12,1
+
+
+
+ a| 
+S3 em um SVM em um agregado sem espelhamento em uma configuração MetroCluster IP
+ a| 
+Você pode habilitar um servidor de storage de objetos do ONTAP Simple Storage Service (S3) em uma SVM em um agregado sem espelhamento em uma configuração IP do MetroCluster.
+
+https://docs.netapp.com/us-en/ontap/s3-config/index.html#s3-configuration-with-system-manager-and-the-ontap-cli["Configuração do S3 com o Gerenciador de sistemas e a CLI do ONTAP"]
+ a| 
+ONTAP 9.12,1
+
+
+
+ a| 
+Transição de uma configuração MetroCluster FC para uma configuração AFF A250 ou FAS500f MetroCluster IP
+ a| 
+Você pode fazer a transição de uma configuração MetroCluster FC para uma configuração AFF A250 ou FAS500f MetroCluster IP.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_cluster_connections.html#which-connections-to-move["Mova as conexões do cluster local"]
+ a| 
+ONTAP 9.11,1
+
+
+
+ a| 
+Configuração do endereço IP MetroCluster da camada 3 nas configurações IP do MetroCluster
+ a| 
+Você pode editar o endereço IP, a máscara de rede e o gateway do MetroCluster para nós em uma configuração da camada 3.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_modify_ip_netmask_gateway_properties.html["Modificação de endereço, máscara de rede e gateway em um IP MetroCluster"]
+ a| 
+ONTAP 9.10,1
+
+
+
+ a| 
+Atualização simplificada do controlador de nós em uma configuração de MetroCluster FC
+ a| 
+O procedimento de atualização para o processo de atualização usando switchover e switchback foi simplificado.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["Atualização de controladores em uma configuração MetroCluster FC usando switchover e switchback"]
+ a| 
+ONTAP 9.10,1
+
+
+
+ a| 
+Suporte IP para link compartilhado na camada 3
+ a| 
+As configurações IP do MetroCluster podem ser implementadas com conexões back-end roteadas por IP (camada 3).
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_layer_3.html["Considerações para redes de grande área da camada 3"]
+ a| 
+ONTAP 9.9,1
+
+
+
+ a| 
+Suporte para clusters de 8 nós
+ a| 
+Clusters permanentes de 8 nós são compatíveis com configurações de IP e conexão de malha.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_install_and_cable_the_mcc_components.html["Instalação e cabeamento de componentes MetroCluster"]
+ a| 
+ONTAP 9.9,1
+
+
+
+ a| 
+Interface simplificada para gerenciar operações de IP MetroCluster com o System Manager
+ a| 
+Você pode gerenciar as operações do IP MetroCluster com o Gerenciador do sistema, incluindo a configuração de sites do IP MetroCluster, o emparelhamento dos sites e a configuração dos clusters.
+
+https://docs.netapp.com/us-en/ontap/concept_metrocluster_manage_nodes.html["Gerenciar sites do MetroCluster"]
+ a| 
+ONTAP 9,8
+
+
+
+ a| 
+Comutação IP MetroCluster e switchback com o Gerenciador de sistemas
+ a| 
+Você pode usar o Gerenciador de sistema para executar todas as etapas de procedimentos de comutação e switchback planejados ou não planejados para configurações de IP MetroCluster.
+
+https://docs.netapp.com/us-en/ontap/task_metrocluster_switchover_switchback.html["Switchover e switchback do MetroCluster"]
+ a| 
+ONTAP 9,8
+
+
+
+ a| 
+Transição das configurações MetroCluster FC para MetroCluster IP
+ a| 
+A transição de workloads e dados de uma configuração MetroCluster FC de quatro nós existente para uma nova configuração MetroCluster IP é compatível.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Atualize, atualize ou expanda a configuração do MetroCluster"]
+
+https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_choosing_your_transition_procedure_mcc_transition.html["Transição do MetroCluster FC para o MetroCluster IP"]
+ a| 
+ONTAP 9,8
+
+
+
+ a| 
+Novos procedimentos de atualização e atualização
+ a| 
+A atualização ou atualização de hardware de configurações de FC e IP do MetroCluster de quatro nós é compatível.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Atualize, atualize ou expanda a configuração do MetroCluster"]
+
+https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_choosing_your_transition_procedure_mcc_transition.html["Transição do MetroCluster FC para o MetroCluster IP"]
+ a| 
+ONTAP 9,8
+
+
+
+ a| 
+Agregados não espelhados
+ a| 
+Agregados não espelhados são compatíveis com configurações MetroCluster IP.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/considerations_unmirrored_aggrs.html["Considerações para agregados sem espelhamento"]
+ a| 
+ONTAP 9,8
+
+
+
+ a| 
+Switches compatíveis com MetroCluster
+ a| 
+As configurações IP do MetroCluster podem suportar switches que não são validados pela NetApp, desde que estejam em conformidade com as especificações da NetApp.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_mc_compliant_switches.html["Considerações para usar switches compatíveis com MetroCluster"]
+ a| 
+ONTAP 9,7
+
+
+
+ a| 
+Compartilhamento de rede de camada privada 2
+ a| 
+As configurações IP do MetroCluster com switches Cisco compatíveis podem compartilhar redes existentes para ISLs, em vez de usar ISLs MetroCluster dedicados. Versões anteriores do ONTAP requerem ISLs dedicados.
+
+Os switches IP do MetroCluster são dedicados à configuração do MetroCluster e não podem ser compartilhados. Apenas as portas ISL MetroCluster nos switches IP MetroCluster podem se conetar aos switches compartilhados.
+
+[CAUTION]
+====
+Se estiver usando uma rede compartilhada, o cliente será responsável por atender aos requisitos de rede MetroCluster na rede compartilhada.
+
+====
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/index.html["Instalação e configuração IP do MetroCluster"]
+ a| 
+ONTAP 9,6
+
+
+
+ a| 
+Switchover e switchback do MetroCluster
+ a| 
+Você pode permitir que um site de cluster assuma as tarefas de outro site de cluster. Essa funcionalidade permite facilitar a manutenção ou a recuperação de desastres.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["Switchover e switchback do MetroCluster"]
+ a| 
+ONTAP 9,6
+
+|===

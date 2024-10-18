@@ -1,0 +1,146 @@
+---
+permalink: maintain/task_hot_remove_storage_from_a_mcc_fc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, remove, storage, fc, configuration 
+summary: Você pode remover dinamicamente as gavetas de unidades, removendo fisicamente as gavetas que tiveram os agregados removidos das unidades, de uma configuração de MetroCluster FC que está em funcionamento e fornecendo dados. É possível remover uma ou mais gavetas de qualquer lugar dentro de uma stack de gavetas ou remover uma stack de gavetas. 
+---
+= Storage com remoção automática de uma configuração MetroCluster FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode remover dinamicamente as gavetas de unidade -- remover fisicamente as gavetas que tiveram os agregados removidos das unidades -- de uma configuração de MetroCluster FC que está funcionando e fornecendo dados. É possível remover uma ou mais gavetas de qualquer lugar dentro de uma stack de gavetas ou remover uma stack de gavetas.
+
+* Seu sistema precisa ser uma configuração de HA, multipath, HA de quatro caminhos ou de quatro caminhos.
+* Em uma configuração de FC MetroCluster de quatro nós, o par de HA local não pode estar no estado de takeover.
+* Você já deve ter removido todos os agregados das unidades nas gavetas que está removendo.
++
+
+IMPORTANT: Se você tentar este procedimento em configurações de FC que não são MetroCluster com agregados na gaveta que você está removendo, poderá fazer com que o sistema falhe em pânico de várias unidades.
+
++
+A remoção de agregados envolve a divisão dos agregados espelhados nas gavetas que você está removendo e, em seguida, recriar os agregados espelhados com outro conjunto de unidades.
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"]
+
+* Você precisa ter removido a propriedade da unidade depois de remover os agregados das unidades nas gavetas que você está removendo.
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"]
+
+* Se você estiver removendo uma ou mais prateleiras de dentro de uma pilha, você deve ter fatorado a distância para ignorar as prateleiras que você está removendo.
++
+Se os cabos atuais não forem longos o suficiente, você precisa ter cabos mais longos disponíveis.
+
+
+
+Esta tarefa aplica-se às seguintes configurações do MetroCluster FC:
+
+* Configurações de FC MetroCluster com conexão direta, nas quais os compartimentos de storage são conectados diretamente aos controladores de storage com cabos SAS
+* Configurações de MetroCluster FC conectadas à malha ou em ponte, nas quais os compartimentos de storage são conectados por meio de pontes FC para SAS
+
+
+.Passos
+. Verifique a operação da configuração do MetroCluster no ONTAP:
++
+.. Verifique se o sistema é multipathed
+`*node run -node _node-name_ sysconfig -a*`
+.. Verifique se há alertas de integridade em ambos os clusters:
++
+`*system health alert show*`
+
+.. Confirme a configuração do MetroCluster e se o modo operacional está normal
+`*metrocluster show*`
+.. Execute uma verificação MetroCluster:
++
+`*metrocluster check run*`
+
+.. Apresentar os resultados da verificação MetroCluster:
++
+`*metrocluster check show*`
+
+.. Verifique se existem alertas de estado nos interrutores (se presentes):
++
+`*storage switch show*`
+
+.. Execute o Config Advisor.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"]
+
+.. Depois de executar o Config Advisor, revise a saída da ferramenta e siga as recomendações na saída para resolver quaisquer problemas descobertos.
+
+
+. Defina o nível de privilégio como avançado:
++
+`*set -privilege advanced*`
+
+. Verifique se nenhuma unidade de caixa de correio está nas gavetas:
+`*storage failover mailbox-disk show*`
+. Retire a prateleira de acordo com as etapas para o cenário relevante.
++
+|===
+
+
+| Cenário | Passos 
+
+
+ a| 
+Para remover um agregado quando o shelf contém sem espelhamento, espelhado ou ambos os tipos de agregado...
+ a| 
+.. Use o `storage aggregate delete -aggregate _aggregate name_` comando para remover o agregado.
+.. Use o procedimento padrão para remover a propriedade de todas as unidades nesse compartimento e, em seguida, remover fisicamente a gaveta.
++
+Siga as instruções no _SAS Disk Shelves Service Guide_ para o modelo de prateleira para remover as prateleiras a quente.
+
+
+
+
+
+ a| 
+Para remover um Plex de um agregado espelhado, você precisa desespelhar o agregado.
+ a| 
+.. Identifique o Plex que pretende remover utilizando o `run -node local sysconfig -r` comando.
++
+No exemplo a seguir, você pode identificar o Plex a partir da linha `Plex /dpg_mcc_8020_13_a1_aggr1/plex0`. Neste caso, o Plex a especificar é ""plex0"".
+
++
+[listing]
+----
+dpgmcc_8020_13_a1a2::storage aggregate> run -node local sysconfig -r
+*** This system has taken over dpg-mcc-8020-13-a1
+Aggregate dpg_mcc_8020_13_a1_aggr1 (online, raid_dp, mirrored) (block checksums)
+  Plex /dpg_mcc_8020_13_a1_aggr1/plex0 (online, normal, active, pool0)
+    RAID group /dpg_mcc_8020_13_a1_aggr1/plex0/rg0 (normal, block checksums)
+      RAID Disk Device                          HA  SHELF BAY CHAN Pool Type  RPM  Used (MB/blks)    Phys (MB/blks)
+      --------- ------                          ------------- ---- ---- ---- ----- --------------    --------------
+      dparity   mcc-cisco-8Gb-fab-2:1-1.126L16  0c    32  15  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+      parity    mcc-cisco-8Gb-fab-2:1-1.126L18  0c    32  17  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+      data      mcc-cisco-8Gb-fab-2:1-1.126L19  0c    32  18  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+      data      mcc-cisco-8Gb-fab-2:1-1.126L21  0c    32  20  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+      data      mcc-cisco-8Gb-fab-2:1-1.126L22  0c    32  21  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+
+  Plex /dpg_mcc_8020_13_a1_aggr1/plex1 (online, normal, active, pool1)
+    RAID group /dpg_mcc_8020_13_a1_aggr1/plex1/rg0 (normal, block checksums)
+
+      RAID Disk Device                          HA  SHELF BAY CHAN Pool Type  RPM  Used (MB/blks)    Phys (MB/blks)
+      --------- ------                          ------------- ---- ---- ---- ----- --------------    --------------
+      dparity   mcc-cisco-8Gb-fab-3:1-1.126L37  0d    34  10  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+      parity    mcc-cisco-8Gb-fab-3:1-1.126L14  0d    33  13  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+      data      mcc-cisco-8Gb-fab-3:1-1.126L41  0d    34  14  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+      data      mcc-cisco-8Gb-fab-3:1-1.126L15  0d    33  14  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+      data      mcc-cisco-8Gb-fab-3:1-1.126L45  0d    34  18  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+----
+.. Utilizar o `storage aggregate plex delete -aggregate _aggr_name_ -plex _plex_name_` comando para extrair o Plex.
++
+plex define o nome do plex, como "'plex3" ou "'plex6".
+
+.. Use o procedimento padrão para remover a propriedade de todas as unidades nesse compartimento e, em seguida, remover fisicamente a gaveta.
++
+Siga as instruções no _SAS Disk Shelves Service Guide_ para o modelo de prateleira para remover as prateleiras a quente.
+
+
+
+|===
+

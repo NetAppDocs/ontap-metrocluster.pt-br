@@ -1,0 +1,41 @@
+---
+permalink: releasenotes/mcc-mediator-whats-new.html 
+sidebar: sidebar 
+keywords: metrocluster, mediator, new, release, update, install, 
+summary: Novos recursos do Mediador ONTAP são fornecidos com cada versão. Eis as novidades. 
+---
+= O que há de novo no suporte do ONTAP Mediator
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Novas melhorias para o Mediador ONTAP são fornecidas com cada versão. Eis as novidades.
+
+Para obter detalhes sobre como instalar ou atualizar o ONTAP Mediator na configuração do MetroCluster, acesse link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_mediator_requirements.html["Prepare-se para instalar o serviço Mediador ONTAP"^].
+
+[cols="75,25"]
+|===
+
+
+| Capacidade do mediador ONTAP | Versão de ONTAP 
+
+
+ a| 
+O switchover não planejado automático assistido por mediador (MAUSO) é suportado no caso de um desligamento ambiental.
+
+Se um site desligar graciosamente devido a um desligamento ambiental, MAUSO é acionado.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["Como o Mediador ONTAP suporta o switchover não planejado automático"]
+ a| 
+ONTAP 9.13,1
+
+
+
+ a| 
+Suporte inicial para o serviço ONTAP Mediator em configurações IP do MetroCluster
+ a| 
+ONTAP 9,7
+
+|===

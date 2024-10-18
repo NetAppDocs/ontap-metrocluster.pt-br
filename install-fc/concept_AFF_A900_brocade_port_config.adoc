@@ -1,0 +1,569 @@
+---
+permalink: install-fc/concept_AFF_A900_brocade_port_config.html 
+sidebar: sidebar 
+keywords: AFF, A900, ONTAP, FAS, FC, Brocade, metrocluster 
+summary: As tabelas a seguir mostram o uso de portas em switches Brocade para sistemas AFF A900 
+---
+= Uso de porta Brocade para controladores AFF A900 ou FAS9500 em uma configuração MetroCluster executando ONTAP 9.10,1 ou posterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As tabelas a seguir mostram o uso de portas nos switches Brocade. As tabelas mostram a configuração máxima suportada, com oito módulos de controlador em quatro grupos de DR. Os sistemas AFF A900 e FAS9500 têm oito portas FC-VI (a, b, c e d para FC-VI-1 e FC-VI-2)
+
+|===
+
+
+9+| Configurações usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) 
+
+
+9+| MetroCluster 1 ou Grupo de RD 1 
+
+
+2.2+| Componente .2+| Porta 6+| Modelo de interrutor Brocade 
+
+
+| Liga ao FC_switch... | 6510 | 6505, G610 | G620, G620-1 | G630, G630-1 | G720 
+
+
+2.12+| controller_x_1 | Porta a FC-VI-1 | 1 | 0 | 0 | 0 | 0 | 0 
+
+
+| Porta FC-VI-1 b | 2 | 0 | 0 | 0 | 0 | 0 
+
+
+| Porta FC-VI-1 c | 1 | 1 | 1 | 1 | 1 | 1 
+
+
+| FC-VI-1 porta d | 2 | 1 | 1 | 1 | 1 | 1 
+
+
+| Porta a FC-VI-2 | 1 | 20 | 16 | 16 | 16 | 2 
+
+
+| Porta FC-VI-2 b | 2 | 20 | 16 | 16 | 16 | 2 
+
+
+| Porta FC-VI-2 c | 1 | 21 | 17 | 17 | 17 | 3 
+
+
+| FC-VI-2 porta d | 2 | 21 | 17 | 17 | 17 | 3 
+
+
+| HBA porta a | 1 | 2 | 2 | 2 | 2 | 8 
+
+
+| Porta HBA b | 2 | 2 | 2 | 2 | 2 | 8 
+
+
+| Porta HBA c | 1 | 3 | 3 | 3 | 3 | 9 
+
+
+| Porta d. HBA | 2 | 3 | 3 | 3 | 3 | 9 
+
+
+2.12+| controller_x_2 | Porta a FC-VI-1 | 1 | 4 | 4 | 4 | 4 | 4 
+
+
+| Porta FC-VI-1 b | 2 | 4 | 4 | 4 | 4 | 4 
+
+
+| Porta FC-VI-1 c | 1 | 5 | 5 | 5 | 5 | 5 
+
+
+| FC-VI-1 porta d | 2 | 5 | 5 | 5 | 5 | 5 
+
+
+| Porta a FC-VI-2 | 1 | 22 | 18 | 20 | 20 | 6 
+
+
+| Porta FC-VI-2 b | 2 | 22 | 18 | 20 | 20 | 6 
+
+
+| Porta FC-VI-2 c | 1 | 23 | 19 | 21 | 21 | 7 
+
+
+| FC-VI-2 porta d | 2 | 23 | 19 | 21 | 21 | 7 
+
+
+| HBA porta a | 1 | 6 | 6 | 6 | 6 | 12 
+
+
+| Porta HBA b | 2 | 6 | 6 | 6 | 6 | 12 
+
+
+| Porta HBA c | 1 | 7 | 7 | 7 | 7 | 13 
+
+
+| Porta d. HBA | 2 | 7 | 7 | 7 | 7 | 13 
+
+
+.4+| Pilha 1 .2+| bridge_x_1a | FC1 | 1 | 8 | 8 | 8 | 8 | 10 
+
+
+| FC2 | 2 | 8 | 8 | 8 | 8 | 10 
+
+
+.2+| bridge_x_1b | FC1 | 1 | 9 | 9 | 9 | 9 | 11 
+
+
+| FC2 | 2 | 9 | 9 | 9 | 9 | 11 
+
+
+.4+| Pilha 2 .2+| bridge_x_2a | FC1 | 1 | 10 | 10 | 10 | 10 | 14 
+
+
+| FC2 | 2 | 10 | 10 | 10 | 10 | 14 
+
+
+.2+| bridge_x_2b | FC1 | 1 | 11 | 11 | 11 | 11 | 15 
+
+
+| FC2 | 2 | 11 | 11 | 11 | 11 | 15 
+
+
+.4+| Pilha 3 .2+| bridge_x_3a | FC1 | 1 | 12 | 12 | 12 | 12 | 16 
+
+
+| FC2 | 2 | 12 | 12 | 12 | 12 | 16 
+
+
+.2+| bridge_x_3b | FC1 | 1 | 13 | 13 | 13 | 13 | 17 
+
+
+| FC2 | 2 | 13 | 13 | 13 | 13 | 17 
+
+
+.4+| Empilha y .2+| bridge_x_ya | FC1 | 1 | 14 | 14 | 14 | 14 | 20 
+
+
+| FC2 | 2 | 14 | 14 | 14 | 14 | 20 
+
+
+.2+| ponte_x_yb | FC1 | 1 | 15 | 15 | 15 | 15 | 21 
+
+
+| FC2 | 2 | 15 | 15 | 15 | 15 | 21 
+
+
+ a| 
+
+NOTE: Pontes adicionais podem ser cabeadas para os switches das portas 16-19 em 6510.
+
+|===
+|===
+
+
+9+| Configurações usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) 
+
+
+9+| MetroCluster 2 ou Grupo de RD 2 
+
+
+2.2+| Componente .2+| Porta 6+| Modelo de interrutor Brocade 
+
+
+| Liga ao FC_switch... | 6510 | 6505, G610 | G620, G620-1 | G630, G630-1 | G720 
+
+
+2.12+| controller_x_3 | Porta a FC-VI-1 | 1 | 24 | - | 18 | 18 | 18 
+
+
+| Porta FC-VI-1 b | 2 | 24 | - | 18 | 18 | 18 
+
+
+| Porta FC-VI-1 c | 1 | 25 | - | 19 | 19 | 19 
+
+
+| FC-VI-1 porta d | 2 | 25 | - | 19 | 19 | 19 
+
+
+| Porta a FC-VI-2 | 1 | 36 | - | 36 | 36 | 24 
+
+
+| Porta FC-VI-2 b | 2 | 36 | - | 36 | 36 | 24 
+
+
+| Porta FC-VI-2 c | 1 | 37 | - | 37 | 37 | 25 
+
+
+| FC-VI-2 porta d | 2 | 37 | - | 37 | 37 | 25 
+
+
+| HBA porta a | 1 | 26 | - | 24 | 24 | 26 
+
+
+| Porta HBA b | 2 | 26 | - | 24 | 24 | 26 
+
+
+| Porta HBA c | 1 | 27 | - | 25 | 25 | 27 
+
+
+| Porta d. HBA | 2 | 27 | - | 25 | 25 | 27 
+
+
+2.12+| controller_x_4 | Porta a FC-VI-1 | 1 | 28 | - | 22 | 22 | 22 
+
+
+| Porta FC-VI-1 b | 2 | 28 | - | 22 | 22 | 22 
+
+
+| Porta FC-VI-1 c | 1 | 29 | - | 23 | 23 | 23 
+
+
+| FC-VI-1 porta d | 2 | 29 | - | 23 | 23 | 23 
+
+
+| Porta a FC-VI-2 | 1 | 38 | - | 38 | 38 | 28 
+
+
+| Porta FC-VI-2 b | 2 | 38 | - | 38 | 38 | 28 
+
+
+| Porta FC-VI-2 c | 1 | 39 | - | 39 | 39 | 29 
+
+
+| FC-VI-2 porta d | 2 | 39 | - | 39 | 39 | 29 
+
+
+| HBA porta a | 1 | 30 | - | 28 | 28 | 30 
+
+
+| Porta HBA b | 2 | 30 | - | 28 | 28 | 30 
+
+
+| Porta HBA c | 1 | 31 | - | 29 | 29 | 31 
+
+
+| Porta d. HBA | 2 | 31 | - | 29 | 29 | 31 
+
+
+.4+| Pilha 1 .2+| bridge_x_51a | FC1 | 1 | 32 | - | 26 | 26 | 32 
+
+
+| FC2 | 2 | 32 | - | 26 | 26 | 32 
+
+
+.2+| bridge_x_51b | FC1 | 1 | 33 | - | 27 | 27 | 33 
+
+
+| FC2 | 2 | 33 | - | 27 | 27 | 33 
+
+
+.4+| Pilha 2 .2+| bridge_x_52a | FC1 | 1 | 34 | - | 30 | 30 | 34 
+
+
+| FC2 | 2 | 34 | - | 30 | 30 | 34 
+
+
+.2+| bridge_x_52b | FC1 | 1 | 35 | - | 31 | 31 | 35 
+
+
+| FC2 | 2 | 35 | - | 31 | 31 | 35 
+
+
+.4+| Pilha 3 .2+| bridge_x_53a | FC1 | 1 | - | - | 32 | 32 | 36 
+
+
+| FC2 | 2 | - | - | 32 | 32 | 36 
+
+
+.2+| bridge_x_53b | FC1 | 1 | - | - | 33 | 33 | 37 
+
+
+| FC2 | 2 | - | - | 33 | 33 | 37 
+
+
+.4+| Empilha y .2+| bridge_x_5ya | FC1 | 1 | - | - | 34 | 34 | 38 
+
+
+| FC2 | 2 | - | - | 34 | 34 | 38 
+
+
+.2+| bridge_x_5yb | FC1 | 1 | - | - | 35 | 35 | 39 
+
+
+| FC2 | 2 | - | - | 35 | 35 | 39 
+
+
+ a| 
+
+NOTE: O MetroCluster 2 ou DR 2 só suporta duas (2) stacks de ponte com switches 6510.
+
+
+
+ a| 
+
+NOTE: O MetroCluster 2 ou DR 2 não é compatível com os switches 6505, G610.
+
+|===
+|===
+
+
+5+| Configurações usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) 
+
+
+5+| MetroCluster 3 ou Grupo de RD 3 
+
+
+2.2+| Componente .2+| Porta 2+| Modelo de interrutor Brocade 
+
+
+| Liga ao FC_switch... | G630, G630-1 
+
+
+2.12+| controller_x_5 | Porta a FC-VI-1 | 1 | 48 
+
+
+| Porta FC-VI-1 b | 2 | 48 
+
+
+| Porta FC-VI-1 c | 1 | 49 
+
+
+| FC-VI-1 porta d | 2 | 49 
+
+
+| Porta a FC-VI-2 | 1 | 64 
+
+
+| Porta FC-VI-2 b | 2 | 64 
+
+
+| Porta FC-VI-2 c | 1 | 65 
+
+
+| FC-VI-2 porta d | 2 | 65 
+
+
+| HBA porta a | 1 | 50 
+
+
+| Porta HBA b | 2 | 50 
+
+
+| Porta HBA c | 1 | 51 
+
+
+| Porta d. HBA | 2 | 51 
+
+
+2.12+| controller_x_6 | Porta a FC-VI-1 | 1 | 52 
+
+
+| Porta FC-VI-1 b | 2 | 52 
+
+
+| Porta FC-VI-1 c | 1 | 53 
+
+
+| FC-VI-1 porta d | 2 | 53 
+
+
+| Porta a FC-VI-2 | 1 | 68 
+
+
+| Porta FC-VI-2 b | 2 | 68 
+
+
+| Porta FC-VI-2 c | 1 | 69 
+
+
+| FC-VI-2 porta d | 2 | 69 
+
+
+| HBA porta a | 1 | 54 
+
+
+| Porta HBA b | 2 | 54 
+
+
+| Porta HBA c | 1 | 55 
+
+
+| Porta d. HBA | 2 | 55 
+
+
+.4+| Pilha 1 .2+| bridge_x_1a | FC1 | 1 | 56 
+
+
+| FC2 | 2 | 56 
+
+
+.2+| bridge_x_1b | FC1 | 1 | 57 
+
+
+| FC2 | 2 | 57 
+
+
+.4+| Pilha 2 .2+| bridge_x_2a | FC1 | 1 | 58 
+
+
+| FC2 | 2 | 58 
+
+
+.2+| bridge_x_2b | FC1 | 1 | 59 
+
+
+| FC2 | 2 | 59 
+
+
+.4+| Pilha 3 .2+| bridge_x_3a | FC1 | 1 | 60 
+
+
+| FC2 | 2 | 60 
+
+
+.2+| bridge_x_3b | FC1 | 1 | 61 
+
+
+| FC2 | 2 | 61 
+
+
+.4+| Empilha y .2+| bridge_x_ya | FC1 | 1 | 62 
+
+
+| FC2 | 2 | 62 
+
+
+.2+| ponte_x_yb | FC1 | 1 | 63 
+
+
+| FC2 | 2 | 63 
+|===
+|===
+
+
+5+| Configurações usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) 
+
+
+5+| MetroCluster 4 ou Grupo de RD 4 
+
+
+2.2+| Componente .2+| Porta 2+| Modelo de interrutor Brocade 
+
+
+| Liga ao FC_switch... | G630, G630-1 
+
+
+2.12+| controller_x_7 | Porta a FC-VI-1 | 1 | 66 
+
+
+| Porta FC-VI-1 b | 2 | 66 
+
+
+| Porta FC-VI-1 c | 1 | 67 
+
+
+| FC-VI-1 porta d | 2 | 67 
+
+
+| Porta a FC-VI-2 | 1 | 84 
+
+
+| Porta FC-VI-2 b | 2 | 84 
+
+
+| Porta FC-VI-2 c | 1 | 85 
+
+
+| FC-VI-2 porta d | 2 | 85 
+
+
+| HBA porta a | 1 | 72 
+
+
+| Porta HBA b | 2 | 72 
+
+
+| Porta HBA c | 1 | 73 
+
+
+| Porta d. HBA | 2 | 73 
+
+
+2.12+| controller_x_8 | Porta a FC-VI-1 | 1 | 70 
+
+
+| Porta FC-VI-1 b | 2 | 70 
+
+
+| Porta FC-VI-1 c | 1 | 71 
+
+
+| FC-VI-1 porta d | 2 | 71 
+
+
+| Porta a FC-VI-2 | 1 | 86 
+
+
+| Porta FC-VI-2 b | 2 | 86 
+
+
+| Porta FC-VI-2 c | 1 | 87 
+
+
+| FC-VI-2 porta d | 2 | 87 
+
+
+| HBA porta a | 1 | 76 
+
+
+| Porta HBA b | 2 | 76 
+
+
+| Porta HBA c | 1 | 77 
+
+
+| Porta d. HBA | 2 | 77 
+
+
+.4+| Pilha 1 .2+| bridge_x_51a | FC1 | 1 | 74 
+
+
+| FC2 | 2 | 74 
+
+
+.2+| bridge_x_51b | FC1 | 1 | 75 
+
+
+| FC2 | 2 | 75 
+
+
+.4+| Pilha 2 .2+| bridge_x_52a | FC1 | 1 | 78 
+
+
+| FC2 | 2 | 78 
+
+
+.2+| bridge_x_52b | FC1 | 1 | 79 
+
+
+| FC2 | 2 | 79 
+
+
+.4+| Pilha 3 .2+| bridge_x_53a | FC1 | 1 | 80 
+
+
+| FC2 | 2 | 80 
+
+
+.2+| bridge_x_53b | FC1 | 1 | 81 
+
+
+| FC2 | 2 | 81 
+
+
+.4+| Empilha y .2+| bridge_x_5ya | FC1 | 1 | 82 
+
+
+| FC2 | 2 | 82 
+
+
+.2+| bridge_x_5yb | FC1 | 1 | 83 
+
+
+| FC2 | 2 | 83 
+|===

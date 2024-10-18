@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: install-ip/set-up-mcc-peering-system-manager.html 
+keywords: metrocluster, peer, peering, pair, pairing, configuration, config, mcc, HA 
+summary: A partir do ONTAP 9.8, você pode gerenciar as operações do site IP do MetroCluster com o Gerenciador do sistema. Isso envolve a configuração de dois clusters e a execução do peering de cluster. 
+---
+= Configurar o peering IP do MetroCluster
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.8, você pode gerenciar as operações de configuração IP do MetroCluster com o Gerenciador de sistema. Depois de configurar dois clusters, configure o peering entre eles.
+
+.Antes de começar
+Configure dois clusters. Consulte link:set-up-mcc-site-system-manager.html["Configure um site IP do MetroCluster"]o procedimento.
+
+Determinadas etapas deste processo são executadas por diferentes administradores de sistema localizados nos locais geográficos de cada cluster. Para explicar este processo, os clusters são chamados de "Site A cluster" e "Site B cluster".
+
+
+
+== Execute o processo de peering do Site A.
+
+Este processo é executado por um administrador de sistema no local A..
+
+.Passos
+. Faça login no Site Um cluster.
+. No System Manager, selecione *Dashboard* na coluna de navegação à esquerda para exibir a visão geral do cluster.
++
+O painel mostra os detalhes deste cluster (Site A). Na seção *MetroCluster*, Site Um cluster é mostrado à esquerda.
+
+. Clique em *Anexar cluster de parceiros*.
+. Insira os detalhes das interfaces de rede que permitem que os nós no local Um cluster se comuniquem com os nós no cluster do local B.
+. Clique em *Salvar e continuar*.
+. Na janela *Anexar cluster de parceiros*, selecione *não tenho uma senha*. Isso permite gerar uma senha.
+. Copie a senha gerada e compartilhe-a com o administrador do sistema no Site B..
+. Selecione *Fechar*.
+
+
+
+
+== Execute o processo de peering do local B.
+
+Este processo é realizado por um administrador de sistema no local B..
+
+.Passos
+. Inicie sessão no cluster do local B.
+. No System Manager, selecione *Dashboard* para exibir a visão geral do cluster.
++
+O painel mostra os detalhes deste cluster (local B). Na seção MetroCluster, o cluster do local B é exibido à esquerda.
+
+. Clique em *Attach Partner Cluster* para iniciar o processo de peering.
+. Insira os detalhes das interfaces de rede que permitem que os nós no cluster do local B se comuniquem com os nós no cluster do local A.
+. Clique em *Salvar e continuar*.
+. Na janela *Anexar cluster de parceiros*, selecione *tenho uma senha*. Isto permite-lhe introduzir a frase-passe que recebeu do administrador do sistema no local A..
+. Selecione *Peer* para concluir o processo de peering.
+
+
+.O que se segue?
+Depois que o processo de peering for concluído com êxito, você configurará os clusters. link:configure-mcc-site-system-manager.html["Configurar um site IP do MetroCluster"]Consulte .

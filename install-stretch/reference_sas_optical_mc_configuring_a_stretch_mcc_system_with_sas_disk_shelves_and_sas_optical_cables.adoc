@@ -1,0 +1,37 @@
+---
+permalink: install-stretch/reference_sas_optical_mc_configuring_a_stretch_mcc_system_with_sas_disk_shelves_and_sas_optical_cables.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, install, cable, components, two, node, sas, stretch, attached, configuration 
+summary: Os controladores de storage devem ser cabeados para a Mídia de storage e entre si. Os controladores de storage também devem ser cabeados para a rede de dados e gerenciamento. 
+---
+= Instalação e cabeamento de componentes MetroCluster para configurações de alongamento de dois nós conetadas a SAS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os controladores de storage devem ser cabeados para a Mídia de storage e entre si. Os controladores de storage também devem ser cabeados para a rede de dados e gerenciamento.
+
+
+
+== Antes de iniciar qualquer procedimento neste documento
+
+Os seguintes requisitos gerais devem ser atendidos antes de concluir esta tarefa:
+
+* Antes da instalação, você deve se familiarizar com as considerações e as práticas recomendadas para instalação e cabeamento de compartimentos de disco para o modelo de compartimento de disco.
+* Todos os componentes do MetroCluster devem ser suportados.
++
+https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"]
+
++
+No IMT, você pode usar o campo solução de armazenamento para selecionar sua solução MetroCluster. Use o *Explorador de componentes* para selecionar os componentes e a versão do ONTAP para refinar sua pesquisa. Você pode clicar em *Mostrar resultados* para exibir a lista de configurações compatíveis que correspondem aos critérios.
+
+
+
+
+
+== Sobre esta tarefa
+
+* Os termos nó e controlador são usados de forma intercambiável.
+

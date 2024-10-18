@@ -1,0 +1,254 @@
+---
+permalink: maintain/task_disable_encryption_on_brocade_fc_switches.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, disable, encryption, brocade, fc, switch 
+summary: Talvez seja necessário desativar a criptografia em switches Brocade FC. 
+---
+= Desativação da criptografia em switches Brocade FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Talvez seja necessário desativar a criptografia em switches Brocade FC.
+
+.Passos
+. Envie uma mensagem AutoSupport de ambos os locais indicando o início da manutenção.
++
+[listing]
+----
+cluster_A::> autosupport invoke -node * -type all -message MAINT=4h
+----
++
+[listing]
+----
+cluster_B::> autosupport invoke -node * -type all -message MAINT=4h
+----
+. Verifique a operação da configuração do MetroCluster a partir do cluster A..
++
+.. Confirme a configuração do MetroCluster e se o modo operacional está normal
+`*metrocluster show*`
++
+[listing]
+----
+cluster_A::> metrocluster show
+----
+.. Execute uma verificação MetroCluster
+`*metrocluster check run*`
++
+[source, nolinebreak]
+----
+cluster_A::> metrocluster check run
+----
+.. Exibir os resultados da verificação MetroCluster
+`*metrocluster check show*`
++
+[source, nolinebreak]
+----
+cluster_A::> metrocluster check show
+----
+
+
+. Verifique o estado de ambos os interrutores:
++
+`*fabric show*`
+
++
+[listing]
+----
+switch_A_1:admin> fabric show
+----
++
+[listing]
+----
+switch_B_1:admin> fabric show
+----
+. Desativar ambos os interrutores:
++
+`*switchdisable*`
+
++
+[listing]
+----
+switch_A_1:admin> switchdisable
+----
++
+[listing]
+----
+switch_B_1:admin> switchdisable
+----
+. Verifique os caminhos disponíveis para os nós em cada cluster:
++
+`*sysconfig*`
+
++
+[listing]
+----
+cluster_A::> system node run -node node-name -command sysconfig -a
+----
++
+[listing]
+----
+cluster_B::> system node run -node node-name -command sysconfig -a
+----
++
+Como a malha do switch agora está desativada, a configuração de storage do sistema deve ser de caminho único HA.
+
+. Verifique o status agregado de ambos os clusters.
++
+[listing]
+----
+cluster_A::> aggr status
+----
++
+[listing]
+----
+cluster_B::> aggr status
+----
++
+A saída do sistema deve mostrar que os agregados são espelhados e normais para ambos os clusters:
+
++
+[listing]
+----
+mirrored,normal
+----
+. Repita os seguintes subpassos a partir do prompt de administração em ambas as centrais.
++
+.. Mostrar quais portas são criptografadas
+`*portenccompshow*`
++
+[listing]
+----
+switch_A_1:admin> portenccompshow
+----
+.. Desativar a encriptação nas portas encriptadas
+`*portcfgencrypt – disable _port-number_*`
++
+[listing]
+----
+switch_A_1:admin> portcfgencrypt --disable 40
+switch_A_1:admin> portcfgencrypt --disable 41
+switch_A_1:admin> portcfgencrypt --disable 42
+switch_A_1:admin> portcfgencrypt --disable 43
+----
+.. Defina o tipo de autenticação para todos:
++
+`*authUtil --set -a all*`
+
++
+[listing]
+----
+switch_A_1:admin> authUtil --set -a all
+----
+.. Defina a política de autenticação no switch. Como Desativado
+`*authutil --policy -sw off*`
++
+[listing]
+----
+switch_A_1:admin> authutil --policy -sw off
+----
+.. Defina o grupo Diffie-Hellman de autenticação como
+`*authutil --set -g **`
++
+[listing]
+----
+switch_A_1:admin> authUtil --set -g *
+----
+.. Excluir o banco de dados de chaves secretas
+`*secAuthSecret --remove -all*`
++
+[listing]
+----
+switch_A_1:admin> secAuthSecret --remove -all
+----
+.. Confirme se a encriptação está desativada nas portas
+`*portenccompshow*`
++
+[listing]
+----
+switch_A_1:admin> portenccompshow
+----
+.. Ativar o interrutor
+`*switchenable*`
++
+[listing]
+----
+switch_A_1:admin> switchenable
+----
+.. Confirme o estado dos ISLs
+`*islshow*`
++
+[listing]
+----
+switch_A_1:admin> islshow
+----
+
+
+. Verifique os caminhos disponíveis para os nós em cada cluster:
++
+`*sysconfig*`
+
++
+[listing]
+----
+cluster_A::> system node run -node * -command sysconfig -a
+----
++
+[listing]
+----
+cluster_B::> system node run -node * -command sysconfig -a
+----
++
+A saída do sistema deve indicar que a Configuração de armazenamento do sistema mudou de volta para Quad-Path HA.
+
+. Verifique o status agregado de ambos os clusters.
++
+[listing]
+----
+cluster_A::> aggr status
+----
++
+[listing]
+----
+cluster_B::> aggr status
+----
++
+O sistema deve mostrar que os agregados são espelhados e normais para ambos os clusters, como mostrado na seguinte saída do sistema:
+
++
+[listing]
+----
+mirrored,normal
+----
+. Verifique a operação da configuração do MetroCluster a partir do cluster A..
++
+.. Execute uma verificação MetroCluster
+`*metrocluster check run*`
++
+[listing]
+----
+cluster_A::> metrocluster check run
+----
+.. Exibir os resultados da verificação MetroCluster
+`*metrocluster check show*`
++
+[listing]
+----
+cluster_A::> metrocluster check show
+----
+
+
+. Envie uma mensagem AutoSupport de ambos os locais indicando o fim da manutenção.
++
+[listing]
+----
+cluster_A::> autosupport invoke -node node-name -type all -message MAINT=END
+----
++
+[listing]
+----
+cluster_B::> autosupport invoke -node node-name -type all -message MAINT=END
+----
+

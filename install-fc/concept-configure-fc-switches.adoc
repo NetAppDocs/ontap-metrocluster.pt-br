@@ -1,0 +1,33 @@
+---
+permalink: install-fc/concept-configure-fc-switches.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, configure, brocade, switches, cisco 
+summary:  
+---
+= Visão geral da configuração do switch FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar switches Cisco e Brocade FC usando arquivos RCF ou, se necessário, pode configurar manualmente os switches.
+
+[cols="2*"]
+|===
+| Se você... | Use o procedimento... 
+
+
+| Tenha um RCF que atenda aos seus requisitos  a| 
+* link:task_reset_the_brocade_fc_switch_to_factory_defaults.html["Configurar switches Brocade FC com arquivos RCF"]
+* link:task_reset_the_cisco_fc_switch_to_factory_defaults.html["Configurar switches Cisco FC com arquivos RCF"]
+
+
+
+
+| Não tem um RCF ou um RCF que não atenda aos seus requisitos  a| 
+* link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["Configure os switches Brocade FC manualmente"]
+* link:task_fcsw_cisco_configure_a_cisco_switch_supertask.html["Configure os switches Cisco FC manualmente"]
+
+
+|===

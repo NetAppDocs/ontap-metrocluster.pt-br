@@ -1,0 +1,42 @@
+---
+permalink: install-fc/task_fmc_mcc_transition_configure_the_mcc_hardware_for_share_a_7_mode_brocade_6510_fc_fabric_dure_transition.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, hardware, brocade, fc, transition 
+summary: Se a configuração do MetroCluster de malha de 7 modos usar os switches Brocade 6510, você poderá compartilhar as malhas de switches existentes com a nova configuração do Clustered MetroCluster. Malha de switch compartilhada significa que a nova configuração do MetroCluster não exige uma nova malha de switch separada. Esta configuração temporária só é suportada com o switch Brocade 6510 para fins de transição. 
+---
+= Configuração de hardware para compartilhamento de uma malha Brocade 6510 FC durante a transição
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se a configuração do MetroCluster de malha de 7 modos usar os switches Brocade 6510, você poderá compartilhar as malhas de switches existentes com a nova configuração do Clustered MetroCluster. Malha de switch compartilhada significa que a nova configuração do MetroCluster não exige uma nova malha de switch separada. Esta configuração temporária só é suportada com o switch Brocade 6510 para fins de transição.
+
+.Antes de começar
+* O MetroCluster de malha de 7 modos deve estar usando os switches Brocade 6510.
++
+Se a configuração do MetroCluster não estiver usando os switches Brocade 6510, os switches devem ser atualizados para o Brocade 6510 antes de usar este procedimento.
+
+* A configuração de MetroCluster de malha de 7 modos deve estar usando apenas gavetas de storage SAS.
++
+Se a configuração existente incluir compartimentos de storage FC (como FC DS14mk4), o compartilhamento de malha do switch FC não será compatível.
+
+* Os SFPs nas portas do switch usados pela nova configuração do MetroCluster em cluster devem suportar taxas de 16 Gbps.
++
+O MetroCluster de malha de 7 modos existente pode permanecer conetado a portas usando SFPs de 8 Gbps ou 16 Gbps.
+
+* Em cada um dos quatro switches Brocade 6510, as portas 24 a 45 devem estar disponíveis para conetar as portas dos novos componentes do MetroCluster.
+* Você deve verificar se os ISLs existentes estão nas portas 46 e 47.
+* Os switches Brocade 6510 devem estar executando uma versão de firmware FOS compatível com o 7-Mode Fabric MetroCluster e a configuração Clustered ONTAP MetroCluster.
+
+
+.Depois de terminar
+Depois de compartilhar a malha e concluir a configuração do MetroCluster, você pode migrar dados da configuração do MetroCluster de malha de 7 modos.
+
+Após a transição dos dados, você poderá remover o cabeamento MetroCluster de malha de 7 modos e, se desejar, mover o cabeamento ONTAP MetroCluster em cluster para as portas de número inferior usadas anteriormente para o cabeamento MetroCluster de 7 modos. As portas são mostradas na seção "Revisão de atribuições de portas de switch FC para um MetroCluster de quatro nós". Você deve ajustar o zoneamento para as portas reorganizadas.
+
+link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+
+.Informações relacionadas
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-7mtt-dctg/home.html["Transição baseada em cópia"]

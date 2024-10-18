@@ -1,0 +1,39 @@
+= 
+:allow-uri-read: 
+
+
+[role="lead"]
+Antes de usar um novo módulo de controlador na configuração do MetroCluster, você deve limpar a configuração existente.
+
+.Passos
+. Se necessário, interrompa o nó para exibir o prompt Loader:
++
+`halt`
+
+. No prompt Loader, defina as variáveis ambientais como valores padrão:
++
+`set-defaults`
+
+. Salvar o ambiente:
++
+`saveenv`
+
+. No prompt DO Loader, inicie o menu de inicialização:
++
+`boot_ontap menu`
+
+. No prompt do menu de inicialização, desmarque a configuração:
++
+`wipeconfig`
+
++
+Responda `yes` ao prompt de confirmação.
+
++
+O nó reinicializa e o menu de inicialização é exibido novamente.
+
+. No menu de inicialização, selecione a opção *5* para inicializar o sistema no modo Manutenção.
++
+Responda `yes` ao prompt de confirmação.
+
+

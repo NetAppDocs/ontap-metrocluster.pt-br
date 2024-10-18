@@ -1,0 +1,16 @@
+---
+permalink: install-ip/task_sw_config_8n.html 
+sidebar: sidebar 
+keywords: metrocluster, configuration, eight-node 
+summary: Uma configuração de oito nós consistirá em dois grupos de DR. Configure o primeiro grupo de DR usando as tarefas desta seção. 
+---
+= Manipulação de configurações de oito nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Uma configuração de oito nós consistirá em dois grupos de DR. Configure o primeiro grupo de DR usando as tarefas desta seção.
+
+Em seguida, execute as tarefas em link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["Expansão de uma configuração IP MetroCluster de quatro nós para uma configuração de oito nós"]

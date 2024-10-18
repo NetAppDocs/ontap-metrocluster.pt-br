@@ -1,0 +1,149 @@
+---
+section: maintain
+title: Mantenha os componentes do MetroCluster
+entries:
+- title: Prepare-se para a manutenção do MetroCluster
+  entries:
+  - title: Ative o registo da consola antes de executar tarefas de manutenção
+    url: "/maintain/enable-console-logging-before-maintenance.html"
+  - title: Remova a monitorização do Mediador ONTAP ou do tiebreaker antes de executar
+      tarefas de manutenção
+    url: "/maintain/concept_remove_mediator_or_tiebreaker_when_performing_maintenance_tasks.html"
+  - title: Cenários de falha e recuperação do MetroCluster
+    url: "/maintain/reference_mcc_failure_scenarios.html"
+  - title: Como usar a ferramenta Matriz de interoperabilidade para encontrar informações
+      do MetroCluster
+    url: "/maintain/concept_using_the_interoperability_matrix_tool_to_find_mcc_information.html"
+  - title: Onde encontrar procedimentos para tarefas de manutenção do MetroCluster
+    url: "/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html"
+- title: Procedimentos de manutenção para configurações MetroCluster FC
+  entries:
+  - title: Modifique um endereço IP de switch ou ponte ATTO para monitoramento de
+      integridade
+    url: "/maintain/task_modify_switch_or_bridge_ip_address_for_health_monitoring.html"
+  - title: Manutenção da ponte FC-para-SAS
+    entries:
+    - title: Suporte para bridgeBridge 7600N em configurações MetroCluster
+      url: "/maintain/concept_using_fibrebridge_7600n_bridges_in_mcc_configurations.html"
+    - title: Suporte para bridgeBridge 7500N em configurações MetroCluster
+      url: "/maintain/concept_using_fibrebridge_7500n_bridges_in_mcc_configurations.html"
+    - title: Ative o acesso à porta IP na ponte FibreBridge 7600N, se necessário
+      url: "/maintain/task_enable_ip_port_access_on_the_fibrebridge_7600n_bridge_guides.html"
+    - title: Atualize o firmware em uma ponte FibreBridge
+      url: "/maintain/task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html"
+    - title: Substitua uma única ponte FC para SAS
+      url: "/maintain/task_replace_a_sle_fc_to_sas_bridge.html"
+    - title: Substitua um par de pontes FibreBridge 6500N por pontes 7600N ou 7500N
+      url: "/maintain/task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_bridges.html"
+    - title: Requisitos para usar outras interfaces para configurar e gerenciar bridges
+        do FibreBridge
+      url: "/maintain/reference_requirements_for_using_other_interfaces_to_configure_and_manage_fibrebridge_bridges.html"
+    - title: Substituição automática de um módulo de fonte de alimentação com falha
+      url: "/maintain/reference_fb_replace_a_power_supply.html"
+    - title: Gerenciamento na banda das pontes FC para SAS
+      url: "/maintain/concept_in_band_management_of_the_fc_to_sas_bridges.html"
+    - title: Proteja ou desprenda a ponte FibreBridge
+      url: "/maintain/task_secur_or_unsecur_a_fibrebridge_bridge.html"
+  - title: Manutenção e substituição do comutador FC
+    entries:
+    - title: Atualize ou faça o downgrade do firmware em um switch Brocade FC
+      url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html"
+    - title: Atualize ou faça o downgrade do firmware em um switch Cisco FC
+      url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_cisco_fc_switch_mcc.html"
+    - title: Atualizar para novos switches Brocade FC
+      url: "/maintain/task_upgrade_to_new_brocade_switches.html"
+    - title: Substitua um switch Brocade FC
+      url: "/maintain/task_replace_a_brocade_fc_switch_mcc.html"
+    - title: Renomeie um switch Brocade FC
+      url: "/maintain/task_rename_a_brocade_fc_switch.html"
+    - title: Desativação da criptografia em switches Brocade FC
+      url: "/maintain/task_disable_encryption_on_brocade_fc_switches.html"
+    - title: Alterar propriedades ISL, portas ISL ou a configuração IOD/OOD em um
+        switch Brocade
+      url: "/maintain/task_change_isl_properties_isl_ports_or_the_iod_ood_configuration_on_a_brocade_switch.html"
+    - title: Substitua um switch Cisco FC
+      url: "/maintain/task_replace_a_cisco_fc_switch_mcc.html"
+    - title: Alteração da velocidade das portas ISL em um switch Cisco FC
+      url: "/maintain/task_change_speed_of_isl_ports_on_a_cisco_fc_switch.html"
+    - title: Adicionando lSLs a um switch Cisco
+      url: "/maintain/task_add_lsls_to_a_cisco_fc_switch.html"
+    - title: Alterar o fornecedor ou o modelo de um switch FC
+      url: "/maintain/task_change_an_fc_switch.html"
+  - title: Substitua uma gaveta sem interrupções em uma configuração MetroCluster
+      conectada à malha
+    url: "/maintain/task_replace_a_shelf_nondisruptively_in_a_mcc_fc_configuration.html"
+  - title: Adicionar storage a uma configuração MetroCluster FC
+    entries:
+    - title: Adicionar um compartimento de disco SAS a quente em uma configuração
+        de MetroCluster FC com conexão direta usando cabos óticos SAS
+      url: "/maintain/task_hot_add_a_sas_disk_shelf_in_a_direct_attached_mcc_configuration_us_sas_optical_cables.html"
+    - title: Adicionar storage SAS a uma configuração MetroCluster FC conetada em
+        ponte
+      entries:
+      - title: Adicione uma stack de gavetas de disco SAS a um par existente de bridgeBridge
+          7500N
+        url: "/maintain/task_hot_add_a_stack_to_exist_7500n_pair.html"
+      - title: Adicione uma stack de shelves de disco SAS e bridges a um sistema MetroCluster
+        url: "/maintain/task_fb_hot_add_stack_of_shelves_and_bridges.html"
+      - title: Adicionar um compartimento de disco SAS a uma stack de gavetas de disco
+          SAS
+        entries:
+        - title: Preparação para gavetas de disco SAS hot-add
+          url: "/maintain/task_fb_hot_add_shelf_prepare_7500n.html"
+        - title: Adicione um compartimento de disco a quente
+          url: "/maintain/task_fb_hot_add_a_disk_shelf_install_7500n.html"
+      - title: Adicione um compartimento de disco de IOM12 TB a uma stack de IOM6
+          shelves de disco em uma configuração MetroCluster conetada a uma ponte
+        url: "/maintain/task_hot_add_an_iom12_disk_shelf_to_a_stack_of_iom6_disk_shelves.html"
+  - title: Storage de remoção automática de uma configuração MetroCluster FC
+    url: "/maintain/task_hot_remove_storage_from_a_mcc_fc_configuration.html"
+  - title: Desligue e ligue um único local em uma configuração MetroCluster FC
+    url: "/maintain/task-power-on-and-power-off-a-fc-site.html"
+  - title: Desligue toda uma configuração do MetroCluster FC
+    url: "/maintain/task_power_off_an_entire_mcc_fc_configuration.html"
+- title: Procedimentos de manutenção para configurações IP do MetroCluster
+  entries:
+  - title: Modifique as propriedades de uma interface IP do MetroCluster
+    url: "/maintain/task-modify-ip-netmask-properties.html"
+  - title: Manutenção e substituição do interrutor IP
+    entries:
+    - title: Substitua um switch IP ou altere o uso de switches IP MetroCluster existentes
+      url: "/maintain/task_replace_an_ip_switch.html"
+    - title: Portas de interface IP MetroCluster online ou offline
+      url: "/maintain/task_online_or_offline_the_mcc_ip_interface.html"
+    - title: Atualize o firmware nos switches IP MetroCluster
+      url: "/maintain/task_upgrade_firmware_on_mcc_ip_switches.html"
+    - title: Atualize arquivos RCF em switches IP MetroCluster
+      url: "/maintain/task_upgrade_rcf_files_on_mcc_ip_switches.html"
+    - title: Atualize arquivos RCF em switches IP Cisco usando cleanupfiles
+      url: "/maintain/task_upgrade_rcf_files_on_cisco_ip_switches_with_cleanupfiles.html"
+    - title: Renomeie um switch IP Cisco
+      url: "/maintain/task_rename_a_cisco_ip_switch.html"
+    - title: Adicione, remova ou altere portas ISL sem interrupções nos switches IP
+        Cisco
+      url: "/maintain/task_add_remove_or_change_isl_ports_nondisruptively.html"
+  - title: Como identificar o armazenamento em uma configuração IP do MetroCluster
+    url: "/maintain/concept_identifying_storage_in_a_mcc_ip_configuration.html"
+  - title: Adicione compartimentos a uma configuração MetroCluster IP usando os switches
+      MetroCluster de armazenamento compartilhado
+    url: "/maintain/task_add_shelves_using_shared_storage.html"
+  - title: Configurar criptografia de ponta a ponta em uma configuração IP do MetroCluster
+    url: "/maintain/task-configure-encryption.html"
+  - title: Desligue e ligue um único local numa configuração IP MetroCluster
+    url: "/maintain/task_power_on_and_power_off_a_data_center.html"
+  - title: Desligue toda uma configuração IP do MetroCluster
+    url: "/maintain/task_power_off_an_entire_mcc_ip_configuration.html"
+- title: Procedimentos de manutenção para todas as configurações do MetroCluster
+  entries:
+  - title: Substitua uma gaveta sem interrupções em uma configuração Stretch MetroCluster
+    url: "/maintain/task_replace_a_shelf_nondisruptively_in_a_stretch_mcc_configuration.html"
+  - title: Quando migrar volumes raiz para um novo destino
+    url: "/maintain/concept_migrating_root_volumes_to_a_new_destination.html"
+  - title: Mover um volume de metadados nas configurações do MetroCluster
+    url: "/maintain/task_move_a_metadata_volume_in_mcc_configurations.html"
+  - title: Renomeie um cluster nas configurações do MetroCluster
+    url: "/maintain/task_rename_the_cluster_for_mcc_configuration.html"
+  - title: Verifique a integridade de uma configuração do MetroCluster
+    url: "/maintain/verify-health-mcc-config.html"
+  - title: Onde encontrar informações adicionais
+    url: "/maintain/reference_where_to_find_additional_information_mcc_service_guide.html"

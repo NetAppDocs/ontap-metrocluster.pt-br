@@ -1,0 +1,33 @@
+---
+permalink: upgrade/task_mirror_the_root_aggregates_mcc_expansion_procedure.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, mirror, root, aggregate, new, controller 
+summary: Você precisa espelhar o agregado raiz para fornecer proteção de dados ao adicionar um controlador a uma configuração do MetroCluster. 
+---
+= Espelhamento do agregado de raiz na nova controladora
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa espelhar o agregado raiz para fornecer proteção de dados ao adicionar um controlador a uma configuração do MetroCluster.
+
+Esta tarefa deve ser executada no novo módulo do controlador.
+
+. Espelhar o agregado raiz:
++
+`storage aggregate mirror _aggr_name_`
+
++
+O comando a seguir espelha o agregado raiz para controller_A_1:
+
++
+[listing]
+----
+controller_A_1::> storage aggregate mirror aggr0_controller_A_1
+----
++
+Isso reflete o agregado, por isso consiste em um Plex local e um Plex remoto localizado no local remoto de MetroCluster.
+
+

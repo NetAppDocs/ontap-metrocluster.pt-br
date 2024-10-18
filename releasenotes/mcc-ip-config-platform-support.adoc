@@ -1,0 +1,159 @@
+---
+permalink: releasenotes/mcc-ip-config-platform-support.html 
+sidebar: sidebar 
+keywords: metrocluster, ip configuration, platform, support 
+summary:  
+---
+= O que há de novo no suporte à plataforma IP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba o que há de novo no suporte à plataforma IP MetroCluster.
+
+
+
+== Suporte de plataforma
+
+[cols="2*"]
+|===
+| Plataformas compatíveis em configurações IP do MetroCluster | Disponível a partir do início 
+
+
+ a| 
+AFF A70, AFF A90, AFF A1K
+ a| 
+ONTAP 9.15,1 e posterior
+
+
+
+ a| 
+ASA A150, ASA A250, ASA A400, ASA A800, ASA A900, ASA C250, ASA C400, ASA C800
+ a| 
+ONTAP 9.14,1 e posterior
+
+
+
+ a| 
+AFF A150
+ a| 
+ONTAP 9.13,1 e posterior
+
+ONTAP 9.12.1P1
+
+ONTAP 9.11.1P8
+
+ONTAP 9.10.1P12
+
+
+
+ a| 
+AFF C250, AFF C400, AFF C800
+ a| 
+ONTAP 9.12.1P1
+
+ONTAP 9.13,1 GA e posterior
+
+
+
+ a| 
+AFF A900
+ a| 
+ONTAP 9.10,1
+
+
+
+ a| 
+AFF A250
+ a| 
+ONTAP 9,8
+
+
+
+ a| 
+FAS500f
+ a| 
+ONTAP 9,8
+
+
+
+ a| 
+ASA AFF A220, ASA AFF A250, ASA AFF A400, ASA AFF A700, ASA AFF A800
+ a| 
+ONTAP 9,7
+
+
+
+ a| 
+AFF A320
+ a| 
+ONTAP 9.6P3
+
+
+
+ a| 
+AFF A220, FAS2750
+ a| 
+ONTAP 9,6
+
+
+
+ a| 
+AFF A300, FAS8200
+ a| 
+ONTAP 9,5
+
+|===
+
+
+== Suporte do interrutor
+
+[cols="2*"]
+|===
+| Switches IP Broadcom | Disponível a partir do início 
+
+
+ a| 
+BES-53248
+ a| 
+ONTAP 9,6
+
+|===
+[cols="2*"]
+|===
+| Switches IP Cisco | Disponível a partir do início 
+
+
+ a| 
+Nexus 9336C-FX2
+ a| 
+ONTAP 9.9,1
+
+
+
+ a| 
+9336C
+ a| 
+ONTAP 9,8
+
+|===
+[cols="2*"]
+|===
+| Switches NVIDIA | Disponível a partir do início 
+
+
+ a| 
+Várias configurações de IP MC no mesmo switch NVIDIA SN2100
+ a| 
+ONTAP 9.14,1
+
+
+
+ a| 
+SN2100
+ a| 
+ONTAP 9.12,1
+
+|===

@@ -1,0 +1,89 @@
+---
+permalink: upgrade/task_refresh_4n_mcc_fc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, refresh, four, node, fc, configuration 
+summary: 'Você pode atualizar os controladores e o armazenamento em uma configuração de MetroCluster de quatro nós expandindo a configuração para se tornar uma configuração de oito nós e, em seguida, remover o antigo grupo de recuperação de desastres (DR).' 
+---
+= Atualizando uma configuração de MetroCluster FC de quatro nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode atualizar os controladores e o storage em uma configuração de MetroCluster de quatro nós, expandindo a configuração para se tornar uma configuração de oito nós e removendo o grupo de recuperação de desastres (DR) antigo.
+
+.Sobre esta tarefa
+Referências a "nós antigos" significam os nós que você pretende substituir.
+
+* Somente é possível atualizar modelos de plataforma específicos usando esse procedimento em uma configuração MetroCluster FC.
++
+** Para obter informações sobre quais combinações de atualização de plataforma são suportadas, consulte a tabela de atualização do MetroCluster FC link:../upgrade/concept_choosing_tech_refresh_mcc.html#supported-metrocluster-fc-tech-refresh-combinations["Escolher um método de atualização do sistema"]no .
+
+
+
+
+
+
+== Ativar o registo da consola
+
+O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
+
+* Deixe o AutoSupport ativado durante a manutenção.
+* Acione uma mensagem de manutenção do AutoSupport antes e depois da manutenção para desativar a criação de casos durante a atividade de manutenção.
++
+Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["Como suprimir a criação automática de casos durante as janelas de manutenção programada"^].
+
+* Ative o registo de sessão para qualquer sessão CLI. Para obter instruções sobre como ativar o registo de sessão, consulte a secção "saída de sessão de registo" no artigo da base de dados de conhecimento link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["Como configurar o PuTTY para uma conetividade ideal aos sistemas ONTAP"^].
+
+
+
+
+== Execute o procedimento de atualização
+
+Siga as etapas a seguir para atualizar a configuração do MetroCluster FC.
+
+.Passos
+. Reúna informações dos nós antigos.
++
+Nesta fase, a configuração de quatro nós aparece como mostrado na seguinte imagem:
+
++
+image::../media/mcc_dr_group_a.png[mcc dr grupo a]
+
+. Execute todas as etapas do procedimento de expansão de quatro nós para o tipo MetroCluster.
++
+link:task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html["Expansão de uma configuração de FC MetroCluster de quatro nós para uma configuração de oito nós"^]
+
++
+Quando o procedimento de expansão estiver concluído, a configuração aparece como mostrado na imagem a seguir:
+
++
+image::../media/mcc_dr_group_b.png[grupo de rd mcc b]
+
+. Mova os volumes CRS.
++
+Execute as etapas em link:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_move_a_metadata_volume_in_mcc_configurations.html["Mover um volume de metadados nas configurações do MetroCluster"^].
+
+. Mova os dados dos nós antigos para novos nós usando os seguintes procedimentos:
++
+.. Execute todas as etapas em https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade/upgrade-create-aggregate-move-volumes.html["Crie um agregado e mova volumes para os novos nós"^].
++
+
+NOTE: Você pode optar por espelhar o agregado quando ou depois que ele é criado.
+
+.. Execute todas as etapas em https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade/upgrade-move-lifs-to-new-nodes.html["Mova LIFs de dados que não são SAN e LIFs de gerenciamento de cluster para os novos nós"^].
+.. Execute todas as etapas em https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade/upgrade-delete-san-lifs.html["Excluir SAN LIFs não é mais necessário dos nós originais"^].
+
+
+. Siga as etapas do procedimento para remover o grupo de RD antigo.
++
+link:concept_removing_a_disaster_recovery_group.html["Removendo um grupo de recuperação de desastres"^]
+
++
+Depois de remover o antigo grupo de DR (grupo de DR um), a configuração aparece como mostrado na imagem a seguir:
+
++
+image::../media/mcc_dr_group_d.png[grupo d de rd mcc]
+
+

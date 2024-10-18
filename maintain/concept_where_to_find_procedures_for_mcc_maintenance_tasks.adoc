@@ -1,0 +1,99 @@
+---
+permalink: maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, find, procedures, maintenance, tasks 
+summary: Você deve ter certeza de que selecionou o procedimento correto quando executar tarefas de manutenção de hardware do MetroCluster. 
+---
+= Onde encontrar procedimentos para tarefas de manutenção do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve ter certeza de que selecionou o procedimento correto quando executar tarefas de manutenção de hardware do MetroCluster.
+
+.Procedimentos de manutenção para diferentes tipos de configurações do MetroCluster
+* Se tiver uma configuração IP do MetroCluster, reveja os procedimentos em link:task-modify-ip-netmask-properties.html["Procedimentos de manutenção para configurações IP do MetroCluster"].
+* Se tiver uma configuração MetroCluster FC, reveja os procedimentos em link:task_modify_switch_or_bridge_ip_address_for_health_monitoring.html["Procedimentos de manutenção para configurações MetroCluster FC"].
+* Se não conseguir encontrar o procedimento na secção específica da sua configuração, reveja os procedimentos em link:task_replace_a_shelf_nondisruptively_in_a_stretch_mcc_configuration.html["Procedimentos de manutenção para todas as configurações do MetroCluster"].
+
+
+.Todos os outros procedimentos de manutenção
+A tabela a seguir fornece links para procedimentos relacionados à manutenção do MetroCluster que não estão localizados nas três seções listadas acima:
+
+|===
+
+
+| Componente | Tipo MetroCluster (FC ou IP) | Tarefa | Procedimento 
+
+
+ a| 
+Software ONTAP
+ a| 
+Ambos
+ a| 
+Atualização do software ONTAP
+ a| 
+https://docs.netapp.com/us-en/ontap/upgrade/index.html["Atualize, reverta ou downgrade"^]
+
+
+
+ a| 
+Módulo do controlador
+ a| 
+Ambos
+ a| 
+Substituição de FRU (incluindo módulos de controladora, placas PCIe, placa FC-VI e assim por diante)
+
+
+NOTE: A movimentação de um módulo de controlador de armazenamento ou de uma placa NVRAM entre os sistemas de armazenamento MetroCluster não é suportada.
+ a| 
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+
+
+ a| 
+Atualização e expansão
+ a| 
+link:../upgrade/concept_choosing_an_upgrade_method_mcc.html["Atualização e expansão do MetroCluster"]
+
+
+
+ a| 
+Transição da conectividade FC para IP
+ a| 
+link:../transition/concept_choosing_your_transition_procedure_mcc_transition.html["Transição do MetroCluster FC para o MetroCluster IP"]
+
+
+
+ a| 
+Compartimento de unidades
+ a| 
+FC
+ a| 
+Todos os outros procedimentos de manutenção da prateleira. Os procedimentos padrão podem ser usados.
+ a| 
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.html["Mantenha as gavetas de disco DS460C DS224C e DS212C"^]
+
+
+
+ a| 
+IP
+ a| 
+Todos os procedimentos de manutenção das prateleiras. Os procedimentos padrão podem ser usados.
+
+Se adicionar prateleiras para um agregado sem espelhamento, consulte http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-ip/GUID-EA385AF8-7786-4C3C-B5AE-1B4CFD3AD2EE.html["Considerações ao usar agregados sem espelhamento"^]
+ a| 
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.html["Mantenha as gavetas de disco DS460C DS224C e DS212C"^]
+
+
+
+ a| 
+Ambos
+ a| 
+Adicionar IOM12 gavetas a uma stack de IOM6 gavetas
+ a| 
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Gavetas de adição dinâmica com IOM12 módulos para uma stack de gavetas com IOM6 módulos"^]
+
+|===

@@ -1,0 +1,173 @@
+---
+section: upgrade
+title: Atualize, atualize ou expanda a configuração do MetroCluster
+entries:
+- title: Comece aqui - escolha o seu procedimento
+  entries:
+  - title: Escolha upgrade do controlador, atualização do sistema ou expansão
+    url: "/upgrade/concept_choosing_an_upgrade_method_mcc.html"
+  - title: Escolha o procedimento de atualização do controlador
+    url: "/upgrade/concept_choosing_controller_upgrade_mcc.html"
+  - title: Escolha o procedimento de atualização do sistema
+    url: "/upgrade/concept_choosing_tech_refresh_mcc.html"
+  - title: Escolha o procedimento de expansão
+    url: "/upgrade/concept_choosing_expansion_method_mcc.html"
+- title: Atualizar controladores em IP MetroCluster de quatro nós usando switchover
+    e switchback com comandos "System controller replace" (ONTAP 9.13,1 e posterior)
+  url: "/upgrade/task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html"
+- title: Atualizar controladores no MetroCluster FC usando switchover e switchback
+  url: "/upgrade/task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html"
+- title: Atualizar controladores (AFF A700/FAS9000 para AFF A900/FAS9500) em uma configuração
+    MetroCluster FC usando switchover e switchback (ONTAP 9.10,1 ou posterior)
+  url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html"
+- title: Atualizar controladores no MetroCluster FC de quatro nós usando switchover
+    e switchback com os comandos "System controller replace" (ONTAP 9.10,1 e posterior)
+  url: "/upgrade/task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html"
+- title: Atualize controladores no MetroCluster IP usando switchover e switchback
+    (ONTAP 9.8 e posterior)
+  url: "/upgrade/task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html"
+- title: Atualizar controladores (AFF A700/FAS9000 para AFF A900/FAS9500) no MetroCluster
+    IP usando switchover e switchback (ONTAP 9.10,1 ou posterior)
+  url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html"
+- title: Atualizar uma configuração de MetroCluster FC de quatro nós
+  url: "/upgrade/task_refresh_4n_mcc_fc.html"
+- title: Atualizar uma configuração IP MetroCluster de quatro ou oito nós (ONTAP 9.8
+    e posterior)
+  url: "/upgrade/task_refresh_4n_mcc_ip.html"
+- title: Expanda uma configuração de FC MetroCluster de dois nós para uma configuração
+    de quatro nós
+  entries:
+  - title: Visão geral
+    url: "/upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html"
+  - title: Ativar o registo da consola
+    url: "/upgrade/task-enable-console-logging-expand-fc.html"
+  - title: Verifique o estado da configuração do MetroCluster
+    url: "/upgrade/task_verify_the_state_of_the_mcc_configuration_mcc_expansion.html"
+  - title: Envie uma mensagem AutoSupport personalizada antes de adicionar nós à configuração
+      do MetroCluster
+    url: "/upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration_2_node_to_4_node.html"
+  - title: Zona para as novas portas do controlador ao adicionar um módulo de controlador
+      em uma configuração MetroCluster conetada à malha
+    url: "/upgrade/task_zone_for_the_new_controller_ports_in_a_fabric_attached_mcc_configuration_four_node_expansion.html"
+  - title: Adicione um novo módulo de controlador a cada cluster
+    entries:
+    - title: Visão geral
+      url: "/upgrade/task_add_a_new_controller_to_each_cluster_mcc_expansion.html"
+    - title: Prepare-se para a atualização
+      url: "/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html"
+    - title: Limpe a configuração de um módulo do controlador
+      url: "/upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html"
+    - title: Preparar portas de cluster em um módulo de controlador existente
+      url: "/upgrade/task_prepare_cluster_ports_on_the_exist_controller.html"
+    - title: Prepare o servidor netboot para baixar a imagem
+      url: "/upgrade/task_prepare_the_netboot_server_cluster_mode.html"
+    - title: Defina o modo HA no módulo do controlador existente
+      url: "/upgrade/task_enable_the_ha_mode_on_the_exist_controller_mcc_when_add_a_2nd_controller.html"
+    - title: Desligue o módulo do controlador existente
+      url: "/upgrade/task_shut_down_the_exist_controller_when_add_a_2nd_controller_in_c_mode.html"
+    - title: Instale e faça o cabo do novo módulo do controlador
+      entries:
+      - title: Pré-requisitos e instalação
+        url: "/upgrade/task_install_and_cable_the_new_controller.html"
+      - title: Cable as portas FC-VI e HBA do novo módulo de controladora aos switches
+          FC
+        url: "/upgrade/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html"
+      - title: Cabeamento das conexões de peering de cluster do novo módulo de controladora
+        url: "/upgrade/task_cable_the_cluster_peering_connections.html"
+    - title: Ligue ambos os módulos do controlador e apresente o aviso Loader
+      url: "/upgrade/task_power_up_both_controller_modules_and_display_the_loader_prompt_2_node_mcc_expansion.html"
+    - title: Altere a configuração ha-config nos módulos de controladora existentes
+        e novos
+      url: "/upgrade/task_change_the_ha_config_setts_mcc_add_a_2nd_controller.html"
+    - title: Defina a ID do sistema do parceiro para ambos os módulos do controlador
+      url: "/upgrade/task_set_the_partner_system_id_for_both_controller_modules.html"
+    - title: Inicialize o módulo do controlador existente
+      url: "/upgrade/task_boot_the_exist_controller_module.html"
+    - title: Atribua discos ao novo módulo do controlador
+      url: "/upgrade/task_assign_disks_to_the_new_controller_mcc_expansion.html"
+    - title: Netboot e configure o ONTAP no novo módulo do controlador
+      url: "/upgrade/task_netboot_and_set_up_ontap_on_the_new_controller_module_mcc.html"
+    - title: Espelhe o agregado raiz no novo controlador
+      url: "/upgrade/task_mirror_the_root_aggregates_mcc_expansion_procedure.html"
+    - title: Configurar LIFs entre clusters
+      url: "/upgrade/task-configure-intercluster-lifs.html"
+    - title: Crie um agregado de dados espelhados em cada nó
+      url: "/upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html"
+    - title: Instale licenças para o novo módulo do controlador
+      url: "/upgrade/task_install_licenses_on_the_new_controller_module_cluster_mode.html"
+    - title: Criar agregados de dados sem espelhamento
+      url: "/upgrade/task_create_unmirrored_data_aggregates_mcc.html"
+    - title: Instale o firmware depois de adicionar um módulo de controladora
+      url: "/upgrade/task_install_firmware_after_add_a_controller_module.html"
+  - title: Atualize a configuração do MetroCluster com novos controladores
+    url: "/upgrade/task_refresh_the_mcc_configuration_mcc_configure_refresh.html"
+  - title: Ative o failover de storage em ambos os módulos da controladora e ative
+      a HA do cluster
+    url: "/upgrade/task_enable_storage_failover_both_controller_modules_and_set_cluster_ha.html"
+  - title: Reinicie os SVMs
+    url: "/upgrade/task_restart_the_svms.html"
+- title: Expanda uma configuração de FC MetroCluster de quatro nós para uma configuração
+    de oito nós
+  entries:
+  - title: Visão geral
+    url: "/upgrade/task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html"
+  - title: Ativar o registo da consola
+    url: "/upgrade/task-enable-console-logging-expand-fc-four-node.html"
+  - title: Determinar o novo layout do cabo
+    url: "/upgrade/task_determin_the_new_cable_layout_mcc_expansion.html"
+  - title: Coloque o novo equipamento em rack
+    url: "/upgrade/task_rack_the_new_equipment_mcc_expansion.html"
+  - title: Verifique a integridade da configuração do MetroCluster
+    url: "/upgrade/task_verify_the_health_of_the_mcc_configuration.html"
+  - title: Verifique se há erros de configuração do MetroCluster com o Config Advisor
+    url: "/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor.html"
+  - title: Envie uma mensagem AutoSupport personalizada antes de adicionar nós à configuração
+      do MetroCluster
+    url: "/upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration.html"
+  - title: Recable e zone uma malha de switch para os novos nós
+    entries:
+    - title: Desconete o grupo de DR existente da malha
+      url: "/upgrade/task_disconnect_the_exist_dr_group_mcc_expansion.html"
+    - title: Recable e reconfigure os interrutores
+      url: "/upgrade/task_apply_the_rcf_files_and_recable_the_switches.html"
+  - title: Configure o ONTAP nos novos controladores
+    entries:
+    - title: Limpe a configuração de um módulo do controlador
+      url: "/upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html"
+    - title: Atribua a propriedade do disco em sistemas AFF
+      url: "/upgrade/task_assign_disk_ownership_in_aff_systems_mcc.html"
+    - title: Atribua a propriedade do disco em sistemas que não sejam AFF
+      url: "/upgrade/task_assign_disk_ownership_to_non_aff_systems_mcc.html"
+    - title: Verifique o estado ha-config dos componentes
+      url: "/upgrade/task_verify_that_the_ha_state_of_components_is_mcc_dr_smok_crater_or_mcc_expansion.html"
+    - title: Inicialize os novos controladores e junte-os ao cluster
+      url: "/upgrade/task_boot_the_new_controllers_and_join_them_to_the_cluster.html"
+    - title: Configure os clusters em uma configuração do MetroCluster
+      entries:
+      - title: Configurar LIFs entre clusters
+        url: "/upgrade/task-configure-intercluster-lifs-4node.html"
+      - title: Espelhar os agregados de raiz
+        url: "/upgrade/task_mirror_the_root_aggregates_mcc.html"
+      - title: Implementar a configuração do MetroCluster
+        url: "/upgrade/task_implement_the_mcc_configuration_mcc_refresh_mcc_expansion.html"
+      - title: Crie um agregado de dados espelhados em cada nó
+        url: "/upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html"
+      - title: Configurar pontes FC para SAS para monitoramento de integridade
+        url: "/upgrade/task_configure_the_fc_to_sas_bridges_for_health_monitor.html"
+      - title: Mover um volume de metadados nas configurações do MetroCluster
+        url: "/upgrade/task_move_a_metadata_volume_in_mcc_configurations.html"
+      - title: Verifique a configuração do MetroCluster
+        url: "/upgrade/task_check_the_mcc_configuration.html"
+  - title: Verifique se há erros de configuração do MetroCluster com o Config Advisor
+    url: "/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor.html"
+  - title: Envie uma mensagem AutoSupport personalizada depois para adicionar nós
+      à configuração do MetroCluster
+    url: "/upgrade/task_send_a_custom_autosupport_message_after_add_nodes_to_the_mcc_configuration.html"
+  - title: Verifique o switchover, a recuperação e o switchback
+    url: "/upgrade/task_verify_switchover_heal_and_switchback.html"
+- title: Expanda uma configuração IP do MetroCluster
+  url: "/upgrade/task_expand_a_four_node_mcc_ip_configuration.html"
+- title: Remover um grupo de recuperação de desastres
+  url: "/upgrade/concept_removing_a_disaster_recovery_group.html"
+- title: Onde encontrar informações adicionais
+  url: "/upgrade/reference_where_to_find_additional_information_mcc_ug.html"

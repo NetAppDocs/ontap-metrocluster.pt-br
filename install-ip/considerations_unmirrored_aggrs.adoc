@@ -1,0 +1,46 @@
+---
+permalink: install-ip/considerations_unmirrored_aggrs.html 
+sidebar: sidebar 
+keywords: unmirrored aggregates 
+summary: Se a sua configuração incluir agregados sem espelhamento, você precisa estar ciente de possíveis problemas de acesso após as operações de switchover. 
+---
+= Considerações para agregados sem espelhamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se a sua configuração incluir agregados sem espelhamento, você precisa estar ciente de possíveis problemas de acesso após as operações de switchover.
+
+
+
+== Considerações para agregados sem espelhamento ao fazer manutenção que requer desligamento de energia
+
+Se você estiver executando o switchover negociado por motivos de manutenção que exigem desligamento de energia em todo o local, primeiro deverá ficar offline manualmente todos os agregados sem espelhamento pertencentes ao local de desastre.
+
+Se você não fizer isso, os nós no local sobrevivente podem descer devido a panics de vários discos. Isso pode ocorrer se agregados sem espelhamento com comutação ficarem off-line ou estiverem ausentes devido à perda de conetividade ao storage no local de desastre devido ao desligamento de energia ou à perda de ISLs.
+
+
+
+== Considerações para agregados sem espelhamento e namespaces hierárquicos
+
+Se você estiver usando namespaces hierárquicos, você deve configurar o caminho de junção para que todos os volumes nesse caminho estejam apenas em agregados espelhados ou apenas em agregados sem espelhamento. Configurar uma combinação de agregados sem espelhamento e espelhados no caminho de junção pode impedir o acesso aos agregados sem espelhamento após a operação de comutação.
+
+
+
+== Considerações para agregados sem espelhamento e volumes de metadados CRS e volumes raiz de dados SVM
+
+O volume de metadados do serviço de replicação de configuração (CRS) e os volumes raiz de dados do SVM devem estar em um agregado espelhado. Não é possível mover esses volumes para agregado sem espelhamento. Se eles estiverem em operações de comutação e switchback negociadas sem espelhamento, serão vetadas. O comando 'MetroCluster check' fornece um aviso, se for esse o caso.
+
+
+
+== Considerações para agregados sem espelhamento e SVMs
+
+Os SVMs devem ser configurados somente em agregados espelhados ou somente em agregados sem espelhamento. Configurar uma combinação de agregados sem espelhamento e espelhados pode resultar em uma operação de switchover que excede 120 segundos e resultar em uma interrupção de dados se os agregados sem espelhamento não ficarem online.
+
+
+
+== Considerações para agregados sem espelhamento e SAN
+
+Nas versões ONTAP anteriores a 9,9.1, um LUN não deve ser localizado em um agregado sem espelhamento. Configurar um LUN em um agregado sem espelhamento pode resultar em uma operação de switchover que excede 120 segundos e uma interrupção de dados.

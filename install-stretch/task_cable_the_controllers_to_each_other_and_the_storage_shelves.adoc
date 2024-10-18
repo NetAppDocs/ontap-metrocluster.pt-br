@@ -1,0 +1,44 @@
+---
+permalink: install-stretch/task_cable_the_controllers_to_each_other_and_the_storage_shelves.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, cable, controllers, storage, shelves 
+summary: Os adaptadores FC-VI da controladora devem ser cabeados diretamente entre si. As portas SAS da controladora devem ser cabeadas para as stacks de storage remoto e local. 
+---
+= Fazer o cabeamento das controladoras umas para as outras e das gavetas de storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os adaptadores FC-VI da controladora devem ser cabeados diretamente entre si. As portas SAS da controladora devem ser cabeadas para as stacks de storage remoto e local.
+
+Esta tarefa deve ser executada em ambos os locais do MetroCluster.
+
+.Passos
+. Cable as portas FC-VI.
++
+image::../media/mcc_cabling_fc_vi_controller_to_partner.gif[cabeamento de mcc controlador fc vi para parceiro]
+
++
+A ilustração acima é uma conexão de cabo representativa típica. As portas FC-VI específicas variam de acordo com o módulo do controlador.
+
++
+** Os módulos de controladora FAS8200 e AFF A300 podem ser solicitados com uma das duas opções de conectividade FC-VI:
++
+*** As portas integradas 0e e 0f são configuradas no modo FC-VI.
+*** As portas 1a e 1b em uma placa FC-VI entram no slot 1.
+
+
+** Os módulos dos controladores de sistemas de storage AFF A700 e FAS9000 usam quatro portas FC-VI cada uma.
+** Os módulos de controladora do sistema de storage AFF A400 e FAS8300 usam as portas FC-VI 2a e 2b.
+
+
+. Faça o cabo das portas SAS.
++
+A ilustração a seguir mostra as conexões. O uso da porta pode ser diferente dependendo das portas SAS e FC-VI disponíveis no módulo da controladora.
+
++
+image::../media/mcc_two_node_optical_sas_space_configuration.png[configuração de espaço sas ótico de dois nós mcc]
+
+

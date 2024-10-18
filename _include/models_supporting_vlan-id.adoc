@@ -1,0 +1,49 @@
+= 
+:allow-uri-read: 
+
+
+Certas plataformas usam uma VLAN para a interface IP do MetroCluster. Por padrão, cada uma das duas portas usa uma VLAN diferente: 10 e 20.
+
+Se suportado, você também pode especificar uma VLAN diferente (não padrão) maior que 100 (entre 101 e 4095) usando o `-vlan-id` parâmetro no `metrocluster configuration-settings interface create` comando.
+
+As seguintes plataformas *não* suportam o `-vlan-id` parâmetro:
+
+** FAS8200 e AFF A300 ** AFF A320 ** FAS9000 e AFF A700 ** AFF C800, ASA C800, AFF A800 e ASA A800
+
+Todas as outras plataformas suportam o `-vlan-id` parâmetro.
+
+As atribuições de VLAN padrão e válidas dependem se a plataforma suporta o `-vlan-id` parâmetro:
+
+E
+
+[role="tabbed-block"]
+====
+.Plataformas que suportam <code>-vlan-id</code>
+--
+VLAN predefinida:
+
+* Quando o `-vlan-id` parâmetro não é especificado, as interfaces são criadas com VLAN 10 para as portas "A" e VLAN 20 para as portas "B".
+* A VLAN especificada deve corresponder à VLAN selecionada no RCF.
+
+
+Intervalos de VLAN válidos:
+
+* VLAN 10 e 20 padrão
+* VLANs 101 e superior (entre 101 e 4095)
+
+
+--
+.Plataformas que não suportam <code>-vlan-id</code>
+--
+VLAN predefinida:
+
+* Não aplicável. A interface não requer que uma VLAN seja especificada na interface MetroCluster. A porta do switch define a VLAN que é usada.
+
+
+Intervalos de VLAN válidos:
+
+* Todas as VLANs não explicitamente excluídas ao gerar o RCF. O RCF alerta-o se a VLAN for inválida.
+
+
+--
+====

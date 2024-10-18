@@ -1,0 +1,62 @@
+---
+permalink: manage/task_heal_the_data_aggregates_after_negotiated_switchover.html 
+sidebar: sidebar 
+keywords: heal, data, aggregate, completing, complete, maintenance, test, process, resynchronize, prepare, disaster, operation, root, negotiate, switchover 
+summary: Você precisa curar os agregados de dados após concluir qualquer manutenção ou teste. Esse processo ressincroniza os agregados de dados e prepara o local de desastre para operação normal. Você precisa curar os agregados de dados antes de curar os agregados de raiz. 
+---
+= Recuperação dos agregados de dados após o switchover negociado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa curar os agregados de dados após concluir qualquer manutenção ou teste. Esse processo ressincroniza os agregados de dados e prepara o local de desastre para operação normal. Você precisa curar os agregados de dados antes de curar os agregados de raiz.
+
+Todas as atualizações de configuração no cluster remoto replicam com sucesso para o cluster local. Você liga o storage no local de desastre como parte deste procedimento, mas não deve nem ligar os módulos do controlador no local de desastre.
+
+.Passos
+. Certifique-se de que o switchover foi concluído executando o comando MetroCluster operation show.
++
+[listing]
+----
+controller_A_1::> metrocluster operation show
+  Operation: switchover
+      State: successful
+ Start Time: 7/25/2014 20:01:48
+   End Time: 7/25/2014 20:02:14
+     Errors: -
+----
+. Ressincronize os agregados de dados executando o comando MetroCluster heal -phase agreements do cluster sobrevivente.
++
+[listing]
+----
+controller_A_1::> metrocluster heal -phase aggregates
+[Job 130] Job succeeded: Heal Aggregates is successful.
+----
++
+Se a cura for vetada, você terá a opção de reemitir o comando MetroCluster heal com o parâmetro --override-vetos. Se você usar esse parâmetro opcional, o sistema substituirá quaisquer vetos de software que impeçam a operação de recuperação.
+
+. Verifique se a operação foi concluída executando o comando MetroCluster operation show.
++
+[listing]
+----
+controller_A_1::> metrocluster operation show
+    Operation: heal-aggregates
+      State: successful
+Start Time: 7/25/2014 18:45:55
+   End Time: 7/25/2014 18:45:56
+     Errors: -
+----
+. Verifique o estado dos agregados executando o comando storage Aggregate show.
++
+[listing]
+----
+controller_A_1::> storage aggregate show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2    227.1GB   227.1GB    0% online       0 mcc1-a2          raid_dp, mirrored, normal...
+----
+. Se o storage tiver sido substituído no local de desastre, talvez seja necessário espelhar novamente os agregados.
+

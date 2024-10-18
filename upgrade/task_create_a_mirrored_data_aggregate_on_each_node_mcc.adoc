@@ -1,0 +1,82 @@
+---
+permalink: upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, create, mirrored, data, aggregate, node 
+summary: Você precisa criar um agregado de dados espelhados em cada nó no grupo de DR. 
+---
+= Criando um agregado de dados espelhados em cada nó
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa criar um agregado de dados espelhados em cada nó no grupo de DR.
+
+.Sobre esta tarefa
+* Você deve saber quais unidades serão usadas no novo agregado.
+* Se você tiver vários tipos de unidade no sistema (armazenamento heterogêneo), você deve entender como pode garantir que o tipo de unidade correto esteja selecionado.
+* As unidades são de propriedade de um nó específico; quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
++
+Em sistemas que usam ADP, agregados são criados usando partições nas quais cada unidade é particionada em partições P1, P2 e P3.
+
+* Os nomes agregados devem estar em conformidade com o esquema de nomenclatura que você determinou quando você planejou sua configuração do MetroCluster.
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"]
+
+
+
+
+NOTE: É recomendável manter pelo menos 20% de espaço livre para agregados espelhados para performance e disponibilidade ideais de storage. Embora a recomendação seja de 10% para agregados não espelhados, os 10% adicionais de espaço podem ser usados pelo sistema de arquivos para absorver alterações incrementais. Mudanças incrementais aumentam a utilização de espaço para agregados espelhados devido à arquitetura baseada em Snapshot copy-on-write da ONTAP. O não cumprimento destas práticas recomendadas pode ter um impactos negativo no desempenho.
+
+.Passos
+. Apresentar uma lista de peças sobresselentes disponíveis:
++
+`storage disk show -spare -owner _node_name_`
+
+. Criar o agregado:
++
+`storage aggregate create -mirror true`
+
++
+Se você estiver conetado ao cluster na interface de gerenciamento de cluster, poderá criar um agregado em qualquer nó do cluster. Para garantir que o agregado seja criado em um nó específico, use o `-node` parâmetro ou especifique as unidades que são de propriedade desse nó.
+
++
+Você pode especificar as seguintes opções:
+
++
+** Nó inicial do agregado (ou seja, o nó que possui o agregado em operação normal)
+** Lista de unidades específicas que devem ser adicionadas ao agregado
+** Número de unidades a incluir
++
+
+NOTE: Na configuração mínima suportada, na qual um número limitado de unidades está disponível, você deve usar a opção force-small-Aggregate para permitir a criação de um agregado RAID-DP de três discos.
+
+** Estilo de checksum para usar para o agregado
+** Tipo de unidades a utilizar
+** Tamanho das unidades a utilizar
+** Velocidade de condução a utilizar
+** Tipo RAID para grupos RAID no agregado
+** Número máximo de unidades que podem ser incluídas em um grupo RAID
+** Se unidades com RPM diferentes são permitidas
++
+Para obter mais informações sobre essas opções, consulte a `storage aggregate create` página de manual.
+
++
+O comando a seguir cria um agregado espelhado com 10 discos:
+
++
+[listing]
+----
+cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_1 -mirror true
+[Job 15] Job is queued: Create aggr1_node_A_1.
+[Job 15] The job is starting.
+[Job 15] Job succeeded: DONE
+----
+
+
+. Verifique o grupo RAID e as unidades do seu novo agregado:
++
+`storage aggregate show-status -aggregate _aggregate-name_`
+
+

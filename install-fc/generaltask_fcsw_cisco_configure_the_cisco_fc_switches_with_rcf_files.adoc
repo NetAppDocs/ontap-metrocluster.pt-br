@@ -1,0 +1,14 @@
+---
+permalink: install-fc/generaltask_fcsw_cisco_configure_the_cisco_fc_switches_with_rcf_files.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, configuring, cisco, fc, switched, rcf, files 
+summary: Para configurar um switch Cisco FC, você deve redefinir as configurações do switch para os padrões de fábrica, instalar o software do switch e baixar e aplicar os arquivos de configuração de referência que fornecem as configurações completas do switch para determinadas configurações. 
+---
+= Configurando os switches Cisco FC com arquivos RCF
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para configurar um switch Cisco FC, você deve redefinir as configurações do switch para os padrões de fábrica, instalar o software do switch e baixar e aplicar os arquivos de configuração de referência (RCF) que fornecem as configurações completas do switch para determinadas configurações.

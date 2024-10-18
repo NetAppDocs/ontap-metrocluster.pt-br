@@ -1,0 +1,26 @@
+---
+permalink: tiebreaker/upgrade_host.html 
+sidebar: sidebar 
+keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
+summary: O software tiebreaker fornece recursos de monitoramento para um ambiente de storage em cluster. Ele também envia notificações SNMP em caso de problemas de conetividade de nó e desastres de site. 
+---
+= Atualize o host onde o monitor tiebreaker está sendo executado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Talvez seja necessário atualizar o host no qual o monitor tiebreaker está sendo executado.
+
+.Passos
+. Desinstale o software tiebreaker:
++
+`rpm -e NetApp-MetroCluster-Tiebreaker-Software`
+
+. Atualize o host. Consulte a documentação do sistema operacional do host para obter detalhes.
+. Reinstale o software tiebreaker.
++
+Execute uma nova instalação do tiebreaker seguindo as etapas em link:install-choose-procedure.html["Instale o software tiebreaker"].
+
+

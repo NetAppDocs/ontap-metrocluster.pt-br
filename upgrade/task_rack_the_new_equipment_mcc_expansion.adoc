@@ -1,0 +1,18 @@
+---
+permalink: upgrade/task_rack_the_new_equipment_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, rack, new, equipment 
+summary: Você precisa extrair o equipamento para os novos nós. 
+---
+= Empilhar o novo equipamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa extrair o equipamento para os novos nós.
+
+.Passos
+. Use o procedimento no link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"] para colocar em rack os novos sistemas de storage, gavetas de disco e pontes FC para SAS.
+

@@ -1,0 +1,181 @@
+---
+permalink: maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, upgrade, downgrade, firmware, brocade, fc, switch 
+summary: Para atualizar ou fazer downgrade do firmware em um switch Brocade FC, você deve usar os comandos específicos do Brocade para desativar o switch, executar e verificar a alteração de firmware e reinicializar e reativar o switch. 
+---
+= Atualizando ou baixando o firmware em um switch Brocade FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para atualizar ou fazer downgrade do firmware em um switch Brocade FC, você deve usar os comandos específicos do Brocade para desativar o switch, executar e verificar a alteração de firmware e reinicializar e reativar o switch.
+
+.Sobre esta tarefa
+Confirme se você verificou e executou as seguintes tarefas para sua configuração:
+
+* Você tem os arquivos de firmware.
+* O sistema está devidamente cabeado.
+* Todos os caminhos para as gavetas de storage estão disponíveis.
+* As pilhas do compartimento de disco são estáveis.
+* A malha do switch FC está saudável.
+* Não existem componentes com falha no sistema.
+* O sistema está a funcionar normalmente.
+* Você tem a senha de administrador e acesso a um servidor FTP ou SCP.
+* O registo da consola está ativado.
++
+link:enable-console-logging-before-maintenance.html["Ativar o registo da consola"]
+
+
+
+A malha do switch é desativada durante uma atualização ou downgrade de firmware, e a configuração do MetroCluster depende da segunda malha para continuar a operação.
+
+A partir do Fabric os 9,0.1, o SNMPv2 não é suportado nos switches Brocade. Se você atualizar para o Fabric os 9.0.1 ou posterior, use o SNMPv3 para monitoramento de integridade. Para obter mais informações, link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-snmpv3-in-a-metrocluster-configuration["Configurando o SNMPv3 em uma configuração MetroCluster"]consulte .
+
+Essa tarefa deve ser executada em cada uma das malhas de switch sucessivamente para que todos os switches estejam executando a mesma versão de firmware.
+
+
+NOTE: Esse procedimento não causa interrupções e leva aproximadamente uma hora para ser concluído.
+
+.Passos
+. Faça login em cada um dos switches da malha.
++
+Os exemplos nas etapas a seguir usam o switch `FC_switch_A_1`.
+
+. Desative cada um dos switches na estrutura:
++
+`*switchCfgPersistentDisable*`
+
++
+Se este comando não estiver disponível, execute o `switchDisable` comando.
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchCfgPersistentDisable
+----
+. Transfira a versão de firmware pretendida:
++
+`*firmwareDownload*`
+
++
+Quando solicitado o nome do arquivo, você deve especificar o subdiretório ou caminho relativo para o arquivo de firmware.
+
++
+Você pode executar o `firmwareDownload` comando ao mesmo tempo em ambos os switches, mas você deve permitir que o firmware baixe e confirme corretamente antes de passar para a próxima etapa.
+
++
+[listing]
+----
+FC_switch_A_1:admin> firmwaredownload
+Server Name or IP Address: 10.64.203.188
+User Name: test
+File Name: v7.3.1b
+Network Protocol(1-auto-select, 2-FTP, 3-SCP, 4-SFTP) [1]: 2
+Password:
+Server IP: 10.64.203.188, Protocol IPv4
+Checking system settings for firmwaredownload...
+System settings check passed.
+----
+. Verifique se o firmware foi baixado e comprometido com ambas as partições:
++
+`*firmwareShow*`
+
++
+O exemplo a seguir mostra que a transferência do firmware está concluída à medida que ambas as imagens são atualizadas:
+
++
+[listing]
+----
+FC_switch_A_1:admin> firmwareShow
+Appl     Primary/Secondary Versions
+
+------------------------------------------
+
+FOS      v7.3.1b
+
+         v7.3.1b
+----
+. Reinicie os switches:
++
+`*reboot*`
+
++
+Algumas versões de firmware executam automaticamente uma operação de hahReboot depois que o download do firmware é concluído. A reinicialização nesta etapa é necessária mesmo que o haReboot tenha sido executado.
+
++
+[listing]
+----
+FC_switch_A_1:admin> reboot
+----
+. Verifique se o novo firmware é para um nível de firmware intermediário ou para uma versão final especificada.
++
+Se o download for para o nível intermediário de firmware, execute as duas etapas anteriores até que a versão especificada seja instalada.
+
+. Ativar os interrutores:
++
+`*switchCfgPersistentEnable*`
+
++
+Se este comando não estiver disponível, então o interrutor deve estar no `enabled` estado após `reboot` a execução do comando.
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchCfgPersistentEnable
+----
+. Verifique se os switches estão online e se todos os dispositivos estão conetados corretamente:
++
+`*switchShow*`
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchShow
+----
+. Verifique se as informações de uso do buffer para um grupo de portas ou todos os grupos de portas no switch são exibidas corretamente:
++
+`*portbuffershow*`
+
++
+[listing]
+----
+FC_switch_A_1:admin> portbuffershow
+----
+. Verifique se a configuração atual de uma porta é exibida corretamente:
++
+`*portcfgshow*`
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgshow
+----
++
+Verifique as configurações da porta, como velocidade, modo, entroncamento, criptografia e compactação, na saída ISL (Inter-Switch Link). Verifique se as configurações da porta não foram afetadas pelo download do firmware.
+
+. Verifique a operação da configuração do MetroCluster no ONTAP:
++
+.. Verifique se o sistema é multipathed
+`*node run -node _node-name_ sysconfig -a*`
+.. Verifique se há alertas de integridade em ambos os clusters
+`*system health alert show*`
+.. Confirme a configuração do MetroCluster e se o modo operacional está normal
+`*metrocluster show*`
+.. Execute uma verificação MetroCluster
+`*metrocluster check run*`
+.. Exibir os resultados da verificação MetroCluster
+`*metrocluster check show*`
+.. Verifique se existem alertas de estado nos interrutores (se presentes)
+`*storage switch show*`
+.. Execute o Config Advisor.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"]
+
+.. Depois de executar o Config Advisor, revise a saída da ferramenta e siga as recomendações na saída para resolver quaisquer problemas descobertos.
+
+
+. Aguarde 15 minutos antes de repetir este procedimento para a segunda tela do interrutor.
+

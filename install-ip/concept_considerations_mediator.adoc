@@ -1,0 +1,42 @@
+---
+permalink: install-ip/concept_considerations_mediator.html 
+sidebar: sidebar 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+summary: As várias configurações do MetroCluster têm diferenças importantes nos componentes necessários. 
+---
+= Diferenças entre ONTAP Mediator e MetroCluster tiebreaker
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.7, você pode usar o switchover não planejado automático assistido por Mediador ONTAP (MAUSO) na configuração IP do MetroCluster ou você pode usar o software tiebreaker do MetroCluster. Não é necessário usar o software MAUSO ou tiebreaker; no entanto, se você optar por não usar nenhum desses serviços, será necessário link:../disaster-recovery/concept_dr_workflow.html["realize uma recuperação manual"] se ocorrer um desastre.
+
+As diferentes configurações do MetroCluster executam o switchover automático em diferentes circunstâncias:
+
+* *Configurações MetroCluster FC usando a capacidade AUSO (não presente nas configurações IP do MetroCluster)*
++
+Nessas configurações, o AUSO é iniciado se os controladores falharem, mas o armazenamento (e as bridges, se presentes) permanecem operacionais.
+
+* *Configurações IP do MetroCluster usando o serviço Mediador ONTAP (ONTAP 9.7 e posterior)*
++
+Nessas configurações, o MAUSO é iniciado nas mesmas circunstâncias que o AUSO, conforme descrito acima, e também após uma falha completa do local (controladores, armazenamento e switches).
+
++
+link:concept-ontap-mediator-supports-automatic-unplanned-switchover.html["Saiba mais sobre como o Mediador ONTAP suporta switchover não planejado automático"].
+
+* *Configurações MetroCluster IP ou FC usando o software tiebreaker no modo ativo*
++
+Nessas configurações, o tiebreaker inicia o switchover não planejado após uma falha completa no local.
+
++
+Antes de utilizar o software tiebreaker, reveja o. link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["Instalação e configuração do software MetroCluster Tiebreaker"]
+
+
+
+
+
+== Interoperabilidade do ONTAP Mediator com outros aplicativos e dispositivos
+
+Você não pode usar aplicativos ou dispositivos de terceiros que possam acionar um switchover em combinação com o ONTAP Mediator. Além disso, o monitoramento de uma configuração do MetroCluster com o software tiebreaker MetroCluster não é suportado ao usar o ONTAP Mediator.

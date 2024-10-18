@@ -1,0 +1,69 @@
+---
+permalink: transition/concept_transition_workflow_fc_to_ip_transition.html 
+sidebar: sidebar 
+keywords: follow, workflow, ensure, successful, nondisruptive, transition, metrocluster 
+summary: Siga o fluxo de trabalho específico para garantir uma transição sem interrupções bem-sucedida. 
+---
+= Fluxo de trabalho para transição sem interrupções de MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Siga o fluxo de trabalho específico para garantir uma transição sem interrupções bem-sucedida. Escolha o fluxo de trabalho para sua configuração:
+
+* <<Fluxo de trabalho de transição de configuração de FC de quatro nós>>
+* <<Fluxo de trabalho de transição de configuração de FC de oito nós>>
+
+
+
+
+== Fluxo de trabalho de transição de configuração de FC de quatro nós
+
+O processo de transição começa com uma configuração MetroCluster FC de quatro nós íntegra.
+
+image::../media/transition_dr_group_1_fc_nodes.png[transição de nós do grupo dr 1 fc]
+
+Os novos nós IP do MetroCluster são adicionados como um segundo grupo de DR.
+
+image::../media/transition_dr_groups_fc_and_ip.png[grupos de dr de transição fc e ip]
+
+Os dados são transferidos do antigo grupo de DR para o novo grupo de DR. Depois, os nós antigos e o storage são removidos da configuração e desativados. O processo termina com uma configuração IP MetroCluster de quatro nós.
+
+image::../media/transition_dr_group_2_ip.png[ip do grupo dr de transição 2]
+
+
+
+== Fluxo de trabalho de transição de configuração de FC de oito nós
+
+O processo de transição começa com uma configuração saudável de MetroCluster FC de oito nós.
+
+image::../media/mcc_dr_group_c1.png[grupo de rd mcc c1]
+
+Os novos nós IP do MetroCluster são adicionados como um terceiro grupo de DR.
+
+image::../media/mcc_dr_group_c2.png[grupo de rd mcc c2]
+
+Os dados são transferidos do DR_Group_1-FC para DR_Group_1-IP e, em seguida, os nós antigos e seu storage são removidos da configuração e desativados.
+
+
+NOTE: Se você quiser fazer a transição de uma configuração FC de oito nós para uma configuração IP de quatro nós, será necessário fazer a transição de todos os dados em DR_Group_1-FC e DR_Group_2-FC para o novo grupo de DR IP (DR_Group_1-IP). Em seguida, é possível desativar os dois grupos de RD FC. Após a remoção dos grupos de DR FC, o processo termina com uma configuração IP MetroCluster de quatro nós.
+
+image::../media/mcc_dr_group_c8.png[grupo de rd mcc c8]
+
+Adicione os nós IP restantes do MetroCluster à configuração do MetroCluster existente. Repita o processo para transferir dados dos nós DR_Group_2-FC para os nós DR_Group_2-IP.
+
+image::../media/mcc_dr_group_c7.png[grupo de rd mcc c7]
+
+Depois de remover DR_Group_2-FC, o processo termina com uma configuração IP MetroCluster de oito nós.
+
+image::../media/mcc_dr_group_c6.png[grupo de rd mcc c6]
+
+
+
+== Fluxo de trabalho do processo de transição
+
+Você usará o fluxo de trabalho a seguir para fazer a transição da configuração do MetroCluster.
+
+image::../media/workflow_4n_transition_nondisruptive.png[transição de fluxo de trabalho 4n sem interrupções]

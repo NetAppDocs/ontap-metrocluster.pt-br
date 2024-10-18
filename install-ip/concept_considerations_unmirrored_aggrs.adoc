@@ -1,0 +1,69 @@
+---
+permalink: install-ip/concept_considerations_unmirrored_aggrs.html 
+sidebar: sidebar 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+summary: Se a sua configuração incluir agregados sem espelhamento, você precisa estar ciente de possíveis problemas de acesso após as operações de switchover. 
+---
+= Usando agregados sem espelhamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se a sua configuração incluir agregados sem espelhamento, você precisa estar ciente de possíveis problemas de acesso após as operações de switchover.
+
+
+
+== Considerações para agregados sem espelhamento e namespaces hierárquicos
+
+Se você estiver usando namespaces hierárquicos, você deve configurar o caminho de junção para que todos os volumes nesse caminho estejam apenas em agregados espelhados ou apenas em agregados sem espelhamento. Configurar uma combinação de agregados sem espelhamento e espelhados no caminho de junção pode impedir o acesso aos agregados sem espelhamento após a operação de comutação.
+
+
+
+== Considerações para agregados sem espelhamento e volumes de metadados CRS e volumes raiz de dados SVM
+
+O volume de metadados do serviço de replicação de configuração (CRS) e os volumes raiz de dados do SVM devem estar em um agregado espelhado. Não é possível mover esses volumes para agregado sem espelhamento. Se eles estiverem em operações de comutação e switchback negociadas sem espelhamento, serão vetadas. O comando MetroCluster check fornece um aviso se for esse o caso.
+
+
+
+== Considerações para agregados sem espelhamento e SVMs
+
+Os SVMs devem ser configurados somente em agregados espelhados ou somente em agregados sem espelhamento. Configurar uma combinação de agregados sem espelhamento e espelhados pode resultar em uma operação de switchover que excede 120 segundos e resultar em uma interrupção de dados se os agregados sem espelhamento não ficarem online.
+
+
+
+== Considerações para agregados sem espelhamento e SAN
+
+Antes do ONTAP 9.9,1, um LUN não deve ser localizado em um agregado sem espelhamento. Configurar um LUN em um agregado sem espelhamento pode resultar em uma operação de switchover que excede 120 segundos e uma interrupção de dados.
+
+
+
+== Considerações para adicionar compartimentos de storage para agregados sem espelhamento
+
+
+NOTE: Se você estiver adicionando gavetas que serão usadas para agregados sem espelhamento em uma configuração MetroCluster IP, faça o seguinte:
+
+. Antes de iniciar o procedimento para adicionar as prateleiras, execute o seguinte comando:
++
+`metrocluster modify -enable-unmirrored-aggr-deployment true`
+
+. Verifique se a atribuição automática de disco está desativada:
++
+`disk option show`
+
+. Siga os passos do procedimento para adicionar a prateleira.
+. Atribua manualmente todos os discos da nova gaveta ao nó que possuirá o agregado sem espelhamento ou agregados.
+. Crie os agregados:
++
+`storage aggregate create`
+
+. Depois de concluir o procedimento, execute o seguinte comando:
++
+`metrocluster modify -enable-unmirrored-aggr-deployment false`
+
+. Verifique se a atribuição automática de disco está ativada:
++
+`disk option show`
+
+

@@ -1,0 +1,389 @@
+---
+permalink: disaster-recovery/task_cfg_switches_mcfc.html 
+sidebar: sidebar 
+keywords: configure, fc, switches, metrocluster, configuration 
+summary: Se você tiver substituído os switches FC no local de desastre, será necessário configurá-los usando os procedimentos específicos do fornecedor. 
+---
+= Configuração dos switches FC (somente configurações MetroCluster FC)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você tiver substituído os switches FC no local de desastre, será necessário configurá-los usando os procedimentos específicos do fornecedor. Você deve configurar um switch, verificar se o acesso ao armazenamento no site sobrevivente não é afetado e, em seguida, configurar o segundo switch.
+
+.Tarefas relacionadas
+link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+
+
+
+== Configuração de um switch Brocade FC após um desastre no local
+
+Deve utilizar este procedimento específico do Brocade para configurar o comutador de substituição e ativar as portas ISL.
+
+.Sobre esta tarefa
+Os exemplos deste procedimento baseiam-se nas seguintes premissas:
+
+* O local A é o local do desastre.
+* FC_switch_A_1 foi substituído.
+* FC_switch_A_2 foi substituído.
+* O local B é o local sobrevivente.
+* FC_switch_B_1 está em bom estado.
+* FC_switch_B_2 está em bom estado.
+
+
+Você deve verificar se está usando as atribuições de portas especificadas quando você faz o cabo dos switches FC:
+
+* link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+
+
+Os exemplos mostram duas pontes FC-para-SAS. Se tiver mais bridges, tem de desativar e, posteriormente, ativar as portas adicionais.
+
+.Passos
+. Arranque e pré-configure o novo interrutor:
++
+.. Ligue o novo interrutor e deixe-o arrancar.
+.. Verifique a versão do firmware no switch para confirmar que corresponde à versão dos outros switches FC:
++
+`firmwareShow`
+
+.. Configure o novo switch conforme descrito nos tópicos a seguir, ignorando as etapas para configurar o zoneamento no switch.
++
+link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]
+
++
+link:../install-stretch/concept_considerations_differences.html["Instalação e configuração do Stretch MetroCluster"]
+
+.. Desative o interrutor persistentemente:
++
+`switchcfgpersistentdisable`
+
++
+O switch permanecerá desativado após uma reinicialização ou fastboot. Se este comando não estiver disponível, você deve usar o `switchdisable` comando.
+
++
+O exemplo a seguir mostra o comando no BrocadeSwitchA:
+
++
+[listing]
+----
+BrocadeSwitchA:admin> switchcfgpersistentdisable
+----
++
+O exemplo a seguir mostra o comando no BrocadeSwitchB:
+
++
+[listing]
+----
+BrocadeSwitchA:admin> switchcfgpersistentdisable
+----
+
+
+. Configuração completa do novo switch:
++
+.. Ative as ISLs no site sobrevivente:
++
+`portcfgpersistentenable port-number`
+
++
+[listing]
+----
+FC_switch_B_1:admin> portcfgpersistentenable 10
+FC_switch_B_1:admin> portcfgpersistentenable 11
+----
+.. Ative as ISLs nos interrutores de substituição:
++
+`portcfgpersistentenable port-number`
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgpersistentenable 10
+FC_switch_A_1:admin> portcfgpersistentenable 11
+----
+.. No interrutor de substituição (FC_switch_A_1 neste exemplo) verifique se os ISL estão online:
++
+`switchshow`
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchshow
+switchName: FC_switch_A_1
+switchType: 71.2
+switchState:Online
+switchMode: Native
+switchRole: Principal
+switchDomain:       4
+switchId:   fffc03
+switchWwn:  10:00:00:05:33:8c:2e:9a
+zoning:             OFF
+switchBeacon:       OFF
+
+Index Port Address Media Speed State  Proto
+==============================================
+...
+10   10    030A00 id   16G     Online  FC E-Port 10:00:00:05:33:86:89:cb "FC_switch_A_1"
+11   11    030B00 id   16G     Online  FC E-Port 10:00:00:05:33:86:89:cb "FC_switch_A_1" (downstream)
+...
+----
+
+
+. Ativar persistentemente o interrutor:
++
+`switchcfgpersistentenable`
+
+. Verifique se as portas estão online:
++
+`switchshow`
+
+
+
+
+
+== Configuração de um switch Cisco FC após um desastre no local
+
+Você deve usar o procedimento específico do Cisco para configurar o switch de substituição e ativar as portas ISL.
+
+.Sobre esta tarefa
+Os exemplos deste procedimento baseiam-se nas seguintes premissas:
+
+* O local A é o local do desastre.
+* FC_switch_A_1 foi substituído.
+* FC_switch_A_2 foi substituído.
+* O local B é o local sobrevivente.
+* FC_switch_B_1 está em bom estado.
+* FC_switch_B_2 está em bom estado.
+
+
+.Passos
+. Configure o interrutor:
++
+.. Consulte link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]
+.. Siga as etapas para configurar o switch link:../install-fc/task_reset_the_cisco_fc_switch_to_factory_defaults.html["Configuração dos switches Cisco FC"]na seção _excepto_ para a seção "Configurando zoneamento em um switch Cisco FC":
++
+O zoneamento é configurado posteriormente neste procedimento.
+
+
+
+. No interrutor de integridade (neste exemplo, FC_switch_B_1), ative as portas ISL.
++
+O exemplo a seguir mostra os comandos para ativar as portas:
+
++
+[listing]
+----
+FC_switch_B_1# conf t
+FC_switch_B_1(config)# int fc1/14-15
+FC_switch_B_1(config)# no shut
+FC_switch_B_1(config)# end
+FC_switch_B_1# copy running-config startup-config
+FC_switch_B_1#
+----
+. Verifique se as portas ISL estão ativas usando o comando show interface brief.
+. Recupere as informações de zoneamento do tecido.
++
+O exemplo a seguir mostra os comandos para distribuir a configuração de zoneamento:
+
++
+[listing]
+----
+FC_switch_B_1(config-zone)# zoneset distribute full vsan 10
+FC_switch_B_1(config-zone)# zoneset distribute full vsan 20
+FC_switch_B_1(config-zone)# end
+----
++
+FC_switch_B_1 é distribuído para todos os outros switches na malha para "vsan 10" e "vsan 20", e as informações de zoneamento são recuperadas de FC_switch_A_1.
+
+. No interrutor de integridade, verifique se as informações de zoneamento estão corretamente recuperadas do switch de parceiro:
++
+`show zone`
+
++
+[listing]
+----
+FC_switch_B_1# show zone
+zone name FC-VI_Zone_1_10 vsan 10
+  interface fc1/1 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/2 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/1 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/2 swwn 20:00:54:7f:ee:b8:24:c0
+
+zone name STOR_Zone_1_20_25A vsan 20
+  interface fc1/5 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/8 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/9 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/10 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/11 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/8 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/9 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/10 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/11 swwn 20:00:54:7f:ee:b8:24:c0
+
+zone name STOR_Zone_1_20_25B vsan 20
+  interface fc1/8 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/9 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/10 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/11 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/5 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/8 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/9 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/10 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/11 swwn 20:00:54:7f:ee:b8:24:c0
+FC_switch_B_1#
+----
+. Determine os nomes mundiais (WWNs) dos switches na malha do switch.
++
+Neste exemplo, as duas WWNs de switch são as seguintes:
+
++
+** FC_switch_A_1: 20:00:54:7f:EE:B8:24:C0
+** FC_switch_B_1: 20:00:54:7f:EE:C6:80:78
+
+
++
+[listing]
+----
+FC_switch_B_1# show wwn switch
+Switch WWN is 20:00:54:7f:ee:c6:80:78
+FC_switch_B_1#
+
+FC_switch_A_1# show wwn switch
+Switch WWN is 20:00:54:7f:ee:b8:24:c0
+FC_switch_A_1#
+----
+. Entre no modo de configuração para a zona e remova os membros da zona que não pertencem ao switch WWNs dos dois switches:
++
+--
+`no member interface interface-ide swwn wwn`
+
+Neste exemplo, os seguintes membros não estão associados à WWN de nenhum dos switches na malha e devem ser removidos:
+
+** Nome da zona FC-VI_Zone_1_10 vsan 10
++
+*** A interface FC1/1 oscila 20:00:54:7f:EE:e3:86:50
+*** A interface FC1/2 oscila 20:00:54:7f:EE:e3:86:50
+
+
+
+
+
+NOTE: Os sistemas AFF A700 e FAS9000 são compatíveis com quatro portas FC-VI. É necessário remover todas as quatro portas da zona FC-VI.
+
+** Nome de zona STOR_Zone_1_20_25A vsan 20
++
+*** A interface FC1/5 oscila 20:00:54:7f:EE:e3:86:50
+*** A interface FC1/8 oscila 20:00:54:7f:EE:e3:86:50
+*** A interface FC1/9 oscila 20:00:54:7f:EE:e3:86:50
+*** A interface FC1/10 oscila 20:00:54:7f:EE:e3:86:50
+*** A interface FC1/11 oscila 20:00:54:7f:EE:e3:86:50
+
+
+** Nome de zona STOR_Zone_1_20_25B vsan 20
++
+*** A interface FC1/8 oscila 20:00:54:7f:EE:e3:86:50
+*** A interface FC1/9 oscila 20:00:54:7f:EE:e3:86:50
+*** A interface FC1/10 oscila 20:00:54:7f:EE:e3:86:50
+*** A interface FC1/11 oscila 20:00:54:7f:EE:e3:86:50
+
+
+
+
+O exemplo a seguir mostra a remoção dessas interfaces:
+
+[listing]
+----
+
+ FC_switch_B_1# conf t
+ FC_switch_B_1(config)# zone name FC-VI_Zone_1_10 vsan 10
+ FC_switch_B_1(config-zone)# no member interface fc1/1 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/2 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# zone name STOR_Zone_1_20_25A vsan 20
+ FC_switch_B_1(config-zone)# no member interface fc1/5 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/8 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/9 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/10 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/11 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# zone name STOR_Zone_1_20_25B vsan 20
+ FC_switch_B_1(config-zone)# no member interface fc1/8 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/9 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/10 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/11 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# save running-config startup-config
+ FC_switch_B_1(config-zone)# zoneset distribute full 10
+ FC_switch_B_1(config-zone)# zoneset distribute full 20
+ FC_switch_B_1(config-zone)# end
+ FC_switch_B_1# copy running-config startup-config
+----
+--
+
+
+. [[step8]]Adicione as portas do novo switch às zonas.
++
+O exemplo a seguir pressupõe que o cabeamento no switch de substituição é o mesmo que no switch antigo:
+
++
+[listing]
+----
+
+ FC_switch_B_1# conf t
+ FC_switch_B_1(config)# zone name FC-VI_Zone_1_10 vsan 10
+ FC_switch_B_1(config-zone)# member interface fc1/1 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/2 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# zone name STOR_Zone_1_20_25A vsan 20
+ FC_switch_B_1(config-zone)# member interface fc1/5 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/8 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/9 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/10 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/11 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# zone name STOR_Zone_1_20_25B vsan 20
+ FC_switch_B_1(config-zone)# member interface fc1/8 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/9 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/10 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/11 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# save running-config startup-config
+ FC_switch_B_1(config-zone)# zoneset distribute full 10
+ FC_switch_B_1(config-zone)# zoneset distribute full 20
+ FC_switch_B_1(config-zone)# end
+ FC_switch_B_1# copy running-config startup-config
+----
+. Verifique se o zoneamento está configurado corretamente: `show zone`
++
+A saída de exemplo a seguir mostra as três zonas:
+
++
+[listing]
+----
+
+ FC_switch_B_1# show zone
+   zone name FC-VI_Zone_1_10 vsan 10
+     interface fc1/1 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/2 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/1 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/2 swwn 20:00:54:7f:ee:b8:24:c0
+
+   zone name STOR_Zone_1_20_25A vsan 20
+     interface fc1/5 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/8 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/9 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/10 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/11 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/8 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/9 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/10 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/11 swwn 20:00:54:7f:ee:b8:24:c0
+
+   zone name STOR_Zone_1_20_25B vsan 20
+     interface fc1/8 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/9 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/10 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/11 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/5 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/8 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/9 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/10 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/11 swwn 20:00:54:7f:ee:b8:24:c0
+ FC_switch_B_1#
+----
+

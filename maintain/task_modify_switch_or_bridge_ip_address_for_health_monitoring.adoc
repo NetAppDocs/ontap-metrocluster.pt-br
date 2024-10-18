@@ -1,0 +1,85 @@
+---
+permalink: maintain/task_modify_switch_or_bridge_ip_address_for_health_monitoring.html 
+sidebar: sidebar 
+keywords: metrocluster, atto, fc, switches, bridges, modify, IP, address 
+summary: Substitua os endereços IP antigos de monitoramento de integridade depois de modificar os endereços IP de switches back-end MetroCluster FC ou pontes ATTO. 
+---
+= Modifique um endereço IP de switch ou ponte ATTO para monitoramento de integridade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de modificar os endereços IP dos switches back-end MetroCluster FC e das bridges ATTO, você deve substituir os endereços IP de monitoramento de integridade antigos pelos novos valores.
+
+* <<Modifique um endereço IP do switch>>
+* <<Modifique um endereço IP de ponte ATTO>>
+
+
+
+
+== Modifique um endereço IP do switch
+
+Substitua o antigo endereço IP de monitoramento de integridade de um switch back-end MetroCluster FC.
+
+.Antes de começar
+Consulte a documentação do fornecedor do switch para o modelo do switch para alterar o endereço IP do switch antes de alterar o endereço IP de monitoramento de integridade.
+
+.Passos
+. Execute o `::> storage switch show` comando e na saída, observe os switches que estão relatando erros.
+. Remova as entradas do switch com endereços IP antigos:
++
+`::> storage switch remove -name _switch_name_`
+
+. Adicione os switches com novos endereços IP:
++
+`::> storage switch add -name _switch_name_ -address _new_IP_address_ -managed-by in-band`
+
+. Verifique os novos endereços IP e confirme se não existem erros:
++
+`::> storage switch show`
+
+. Se necessário, atualize as entradas:
++
+`::> set advanced`
+
++
+`::*> storage switch refresh`
+
++
+`::*> set admin`
+
+
+
+
+
+== Modifique um endereço IP de ponte ATTO
+
+Substitua o antigo endereço IP de monitoramento de integridade de uma ponte ATTO.
+
+.Passos
+. Execute o `::> storage bridge show` comando e na saída, observe as bridges ATTO que estão relatando erros.
+. Remova as entradas da ponte ATTO com endereços IP antigos:
++
+`::> storage bridge remove -name _ATTO_bridge_name_`
+
+. Adicione as bridges ATTO com novos endereços IP:
++
+`::> storage bridge add -name _ATTO_bridge_name_ -address _new_IP_address_ -managed-by in-band`
+
+. Verifique os novos endereços IP e confirme se não existem erros:
++
+`::> storage bridge show`
+
+. Se necessário, atualize as entradas:
++
+`::> set advanced`
+
++
+`::*> storage bridge refresh`
+
++
+`::*> set admin`
+
+

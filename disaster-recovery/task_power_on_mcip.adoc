@@ -1,0 +1,26 @@
+---
+permalink: disaster-recovery/task_power_on_mcip.html 
+sidebar: sidebar 
+keywords: power, ip, disaster, site, configuration 
+summary: É necessário ligar os componentes dos compartimentos de disco e dos switches IP MetroCluster no local de desastre. 
+---
+= Ligar o equipamento no local de desastre (configurações IP do MetroCluster)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É necessário ligar os componentes dos compartimentos de disco e dos switches IP MetroCluster no local de desastre. Os módulos do controlador no local de desastre permanecem no prompt DO Loader.
+
+.Sobre esta tarefa
+Os exemplos deste procedimento assumem o seguinte:
+
+* O local A é o local do desastre.
+* O local B é o local sobrevivente.
+
+
+.Passos
+. Ligue as gavetas de disco no local de desastre e verifique se todos os discos estão em execução.
+. Ligue os switches IP MetroCluster se eles ainda não estiverem ligados.
+

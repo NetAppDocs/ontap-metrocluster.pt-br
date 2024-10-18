@@ -1,0 +1,144 @@
+---
+permalink: install-stretch/concept_required_mcc_components_and_naming_conventions_for_two_node_bridge_attached_stretch_configurations_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, required, hardware, components, naming, conventions, two, node, stretch, bridge 
+summary: Ao Planejar sua configuração do MetroCluster, você deve entender os componentes de hardware e software necessários e suportados. Para conveniência e clareza, você também deve entender as convenções de nomenclatura usadas para componentes em exemplos ao longo da documentação. Por exemplo, um site é referido como Site A e o outro site é referido como Site B. 
+---
+= Componentes de hardware necessários da MetroCluster e convenções de nomenclatura para configurações de stretch anexadas a ponte de dois nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao Planejar sua configuração do MetroCluster, você deve entender os componentes de hardware e software necessários e suportados. Para conveniência e clareza, você também deve entender as convenções de nomenclatura usadas para componentes em exemplos ao longo da documentação. Por exemplo, um site é referido como Site A e o outro site é referido como Site B.
+
+
+
+== Software e hardware suportados
+
+O hardware e o software devem ser compatíveis com a configuração MetroCluster FC.
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+Ao usar sistemas AFF, todos os módulos do controlador na configuração do MetroCluster devem ser configurados como sistemas AFF.
+
+
+
+== Redundância de hardware na configuração MetroCluster
+
+Devido à redundância de hardware na configuração do MetroCluster, há dois de cada componente em cada local. Os sites são arbitrariamente atribuídos às letras A e B e os componentes individuais são arbitrariamente atribuídos aos números 1 e 2.
+
+
+
+== Requisito para dois clusters ONTAP de nó único
+
+A configuração Stretch MetroCluster conectada a ponte requer dois clusters ONTAP de nó único.
+
+A nomeação deve ser única dentro da configuração do MetroCluster.
+
+Nomes de exemplo:
+
+* Local A: Cluster_A
+* Local B: Cluster_B
+
+
+
+
+== Requisito para dois módulos de controlador de armazenamento
+
+A configuração Stretch MetroCluster conetada em ponte requer dois módulos de controlador de armazenamento.
+
+Os controladores devem atender aos seguintes requisitos:
+
+* A nomeação deve ser única dentro da configuração do MetroCluster.
+* Todos os módulos do controlador na configuração do MetroCluster devem estar executando a mesma versão do ONTAP.
+* Todos os módulos de controladora em um grupo de DR devem ter o mesmo modelo.
+* Todos os módulos de controladora em um grupo de DR devem usar a mesma configuração FC-VI.
++
+Alguns módulos de controladora suportam duas opções de conectividade FC-VI:
+
++
+** Portas FC-VI integradas
+** Uma placa FC-VI no slot 1
++
+Uma combinação de um módulo de controladora que usa portas FC-VI integradas e outra que usa uma placa FC-VI complementar não é compatível. Por exemplo, se um nó usar a configuração FC-VI integrada, todos os outros nós do grupo de DR também precisarão usar a configuração FC-VI integrada.
+
+
+
+
+
+Nomes de exemplo:
+
+* Local A: Controller_A_1
+* Local B: Controller_B_1
+
+
+
+
+== Requisito para pontes FC para SAS
+
+A configuração Stretch MetroCluster conectada em ponte requer duas ou mais pontes FC para SAS em cada local.
+
+Essas pontes conetam os compartimentos de disco SAS aos módulos da controladora.
+
+
+NOTE: As bridges FibreBridge 6500N não são suportadas em configurações que executam o ONTAP 9.8 e posterior.
+
+* As pontes FibreBridge 7600N e 7500N suportam até quatro stacks SAS.
+* Cada stack pode usar modelos diferentes de IOM, mas todas as gavetas de uma stack precisam usar o mesmo modelo.
++
+Os modelos IOM suportados dependem da versão ONTAP que você está executando.
+
+* A nomeação deve ser única dentro da configuração do MetroCluster.
+
+
+Os nomes sugeridos usados como exemplos neste procedimento identificam o módulo do controlador ao qual a ponte se coneta e a porta.
+
+Nomes de exemplo:
+
+* Local A:
++
+** ponte_A_1_``__port-number__``
+** ponte_A_2_``__port-number__``
+
+
+* Local B:
++
+** ponte_B_1_``__port-number__``
+** ponte_B_2_``__port-number__``
+
+
+
+
+
+
+== Requisito para pelo menos quatro gavetas SAS (recomendado)
+
+A configuração Stretch MetroCluster conetada em ponte requer pelo menos duas gavetas SAS. No entanto, duas gavetas são recomendadas em cada local para permitir a propriedade de disco por compartimento, totalizando quatro gavetas SAS.
+
+Há suporte para um mínimo de uma prateleira em cada local.
+
+Nomes de exemplo:
+
+* Local A:
++
+** shelf_A_1_1
+** shelf_A_1_2
+
+
+* Local B:
++
+** shelf_B_1_1
+** shelf_B_1_2
+
+
+
+
+
+
+== Misturando módulos IOM12 e IOM 6 em uma pilha
+
+Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a ferramenta de Matriz de interoperabilidade (IMT) para ver se a sua versão do ONTAP suporta a mistura de prateleiras. https://imt.netapp.com/matrix/["IMT"^]
+
+Para obter mais detalhes sobre a mistura de prateleiras, consulte: https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Gavetas de adição dinâmica com IOM12 módulos para uma stack de gavetas com IOM6 módulos"^]

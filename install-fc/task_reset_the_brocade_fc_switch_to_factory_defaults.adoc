@@ -1,0 +1,217 @@
+---
+permalink: install-fc/task_reset_the_brocade_fc_switch_to_factory_defaults.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, reset, brocade, fc, switch, factory, defaults 
+summary: Antes de instalar uma nova versão de software e arquivos RCF, você deve apagar a configuração atual do switch e executar a configuração básica. 
+---
+= Redefinindo o switch Brocade FC para os padrões de fábrica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de instalar uma nova versão de software e arquivos RCF, você deve apagar a configuração atual do switch e executar a configuração básica.
+
+.Sobre esta tarefa
+Você deve repetir estas etapas em cada um dos switches FC na configuração da malha do MetroCluster.
+
+.Passos
+. Inicie sessão na central como administrador.
+. Desative o recurso Brocade Virtual Fabrics (VF):
++
+`fosconfig options`
+
++
+[listing]
+----
+FC_switch_A_1:admin> fosconfig --disable vf
+WARNING:  This is a disruptive operation that requires a reboot to take effect.
+Would you like to continue  [Y/N]: y
+----
+. Desligue os cabos ISL das portas do interrutor.
+. Desativar o interrutor:
++
+`switchcfgpersistentdisable`
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchcfgpersistentdisable
+----
+. Desative a configuração:
++
+`cfgDisable`
+
++
+[listing]
+----
+FC_switch_A_1:admin> cfgDisable
+You are about to disable zoning configuration. This action will disable any previous zoning configuration enabled.
+Do you want to disable zoning configuration? (yes, y, no, n): [no] y
+Updating flash ...
+Effective configuration is empty. "No  Access" default zone mode is ON.
+----
+. Limpar a configuração:
++
+`cfgClear`
+
++
+[listing]
+----
+FC_switch_A_1:admin> cfgClear
+The Clear All action will clear all Aliases, Zones, FA Zones
+and configurations in the Defined configuration.
+Run cfgSave to commit the transaction or cfgTransAbort to
+cancel the transaction.
+Do you really want to clear all configurations?  (yes, y, no, n): [no] y
+----
+. Guardar a configuração:
++
+`cfgSave`
+
++
+[listing]
+----
+FC_switch_A_1:admin> cfgSave
+You are about to save the Defined zoning configuration. This
+action will only save the changes on Defined configuration.
+Do you want to save the Defined zoning configuration only?  (yes, y, no, n): [no] y
+Updating flash ...
+----
+. Defina a configuração padrão:
++
+`configDefault`
+
++
+[listing]
+----
+FC_switch_A_1:admin> configDefault
+WARNING:  This is a disruptive operation that requires a switch reboot.
+Would you like to continue [Y/N]: y
+Executing configdefault...Please wait
+2020/10/05-08:04:08, [FCR-1069], 1016, FID 128, INFO, FC_switch_A_1, The FC Routing service is enabled.
+2020/10/05-08:04:08, [FCR-1068], 1017, FID 128, INFO, FC_switch_A_1, The FC Routing service is disabled.
+2020/10/05-08:04:08, [FCR-1070], 1018, FID 128, INFO, FC_switch_A_1, The FC Routing configuration is set to default.
+Committing configuration ... done.
+2020/10/05-08:04:12, [MAPS-1113], 1019, FID 128, INFO, FC_switch_A_1, Policy dflt_conservative_policy activated.
+2020/10/05-08:04:12, [MAPS-1145], 1020, FID 128, INFO, FC_switch_A_1, FPI Profile dflt_fpi_profile is activated for E-Ports.
+2020/10/05-08:04:12, [MAPS-1144], 1021, FID 128, INFO, FC_switch_A_1, FPI Profile dflt_fpi_profile is activated for F-Ports.
+The switch has to be rebooted to allow the changes to take effect.
+2020/10/05-08:04:12, [CONF-1031], 1022, FID 128, INFO, FC_switch_A_1, configDefault completed successfully for switch.
+----
+. Defina a configuração da porta como padrão para todas as portas:
++
+`portcfgdefault _port-number_`
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgdefault <port number>
+----
++
+Você deve concluir esta etapa para cada porta.
+
+. Verifique se o switch está usando o método POD (Dynamic Port on Demand).
++
+
+NOTE: Para versões do Brocade Fabric os anteriores a 8,0, você executa os seguintes comandos como admin e, para as versões 8,0 e posteriores, os executa como root.
+
++
+.. Execute o comando license:
++
+[role="tabbed-block"]
+====
+.Para o Fabric os 8,2.x e anteriores
+--
+Executar o comando `licenseport --show`.
+
+--
+.Para o Fabric os 9,0 e posterior
+--
+Executar o comando `license --show -port`.
+
+--
+====
++
+[listing]
+----
+FC_switch_A_1:admin> license --show -port
+24 ports are available in this switch
+Full POD license is installed
+Dynamic POD method is in use
+----
+.. Ative o usuário raiz se ele estiver desativado pelo Brocade.
++
+[listing]
+----
+FC_switch_A_1:admin> userconfig --change root -e yes
+FC_switch_A_1:admin> rootaccess --set consoleonly
+----
+.. Execute o comando license:
++
+[role="tabbed-block"]
+====
+.Para o Fabric os 8,2.x e anteriores
+--
+Executar o comando `licenseport --show`.
+
+--
+.Para o Fabric os 9,0 e posterior
+--
+Executar o comando `license --show -port`.
+
+--
+====
++
+[listing]
+----
+FC_switch_A_1:root> license --show -port
+24 ports are available in this switch
+Full POD license is installed
+Dynamic POD method is in use
+----
+.. Se você estiver executando o Fabric os 8,2.x e anteriores, você deve alterar o método de licença para dinâmico:
++
+`licenseport --method dynamic`
+
++
+[listing]
+----
+FC_switch_A_1:admin> licenseport --method dynamic
+The POD method has been changed to dynamic.
+Please reboot the switch now for this change to take effect
+----
++
+
+NOTE: No Fabric os 9,0 e posterior, o método de licença é dinâmico por padrão. O método de licença estática não é suportado.
+
+
+
+. Reinicie o switch:
++
+`fastBoot`
+
++
+[listing]
+----
+FC_switch_A_1:admin> fastboot
+Warning: This command would cause the switch to reboot
+and result in traffic disruption.
+Are you sure you want to reboot the switch [y/n]?y
+----
+. Confirme se as configurações padrão foram implementadas:
++
+`switchShow`
+
+. Verifique se o endereço IP está definido corretamente:
++
+`ipAddrShow`
+
++
+Você pode definir o endereço IP com o seguinte comando, se necessário:
+
++
+`ipAddrSet`
+
+

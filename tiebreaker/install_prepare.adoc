@@ -1,0 +1,110 @@
+---
+permalink: tiebreaker/install_prepare.html 
+sidebar: sidebar 
+keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
+summary: Antes de instalar e configurar o software tiebreaker, você deve verificar se o sistema atende a certos requisitos. 
+---
+= Prepare-se para instalar o software tiebreaker
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de instalar e configurar o software tiebreaker, você deve verificar se o sistema atende a certos requisitos.
+
+
+
+== Requisitos de software
+
+Você precisa atender aos seguintes requisitos de software, dependendo da versão do tiebreaker que você está instalando.
+
+[cols="1,1,1,2"]
+|===
+
+
+| Versão de desempate do ONTAP | Versões de ONTAP compatíveis | Versões Linux suportadas | Requisitos Java/MariaDB 
+
+
+ a| 
+1.6P1
+ a| 
+ONTAP 9.12,1 e posterior
+ a| 
+Consulte link:whats_new.html#os-support-matrix["Matriz de suporte DO SO"]para obter mais informações.
+ a| 
+Nenhum. As dependências são empacotadas com a instalação.
+
+
+
+ a| 
+1,6
+ a| 
+ONTAP 9.12,1 e posterior
+ a| 
+Consulte link:whats_new.html#os-support-matrix["Matriz de suporte DO SO"]para obter mais informações.
+ a| 
+Nenhum. As dependências são empacotadas com a instalação.
+
+
+
+ a| 
+1,5
+ a| 
+ONTAP 9 F.8 a ONTAP 9.14,1
+ a| 
+* Red Hat Enterprise Linux 8,1 a 8,7
+
+ a| 
+Com o Red Hat Enterprise Linux 8,1 a 8,7:
+
+* MariaDB 10.x (use a versão padrão que é instalada usando "yum install mariadb-server.x86_64")
+* OpenJDK 17, 18 ou 19
+
+
+
+
+ a| 
+1,4
+ a| 
+ONTAP 9 F.1 para ONTAP 9.9,1
+ a| 
+* Red Hat Enterprise Linux 8,1 a 8,7
+* Red Hat Enterprise Linux 7 a 7,9
+* CentOS 7 a 7,9 64 bits
+
+ a| 
+Com CentOS:
+
+* MariaDB 5,5.52.x/MySQL Server 5,6x
+* 4 GB DE RAM
+* Abra o JRE 8
+
+
+Com o Red Hat Enterprise Linux 8,1 a 8,7:
+
+* MariaDB 10.x (use a versão padrão que é instalada usando "yum install mariadb-server.x86_64")
+* JRE 8
+
+
+|===
+
+
+== Requisitos adicionais
+
+Você deve estar ciente dos seguintes requisitos adicionais:
+
+* O software tiebreaker é instalado em um terceiro local, o que permite que o software faça a distinção entre uma falha de enlace inter-switch (ISL) (quando os links entre locais estão inoperantes) e uma falha no local. O sistema de host precisa atender a certos requisitos antes de instalar ou atualizar o software tiebreaker para monitorar a configuração do MetroCluster.
+* Você deve ter o Privileges "root" para instalar o software tiebreaker do MetroCluster e os pacotes dependentes.
+* Você só pode usar um monitor de desempate do MetroCluster por configuração do MetroCluster para evitar qualquer conflito com vários monitores de desempate.
+* Ao selecionar a fonte NTP (Network Time Protocol) para o software tiebreaker, você deve usar uma fonte NTP local. O software tiebreaker não deve usar a mesma fonte que os sites do MetroCluster que o software tiebreaker monitora.
+
+
+* Capacidade do disco: 8 GB
+* Firewall:
++
+** Acesso direto para configurar mensagens AutoSupport
+** SSH (porta 22/TCP), HTTPS (porta 443/TCP) e ping (ICMP)
+
+
+

@@ -1,0 +1,33 @@
+---
+permalink: install-fc/concept_cluster_peering_network_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, illustration, cluster, peering, network 
+summary: 'Os dois clusters na configuração do MetroCluster são direcionados por meio de uma rede de peering de cluster fornecida pelo cliente. O peering de cluster suporta o espelhamento síncrono de máquinas virtuais de armazenamento (SVMs, anteriormente conhecido como VServers) entre os sites.' 
+---
+= Ilustração da rede de peering de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os dois clusters na configuração do MetroCluster são direcionados por meio de uma rede de peering de cluster fornecida pelo cliente. O peering de cluster suporta o espelhamento síncrono de máquinas virtuais de armazenamento (SVMs, anteriormente conhecido como VServers) entre os sites.
+
+As LIFs entre clusters devem ser configuradas em cada nó na configuração do MetroCluster e os clusters devem ser configurados para peering. As portas com os LIFs entre clusters são conetadas à rede de peering de cluster fornecida pelo cliente. A replicação da configuração SVM é realizada por meio dessa rede por meio do Configuration Replication Service.
+
+image::../media/mcc_hw_architecture_cluster_peering.gif[peering de cluster da arquitetura de hardware mcc]
+
+.Informações relacionadas
+link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["Ilustração dos pares de HA locais em uma configuração do MetroCluster"]
+
+link:concept_illustration_of_redundant_fc_to_sas_bridges.html["Ilustração de pontes FC para SAS redundantes"]
+
+link:concept_redundant_fc_switch_fabrics.html["Malhas de switches FC redundantes"]
+
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["Configuração expressa de peering de cluster e SVM"]
+
+link:concept_considerations_peering.html["Considerações para configurar o peering de cluster"]
+
+link:task_cable_the_cluster_peering_connections.html["Cabeamento das conexões de peering de cluster"]
+
+link:concept_configure_the_mcc_software_in_ontap.html["Peering dos clusters"]

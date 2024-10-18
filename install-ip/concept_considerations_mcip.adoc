@@ -1,0 +1,158 @@
+---
+permalink: install-ip/concept_considerations_mcip.html 
+sidebar: sidebar 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+summary: Você deve entender como os controladores acessam o armazenamento remoto e como os endereços IP do MetroCluster funcionam. 
+---
+= Considerações para configurações IP do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve entender como os controladores acessam o armazenamento remoto e como os endereços IP do MetroCluster funcionam.
+
+
+
+== Acesso ao armazenamento remoto em configurações IP do MetroCluster
+
+Nas configurações IP do MetroCluster, a única maneira de os controladores locais chegarem aos pools de armazenamento remoto é através dos controladores remotos. Os switches IP são conetados às portas Ethernet dos controladores; eles não têm conexões diretas com as gavetas de disco. Se o controle remoto estiver inativo, os controladores locais não poderão alcançar seus pools de armazenamento remoto.
+
+Isso é diferente das configurações de FC MetroCluster, nas quais os pools de storage remoto são conectados às controladoras locais por meio da malha FC ou das conexões SAS. Os controladores locais ainda têm acesso ao armazenamento remoto, mesmo que os controladores remotos estejam inativos.
+
+
+
+== Endereços IP MetroCluster
+
+Você deve estar ciente de como os endereços IP e interfaces do MetroCluster são implementados em uma configuração IP do MetroCluster, bem como os requisitos associados.
+
+Em uma configuração IP do MetroCluster, a replicação do storage e do cache não volátil entre os pares de HA e os parceiros de DR é realizada por meio de links dedicados de alta largura de banda na malha IP do MetroCluster. As conexões iSCSI são usadas para replicação de storage. Os switches IP também são usados para todo o tráfego intra-cluster dentro dos clusters locais. O tráfego MetroCluster é mantido separado do tráfego intra-cluster usando sub-redes IP e VLANs separadas. A malha IP do MetroCluster é distinta e diferente da rede de peering de cluster.
+
+image::../media/mcc_ip_ip_subnets.gif[sub-redes ip ip de mcc]
+
+A configuração IP do MetroCluster requer dois endereços IP em cada nó que são reservados para a malha IP do MetroCluster de back-end. Os endereços IP reservados são atribuídos a interfaces lógicas IP (LIFs) MetroCluster durante a configuração inicial e têm os seguintes requisitos:
+
+
+NOTE: Você deve escolher os endereços IP do MetroCluster cuidadosamente, porque não pode alterá-los após a configuração inicial.
+
+* Eles devem cair em um intervalo IP único.
++
+Eles não devem se sobrepor a qualquer espaço IP no ambiente.
+
+* Eles devem residir em uma das duas sub-redes IP que as separam de todo o outro tráfego.
+
+
+Por exemplo, os nós podem ser configurados com os seguintes endereços IP:
+
+|===
+
+
+| Nó | Interface | Endereço IP | Sub-rede 
+
+
+ a| 
+node_A_1
+ a| 
+Interface IP MetroCluster 1
+ a| 
+10.1.1.1
+ a| 
+10,1.1/24
+
+
+
+ a| 
+node_A_1
+ a| 
+Interface IP MetroCluster 2
+ a| 
+10.1.2.1
+ a| 
+10,1.2/24
+
+
+
+ a| 
+node_A_2
+ a| 
+Interface IP MetroCluster 1
+ a| 
+10.1.1.2
+ a| 
+10,1.1/24
+
+
+
+ a| 
+node_A_2
+ a| 
+Interface IP MetroCluster 2
+ a| 
+10.1.2.2
+ a| 
+10,1.2/24
+
+
+
+ a| 
+node_B_1
+ a| 
+Interface IP MetroCluster 1
+ a| 
+10.1.1.3
+ a| 
+10,1.1/24
+
+
+
+ a| 
+node_B_1
+ a| 
+Interface IP MetroCluster 2
+ a| 
+10.1.2.3
+ a| 
+10,1.2/24
+
+
+
+ a| 
+node_B_2
+ a| 
+Interface IP MetroCluster 1
+ a| 
+10.1.1.4
+ a| 
+10,1.1/24
+
+
+
+ a| 
+node_B_2
+ a| 
+Interface IP MetroCluster 2
+ a| 
+10.1.2.4
+ a| 
+10,1.2/24
+
+|===
+
+
+== Caraterísticas das interfaces IP MetroCluster
+
+As interfaces IP do MetroCluster são específicas para configurações IP do MetroCluster. Eles têm caraterísticas diferentes de outros tipos de interface ONTAP:
+
+* Eles são criados pelo `metrocluster configuration-settings interface create` comando como parte da configuração inicial do MetroCluster.
++
+
+NOTE: A partir do ONTAP 9.9,1, se você estiver usando uma configuração da camada 3, você também deve especificar o `-gateway` parâmetro ao criar interfaces IP do MetroCluster. link:../install-ip/concept_considerations_layer_3.html["Considerações para redes de grande área da camada 3"]Consulte a .
+
++
+Eles não são criados ou modificados pelos comandos da interface de rede.
+
+* Eles não aparecem na saída do `network interface show` comando.
+* Eles não falham, mas permanecem associados com a porta em que foram criados.
+* As configurações IP do MetroCluster usam portas Ethernet específicas (dependendo da plataforma) para as interfaces IP do MetroCluster.
+

@@ -1,0 +1,28 @@
+---
+permalink: upgrade/task_check_for_mcc_configuration_errors_with_config_advisor.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, check, configuration, errors, config, advisor 
+summary: Você pode acessar o site de suporte da NetApp e baixar a ferramenta Config Advisor para verificar se há erros de configuração comuns. 
+---
+= Verificando erros de configuração do MetroCluster com o Config Advisor
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode acessar o site de suporte da NetApp e baixar a ferramenta Config Advisor para verificar se há erros de configuração comuns.
+
+.Sobre esta tarefa
+O Config Advisor é uma ferramenta de validação de configuração e verificação de integridade. Você pode implantá-lo em sites seguros e sites não seguros para coleta de dados e análise do sistema.
+
+
+NOTE: O suporte para Config Advisor é limitado e está disponível apenas online.
+
+.Passos
+. Vá para a página de download do Config Advisor e baixe a ferramenta.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"]
+
+. Execute o Config Advisor, revise a saída da ferramenta e siga as recomendações na saída para resolver quaisquer problemas descobertos.
+

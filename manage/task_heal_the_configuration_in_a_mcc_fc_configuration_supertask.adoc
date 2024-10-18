@@ -1,0 +1,26 @@
+---
+permalink: manage/task_heal_the_configuration_in_a_mcc_fc_configuration_supertask.html 
+sidebar: sidebar 
+keywords: switchover, perform, heal, operation, restore, metrocluster, functionality, fc, configuration 
+summary: Após um switchover, você deve executar as operações de recuperação de modo específico para restaurar o recurso de MetroCluster. 
+---
+= Cura da configuração em uma configuração de MetroCluster FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após um switchover, você deve executar as operações de recuperação de modo específico para restaurar o recurso de MetroCluster.
+
+* O switchover deve ter sido realizado e o local sobrevivente deve estar fornecendo dados.
+* Os nós no local de desastre devem ser interrompidos ou permanecer desligados.
++
+Eles não devem ser totalmente inicializados durante o processo de cura.
+
+* O storage no local de desastre deve estar acessível (as prateleiras são ativadas, funcionais e acessíveis).
+* Nas configurações MetroCluster conetadas à malha, os links entre switches (ISLs) devem estar ativos e operacionais.
+* Em configurações de MetroCluster de quatro nós, os nós do local que sobrevive não devem estar no estado de failover de HA (todos os nós precisam estar ativos e em execução para cada par de HA).
+
+
+A operação de recuperação deve primeiro ser realizada nos agregados de dados e, em seguida, nos agregados de raiz.

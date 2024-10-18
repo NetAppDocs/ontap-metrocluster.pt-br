@@ -1,0 +1,363 @@
+---
+permalink: transition/task_configure_the_new_nodes_and_complete_transition.html 
+sidebar: sidebar 
+keywords: node, complete, transition, configure, metrocluster, ip, node, configuring, disabling, disable, data, set, up, lif, bring, svm, moving, move, system, volume 
+summary: Com os novos nós adicionados, você deve concluir as etapas de transição e configurar os nós IP do MetroCluster. 
+---
+= Configurar os novos nós e concluir a transição
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Com os novos nós adicionados, você deve concluir as etapas de transição e configurar os nós IP do MetroCluster.
+
+
+
+== Configurando os nós IP do MetroCluster e desativando a transição
+
+Você deve implementar as conexões IP do MetroCluster, atualizar a configuração do MetroCluster e desativar o modo de transição.
+
+.Passos
+. Forme os novos nós em um grupo de DR emitindo os seguintes comandos do controller node_A_1-IP:
++
+`metrocluster configuration-settings dr-group create -partner-cluster <peer_cluster_name> -local-node <local_controller_name> -remote-node <remote_controller_name>`
+
++
+`metrocluster configuration-settings dr-group show`
+
+. Criar interfaces IP MetroCluster (node_A_1-IP, node_A_2-IP, node_B_1-IP, node_B_2-IP) - duas interfaces precisam ser criadas por controladora; oito interfaces no total:
++
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <controller_name> -home-port <port_name> -address <ip_address> -netmask <netmask_address> -vlan-id <vlan_id>`
+
++
+`metrocluster configuration-settings interface show`
+
++
+Certas plataformas usam uma VLAN para a interface IP do MetroCluster. Por padrão, cada uma das duas portas usa uma VLAN diferente: 10 e 20.
+
++
+Se suportado, você também pode especificar uma VLAN diferente (não padrão) maior que 100 (entre 101 e 4095) usando o `-vlan-id` parâmetro no `metrocluster configuration-settings interface create` comando.
+
++
+As seguintes plataformas *não* suportam o `-vlan-id` parâmetro:
+
++
+** FAS8200 e AFF A300
+** AFF A320
+** FAS9000 e AFF A700
+** AFF C800, ASA C800, AFF A800 e ASA A800
++
+Todas as outras plataformas suportam o `-vlan-id` parâmetro.
+
++
+As atribuições de VLAN padrão e válidas dependem se a plataforma suporta o `-vlan-id` parâmetro:
+
++
+[role="tabbed-block"]
+====
+.Plataformas que suportam <code>-vlan-id</code>
+--
+VLAN predefinida:
+
+*** Quando o `-vlan-id` parâmetro não é especificado, as interfaces são criadas com VLAN 10 para as portas "A" e VLAN 20 para as portas "B".
+*** A VLAN especificada deve corresponder à VLAN selecionada no RCF.
+
+
+Intervalos de VLAN válidos:
+
+*** VLAN 10 e 20 padrão
+*** VLANs 101 e superior (entre 101 e 4095)
+
+
+--
+.Plataformas que não suportam <code>-vlan-id</code>
+--
+VLAN predefinida:
+
+*** Não aplicável. A interface não requer que uma VLAN seja especificada na interface MetroCluster. A porta do switch define a VLAN que é usada.
+
+
+Intervalos de VLAN válidos:
+
+*** Todas as VLANs não explicitamente excluídas ao gerar o RCF. O RCF alerta-o se a VLAN for inválida.
+
+
+--
+====
+
+
+
+
+. Execute a operação de conexão MetroCluster a partir do controlador node_A_1-IP para conetar os sites MetroCluster -- esta operação pode levar alguns minutos para ser concluída:
++
+`metrocluster configuration-settings connection connect`
+
+. Verifique se os discos de cluster remotos estão visíveis a partir de cada controlador através das ligações iSCSI:
++
+`disk show`
+
++
+Você deve ver os discos remotos pertencentes aos outros nós na configuração.
+
+. Espelhe o agregado de raiz para node_A_1-IP e node_B_1-IP:
++
+`aggregate mirror -aggregate root-aggr`
+
+. Atribua discos para node_A_2-IP e node_B_2-IP.
++
+Atribuições de disco do pool 1 onde já foram feitas para node_A_1-IP e node_B_1-IP quando o comando boot_after_mcc_transtion foi emitido no menu de inicialização.
+
++
+.. Emita os seguintes comandos no node_A_2-IP:
++
+`disk assign disk1disk2disk3 ... diskn -sysid node_B_2-IP-controller-sysid -pool 1 -force`
+
+.. Emita os seguintes comandos no node_B_2-IP:
++
+`disk assign disk1disk2disk3 ... diskn -sysid node_A_2-IP-controller-sysid -pool 1 -force`
+
+
+
+. Confirme que a propriedade foi atualizada para os discos remotos:
++
+`disk show`
+
+. Se necessário, atualize as informações de propriedade usando os seguintes comandos:
++
+.. Aceda ao modo de privilégio avançado e introduza y quando lhe for pedido para continuar:
++
+`set priv advanced`
+
+.. Atualizar propriedade do disco:
++
+`disk refresh-ownership controller-name`
+
+.. Voltar ao modo de administração:
++
+`set priv admin`
+
+
+
+. Espelhe os agregados de raiz para node_A_2-IP e node_B_2-IP:
++
+`aggregate mirror -aggregate root-aggr`
+
+. Verifique se a re-sincronização de agregados foi concluída para agregados de raiz e dados:
++
+`aggr show``aggr plex show`
+
++
+A ressincronização pode demorar algum tempo, mas deve ser concluída antes de prosseguir com as etapas a seguir.
+
+. Atualize a configuração do MetroCluster para incorporar os novos nós:
++
+.. Aceda ao modo de privilégio avançado e introduza y quando lhe for pedido para continuar:
++
+`set priv advanced`
+
+.. Atualizar a configuração:
++
+|===
+
+
+| Se tiver configurado... | Emitir este comando... 
+
+
+ a| 
+Um único agregado em cada cluster:
+ a| 
+`metrocluster configure -refresh true -allow-with-one-aggregate true`
+
+
+
+ a| 
+Mais de um único agregado em cada cluster
+ a| 
+`metrocluster configure -refresh true`
+
+|===
+.. Voltar ao modo de administração:
++
+`set priv admin`
+
+
+
+. Desativar o modo de transição MetroCluster:
++
+.. Entre no modo de privilégio avançado e digite "'y'" quando solicitado a continuar:
++
+`set priv advanced`
+
+.. Desativar modo de transição:
++
+`metrocluster transition disable`
+
+.. Voltar ao modo de administração:
++
+`set priv admin`
+
+
+
+
+
+
+
+== Configuração de LIFs de dados nos novos nós
+
+Você deve configurar LIFs de dados nos novos nós, node_A_2-IP e node_B_2-IP.
+
+Você deve adicionar novas portas disponíveis em novos controladores a um domínio de broadcast se ainda não estiver atribuído a um. Se necessário, crie VLANs ou grupos de interface nas novas portas. Consulte link:https://docs.netapp.com/us-en/ontap/network-management/index.html["Gerenciamento de rede"^]
+
+. Identificar o uso atual da porta e os domínios de broadcast:
++
+`network port show``network port broadcast-domain show`
+
+. Adicione portas a domínios de broadcast e VLANs conforme necessário.
++
+.. Visualizar os espaços IP:
++
+`network ipspace show`
+
+.. Crie espaços IP e atribua portas de dados conforme necessário.
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html["Configurando IPspaces (somente administradores de cluster)"^]
+
+.. Veja os domínios de broadcast:
++
+`network port broadcast-domain show`
+
+.. Adicione todas as portas de dados a um domínio de broadcast conforme necessário.
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["Adicionar ou remover portas de um domínio de broadcast"^]
+
+.. Recrie VLANs e grupos de interface conforme necessário.
++
+A associação de VLAN e grupo de interface pode ser diferente da do nó antigo.
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["Criando um VLAN"^]
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["Combinando portas físicas para criar grupos de interface"^]
+
+
+
+. Verifique se os LIFs estão hospedados no nó apropriado e nas portas nos nós IP do MetroCluster (incluindo o SVM com -mc vserver), conforme necessário.
++
+Consulte as informações reunidas em link:task_connect_the_mcc_ip_controller_modules_2n_mcc_transition_supertask.html["Criando a configuração de rede"].
+
++
+.. Verifique a porta inicial dos LIFs:
++
+`network interface show -field home-port`
+
+.. Se necessário, modifique a configuração de LIF:
++
+`vserver config override -command "network interface modify -vserver <svm_name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>`
+
+.. Reverter os LIFs para suas portas residenciais:
++
+`network interface revert * -vserver <svm_name>`
+
+
+
+
+
+
+
+== Trazendo os SVMs
+
+Devido às alterações na configuração de LIF, você deve reiniciar os SVMs nos novos nós.
+
+.Passos
+. Verifique o estado das SVMs:
++
+`metrocluster vserver show`
+
+. Reinicie os SVMs no cluster_A que não tenham um sufixo "'-mc":
++
+`vserver start -vserver <svm_name> -force true`
+
+. Repita as etapas anteriores no cluster de parceiros.
+. Verifique se todos os SVMs estão em um estado saudável:
++
+`metrocluster vserver show`
+
+. Verifique se todas as LIFs de dados estão online:
++
+`network interface show`
+
+
+
+
+
+== Mover um volume de sistema para os novos nós
+
+Para melhorar a resiliência, um volume do sistema deve ser movido do nó do controlador_A_1-IP para o nó do controlador_A_2-IP e também do nó_B_1-IP para o nó_B_2-IP. Você deve criar um agregado espelhado no nó de destino para o volume do sistema.
+
+.Sobre esta tarefa
+Os volumes do sistema têm o nome "MDV"_CRS_*_A" ou "MDV_CRS_*_B." as designações ""_A" e ""_B" não estão relacionadas com as referências site_A e site_B usadas ao longo desta seção; por exemplo, MDV_CRS_*_A não está associado com site_A.
+
+.Passos
+. Atribua pelo menos três discos de pool 0 e três de pool 1 cada um para controladores node_A_2-IP e node_B_2-IP conforme necessário.
+. Ative a atribuição automática do disco.
+. Mova o volume do sistema _B de node_A_1-IP para node_A_2-IP usando as etapas a seguir de site_A.
++
+.. Crie um agregado espelhado no controlador node_A_2-IP para manter o volume do sistema:
++
+`aggr create -aggregate new_node_A_2-IP_aggr -diskcount 10 -mirror true -node node_A_2-IP`
+
++
+`aggr show`
+
++
+O agregado espelhado requer cinco discos sobressalentes do pool 0 e cinco do pool 1 de propriedade do controller node_A_2-IP.
+
++
+A opção avançada, "'-force-small-Aggregate True" pode ser usada para limitar o uso de disco a 3 discos pool 0 e 3 discos pool 1, se os discos estiverem em suprimento curto.
+
+.. Listar os volumes do sistema associados ao SVM de administrador:
++
+`vserver show`
+
++
+`volume show -vserver <admin_svm_name>`
+
++
+Você deve identificar volumes contidos por agregados de propriedade do site_A. Os volumes do sistema site_B também serão exibidos.
+
+
+
+. Mova o volume do sistema MDV_CRS_*_B para site_A para o agregado espelhado criado no controlador node_A_2-IP
++
+.. Verifique possíveis agregados de destino:
++
+`volume move target-aggr show -vserver <admin_svm_name> -volume MDV_CRS_*_B`
+
++
+O agregado recém-criado em node_A_2-IP deve ser listado.
+
+.. Mova o volume para o agregado recém-criado no node_A_2-IP:
++
+`set advanced`
+
++
+`volume move start -vserver <admin_svm_name> -volume MDV_CRS_*_B -destination-aggregate new_node_A_2-IP_aggr -cutover-window 40`
+
+.. Verifique o estado da operação de deslocação:
++
+`volume move show -vserver <admin_svm_name> -volume MDV_CRS_*_B`
+
+.. Quando a operação mover estiver concluída, verifique se o sistema MDV_CRS_*_B está contido pelo novo agregado no node_A_2-IP:
++
+`set admin`
+
++
+`volume show -vserver <admin_svm_name>`
+
+
+
+. Repita as etapas acima no site_B (node_B_1-IP e node_B_2-IP).
+

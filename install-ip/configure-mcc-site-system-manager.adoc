@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: install-ip/configure-mcc-site-system-manager.html 
+keywords: metrocluster, configuration, config, mcc, HA, cluster 
+summary: A partir do ONTAP 9.8, você pode gerenciar as operações de configuração IP do MetroCluster com o Gerenciador de sistema. Isso envolve a configuração, peering e configuração de dois clusters. 
+---
+= Configurar um site IP do MetroCluster
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.8, você pode gerenciar as operações de configuração IP do MetroCluster com o Gerenciador de sistema. Isso envolve a configuração de dois clusters, a execução de peering de cluster e a configuração dos clusters.
+
+.Antes de começar
+Execute os seguintes procedimentos:
+
+* link:set-up-mcc-site-system-manager.html["Configure um site IP do MetroCluster"]
+* link:set-up-mcc-peering-system-manager.html["Configurar o peering IP do MetroCluster"]
+
+
+
+
+== Configurar a conexão entre clusters
+
+.Passos
+. Faça login no System Manager em um dos sites e selecione *Dashboard*.
++
+Na seção *MetroCluster*, o gráfico mostra os dois clusters configurados e direcionados para os sites do MetroCluster. O cluster a partir do qual está a trabalhar (cluster local) é apresentado à esquerda.
+
+. Clique em *Configurar MetroCluster*. Nesta janela, execute as seguintes etapas:
++
+.. Os nós de cada cluster na configuração do MetroCluster são mostrados. Use as listas suspensas para selecionar os nós no cluster local que serão parceiros de recuperação de desastres com os nós no cluster remoto.
+.. Clique na caixa de verificação se pretender configurar o serviço Mediador ONTAP. link:./task-sm-mediator.html["Configure o serviço do Mediador ONTAP"]Consulte .
+.. Se ambos os clusters tiverem uma licença para ativar a criptografia, a seção *criptografia* será exibida.
++
+Para ativar a encriptação, introduza uma frase-passe.
+
+.. Clique na caixa de verificação se pretender configurar o MetroCluster com uma rede de camada 3 partilhada.
++
+
+NOTE: Os nós de parceiros de HA e os switches de rede que se conetam aos nós precisam ter uma configuração correspondente.
+
+
+
+. Clique em *Salvar* para configurar os sites do MetroCluster.
++
+No *Painel*, na seção *MetroCluster*, o gráfico mostra uma marca de seleção no link entre os dois clusters, indicando uma conexão saudável.
+
+

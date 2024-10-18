@@ -1,0 +1,31 @@
+---
+permalink: install-ip/task_connecting_mcc_to_different_mediator_instance.html 
+sidebar: sidebar 
+keywords: metrocluster, mediator, configure, connect 
+summary: Se você quiser conetar os nós do MetroCluster a uma instância diferente do Mediador do ONTAP, você deve desconfigurar e reconfigurar a conexão do Mediador no software ONTAP. 
+---
+= Conetando uma configuração do MetroCluster a uma instância diferente do ONTAP Mediator
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você quiser conetar os nós do MetroCluster a uma instância diferente do Mediador do ONTAP, você deve desconfigurar e reconfigurar a conexão do Mediador no software ONTAP.
+
+.Antes de começar
+Você precisa do nome de usuário, senha e endereço IP da nova instância do ONTAP Mediator.
+
+.Sobre esta tarefa
+Esses comandos podem ser emitidos a partir de qualquer nó na configuração do MetroCluster.
+
+.Passos
+. Remova o Mediador ONTAP atual da configuração do MetroCluster:
++
+`metrocluster configuration-settings mediator remove`
+
+. Estabeleça a nova ligação do Mediador ONTAP à configuração do MetroCluster:
++
+`metrocluster configuration-settings mediator add -mediator-address _ip-address-of-mediator-host_`
+
+

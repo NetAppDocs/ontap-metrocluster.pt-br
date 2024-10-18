@@ -1,0 +1,48 @@
+---
+permalink: install-stretch/concept_parts_of_a_two_node_mcc_configuration_using_fc_to_sas_bridges.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, parts, two, node, bridge, stretch, configuration 
+summary: Ao Planejar sua configuração do MetroCluster, você deve entender as partes da configuração e como elas funcionam juntas. 
+---
+= Partes de uma configuração Stretch MetroCluster de dois nós conetada em ponte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao Planejar sua configuração do MetroCluster, você deve entender as partes da configuração e como elas funcionam juntas.
+
+A configuração do MetroCluster inclui os seguintes elementos-chave de hardware:
+
+* Controladores de storage
++
+As controladoras de storage não são conectadas diretamente ao storage, mas conectadas a pontes FC para SAS. Os controladores de storage são conectados por cabos FC entre os adaptadores FC-VI de cada controlador.
+
++
+Cada controlador de storage é configurado como parceiro de recuperação de desastres para um controlador de storage no local do parceiro.
+
+* Pontes FC para SAS
++
+As pontes FC para SAS conectam as stacks de storage SAS às portas iniciadores de FC nas controladoras, fornecendo uma ponte entre os dois protocolos.
+
+* Rede de peering de cluster
++
+A rede de peering de cluster fornece conetividade para espelhamento da configuração de máquina virtual de storage (SVM). A configuração de todos os SVMs em um cluster é espelhada para o cluster de parceiros.
+
+
+
+A ilustração a seguir mostra uma visualização simplificada da configuração do MetroCluster. Para algumas conexões, uma única linha representa várias conexões redundantes entre os componentes. As conexões de rede de gerenciamento e dados não são mostradas.
+
+image::../media/mcc_hardware_architecture_both_clusters_2_node_atto.gif[arquitetura de hardware mcc ambos os clusters 2 nós atto]
+
+* A configuração consiste em dois clusters de nó único.
+* Cada local tem uma ou mais pilhas de storage SAS.
++
+
+NOTE: Gavetas SAS em configurações MetroCluster não são compatíveis com cabeamento ACP.
+
++
+São suportadas stacks de armazenamento adicionais, mas apenas uma é mostrada em cada local.
+
+

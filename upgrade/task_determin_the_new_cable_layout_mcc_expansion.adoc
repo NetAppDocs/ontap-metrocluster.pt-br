@@ -1,0 +1,28 @@
+---
+permalink: upgrade/task_determin_the_new_cable_layout_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, determine, new, cabling, layout 
+summary: É necessário determinar o cabeamento dos novos módulos de controladora e de quaisquer novas gavetas de disco para os switches FC existentes. 
+---
+= Determinando o novo layout de cabeamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É necessário determinar o cabeamento dos novos módulos de controladora e de quaisquer novas gavetas de disco para os switches FC existentes.
+
+.Sobre esta tarefa
+Esta tarefa deve ser executada em cada local do MetroCluster.
+
+.Passos
+. Use o procedimento em link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]para criar um layout de cabeamento para o tipo de switch, usando o uso da porta para uma configuração de MetroCluster de oito nós.
++
+O uso da porta do switch FC deve corresponder ao uso descrito no procedimento para que os arquivos de configuração de referência (RCFs) possam ser usados.
+
++
+
+NOTE: Se o seu ambiente não puder ser habilitado de forma a que os arquivos RCF possam ser usados, você deverá configurar manualmente o sistema de acordo com as instruções encontradas em link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]. Não use este procedimento se o cabeamento não puder usar arquivos RCF.
+
+

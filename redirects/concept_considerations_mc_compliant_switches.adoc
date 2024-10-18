@@ -1,0 +1,8 @@
+---
+permalink: install-ip/concept_considerations_mc_compliant_switches.html 
+redirect: ontap-metrocluster/install-ip/concept-requirement-and-limitations-mcc-compliant-switches.html 
+---
+= 
+:allow-uri-read: 
+
+

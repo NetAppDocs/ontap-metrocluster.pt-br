@@ -1,0 +1,113 @@
+= 
+:allow-uri-read: 
+
+
+[CAUTION]
+====
+Se o estado HA do módulo do controlador e do chassis estiver incorreto, não poderá configurar o MetroCluster sem reiniciar o nó. Deve corrigir a definição utilizando este procedimento e, em seguida, inicializar o sistema utilizando um dos seguintes procedimentos:
+
+* Em uma configuração IP do MetroCluster, siga as etapas em link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_sw_config_restore_defaults.html["Restaure os padrões do sistema em um módulo do controlador"].
+* Em uma configuração MetroCluster FC, siga as etapas em link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_the_mcc_software_in_ontap.html#restoring-system-defaults-and-configuring-the-hba-type-on-a-controller-module["Restaure os padrões do sistema e configurando o tipo HBA em um módulo do controlador"].
+
+
+====
+.Antes de começar
+Verifique se o sistema está no modo Manutenção.
+
+.Passos
+. No modo de manutenção, apresentar o estado HA do módulo do controlador e do chassis:
++
+`ha-config show`
+
++
+O estado de HA correto depende da configuração do MetroCluster.
+
++
+|===
+
+
+| Tipo de configuração MetroCluster | Estado HA para todos os componentes... 
+
+
+ a| 
+Configuração de FC MetroCluster de oito ou quatro nós
+ a| 
+mcc
+
+
+
+ a| 
+Configuração de FC MetroCluster de dois nós
+ a| 
+mcc-2n
+
+
+
+ a| 
+Configuração IP MetroCluster de oito ou quatro nós
+ a| 
+mccip
+
+|===
+. Se o estado do sistema apresentado do controlador não estiver correto, defina o estado HA correto para a sua configuração no módulo do controlador:
++
+|===
+
+
+| Tipo de configuração MetroCluster | Comando 
+
+
+ a| 
+Configuração de FC MetroCluster de oito ou quatro nós
+ a| 
+`ha-config modify controller mcc`
+
+
+
+ a| 
+Configuração de FC MetroCluster de dois nós
+ a| 
+`ha-config modify controller mcc-2n`
+
+
+
+ a| 
+Configuração IP MetroCluster de oito ou quatro nós
+ a| 
+`ha-config modify controller mccip`
+
+|===
+. Se o estado do sistema apresentado do chassis não estiver correto, defina o estado HA correto para a sua configuração no chassis:
++
+|===
+
+
+| Tipo de configuração MetroCluster | Comando 
+
+
+ a| 
+Configuração de FC MetroCluster de oito ou quatro nós
+ a| 
+`ha-config modify chassis mcc`
+
+
+
+ a| 
+Configuração de FC MetroCluster de dois nós
+ a| 
+`ha-config modify chassis mcc-2n`
+
+
+
+ a| 
+Configuração IP MetroCluster de oito ou quatro nós
+ a| 
+`ha-config modify chassis mccip`
+
+|===
+. Inicialize o nó no ONTAP:
++
+`boot_ontap`
+
+. Repita todo esse procedimento para verificar o estado de HA em cada nó na configuração do MetroCluster.
+

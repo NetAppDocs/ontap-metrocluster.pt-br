@@ -1,0 +1,18 @@
+---
+permalink: upgrade/task_verify_switchover_heal_and_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, verify, switchover, healing, switchback 
+summary: Você deve verificar as operações de switchover, recuperação e switchback da configuração do MetroCluster. 
+---
+= Verificando switchover, cura e switchback
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve verificar as operações de switchover, recuperação e switchback da configuração do MetroCluster.
+
+.Passos
+. Use os procedimentos para comutação negociada, recuperação e switchback no link:../disaster-recovery/concept_dr_workflow.html["Gerenciamento de MetroCluster e recuperação de desastres"].
+

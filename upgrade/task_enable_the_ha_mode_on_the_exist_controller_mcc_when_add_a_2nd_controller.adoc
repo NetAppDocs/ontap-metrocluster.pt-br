@@ -1,0 +1,21 @@
+---
+permalink: upgrade/task_enable_the_ha_mode_on_the_exist_controller_mcc_when_add_a_2nd_controller.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, set, up, ha, mode, existing, controller, module 
+summary: Você deve usar o comando storage failover modify para definir o modo no módulo de controladora existente. O valor do modo é ativado mais tarde, depois de reiniciar o módulo do controlador. 
+---
+= Definir o modo HA no módulo do controlador existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve usar o comando storage failover modify para definir o modo no módulo de controladora existente. O valor do modo é ativado mais tarde, depois de reiniciar o módulo do controlador.
+
+.Passos
+. Defina o modo como HA:
++
+`storage failover modify -mode ha -node _existing_node_name_`
+
+

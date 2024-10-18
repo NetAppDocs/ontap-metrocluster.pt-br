@@ -1,0 +1,67 @@
+---
+permalink: upgrade/concept_choosing_an_upgrade_method_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, choose, upgrade, refresh, method 
+summary: O procedimento de atualização ou atualização que você usa depende do modelo da plataforma, do escopo da atualização e do tipo de configuração do MetroCluster. 
+---
+= Comece aqui: Escolha entre atualização do controlador, atualização do sistema ou expansão
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dependendo do escopo da atualização do equipamento, você escolhe um procedimento de atualização do controlador, um procedimento de atualização do sistema ou um procedimento de expansão.
+
+* Os procedimentos de atualização do controlador aplicam-se apenas aos módulos do controlador. Os controladores são substituídos por um novo modelo de controlador.
++
+Os modelos de prateleiras de armazenamento não são atualizados.
+
++
+** Nos procedimentos de comutação e switchback, a operação de switchover do MetroCluster é usada para fornecer serviços sem interrupções aos clientes enquanto os módulos do controlador no cluster de parceiros são atualizados.
+** Em um procedimento de atualização de controladora baseado em ARL, as operações de realocação agregada são usadas para mover dados da configuração antiga para a configuração nova e atualizada sem interrupções.
+
+
+* Os procedimentos de atualização se aplicam aos controladores e às gavetas de storage.
++
+Nos procedimentos de atualização, novos controladores e compartimentos são adicionados à configuração do MetroCluster, criando um segundo grupo de DR e migrando os dados para os novos nós sem interrupções.
+
++
+Os controladores originais são então desativados.
+
+* Os procedimentos de expansão adicionam controladoras e gavetas adicionais à configuração do MetroCluster sem precisar remover.
++
+O procedimento utilizado depende do tipo de MetroCluster e do número de controladores existentes.
+
+
+
+[cols="2,5"]
+|===
+
+
+| Tipo de atualização | Ir para... 
+
+
+ a| 
+Atualização da controladora
+ a| 
+link:../upgrade/concept_choosing_controller_upgrade_mcc.html["Escolha um procedimento de atualização da controladora"]
+
+
+
+ a| 
+Atualização do sistema
+ a| 
+link:../upgrade/concept_choosing_tech_refresh_mcc.html["Escolha um procedimento de atualização do sistema"]
+
+
+
+ a| 
+Expansão
+ a| 
+* link:../upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html["MetroCluster de dois nós para quatro"]
+* link:../upgrade/task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html["MetroCluster FC de quatro nós para oito"]
+* link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["IP MetroCluster de quatro nós para oito"]
+
+
+|===

@@ -1,0 +1,2250 @@
+---
+permalink: install-ip/task_sw_config_configure_clusters.html 
+sidebar: sidebar 
+keywords: metrocluster, setup, metrocluster configuration-settings interface create, pool 0, drive assignment, peer, peering, intercluster lifs, dr group, metrocluster ip interfaces, mcc-ip, mcc-ip interfaces, vlan, pool 1, pool1, pool0 
+summary: É necessário fazer peer nos clusters, espelhar os agregados raiz, criar um agregado de dados espelhados e, em seguida, emitir o comando para implementar as operações do MetroCluster. 
+---
+= Configuração dos clusters em uma configuração do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É necessário fazer peer nos clusters, espelhar os agregados raiz, criar um agregado de dados espelhados e, em seguida, emitir o comando para implementar as operações do MetroCluster.
+
+.Sobre esta tarefa
+Antes de executar `metrocluster configure`o , o modo HA e o espelhamento de DR não estão ativados e você pode ver uma mensagem de erro relacionada a esse comportamento esperado. Você ativa o modo HA e o espelhamento de DR mais tarde quando executa o comando `metrocluster configure` para implementar a configuração.
+
+
+
+== Desativar a atribuição automática de condução (se estiver a efetuar a atribuição manual no ONTAP 9.4)
+
+No ONTAP 9.4, se a configuração IP do MetroCluster tiver menos de quatro compartimentos de storage externos por local, desative a atribuição automática de unidade em todos os nós e atribua unidades manualmente.
+
+.Sobre esta tarefa
+Esta tarefa não é necessária no ONTAP 9.5 e posterior.
+
+Essa tarefa não se aplica a um sistema AFF A800 com compartimento interno e sem compartimentos externos.
+
+link:concept_considerations_drive_assignment.html["Considerações para atribuição automática de acionamento e sistemas ADP no ONTAP 9.4 e posterior"]
+
+.Passos
+. Desativar a atribuição automática de condução:
++
+`storage disk option modify -node <node_name> -autoassign off`
+
+. Você precisa emitir este comando em todos os nós na configuração IP do MetroCluster.
+
+
+
+
+== Verificando a atribuição de unidades do pool 0
+
+Você deve verificar se as unidades remotas estão visíveis para os nós e foram atribuídas corretamente.
+
+.Sobre esta tarefa
+A atribuição automática depende do modelo da plataforma do sistema de storage e do arranjo do compartimento de unidades.
+
+link:concept_considerations_drive_assignment.html["Considerações para atribuição automática de acionamento e sistemas ADP no ONTAP 9.4 e posterior"]
+
+.Passos
+. Verifique se as unidades do pool 0 são atribuídas automaticamente:
++
+`disk show`
+
++
+O exemplo a seguir mostra a saída "cluster_A" para um sistema AFF A800 sem prateleiras externas.
+
++
+Um quarto (8 unidades) foi atribuído automaticamente a "node_A_1" e um quarto foi atribuído automaticamente a "node_A_2". As unidades restantes serão unidades remotas (pool 1) para "node_B_1" e "node_B_2".
+
++
+[listing]
+----
+cluster_A::*> disk show
+                 Usable     Disk      Container           Container
+Disk             Size       Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+node_A_1:0n.12   1.75TB     0     12  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.13   1.75TB     0     13  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.14   1.75TB     0     14  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.15   1.75TB     0     15  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.16   1.75TB     0     16  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.17   1.75TB     0     17  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.18   1.75TB     0     18  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.19   1.75TB     0     19  SSD-NVM shared      -         node_A_1
+node_A_2:0n.0    1.75TB     0     0   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.1    1.75TB     0     1   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.2    1.75TB     0     2   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.3    1.75TB     0     3   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.4    1.75TB     0     4   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.5    1.75TB     0     5   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.6    1.75TB     0     6   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.7    1.75TB     0     7   SSD-NVM shared      -         node_A_2
+node_A_2:0n.24   -          0     24  SSD-NVM unassigned  -         -
+node_A_2:0n.25   -          0     25  SSD-NVM unassigned  -         -
+node_A_2:0n.26   -          0     26  SSD-NVM unassigned  -         -
+node_A_2:0n.27   -          0     27  SSD-NVM unassigned  -         -
+node_A_2:0n.28   -          0     28  SSD-NVM unassigned  -         -
+node_A_2:0n.29   -          0     29  SSD-NVM unassigned  -         -
+node_A_2:0n.30   -          0     30  SSD-NVM unassigned  -         -
+node_A_2:0n.31   -          0     31  SSD-NVM unassigned  -         -
+node_A_2:0n.36   -          0     36  SSD-NVM unassigned  -         -
+node_A_2:0n.37   -          0     37  SSD-NVM unassigned  -         -
+node_A_2:0n.38   -          0     38  SSD-NVM unassigned  -         -
+node_A_2:0n.39   -          0     39  SSD-NVM unassigned  -         -
+node_A_2:0n.40   -          0     40  SSD-NVM unassigned  -         -
+node_A_2:0n.41   -          0     41  SSD-NVM unassigned  -         -
+node_A_2:0n.42   -          0     42  SSD-NVM unassigned  -         -
+node_A_2:0n.43   -          0     43  SSD-NVM unassigned  -         -
+32 entries were displayed.
+----
++
+O exemplo a seguir mostra a saída "cluster_B":
+
++
+[listing]
+----
+cluster_B::> disk show
+                 Usable     Disk              Container   Container
+Disk             Size       Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+
+Info: This cluster has partitioned disks. To get a complete list of spare disk
+capacity use "storage aggregate show-spare-disks".
+node_B_1:0n.12   1.75TB     0     12  SSD-NVM shared      aggr0     node_B_1
+node_B_1:0n.13   1.75TB     0     13  SSD-NVM shared      aggr0     node_B_1
+node_B_1:0n.14   1.75TB     0     14  SSD-NVM shared      aggr0     node_B_1
+node_B_1:0n.15   1.75TB     0     15  SSD-NVM shared      aggr0     node_B_1
+node_B_1:0n.16   1.75TB     0     16  SSD-NVM shared      aggr0     node_B_1
+node_B_1:0n.17   1.75TB     0     17  SSD-NVM shared      aggr0     node_B_1
+node_B_1:0n.18   1.75TB     0     18  SSD-NVM shared      aggr0     node_B_1
+node_B_1:0n.19   1.75TB     0     19  SSD-NVM shared      -         node_B_1
+node_B_2:0n.0    1.75TB     0     0   SSD-NVM shared      aggr0_node_B_1_0 node_B_2
+node_B_2:0n.1    1.75TB     0     1   SSD-NVM shared      aggr0_node_B_1_0 node_B_2
+node_B_2:0n.2    1.75TB     0     2   SSD-NVM shared      aggr0_node_B_1_0 node_B_2
+node_B_2:0n.3    1.75TB     0     3   SSD-NVM shared      aggr0_node_B_1_0 node_B_2
+node_B_2:0n.4    1.75TB     0     4   SSD-NVM shared      aggr0_node_B_1_0 node_B_2
+node_B_2:0n.5    1.75TB     0     5   SSD-NVM shared      aggr0_node_B_1_0 node_B_2
+node_B_2:0n.6    1.75TB     0     6   SSD-NVM shared      aggr0_node_B_1_0 node_B_2
+node_B_2:0n.7    1.75TB     0     7   SSD-NVM shared      -         node_B_2
+node_B_2:0n.24   -          0     24  SSD-NVM unassigned  -         -
+node_B_2:0n.25   -          0     25  SSD-NVM unassigned  -         -
+node_B_2:0n.26   -          0     26  SSD-NVM unassigned  -         -
+node_B_2:0n.27   -          0     27  SSD-NVM unassigned  -         -
+node_B_2:0n.28   -          0     28  SSD-NVM unassigned  -         -
+node_B_2:0n.29   -          0     29  SSD-NVM unassigned  -         -
+node_B_2:0n.30   -          0     30  SSD-NVM unassigned  -         -
+node_B_2:0n.31   -          0     31  SSD-NVM unassigned  -         -
+node_B_2:0n.36   -          0     36  SSD-NVM unassigned  -         -
+node_B_2:0n.37   -          0     37  SSD-NVM unassigned  -         -
+node_B_2:0n.38   -          0     38  SSD-NVM unassigned  -         -
+node_B_2:0n.39   -          0     39  SSD-NVM unassigned  -         -
+node_B_2:0n.40   -          0     40  SSD-NVM unassigned  -         -
+node_B_2:0n.41   -          0     41  SSD-NVM unassigned  -         -
+node_B_2:0n.42   -          0     42  SSD-NVM unassigned  -         -
+node_B_2:0n.43   -          0     43  SSD-NVM unassigned  -         -
+32 entries were displayed.
+
+cluster_B::>
+----
+
+
+
+
+== Peering dos clusters
+
+Os clusters na configuração do MetroCluster precisam estar em um relacionamento de mesmo nível para que possam se comunicar uns com os outros e executar o espelhamento de dados essencial para a recuperação de desastres do MetroCluster.
+
+.Informações relacionadas
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["Configuração expressa de peering de cluster e SVM"]
+
+link:concept_considerations_peering.html#considerations-when-using-dedicated-ports["Considerações ao usar portas dedicadas"]
+
+link:concept_considerations_peering.html#considerations-when-sharing-data-ports["Considerações ao compartilhar portas de dados"]
+
+
+
+== Configurando LIFs entre clusters para peering de cluster
+
+É necessário criar LIFs entre clusters nas portas usadas para comunicação entre os clusters de parceiros da MetroCluster. Você pode usar portas dedicadas ou portas que também têm tráfego de dados.
+
+
+
+=== Configurando LIFs entre clusters em portas dedicadas
+
+Você pode configurar LIFs entre clusters em portas dedicadas. Isso normalmente aumenta a largura de banda disponível para o tráfego de replicação.
+
+.Passos
+. Liste as portas no cluster:
++
+`network port show`
+
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+O exemplo a seguir mostra as portas de rede em "cluster01":
+
++
+[listing]
+----
+
+cluster01::> network port show
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+cluster01-01
+       e0a       Cluster      Cluster          up     1500   auto/1000
+       e0b       Cluster      Cluster          up     1500   auto/1000
+       e0c       Default      Default          up     1500   auto/1000
+       e0d       Default      Default          up     1500   auto/1000
+       e0e       Default      Default          up     1500   auto/1000
+       e0f       Default      Default          up     1500   auto/1000
+cluster01-02
+       e0a       Cluster      Cluster          up     1500   auto/1000
+       e0b       Cluster      Cluster          up     1500   auto/1000
+       e0c       Default      Default          up     1500   auto/1000
+       e0d       Default      Default          up     1500   auto/1000
+       e0e       Default      Default          up     1500   auto/1000
+       e0f       Default      Default          up     1500   auto/1000
+----
+. Determine quais portas estão disponíveis para se dedicar à comunicação entre clusters:
++
+`network interface show -fields home-port,curr-port`
+
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+O exemplo a seguir mostra que as portas "e0e" e "e0f" não foram atribuídas LIFs:
+
++
+[listing]
+----
+
+cluster01::> network interface show -fields home-port,curr-port
+vserver lif                  home-port curr-port
+------- -------------------- --------- ---------
+Cluster cluster01-01_clus1   e0a       e0a
+Cluster cluster01-01_clus2   e0b       e0b
+Cluster cluster01-02_clus1   e0a       e0a
+Cluster cluster01-02_clus2   e0b       e0b
+cluster01
+        cluster_mgmt         e0c       e0c
+cluster01
+        cluster01-01_mgmt1   e0c       e0c
+cluster01
+        cluster01-02_mgmt1   e0c       e0c
+----
+. Crie um grupo de failover para as portas dedicadas:
++
+`network interface failover-groups create -vserver <system_svm> -failover-group <failover_group> -targets <physical_or_logical_ports>`
+
++
+O exemplo a seguir atribui portas "e0e" e" e0f" ao grupo de failover "intercluster01" no sistema "SVMcluster01":
+
++
+[listing]
+----
+cluster01::> network interface failover-groups create -vserver cluster01 -failover-group
+intercluster01 -targets
+cluster01-01:e0e,cluster01-01:e0f,cluster01-02:e0e,cluster01-02:e0f
+----
+. Verifique se o grupo de failover foi criado:
++
+`network interface failover-groups show`
+
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+[listing]
+----
+cluster01::> network interface failover-groups show
+                                  Failover
+Vserver          Group            Targets
+---------------- ---------------- --------------------------------------------
+Cluster
+                 Cluster
+                                  cluster01-01:e0a, cluster01-01:e0b,
+                                  cluster01-02:e0a, cluster01-02:e0b
+cluster01
+                 Default
+                                  cluster01-01:e0c, cluster01-01:e0d,
+                                  cluster01-02:e0c, cluster01-02:e0d,
+                                  cluster01-01:e0e, cluster01-01:e0f
+                                  cluster01-02:e0e, cluster01-02:e0f
+                 intercluster01
+                                  cluster01-01:e0e, cluster01-01:e0f
+                                  cluster01-02:e0e, cluster01-02:e0f
+----
+. Crie LIFs entre clusters no sistema e atribua-os ao grupo de failover.
++
+[role="tabbed-block"]
+====
+.No ONTAP 9.6 e posterior, execute:
+--
+`network interface create -vserver <system_svm> -lif <lif_name> -service-policy default-intercluster -home-node <node_name> -home-port <port_name> -address <port_ip_address> -netmask <netmask_address> -failover-group <failover_group>`
+
+--
+.No ONTAP 9.5 e anteriores, execute:
+--
+`network interface create -vserver <system_svm> -lif <lif_name> -role intercluster -home-node <node_name> -home-port <port_name> -address <port_ip_address> -netmask <netmask_address> -failover-group <failover_group>`
+
+--
+====
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+O exemplo a seguir cria LIFs entre clusters "cluster01_icl01" e "cluster01_icl02" no grupo de failover "intercluster01":
+
++
+[listing]
+----
+cluster01::> network interface create -vserver cluster01 -lif cluster01_icl01 -service-
+policy default-intercluster -home-node cluster01-01 -home-port e0e -address 192.168.1.201
+-netmask 255.255.255.0 -failover-group intercluster01
+
+cluster01::> network interface create -vserver cluster01 -lif cluster01_icl02 -service-
+policy default-intercluster -home-node cluster01-02 -home-port e0e -address 192.168.1.202
+-netmask 255.255.255.0 -failover-group intercluster01
+----
+. Verifique se as LIFs entre clusters foram criadas:
++
+[role="tabbed-block"]
+====
+.No ONTAP 9.6 e posterior, execute:
+--
+`network interface show -service-policy default-intercluster`
+
+--
+.No ONTAP 9.5 e anteriores, execute:
+--
+`network interface show -role intercluster`
+
+--
+====
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+[listing]
+----
+cluster01::> network interface show -service-policy default-intercluster
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+cluster01
+            cluster01_icl01
+                       up/up      192.168.1.201/24   cluster01-01  e0e     true
+            cluster01_icl02
+                       up/up      192.168.1.202/24   cluster01-02  e0f     true
+----
+. Verifique se as LIFs entre clusters são redundantes:
++
+[role="tabbed-block"]
+====
+.No ONTAP 9.6 e posterior, execute:
+--
+`network interface show -service-policy default-intercluster -failover`
+
+--
+.No ONTAP 9.5 e anteriores, execute:
+--
+`network interface show -role intercluster -failover`
+
+--
+====
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+O exemplo a seguir mostra que os LIFs entre clusters "cluster01_icl01" e "cluster01_icl02" na porta "SVMe0e" irão falhar para a porta "e0f".
+
++
+[listing]
+----
+cluster01::> network interface show -service-policy default-intercluster –failover
+         Logical         Home                  Failover        Failover
+Vserver  Interface       Node:Port             Policy          Group
+-------- --------------- --------------------- --------------- --------
+cluster01
+         cluster01_icl01 cluster01-01:e0e   local-only      intercluster01
+                            Failover Targets:  cluster01-01:e0e,
+                                               cluster01-01:e0f
+         cluster01_icl02 cluster01-02:e0e   local-only      intercluster01
+                            Failover Targets:  cluster01-02:e0e,
+                                               cluster01-02:e0f
+----
+
+
+.Informações relacionadas
+link:concept_considerations_peering.html#considerations-when-using-dedicated-ports["Considerações ao usar portas dedicadas"]
+
+
+
+=== Configurando LIFs entre clusters em portas de dados compartilhados
+
+Você pode configurar LIFs entre clusters em portas compartilhadas com a rede de dados. Isso reduz o número de portas de que você precisa para redes entre clusters.
+
+.Passos
+. Liste as portas no cluster:
++
+`network port show`
+
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+O exemplo a seguir mostra as portas de rede em "cluster01":
+
++
+[listing]
+----
+
+cluster01::> network port show
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+cluster01-01
+       e0a       Cluster      Cluster          up     1500   auto/1000
+       e0b       Cluster      Cluster          up     1500   auto/1000
+       e0c       Default      Default          up     1500   auto/1000
+       e0d       Default      Default          up     1500   auto/1000
+cluster01-02
+       e0a       Cluster      Cluster          up     1500   auto/1000
+       e0b       Cluster      Cluster          up     1500   auto/1000
+       e0c       Default      Default          up     1500   auto/1000
+       e0d       Default      Default          up     1500   auto/1000
+----
+. Criar LIFs entre clusters no sistema:
++
+[role="tabbed-block"]
+====
+.No ONTAP 9.6 e posterior, execute:
+--
+`network interface create -vserver <system_svm> -lif <lif_name> -service-policy default-intercluster -home-node <node_name> -home-port <port_name> -address <port_ip_address> -netmask <netmask>`
+
+--
+.No ONTAP 9.5 e anteriores, execute:
+--
+`network interface create -vserver <system_svm> -lif <lif_name> -role intercluster -home-node <node_name> -home-port <port_name> -address <port_ip_address> -netmask <netmask>`
+
+--
+====
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+O exemplo a seguir cria LIFs entre clusters "cluster01_icl01" e "cluster01_icl02":
+
++
+[listing]
+----
+
+cluster01::> network interface create -vserver cluster01 -lif cluster01_icl01 -service-
+policy default-intercluster -home-node cluster01-01 -home-port e0c -address 192.168.1.201
+-netmask 255.255.255.0
+
+cluster01::> network interface create -vserver cluster01 -lif cluster01_icl02 -service-
+policy default-intercluster -home-node cluster01-02 -home-port e0c -address 192.168.1.202
+-netmask 255.255.255.0
+----
+. Verifique se as LIFs entre clusters foram criadas:
++
+[role="tabbed-block"]
+====
+.No ONTAP 9.6 e posterior, execute:
+--
+`network interface show -service-policy default-intercluster`
+
+--
+.No ONTAP 9.5 e anteriores, execute:
+--
+`network interface show -role intercluster`
+
+--
+====
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+[listing]
+----
+cluster01::> network interface show -service-policy default-intercluster
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+cluster01
+            cluster01_icl01
+                       up/up      192.168.1.201/24   cluster01-01  e0c     true
+            cluster01_icl02
+                       up/up      192.168.1.202/24   cluster01-02  e0c     true
+----
+. Verifique se as LIFs entre clusters são redundantes:
++
+[role="tabbed-block"]
+====
+.No ONTAP 9.6 e posterior, execute:
+--
+`network interface show –service-policy default-intercluster -failover`
+
+--
+.No ONTAP 9.5 e anteriores, execute:
+--
+`network interface show -role intercluster -failover`
+
+--
+====
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+O exemplo a seguir mostra que LIFs entre clusters "cluster01_icl01" e "cluster01_icl02" na porta "e0c" falharão para a porta "e0d".
+
++
+[listing]
+----
+cluster01::> network interface show -service-policy default-intercluster –failover
+         Logical         Home                  Failover        Failover
+Vserver  Interface       Node:Port             Policy          Group
+-------- --------------- --------------------- --------------- --------
+cluster01
+         cluster01_icl01 cluster01-01:e0c   local-only      192.168.1.201/24
+                            Failover Targets: cluster01-01:e0c,
+                                              cluster01-01:e0d
+         cluster01_icl02 cluster01-02:e0c   local-only      192.168.1.201/24
+                            Failover Targets: cluster01-02:e0c,
+                                              cluster01-02:e0d
+----
+
+
+.Informações relacionadas
+link:concept_considerations_peering.html#considerations-when-sharing-data-ports["Considerações ao compartilhar portas de dados"]
+
+
+
+== Criando um relacionamento de cluster peer
+
+Você pode usar o comando cluster peer create para criar uma relação de peer entre um cluster local e remoto. Após a criação do relacionamento de pares, você pode executar o cluster peer create no cluster remoto para autenticá-lo no cluster local.
+
+.Sobre esta tarefa
+* Você precisa ter criado LIFs entre clusters em todos os nós nos clusters que estão sendo perados.
+* Os clusters precisam estar executando o ONTAP 9.3 ou posterior.
+
+
+.Passos
+. No cluster de destino, crie uma relação de pares com o cluster de origem:
++
+`cluster peer create -generate-passphrase -offer-expiration <MM/DD/YYYY HH:MM:SS|1...7days|1...168hours> -peer-addrs <peer_lif_ip_addresses> -ipspace <ipspace>`
+
++
+Se você especificar ambos `-generate-passphrase` e `-peer-addrs`, somente o cluster cujos LIFs entre clusters são especificados em `-peer-addrs` poderá usar a senha gerada.
+
++
+Você pode ignorar a `-ipspace` opção se não estiver usando um IPspace personalizado. Para obter a sintaxe completa do comando, consulte a página man.
+
++
+O exemplo a seguir cria um relacionamento de peer de cluster em um cluster remoto não especificado:
+
++
+[listing]
+----
+cluster02::> cluster peer create -generate-passphrase -offer-expiration 2days
+
+                     Passphrase: UCa+6lRVICXeL/gq1WrK7ShR
+                Expiration Time: 6/7/2017 08:16:10 EST
+  Initial Allowed Vserver Peers: -
+            Intercluster LIF IP: 192.140.112.101
+              Peer Cluster Name: Clus_7ShR (temporary generated)
+
+Warning: make a note of the passphrase - it cannot be displayed again.
+----
+. No cluster de origem, autentique o cluster de origem no cluster de destino:
++
+`cluster peer create -peer-addrs <peer_lif_ip_addresses> -ipspace <ipspace>`
+
++
+Para obter a sintaxe completa do comando, consulte a página man.
+
++
+O exemplo a seguir autentica o cluster local para o cluster remoto em endereços IP de LIF "192.140.112.101" e "192.140.112.102":
+
++
+[listing]
+----
+cluster01::> cluster peer create -peer-addrs 192.140.112.101,192.140.112.102
+
+Notice: Use a generated passphrase or choose a passphrase of 8 or more characters.
+        To ensure the authenticity of the peering relationship, use a phrase or sequence of characters that would be hard to guess.
+
+Enter the passphrase:
+Confirm the passphrase:
+
+Clusters cluster02 and cluster01 are peered.
+----
++
+Digite a senha para o relacionamento de pares quando solicitado.
+
+. Verifique se o relacionamento de pares de cluster foi criado:
++
+`cluster peer show -instance`
+
++
+[listing]
+----
+cluster01::> cluster peer show -instance
+
+                               Peer Cluster Name: cluster02
+                   Remote Intercluster Addresses: 192.140.112.101, 192.140.112.102
+              Availability of the Remote Cluster: Available
+                             Remote Cluster Name: cluster2
+                             Active IP Addresses: 192.140.112.101, 192.140.112.102
+                           Cluster Serial Number: 1-80-123456
+                  Address Family of Relationship: ipv4
+            Authentication Status Administrative: no-authentication
+               Authentication Status Operational: absent
+                                Last Update Time: 02/05 21:05:41
+                    IPspace for the Relationship: Default
+----
+. Verifique a conetividade e o status dos nós no relacionamento de pares:
++
+`cluster peer health show`
+
++
+[listing]
+----
+cluster01::> cluster peer health show
+Node       cluster-Name                Node-Name
+             Ping-Status               RDB-Health Cluster-Health  Avail…
+---------- --------------------------- ---------  --------------- --------
+cluster01-01
+           cluster02                   cluster02-01
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+                                       cluster02-02
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+cluster01-02
+           cluster02                   cluster02-01
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+                                       cluster02-02
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+----
+
+
+
+
+== Criando o grupo DR
+
+É necessário criar relações de grupo de recuperação de desastres (DR) entre os clusters.
+
+.Sobre esta tarefa
+Execute este procedimento em um dos clusters na configuração do MetroCluster para criar as relações de DR entre os nós nos dois clusters.
+
+
+NOTE: As relações de DR não podem ser alteradas após a criação dos grupos de DR.
+
+image::../media/mcc_dr_groups_4_node.gif[nó de grupos de dr de mcc 4]
+
+.Passos
+. Verifique se os nós estão prontos para a criação do grupo DR inserindo o seguinte comando em cada nó:
++
+`metrocluster configuration-settings show-status`
+
++
+O comando output deve mostrar que os nós estão prontos:
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings show-status
+Cluster                    Node          Configuration Settings Status
+-------------------------- ------------- --------------------------------
+cluster_A                  node_A_1      ready for DR group create
+                           node_A_2      ready for DR group create
+2 entries were displayed.
+----
++
+[listing]
+----
+cluster_B::> metrocluster configuration-settings show-status
+Cluster                    Node          Configuration Settings Status
+-------------------------- ------------- --------------------------------
+cluster_B                  node_B_1      ready for DR group create
+                           node_B_2      ready for DR group create
+2 entries were displayed.
+----
+. Crie o grupo DR:
++
+`metrocluster configuration-settings dr-group create -partner-cluster <partner_cluster_name> -local-node <local_node_name> -remote-node <remote_node_name>`
+
++
+Este comando é emitido apenas uma vez. Isso não precisa ser repetido no cluster de parceiros. No comando, especifique o nome do cluster remoto e o nome de um nó local e um nó no cluster de parceiros.
+
++
+Os dois nós especificados são configurados como parceiros de DR e os outros dois nós (que não são especificados no comando) são configurados como o segundo par de DR no grupo de DR. Essas relações não podem ser alteradas depois de inserir este comando.
+
++
+O comando a seguir cria esses pares de DR:
+
++
+** node_A_1 e node_B_1
+** node_A_2 e node_B_2
+
+
++
+[listing]
+----
+Cluster_A::> metrocluster configuration-settings dr-group create -partner-cluster cluster_B -local-node node_A_1 -remote-node node_B_1
+[Job 27] Job succeeded: DR Group Create is successful.
+----
+
+
+
+
+== Configuração e conexão das interfaces IP do MetroCluster
+
+É necessário configurar as interfaces IP do MetroCluster usadas para replicação do storage de cada nó e do cache não volátil. Em seguida, você estabelece as conexões usando as interfaces IP do MetroCluster. Isso cria conexões iSCSI para replicação de armazenamento.
+
+
+NOTE: O IP MetroCluster e as portas do switch conetado não ficam online até que você crie as interfaces IP MetroCluster.
+
+.Sobre esta tarefa
+* É necessário criar duas interfaces para cada nó. As interfaces devem estar associadas às VLANs definidas no arquivo MetroCluster RCF.
+* Dependendo da versão do ONTAP, você pode alterar algumas propriedades da interface IP do MetroCluster após a configuração inicial. link:../maintain/task-modify-ip-netmask-properties.html["Modifique as propriedades de uma interface IP do MetroCluster"]Consulte para obter detalhes sobre o que é suportado.
+* Você deve criar todas as portas "A" da interface IP do MetroCluster na mesma VLAN e todas as portas "B" da interface IP do MetroCluster na outra VLAN. link:concept_considerations_mcip.html["Considerações para a configuração IP do MetroCluster"]Consulte a .
+* A partir do ONTAP 9.9,1, se você estiver usando uma configuração da camada 3, você também deve especificar o `-gateway` parâmetro ao criar interfaces IP do MetroCluster. link:../install-ip/concept_considerations_layer_3.html["Considerações para redes de grande área da camada 3"]Consulte a .
++
+Certas plataformas usam uma VLAN para a interface IP do MetroCluster. Por padrão, cada uma das duas portas usa uma VLAN diferente: 10 e 20.
+
++
+Se suportado, você também pode especificar uma VLAN diferente (não padrão) maior que 100 (entre 101 e 4095) usando o `-vlan-id` parâmetro no `metrocluster configuration-settings interface create` comando.
+
++
+As seguintes plataformas *não* suportam o `-vlan-id` parâmetro:
+
++
+** FAS8200 e AFF A300
+** AFF A320
+** FAS9000 e AFF A700
+** AFF C800, ASA C800, AFF A800 e ASA A800
++
+Todas as outras plataformas suportam o `-vlan-id` parâmetro.
+
++
+As atribuições de VLAN padrão e válidas dependem se a plataforma suporta o `-vlan-id` parâmetro:
+
++
+[role="tabbed-block"]
+====
+.Plataformas que suportam <code>-vlan-id</code>
+--
+VLAN predefinida:
+
+*** Quando o `-vlan-id` parâmetro não é especificado, as interfaces são criadas com VLAN 10 para as portas "A" e VLAN 20 para as portas "B".
+*** A VLAN especificada deve corresponder à VLAN selecionada no RCF.
+
+
+Intervalos de VLAN válidos:
+
+*** VLAN 10 e 20 padrão
+*** VLANs 101 e superior (entre 101 e 4095)
+
+
+--
+.Plataformas que não suportam <code>-vlan-id</code>
+--
+VLAN predefinida:
+
+*** Não aplicável. A interface não requer que uma VLAN seja especificada na interface MetroCluster. A porta do switch define a VLAN que é usada.
+
+
+Intervalos de VLAN válidos:
+
+*** Todas as VLANs não explicitamente excluídas ao gerar o RCF. O RCF alerta-o se a VLAN for inválida.
+
+
+--
+====
+
+
+
+
+* As portas físicas usadas pelas interfaces IP do MetroCluster dependem do modelo da plataforma. link:../install-ip/using_rcf_generator.html["Cable os switches IP MetroCluster"]Consulte para obter informações sobre a utilização da porta do seu sistema.
+* Os seguintes endereços IP e sub-redes são usados nos exemplos:
++
+|===
+
+
+| Nó | Interface | Endereço IP | Sub-rede 
+
+
+ a| 
+node_A_1
+ a| 
+Interface IP MetroCluster 1
+ a| 
+10.1.1.1
+ a| 
+10,1.1/24
+
+
+
+ a| 
+Interface IP MetroCluster 2
+ a| 
+10.1.2.1
+ a| 
+10,1.2/24
+
+
+
+ a| 
+node_A_2
+ a| 
+Interface IP MetroCluster 1
+ a| 
+10.1.1.2
+ a| 
+10,1.1/24
+
+
+
+ a| 
+Interface IP MetroCluster 2
+ a| 
+10.1.2.2
+ a| 
+10,1.2/24
+
+
+
+ a| 
+node_B_1
+ a| 
+Interface IP MetroCluster 1
+ a| 
+10.1.1.3
+ a| 
+10,1.1/24
+
+
+
+ a| 
+Interface IP MetroCluster 2
+ a| 
+10.1.2.3
+ a| 
+10,1.2/24
+
+
+
+ a| 
+node_B_2
+ a| 
+Interface IP MetroCluster 1
+ a| 
+10.1.1.4
+ a| 
+10,1.1/24
+
+
+
+ a| 
+Interface IP MetroCluster 2
+ a| 
+10.1.2.4
+ a| 
+10,1.2/24
+
+|===
+* Este procedimento utiliza os seguintes exemplos:
++
+As portas para um sistema AFF A700 ou FAS9000 (E5A e e5b).
+
++
+As portas de um sistema AFF A220 mostram como usar o `-vlan-id` parâmetro em uma plataforma suportada.
+
++
+Configure as interfaces nas portas corretas para o modelo da sua plataforma.
+
+
+
+.Passos
+. Confirme se cada nó tem atribuição automática de disco ativada:
++
+`storage disk option show`
+
++
+A atribuição automática de disco atribuirá o pool 0 e o pool 1 discos, de acordo com o compartimento.
+
++
+A coluna atribuição automática indica se a atribuição automática de disco está ativada.
+
++
+[listing]
+----
+
+Node        BKg. FW. Upd.  Auto Copy   Auto Assign  Auto Assign Policy
+----------  -------------  ----------  -----------  ------------------
+node_A_1             on           on           on           default
+node_A_2             on           on           on           default
+2 entries were displayed.
+----
+. Verifique se você pode criar interfaces IP MetroCluster nos nós:
++
+`metrocluster configuration-settings show-status`
+
++
+Todos os nós devem estar prontos:
+
++
+[listing]
+----
+
+Cluster       Node         Configuration Settings Status
+----------    -----------  ---------------------------------
+cluster_A
+              node_A_1     ready for interface create
+              node_A_2     ready for interface create
+cluster_B
+              node_B_1     ready for interface create
+              node_B_2     ready for interface create
+4 entries were displayed.
+----
+. Crie as interfaces em node_A_1.
++
+.. Configure a interface na porta "E5A" em "node_A_1":
++
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5a -address <ip_address> -netmask <netmask>`
+
++
+O exemplo a seguir mostra a criação da interface na porta "E5A" em "node_A_1" com endereço IP "10,1.1,1":
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_1 -home-port e5a -address 10.1.1.1 -netmask 255.255.255.0
+[Job 28] Job succeeded: Interface Create is successful.
+cluster_A::>
+----
++
+Em modelos de plataforma que suportam VLANs para a interface IP do MetroCluster, você pode incluir o `-vlan-id` parâmetro se não quiser usar os IDs de VLAN padrão. O exemplo a seguir mostra o comando para um sistema AFF A220 com um ID de VLAN de 120:
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_2 -home-port e0a -address 10.1.1.2 -netmask 255.255.255.0 -vlan-id 120
+[Job 28] Job succeeded: Interface Create is successful.
+cluster_A::>
+----
+.. Configure a interface na porta "e5b" em "node_A_1":
++
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5b -address <ip_address> -netmask <netmask>`
+
++
+O exemplo a seguir mostra a criação da interface na porta "e5b" em "node_A_1" com endereço IP "10,1.2,1":
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_1 -home-port e5b -address 10.1.2.1 -netmask 255.255.255.0
+[Job 28] Job succeeded: Interface Create is successful.
+cluster_A::>
+----
+
+
++
+
+NOTE: Você pode verificar se essas interfaces estão presentes usando o `metrocluster configuration-settings interface show` comando.
+
+. Crie as interfaces em node_A_2.
++
+.. Configure a interface na porta "E5A" em "node_A_2":
++
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5a -address <ip_address> -netmask <netmask>`
+
++
+O exemplo a seguir mostra a criação da interface na porta "E5A" em "node_A_2" com endereço IP "10,1.1,2":
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_2 -home-port e5a -address 10.1.1.2 -netmask 255.255.255.0
+[Job 28] Job succeeded: Interface Create is successful.
+cluster_A::>
+----
+.. Configure a interface na porta "e5b" em "node_A_2":
++
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5b -address <ip_address> -netmask <netmask>`
+
++
+O exemplo a seguir mostra a criação da interface na porta "e5b" em "node_A_2" com endereço IP "10,1.2,2":
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_2 -home-port e5b -address 10.1.2.2 -netmask 255.255.255.0
+[Job 28] Job succeeded: Interface Create is successful.
+cluster_A::>
+----
++
+Em modelos de plataforma que suportam VLANs para a interface IP do MetroCluster, você pode incluir o `-vlan-id` parâmetro se não quiser usar os IDs de VLAN padrão. O exemplo a seguir mostra o comando para um sistema AFF A220 com um ID de VLAN de 220:
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_2 -home-port e0b -address 10.1.2.2 -netmask 255.255.255.0 -vlan-id 220
+[Job 28] Job succeeded: Interface Create is successful.
+cluster_A::>
+----
+
+
+. Crie as interfaces em "node_B_1".
++
+.. Configure a interface na porta "E5A" em "node_B_1":
++
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5a -address <ip_address> -netmask <netmask>`
+
++
+O exemplo a seguir mostra a criação da interface na porta "E5A" em "node_B_1" com endereço IP "10,1.1,3":
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_B -home-node node_B_1 -home-port e5a -address 10.1.1.3 -netmask 255.255.255.0
+[Job 28] Job succeeded: Interface Create is successful.cluster_B::>
+----
+.. Configure a interface na porta "e5b" em "node_B_1":
++
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5b -address <ip_address> -netmask <netmask>`
+
++
+O exemplo a seguir mostra a criação da interface na porta "e5b" em "node_B_1" com endereço IP "10,1.2,3":
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_B -home-node node_B_1 -home-port e5b -address 10.1.2.3 -netmask 255.255.255.0
+[Job 28] Job succeeded: Interface Create is successful.cluster_B::>
+----
+
+
+. Crie as interfaces em "node_B_2".
++
+.. Configure a interface na porta E5A no node_B_2:
++
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5a -address <ip_address> -netmask <netmask>`
+
++
+O exemplo a seguir mostra a criação da interface na porta "E5A" em "node_B_2" com endereço IP "10,1.1,4":
+
++
+[listing]
+----
+cluster_B::>metrocluster configuration-settings interface create -cluster-name cluster_B -home-node node_B_2 -home-port e5a -address 10.1.1.4 -netmask 255.255.255.0
+[Job 28] Job succeeded: Interface Create is successful.cluster_A::>
+----
+.. Configure a interface na porta "e5b" em "node_B_2":
++
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5b -address <ip_address> -netmask <netmask>`
+
++
+O exemplo a seguir mostra a criação da interface na porta "e5b" em "node_B_2" com endereço IP "10,1.2,4":
+
++
+[listing]
+----
+cluster_B::> metrocluster configuration-settings interface create -cluster-name cluster_B -home-node node_B_2 -home-port e5b -address 10.1.2.4 -netmask 255.255.255.0
+[Job 28] Job succeeded: Interface Create is successful.
+cluster_A::>
+----
+
+
+. Verifique se as interfaces foram configuradas:
++
+`metrocluster configuration-settings interface show`
+
++
+O exemplo a seguir mostra que o estado de configuração para cada interface está concluído.
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface show
+DR                                                              Config
+Group Cluster Node    Network Address Netmask         Gateway   State
+----- ------- ------- --------------- --------------- --------- ----------
+1     cluster_A  node_A_1
+                 Home Port: e5a
+                      10.1.1.1     255.255.255.0   -         completed
+                 Home Port: e5b
+                      10.1.2.1     255.255.255.0   -         completed
+                 node_A_2
+                 Home Port: e5a
+                      10.1.1.2     255.255.255.0   -         completed
+                 Home Port: e5b
+                      10.1.2.2     255.255.255.0   -         completed
+      cluster_B  node_B_1
+                 Home Port: e5a
+                      10.1.1.3     255.255.255.0   -         completed
+                 Home Port: e5b
+                      10.1.2.3     255.255.255.0   -         completed
+                 node_B_2
+                 Home Port: e5a
+                      10.1.1.4     255.255.255.0   -         completed
+                 Home Port: e5b
+                      10.1.2.4     255.255.255.0   -         completed
+8 entries were displayed.
+cluster_A::>
+----
+. Verifique se os nós estão prontos para conetar as interfaces MetroCluster:
++
+`metrocluster configuration-settings show-status`
+
++
+O exemplo a seguir mostra todos os nós no estado "pronto para conexão":
+
++
+[listing]
+----
+
+Cluster       Node         Configuration Settings Status
+----------    -----------  ---------------------------------
+cluster_A
+              node_A_1     ready for connection connect
+              node_A_2     ready for connection connect
+cluster_B
+              node_B_1     ready for connection connect
+              node_B_2     ready for connection connect
+4 entries were displayed.
+----
+. Estabeleça as ligações:
+`metrocluster configuration-settings connection connect`
++
+Se você estiver executando uma versão anterior ao ONTAP 9.10,1, os endereços IP não poderão ser alterados depois de emitir este comando.
+
++
+O exemplo a seguir mostra que o cluster_A está conetado com êxito:
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings connection connect
+[Job 53] Job succeeded: Connect is successful.
+cluster_A::>
+----
+. Verifique se as conexões foram estabelecidas:
++
+`metrocluster configuration-settings show-status`
+
++
+O status das configurações para todos os nós deve ser concluído:
+
++
+[listing]
+----
+
+Cluster       Node         Configuration Settings Status
+----------    -----------  ---------------------------------
+cluster_A
+              node_A_1     completed
+              node_A_2     completed
+cluster_B
+              node_B_1     completed
+              node_B_2     completed
+4 entries were displayed.
+----
+. Verifique se as conexões iSCSI foram estabelecidas:
++
+.. Mude para o nível de privilégio avançado:
++
+`set -privilege advanced`
+
++
+Você precisa responder `y` quando for solicitado a continuar no modo avançado e você vir o prompt do modo avançado (`*>`).
+
+.. Apresentar as ligações:
++
+`storage iscsi-initiator show`
+
++
+Em sistemas que executam o ONTAP 9.5, existem oito iniciadores IP MetroCluster em cada cluster que devem aparecer na saída.
+
++
+Em sistemas que executam o ONTAP 9.4 e anteriores, há quatro iniciadores IP MetroCluster em cada cluster que devem aparecer na saída.
+
++
+O exemplo a seguir mostra os oito iniciadores IP do MetroCluster em um cluster executando o ONTAP 9.5:
+
++
+[listing]
+----
+cluster_A::*> storage iscsi-initiator show
+Node Type Label    Target Portal           Target Name                      Admin/Op
+---- ---- -------- ------------------      -------------------------------- --------
+
+cluster_A-01
+     dr_auxiliary
+              mccip-aux-a-initiator
+                   10.227.16.113:65200     prod506.com.company:abab44       up/up
+              mccip-aux-a-initiator2
+                   10.227.16.113:65200     prod507.com.company:abab44       up/up
+              mccip-aux-b-initiator
+                   10.227.95.166:65200     prod506.com.company:abab44       up/up
+              mccip-aux-b-initiator2
+                   10.227.95.166:65200     prod507.com.company:abab44       up/up
+     dr_partner
+              mccip-pri-a-initiator
+                   10.227.16.112:65200     prod506.com.company:cdcd88       up/up
+              mccip-pri-a-initiator2
+                   10.227.16.112:65200     prod507.com.company:cdcd88       up/up
+              mccip-pri-b-initiator
+                   10.227.95.165:65200     prod506.com.company:cdcd88       up/up
+              mccip-pri-b-initiator2
+                   10.227.95.165:65200     prod507.com.company:cdcd88       up/up
+cluster_A-02
+     dr_auxiliary
+              mccip-aux-a-initiator
+                   10.227.16.112:65200     prod506.com.company:cdcd88       up/up
+              mccip-aux-a-initiator2
+                   10.227.16.112:65200     prod507.com.company:cdcd88       up/up
+              mccip-aux-b-initiator
+                   10.227.95.165:65200     prod506.com.company:cdcd88       up/up
+              mccip-aux-b-initiator2
+                   10.227.95.165:65200     prod507.com.company:cdcd88       up/up
+     dr_partner
+              mccip-pri-a-initiator
+                   10.227.16.113:65200     prod506.com.company:abab44       up/up
+              mccip-pri-a-initiator2
+                   10.227.16.113:65200     prod507.com.company:abab44       up/up
+              mccip-pri-b-initiator
+                   10.227.95.166:65200     prod506.com.company:abab44       up/up
+              mccip-pri-b-initiator2
+                   10.227.95.166:65200     prod507.com.company:abab44       up/up
+16 entries were displayed.
+----
+.. Voltar ao nível de privilégio de administrador:
++
+`set -privilege admin`
+
+
+
+. Verifique se os nós estão prontos para a implementação final da configuração do MetroCluster:
++
+`metrocluster node show`
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- ----
+-     cluster_A
+              node_A_1           ready to configure -     -
+              node_A_2           ready to configure -     -
+2 entries were displayed.
+cluster_A::>
+----
++
+[listing]
+----
+cluster_B::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- ----
+-     cluster_B
+              node_B_1           ready to configure -     -
+              node_B_2           ready to configure -     -
+2 entries were displayed.
+cluster_B::>
+----
+
+
+
+
+== Verificando ou executando manualmente a atribuição de unidades do pool 1
+
+Dependendo da configuração de armazenamento, você deve verificar a atribuição da unidade do pool 1 ou atribuir manualmente unidades ao pool 1 para cada nó na configuração IP do MetroCluster. O procedimento utilizado depende da versão do ONTAP que está a utilizar.
+
+|===
+
+
+| Tipo de configuração | Procedimento 
+
+
+ a| 
+Os sistemas atendem aos requisitos de atribuição automática de acionamento ou, se estiver executando o ONTAP 9.3, foram recebidos de fábrica.
+ a| 
+<<Verificando a atribuição de discos para discos do pool 1>>
+
+
+
+ a| 
+A configuração inclui três gavetas ou, se contiver mais de quatro gavetas, tem um múltiplo desigual de quatro gavetas (por exemplo, sete gavetas) e está executando o ONTAP 9.5.
+ a| 
+<<Atribuição manual de unidades para o pool 1 (ONTAP 9.4 ou posterior)>>
+
+
+
+ a| 
+A configuração não inclui quatro gavetas de storage por local e está executando o ONTAP 9.4
+ a| 
+<<Atribuição manual de unidades para o pool 1 (ONTAP 9.4 ou posterior)>>
+
+
+
+ a| 
+Os sistemas não foram recebidos de fábrica e estão executando o ONTAP 9.3Systems recebido de fábrica são pré-configurados com unidades atribuídas.
+ a| 
+<<Atribuição manual de discos para o pool 1 (ONTAP 9.3)>>
+
+|===
+
+
+=== Verificando a atribuição de discos para discos do pool 1
+
+Você deve verificar se os discos remotos estão visíveis para os nós e foram atribuídos corretamente.
+
+.Antes de começar
+Você deve esperar pelo menos dez minutos para que a atribuição automática do disco seja concluída após as interfaces IP do MetroCluster e as conexões terem sido criadas com o `metrocluster configuration-settings connection connect` comando.
+
+A saída de comando mostrará nomes de disco na forma: Node-name:0m.i1.0L1
+
+link:concept_considerations_drive_assignment.html["Considerações para atribuição automática de acionamento e sistemas ADP no ONTAP 9.4 e posterior"]
+
+.Passos
+. Verifique se os discos do pool 1 estão atribuídos automaticamente:
++
+`disk show`
+
++
+A saída a seguir mostra a saída para um sistema AFF A800 sem prateleiras externas.
+
++
+A atribuição automática de unidade atribuiu um quarto (8 unidades) a "node_A_1" e um quarto a "node_A_2". As unidades restantes serão discos remotos (pool 1) para "node_B_1" e "node_B_2".
+
++
+[listing]
+----
+cluster_B::> disk show -host-adapter 0m -owner node_B_2
+                    Usable     Disk              Container   Container
+Disk                Size       Shelf Bay Type    Type        Name      Owner
+----------------    ---------- ----- --- ------- ----------- --------- --------
+node_B_2:0m.i0.2L4  894.0GB    0     29  SSD-NVM shared      -         node_B_2
+node_B_2:0m.i0.2L10 894.0GB    0     25  SSD-NVM shared      -         node_B_2
+node_B_2:0m.i0.3L3  894.0GB    0     28  SSD-NVM shared      -         node_B_2
+node_B_2:0m.i0.3L9  894.0GB    0     24  SSD-NVM shared      -         node_B_2
+node_B_2:0m.i0.3L11 894.0GB    0     26  SSD-NVM shared      -         node_B_2
+node_B_2:0m.i0.3L12 894.0GB    0     27  SSD-NVM shared      -         node_B_2
+node_B_2:0m.i0.3L15 894.0GB    0     30  SSD-NVM shared      -         node_B_2
+node_B_2:0m.i0.3L16 894.0GB    0     31  SSD-NVM shared      -         node_B_2
+8 entries were displayed.
+
+cluster_B::> disk show -host-adapter 0m -owner node_B_1
+                    Usable     Disk              Container   Container
+Disk                Size       Shelf Bay Type    Type        Name      Owner
+----------------    ---------- ----- --- ------- ----------- --------- --------
+node_B_1:0m.i2.3L19 1.75TB     0     42  SSD-NVM shared      -         node_B_1
+node_B_1:0m.i2.3L20 1.75TB     0     43  SSD-NVM spare       Pool1     node_B_1
+node_B_1:0m.i2.3L23 1.75TB     0     40  SSD-NVM shared       -        node_B_1
+node_B_1:0m.i2.3L24 1.75TB     0     41  SSD-NVM spare       Pool1     node_B_1
+node_B_1:0m.i2.3L29 1.75TB     0     36  SSD-NVM shared       -        node_B_1
+node_B_1:0m.i2.3L30 1.75TB     0     37  SSD-NVM shared       -        node_B_1
+node_B_1:0m.i2.3L31 1.75TB     0     38  SSD-NVM shared       -        node_B_1
+node_B_1:0m.i2.3L32 1.75TB     0     39  SSD-NVM shared       -        node_B_1
+8 entries were displayed.
+
+cluster_B::> disk show
+                    Usable     Disk              Container   Container
+Disk                Size       Shelf Bay Type    Type        Name      Owner
+----------------    ---------- ----- --- ------- ----------- --------- --------
+node_B_1:0m.i1.0L6  1.75TB     0     1   SSD-NVM shared      -         node_A_2
+node_B_1:0m.i1.0L8  1.75TB     0     3   SSD-NVM shared      -         node_A_2
+node_B_1:0m.i1.0L17 1.75TB     0     18  SSD-NVM shared      -         node_A_1
+node_B_1:0m.i1.0L22 1.75TB     0     17 SSD-NVM shared - node_A_1
+node_B_1:0m.i1.0L25 1.75TB     0     12 SSD-NVM shared - node_A_1
+node_B_1:0m.i1.2L2  1.75TB     0     5 SSD-NVM shared - node_A_2
+node_B_1:0m.i1.2L7  1.75TB     0     2 SSD-NVM shared - node_A_2
+node_B_1:0m.i1.2L14 1.75TB     0     7 SSD-NVM shared - node_A_2
+node_B_1:0m.i1.2L21 1.75TB     0     16 SSD-NVM shared - node_A_1
+node_B_1:0m.i1.2L27 1.75TB     0     14 SSD-NVM shared - node_A_1
+node_B_1:0m.i1.2L28 1.75TB     0     15 SSD-NVM shared - node_A_1
+node_B_1:0m.i2.1L1  1.75TB     0     4 SSD-NVM shared - node_A_2
+node_B_1:0m.i2.1L5  1.75TB     0     0 SSD-NVM shared - node_A_2
+node_B_1:0m.i2.1L13 1.75TB     0     6 SSD-NVM shared - node_A_2
+node_B_1:0m.i2.1L18 1.75TB     0     19 SSD-NVM shared - node_A_1
+node_B_1:0m.i2.1L26 1.75TB     0     13 SSD-NVM shared - node_A_1
+node_B_1:0m.i2.3L19 1.75TB     0 42 SSD-NVM shared - node_B_1
+node_B_1:0m.i2.3L20 1.75TB     0 43 SSD-NVM shared - node_B_1
+node_B_1:0m.i2.3L23 1.75TB     0 40 SSD-NVM shared - node_B_1
+node_B_1:0m.i2.3L24 1.75TB     0 41 SSD-NVM shared - node_B_1
+node_B_1:0m.i2.3L29 1.75TB     0 36 SSD-NVM shared - node_B_1
+node_B_1:0m.i2.3L30 1.75TB     0 37 SSD-NVM shared - node_B_1
+node_B_1:0m.i2.3L31 1.75TB     0 38 SSD-NVM shared - node_B_1
+node_B_1:0m.i2.3L32 1.75TB     0 39 SSD-NVM shared - node_B_1
+node_B_1:0n.12      1.75TB     0 12 SSD-NVM shared aggr0 node_B_1
+node_B_1:0n.13      1.75TB     0 13 SSD-NVM shared aggr0 node_B_1
+node_B_1:0n.14      1.75TB     0 14 SSD-NVM shared aggr0 node_B_1
+node_B_1:0n.15      1.75TB 0 15 SSD-NVM shared aggr0 node_B_1
+node_B_1:0n.16      1.75TB 0 16 SSD-NVM shared aggr0 node_B_1
+node_B_1:0n.17      1.75TB 0 17 SSD-NVM shared aggr0 node_B_1
+node_B_1:0n.18      1.75TB 0 18 SSD-NVM shared aggr0 node_B_1
+node_B_1:0n.19      1.75TB 0 19 SSD-NVM shared - node_B_1
+node_B_1:0n.24      894.0GB 0 24 SSD-NVM shared - node_A_2
+node_B_1:0n.25      894.0GB 0 25 SSD-NVM shared - node_A_2
+node_B_1:0n.26      894.0GB 0 26 SSD-NVM shared - node_A_2
+node_B_1:0n.27      894.0GB 0 27 SSD-NVM shared - node_A_2
+node_B_1:0n.28      894.0GB 0 28 SSD-NVM shared - node_A_2
+node_B_1:0n.29      894.0GB 0 29 SSD-NVM shared - node_A_2
+node_B_1:0n.30      894.0GB 0 30 SSD-NVM shared - node_A_2
+node_B_1:0n.31      894.0GB 0 31 SSD-NVM shared - node_A_2
+node_B_1:0n.36      1.75TB 0 36 SSD-NVM shared - node_A_1
+node_B_1:0n.37      1.75TB 0 37 SSD-NVM shared - node_A_1
+node_B_1:0n.38      1.75TB 0 38 SSD-NVM shared - node_A_1
+node_B_1:0n.39      1.75TB 0 39 SSD-NVM shared - node_A_1
+node_B_1:0n.40      1.75TB 0 40 SSD-NVM shared - node_A_1
+node_B_1:0n.41      1.75TB 0 41 SSD-NVM shared - node_A_1
+node_B_1:0n.42      1.75TB 0 42 SSD-NVM shared - node_A_1
+node_B_1:0n.43      1.75TB 0 43 SSD-NVM shared - node_A_1
+node_B_2:0m.i0.2L4  894.0GB 0 29 SSD-NVM shared - node_B_2
+node_B_2:0m.i0.2L10 894.0GB 0 25 SSD-NVM shared - node_B_2
+node_B_2:0m.i0.3L3  894.0GB 0 28 SSD-NVM shared - node_B_2
+node_B_2:0m.i0.3L9  894.0GB 0 24 SSD-NVM shared - node_B_2
+node_B_2:0m.i0.3L11 894.0GB 0 26 SSD-NVM shared - node_B_2
+node_B_2:0m.i0.3L12 894.0GB 0 27 SSD-NVM shared - node_B_2
+node_B_2:0m.i0.3L15 894.0GB 0 30 SSD-NVM shared - node_B_2
+node_B_2:0m.i0.3L16 894.0GB 0 31 SSD-NVM shared - node_B_2
+node_B_2:0n.0       1.75TB 0 0 SSD-NVM shared aggr0_rha12_b1_cm_02_0 node_B_2
+node_B_2:0n.1 1.75TB 0 1 SSD-NVM shared aggr0_rha12_b1_cm_02_0 node_B_2
+node_B_2:0n.2 1.75TB 0 2 SSD-NVM shared aggr0_rha12_b1_cm_02_0 node_B_2
+node_B_2:0n.3 1.75TB 0 3 SSD-NVM shared aggr0_rha12_b1_cm_02_0 node_B_2
+node_B_2:0n.4 1.75TB 0 4 SSD-NVM shared aggr0_rha12_b1_cm_02_0 node_B_2
+node_B_2:0n.5 1.75TB 0 5 SSD-NVM shared aggr0_rha12_b1_cm_02_0 node_B_2
+node_B_2:0n.6 1.75TB 0 6 SSD-NVM shared aggr0_rha12_b1_cm_02_0 node_B_2
+node_B_2:0n.7 1.75TB 0 7 SSD-NVM shared - node_B_2
+64 entries were displayed.
+
+cluster_B::>
+
+
+cluster_A::> disk show
+Usable Disk Container Container
+Disk Size Shelf Bay Type Type Name Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+node_A_1:0m.i1.0L2 1.75TB 0 5 SSD-NVM shared - node_B_2
+node_A_1:0m.i1.0L8 1.75TB 0 3 SSD-NVM shared - node_B_2
+node_A_1:0m.i1.0L18 1.75TB 0 19 SSD-NVM shared - node_B_1
+node_A_1:0m.i1.0L25 1.75TB 0 12 SSD-NVM shared - node_B_1
+node_A_1:0m.i1.0L27 1.75TB 0 14 SSD-NVM shared - node_B_1
+node_A_1:0m.i1.2L1 1.75TB 0 4 SSD-NVM shared - node_B_2
+node_A_1:0m.i1.2L6 1.75TB 0 1 SSD-NVM shared - node_B_2
+node_A_1:0m.i1.2L7 1.75TB 0 2 SSD-NVM shared - node_B_2
+node_A_1:0m.i1.2L14 1.75TB 0 7 SSD-NVM shared - node_B_2
+node_A_1:0m.i1.2L17 1.75TB 0 18 SSD-NVM shared - node_B_1
+node_A_1:0m.i1.2L22 1.75TB 0 17 SSD-NVM shared - node_B_1
+node_A_1:0m.i2.1L5 1.75TB 0 0 SSD-NVM shared - node_B_2
+node_A_1:0m.i2.1L13 1.75TB 0 6 SSD-NVM shared - node_B_2
+node_A_1:0m.i2.1L21 1.75TB 0 16 SSD-NVM shared - node_B_1
+node_A_1:0m.i2.1L26 1.75TB 0 13 SSD-NVM shared - node_B_1
+node_A_1:0m.i2.1L28 1.75TB 0 15 SSD-NVM shared - node_B_1
+node_A_1:0m.i2.3L19 1.75TB 0 42 SSD-NVM shared - node_A_1
+node_A_1:0m.i2.3L20 1.75TB 0 43 SSD-NVM shared - node_A_1
+node_A_1:0m.i2.3L23 1.75TB 0 40 SSD-NVM shared - node_A_1
+node_A_1:0m.i2.3L24 1.75TB 0 41 SSD-NVM shared - node_A_1
+node_A_1:0m.i2.3L29 1.75TB 0 36 SSD-NVM shared - node_A_1
+node_A_1:0m.i2.3L30 1.75TB 0 37 SSD-NVM shared - node_A_1
+node_A_1:0m.i2.3L31 1.75TB 0 38 SSD-NVM shared - node_A_1
+node_A_1:0m.i2.3L32 1.75TB 0 39 SSD-NVM shared - node_A_1
+node_A_1:0n.12 1.75TB 0 12 SSD-NVM shared aggr0 node_A_1
+node_A_1:0n.13 1.75TB 0 13 SSD-NVM shared aggr0 node_A_1
+node_A_1:0n.14 1.75TB 0 14 SSD-NVM shared aggr0 node_A_1
+node_A_1:0n.15 1.75TB 0 15 SSD-NVM shared aggr0 node_A_1
+node_A_1:0n.16 1.75TB 0 16 SSD-NVM shared aggr0 node_A_1
+node_A_1:0n.17 1.75TB 0 17 SSD-NVM shared aggr0 node_A_1
+node_A_1:0n.18 1.75TB 0 18 SSD-NVM shared aggr0 node_A_1
+node_A_1:0n.19 1.75TB 0 19 SSD-NVM shared - node_A_1
+node_A_1:0n.24 894.0GB 0 24 SSD-NVM shared - node_B_2
+node_A_1:0n.25 894.0GB 0 25 SSD-NVM shared - node_B_2
+node_A_1:0n.26 894.0GB 0 26 SSD-NVM shared - node_B_2
+node_A_1:0n.27 894.0GB 0 27 SSD-NVM shared - node_B_2
+node_A_1:0n.28 894.0GB 0 28 SSD-NVM shared - node_B_2
+node_A_1:0n.29 894.0GB 0 29 SSD-NVM shared - node_B_2
+node_A_1:0n.30 894.0GB 0 30 SSD-NVM shared - node_B_2
+node_A_1:0n.31 894.0GB 0 31 SSD-NVM shared - node_B_2
+node_A_1:0n.36 1.75TB 0 36 SSD-NVM shared - node_B_1
+node_A_1:0n.37 1.75TB 0 37 SSD-NVM shared - node_B_1
+node_A_1:0n.38 1.75TB 0 38 SSD-NVM shared - node_B_1
+node_A_1:0n.39 1.75TB 0 39 SSD-NVM shared - node_B_1
+node_A_1:0n.40 1.75TB 0 40 SSD-NVM shared - node_B_1
+node_A_1:0n.41 1.75TB 0 41 SSD-NVM shared - node_B_1
+node_A_1:0n.42 1.75TB 0 42 SSD-NVM shared - node_B_1
+node_A_1:0n.43 1.75TB 0 43 SSD-NVM shared - node_B_1
+node_A_2:0m.i2.3L3 894.0GB 0 28 SSD-NVM shared - node_A_2
+node_A_2:0m.i2.3L4 894.0GB 0 29 SSD-NVM shared - node_A_2
+node_A_2:0m.i2.3L9 894.0GB 0 24 SSD-NVM shared - node_A_2
+node_A_2:0m.i2.3L10 894.0GB 0 25 SSD-NVM shared - node_A_2
+node_A_2:0m.i2.3L11 894.0GB 0 26 SSD-NVM shared - node_A_2
+node_A_2:0m.i2.3L12 894.0GB 0 27 SSD-NVM shared - node_A_2
+node_A_2:0m.i2.3L15 894.0GB 0 30 SSD-NVM shared - node_A_2
+node_A_2:0m.i2.3L16 894.0GB 0 31 SSD-NVM shared - node_A_2
+node_A_2:0n.0 1.75TB 0 0 SSD-NVM shared aggr0_node_A_2_0 node_A_2
+node_A_2:0n.1 1.75TB 0 1 SSD-NVM shared aggr0_node_A_2_0 node_A_2
+node_A_2:0n.2 1.75TB 0 2 SSD-NVM shared aggr0_node_A_2_0 node_A_2
+node_A_2:0n.3 1.75TB 0 3 SSD-NVM shared aggr0_node_A_2_0 node_A_2
+node_A_2:0n.4 1.75TB 0 4 SSD-NVM shared aggr0_node_A_2_0 node_A_2
+node_A_2:0n.5 1.75TB 0 5 SSD-NVM shared aggr0_node_A_2_0 node_A_2
+node_A_2:0n.6 1.75TB 0 6 SSD-NVM shared aggr0_node_A_2_0 node_A_2
+node_A_2:0n.7 1.75TB 0 7 SSD-NVM shared - node_A_2
+64 entries were displayed.
+
+cluster_A::>
+----
+
+
+
+
+=== Atribuição manual de unidades para o pool 1 (ONTAP 9.4 ou posterior)
+
+Se o sistema não tiver sido pré-configurado de fábrica e não atender aos requisitos de atribuição automática de unidades, você deverá atribuir manualmente as unidades 1 do pool remoto.
+
+.Sobre esta tarefa
+Este procedimento aplica-se às configurações que executam o ONTAP 9.4 ou posterior.
+
+Os detalhes para determinar se o sistema requer atribuição manual de disco estão incluídos no link:concept_considerations_drive_assignment.html["Considerações para atribuição automática de acionamento e sistemas ADP no ONTAP 9.4 e posterior"].
+
+Quando a configuração inclui apenas duas gavetas externas por local, o pool de 1 unidades para cada local deve ser compartilhado a partir do mesmo compartimento, conforme mostrado nos exemplos a seguir:
+
+* Node_A_1 recebe unidades nos compartimentos 0-11 no site_B-shelf_2 (remoto)
+* Node_A_2 recebe unidades nos compartimentos 12-23 no site_B-shelf_2 (remoto)
+
+
+.Passos
+. A partir de cada nó na configuração IP do MetroCluster, atribua unidades remotas ao pool 1.
++
+.. Exiba a lista de unidades não atribuídas:
++
+`disk show -host-adapter 0m -container-type unassigned`
+
++
+[listing]
+----
+cluster_A::> disk show -host-adapter 0m -container-type unassigned
+                     Usable           Disk    Container   Container
+Disk                   Size Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+6.23.0                    -    23   0 SSD     unassigned  -         -
+6.23.1                    -    23   1 SSD     unassigned  -         -
+.
+.
+.
+node_A_2:0m.i1.2L51       -    21  14 SSD     unassigned  -         -
+node_A_2:0m.i1.2L64       -    21  10 SSD     unassigned  -         -
+.
+.
+.
+48 entries were displayed.
+
+cluster_A::>
+----
+.. Atribua a propriedade de unidades remotas (0m) ao pool 1 do primeiro nó (por exemplo, node_A_1):
++
+`disk assign -disk <disk-id> -pool 1 -owner <owner_node_name>`
+
++
+`disk-id` deve identificar uma unidade em uma gaveta remota de `owner_node_name`.
+
+.. Confirme se as unidades foram atribuídas ao pool 1:
++
+`disk show -host-adapter 0m -container-type unassigned`
+
++
+--
+
+NOTE: A ligação iSCSI utilizada para aceder às unidades remotas é apresentada como dispositivo 0m.
+
+--
++
+A saída a seguir mostra que as unidades na gaveta 23 foram atribuídas porque não aparecem mais na lista de unidades não atribuídas:
+
++
+[listing]
+----
+cluster_A::> disk show -host-adapter 0m -container-type unassigned
+                     Usable           Disk    Container   Container
+Disk                   Size Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+node_A_2:0m.i1.2L51       -    21  14 SSD     unassigned  -         -
+node_A_2:0m.i1.2L64       -    21  10 SSD     unassigned  -         -
+.
+.
+.
+node_A_2:0m.i2.1L90       -    21  19 SSD     unassigned  -         -
+24 entries were displayed.
+
+cluster_A::>
+----
+.. Repita estas etapas para atribuir unidades de pool 1 ao segundo nó no local A (por exemplo, "node_A_2").
+.. Repita estes passos no local B..
+
+
+
+
+
+
+=== Atribuição manual de discos para o pool 1 (ONTAP 9.3)
+
+Se você tiver pelo menos duas gavetas de disco para cada nó, use a funcionalidade de atribuição automática do ONTAP para atribuir automaticamente os discos remotos (pool1).
+
+.Antes de começar
+Primeiro, você deve atribuir um disco na gaveta ao pool 1. Em seguida, o ONTAP atribui automaticamente o restante dos discos na gaveta ao mesmo pool.
+
+.Sobre esta tarefa
+Este procedimento aplica-se às configurações que executam o ONTAP 9.3.
+
+Esse procedimento só pode ser usado se você tiver pelo menos duas gavetas de disco para cada nó, o que permite a atribuição automática de discos no nível de compartimento.
+
+Se você não puder usar a atribuição automática no nível do compartimento, você deverá atribuir manualmente os discos remotos para que cada nó tenha um pool remoto de discos (pool 1).
+
+O recurso de atribuição automática de disco do ONTAP atribui os discos de acordo com o compartimento. Por exemplo:
+
+* Todos os discos no site_B-shelf_2 são atribuídos automaticamente a pool1 de node_A_1
+* Todos os discos no site_B-shelf_4 são atribuídos automaticamente a pool1 de node_A_2
+* Todos os discos no site_A-shelf_2 são atribuídos automaticamente a pool1 de node_B_1
+* Todos os discos no site_A-shelf_4 são atribuídos automaticamente a pool1 de node_B_2
+
+
+Você deve "semear" a atribuição automática especificando um único disco em cada prateleira.
+
+.Passos
+. A partir de cada nó na configuração IP do MetroCluster, atribua um disco remoto ao pool 1.
++
+.. Exibir a lista de discos não atribuídos:
++
+`disk show -host-adapter 0m -container-type unassigned`
+
++
+[listing]
+----
+cluster_A::> disk show -host-adapter 0m -container-type unassigned
+                     Usable           Disk    Container   Container
+Disk                   Size Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+6.23.0                    -    23   0 SSD     unassigned  -         -
+6.23.1                    -    23   1 SSD     unassigned  -         -
+.
+.
+.
+node_A_2:0m.i1.2L51       -    21  14 SSD     unassigned  -         -
+node_A_2:0m.i1.2L64       -    21  10 SSD     unassigned  -         -
+.
+.
+.
+48 entries were displayed.
+
+cluster_A::>
+----
+.. Selecione um disco remoto (0m) e atribua a propriedade do disco ao pool 1 do primeiro nó (por exemplo, "node_A_1"):
++
+`disk assign -disk <disk_id> -pool 1 -owner <owner_node_name>`
+
++
+O `disk-id` deve identificar um disco em uma gaveta remota de `owner_node_name`.
+
++
+O recurso de atribuição automática de disco ONTAP atribui todos os discos no compartimento remoto que contém o disco especificado.
+
+.. Depois de esperar pelo menos 60 segundos para que a atribuição automática do disco ocorra, verifique se os discos remotos na gaveta foram atribuídos automaticamente ao pool 1:
++
+`disk show -host-adapter 0m -container-type unassigned`
+
++
+--
+
+NOTE: A ligação iSCSI utilizada para aceder aos discos remotos é apresentada como dispositivo 0m.
+
+--
++
+A saída a seguir mostra que os discos na gaveta 23 agora foram atribuídos e não aparecem mais:
+
++
+[listing]
+----
+cluster_A::> disk show -host-adapter 0m -container-type unassigned
+                     Usable           Disk    Container   Container
+Disk                   Size Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+node_A_2:0m.i1.2L51       -    21  14 SSD     unassigned  -         -
+node_A_2:0m.i1.2L64       -    21  10 SSD     unassigned  -         -
+node_A_2:0m.i1.2L72       -    21  23 SSD     unassigned  -         -
+node_A_2:0m.i1.2L74       -    21   1 SSD     unassigned  -         -
+node_A_2:0m.i1.2L83       -    21  22 SSD     unassigned  -         -
+node_A_2:0m.i1.2L90       -    21   7 SSD     unassigned  -         -
+node_A_2:0m.i1.3L52       -    21   6 SSD     unassigned  -         -
+node_A_2:0m.i1.3L59       -    21  13 SSD     unassigned  -         -
+node_A_2:0m.i1.3L66       -    21  17 SSD     unassigned  -         -
+node_A_2:0m.i1.3L73       -    21  12 SSD     unassigned  -         -
+node_A_2:0m.i1.3L80       -    21   5 SSD     unassigned  -         -
+node_A_2:0m.i1.3L81       -    21   2 SSD     unassigned  -         -
+node_A_2:0m.i1.3L82       -    21  16 SSD     unassigned  -         -
+node_A_2:0m.i1.3L91       -    21   3 SSD     unassigned  -         -
+node_A_2:0m.i2.0L49       -    21  15 SSD     unassigned  -         -
+node_A_2:0m.i2.0L50       -    21   4 SSD     unassigned  -         -
+node_A_2:0m.i2.1L57       -    21  18 SSD     unassigned  -         -
+node_A_2:0m.i2.1L58       -    21  11 SSD     unassigned  -         -
+node_A_2:0m.i2.1L59       -    21  21 SSD     unassigned  -         -
+node_A_2:0m.i2.1L65       -    21  20 SSD     unassigned  -         -
+node_A_2:0m.i2.1L72       -    21   9 SSD     unassigned  -         -
+node_A_2:0m.i2.1L80       -    21   0 SSD     unassigned  -         -
+node_A_2:0m.i2.1L88       -    21   8 SSD     unassigned  -         -
+node_A_2:0m.i2.1L90       -    21  19 SSD     unassigned  -         -
+24 entries were displayed.
+
+cluster_A::>
+----
+.. Repita estas etapas para atribuir discos do pool 1 ao segundo nó no local A (por exemplo, "node_A_2").
+.. Repita estes passos no local B..
+
+
+
+
+
+
+== Habilitando a atribuição automática de acionamento no ONTAP 9.4
+
+.Sobre esta tarefa
+No ONTAP 9.4, se você desativou a atribuição automática de unidade como indicado anteriormente neste procedimento, você deve reativá-la em todos os nós.
+
+link:concept_considerations_drive_assignment.html["Considerações para atribuição automática de acionamento e sistemas ADP no ONTAP 9.4 e posterior"]
+
+.Passos
+. Ativar atribuição automática de condução:
++
+`storage disk option modify -node <node_name> -autoassign on`
+
++
+Você deve emitir este comando em todos os nós na configuração IP do MetroCluster.
+
+
+
+
+
+== Espelhamento dos agregados de raiz
+
+É necessário espelhar os agregados raiz para fornecer proteção de dados.
+
+.Sobre esta tarefa
+Por padrão, o agregado raiz é criado como agregado do tipo RAID-DP. Você pode alterar o agregado raiz de RAID-DP para o agregado do tipo RAID4. O comando a seguir modifica o agregado raiz para o agregado do tipo RAID4:
+
+`storage aggregate modify –aggregate <aggr_name> -raidtype raid4`
+
+
+NOTE: Em sistemas que não sejam ADP, o tipo RAID do agregado pode ser modificado do RAID-DP padrão para RAID4 antes ou depois que o agregado é espelhado.
+
+.Passos
+. Espelhar o agregado raiz:
++
+`storage aggregate mirror <aggr_name>`
+
++
+O comando a seguir espelha o agregado raiz para "controller_A_1":
+
++
+[listing]
+----
+controller_A_1::> storage aggregate mirror aggr0_controller_A_1
+----
++
+Isso reflete o agregado, por isso consiste em um Plex local e um Plex remoto localizado no local remoto de MetroCluster.
+
+. Repita a etapa anterior para cada nó na configuração do MetroCluster.
+
+
+.Informações relacionadas
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["Gerenciamento de storage lógico"]
+
+
+
+== Criando um agregado de dados espelhados em cada nó
+
+Você precisa criar um agregado de dados espelhados em cada nó no grupo de DR.
+
+.Sobre esta tarefa
+* Você deve saber quais unidades serão usadas no novo agregado.
+* Se você tiver vários tipos de unidade no sistema (armazenamento heterogêneo), você deve entender como pode garantir que o tipo de unidade correto esteja selecionado.
+* As unidades são de propriedade de um nó específico; quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
++
+Em sistemas que usam ADP, agregados são criados usando partições nas quais cada unidade é particionada em partições P1, P2 e P3.
+
+* Os nomes agregados devem estar em conformidade com o esquema de nomenclatura que você determinou quando você planejou sua configuração do MetroCluster.
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"]
+
+
+
+.Passos
+. Apresentar uma lista de peças sobresselentes disponíveis:
++
+`storage disk show -spare -owner <node_name>`
+
+. Criar o agregado:
++
+`storage aggregate create -mirror true`
+
++
+Se você estiver conetado ao cluster na interface de gerenciamento de cluster, poderá criar um agregado em qualquer nó do cluster. Para garantir que o agregado seja criado em um nó específico, use o `-node` parâmetro ou especifique as unidades que são de propriedade desse nó.
+
++
+Você pode especificar as seguintes opções:
+
++
+** Nó inicial do agregado (ou seja, o nó que possui o agregado em operação normal)
+** Lista de unidades específicas que devem ser adicionadas ao agregado
+** Número de unidades a incluir
++
+
+NOTE: Na configuração mínima suportada, na qual um número limitado de unidades está disponível, você deve usar a opção force-small-Aggregate para permitir a criação de um agregado RAID-DP de três discos.
+
+** Estilo de checksum para usar para o agregado
+** Tipo de unidades a utilizar
+** Tamanho das unidades a utilizar
+** Velocidade de condução a utilizar
+** Tipo RAID para grupos RAID no agregado
+** Número máximo de unidades que podem ser incluídas em um grupo RAID
+** Se unidades com RPM diferentes são permitidas para obter mais informações sobre essas opções, consulte a página de manual criação de agregados de armazenamento.
++
+O comando a seguir cria um agregado espelhado com 10 discos:
+
++
+[listing]
+----
+cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_1 -mirror true
+[Job 15] Job is queued: Create aggr1_node_A_1.
+[Job 15] The job is starting.
+[Job 15] Job succeeded: DONE
+----
+
+
+. Verifique o grupo RAID e as unidades do seu novo agregado:
++
+`storage aggregate show-status -aggregate <aggregate-name>`
+
+
+
+
+
+== Implementando a configuração do MetroCluster
+
+Você deve executar o `metrocluster configure` comando para iniciar a proteção de dados em uma configuração do MetroCluster.
+
+.Sobre esta tarefa
+* Deve haver pelo menos dois agregados de dados espelhados não-raiz em cada cluster.
++
+Você pode verificar isso com o `storage aggregate show` comando.
+
++
+
+NOTE: Se você quiser usar um único agregado de dados espelhados, consulte <<step1_single_mirror,Passo 1>> para obter instruções.
+
+* O estado ha-config dos controladores e chassis deve ser "mccip".
+
+
+Você emite o `metrocluster configure` comando uma vez em qualquer um dos nós para ativar a configuração do MetroCluster. Você não precisa emitir o comando em cada um dos sites ou nós, e não importa em qual nó ou site você escolher emitir o comando.
+
+ `metrocluster configure`O comando emparelhará automaticamente os dois nós com as IDs de sistema mais baixas em cada um dos dois clusters como parceiros de recuperação de desastres (DR). Em uma configuração de MetroCluster de quatro nós, há dois pares de parceiros de DR. O segundo par de DR é criado a partir dos dois nós com IDs de sistema mais altas.
+
+
+NOTE: Você deve configurar o OKM (Onboard Key Manager) ou o gerenciamento de chaves externas antes de executar o comando `metrocluster configure`.
+
+.Passos
+. [[step1_single_mirror]]Configure o MetroCluster no seguinte formato:
++
+|===
+
+
+| Se a sua configuração do MetroCluster tiver... | Então faça isso... 
+
+
+ a| 
+Vários agregados de dados
+ a| 
+A partir do prompt de qualquer nó, configure o MetroCluster:
+
+`metrocluster configure <node_name>`
+
+
+
+ a| 
+Um único agregado de dados espelhados
+ a| 
+.. A partir do prompt de qualquer nó, altere para o nível de privilégio avançado:
++
+`set -privilege advanced`
+
++
+Você precisa responder `y` quando for solicitado a continuar no modo avançado e você vir o prompt do modo avançado (*>).
+
+.. Configure o MetroCluster com o `-allow-with-one-aggregate true` parâmetro:
++
+`metrocluster configure -allow-with-one-aggregate true <node_name>`
+
+.. Voltar ao nível de privilégio de administrador:
++
+`set -privilege admin`
+
+
+
+|===
++
+--
+
+NOTE: A prática recomendada é ter vários agregados de dados. Se o primeiro grupo de DR tiver apenas um agregado e quiser adicionar um grupo de DR com um agregado, mova o volume de metadados do agregado de dados único. Para obter mais informações sobre este procedimento, link:../maintain/task_move_a_metadata_volume_in_mcc_configurations.html["Movimentação de um volume de metadados nas configurações do MetroCluster"]consulte .
+
+--
++
+O comando a seguir habilita a configuração do MetroCluster em todos os nós do grupo DR que contém "controller_A_1":
+
++
+[listing]
+----
+cluster_A::*> metrocluster configure -node-name controller_A_1
+
+[Job 121] Job succeeded: Configure is successful.
+----
+. Verifique o status da rede no local A:
++
+`network port show`
+
++
+O exemplo a seguir mostra o uso da porta de rede em uma configuração MetroCluster de quatro nós:
+
++
+[listing]
+----
+cluster_A::> network port show
+                                                          Speed (Mbps)
+Node   Port      IPspace   Broadcast Domain Link   MTU    Admin/Oper
+------ --------- --------- ---------------- ----- ------- ------------
+controller_A_1
+       e0a       Cluster   Cluster          up     9000  auto/1000
+       e0b       Cluster   Cluster          up     9000  auto/1000
+       e0c       Default   Default          up     1500  auto/1000
+       e0d       Default   Default          up     1500  auto/1000
+       e0e       Default   Default          up     1500  auto/1000
+       e0f       Default   Default          up     1500  auto/1000
+       e0g       Default   Default          up     1500  auto/1000
+controller_A_2
+       e0a       Cluster   Cluster          up     9000  auto/1000
+       e0b       Cluster   Cluster          up     9000  auto/1000
+       e0c       Default   Default          up     1500  auto/1000
+       e0d       Default   Default          up     1500  auto/1000
+       e0e       Default   Default          up     1500  auto/1000
+       e0f       Default   Default          up     1500  auto/1000
+       e0g       Default   Default          up     1500  auto/1000
+14 entries were displayed.
+----
+. Verifique a configuração do MetroCluster de ambos os sites na configuração do MetroCluster.
++
+.. Verifique a configuração do local A:
++
+`metrocluster show`
+
++
+[listing]
+----
+cluster_A::> metrocluster show
+
+Configuration: IP fabric
+
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+----
+.. Verifique a configuração a partir do local B:
++
+`metrocluster show`
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+
+Configuration: IP fabric
+
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+----
+
+
+. Para evitar possíveis problemas com o espelhamento de memória não volátil, reinicie cada um dos quatro nós:
++
+`node reboot -node <node_name> -inhibit-takeover true`
+
+. Emita o `metrocluster show` comando em ambos os clusters para verificar novamente a configuração.
+
+
+
+
+== Configurando o segundo grupo de DR em uma configuração de oito nós
+
+Repita as tarefas anteriores para configurar os nós no segundo grupo de DR.
+
+
+
+== Criação de agregados de dados sem espelhamento
+
+Você pode, opcionalmente, criar agregados de dados sem espelhamento para dados que não exigem o espelhamento redundante fornecido pelas configurações do MetroCluster.
+
+.Sobre esta tarefa
+* Você deve saber quais unidades ou LUNs de array serão usados no novo agregado.
+* Se você tiver vários tipos de unidade no sistema (armazenamento heterogêneo), você deve entender como pode verificar se o tipo de unidade correto está selecionado.
+
+
+
+IMPORTANT: Nas configurações IP do MetroCluster, agregados remotos sem espelhamento não são acessíveis após um switchover
+
+
+NOTE: Os agregados sem espelhamento devem ser locais para o nó que os possui.
+
+* As unidades e LUNs de array são de propriedade de um nó específico. Quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
+* Os nomes agregados devem estar em conformidade com o esquema de nomenclatura que você determinou quando você planejou sua configuração do MetroCluster.
+* _Gerenciamento de discos e agregados_ contém mais informações sobre o espelhamento de agregados.
+
+
+.Passos
+. Ativar a implantação de agregados sem espelhamento:
++
+`metrocluster modify -enable-unmirrored-aggr-deployment
+true`
+
+. Verifique se a atribuição automática de disco está desativada:
++
+`disk option show`
+
+. Instale e faça o cabeamento das gavetas de disco que conterão os agregados sem espelhamento.
++
+Você pode usar os procedimentos na documentação de instalação e configuração para sua plataforma e compartimentos de disco.
+
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+. Atribua manualmente todos os discos na nova gaveta ao nó apropriado:
++
+`disk assign -disk <disk_id> -owner <owner_node_name>`
+
+. Criar o agregado:
++
+`storage aggregate create`
+
++
+Se você estiver conetado ao cluster na interface de gerenciamento de cluster, poderá criar um agregado em qualquer nó do cluster. Para verificar se o agregado é criado em um nó específico, você deve usar o parâmetro -node ou especificar unidades que são de propriedade desse nó.
+
++
+Você também precisa garantir que você inclua somente unidades na gaveta sem espelhamento do agregado.
+
++
+Você pode especificar as seguintes opções:
+
++
+** Nó inicial do agregado (ou seja, o nó que possui o agregado em operação normal)
+** Lista de unidades específicas ou LUNs de storage que devem ser adicionados ao agregado
+** Número de unidades a incluir
+** Estilo de checksum para usar para o agregado
+** Tipo de unidades a utilizar
+** Tamanho das unidades a utilizar
+** Velocidade de condução a utilizar
+** Tipo RAID para grupos RAID no agregado
+** Número máximo de unidades ou LUNs de storage que podem ser incluídos em um grupo RAID
+** Se unidades com RPM diferentes são permitidas
++
+Para obter mais informações sobre essas opções, consulte a página de manual criar agregado de armazenamento.
+
++
+O comando a seguir cria um agregado sem espelhamento com 10 discos:
+
++
+[listing]
+----
+controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -node controller_A_1
+[Job 15] Job is queued: Create aggr1_controller_A_1.
+[Job 15] The job is starting.
+[Job 15] Job succeeded: DONE
+----
+
+
+. Verifique o grupo RAID e as unidades do seu novo agregado:
++
+`storage aggregate show-status -aggregate <aggregate_name>`
+
+. Desativar a implantação de agregados sem espelhamento:
++
+`metrocluster modify -enable-unmirrored-aggr-deployment false`
+
+. Verifique se a atribuição automática de disco está ativada:
++
+`disk option show`
+
+
+
+.Informações relacionadas
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"]
+
+
+
+== Verificar a configuração do MetroCluster
+
+Você pode verificar se os componentes e as relações na configuração do MetroCluster estão funcionando corretamente.
+
+.Sobre esta tarefa
+Você deve fazer uma verificação após a configuração inicial e depois de fazer quaisquer alterações na configuração do MetroCluster.
+
+Você também deve fazer uma verificação antes de um switchover negociado (planejado) ou de uma operação de switchback.
+
+Se o `metrocluster check run` comando for emitido duas vezes dentro de um curto espaço de tempo em um ou em ambos os clusters, um conflito pode ocorrer e o comando pode não coletar todos os dados. Os comandos subsequentes `metrocluster check show` não mostram a saída esperada.
+
+.Passos
+. Verificar a configuração:
++
+`metrocluster check run`
+
++
+O comando é executado como um trabalho em segundo plano e pode não ser concluído imediatamente.
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+The operation has been started and is running in the background. Wait for
+it to complete and run "metrocluster check show" to view the results. To
+check the status of the running metrocluster check operation, use the command,
+"metrocluster operation history show -job-id 2245"
+----
++
+[listing]
+----
+cluster_A::> metrocluster check show
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         ok
+volumes             ok
+7 entries were displayed.
+----
+. Exibir resultados mais detalhados do comando MetroCluster check run mais recente:
++
+`metrocluster check aggregate show`
+
++
+`metrocluster check cluster show`
+
++
+`metrocluster check config-replication show`
+
++
+`metrocluster check lif show`
+
++
+`metrocluster check node show`
+
++
+--
+
+NOTE: Os `metrocluster check show` comandos mostram os resultados do comando mais recente `metrocluster check run`. Você deve sempre executar o `metrocluster check run` comando antes de usar os `metrocluster check show` comandos para que as informações exibidas sejam atuais.
+
+--
++
+O exemplo a seguir mostra a `metrocluster check aggregate show` saída do comando para uma configuração de MetroCluster de quatro nós saudável:
+
++
+[listing]
+----
+cluster_A::> metrocluster check aggregate show
+
+
+
+Node                  Aggregate                  Check                      Result
+---------------       --------------------       ---------------------      ---------
+controller_A_1        controller_A_1_aggr0
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_1_aggr1
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_1_aggr2
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+
+
+controller_A_2        controller_A_2_aggr0
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_2_aggr1
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_2_aggr2
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+
+18 entries were displayed.
+----
++
+O exemplo a seguir mostra a saída do comando MetroCluster check cluster show para uma configuração de MetroCluster de quatro nós saudável. Isso indica que os clusters estão prontos para executar um switchover negociado, se necessário.
+
++
+[listing]
+----
+
+
+Cluster               Check                           Result
+--------------------- ------------------------------- ---------
+mccint-fas9000-0102
+                      negotiated-switchover-ready     not-applicable
+                      switchback-ready                not-applicable
+                      job-schedules                   ok
+                      licenses                        ok
+                      periodic-check-enabled          ok
+mccint-fas9000-0304
+                      negotiated-switchover-ready     not-applicable
+                      switchback-ready                not-applicable
+                      job-schedules                   ok
+                      licenses                        ok
+                      periodic-check-enabled          ok
+10 entries were displayed.
+----
+
+
+.Informações relacionadas
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"]
+
+link:https://docs.netapp.com/us-en/ontap/network-management/index.html["Gerenciamento de rede e LIF"^]
+
+
+
+== A concluir a configuração do ONTAP
+
+Após configurar, ativar e verificar a configuração do MetroCluster, você pode concluir a configuração do cluster adicionando SVMs adicionais, interfaces de rede e outras funcionalidades do ONTAP, conforme necessário.

@@ -1,0 +1,17 @@
+---
+permalink: install-fc/concept_considerations_when_removing_mcc_configurations.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, remove, configuration, disk connectivity, interconnects, adjust 
+summary: Você pode remover a configuração do MetroCluster de todos os nós na configuração do MetroCluster ou todos os nós em um grupo de recuperação de desastres. 
+---
+= Considerações ao remover configurações do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode remover a configuração do MetroCluster de todos os nós na configuração do MetroCluster ou todos os nós em um grupo de recuperação de desastres (DR). Depois de remover a configuração do MetroCluster, toda a conetividade de disco e interconexões devem ser ajustadas para estar em um estado suportado. Se precisar remover a configuração do MetroCluster, entre em Contato com o suporte técnico.
+
+
+IMPORTANT: Não é possível reverter a desconfiguração do MetroCluster. Este processo só deve ser feito com a assistência de suporte técnico. Entre em Contato com o suporte técnico da NetApp e consulte o guia apropriado para sua configuração no link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_nodes_from_a_MetroCluster_configuration_-_Resolution_Guide["Como remover nós de uma configuração MetroCluster - Guia de resolução."^]

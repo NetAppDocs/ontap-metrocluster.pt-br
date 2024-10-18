@@ -1,0 +1,126 @@
+---
+permalink: disaster-recovery/task_boot_new_mcfc.html 
+sidebar: sidebar 
+keywords: boot, controller, modules, fc 
+summary: Após a conclusão da recuperação de agregado para os agregados de dados e raiz, você precisa inicializar o nó ou nós no local de desastre. 
+---
+= Iniciar os novos módulos de controladores (configurações MetroCluster FC)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após a conclusão da recuperação de agregado para os agregados de dados e raiz, você precisa inicializar o nó ou nós no local de desastre.
+
+.Sobre esta tarefa
+Esta tarefa começa com os nós mostrando o prompt Loader.
+
+.Passos
+. Apresentar o menu de arranque:
++
+`boot_ontap menu`
+
+. [[step2,Step 2]]a partir do menu de arranque, selecione a opção 6, *Atualizar flash a partir da configuração de cópia de segurança*.
+. Responda `y` ao seguinte aviso:
++
+`This will replace all flash-based configuration with the last backup to disks. Are you sure you want to continue?: y`
+
++
+O sistema será inicializado duas vezes, a segunda vez para carregar a nova configuração.
+
++
+
+NOTE: Se você não limpar o conteúdo do NVRAM de um controlador de substituição usado, poderá ver um pânico com a seguinte mensagem:
+`PANIC: NVRAM contents are invalid...` Se isso ocorrer, repita <<step2,No menu de inicialização, selecione a opção 6, *Atualizar flash a partir da configuração de backup*.>> para inicializar o sistema no prompt do ONTAP. Então você precisa <<Reset-the-boot-recovery,Redefina a recuperação de inicialização e os bootargs rdb_corrupt>>
+
+. Espelhar o agregado de raiz no Plex 0:
++
+.. Atribua três discos pool0 ao novo módulo do controlador.
+.. Espelhar o agregado de raiz pool1 Plex:
++
+`aggr mirror root-aggr-name`
+
+.. Atribua discos não possuídos a pool0 no nó local
+
+
+. Se você tiver uma configuração de quatro nós, repita as etapas anteriores no outro nó no local de desastre.
+. Atualize a configuração do MetroCluster:
++
+.. Entrar no modo de privilégio avançado:
++
+`set -privilege advanced`
+
+.. Atualizar a configuração:
++
+`metrocluster configure -refresh true`
+
+.. Voltar ao modo de privilégios de administrador:
++
+`set -privilege admin`
+
+
+
+. Confirme se os nós de substituição no local de desastre estão prontos para o switchback:
++
+`metrocluster node show`
+
++
+Os nós de substituição devem estar no modo "'aguardando a recuperação de switchback'". Se eles estiverem no modo "normal", você pode reinicializar os nós de substituição. Após essa inicialização, os nós devem estar no modo "'aguardando a recuperação de switchback".
+
++
+O exemplo a seguir mostra que os nós de substituição estão prontos para switchback:
+
++
+....
+
+cluster_B::> metrocluster node show
+DR                    Configuration  DR
+Grp Cluster Node      State          Mirroring Mode
+--- ------- --------- -------------- --------- --------------------
+1   cluster_B
+            node_B_1  configured     enabled   switchover completed
+            node_B_2  configured     enabled   switchover completed
+    cluster_A
+            node_A_1  configured     enabled   waiting for switchback recovery
+            node_A_2  configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+
+cluster_B::>
+....
+
+
+.O que fazer a seguir
+Prossiga para link:../disaster-recovery/task_complete_recovery.html["Conclua o processo de recuperação de desastres"].
+
+
+
+=== [[Reset-the-boot-recovery]]Reponha os bootargs boot_recovery e rdb_corrupt
+
+[role="lead"]
+Se necessário, você pode redefinir o boot_recovery e o rdb_corrupt_bootargs
+
+.Passos
+. Interrompa o nó de volta ao prompt DO Loader:
++
+[listing]
+----
+node_A_1::*> halt -node _node-name_
+----
+. Verifique se os seguintes bootargs foram definidos:
++
+[listing]
+----
+LOADER> printenv bootarg.init.boot_recovery
+LOADER> printenv bootarg.rdb_corrupt
+----
+. Se qualquer bootarg tiver sido definido como um valor, desconfigure-o e inicie o ONTAP:
++
+[listing]
+----
+LOADER> unsetenv bootarg.init.boot_recovery
+LOADER> unsetenv bootarg.rdb_corrupt
+LOADER> saveenv
+LOADER> bye
+----
+

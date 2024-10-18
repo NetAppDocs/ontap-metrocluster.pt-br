@@ -1,0 +1,105 @@
+---
+permalink: install-stretch/concept_required_mcc_components_and_example_names_for_two_node_sas_attached_stretch_configurations_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, required, hardware, components, naming, guidelines, two, node, sas, configuration 
+summary: A configuração do MetroCluster requer uma variedade de componentes de hardware. Para conveniência e clareza, os nomes padrão dos componentes são usados em toda a documentação do MetroCluster. Um site é referido como Site A e o outro site é referido como Site B. 
+---
+= Componentes de hardware MetroCluster necessários e diretrizes de nomenclatura para configurações de stretch com conexão SAS de dois nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A configuração do MetroCluster requer uma variedade de componentes de hardware. Para conveniência e clareza, os nomes padrão dos componentes são usados em toda a documentação do MetroCluster. Um site é referido como Site A e o outro site é referido como Site B.
+
+
+
+== Software e hardware suportados
+
+O hardware e o software devem ser compatíveis com a configuração MetroCluster FC.
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+Ao usar sistemas AFF, todos os módulos do controlador na configuração do MetroCluster devem ser configurados como sistemas AFF.
+
+
+
+== Redundância de hardware na configuração MetroCluster
+
+Devido à redundância de hardware na configuração do MetroCluster, há dois de cada componente em cada local. Os sites são arbitrariamente atribuídos às letras A e B e os componentes individuais são arbitrariamente atribuídos aos números 1 e 2.
+
+
+
+== Dois clusters ONTAP de nó único
+
+A configuração Stretch MetroCluster conectada ao SAS requer dois clusters ONTAP de nó único.
+
+A nomeação deve ser única dentro da configuração do MetroCluster.
+
+Nomes de exemplo:
+
+* Local A: Cluster_A
+* Local B: Cluster_B
+
+
+
+
+== Dois módulos de controlador de armazenamento
+
+A configuração Stretch MetroCluster conetada a SAS requer dois módulos de controlador de armazenamento.
+
+* A nomeação deve ser única dentro da configuração do MetroCluster.
+* Todos os módulos do controlador na configuração do MetroCluster devem estar executando a mesma versão do ONTAP.
+* Todos os módulos de controladora em um grupo de DR devem ter o mesmo modelo.
+* Todos os módulos de controladora em um grupo de DR devem usar a mesma configuração FC-VI.
++
+Alguns módulos de controladora suportam duas opções de conectividade FC-VI:
+
++
+** Portas FC-VI integradas
+** Uma placa FC-VI no slot 1
++
+Uma combinação de um módulo de controladora que usa portas FC-VI integradas e outra que usa uma placa FC-VI complementar não é compatível. Por exemplo, se um nó usar a configuração FC-VI integrada, todos os outros nós do grupo de DR também precisarão usar a configuração FC-VI integrada.
+
+
+
+
+
+Nomes de exemplo:
+
+* Local A: Controller_A_1
+* Local B: Controller_B_1
+
+
+
+
+== Pelo menos quatro compartimentos de disco SAS (recomendado)
+
+A configuração Stretch MetroCluster conectada a SAS requer pelo menos duas gavetas de disco SAS. Recomenda-se quatro compartimentos de disco SAS.
+
+Duas gavetas são recomendadas em cada local para permitir a propriedade de disco por compartimento. Há suporte para um mínimo de uma prateleira em cada local.
+
+Nomes de exemplo:
+
+* Local A:
++
+** shelf_A_1_1
+** shelf_A_1_2
+
+
+* Local B:
++
+** shelf_B_1_1
+** shelf_B_1_2
+
+
+
+
+
+
+== Misturando módulos IOM12 e IOM 6 em uma pilha
+
+Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a ferramenta de Matriz de interoperabilidade (IMT) para ver se a sua versão do ONTAP suporta a mistura de prateleiras. https://imt.netapp.com/matrix/["IMT"^]
+
+Para obter mais detalhes sobre a mistura de prateleiras, consulte: https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Gavetas de adição dinâmica com IOM12 módulos para uma stack de gavetas com IOM6 módulos"]

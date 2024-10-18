@@ -1,0 +1,20 @@
+---
+permalink: install-fc/task_fcsw_configure_the_fc_switches_with_rcf_files_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, fc, switches, run, configuration, file 
+summary: Se você quiser simplificar o processo de configuração de switches, você pode baixar e aplicar arquivos de configuração de referência que fornecem as configurações completas de switch para determinadas configurações. 
+---
+= Configurando os switches FC executando um arquivo de configuração
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você quiser simplificar o processo de configuração de switches, você pode baixar e aplicar arquivos de configuração de referência que fornecem as configurações completas de switch para determinadas configurações.
+
+Os arquivos de configuração de referência (RCFs) não suportam configurações usando oito ISLs. Se você estiver usando oito ISLs, você deve configurar os switches manualmente.
+
+Os RCFs se aplicam a configurações de MetroCluster de dois nós, quatro nós e oito nós. Esses arquivos configuram a malha para entrega na ordem (IOD) por padrão.
+
+A página de download do RCF indica o número de nós suportados pelos diferentes modelos de switch.

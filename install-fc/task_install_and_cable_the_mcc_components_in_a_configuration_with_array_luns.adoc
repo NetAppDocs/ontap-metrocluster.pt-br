@@ -1,0 +1,14 @@
+---
+permalink: install-fc/task_install_and_cable_the_mcc_components_in_a_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, components, array, luns 
+summary: Para configurar uma configuração do MetroCluster com LUNs de array, você deve vincular os controladores de storage aos switches FC e fazer o cabeamento das ISLs para vincular os locais. Além disso, você precisa fazer o cabeamento dos storage arrays aos switches FC. 
+---
+= Instalação e cabeamento dos componentes do MetroCluster em uma configuração com LUNs de array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para configurar uma configuração do MetroCluster com LUNs de array, você deve vincular os controladores de storage aos switches FC e fazer o cabeamento das ISLs para vincular os locais. Além disso, você precisa fazer o cabeamento dos storage arrays aos switches FC.

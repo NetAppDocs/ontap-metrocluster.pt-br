@@ -1,0 +1,76 @@
+---
+permalink: transition/concept_example_naming_in_this_procedure_2n_mcc_transition_disruptive.html 
+sidebar: sidebar 
+keywords: procedure, example, name, identify, dr, group, node, switch, involve, naming 
+summary: Este procedimento usa nomes de exemplo em todo o para identificar os grupos de DR, nós e switches envolvidos. 
+---
+= Exemplo de nomeação neste procedimento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Este procedimento usa nomes de exemplo em todo o para identificar os grupos de DR, nós e switches envolvidos.
+
+Os nós na configuração original têm o sufixo -FC, indicando que eles estão em uma configuração de MetroCluster Stretch ou conectado à malha.
+
+[cols="22,39,39"]
+|===
+
+
+| Componentes | Cluster_A no site_A | Cluster_B no local_B 
+
+
+ a| 
+DR_Group_1-FC
+ a| 
+* Node_A_1-FC
+* shelf_A_1
+* shelf_A_2
+
+ a| 
+* Nó_B_1-FC
+* shelf_B_1
+* shelf_B_2
+
+
+
+
+ a| 
+DR_Group_2-IP
+ a| 
+* Node_A_1-IP
+* Node_A_2-IP
+* shelf_A_1
+* shelf_A_2
+* Shelf_A_3-novo
+* Shelf_A_4-novo
+
+ a| 
+* Node_B_1-IP
+* Node_B_2-IP
+* shelf_B_1
+* shelf_B_2
+* Shelf_B_3-new
+* Shelf_B_4-new
+
+
+
+
+ a| 
+Interrutores
+ a| 
+* Switch_A_1-FC
+* Switch_A_2-FC
+* Switch_A_1-IP
+* Switch_A_2-IP
+
+ a| 
+* Switch_B_1-FC
+* Switch_B_2-FC
+* Switch_B_1-IP
+* Switch_B_2-IP
+
+
+|===

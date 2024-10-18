@@ -1,0 +1,44 @@
+---
+permalink: transition/task_prepare_ip_controllers_4n_transition.html 
+sidebar: sidebar 
+keywords: Transitioning from MetroCluster FC to MetroCluster IP configurations, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: Você deve preparar os quatro novos nós IP do MetroCluster e instalar a versão correta do ONTAP. 
+---
+= Preparação dos controladores IP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve preparar os quatro novos nós IP do MetroCluster e instalar a versão correta do ONTAP.
+
+Esta tarefa deve ser executada em cada um dos novos nós:
+
+* Node_A_1-IP
+* Node_A_2-IP
+* Node_B_1-IP
+* Node_B_2-IP
+
+
+Nestas etapas, você limpa a configuração nos nós e limpa a região da caixa de correio em novas unidades.
+
+. Rack os novos controladores para a configuração IP do MetroCluster.
++
+Os nós de FC do MetroCluster (node_A_x-FC e node_B_x-FC) permanecem cabeados no momento.
+
+. Faça o cabeamento dos nós IP do MetroCluster aos switches IP, conforme mostrado na link:../install-ip/using_rcf_generator.html["Cabeamento dos switches IP"].
+. Configure os nós IP do MetroCluster usando as seguintes seções:
++
+.. link:../install-ip/task_sw_config_gather_info.html["Reúna as informações necessárias"]
+.. link:../install-ip/task_sw_config_restore_defaults.html["Restaure os padrões do sistema em um módulo do controlador"]
+.. link:../install-ip/task_sw_config_verify_haconfig.html["Verifique o estado ha-config dos componentes"]
+.. link:../install-ip/task_sw_config_assign_pool0.html["Atribuir manualmente unidades para o pool 0 (ONTAP 9.4 e posterior)"]
+
+
+. No modo Manutenção, emita o comando halt para sair do modo Manutenção e, em seguida, emita o comando boot_ONTAP para inicializar o sistema e chegar à configuração do cluster.
++
+Não conclua o assistente de cluster ou o assistente de nó neste momento.
+
+. Repita estas etapas nos outros nós IP do MetroCluster.
+

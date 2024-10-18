@@ -1,0 +1,281 @@
+---
+permalink: transition/task_move_an_fc_san_workload_from_mcc_fc_to_mcc_ip_nodes.html 
+sidebar: sidebar 
+keywords: non-disruptively, transition, metrocluster, fc, ip, node, san, host, moving, move 
+summary: Ao fazer a transição do MetroCluster FC para nós IP sem interrupções, você precisa mover objetos de host FC SAN do MetroCluster FC para nós IP sem interrupções. 
+---
+= Movimentação de um workload de FC SAN do MetroCluster FC para os nós IP do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao fazer a transição do MetroCluster FC para nós IP sem interrupções, você precisa mover objetos de host FC SAN do MetroCluster FC para nós IP sem interrupções.
+
+
+
+== Mover um workload de FC SAN do MetroCluster FC para os nós IP do MetroCluster
+
+.Passos
+. Configure novas interfaces FC (LIFS) em nós IP do MetroCluster:
++
+.. Se necessário, nos nós IP do MetroCluster, modifique as portas FC a serem usadas para a conectividade do cliente com a personalidade de destino FC.
++
+Isso pode exigir uma reinicialização dos nós.
+
+.. Crie FC LIFS/interfaces em nós IP para todos os SVMs SAN. Opcionalmente, verifique se os WWPNs de FC LIFs recém-criados estão conetados ao switch SAN FC
+
+
+. Atualize a configuração de zoneamento SAN para LIFs FC recém-adicionados em nós IP do MetroCluster.
++
+Para facilitar a movimentação de volumes que contêm LUNs que fornecem dados ativamente a clientes FC SAN, atualize as zonas de switch FC existentes para permitir que clientes FC SAN acessem LUNs nos nós IP do MetroCluster.
+
++
+.. No switch SAN FC (Cisco ou Brocade), adicione as WWPNs de LIFs SAN FC recém-adicionados à zona.
+.. Atualize, salve e confirme as alterações de zoneamento.
+.. No cliente, verifique se há logins do iniciador FC para os novos LIFs SAN nos nós IP do MetroCluster: `sanlun lun show -p`
++
+Neste momento, o cliente deve ver e fazer login nas interfaces FC nos nós IP MetroCluster FC e MetroCluster. LUNs e volumes ainda ficam hospedados fisicamente nos nós de FC do MetroCluster.
+
++
+Como os LUNs são relatados apenas nas interfaces de nó MetroCluster FC, o cliente mostra apenas caminhos em nós FC. Isto pode ser visto na saída dos `sanlun lun show -p` comandos e. `multipath -ll -d`
+
++
+[listing]
+----
+[root@stemgr]# sanlun lun show -p
+ONTAP Path: vsa_1:/vol/vsa_1_vol6/lun_linux_12
+ LUN: 4
+ LUN Size: 2g
+ Product: cDOT
+ Host Device: 3600a098038304646513f4f674e52774b
+ Multipath Policy: service-time 0
+ Multipath Provider: Native
+--------- ---------- ------- ------------ ----------------------------------------------
+host vserver
+path path /dev/ host vserver
+state type node adapter LIF
+--------- ---------- ------- ------------ ----------------------------------------------
+up primary sdk host3 iscsi_lf__n2_p1_
+up secondary sdh host2 iscsi_lf__n1_p1_
+
+[root@stemgr]# multipath -ll -d
+3600a098038304646513f4f674e52774b dm-5 NETAPP ,LUN C-Mode
+size=2.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| `- 3:0:0:4 sdk 8:160 active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+ `- 2:0:0:4 sdh 8:112 active ready running
+----
+
+
+. Modifique os nós de relatório para adicionar os nós IP do MetroCluster
++
+.. Listar nós de geração de relatórios de LUNs na SVM: `lun mapping show -vserver svm-name -fields reporting-nodes -ostype linux`
++
+Os nós de geração de relatórios mostrados são nós locais, pois os LUNs estão fisicamente nos nós FC A_1 e A_2.
+
++
+[listing]
+----
+cluster_A::> lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux
+
+vserver  path                        igroup         reporting-nodes
+-------  --------------------------- ------------   -------------------------------------
+vsa_1    /vol/vsa_1_vol1/lun_linux_2 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol1/lun_linux_3 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol2/lun_linux_4 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol3/lun_linux_7 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol4/lun_linux_8 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol4/lun_linux_9 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol6/lun_linux_12 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol6/lun_linux_13 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol7/lun_linux_14 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol8/lun_linux_17 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol9/lun_linux_18 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol9/lun_linux_19 igroup_linux  A_1,A_2
+12 entries were displayed.
+----
+.. Adicione nós de relatório para incluir nós IP do MetroCluster.
++
+[listing]
+----
+cluster_A::> lun mapping add-reporting-nodes -vserver vsa_1 -path /vol/vsa_1_vol*/lun_linux_* -nodes B_1,B_2 -igroup igroup_linux
+
+12 entries were acted on.
+----
+.. Listar nós de relatórios e verificar a presença dos novos nós:
++
+[listing]
+----
+cluster_A::> lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux
+
+vserver path                          igroup          reporting-nodes
+------- ---------------------------   ------------    -------------------------------------------------------------------------------
+
+vsa_1   /vol/vsa_1_vol1/lun_linux_2   igroup_linux    A_1,A_2,B_1,B_2
+vsa_1   /vol/vsa_1_vol1/lun_linux_3   igroup_linux    A_1,A_2,B_1,B_2
+vsa_1   /vol/vsa_1_vol2/lun_linux_4   igroup_linux    A_1,A_2,B_1,B_2
+vsa_1   /vol/vsa_1_vol3/lun_linux_7   igroup_linux    A_1,A_2,B_1,B_2
+...
+
+12 entries were displayed.
+----
+.. Verifique se o `sg3-utils` pacote está instalado no host Linux. Isso evita um `rescan-scsi-bus.sh utility not found` erro quando você revê o host Linux para os LUNs recentemente mapeados usando o `rescan-scsi-bus` comando.
+.. Volte a digitalizar o barramento SCSI no host para descobrir os caminhos recém-adicionados: `/usr/bin/rescan-scsi-bus.sh -a`
++
+[listing]
+----
+[root@stemgr]# /usr/bin/rescan-scsi-bus.sh -a
+Scanning SCSI subsystem for new devices
+Scanning host 0 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 1 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 2 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+ Scanning for device 2 0 0 0 ...
+.
+.
+.
+OLD: Host: scsi5 Channel: 00 Id: 00 Lun: 09
+ Vendor: NETAPP Model: LUN C-Mode Rev: 9800
+ Type: Direct-Access ANSI SCSI revision: 05
+0 new or changed device(s) found.
+0 remapped or resized device(s) found.
+0 device(s) removed.
+----
+.. Exiba os caminhos recém-adicionados: `sanlun lun show -p`
++
+Cada LUN terá quatro caminhos.
+
++
+[listing]
+----
+[root@stemgr]# sanlun lun show -p
+ONTAP Path: vsa_1:/vol/vsa_1_vol6/lun_linux_12
+ LUN: 4
+ LUN Size: 2g
+ Product: cDOT
+ Host Device: 3600a098038304646513f4f674e52774b
+ Multipath Policy: service-time 0
+ Multipath Provider: Native
+--------- ---------- ------- ------------ ----------------------------------------------
+host vserver
+path path /dev/ host vserver
+state type node adapter LIF
+--------- ---------- ------- ------------ ----------------------------------------------
+up primary sdk host3 iscsi_lf__n2_p1_
+up secondary sdh host2 iscsi_lf__n1_p1_
+up secondary sdag host4 iscsi_lf__n4_p1_
+up secondary sdah host5 iscsi_lf__n3_p1_
+----
+.. Nas controladoras, mova os volumes que contêm LUNs do MetroCluster FC para os nós IP do MetroCluster.
++
+[listing]
+----
+cluster_A::> vol move start -vserver vsa_1 -volume vsa_1_vol1 -destination-aggregate A_1_htp_005_aggr1
+[Job 1877] Job is queued: Move "vsa_1_vol1" in Vserver "vsa_1" to aggregate "A_1_htp_005_aggr1". Use the "volume move show -vserver vsa_1 -volume vsa_1_vol1"
+command to view the status of this operation.
+cluster_A::> volume move show
+Vserver    Volume    State    Move Phase   Percent-Complete Time-To-Complete
+--------- ---------- -------- ----------   ---------------- ----------------
+vsa_1     vsa_1_vol1 healthy  initializing
+ - -
+----
+.. No cliente SAN FC, exiba as informações de LUN: `sanlun lun show -p`
++
+As interfaces FC nos nós IP do MetroCluster onde o LUN agora reside são atualizadas como caminhos principais. Se o caminho primário não for atualizado após a movimentação do volume, execute /usr/bin/rescan-scsi-bus.sh -a ou simplesmente aguarde que o recurso multipath ocorra.
+
++
+O caminho principal no exemplo a seguir é o LIF no nó IP do MetroCluster.
+
++
+[listing]
+----
+[root@localhost ~]# sanlun lun show -p
+
+                    ONTAP Path: vsa_1:/vol/vsa_1_vol1/lun_linux_2
+                           LUN: 22
+                      LUN Size: 2g
+                       Product: cDOT
+                   Host Device: 3600a098038302d324e5d50305063546e
+              Multipath Policy: service-time 0
+            Multipath Provider: Native
+--------- ---------- ------- ------------ ----------------------------------------------
+host      vserver
+path      path       /dev/   host         vserver
+state     type       node    adapter      LIF
+--------- ---------- ------- ------------ ----------------------------------------------
+up        primary    sddv    host6        fc_5
+up        primary    sdjx    host7        fc_6
+up        secondary  sdgv    host6        fc_8
+up        secondary  sdkr    host7        fc_8
+----
+.. Repita as etapas acima para todos os volumes, LUNs e interfaces FC pertencentes a um host SAN FC.
++
+Quando concluído, todos os LUNs de um determinado SVM e host FC SAN devem estar nos nós IP do MetroCluster.
+
+
+
+. Remova os nós de relatório e faça a varredura de caminhos do cliente.
++
+.. Remover os nós de geração de relatórios remotos (os nós FC do MetroCluster) para as LUNs linux: `lun mapping remove-reporting-nodes -vserver vsa_1 -path * -igroup igroup_linux -remote-nodes true`
++
+[listing]
+----
+cluster_A::> lun mapping remove-reporting-nodes -vserver vsa_1 -path * -igroup igroup_linux -remote-nodes true
+12 entries were acted on.
+----
+.. Verifique os nós de geração de relatórios para LUNs: `lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux`
++
+[listing]
+----
+cluster_A::> lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux
+
+vserver path igroup reporting-nodes
+------- --------------------------- ------------ -----------------------------------------
+vsa_1 /vol/vsa_1_vol1/lun_linux_2 igroup_linux B_1,B_2
+vsa_1 /vol/vsa_1_vol1/lun_linux_3 igroup_linux B_1,B_2
+vsa_1 /vol/vsa_1_vol2/lun_linux_4 igroup_linux B_1,B_2
+...
+
+12 entries were displayed.
+----
+.. Volte a digitalizar o barramento SCSI no cliente: `/usr/bin/rescan-scsi-bus.sh -r`
++
+Os caminhos dos nós FC do MetroCluster são removidos:
+
++
+[listing]
+----
+[root@stemgr]# /usr/bin/rescan-scsi-bus.sh -r
+Syncing file systems
+Scanning SCSI subsystem for new devices and remove devices that have disappeared
+Scanning host 0 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 1 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 2 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+sg0 changed: LU not available (PQual 1)
+REM: Host: scsi2 Channel: 00 Id: 00 Lun: 00
+DEL: Vendor: NETAPP Model: LUN C-Mode Rev: 9800
+ Type: Direct-Access ANSI SCSI revision: 05
+sg2 changed: LU not available (PQual 1)
+.
+.
+.
+OLD: Host: scsi5 Channel: 00 Id: 00 Lun: 09
+ Vendor: NETAPP Model: LUN C-Mode Rev: 9800
+ Type: Direct-Access ANSI SCSI revision: 05
+0 new or changed device(s) found.
+0 remapped or resized device(s) found.
+24 device(s) removed.
+ [2:0:0:0]
+ [2:0:0:1]
+...
+----
+.. Verifique se apenas os caminhos dos nós IP do MetroCluster estão visíveis a partir do host: `sanlun lun show -p`
+.. Se necessário, remova iSCSI LIFs dos nós FC do MetroCluster.
++
+Isso deve ser feito se não houver outros LUNs nos nós mapeados para outros clientes.
+
+
+
+

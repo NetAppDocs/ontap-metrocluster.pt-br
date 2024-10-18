@@ -1,0 +1,54 @@
+---
+permalink: install-fc/task_assign_ownership_of_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, assigning, ownership, array, luns 
+summary: Os LUNs de array devem ser de propriedade de um nó antes que possam ser adicionados a um agregado para ser usado como storage. 
+---
+= Atribuição de propriedade de LUNs de array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os LUNs de array devem ser de propriedade de um nó antes que possam ser adicionados a um agregado para ser usado como storage.
+
+.Antes de começar
+* O teste de configuração de back-end (teste da conetividade e configuração dos dispositivos por trás dos sistemas ONTAP) deve ser concluído.
+* Os LUNs de array que você deseja atribuir devem ser apresentados aos sistemas ONTAP.
+
+
+.Sobre esta tarefa
+Você pode atribuir a propriedade de LUNs do array que têm as seguintes características:
+
+* Eles são de propriedade própria.
+* Eles não têm erros de configuração de storage array, como os seguintes:
++
+** O LUN de array é menor ou maior do que o tamanho que o ONTAP suporta.
+** O LDEV é mapeado em apenas uma porta.
+** O LDEV tem IDs LUN inconsistentes atribuídas a ele.
+** O LUN está disponível apenas em um caminho.
+
+
+
+
+O ONTAP emite uma mensagem de erro se você tentar atribuir a propriedade de um LUN de array com erros de configuração de back-end que interfeririam com o sistema ONTAP e o storage array operando em conjunto. Você deve corrigir esses erros antes de prosseguir com a atribuição de LUN de matriz.
+
+O ONTAP o alerta se você tentar atribuir um LUN de matriz com um erro de redundância: Por exemplo, todos os caminhos para esse LUN de matriz são conetados ao mesmo controlador ou apenas um caminho para o LUN de matriz. Você pode corrigir um erro de redundância antes ou depois de atribuir a propriedade do LUN.
+
+.Passos
+. Exibir os LUNs do array que ainda não foram atribuídos a um nó:
++
+`storage disk show -container-type unassigned`
+
+. Atribua um LUN de matriz a este nó:
++
+`storage disk assign -disk _array_LUN_name_ -owner _nodename_`
+
++
+Se você quiser corrigir um erro de redundância após a atribuição de disco em vez de antes, você deve usar o `-force` parâmetro com o comando de atribuição de disco de armazenamento.
+
+
+
+.Informações relacionadas
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Referência e requisitos de instalação da virtualização do FlexArray"]

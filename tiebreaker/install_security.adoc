@@ -1,0 +1,157 @@
+---
+permalink: tiebreaker/install_security.html 
+sidebar: sidebar 
+keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
+summary: O software tiebreaker fornece recursos de monitoramento para um ambiente de storage em cluster. Ele também envia notificações SNMP em caso de problemas de conetividade de nó e desastres de site. 
+---
+= Proteja a instalação do banco de dados e do host tiebreaker
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para configurações que executam o MetroCluster tiebreaker 1,5 e posterior, você pode proteger e proteger o sistema operacional do host e o banco de dados.
+
+
+
+== Proteja o host
+
+As diretrizes a seguir mostram como proteger o host onde o software tiebreaker está instalado.
+
+
+
+=== Recomendações de gerenciamento de usuários
+
+* Limite o acesso do usuário "root".
++
+** Você pode usar usuários capazes de elevar o acesso root para instalar e administrar o software tiebreaker.
+** Você pode usar usuários que não são capazes de elevar o acesso root para administrar o software tiebreaker.
+** Durante a instalação, você deve criar um grupo chamado "mcctbgrp". O usuário raiz do host e o usuário criado durante a instalação devem ser membros. Somente os membros desse grupo podem administrar totalmente o software tiebreaker.
++
+
+NOTE: Os usuários que não são membros deste grupo não podem acessar o software tiebreaker ou a CLI. Você pode criar usuários adicionais no host e torná-los membros do grupo. Esses membros adicionais não podem administrar totalmente o software tiebreaker. Eles têm acesso ReadOnly e não podem adicionar, alterar ou excluir monitores.
+
+** Não execute tiebreaker como usuário root. Use uma conta de serviço dedicada e sem privilégios para executar o tiebreaker.
+
+
+* Altere a cadeia de carateres padrão da comunidade no arquivo "/etc/snmp/snmpd.conf".
+* Permitir Privileges de escrita mínima. A conta de serviço tiebreaker não deve ter acesso para substituir seu binário executável ou quaisquer arquivos de configuração. Somente diretórios e arquivos para armazenamento de tiebreaker local (por exemplo, para armazenamento de back-end integrado) ou logs de auditoria devem ser graváveis pelo usuário do tiebreaker.
+* Não permita usuários anônimos.
++
+** Defina AllowTcpForwarding como "não" ou use a diretiva Match para restringir usuários anônimos.
+
+
+
+
+.Informações relacionadas
+* link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/["Documentação do produto Red Hat Enterprise Linux 8"^]
+* link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/["Documentação do produto Red Hat Enterprise Linux 9"^]
+* link:https://docs.rockylinux.org["Documentação do produto Rocky Linux"^]
+
+
+
+
+=== Recomendações de segurança de host de linha de base
+
+* Use criptografia de disco
++
+** Pode ativar a encriptação de disco. Isso pode ser FullDiskEncryption (hardware), criptografia fornecida pelo Hostos (software) ou pelo host SVM.
+
+
+* Desative serviços não utilizados que permitam conexões de entrada. Você pode desativar qualquer serviço que não esteja em uso. O software tiebreaker não requer um serviço para conexões de entrada porque todas as conexões da instalação do tiebreaker são enviadas. Os serviços que podem ser ativados por padrão e podem ser desativados são:
++
+** Servidor HTTP/HTTPS
+** Servidor FTP
+** Telnet, RSH, rlogin
+** Acesso a NFS, CIFS e outros protocolos
+** RDP (RemoteDesktopProtocol), X11 Server, VNC ou outros provedores de serviço "desktop" remotos.
++
+
+NOTE: Você deve deixar o acesso ao console serial (se suportado) ou pelo menos um protocolo habilitado para administrar o host remotamente. Se você desabilitar todos os protocolos, precisará de acesso físico ao host para administração.
+
+
+
+* Proteger o host usando FIPS
++
+** Você pode instalar o sistema operacional do host no modo compatível com FIPS e, em seguida, instalar o tiebreaker.
++
+
+NOTE: O OpenJDK 19 verifica na inicialização se o host está instalado no modo FIPS. Não devem ser necessárias alterações manuais.
+
+** Se você proteger o host, você deve garantir que o host seja capaz de inicializar sem a intervenção do usuário. Se a intervenção do usuário for necessária, a funcionalidade tiebreaker pode não estar disponível se o host for reinicializado inesperadamente. Se isso ocorrer, a funcionalidade tiebreaker só estará disponível após a intervenção manual e quando o host for totalmente inicializado.
+
+
+* Desative o Histórico de comandos do Shell.
+* Atualize com frequência. O tiebreaker é desenvolvido ativamente, e a atualização com frequência é importante para incorporar correções de segurança e quaisquer alterações nas configurações padrão, como comprimentos de chave ou conjuntos de codificação.
+* Inscreva-se na lista de discussão do anúncio HashiCorp para receber anúncios de novos lançamentos e visite o CHANGELOG DE tiebreaker para obter detalhes sobre atualizações recentes para novos lançamentos.
+* Use as permissões de arquivo corretas. Certifique-se sempre de que as permissões apropriadas sejam aplicadas aos arquivos antes de iniciar o software tiebreaker, especialmente aqueles que contêm informações confidenciais.
+* A autenticação multifator (MFA) aumenta a segurança da sua organização, exigindo que os administradores se identifiquem usando mais do que um nome de usuário e senha. Embora importantes, nomes de usuário e senhas são vulneráveis a ataques de força bruta e podem ser roubados por terceiros.
++
+** O Red Hat Enterprise Linux 8 fornece MFA que exige que os usuários forneçam mais de uma informação para se autenticar com êxito em uma conta ou em um host Linux. As informações adicionais podem ser uma senha única enviada para o seu celular via SMS ou credenciais de um aplicativo como Google Authenticator, Twilio Authy ou FreeOTP.
+
+
+
+
+.Informações relacionadas
+* link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/["Documentação do produto Red Hat Enterprise Linux 8"^]
+* link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/["Documentação do produto Red Hat Enterprise Linux 9"^]
+* link:https://docs.rockylinux.org["Documentação do produto Rocky Linux"^]
+
+
+
+
+== Proteja a instalação do banco de dados
+
+As diretrizes a seguir mostram como proteger e proteger a instalação do banco de dados MariaDB 10.x.
+
+* Limite o acesso do usuário "root".
++
+** Tiebreaker usa uma conta dedicada. A conta e as tabelas para armazenar dados (configuração) são criadas durante a instalação do tiebreaker. O único tempo de acesso elevado ao banco de dados é necessário durante a instalação.
+
+
+* Durante a instalação são necessários os seguintes acessos e Privileges:
++
+** A capacidade de criar um banco de dados e tabelas
+** A capacidade de criar opções globais
+** A capacidade de criar um usuário de banco de dados e definir a senha
+** A capacidade de associar o usuário do banco de dados ao banco de dados e tabelas e atribuir direitos de acesso
++
+
+NOTE: A conta de usuário especificada durante a instalação do tiebreaker deve ter todos esses Privileges. O uso de várias contas de usuário para as diferentes tarefas não é suportado.
+
+
+
+* Use a criptografia do banco de dados
++
+** A criptografia de dados em repouso é compatível. link:https://mariadb.com/kb/en/data-at-rest-encryption-overview/["Saiba mais sobre criptografia de dados em repouso"^]
+** Os dados em trânsito não são criptografados. Os dados em voo usam uma conexão de arquivo local "socks".
+** Conformidade FIPS para MariaDB -- você não precisa ativar a conformidade FIPS no banco de dados. A instalação do host no modo compatível com FIPS é suficiente.
++
+link:https://www.mysql.com/products/enterprise/tde.html["Saiba mais sobre o MySQL Enterprise transparent Data Encryption (TDE)"^]
+
++
+
+NOTE: As configurações de criptografia devem ser habilitadas antes da instalação do software tiebreaker.
+
+
+
+
+
+.Informações relacionadas
+* Gerenciamento de usuários de banco de dados
++
+link:https://dev.mysql.com/doc/refman/8.0/en/access-control.html["Controle de Acesso e Gerenciamento de conta"^]
+
+* Proteja o banco de dados
++
+link:https://dev.mysql.com/doc/refman/8.0/en/security-against-attack.html["Tornando o MySQL seguro contra invasores"^]
+
++
+link:https://mariadb.com/kb/en/securing-mariadb/["Protegendo o MariaDB"^]
+
+* Proteja a instalação do Vault
++
+link:https://developer.hashicorp.com/vault/tutorials/operations/production-hardening/["Endurecimento da produção"^]
+
+

@@ -1,0 +1,1755 @@
+---
+permalink: maintain/task_fb_hot_add_stack_of_shelves_and_bridges.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, add, stack, sas, disk, shelves, bridges, system 
+summary:  
+---
+= Adição rápida de uma stack de shelves de disco SAS e bridges a um sistema MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar sem interrupções (adicionar sem interrupções) uma stack inteira, incluindo pontes, ao sistema MetroCluster. Deve haver portas disponíveis nos switches FC e você deve atualizar o zoneamento do switch para refletir as alterações.
+
+.Sobre esta tarefa
+* Esse procedimento pode ser usado para adicionar uma pilha usando bridges FibreBridge 7600N ou 7500N.
+* Este procedimento é escrito com a suposição de que você está usando as interfaces de gerenciamento de bridge recomendadas: A GUI ATTO ExpressNAV e o utilitário ATTO Quicknav.
++
+** Você usa a GUI ATTO ExpressNAV para configurar e gerenciar uma bridge e atualizar o firmware da bridge. Você usa o utilitário ATTO Quicknav para configurar a porta 1 de gerenciamento Ethernet bridge.
+** Você pode usar outras interfaces de gerenciamento, se necessário. Essas opções incluem o uso de uma porta serial ou Telnet para configurar e gerenciar uma ponte e configurar a porta 1 de gerenciamento Ethernet e usar o FTP para atualizar o firmware da ponte. Se você escolher qualquer uma dessas interfaces de gerenciamento, seu sistema precisará atender aos requisitos aplicáveis na link:reference_requirements_for_using_other_interfaces_to_configure_and_manage_fibrebridge_bridges.html["Outras interfaces de gerenciamento de ponte"]
+
+
+
+
+
+
+== Preparando-se para adicionar uma stack de compartimentos e bridges de disco SAS
+
+A preparação para adicionar uma stack de gavetas de disco SAS e um par de bridges envolve o download de documentos, bem como o firmware da unidade de disco e do compartimento de disco.
+
+.Antes de começar
+* Seu sistema deve ser uma configuração com suporte e ter uma versão com suporte do ONTAP.
++
+https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"^]
+
+* Todas as unidades de disco e compartimentos de disco no sistema devem estar executando a versão de firmware mais recente.
++
+Talvez você queira atualizar o firmware do disco e do compartimento em toda a configuração do MetroCluster antes de adicionar gavetas.
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["Atualize, reverta ou downgrade"^]
+
+* Cada switch FC precisa ter uma porta FC disponível para que uma ponte seja conetada a ele.
++
+
+NOTE: Talvez seja necessário atualizar o switch FC dependendo da compatibilidade do switch FC.
+
+* O computador que você está usando para configurar as bridges deve estar executando um navegador da Web compatível com ATTO para usar a GUI ATTO ExpressNAV: Internet Explorer 8 ou 9, ou Mozilla Firefox 3.
++
+As Notas de versão do produto _ATTO_ têm uma lista atualizada de navegadores da Web compatíveis. Pode aceder a este documento utilizando as informações apresentadas nos passos.
+
+
+
+.Passos
+. Faça o download ou veja os seguintes documentos no site de suporte da NetApp:
++
+** https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"^]
+** O _Guia de Instalação e Serviço_ para o modelo de compartimento de disco.
+
+
+. Faça o download do conteúdo do site DA ATTO e do site da NetApp:
++
+.. Vá para a página Descrição DO ATTO FibreBridge.
+.. Usando o link na página Descrição DO ATTO FibreBridge, acesse o site DA ATTO e faça o download do seguinte:
++
+*** _ATTO FibreBridge Manual de Instalação e operação_ para o seu modelo de ponte.
+*** Utilitário ATTO Quicknav (para o computador que você está usando para configuração).
+
+
+.. Vá para a página Download de firmware do ATTO FibreBridge clicando em *continuar* no final da página Descrição DO ATTO FibreBridge e faça o seguinte:
++
+*** Transfira o ficheiro de firmware da ponte conforme indicado na página de transferência.
++
+Nesta etapa, você só está completando a parte de download das instruções fornecidas nos links. Você atualiza o firmware em cada bridge mais tarde, quando instruído a fazê-lo na link:task_fb_hot_add_stack_of_shelves_and_bridges.html["Adicionando a pilha de prateleiras"] seção.
+
+*** Faça uma cópia da página de download do firmware DO ATTO FibreBridge e as notas de versão para referência posterior.
+
+
+
+
+. Faça download do firmware mais recente do disco e do compartimento de disco e faça uma cópia da parte de instalação das instruções para referência posterior.
++
+Todos os compartimentos de disco na configuração MetroCluster (as novas gavetas e as gavetas existentes) devem estar executando a mesma versão de firmware.
+
++
+
+NOTE: Nesta etapa, você só está completando a parte de download das instruções fornecidas nos links e fazendo uma cópia das instruções de instalação. Você atualiza o firmware em cada disco e compartimento de disco mais tarde, quando instruído a fazê-lo na link:task_fb_hot_add_stack_of_shelves_and_bridges.html["Adicionando a pilha de prateleiras"] seção.
+
++
+.. Faça download do firmware do disco e faça uma cópia das instruções de firmware do disco para referência posterior.
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["Downloads do NetApp: Firmware da unidade de disco"^]
+
+.. Faça download do firmware do compartimento de disco e faça uma cópia das instruções de firmware do compartimento de disco para referência posteriormente.
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["Downloads do NetApp: Firmware da gaveta de disco"^]
+
+
+
+. Reúna o hardware e as informações necessárias para usar as interfaces de gerenciamento de bridge recomendadas - a GUI ATTO ExpressNAV e o utilitário ATTO Quicknav:
++
+.. Adquira um cabo Ethernet padrão para conetar a partir da porta 1 de gerenciamento Ethernet de ponte à sua rede.
+.. Determine um nome de usuário e uma senha não padrão para acessar as bridges.
++
+Recomenda-se que altere o nome de utilizador e a palavra-passe predefinidos.
+
+.. Obtenha um endereço IP, uma máscara de sub-rede e informações de gateway para a porta 1 de gerenciamento Ethernet em cada bridge.
+.. Desative os clientes VPN no computador que você está usando para configuração.
++
+Os clientes VPN ativos fazem com que o Quicknav procure por bridges falhem.
+
+
+
+. Adquira quatro parafusos para cada ponte para montar corretamente os suportes da ponte na parte frontal do rack.
++
+As aberturas nos suportes da ponte "L" estão em conformidade com o padrão de rack ETA-310-X para racks de 19 polegadas (482,6 mm).
+
+. Se necessário, atualize o zoneamento do switch FC para acomodar as novas pontes que estão sendo adicionadas à configuração.
++
+Se você estiver usando os arquivos de Configuração de Referência fornecidos pelo NetApp, as zonas foram criadas para todas as portas, portanto, você não precisa fazer atualizações de zoneamento. Deve haver uma zona de storage para cada porta do switch que se conete às portas FC da ponte.
+
+
+
+
+
+== Adição rápida de uma stack de compartimentos e bridges de disco SAS
+
+É possível adicionar uma stack de shelves e bridges de disco SAS para aumentar a capacidade das pontes.
+
+O sistema precisa atender a todos os requisitos para adicionar uma stack de shelves e bridges de disco SAS.
+
+link:task_fb_hot_add_stack_of_shelves_and_bridges.html["Preparando-se para adicionar uma stack de compartimentos e bridges de disco SAS"]
+
+* Adicionar sem interrupções uma stack de shelves e bridges de disco SAS é um procedimento sem interrupções se todos os requisitos de interoperabilidade forem atendidos.
++
+https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"^]
+
++
+link:concept_using_the_interoperability_matrix_tool_to_find_mcc_information.html["Usando a ferramenta Matriz de interoperabilidade para encontrar informações do MetroCluster"]
+
+* O multipath HA é a única configuração suportada para sistemas MetroCluster que usam bridges.
++
+Ambos os módulos de controladora devem ter acesso por meio das pontes aos compartimentos de disco em cada stack.
+
+* Você deve adicionar um número igual de compartimentos de disco em cada local.
+* Se você estiver usando o gerenciamento na banda da ponte em vez do gerenciamento IP, as etapas para configurar a porta Ethernet e as configurações IP podem ser ignoradas, como observado nas etapas relevantes.
+
+
+
+NOTE: A partir de ONTAP 9.8, o `storage bridge` comando é substituído por `system bridge`. As etapas a seguir mostram o `storage bridge` comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o `system bridge` comando é preferido.
+
+
+IMPORTANT: Se você inserir um cabo SAS na porta errada, ao remover o cabo de uma porta SAS, deverá aguardar pelo menos 120 segundos antes de conetar o cabo a uma porta SAS diferente. Se não o fizer, o sistema não reconhecerá que o cabo foi movido para outra porta.
+
+.Passos
+. Aterre-se corretamente.
+. No console de qualquer módulo do controlador, verifique se o sistema tem atribuição automática de disco ativada:
++
+`storage disk option show`
+
++
+A coluna atribuição automática indica se a atribuição automática de disco está ativada.
+
++
+[listing]
+----
+
+Node        BKg. FW. Upd.  Auto Copy   Auto Assign  Auto Assign Policy
+----------  -------------  ----------  -----------  ------------------
+node_A_1             on           on           on           default
+node_A_2             on           on           on           default
+2 entries were displayed.
+----
+. Desative as portas do switch para a nova pilha.
+. Se estiver configurando para gerenciamento na banda, conete um cabo da porta serial FibreBridge RS-232 à porta serial (com) em um computador pessoal.
++
+A conexão serial será usada para configuração inicial e, em seguida, o gerenciamento na banda via ONTAP e as portas FC podem ser usados para monitorar e gerenciar a ponte.
+
+. Se estiver configurando para gerenciamento IP, configure a porta 1 de gerenciamento Ethernet para cada bridge seguindo o procedimento na seção 2,0 do _ATTO FibreBridge Installation and Operation Manual_ para o modelo de bridge.
++
+Em sistemas que executam o ONTAP 9.5 ou posterior, o gerenciamento na banda pode ser usado para acessar a ponte através das portas FC em vez da porta Ethernet. A partir do ONTAP 9.8, somente o gerenciamento na banda é suportado e o gerenciamento SNMP é obsoleto.
+
++
+Ao executar o Quicknav para configurar uma porta de gerenciamento Ethernet, apenas a porta de gerenciamento Ethernet conetada pelo cabo Ethernet é configurada. Por exemplo, se você também quiser configurar a porta 2 de gerenciamento Ethernet, será necessário conetar o cabo Ethernet à porta 2 e executar o Quicknav.
+
+. Configure a ponte.
++
+Se você recuperou as informações de configuração da ponte antiga, use as informações para configurar a nova ponte.
+
++
+Certifique-se de anotar o nome de utilizador e a palavra-passe que designou.
+
++
+O _ATTO FibreBridge Installation and Operation Manual_ para o seu modelo de bridge tem as informações mais atuais sobre os comandos disponíveis e como usá-los.
+
++
+
+NOTE: Não configure a sincronização de tempo no ATTO FibreBridge 7600N ou 7500N. A sincronização de tempo para O ATTO FibreBridge 7600N ou 7500N é definida para a hora do cluster depois que a ponte é descoberta pelo ONTAP. Também é sincronizado periodicamente uma vez por dia. O fuso horário utilizado é GMT e não é variável.
+
++
+.. Se estiver configurando para gerenciamento de IP, configure as configurações IP da ponte.
++
+Para definir o endereço IP sem o utilitário Quicknav, você precisa ter uma conexão serial com o FibreBridge.
+
++
+Se estiver usando a CLI, você deve executar os seguintes comandos:
+
++
+`set ipaddress mp1 _ip-address_`
+
++
+`set ipsubnetmask mp1 _subnet-mask_`
+
++
+`set ipgateway mp1 x.x.x.x`
+
++
+`set ipdhcp mp1 disabled`
+
++
+`set ethernetspeed mp1 1000`
+
+.. Configure o nome da ponte.
++
+As pontes devem ter um nome exclusivo dentro da configuração do MetroCluster.
+
++
+Exemplos de nomes de bridge para um grupo de pilha em cada local:
+
++
+*** bridge_A_1a
+*** bridge_A_1b
+*** bridge_B_1a
+*** Bridge_B_1b se estiver usando a CLI, você deve executar o seguinte comando:
++
+`set bridgename _bridgename_`
+
+
+
+.. Se estiver executando o ONTAP 9.4 ou anterior, ative o SNMP na ponte
+`set SNMP enabled`
++
+Em sistemas que executam o ONTAP 9.5 ou posterior, o gerenciamento na banda pode ser usado para acessar a ponte através das portas FC em vez da porta Ethernet. A partir do ONTAP 9.8, somente o gerenciamento na banda é suportado e o gerenciamento SNMP é obsoleto.
+
+
+
+. Configurar as portas FC de ponte.
++
+.. Configure a taxa/velocidade de dados das portas FC em ponte.
++
+A taxa de dados FC suportada depende da ponte do modelo.
+
++
+*** A ponte FibreBridge 7600N suporta até 32, 16 ou 8 Gbps.
+*** A ponte FibreBridge 7500N suporta até 16, 8 ou 4 Gbps.
++
+
+NOTE: A velocidade FCDataRate selecionada é limitada à velocidade máxima suportada pela ponte e pelo switch ao qual a porta de ponte se coneta. As distâncias de cabeamento não devem exceder as limitações dos SFPs e de outro hardware.
+
++
+Se estiver usando a CLI, você deve executar o seguinte comando:
+
++
+`set FCDataRate _port-number port-speed_`
+
+
+
+.. Se você estiver configurando uma ponte FibreBridge 7500N, configure o modo de conexão que a porta usa para "ptp".
++
+
+NOTE: A configuração FCConnMode não é necessária ao configurar uma ponte FibreBridge 7600N.
+
++
+Se estiver usando a CLI, você deve executar o seguinte comando:
+
++
+`set FCConnMode _port-number_ ptp`
+
+.. Se você estiver configurando uma ponte FibreBridge 7600N ou 7500N, você deve configurar ou desativar a porta FC2.
++
+*** Se estiver usando a segunda porta, repita as subetapas anteriores para a porta FC2.
+*** Se você não estiver usando a segunda porta, então você deve desativar a porta
+`FCPortDisable _port-number_`
+
+
+.. Se você estiver configurando uma ponte FibreBridge 7600N ou 7500N, desative as portas SAS não utilizadas
+`SASPortDisable _sas-port_`
++
+
+NOTE: As portas SAS De A a D estão ativadas por predefinição. Você deve desativar as portas SAS que não estão sendo usadas. Se apenas a porta SAS A for usada, as portas SAS B, C e D devem ser desativadas.
+
+
+
+. Proteja o acesso à ponte e salve a configuração da ponte.
++
+.. No prompt do controlador, verifique o status das pontes:
++
+`storage bridge show`
+
++
+A saída mostra qual ponte não está protegida.
+
+.. Verifique o estado das portas da ponte não protegida
+`info`
++
+A saída mostra o status das portas Ethernet MP1 e MP2.
+
+.. Se a porta Ethernet MP1 estiver ativada, execute o seguinte comando
+`set EthernetPort mp1 disabled`
++
+
+NOTE: Se a porta Ethernet MP2 também estiver ativada, repita a subetapa anterior para a porta MP2.
+
+.. Salve a configuração da ponte.
++
+Você deve executar os seguintes comandos:
+
++
+`SaveConfiguration`
+
++
+`FirmwareRestart`
+
++
+Você é solicitado a reiniciar a ponte.
+
+
+
+. Atualize o firmware do FibreBridge em cada ponte.
++
+Se a nova ponte for do mesmo tipo que a ponte parceira atualize para o mesmo firmware que a ponte parceira. Se a nova ponte for um tipo diferente da ponte do parceiro, atualize para o firmware mais recente suportado pela ponte e versão do ONTAP. Consulte a seção "Atualizar firmware em uma ponte FibreBridge" em _Manutenção MetroCluster_.
+
+. [[step10-cable-shelves-bridges]]Conete as prateleiras de disco às pontes:
++
+.. Encadeie em série as gavetas de disco em cada pilha.
++
+O _Installation Guide_ para o modelo do seu compartimento de disco fornece informações detalhadas sobre as prateleiras de disco em encadeamento em série.
+
+.. Para cada stack de gavetas de disco, cable IOM A da primeira gaveta para a porta SAS a na FibreBridge A e, em seguida, cable IOM B da última gaveta para a porta SAS a na FibreBridge B.
++
+link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]
+
++
+link:../install-stretch/concept_considerations_differences.html["Instalação e configuração do Stretch MetroCluster"]
+
++
+Cada ponte tem um caminho para sua pilha de gavetas de disco; a ponte A se coneta ao lado A da pilha através da primeira gaveta e a ponte B se coneta ao lado B da pilha através da última gaveta.
+
++
+
+NOTE: A porta SAS da ponte B está desativada.
+
+
+
+. [[step11-Verify-each-bridge-detect]]Verifique se cada bridge pode detetar todas as unidades de disco e prateleiras de disco às quais a ponte está conetada.
++
+[cols="30,70"]
+|===
+
+
+| Se você estiver usando o... | Então... 
+
+
+ a| 
+ATTO ExpressNAV GUI
+ a| 
+.. Em um navegador da Web compatível, insira o endereço IP de uma ponte na caixa do navegador.
++
+Você é trazido para a página inicial DO ATTO FibreBridge, que tem um link.
+
+.. Clique no link e insira seu nome de usuário e a senha que você designou quando configurou a ponte.
++
+A página de status ATTO FibreBridge aparece com um menu à esquerda.
+
+.. Clique em *Avançado* no menu.
+.. Ver os dispositivos ligados
+`sastargets`
+.. Clique em *Enviar*.
+
+
+
+
+ a| 
+Conexão de porta serial
+ a| 
+Ver os dispositivos ligados:
+
+`sastargets`
+
+|===
++
+A saída mostra os dispositivos (discos e compartimentos de disco) aos quais a ponte está conetada. As linhas de saída são numeradas sequencialmente para que você possa contar rapidamente os dispositivos.
+
++
+
+NOTE: Se a resposta de texto truncada aparecer no início da saída, você pode usar o Telnet para se conetar à ponte e, em seguida, exibir toda a saída usando o `sastargets` comando.
+
++
+A saída a seguir mostra que 10 discos estão conetados:
+
++
+[listing]
+----
+Tgt VendorID ProductID        Type        SerialNumber
+  0 NETAPP   X410_S15K6288A15 DISK        3QP1CLE300009940UHJV
+  1 NETAPP   X410_S15K6288A15 DISK        3QP1ELF600009940V1BV
+  2 NETAPP   X410_S15K6288A15 DISK        3QP1G3EW00009940U2M0
+  3 NETAPP   X410_S15K6288A15 DISK        3QP1EWMP00009940U1X5
+  4 NETAPP   X410_S15K6288A15 DISK        3QP1FZLE00009940G8YU
+  5 NETAPP   X410_S15K6288A15 DISK        3QP1FZLF00009940TZKZ
+  6 NETAPP   X410_S15K6288A15 DISK        3QP1CEB400009939MGXL
+  7 NETAPP   X410_S15K6288A15 DISK        3QP1G7A900009939FNTT
+  8 NETAPP   X410_S15K6288A15 DISK        3QP1FY0T00009940G8PA
+  9 NETAPP   X410_S15K6288A15 DISK        3QP1FXW600009940VERQ
+----
+. Verifique se a saída do comando mostra que a ponte está conetada a todos os discos e compartimentos de disco apropriados na pilha.
++
+[cols="30,70"]
+|===
+
+
+| Se a saída for... | Então... 
+
+
+ a| 
+Correto
+ a| 
+Repita <<step11-verify-each-bridge-detect,Passo 11>> para cada ponte restante.
+
+
+
+ a| 
+Não está correto
+ a| 
+.. Verifique se há cabos SAS soltos ou corrija o cabeamento SAS repetindo <<step10-cable-shelves-bridges,Passo 10>>.
+.. Repita <<step11-verify-each-bridge-detect,Passo 11>>.
+
+
+|===
+. Se você estiver configurando uma configuração de MetroCluster conetada à malha, faça o cabeamento de cada bridge para os switches FC locais, usando o cabeamento mostrado na tabela para sua configuração, modelo de switch e modelo de ponte FC para SAS:
++
+
+NOTE: Os switches Brocade e Cisco usam numeração de portas diferente, como mostrado nas tabelas a seguir.
+
++
+** Nos switches Brocade, a primeira porta é numerada ""0"".
+** Nos switches Cisco, a primeira porta é numerada ""1"".
++
+|===
+
+
+13+| Configurações usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) 
+
+
+13+| GRUPO DE RD 1 
+
+
+3+|  2+| Brocade 6505 2+| Brocade 6510, Brocade DCX 8510-8 2+| Brocade 6520 2+| Brocade G620, Brocade G620-1, Brocade G630, Brocade G630-1 2+| Brocade G720 
+
+
+2+| Componente | Porta | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 
+
+
+ a| 
+Pilha 1
+ a| 
+bridge_x_1a
+ a| 
+FC1
+ a| 
+8
+ a| 
+ a| 
+8
+ a| 
+ a| 
+8
+ a| 
+ a| 
+8
+ a| 
+ a| 
+10
+ a| 
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+8
+ a| 
+-
+ a| 
+8
+ a| 
+-
+ a| 
+8
+ a| 
+-
+ a| 
+8
+ a| 
+-
+ a| 
+10
+
+
+
+ a| 
+bridge_x_1B
+ a| 
+FC1
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+11
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+11
+
+
+
+ a| 
+Pilha 2
+ a| 
+bridge_x_2a
+ a| 
+FC1
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+14
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+14
+
+
+
+ a| 
+bridge_x_2B
+ a| 
+FC1
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+17
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+17
+
+
+
+ a| 
+Pilha 3
+ a| 
+bridge_x_3a
+ a| 
+FC1
+ a| 
+12
+ a| 
+-
+ a| 
+12
+ a| 
+-
+ a| 
+12
+ a| 
+-
+ a| 
+12
+ a| 
+-
+ a| 
+18
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+12
+ a| 
+-
+ a| 
+12
+ a| 
+-
+ a| 
+12
+ a| 
+-
+ a| 
+12
+ a| 
+-
+ a| 
+18
+
+
+
+ a| 
+bridge_x_3B
+ a| 
+FC1
+ a| 
+13
+ a| 
+-
+ a| 
+13
+ a| 
+-
+ a| 
+13
+ a| 
+-
+ a| 
+13
+ a| 
+-
+ a| 
+19
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+13
+ a| 
+-
+ a| 
+13
+ a| 
+-
+ a| 
+13
+ a| 
+-
+ a| 
+13
+ a| 
+-
+ a| 
+19
+
+
+
+ a| 
+Empilha y
+ a| 
+bridge_x_ya
+ a| 
+FC1
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+20
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+20
+
+
+
+ a| 
+ponte_x_yb
+ a| 
+FC1
+ a| 
+15
+ a| 
+-
+ a| 
+15
+ a| 
+-
+ a| 
+15
+ a| 
+-
+ a| 
+15
+ a| 
+-
+ a| 
+21
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+--
+
+-- a| 
+15
+ a| 
+--
+
+-- a| 
+15
+ a| 
+--
+
+-- a| 
+15
+ a| 
+-
+ a| 
+15
+ a| 
+-
+ a| 
+21
+
+
+
+ a| 
+
+NOTE: Pontes adicionais podem ser cabeadas para as portas 16, 17, 20 e 21 nos switches G620, G630, G620-1 e G630-1.
+
+|===
++
+|===
+
+
+11+| Configurações usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) 
+
+
+11+| GRUPO DE RD 2 
+
+
+3+|  2+| Brocade G620, Brocade G620-1, Brocade G630, Brocade G630-1 2+| Brocade 6510, Brocade DCX 8510-8 2+| Brocade 6520 2+| Brocade G720 
+
+
+2+| Componente | Porta | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 | Interrutor 1 | interrutor 2 
+
+
+ a| 
+Pilha 1
+ a| 
+bridge_x_51a
+ a| 
+FC1
+ a| 
+26
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+56
+ a| 
+-
+ a| 
+32
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+26
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+56
+ a| 
+-
+ a| 
+32
+
+
+
+ a| 
+bridge_x_51b
+ a| 
+FC1
+ a| 
+27
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+57
+ a| 
+-
+ a| 
+33
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+27
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+57
+ a| 
+-
+ a| 
+33
+
+
+
+ a| 
+Pilha 2
+ a| 
+bridge_x_52a
+ a| 
+FC1
+ a| 
+30
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+58
+ a| 
+-
+ a| 
+34
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+30
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+58
+ a| 
+-
+ a| 
+34
+
+
+
+ a| 
+bridge_x_52b
+ a| 
+FC1
+ a| 
+31
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+59
+ a| 
+-
+ a| 
+35
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+31
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+59
+ a| 
+-
+ a| 
+35
+
+
+
+ a| 
+Pilha 3
+ a| 
+bridge_x_53a
+ a| 
+FC1
+ a| 
+32
+ a| 
+-
+ a| 
+36
+ a| 
+-
+ a| 
+60
+ a| 
+-
+ a| 
+36
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+36
+ a| 
+-
+ a| 
+60
+ a| 
+-
+ a| 
+36
+
+
+
+ a| 
+bridge_x_53b
+ a| 
+FC1
+ a| 
+33
+ a| 
+-
+ a| 
+37
+ a| 
+-
+ a| 
+61
+ a| 
+-
+ a| 
+37
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+37
+ a| 
+-
+ a| 
+61
+ a| 
+-
+ a| 
+37
+
+
+
+ a| 
+Empilha y
+ a| 
+bridge_x_5ya
+ a| 
+FC1
+ a| 
+34
+ a| 
+-
+ a| 
+38
+ a| 
+-
+ a| 
+62
+ a| 
+-
+ a| 
+38
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+38
+ a| 
+-
+ a| 
+62
+ a| 
+-
+ a| 
+38
+
+
+
+ a| 
+bridge_x_5yb
+ a| 
+FC1
+ a| 
+35
+ a| 
+-
+ a| 
+39
+ a| 
+-
+ a| 
+63
+ a| 
+-
+ a| 
+39
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+39
+ a| 
+-
+ a| 
+63
+ a| 
+-
+ a| 
+39
+
+
+
+ a| 
+
+NOTE: Pontes adicionais podem ser cabeadas para as portas 36 - 39 nos switches G620, G630, G620-1 e G-630-1.
+
+|===
++
+|===
+
+
+12+| Configurações usando o FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2) 
+
+
+12+| GRUPO DE RD 1 
+
+
+2+|  2+| Brocade 6505 2+| Brocade 6510, Brocade DCX 8510-8 2+| Brocade 6520 2+| Brocade G620, Brocade G620-1, Brocade G630, Brocade G630-1 2+| Brocade G720 
+
+
+| Componente | Porta | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 | Interrutor 1 | Interrutor 2 
+
+
+ a| 
+Pilha 1
+ a| 
+bridge_x_1a
+ a| 
+8
+ a| 
+ a| 
+8
+ a| 
+ a| 
+8
+ a| 
+ a| 
+8
+ a| 
+ a| 
+10
+ a| 
+
+
+
+ a| 
+bridge_x_1b
+ a| 
+-
+ a| 
+8
+ a| 
+-
+ a| 
+8
+ a| 
+-
+ a| 
+8
+ a| 
+-
+ a| 
+8
+ a| 
+-
+ a| 
+10
+
+
+
+ a| 
+Pilha 2
+ a| 
+bridge_x_2a
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+11
+ a| 
+-
+
+
+
+ a| 
+bridge_x_2b
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+9
+ a| 
+-
+ a| 
+11
+
+
+
+ a| 
+Pilha 3
+ a| 
+bridge_x_3a
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+14
+ a| 
+-
+
+
+
+ a| 
+bridge_x_4b
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+10
+ a| 
+-
+ a| 
+14
+
+
+
+ a| 
+Empilha y
+ a| 
+bridge_x_ya
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+15
+ a| 
+-
+
+
+
+ a| 
+ponte_x_yb
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+11
+ a| 
+-
+ a| 
+15
+
+
+
+ a| 
+
+NOTE: Pontes adicionais podem ser cabeadas para as portas 12 - 17, 20 e 21 nos switches G620, G630, G620-1 e G630-1. Pontes adicionais podem ser cabeadas para os switches das portas 16 - 17, 20 e 21 G720.
+
+|===
++
+|===
+
+
+10+| Configurações usando o FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2) 
+
+
+10+| GRUPO DE RD 2 
+
+
+2+|  2+| Brocade G720 2+| Brocade G620, Brocade G620-1, Brocade G630, Brocade G630-1 2+| Brocade 6510, Brocade DCX 8510-8 2+| Brocade 6520 
+
+
+ a| 
+Pilha 1
+ a| 
+bridge_x_51a
+ a| 
+32
+ a| 
+-
+ a| 
+26
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+56
+ a| 
+-
+
+
+
+ a| 
+bridge_x_51b
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+26
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+56
+
+
+
+ a| 
+Pilha 2
+ a| 
+bridge_x_52a
+ a| 
+33
+ a| 
+-
+ a| 
+27
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+57
+ a| 
+-
+
+
+
+ a| 
+bridge_x_52b
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+27
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+57
+
+
+
+ a| 
+Pilha 3
+ a| 
+bridge_x_53a
+ a| 
+34
+ a| 
+-
+ a| 
+30
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+58
+ a| 
+-
+
+
+
+ a| 
+bridge_x_54b
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+30
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+58
+
+
+
+ a| 
+Empilha y
+ a| 
+bridge_x_ya
+ a| 
+35
+ a| 
+-
+ a| 
+31
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+59
+ a| 
+-
+
+
+
+ a| 
+ponte_x_yb
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+31
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+59
+
+
+
+ a| 
+
+NOTE: Pontes adicionais podem ser cabeadas para as portas 32 a 39 nos switches G620, G630, G620-1 e G630-1. Pontes adicionais podem ser cabeadas para as portas 36 a 39 em switches G720.
+
+|===
+
+
+. Se você estiver configurando um sistema MetroCluster conetado em ponte, faça o cabeamento de cada ponte aos módulos do controlador:
++
+.. Cabo FC porta 1 da ponte para uma porta FC de 16 GB ou 8 GB no módulo do controlador em cluster_A.
+.. Cabo FC porta 2 da ponte para a mesma porta FC de velocidade do módulo do controlador em cluster_A.
+.. Repita esses subpassos em outras pontes subsequentes até que todas as pontes tenham sido cabeadas.
+
+
+. Atualize o firmware da unidade de disco para a versão mais atual a partir da consola do sistema:
++
+`disk_fw_update`
+
++
+Você deve executar este comando em ambos os módulos do controlador.
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["Downloads do NetApp: Firmware da unidade de disco"^]
+
+. Atualize o firmware do compartimento de disco para a versão mais atual usando as instruções para o firmware baixado.
++
+Você pode executar os comandos no procedimento a partir do console do sistema de qualquer módulo do controlador.
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["Downloads do NetApp: Firmware da gaveta de disco"^]
+
+. Se o sistema não tiver a atribuição automática de disco ativada, atribua a propriedade da unidade de disco.
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"^]
+
++
+
+NOTE: Se você estiver dividindo a propriedade de uma única pilha de compartimentos de disco entre vários módulos de controladora, será necessário desativar a atribuição automática de disco em ambos os nós no cluster (`storage disk option modify -autoassign off *`) antes de atribuir a propriedade de disco; caso contrário, quando você atribuir qualquer unidade de disco única, as unidades de disco restantes podem ser atribuídas automaticamente ao mesmo módulo e pool de controladora.
+
++
+
+NOTE: Não é possível adicionar unidades de disco a agregados ou volumes até que o firmware da unidade de disco e do compartimento de disco tenham sido atualizados e as etapas de verificação nesta tarefa tenham sido concluídas.
+
+. Ative as portas do switch para a nova pilha.
+. Verifique a operação da configuração do MetroCluster no ONTAP:
++
+.. Verifique se o sistema é multipathed
+`node run -node _node-name_ sysconfig -a`
+.. Verifique se há alertas de integridade em ambos os clusters
+`system health alert show`
+.. Confirme a configuração do MetroCluster e se o modo operacional está normal
+`metrocluster show`
+.. Execute uma verificação MetroCluster
+`metrocluster check run`
+.. Exibir os resultados da verificação MetroCluster
+`metrocluster check show`
+.. Verifique se existem alertas de estado nos interrutores (se presentes)
+`storage switch show`
+.. Execute o Config Advisor.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"^]
+
+.. Depois de executar o Config Advisor, revise a saída da ferramenta e siga as recomendações na saída para resolver quaisquer problemas descobertos.
+
+
+. Se aplicável, repita este procedimento para o local do parceiro.
+
+
+.Informações relacionadas
+link:concept_in_band_management_of_the_fc_to_sas_bridges.html["Gerenciamento na banda das pontes FC para SAS"]

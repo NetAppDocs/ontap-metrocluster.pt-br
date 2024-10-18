@@ -1,0 +1,41 @@
+---
+permalink: install-fc/concept_fcsw_brocade_reviewing_brocade_license_requirements.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, review, brocade, license, requirements 
+summary: Você precisa de certas licenças para os switches em uma configuração do MetroCluster. Você deve instalar essas licenças em todos os quatro switches. 
+---
+= Revisão dos requisitos de licença do Brocade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa de certas licenças para os switches em uma configuração do MetroCluster. Você deve instalar essas licenças em todos os quatro switches.
+
+A configuração do MetroCluster tem os seguintes requisitos de licença do Brocade:
+
+* Licença de entroncamento para sistemas que utilizam mais de um ISL, conforme recomendado.
+* Licença alargada de tecido (para distâncias ISL superiores a 6 km)
+* Licença Enterprise para locais com mais de um ISL e uma distância ISL superior a 6 km
++
+A licença Enterprise inclui o consultor de rede Brocade e todas as licenças, exceto para licenças de porta adicionais.
+
+
+
+Você pode verificar se as licenças estão instaladas usando o comando 'license'.
+
+[role="tabbed-block"]
+====
+.Para o Fabric os 8,2.x e anteriores
+--
+Executar o comando `licenseshow`.
+
+--
+.Para o Fabric os 9,0 e posterior
+--
+Executar o comando `license --show`.
+
+--
+====
+Se você não tiver essas licenças, entre em Contato com seu representante de vendas antes de prosseguir.

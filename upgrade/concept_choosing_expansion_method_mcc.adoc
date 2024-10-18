@@ -1,0 +1,54 @@
+---
+permalink: upgrade/concept_choosing_expansion_method_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, expansion, method 
+summary: O procedimento de expansão usado depende do tipo de configuração do MetroCluster e da versão do ONTAP. 
+---
+= Escolha um procedimento de expansão
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O procedimento de expansão usado depende do tipo de configuração do MetroCluster e da versão do ONTAP.
+
+Um procedimento de expansão envolve a adição de novos controladores e armazenamento à configuração do MetroCluster. A expansão deve manter um número par de controladores em cada local e o procedimento usado depende do número de nós na configuração original do MetroCluster.
+
+[cols="2,1,1,2"]
+|===
+| Método de expansão | Tipo de configuração | Versão de ONTAP | Procedimento 
+
+
+ a| 
+Método: Expanda um MetroCluster FC de dois nós para quatro
+ a| 
+FC de dois nós
+ a| 
+ONTAP 9 e posterior (as plataformas devem ser suportadas no ONTAP 9 .2 e posterior)
+ a| 
+link:../upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html["Ligação ao procedimento"]
+
+
+
+ a| 
+Método: Expanda um MetroCluster FC de quatro nós para oito
+ a| 
+FC de quatro nós
+ a| 
+ONTAP 9 ou posterior
+ a| 
+link:task_refresh_4n_mcc_ip.html["Ligação ao procedimento"]
+
+
+
+ a| 
+Método: Expanda um IP MetroCluster de quatro nós para oito
+ a| 
+IP de quatro nós
+ a| 
+ONTAP 9.9,1 e posterior
+ a| 
+link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["Ligação ao procedimento"]
+
+|===

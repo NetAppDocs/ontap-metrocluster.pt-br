@@ -1,0 +1,69 @@
+---
+permalink: install-ip/task_sw_config_differences.html 
+sidebar: sidebar 
+keywords: metrocluster, configuration, ontap, node-level, configuration, node, site, relationship, configuring, configure, similarities, difference, 
+summary: A configuração dos nós em cada cluster em uma configuração MetroCluster é semelhante à dos nós em um cluster padrão. 
+---
+= Semelhanças e diferenças entre configurações padrão de cluster e MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A configuração dos nós em cada cluster em uma configuração MetroCluster é semelhante à dos nós em um cluster padrão.
+
+A configuração do MetroCluster é baseada em dois clusters padrão. Fisicamente, a configuração deve ser simétrica, com cada nó tendo a mesma configuração de hardware e todos os componentes do MetroCluster devem ser cabeados e configurados. No entanto, a configuração básica de software para nós em uma configuração MetroCluster é a mesma para nós em um cluster padrão.
+
+|===
+
+
+| Etapa de configuração | Configuração padrão de cluster | Configuração do MetroCluster 
+
+
+ a| 
+Configurar LIFs de gerenciamento, cluster e dados em cada nó.
+2+| O mesmo em ambos os tipos de clusters 
+
+
+ a| 
+Configure o agregado raiz.
+2+| O mesmo em ambos os tipos de clusters 
+
+
+ a| 
+Configure o cluster em um nó no cluster.
+2+| O mesmo em ambos os tipos de clusters 
+
+
+ a| 
+Junte o outro nó ao cluster.
+2+| O mesmo em ambos os tipos de clusters 
+
+
+ a| 
+Crie um agregado de raiz espelhado.
+ a| 
+Opcional
+ a| 
+Obrigatório
+
+
+
+ a| 
+Espreite os clusters.
+ a| 
+Opcional
+ a| 
+Obrigatório
+
+
+
+ a| 
+Ative a configuração do MetroCluster.
+ a| 
+Não se aplica
+ a| 
+Obrigatório
+
+|===

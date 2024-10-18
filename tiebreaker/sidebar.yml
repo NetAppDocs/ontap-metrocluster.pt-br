@@ -1,0 +1,52 @@
+---
+section: tiebreaker
+title: Instale e configure o tiebreaker do MetroCluster
+entries:
+- title: O que há de novo
+  url: "/tiebreaker/whats_new.html"
+- title: Visão geral do software tiebreaker
+  url: "/tiebreaker/concept_overview_of_the_tiebreaker_software.html"
+- title: Instale o software tiebreaker
+  entries:
+  - title: Fluxo de trabalho de instalação do tiebreaker
+    url: "/tiebreaker/install-tb-workflow.html"
+  - title: Prepare-se para instalar o software tiebreaker
+    url: "/tiebreaker/install_prepare.html"
+  - title: Fixe a instalação
+    url: "/tiebreaker/install_security.html"
+  - title: Instale o pacote de software tiebreaker
+    entries:
+    - title: Escolha o procedimento de instalação
+      url: "/tiebreaker/install-choose-procedure.html"
+    - title: Instale o tiebreaker 1,6 ou posterior
+      url: "/tiebreaker/tb-16-install.html"
+    - title: Instale o desempate 1,5
+      entries:
+      - title: Configure o acesso de administrador para ONTAPI e SSH
+        url: "/tiebreaker/task_configure_ssh_ontapi.html"
+      - title: Instalar dependências
+        url: "/tiebreaker/install_dependencies.html"
+      - title: Instale o pacote de software
+        url: "/tiebreaker/install_tiebreaker_package.html"
+    - title: Instale o desempate 1,4
+      entries:
+      - title: Instalar dependências
+        url: "/tiebreaker/install-dependencies-14.html"
+      - title: Instale o pacote de software
+        url: "/tiebreaker/install-tiebreaker-package-14.html"
+- title: Atualize o host
+  url: "/tiebreaker/upgrade_host.html"
+- title: Configure o software tiebreaker
+  url: "/tiebreaker/concept_configuring_the_tiebreaker_software.html"
+- title: Configure as configurações SNMP para o software tiebreaker
+  url: "/tiebreaker/task_configure_snmp_setts_for_tiebreaker_software.html"
+- title: Monitore a configuração do MetroCluster
+  url: "/tiebreaker/concept_monitoring_the_mcc_configuration.html"
+- title: Riscos e limitações do uso do MetroCluster Tiebreaker no modo ativo
+  url: "/tiebreaker/concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html"
+- title: Requisitos de firewall para desempate do MetroCluster
+  url: "/tiebreaker/reference_firewall_requirements_for_mcc_tiebreaker.html"
+- title: Arquivos de log de eventos do MetroCluster Tiebreaker
+  url: "/tiebreaker/concept-mcc-tiebreaker-event-logs.html"
+- title: Onde encontrar informações adicionais
+  url: "/tiebreaker/reference_where_to_find_additional_information_tb_icg.html"

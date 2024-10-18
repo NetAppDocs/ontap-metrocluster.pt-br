@@ -1,0 +1,1507 @@
+---
+permalink: upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controller, ip, configuration, switchover, switchback, workflow, nodes, tiebreaker, verify, bootrage, root, aggregate, disks 
+summary: 'Você pode usar a operação switchover do MetroCluster para fornecer serviços sem interrupções aos clientes enquanto os módulos de controladora no cluster de parceiros são atualizados. Outros componentes (como prateleiras de armazenamento ou switches) não podem ser atualizados como parte deste procedimento.' 
+---
+= Atualizar controladores de AFF A700/FAS9000 para AFF A900/FAS9500 em uma configuração IP MetroCluster usando switchover e switchback (ONTAP 9.10,1 ou posterior)
+:allow-uri-read: 
+
+
+[role="lead"]
+Você pode usar a operação switchover do MetroCluster para fornecer serviços sem interrupções aos clientes enquanto os módulos de controladora no cluster de parceiros são atualizados. Outros componentes (como prateleiras de armazenamento ou switches) não podem ser atualizados como parte deste procedimento.
+
+.Sobre esta tarefa
+* Para atualizar os módulos do controlador AFF A700 para o AFF A900, os controladores devem estar executando o ONTAP 9.10,1 ou posterior.
+* Para atualizar os módulos do controlador FAS9000 para o FAS9500, os controladores devem estar executando o ONTAP 9.10.1P3 ou posterior.
+* Todos os controladores na configuração devem ser atualizados durante o mesmo período de manutenção.
++
+Operar a configuração do MetroCluster com um AFF A700 e um AFF A900, ou um controlador FAS9000 e um FAS9500 não é suportado fora desta atividade de manutenção.
+
+* Os switches IP devem estar executando uma versão de firmware suportada.
+* Você reutilizará os endereços IP, as máscaras de rede e os gateways das plataformas originais nas novas plataformas.
+* Os nomes de exemplo a seguir são usados neste procedimento, tanto em exemplos quanto em gráficos:
++
+** Local_A
++
+*** Antes da atualização:
++
+**** node_A_1-A700
+**** node_A_2-A700
+
+
+*** Após a atualização:
++
+**** node_A_1-A900
+**** node_A_2-A900
+
+
+
+
+** Local_B
++
+*** Antes da atualização:
++
+**** node_B_1-A700
+**** node_B_2-A700
+
+
+*** Após a atualização:
++
+**** node_B_1-A900
+**** node_B_2-A900
+
+
+
+
+
+
+
+
+
+
+== Ativar o registo da consola
+
+O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
+
+* Deixe o AutoSupport ativado durante a manutenção.
+* Acione uma mensagem de manutenção do AutoSupport antes e depois da manutenção para desativar a criação de casos durante a atividade de manutenção.
++
+Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["Como suprimir a criação automática de casos durante as janelas de manutenção programada"^].
+
+* Ative o registo de sessão para qualquer sessão CLI. Para obter instruções sobre como ativar o registo de sessão, consulte a secção "saída de sessão de registo" no artigo da base de dados de conhecimento link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["Como configurar o PuTTY para uma conetividade ideal aos sistemas ONTAP"^].
+
+
+
+
+== Fluxo de trabalho para atualizar controladores em uma configuração IP MetroCluster
+
+Você pode usar o diagrama de fluxo de trabalho para ajudá-lo a Planejar as tarefas de atualização.
+
+image::../media/workflow_ip_upgrade.png[atualização do ip do fluxo de trabalho]
+
+
+
+== Prepare-se para a atualização
+
+Antes de fazer quaisquer alterações na configuração do MetroCluster existente, você deve verificar a integridade da configuração, preparar as novas plataformas e executar outras tarefas diversas.
+
+
+
+=== Limpe o slot 7 no controlador AFF A700 ou FAS9000
+
+A configuração do MetroCluster em um AFF A900 ou FAS9500 usa uma de cada uma das portas nas placas de DR localizadas nos slots 5 e 7. Antes de iniciar a atualização, se houver placas no slot 7 no AFF A700 ou no FAS9000, você deve movê-las para outros slots para todos os nós do cluster.
+
+
+
+=== Atualize os arquivos RCF do switch MetroCluster antes de atualizar os controladores
+
+Você deve atualizar os arquivos RCF nos switches MetroCluster ao executar essa atualização. A tabela a seguir fornece os intervalos de VLAN suportados para configurações IP AFF A900/FAS9500 MetroCluster.
+
+|===
+
+
+| Modelo de plataforma | IDs de VLAN suportadas 
+
+
+ a| 
+* AFF A900 ou FAS9500
+
+ a| 
+* 10
+* 20
+* Qualquer valor no intervalo de 101 a 4096 inclusive.
+
+
+|===
+* Se o switch não estiver configurado com a versão de arquivo RCF mínima suportada, você deverá atualizar o arquivo RCF. Para obter a versão correta do arquivo RCF para o modelo do switch, consulte o link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["Ferramenta RcfFileGenerator"^]. As etapas a seguir são para o aplicativo de arquivo RCF.
+
+
+.Passos
+. Preparar os comutadores IP para a aplicação dos novos ficheiros RCF.
++
+Siga as etapas na seção para o fornecedor do switch:
+
++
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["Redefina o switch IP Broadcom para os padrões de fábrica"]
+** link:../install-ip/task_switch_config_cisco.html#resetting-the-cisco-ip-switch-to-factory-defaults["Redefina o switch IP Cisco para os padrões de fábrica"]
+** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["Redefina o switch IP NVIDIA para os padrões de fábrica"]
+
+
+. Baixe e instale os arquivos RCF.
++
+Siga as etapas na seção para o fornecedor do switch:
+
++
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["Baixe e instale os arquivos Broadcom RCF"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["Transfira e instale os ficheiros Cisco IP RCF"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["Transfira e instale os ficheiros NVIDIA IP RCF"]
+
+
+
+
+
+
+=== Mapear portas dos nós antigos para os novos nós
+
+Ao fazer a atualização de um AFF A700 para um AFF A900 ou FAS9000 para FAS9500, você não altera as portas de rede de dados, as portas de adaptador SAN FCP e as portas de storage SAS e NVMe. Os LIFs de dados permanecem onde estão durante e após o upgrade. Portanto, não é necessário mapear as portas de rede dos nós antigos para os novos nós.
+
+
+
+=== Verifique a integridade do MetroCluster antes da atualização do site
+
+Você deve verificar a integridade e a conectividade da configuração do MetroCluster antes de executar a atualização.
+
+.Passos
+. Verifique a operação da configuração do MetroCluster no ONTAP:
++
+.. Verifique se os nós são multipathed: Mais
+`node run -node _node-name_ sysconfig -a`
++
+Você deve emitir este comando para cada nó na configuração do MetroCluster.
+
+.. Verifique se não há discos quebrados na configuração
+`storage disk show -broken`
++
+Você deve emitir este comando em cada nó na configuração do MetroCluster.
+
+.. Verifique se existem alertas de saúde:
++
+`system health alert show`
+
++
+Você deve emitir este comando em cada cluster.
+
+.. Verifique as licenças nos clusters:
++
+`system license show`
+
++
+Você deve emitir este comando em cada cluster.
+
+.. Verifique os dispositivos conetados aos nós:
++
+`network device-discovery show`
+
++
+Você deve emitir este comando em cada cluster.
+
+.. Verifique se o fuso horário e a hora estão definidos corretamente em ambos os sites:
++
+`cluster date show`
+
++
+Você deve emitir este comando em cada cluster. Você pode usar o `cluster date` comando para configurar a hora e o fuso horário.
+
+
+
+. Confirme o modo operacional da configuração do MetroCluster e efetue uma verificação do MetroCluster.
++
+.. Confirme a configuração do MetroCluster e se o modo operacional é `normal`
+`metrocluster show`
+.. Confirme que todos os nós esperados são mostrados
+`metrocluster node show`
+.. Emita o seguinte comando:
++
+`metrocluster check run`
+
+.. Apresentar os resultados da verificação MetroCluster:
++
+`metrocluster check show`
+
+
+
+. Verifique o cabeamento do MetroCluster com a ferramenta Config Advisor.
++
+.. Baixe e execute o Config Advisor.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"^]
+
+.. Depois de executar o Config Advisor, revise a saída da ferramenta e siga as recomendações na saída para resolver quaisquer problemas descobertos.
+
+
+
+
+
+
+=== Reúna informações antes da atualização
+
+Antes de atualizar, você deve reunir informações para cada um dos nós e, se necessário, ajustar os domínios de broadcast de rede, remover quaisquer VLANs e grupos de interfaces e reunir informações de criptografia.
+
+.Passos
+. Registre o cabeamento físico de cada nó, rotulando os cabos conforme necessário para permitir o cabeamento correto dos novos nós.
+. Reúna a saída dos seguintes comandos para cada nó:
++
+** `metrocluster interconnect show`
+** `metrocluster configuration-settings connection show`
+** `network interface show -role cluster,node-mgmt`
+** `network port show -node node_name -type physical`
+** `network port vlan show -node _node-name_`
+** `network port ifgrp show -node _node_name_ -instance`
+** `network port broadcast-domain show`
+** `network port reachability show -detail`
+** `network ipspace show`
+** `volume show`
+** `storage aggregate show`
+** `system node run -node _node-name_ sysconfig -a`
+** `vserver fcp initiator show`
+** `storage disk show`
+** `metrocluster configuration-settings interface show`
+
+
+. Reúna os UUIDs para o site_B (o site cujas plataformas estão sendo atualizadas): `metrocluster node show -fields node-cluster-uuid, node-uuid`
++
+Esses valores devem ser configurados com precisão nos novos módulos do controlador site_B para garantir uma atualização bem-sucedida. Copie os valores para um arquivo para que você possa copiá-los para os comandos apropriados posteriormente no processo de atualização. O exemplo a seguir mostra a saída do comando com os UUIDs:
+
++
+[listing]
+----
+cluster_B::> metrocluster node show -fields node-cluster-uuid, node-uuid
+   (metrocluster node show)
+dr-group-id cluster     node   node-uuid                            node-cluster-uuid
+----------- --------- -------- ------------------------------------ ------------------------------
+1           cluster_A node_A_1-A700 f03cb63c-9a7e-11e7-b68b-00a098908039 ee7db9d5-9a82-11e7-b68b-00a098908039
+1           cluster_A node_A_2-A700 aa9a7a7a-9a81-11e7-a4e9-00a098908c35 ee7db9d5-9a82-11e7-b68b-00a098908039
+1           cluster_B node_B_1-A700 f37b240b-9ac1-11e7-9b42-00a098c9e55d 07958819-9ac6-11e7-9b42-00a098c9e55d
+1           cluster_B node_B_2-A700 bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f 07958819-9ac6-11e7-9b42-00a098c9e55d
+4 entries were displayed.
+cluster_B::*
+
+----
++
+É recomendável que você grave os UUIDs em uma tabela semelhante à seguinte.
+
++
+|===
+
+
+| Cluster ou nó | UUID 
+
+
+ a| 
+Cluster_B
+ a| 
+07958819-9ac6-11e7-9b42-00a098c9e55d
+
+
+
+ a| 
+node_B_1-A700
+ a| 
+f37b240b-9ac1-11e7-9b42-00a098c9e55d
+
+
+
+ a| 
+node_B_2-A700
+ a| 
+bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f
+
+
+
+ a| 
+Cluster_A
+ a| 
+ee7db9d5-9a82-11e7-b68b-00a098908039
+
+
+
+ a| 
+node_A_1-A700
+ a| 
+f03cb63c-9a7e-11e7-b68b-00a098908039
+
+
+
+ a| 
+node_A_2-A700
+ a| 
+a9a7a7a-9a81-11e7-a4e9-00a098908c35
+
+|===
+. Se os nós de MetroCluster estiverem em uma configuração de SAN, colete as informações relevantes.
++
+Você deve reunir a saída dos seguintes comandos:
+
++
+** `fcp adapter show -instance`
+** `fcp interface show -instance`
+** `iscsi interface show`
+** `ucadmin show`
+
+
+. Se o volume raiz estiver criptografado, colete e salve a senha usada para o gerenciador de chaves:
+`security key-manager backup show`
+. Se os nós do MetroCluster estiverem usando criptografia para volumes ou agregados, copie informações sobre as chaves e senhas. Para obter informações adicionais, https://docs.netapp.com/us-en/ontap/encryption-at-rest/backup-key-management-information-manual-task.html["Fazer backup manual de informações de gerenciamento de chaves integradas"^]consulte .
++
+.. Se o Gerenciador de chaves integrado estiver configurado:  `security key-manager onboard show-backup`Você precisará da senha mais tarde no procedimento de atualização.
+.. Se o gerenciamento de chaves empresariais (KMIP) estiver configurado, emita os seguintes comandos:
++
+....
+security key-manager external show -instance
+security key-manager key query
+....
+
+
+. Reúna as IDs do sistema dos nós existentes:
+`metrocluster node show -fields node-systemid,ha-partner-systemid,dr-partner-systemid,dr-auxiliary-systemid`
++
+A saída a seguir mostra as unidades reatribuídas.
+
++
+[listing]
+----
+::> metrocluster node show -fields node-systemid,ha-partner-systemid,dr-partner-systemid,dr-auxiliary-systemid
+
+dr-group-id cluster     node     node-systemid ha-partner-systemid dr-partner-systemid dr-auxiliary-systemid
+----------- ----------- -------- ------------- ------------------- ------------------- ---------------------
+1           cluster_A node_A_1-A700   537403324     537403323           537403321           537403322
+1           cluster_A node_A_2-A700   537403323     537403324           537403322          537403321
+1           cluster_B node_B_1-A700   537403322     537403321           537403323          537403324
+1           cluster_B node_B_2-A700   537403321     537403322           537403324          537403323
+4 entries were displayed.
+----
+
+
+
+
+=== Remova a monitorização do Mediator ou do tiebreaker
+
+Antes de atualizar as plataformas, você deve remover o monitoramento se a configuração do MetroCluster for monitorada com o utilitário tiebreaker ou Mediator.
+
+.Passos
+. Colete a saída para o seguinte comando:
++
+`storage iscsi-initiator show`
+
+. Remova a configuração do MetroCluster existente do tiebreaker, Mediator ou outro software que possa iniciar o switchover.
++
+|===
+
+
+| Se você estiver usando... | Use este procedimento... 
+
+
+ a| 
+Desempate
+ a| 
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["Remoção das configurações do MetroCluster"] No _MetroCluster Tiebreaker Instalação e Configuração conteúdo_
+
+
+
+ a| 
+Mediador
+ a| 
+Execute o seguinte comando no prompt do ONTAP:
+
+`metrocluster configuration-settings mediator remove`
+
+
+
+ a| 
+Aplicativos de terceiros
+ a| 
+Consulte a documentação do produto.
+
+|===
+
+
+
+
+=== Envie uma mensagem AutoSupport personalizada antes da manutenção
+
+Antes de realizar a manutenção, você deve emitir uma mensagem AutoSupport para notificar o suporte técnico de que a manutenção está em andamento. Informar o suporte técnico de que a manutenção está em andamento impede que ele abra um caso partindo do pressuposto de que ocorreu uma interrupção.
+
+.Sobre esta tarefa
+Esta tarefa deve ser executada em cada site do MetroCluster.
+
+.Passos
+. Inicie sessão no cluster.
+. Chame uma mensagem AutoSupport indicando o início da manutenção:
++
+`system node autosupport invoke -node * -type all -message MAINT=__maintenance-window-in-hours__`
+
++
+O `maintenance-window-in-hours` parâmetro especifica o comprimento da janela de manutenção, com um máximo de 72 horas. Se a manutenção for concluída antes do tempo decorrido, você poderá invocar uma mensagem AutoSupport indicando o fim do período de manutenção:
+
++
+`system node autosupport invoke -node * -type all -message MAINT=end`
+
+. Repita estas etapas no site do parceiro.
+
+
+
+
+== Alterne a configuração do MetroCluster
+
+Você deve alternar a configuração para site_A para que as plataformas no site_B possam ser atualizadas.
+
+.Sobre esta tarefa
+Esta tarefa tem de ser executada no site_A.
+
+Depois de concluir esta tarefa, site_A está ativo e fornecendo dados para ambos os sites. Site_B está inativo e pronto para iniciar o processo de atualização.
+
+image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[Cluster de atualização de mcc a no switchover A900]
+
+.Passos
+. Alterne a configuração do MetroCluster para site_A para que os nós do site_B possam ser atualizados:
++
+.. Execute o seguinte comando no site_A:
++
+`metrocluster switchover -controller-replacement true`
+
++
+A operação pode levar vários minutos para ser concluída.
+
+.. Monitorize a operação de comutação:
++
+`metrocluster operation show`
+
+.. Após a conclusão da operação, confirme se os nós estão no estado de comutação:
++
+`metrocluster show`
+
+.. Verifique o status dos nós MetroCluster:
++
+`metrocluster node show`
+
++
+A recuperação automática de agregados após o switchover negociado é desativada durante a atualização do controlador. Os nós no site_B são interrompidos e parados no `LOADER` prompt.
+
+
+
+
+
+
+
+== Remova o módulo do controlador da plataforma AFF A700 ou FAS9000 e o NVS
+
+.Sobre esta tarefa
+Se você ainda não está aterrado, aterre-se adequadamente.
+
+.Passos
+. Reúna os valores de bootarg de ambos os nós no site_B: `printenv`
+. Desligue o chassis no local_B.
+
+
+
+
+=== Retire o módulo do controlador AFF A700 ou FAS9000
+
+Use o procedimento a seguir para remover o módulo do controlador AFF A700 ou FAS9000
+
+.Passos
+. Retire o cabo da consola, se existir, e o cabo de gestão do módulo do controlador antes de remover o módulo do controlador.
+. Desbloqueie e retire o módulo do controlador do chassis.
++
+.. Deslize o botão laranja na pega do came para baixo até que este se destranque.
++
+image::../media/drw_9500_remove_PCM.png[módulo do controlador]
+
++
+|===
+
+
+| image:../media/number1.png["number1"] | Botão de libertação do manípulo do excêntrico 
+
+
+| image:../media/number2.png["number2"] | Pega do came 
+|===
+.. Rode o manípulo do excêntrico de forma a desengatar completamente o módulo do controlador do chassis e, em seguida, deslize o módulo do controlador para fora do chassis. Certifique-se de que suporta a parte inferior do módulo do controlador enquanto o desliza para fora do chassis.
+
+
+
+
+
+
+=== Retire o módulo de ruído, vibração e aspereza (NVS) do AFF A700 ou FAS9000
+
+Use o procedimento a seguir para remover o módulo de ruído, vibração e aspereza (NVS) do AFF A700 ou do FAS9000.
+
+Nota: O módulo NVS está no slot 6 e é o dobro da altura em comparação com outros módulos do sistema.
+
+.Passos
+. Desbloqueie e retire o NVS da ranhura 6.
++
+.. Prima o botão 'cam' com letras e numerado. O botão do came afasta-se do chassis.
+.. Rode o trinco da árvore de cames para baixo até estar na posição horizontal. O NVS desengata-se do chassis e desloca-se a alguns centímetros.
+.. Retire o NVS do chassis puxando as patilhas de puxar nas laterais da face do módulo.
++
+image::../media/drw_a900_move-remove_NVRAM_module.png[remova o módulo]
+
++
+|===
+
+
+| image:../media/number1.png["número 1"] | Trinco do came de e/S com letras e numerado 
+
+
+| image:../media/number2.png["número 2"] | Trinco de e/S completamente desbloqueado 
+|===
+
+
+. Se você estiver usando módulos adicionais usados como dispositivos de coredump no AFF A700 ou no FAS9000 NVS, não os transfira para o AFF A900 ou o FAS9500 NVS. Não transfira quaisquer peças do módulo do controlador AFF A700 ou FAS9000 e do NVS para o módulo AFF A900 ou FAS9500.
+
+
+
+
+== Instale o AFF A900 ou o FAS9500 NVS e os módulos do controlador
+
+Você deve instalar o AFF A900 ou o FAS9500 NVS e o módulo da controladora que recebeu no kit de atualização em ambos os nós no local_B. Não mova o dispositivo de coredump do módulo NVS AFF A700 ou FAS9000 para o módulo NVS AFF A900 ou FAS9500.
+
+.Sobre esta tarefa
+Se você ainda não está aterrado, aterre-se adequadamente.
+
+
+
+=== Instale o AFF A900 ou o FAS9500 NVS
+
+Use o procedimento a seguir para instalar o AFF A900 ou o FAS9500 NVS no slot 6 de ambos os nós no local_B.
+
+.Passos
+. Alinhe o NVS com as bordas da abertura do chassi no slot 6.
+. Deslize suavemente o NVS para dentro da ranhura até que o trinco do came de e/S com letras e numerado comece a engatar com o pino do came de e/S e, em seguida, empurre o trinco do came de e/S totalmente para cima para bloquear o NVS no devido lugar.
++
+image::../media/drw_a900_move-remove_NVRAM_module.png[remova o módulo]
+
++
+|===
+
+
+| image:../media/number1.png["número 1"] | Trinco do came de e/S com letras e numerado 
+
+
+| image:../media/number2.png["número 2"] | Trinco de e/S completamente desbloqueado 
+|===
+
+
+
+
+=== Instale o módulo do controlador AFF A900 ou FAS9500.
+
+Use o procedimento a seguir para instalar o módulo do controlador AFF A900 ou FAS9500.
+
+.Passos
+. Alinhe a extremidade do módulo do controlador com a abertura no chassis e, em seguida, empurre cuidadosamente o módulo do controlador até meio do sistema.
+. Empurre firmemente o módulo do controlador para dentro do chassi até que ele atenda ao plano médio e esteja totalmente assentado. O trinco de bloqueio sobe quando o módulo do controlador está totalmente assente. Atenção: Para evitar danificar os conetores, não use força excessiva ao deslizar o módulo do controlador para dentro do chassis.
+. Cable as portas de gerenciamento e console ao módulo do controlador.
++
+image::../media/drw_9500_remove_PCM.png[módulo do controlador]
+
++
+|===
+
+
+| image:../media/number1.png["número 1"] | Botão de libertação do manípulo do excêntrico 
+
+
+| image:../media/number2.png["number2"] | Pega do came 
+|===
+. Instale a segunda placa X91146A no slot 7 de cada nó.
++
+.. Mova a conexão e5b para E7B.
+.. Mova a conexão E5A para e5b.
++
+
+NOTE: O slot 7 em todos os nós do cluster deve estar vazio como mencionado na <<upgrade_a700_a900_ip_map,Mapear portas dos nós antigos para os novos nós>> seção.
+
+
+
+. LIGUE o chassi e conete-o ao console serial.
+. Após a inicialização do BIOS, se o nó iniciar autoboot, interrompa o AUTOBOOT pressionando Control-C.
+. Depois que o autoboot é interrompido, os nós param no prompt DO Loader. Se você não interromper a tempo e o node1 iniciar o boot, aguarde que o prompt pressione Ctrl-C para entrar no menu de inicialização. Depois que o nó parar no menu de inicialização, use a opção 8 para reinicializar o nó e interromper o autoboot durante a reinicialização.
+. No prompt Loader, defina as variáveis de ambiente padrão: Set-defaults
+. Salve as configurações de variáveis de ambiente padrão:
+`saveenv`
+
+
+
+
+=== Nós netboot no site_B
+
+Depois de trocar o módulo de controladora AFF A900 ou FAS9500 e o NVS, você precisa netboot dos nós AFF A900 ou FAS9500 e instalar a mesma versão do ONTAP e o nível de patch que está sendo executado no cluster. O termo netboot significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você deve adicionar uma cópia da imagem de inicialização do ONTAP 9 a um servidor da Web que o sistema possa acessar. Não é possível verificar a versão do ONTAP instalada no suporte de arranque de um módulo controlador AFF A900 ou FAS9500, a menos que esteja instalado num chassis e LIGADO. A versão do ONTAP na Mídia de inicialização do AFF A900 ou do FAS9500 deve ser a mesma que a versão do ONTAP em execução no sistema AFF A700 ou FAS9000 que está sendo atualizada e as imagens de inicialização principal e de backup devem corresponder. Você pode configurar as imagens executando um netboot seguido do `wipeconfig` comando no menu de inicialização. Se o módulo do controlador foi usado anteriormente em outro cluster, o `wipeconfig` comando limpa qualquer configuração residual na Mídia de inicialização.
+
+.Antes de começar
+* Verifique se você pode acessar um servidor HTTP com o sistema.
+* Você precisa baixar os arquivos de sistema necessários para o seu sistema e a versão correta do ONTAP a partir do site de suporte da NetApp.
+
+
+.Sobre esta tarefa
+Você deve netboot dos novos controladores, se a versão do ONTAP instalada não for a mesma que a versão instalada nos controladores originais. Depois de instalar cada novo controlador, inicialize o sistema a partir da imagem ONTAP 9 armazenada no servidor Web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema.
+
+.Passos
+. Acesse o https://mysupport.netapp.com/site/["Site de suporte da NetApp"^] para baixar os arquivos usados para executar o netboot do sistema.
+. [[step2-download-software]]Baixe o software ONTAP apropriado na seção de download de software do site de suporte da NetApp e armazene o `ontap-version_image.tgz` arquivo em um diretório acessível pela Web.
+. Mude para o diretório acessível pela Web e verifique se os arquivos necessários estão disponíveis.
+. A lista de diretórios deve conter ONTAP_version>_image.tgz.
+. Configure a conexão netboot escolhendo uma das seguintes ações.
++
+
+NOTE: Você deve usar a porta de gerenciamento e o IP como conexão netboot. Não use um IP de LIF de dados ou uma interrupção de dados pode ocorrer enquanto a atualização está sendo realizada.
+
++
+|===
+
+
+| Se o protocolo de configuração dinâmica do host (DCHP) for... | Então... 
+
+
+ a| 
+Em execução
+ a| 
+Configure a conexão automaticamente usando o seguinte comando no prompt do ambiente de inicialização:
+`ifconfig e0M -auto`
+
+
+
+ a| 
+Não está em execução
+ a| 
+Configure manualmente a conexão usando o seguinte comando no prompt do ambiente de inicialização:
+`ifconfig e0M -addr=<filer_addr> -mask=<netmask> -gw=<gateway> - dns=<dns_addr> domain=<dns_domain>`
+
+`<filer_addr>` É o endereço IP do sistema de armazenamento. `<netmask>` é a máscara de rede do sistema de armazenamento.
+`<gateway>` é o gateway para o sistema de armazenamento.
+`<dns_addr>` É o endereço IP de um servidor de nomes na rede. Este parâmetro é opcional.
+`<dns_domain>` É o nome de domínio do serviço de nomes de domínio (DNS). Este parâmetro é opcional. NOTA: Outros parâmetros podem ser necessários para a sua interface. Insira `help ifconfig` no prompt do firmware para obter detalhes.
+
+|===
+. Execute netboot em node_B_1:
+`netboot` `\http://<web_server_ip/path_to_web_accessible_directory>/netboot/kernel`
++
+O `<path_to_the_web-accessible_directory>` deve levar ao local onde você baixou o `<ontap_version>\_image.tgz` em <<step2-download-software,Passo 2>>.
+
++
+
+NOTE: Não interrompa a inicialização.
+
+. Aguarde até que o node_B_1 esteja sendo executado no módulo controlador AFF A900 ou FAS9500 para inicializar e exibir as opções do menu de inicialização, conforme mostrado abaixo:
++
+[listing]
+----
+Please choose one of the following:
+
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)?
+----
+. No menu de inicialização, selecione a ``(7) Install new software first.`` opção esta opção de menu baixa e instala a nova imagem ONTAP no dispositivo de inicialização. OBSERVAÇÃO: Ignore a seguinte mensagem: `This procedure is not supported for Non-Disruptive Upgrade on an HA pair.` Esta observação se aplica a atualizações de software ONTAP sem interrupções e não atualizações de controladora.
++
+Sempre use netboot para atualizar o novo nó para a imagem desejada. Se você usar outro método para instalar a imagem no novo controlador, a imagem incorreta pode ser instalada. Este problema aplica-se a todas as versões do ONTAP.
+
+. Se você for solicitado a continuar o procedimento, digite `y` e, quando solicitado, digite o URL:
+`\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>\_image.tgz`
+. Conclua as seguintes subetapas para reinicializar o módulo do controlador:
++
+.. Introduza `n` para ignorar a recuperação da cópia de segurança quando vir o seguinte aviso:
+`Do you want to restore the backup configuration now? {y|n}`
+.. Entre ``y to reboot when you see the following prompt:
+`The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}`` no módulo do controlador reinicializa, mas pára no menu de inicialização porque o dispositivo de inicialização foi reformatado e os dados de configuração precisam ser restaurados.
+
+
+. No prompt, execute o `wipeconfig` comando para limpar qualquer configuração anterior na Mídia de inicialização:
++
+.. Quando vir a seguinte mensagem, responda `yes`:
+`This will delete critical system configuration, including cluster membership.
+Warning: do not run this option on a HA node that has been taken over.
+Are you sure you want to continue?:`
+.. O nó reinicializa para terminar o `wipeconfig` e, em seguida, pára no menu de inicialização.
+
+
+. Selecione a opção `5` para ir para o modo de manutenção a partir do menu de arranque. Responda `yes` aos prompts até que o nó pare no modo de manutenção e o prompt de comando '*>.
+. Repita estas etapas para netboot node_B_2.
+
+
+
+
+=== Restaure a configuração do HBA
+
+Dependendo da presença e configuração das placas HBA no módulo controlador, você precisa configurá-las corretamente para uso do seu site.
+
+.Passos
+. No modo de manutenção, configure as definições para quaisquer HBAs no sistema:
++
+.. Verifique as definições atuais das portas:
++
+`ucadmin show`
+
+.. Atualize as definições da porta conforme necessário.
+
+
++
+|===
+
+
+| Se você tem este tipo de HBA e modo desejado... | Use este comando... 
+
+
+ a| 
+CNA FC
+ a| 
+`ucadmin modify -m fc -t initiator _adapter-name_`
+
+
+
+ a| 
+CNA Ethernet
+ a| 
+`ucadmin modify -mode cna _adapter-name_`
+
+
+
+ a| 
+Destino de FC
+ a| 
+`fcadmin config -t target _adapter-name_`
+
+
+
+ a| 
+Iniciador FC
+ a| 
+`fcadmin config -t initiator _adapter-name_`
+
+|===
+. Sair do modo de manutenção:
++
+`halt`
+
++
+Depois de executar o comando, aguarde até que o nó pare no prompt DO Loader.
+
+. Inicialize o nó novamente no modo Manutenção para permitir que as alterações de configuração entrem em vigor:
++
+`boot_ontap maint`
+
+. Verifique as alterações feitas:
++
+|===
+
+
+| Se você tem este tipo de HBA... | Use este comando... 
+
+
+ a| 
+CNA
+ a| 
+`ucadmin show`
+
+
+
+ a| 
+FC
+ a| 
+`fcadmin show`
+
+|===
+
+
+
+
+=== Defina o estado de HA nos novos controladores e chassi
+
+É necessário verificar o estado de HA dos controladores e do chassi e, se necessário, atualizar o estado para corresponder à configuração do sistema.
+
+.Passos
+. No modo de manutenção, apresentar o estado HA do módulo do controlador e do chassis:
++
+`ha-config show`
+
++
+O estado HA para todos os componentes deve ser `mccip`.
+
+. Se o estado do sistema apresentado do controlador ou do chassis não estiver correto, defina o estado HA:
++
+`ha-config modify controller mccip`
+
++
+`ha-config modify chassis mccip`
+
+. Parar o nó: `halt`
++
+O nó deve parar no `LOADER>` prompt.
+
+. Em cada nó, verifique a data, a hora e o fuso horário do sistema: `show date`
+. Se necessário, defina a data em UTC ou GMT: `set date <mm/dd/yyyy>`
+. Verifique a hora usando o seguinte comando no prompt do ambiente de inicialização: `show time`
+. Se necessário, defina a hora em UTC ou GMT: `set time <hh:mm:ss>`
+. Guarde as definições: `saveenv`
+. Reunir variáveis de ambiente: `printenv`
+
+
+
+
+== Atualize os arquivos RCF do switch para acomodar as novas plataformas
+
+Você deve atualizar os switches para uma configuração que suporte os novos modelos de plataforma.
+
+.Sobre esta tarefa
+Você executa essa tarefa no site que contém os controladores que estão sendo atualizados no momento. Nos exemplos mostrados neste procedimento, estamos atualizando site_B primeiro.
+
+Os switches no site_A serão atualizados quando os controladores no site_A forem atualizados.
+
+.Passos
+. Preparar os comutadores IP para a aplicação dos novos ficheiros RCF.
++
+Siga as etapas na seção para o fornecedor do switch:
+
++
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["Redefina o switch IP Broadcom para os padrões de fábrica"]
+** link:../install-ip/task_switch_config_cisco.html#resetting-the-cisco-ip-switch-to-factory-defaults["Redefina o switch IP Cisco para os padrões de fábrica"]
+** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["Redefina o switch NVIDIA IP SN2100 para os padrões de fábrica"]
+
+
+. Baixe e instale os arquivos RCF.
++
+Siga as etapas na seção para o fornecedor do switch:
+
++
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["Baixe e instale os arquivos Broadcom RCF"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["Transfira e instale os ficheiros Cisco IP RCF"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["Transfira e instale os ficheiros NVIDIA IP RCF"]
+
+
+
+
+
+
+== Configure os novos controladores
+
+Novos controladores devem estar prontos e cabeados neste momento.
+
+
+
+=== Defina as variáveis MetroCluster IP bootarg
+
+Certos valores de inicialização IP do MetroCluster devem ser configurados nos novos módulos do controlador. Os valores devem corresponder aos configurados nos módulos do controlador antigos.
+
+.Sobre esta tarefa
+Nesta tarefa, você usará os UUIDs e IDs do sistema identificados anteriormente no procedimento de atualização no <<Reúna informações antes da atualização>>.
+
+.Passos
+.  `LOADER>`No prompt, defina os seguintes bootargs nos novos nós no site_B:
++
+`setenv bootarg.mcc.port_a_ip_config _local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id_`
+
++
+`setenv bootarg.mcc.port_b_ip_config _local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id_`
+
++
+O exemplo a seguir define os valores para node_B_1-A900 usando VLAN 120 para a primeira rede e VLAN 130 para a segunda rede:
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12,130
+----
++
+O exemplo a seguir define os valores para node_B_2-A900 usando VLAN 120 para a primeira rede e VLAN 130 para a segunda rede:
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,172.17.26.10,172.17.26.12,172.17.26.13,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13,130
+----
+. No prompt dos novos nós `LOADER`, defina os UUIDs:
++
+`setenv bootarg.mgwd.partner_cluster_uuid _partner-cluster-UUID_`
+
++
+`setenv bootarg.mgwd.cluster_uuid _local-cluster-UUID_`
+
++
+`setenv bootarg.mcc.pri_partner_uuid _DR-partner-node-UUID_`
+
++
+`setenv bootarg.mcc.aux_partner_uuid _DR-aux-partner-node-UUID_`
+
++
+`setenv bootarg.mcc_iscsi.node_uuid _local-node-UUID_`
+
++
+.. Defina os UUIDs em node_B_1-A900.
++
+O exemplo a seguir mostra os comandos para definir os UUIDs em node_B_1-A900:
+
++
+[listing]
+----
+setenv bootarg.mgwd.cluster_uuid ee7db9d5-9a82-11e7-b68b-00a098908039
+setenv bootarg.mgwd.partner_cluster_uuid 07958819-9ac6-11e7-9b42-00a098c9e55d
+setenv bootarg.mcc.pri_partner_uuid f37b240b-9ac1-11e7-9b42-00a098c9e55d
+setenv bootarg.mcc.aux_partner_uuid bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f
+setenv bootarg.mcc_iscsi.node_uuid f03cb63c-9a7e-11e7-b68b-00a098908039
+----
+.. Defina os UUIDs em node_B_2-A900:
++
+O exemplo a seguir mostra os comandos para definir os UUIDs em node_B_2-A900:
+
++
+[listing]
+----
+setenv bootarg.mgwd.cluster_uuid ee7db9d5-9a82-11e7-b68b-00a098908039
+setenv bootarg.mgwd.partner_cluster_uuid 07958819-9ac6-11e7-9b42-00a098c9e55d
+setenv bootarg.mcc.pri_partner_uuid bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f
+setenv bootarg.mcc.aux_partner_uuid f37b240b-9ac1-11e7-9b42-00a098c9e55d
+setenv bootarg.mcc_iscsi.node_uuid aa9a7a7a-9a81-11e7-a4e9-00a098908c35
+----
+
+
+. Se os sistemas originais foram configurados para ADP, em cada prompt DO Loader dos nós de substituição, ative o ADP:
++
+`setenv bootarg.mcc.adp_enabled true`
+
+. Defina as seguintes variáveis:
++
+`setenv bootarg.mcc.local_config_id _original-sys-id_`
+
++
+`setenv bootarg.mcc.dr_partner _dr-partner-sys-id_`
+
++
+
+NOTE: A `setenv bootarg.mcc.local_config_id` variável deve ser definida para o sys-id do módulo controlador *original*, node_B_1-A700.
+
++
+.. Defina as variáveis em node_B_1-A900.
++
+O exemplo a seguir mostra os comandos para definir os valores em node_B_1-A900:
+
++
+[listing]
+----
+setenv bootarg.mcc.local_config_id 537403322
+setenv bootarg.mcc.dr_partner 537403324
+----
+.. Defina as variáveis em node_B_2-A900.
++
+O exemplo a seguir mostra os comandos para definir os valores em node_B_2-A900:
+
++
+[listing]
+----
+setenv bootarg.mcc.local_config_id 537403321
+setenv bootarg.mcc.dr_partner 537403323
+----
+
+
+. Se estiver usando criptografia com gerenciador de chaves externo, defina os bootargs necessários:
++
+`setenv bootarg.kmip.init.ipaddr`
+
++
+`setenv bootarg.kmip.kmip.init.netmask`
+
++
+`setenv bootarg.kmip.kmip.init.gateway`
+
++
+`setenv bootarg.kmip.kmip.init.interface`
+
+
+
+
+
+=== Reatribuir discos agregados de raiz
+
+Reatribua os discos agregados de raiz ao novo módulo de controladora, usando os sysids reunidos anteriormente.
+
+.Sobre esta tarefa
+Estes passos são executados no modo de manutenção.
+
+.Passos
+. Inicialize o sistema no modo de manutenção:
++
+`boot_ontap maint`
+
+. Exiba os discos no node_B_1-A900 no prompt do modo de manutenção:
++
+`disk show -a`
+
++
+A saída do comando mostra a ID do sistema do novo módulo do controlador (1574774970). No entanto, os discos agregados de raiz ainda são propriedade do ID do sistema antigo (537403322). Este exemplo não mostra unidades de propriedade de outros nós na configuração do MetroCluster.
+
++
+[listing]
+----
+*> disk show -a
+Local System ID: 1574774970
+DISK                  OWNER                 POOL   SERIAL NUMBER   HOME                  DR HOME
+------------          ---------             -----  -------------   -------------         -------------
+prod3-rk18:9.126L44   node_B_1-A700(537403322)  Pool1  PZHYN0MD     node_B_1-A700(537403322)  node_B_1-A700(537403322)
+prod4-rk18:9.126L49  node_B_1-A700(537403322)  Pool1  PPG3J5HA     node_B_1-A700(537403322)  node_B_1-700(537403322)
+prod4-rk18:8.126L21   node_B_1-A700(537403322)  Pool1  PZHTDSZD     node_B_1-A700(537403322)  node_B_1-A700(537403322)
+prod2-rk18:8.126L2    node_B_1-A700(537403322)  Pool0  S0M1J2CF     node_B_1-(537403322)  node_B_1-A700(537403322)
+prod2-rk18:8.126L3    node_B_1-A700(537403322)  Pool0  S0M0CQM5     node_B_1-A700(537403322)  node_B_1-A700(537403322)
+prod1-rk18:9.126L27   node_B_1-A700(537403322)  Pool0  S0M1PSDW     node_B_1-A700(537403322)  node_B_1-A700(537403322)
+.
+.
+.
+----
+. Reatribua os discos agregados de raiz nos compartimentos de unidades às novas controladoras.
++
+|===
+
+
+| Se você estiver usando ADP... | Em seguida, use este comando... 
+
+
+ a| 
+Sim
+ a| 
+`disk reassign -s _old-sysid_ -d _new-sysid_ -r _dr-partner-sysid_`
+
+
+
+ a| 
+Não
+ a| 
+`disk reassign -s _old-sysid_ -d _new-sysid_`
+
+|===
+. Reatribua os discos agregados de raiz nos compartimentos de unidades às novas controladoras:
++
+`disk reassign -s old-sysid -d new-sysid`
+
++
+O exemplo a seguir mostra a reatribuição de unidades em uma configuração não ADP:
+
++
+[listing]
+----
+*> disk reassign -s 537403322 -d 1574774970
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)? n
+
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)? y
+Disk ownership will be updated on all disks previously belonging to Filer with sysid 537403322.
+Do you want to continue (y/n)? y
+----
+. Verifique se os discos do agregado raiz estão corretamente reatribuídos à remoção antiga:
++
+`disk show`
+
++
+`storage aggr status`
+
++
+[listing]
+----
+
+*> disk show
+Local System ID: 537097247
+
+  DISK                    OWNER                    POOL   SERIAL NUMBER   HOME                     DR HOME
+------------              -------------            -----  -------------   -------------            -------------
+prod03-rk18:8.126L18 node_B_1-A900(537097247)  Pool1  PZHYN0MD        node_B_1-A900(537097247)   node_B_1-A900(537097247)
+prod04-rk18:9.126L49 node_B_1-A900(537097247)  Pool1  PPG3J5HA        node_B_1-A900(537097247)   node_B_1-A900(537097247)
+prod04-rk18:8.126L21 node_B_1-A900(537097247)  Pool1  PZHTDSZD        node_B_1-A900(537097247)   node_B_1-A900(537097247)
+prod02-rk18:8.126L2  node_B_1-A900(537097247)  Pool0  S0M1J2CF        node_B_1-A900(537097247)   node_B_1-A900(537097247)
+prod02-rk18:9.126L29 node_B_1-A900(537097247)  Pool0  S0M0CQM5        node_B_1-A900(537097247)   node_B_1-A900(537097247)
+prod01-rk18:8.126L1  node_B_1-A900(537097247)  Pool0  S0M1PSDW        node_B_1-A900(537097247)   node_B_1-A900(537097247)
+::>
+::> aggr status
+           Aggr          State           Status                Options
+aggr0_node_B_1           online          raid_dp, aggr         root, nosnap=on,
+                                         mirrored              mirror_resync_priority=high(fixed)
+                                         fast zeroed
+                                         64-bit
+----
+
+
+
+
+=== Inicialize os novos controladores
+
+Você deve inicializar os novos controladores, tomando cuidado para garantir que as variáveis bootarg estão corretas e, se necessário, executar as etapas de recuperação de criptografia.
+
+.Passos
+. Parar os novos nós:
++
+`halt`
+
+. Se o gerenciador de chaves externo estiver configurado, defina os bootargs relacionados:
++
+`setenv bootarg.kmip.init.ipaddr _ip-address_`
+
++
+`setenv bootarg.kmip.init.netmask _netmask_`
+
++
+`setenv bootarg.kmip.init.gateway _gateway-address_`
+
++
+`setenv bootarg.kmip.init.interface _interface-id_`
+
+. Verifique se o parceiro-sysid é o atual:
++
+`printenv partner-sysid`
+
++
+Se o parceiro-sysid não estiver correto, defina-o:
+
++
+`setenv partner-sysid _partner-sysID_`
+
+. Exiba o menu de inicialização do ONTAP:
++
+`boot_ontap menu`
+
+. Se a criptografia raiz for usada, selecione a opção do menu de inicialização para a configuração de gerenciamento de chaves.
++
+|===
+
+
+| Se você estiver usando... | Selecione esta opção do menu de arranque... 
+
+
+ a| 
+Gerenciamento de chaves integrado
+ a| 
+Opção 10 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves
+
+
+
+ a| 
+Gerenciamento de chaves externas
+ a| 
+Opção 11 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves
+
+|===
+. No menu de inicialização, `(6) Update flash from backup config` selecione .
++
+
+NOTE: A opção 6 reiniciará o nó duas vezes antes de concluir.
+
++
+Responda `y` aos prompts de alteração de ID do sistema. Aguarde a segunda mensagem de reinicialização:
+
++
+[listing]
+----
+Successfully restored env file from boot media...
+
+Rebooting to load the restored env file...
+----
+. Interrompa o AUTOBOOT para parar os controladores NO Loader.
++
+
+NOTE: Em cada nó, verifique os bootargs definidos link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html["Configurando as variáveis de inicialização IP do MetroCluster"]e corrija quaisquer valores incorretos. Apenas passe para a próxima etapa depois de verificar os valores de bootarg.
+
+. Verifique se o parceiro-sysid está correto:
++
+`printenv partner-sysid`
+
++
+Se o parceiro-sysid não estiver correto, defina-o:
+
++
+`setenv partner-sysid _partner-sysID_`
+
+. Se a criptografia raiz for usada, selecione a opção do menu de inicialização para a configuração de gerenciamento de chaves.
++
+|===
+
+
+| Se você estiver usando... | Selecione esta opção do menu de arranque... 
+
+
+ a| 
+Gerenciamento de chaves integrado
+ a| 
+Opção 10 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves
+
+
+
+ a| 
+Gerenciamento de chaves externas
+ a| 
+Opção 11 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves
+
+|===
++
+Você precisa executar o procedimento de recuperação selecionando a opção 10 ou a opção 11, dependendo da configuração do gerenciador de chaves e a opção 6 no prompt do menu de inicialização. Para inicializar completamente os nós, talvez seja necessário executar o procedimento de recuperação continuado pela opção 1 (inicialização normal).
+
+. Aguarde que os novos nós, node_B_1-A900 e node_B_2-A900 iniciem.
++
+Se um dos nós estiver no modo de aquisição, execute um giveback usando o `storage failover giveback` comando.
+
+. Se a criptografia for usada, restaure as chaves usando o comando correto para sua configuração de gerenciamento de chaves.
++
+|===
+
+
+| Se você estiver usando... | Use este comando... 
+
+
+ a| 
+Gerenciamento de chaves integrado
+ a| 
+`security key-manager onboard sync`
+
+Para obter mais informações, https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-onboard-key-management-encryption-keys-task.html["Restaurar chaves de criptografia integradas de gerenciamento de chaves"^]consulte .
+
+
+
+ a| 
+Gerenciamento de chaves externas
+ a| 
+`security key-manager external restore -vserver _SVM_ -node _node_ -key-server _host_name|IP_address:port_ -key-id key_id -key-tag key_tag _node-name_`
+
+Para obter mais informações, https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-external-encryption-keys-93-later-task.html["Restaurar chaves de criptografia de gerenciamento de chaves externas"^]consulte .
+
+|===
+. Verifique se todas as portas estão em um domínio de broadcast:
++
+.. Veja os domínios de broadcast:
++
+`network port broadcast-domain show`
+
+.. Adicione quaisquer portas a um domínio de broadcast conforme necessário.
++
+https://docs.netapp.com/us-en/ontap/networking/add_or_remove_ports_from_a_broadcast_domain97.html["Adicionar ou remover portas de um domínio de broadcast"^]
+
+.. Recrie VLANs e grupos de interface conforme necessário.
++
+A associação de VLAN e grupo de interface pode ser diferente da do nó antigo.
+
++
+https://docs.netapp.com/us-en/ontap/networking/configure_vlans_over_physical_ports.html#create-a-vlan["Criando um VLAN"^]
+
++
+https://docs.netapp.com/us-en/ontap/networking/combine_physical_ports_to_create_interface_groups.html["Combinando portas físicas para criar grupos de interface"^]
+
+
+
+
+
+
+
+=== Verifique e restaure a configuração do LIF
+
+Verifique se os LIFs estão hospedados em nós e portas apropriados, conforme mapeados no início do procedimento de atualização.
+
+.Sobre esta tarefa
+* Esta tarefa é executada no site_B.
+* Consulte o plano de mapeamento de portas que criou <<upgrade_a700_a900_ip_map,Mapear portas dos nós antigos para os novos nós>>
+
+
+.Passos
+. Verifique se os LIFs estão hospedados no nó e nas portas apropriadas antes do switchback.
++
+.. Mude para o nível de privilégio avançado:
++
+`set -privilege advanced`
+
+.. Substituir a configuração da porta para garantir o posicionamento correto do LIF:
++
+`vserver config override -command "network interface modify -vserver _vserver_name_ -home-port _active_port_after_upgrade_ -lif _lif_name_ -home-node _new_node_name_"`
+
++
+Ao entrar no comando Network Interface Modify dentro `vserver config override` do comando, não é possível usar o recurso Tab Autocomplete. Você pode criar a rede `interface modify` usando o autocomplete e, em seguida, incorporá-la no `vserver config override` comando.
+
+.. Voltar ao nível de privilégio de administrador:
++
+`set -privilege admin`
+
+
+
+. Reverter as interfaces para o seu nó inicial:
++
+`network interface revert * -vserver _vserver-name_`
+
++
+Execute esta etapa em todas as SVMs, conforme necessário.
+
+
+
+
+
+== Volte a ativar a configuração do MetroCluster
+
+Nesta tarefa, você executará a operação de switchback e a configuração do MetroCluster retornará à operação normal. Os nós no site_A ainda estão aguardando atualização.
+
+image::../media/mcc_upgrade_cluster_a_switchback_A900.png[Cluster de atualização do mcc a switchback A900]
+
+.Passos
+. Emita o `metrocluster node show` comando de site_B e verifique a saída.
++
+.. Verifique se os novos nós estão representados corretamente.
+.. Verifique se os novos nós estão em "aguardando pelo estado de switchback".
+
+
+. Execute a recuperação e o switchback executando os comandos necessários de qualquer nó no cluster ativo (o cluster que não está sendo atualizado).
++
+.. Curar os agregados de dados
+`metrocluster heal aggregates`
+.. Curar os agregados de raiz:
++
+`metrocluster heal root`
+
+.. Comutar o cluster:
++
+`metrocluster switchback`
+
+
+
+. Verifique o progresso do funcionamento do interrutor de comutação:
++
+`metrocluster show`
+
++
+A operação de switchback ainda está em andamento quando a saída exibe `waiting-for-switchback`:
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+A operação de comutação está concluída quando a saída exibe normal:
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+Se um switchback levar muito tempo para terminar, você pode verificar o status das linhas de base em andamento usando o `metrocluster config-replication resync-status show` comando. Este comando está no nível de privilégio avançado.
+
+
+
+
+
+== Verifique a integridade da configuração do MetroCluster
+
+Depois de atualizar os módulos do controlador, você deve verificar a integridade da configuração do MetroCluster.
+
+.Sobre esta tarefa
+Esta tarefa pode ser executada em qualquer nó na configuração do MetroCluster.
+
+.Passos
+. Verifique o funcionamento da configuração do MetroCluster:
++
+.. Confirme a configuração do MetroCluster e se o modo operacional está normal
+`metrocluster show`
+.. Execute uma verificação MetroCluster
+`metrocluster check run`
+.. Apresentar os resultados da verificação MetroCluster:
++
+`metrocluster check show`
+
+
+
+. Verifique a conetividade e o status do MetroCluster.
++
+.. Verifique as conexões IP do MetroCluster:
++
+`storage iscsi-initiator show`
+
+.. Verifique se os nós estão operando:
++
+`metrocluster node show`
+
+.. Verifique se as interfaces IP do MetroCluster estão ativas:
++
+`metrocluster configuration-settings interface show`
+
+.. Verifique se o failover local está ativado:
++
+`storage failover show`
+
+
+
+
+
+
+
+== Atualize os nós no site_A
+
+Você deve repetir as tarefas de atualização no site_A.
+
+.Passos
+. Repita as etapas para atualizar os nós no site_A, começando com <<upgrade_a700_a900_ip_prepare,Prepare-se para a atualização>>.
++
+À medida que você executa as tarefas, todas as referências de exemplo aos sites e nós são invertidas. Por exemplo, quando o exemplo é dado para o switchover de site_A, você irá mudar de site_B.
+
+
+
+
+
+== Restaure o monitoramento do tiebreaker ou do Mediator
+
+Depois de concluir a atualização da configuração do MetroCluster, você pode retomar o monitoramento com o utilitário tiebreaker ou Mediator.
+
+.Passos
+. Restaure o monitoramento, se necessário, usando o procedimento para sua configuração.
++
+|===
+| Se você estiver usando... | Use este procedimento 
+
+
+ a| 
+Desempate
+ a| 
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["Adição de configurações do MetroCluster"] Na seção _MetroCluster tiebreaker Installation and Configuration_.
+
+
+
+ a| 
+Mediador
+ a| 
+link:../install-ip/concept_mediator_requirements.html["Configurando o serviço do Mediador ONTAP a partir de uma configuração IP do MetroCluster"] Na seção _Instalação e Configuração IP do MetroCluster_.
+
+
+
+ a| 
+Aplicativos de terceiros
+ a| 
+Consulte a documentação do produto.
+
+|===
+
+
+
+
+== Envie uma mensagem AutoSupport personalizada após a manutenção
+
+Depois de concluir a atualização, você deve enviar uma mensagem AutoSupport indicando o fim da manutenção, para que a criação automática de casos possa ser retomada.
+
+.Passos
+. Para retomar a geração de casos de suporte automático, envie uma mensagem AutoSupport para indicar que a manutenção está concluída.
++
+.. Execute o seguinte comando
+`system node autosupport invoke -node * -type all -message MAINT=end`
+.. Repita o comando no cluster de parceiros.
+
+
+

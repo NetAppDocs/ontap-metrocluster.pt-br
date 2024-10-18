@@ -1,0 +1,8 @@
+---
+permalink: tiebreaker/task_install_the_tiebreaker_software.html 
+redirect: ontap-metrocluster/tiebreaker/install_prepare.html 
+---
+= 
+:allow-uri-read: 
+
+

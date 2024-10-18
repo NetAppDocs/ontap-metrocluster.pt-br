@@ -1,0 +1,55 @@
+---
+permalink: manage/task_verify_SVMs are_running_and_aggregates_are_online.html 
+sidebar: sidebar 
+keywords: switchover, dr, partner, ownership, disk, svm, online, confirm 
+summary: Após a conclusão do switchover, você deve verificar se os parceiros de DR se apropriaram dos discos e se os SVMs do parceiro se tornaram online. 
+---
+= Verifique se os SVMs estão em execução e se os agregados estão online
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após a conclusão do switchover, você deve verificar se os parceiros de DR se apropriaram dos discos e se os SVMs do parceiro se tornaram online.
+
+Quando você executa o comando storage Aggregate plex show após um switchover do MetroCluster, o status de plex0 do agregado de raiz comutada é indeterminado e é exibido como falhou. Durante este tempo, a raiz comutada não é atualizada. O estado real deste Plex só pode ser determinado após a fase de cicatrização do MetroCluster.
+
+.Passos
+. Verifique se os agregados foram comutados usando o comando storage Aggregate show.
++
+Neste exemplo, os agregados foram trocados. O agregado raiz (aggr0_B2) está em um estado degradado. O agregado de dados (B2_aggr2) está em um estado espelhado e normal:
+
++
+[listing]
+----
+cluster_A::*> storage aggregate show
+
+.
+.
+.
+mcc1-b Switched Over Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+aggr0_b2    227.1GB   45.1GB    80% online       0 node_A_1        raid_dp,
+                                                                   mirror
+                                                                   degraded
+b2_aggr1    227.1GB   200.3GB    20% online       0 node_A_1       raid_dp,
+                                                                   mirrored
+                                                                   normal
+----
+. Confirme se os SVMs secundários estão online usando o comando vserver show.
++
+Neste exemplo, os SVMs de destino de sincronização anteriormente adormecidos no site secundário foram ativados e têm um estado de administração em execução:
+
++
+[listing]
+----
+cluster_A::*> vserver show
+                                          Admin      Operational  Root                 Name    Name
+Vserver           Type  Subtype           State      State        Volume    Aggregate  Service Mapping
+-----------       ----- ----------        ---------- -----------  --------- ---------- ------- -------
+...
+cluster_B-vs1b-mc data   sync-destination  running   running      vs1b_vol   aggr_b1   file    file
+----
+

@@ -1,0 +1,240 @@
+---
+permalink: maintain/task_hot_add_a_stack_to_exist_7500n_pair.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, add, stack, sas, disk, shelves, existing, pair, fibrebridge, bridge 
+summary: É possível adicionar uma stack de gavetas de disco SAS a um par existente de bridgeBridge 7600N ou 7500N que tenha portas disponíveis. 
+---
+= Adição rápida de uma stack de gavetas de disco SAS a um par existente de bridgeBridge 7600N ou 7500N
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É possível adicionar uma stack de gavetas de disco SAS a um par existente de bridgeBridge 7600N ou 7500N que tenha portas disponíveis.
+
+.Antes de começar
+* Você deve ter baixado o firmware mais recente do compartimento de disco e disco.
+* Todos os compartimentos de disco na configuração MetroCluster (compartimentos existentes) devem estar executando a mesma versão de firmware. Se um ou mais discos ou gavetas não estiverem executando a versão de firmware mais recente, atualize o firmware antes de anexar os novos discos ou gavetas.
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["Downloads do NetApp: Firmware da unidade de disco"^]
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["Downloads do NetApp: Firmware da gaveta de disco"^]
+
+* As pontes FibreBridge 7600N ou 7500N devem estar conetadas e ter portas SAS disponíveis.
+
+
+.Sobre esta tarefa
+Este procedimento é escrito com a suposição de que você está usando as interfaces de gerenciamento de bridge recomendadas: A GUI ATTO ExpressNAV e o utilitário ATTO Quicknav.
+
+Você pode usar a GUI ATTO ExpressNAV para configurar e gerenciar uma bridge e atualizar o firmware da bridge. Você pode usar o utilitário ATTO Quicknav para configurar a porta 1 de gerenciamento Ethernet bridge.
+
+Você pode usar outras interfaces de gerenciamento, se necessário. Essas opções incluem o uso de uma porta serial ou Telnet para configurar e gerenciar uma ponte e configurar a porta 1 de gerenciamento Ethernet e usar o FTP para atualizar o firmware da ponte. Se você escolher qualquer uma dessas interfaces de gerenciamento, deverá atender aos requisitos aplicáveis no link:reference_requirements_for_using_other_interfaces_to_configure_and_manage_fibrebridge_bridges.html["Outras interfaces de gerenciamento de ponte"].
+
+
+IMPORTANT: Se você inserir um cabo SAS na porta errada, ao remover o cabo de uma porta SAS, deverá aguardar pelo menos 120 segundos antes de conetar o cabo a uma porta SAS diferente. Se não o fizer, o sistema não reconhecerá que o cabo foi movido para outra porta.
+
+.Passos
+. Aterre-se corretamente.
+. No console de qualquer controlador, verifique se o sistema tem atribuição automática de disco ativada:
++
+`storage disk option show`
+
++
+A coluna atribuição automática indica se a atribuição automática de disco está ativada.
+
++
+[listing]
+----
+
+Node        BKg. FW. Upd.  Auto Copy   Auto Assign  Auto Assign Policy
+----------  -------------  ----------  -----------  ------------------
+node_A_1             on           on           on           default
+node_A_2             on           on           on           default
+2 entries were displayed.
+----
+. Em cada bridge no par, ative a porta SAS que se conetará à nova pilha:
++
+`SASPortEnable _port-letter_`
+
++
+A mesma porta SAS (B, C ou D) deve ser usada em ambas as pontes.
+
+. Salve a configuração e reinicie cada bridge:
++
+`SaveConfiguration Restart`
+
+. Prenda as prateleiras de discos às pontes:
++
+.. Encadeie em série as gavetas de disco em cada pilha.
++
+O _Installation and Service Guide_ do modelo de compartimento de disco fornece informações detalhadas sobre as prateleiras de disco em encadeamento em série.
+
+.. Para cada stack de gavetas de disco, cable IOM A da primeira gaveta para a porta SAS a na FibreBridge A e, em seguida, cable IOM B da última gaveta para a porta SAS a na FibreBridge B.
++
+link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]
+
++
+link:../install-stretch/concept_considerations_differences.html["Instalação e configuração do Stretch MetroCluster"]
+
++
+Cada ponte tem um caminho para sua pilha de gavetas de disco; a ponte A se coneta ao lado A da pilha através da primeira gaveta e a ponte B se coneta ao lado B da pilha através da última gaveta.
+
++
+
+NOTE: A porta SAS da ponte B está desativada.
+
+
+
+. Verifique se cada bridge pode detetar todas as unidades de disco e compartimentos de disco aos quais a ponte está conetada.
++
+[cols="30,70"]
+|===
+
+
+| Se você estiver usando o... | Então... 
+
+
+ a| 
+ATTO ExpressNAV GUI
+ a| 
+.. Em um navegador da Web compatível, insira o endereço IP de uma ponte na caixa do navegador.
++
+Você é trazido para a página inicial DO ATTO FibreBridge, que tem um link.
+
+.. Clique no link e insira seu nome de usuário e a senha que você designou quando configurou a ponte.
++
+A página de status ATTO FibreBridge aparece com um menu à esquerda.
+
+.. Clique em *Avançado* no menu.
+.. Ver os dispositivos ligados:
++
+`sastargets`
+
+.. Clique em *Enviar*.
+
+
+
+
+ a| 
+Conexão de porta serial
+ a| 
+Ver os dispositivos ligados:
+
+`sastargets`
+
+|===
++
+A saída mostra os dispositivos (discos e compartimentos de disco) aos quais a ponte está conetada. As linhas de saída são numeradas sequencialmente para que você possa contar rapidamente os dispositivos.
+
++
+
+NOTE: Se o texto "Esponse truncado" aparecer no início da saída, você pode usar o Telnet para conetar-se à ponte e, em seguida, exibir toda a saída usando o `sastargets` comando.
+
++
+A saída a seguir mostra que 10 discos estão conetados:
+
++
+[listing]
+----
+Tgt VendorID ProductID        Type        SerialNumber
+  0 NETAPP   X410_S15K6288A15 DISK        3QP1CLE300009940UHJV
+  1 NETAPP   X410_S15K6288A15 DISK        3QP1ELF600009940V1BV
+  2 NETAPP   X410_S15K6288A15 DISK        3QP1G3EW00009940U2M0
+  3 NETAPP   X410_S15K6288A15 DISK        3QP1EWMP00009940U1X5
+  4 NETAPP   X410_S15K6288A15 DISK        3QP1FZLE00009940G8YU
+  5 NETAPP   X410_S15K6288A15 DISK        3QP1FZLF00009940TZKZ
+  6 NETAPP   X410_S15K6288A15 DISK        3QP1CEB400009939MGXL
+  7 NETAPP   X410_S15K6288A15 DISK        3QP1G7A900009939FNTT
+  8 NETAPP   X410_S15K6288A15 DISK        3QP1FY0T00009940G8PA
+  9 NETAPP   X410_S15K6288A15 DISK        3QP1FXW600009940VERQ
+----
+. Verifique se a saída do comando mostra que a ponte está conetada a todos os discos e compartimentos de disco apropriados na pilha.
++
+[cols="30,70"]
+|===
+
+
+| Se a saída for... | Então... 
+
+
+ a| 
+Correto
+ a| 
+Repita o passo anterior para cada ponte restante.
+
+
+
+ a| 
+Não está correto
+ a| 
+.. Verifique se há cabos SAS soltos ou corrija o cabeamento SAS repetindo a etapa para fazer o cabeamento das gavetas de disco às pontes.
+.. Repita o passo anterior para cada ponte restante.
+
+
+|===
+. Atualize o firmware da unidade de disco para a versão mais atual a partir da consola do sistema:
++
+`disk_fw_update`
+
++
+Você deve executar este comando em ambos os controladores.
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["Downloads do NetApp: Firmware da unidade de disco"^]
+
+. Atualize o firmware do compartimento de disco para a versão mais atual usando as instruções para o firmware baixado.
++
+Você pode executar os comandos no procedimento a partir do console do sistema de qualquer controlador.
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["Downloads do NetApp: Firmware da gaveta de disco"^]
+
+. Se o sistema não tiver a atribuição automática de disco ativada, atribua a propriedade da unidade de disco.
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"^]
+
++
+
+NOTE: Se você estiver dividindo a propriedade de uma única pilha de compartimentos de disco entre vários controladores, desative a atribuição automática de disco (`storage disk option modify -autoassign off *`de ambos os nós no cluster) antes de atribuir a propriedade de disco; caso contrário, quando você atribuir qualquer unidade de disco, as unidades de disco restantes podem ser atribuídas automaticamente ao mesmo controlador e pool.
+
++
+
+NOTE: Não é possível adicionar unidades de disco a agregados ou volumes até que o firmware da unidade de disco e do compartimento de disco tenham sido atualizados e as etapas de verificação nesta tarefa tenham sido concluídas.
+
+. Verifique a operação da configuração do MetroCluster no ONTAP:
++
+.. Verifique se o sistema é multipathed:
++
+`node run -node _node-name_ sysconfig -a`
+
+.. Verifique se há alertas de integridade em ambos os clusters:
++
+`system health alert show`
+
+.. Confirme a configuração do MetroCluster e se o modo operacional está normal:
++
+`metrocluster show`
+
+.. Execute uma verificação MetroCluster:
++
+`metrocluster check run`
+
+.. Apresentar os resultados da verificação MetroCluster:
++
+`metrocluster check show`
+
+.. Verifique se há alertas de integridade nas pontes depois de adicionar as novas pilhas:
++
+`storage bridge show`
+
+.. Execute o Config Advisor.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"^]
+
+.. Depois de executar o Config Advisor, revise a saída da ferramenta e siga as recomendações na saída para resolver quaisquer problemas descobertos.
+
+
+. Se aplicável, repita este procedimento para o local do parceiro.
+

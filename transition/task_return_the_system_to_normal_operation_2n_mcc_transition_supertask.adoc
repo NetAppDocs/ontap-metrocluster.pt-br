@@ -1,0 +1,90 @@
+---
+permalink: transition/task_return_the_system_to_normal_operation_2n_mcc_transition_supertask.html 
+sidebar: sidebar 
+keywords: perform, final, configuration, return, metrocluster, normal, operation, system, verify, assign, drive, transition, install, license, module, complete, completing, node, send, custom, autosupport, message, maintenance 
+summary: Você deve executar as etapas finais de configuração e retornar a configuração do MetroCluster à operação normal. 
+---
+= Voltar a colocar o sistema em funcionamento normal
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve executar as etapas finais de configuração e retornar a configuração do MetroCluster à operação normal.
+
+
+
+== Verificando a operação do MetroCluster e atribuindo unidades após a transição
+
+Você deve verificar se o MetroCluster está funcionando corretamente e atribuir unidades ao segundo par de novos nós (node_A_2-IP e node_B_2-IP).
+
+. Confirme se o tipo de configuração do MetroCluster é IP-Fabric: `metrocluster show`
+. Execute uma verificação MetroCluster.
++
+.. Emita o seguinte comando: `metrocluster check run`
+.. Apresentar os resultados da verificação MetroCluster: `metrocluster check show`
+
+
+. Confirme se o grupo de DR com os nós IP do MetroCluster está configurado: `metrocluster node show`
+. Criar e espelhar agregados de dados adicionais para controladores node_A_2-IP e node_B_2-IP em cada local conforme necessário.
+
+
+
+
+== Instalar licenças para o novo módulo de controlador
+
+É necessário adicionar licenças para o novo módulo de controladora para quaisquer serviços ONTAP que exijam licenças padrão (node-locked). Para recursos com licenças padrão, cada nó no cluster deve ter sua própria chave para o recurso.
+
+Para obter informações detalhadas sobre licenciamento, consulte o artigo 3013749 da base de conhecimento: Visão geral e referências de licenciamento do Data ONTAP 8.2 no site de suporte da NetApp e na _Referência de administração do sistema_.
+
+. Se necessário, obtenha chaves de licença para o novo nó no site de suporte da NetApp na seção meu suporte em licenças de software.
++
+Para obter mais informações sobre substituições de licenças, consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/Post_Motherboard_Replacement_Process_to_update_Licensing_on_a_AFF_FAS_system["Pós-processo de substituição da placa-mãe para atualizar o licenciamento em um sistema AFF/FAS."^]
+
+. Execute o seguinte comando para instalar cada chave de licença: `system license add -license-code license_key`
++
+A license_key tem 28 dígitos.
+
++
+Repita este passo para cada licença padrão (node-locked) necessária.
+
+
+
+
+
+== Concluir a configuração dos nós
+
+Existem várias etapas de configuração que podem ser executadas antes de concluir os procedimentos. Alguns destes passos são opcionais.
+
+. Configure o processador de serviço: `system service-processor network modify`
+. Configure o AutoSupport nos novos nós: `system node autosupport modify`
+. Os controladores podem ser opcionalmente renomeados como parte da transição. O seguinte comando é usado para renomear um controlador: `system node rename -node <old-name> -newname <new-name>`
++
+A operação de renomeação pode levar alguns minutos para ser concluída. Confirme se quaisquer alterações de nome se propagaram para cada nó antes de continuar com outras etapas usando o comando system show -fields node.
+
+. Configure um serviço de monitoramento conforme desejado.
++
+link:../install-ip/concept_considerations_mediator.html["Considerações para Mediator"]
+
++
+link:./install-ip/concept_mediator_requirements.html
+
++
+link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["Instalação e configuração do software tiebreaker"]
+
+
+
+
+
+== Enviar uma mensagem AutoSupport personalizada após a manutenção
+
+Depois de concluir a transição, você deve enviar uma mensagem AutoSupport indicando o fim da manutenção, para que a criação automática de casos possa ser retomada.
+
+. Para retomar a geração de casos de suporte automático, envie uma mensagem AutoSupport para indicar que a manutenção está concluída.
++
+.. Emita o seguinte comando: `system node autosupport invoke -node * -type all -message MAINT=end`
+.. Repita o comando no cluster de parceiros.
+
+
+

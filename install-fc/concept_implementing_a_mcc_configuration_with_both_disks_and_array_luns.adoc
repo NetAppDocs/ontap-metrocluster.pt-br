@@ -1,0 +1,25 @@
+---
+permalink: install-fc/concept_implementing_a_mcc_configuration_with_both_disks_and_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, implement, configuration, disks, array, luns 
+summary: Para implementar uma configuração MetroCluster com discos nativos e LUNs de array, é necessário garantir que os sistemas ONTAP usados na configuração possam ser anexados a storage arrays. 
+---
+= Implementação de uma configuração MetroCluster com discos e LUNs de array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para implementar uma configuração MetroCluster com discos nativos e LUNs de array, é necessário garantir que os sistemas ONTAP usados na configuração possam ser anexados a storage arrays.
+
+Uma configuração MetroCluster com discos e LUNs de array pode ter dois ou quatro nós. Embora a configuração de MetroCluster de quatro nós precise ser conetada à malha, a configuração de dois nós pode ser alongada ou conectada à malha.
+
+No https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade NetApp (IMT)"], você pode usar o campo solução de armazenamento para selecionar sua solução MetroCluster. Use o *Explorador de componentes* para selecionar os componentes e a versão do ONTAP para refinar sua pesquisa. Você pode clicar em *Mostrar resultados* para exibir a lista de configurações compatíveis que correspondem aos critérios.
+
+.Informações relacionadas
+Para configurar uma configuração de MetroCluster com conexão de malha de dois nós ou uma configuração de MetroCluster de quatro nós com discos nativos e LUNs de array, você precisa usar pontes FC para SAS para conectar os sistemas ONTAP com os compartimentos de disco por meio dos switches FC. É possível conectar LUNs de array por meio dos switches FC aos sistemas ONTAP.
+
+link:reference_example_of_a_two_node_fabric_attached_mcc_configuration_with_disks_and_array_luns.html["Exemplo de uma configuração de MetroCluster conectada à malha de dois nós com discos e LUNs de array"]
+
+link:concept_example_of_a_four_node_mcc_configuration_with_disks_and_array_luns.html["Exemplo de uma configuração de MetroCluster de quatro nós com discos e LUNs de array"]

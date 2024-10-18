@@ -1,0 +1,55 @@
+---
+permalink: upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, prepare, upgrade 
+summary: Antes de atualizar para um par de HA, verifique se o sistema atende a todos os requisitos e se tem todas as informações necessárias. 
+---
+= Preparando-se para a atualização
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de atualizar para um par de HA, verifique se o sistema atende a todos os requisitos e se tem todas as informações necessárias.
+
+.Passos
+. Identifique discos não atribuídos ou discos sobressalentes que você pode atribuir ao novo módulo de controladora usando os seguintes comandos:
++
+** `storage disk show -container-type spare`
+** `storage disk show -container-type unassigned`
+
+
+. Conclua as seguintes subetapas:
++
+.. Determine onde os agregados para o nó existente estão localizados:
++
+`storage aggregate show`
+
+.. Se a atribuição automática de propriedade de disco estiver ativada, desative-a:
++
+`storage disk option modify -node _node_name_ -autoassign off`
+
+.. Remova a propriedade em discos que não têm agregados neles:
++
+`storage disk removeowner _disk_name_`
+
+.. Repita a etapa anterior para quantos discos forem necessários para o novo nó.
+
+
+. Verifique se você tem cabos prontos para as seguintes conexões:
++
+** Conexões de cluster
++
+Se você estiver criando um cluster sem switch de dois nós, precisará de dois cabos para conetar os módulos do controlador. Caso contrário, você precisa de um mínimo de quatro cabos, dois para cada conexão de módulo de controlador ao switch de cluster-rede. Outros sistemas (como a série 80xx) têm padrões de quatro ou seis conexões de cluster.
+
+** Conexões de INTERCONEXÃO HA, se o sistema estiver em um par de HA de chassi duplo
+
+
+. Verifique se você tem um console de porta serial disponível para os módulos do controlador.
+. Verifique se seu ambiente atende aos requisitos do local e do sistema.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+. Reúna todos os endereços IP e outros parâmetros de rede para o novo módulo do controlador.
+

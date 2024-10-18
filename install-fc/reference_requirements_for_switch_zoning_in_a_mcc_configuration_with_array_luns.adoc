@@ -1,0 +1,56 @@
+---
+permalink: install-fc/reference_requirements_for_switch_zoning_in_a_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, switch, zoning, array, luns, requirements 
+summary: Ao usar o zoneamento de switch em uma configuração do MetroCluster com LUNs de array, você deve garantir que certos requisitos básicos sejam seguidos. 
+---
+= Requisitos para zoneamento de switch em uma configuração MetroCluster com LUNs de array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao usar o zoneamento de switch em uma configuração do MetroCluster com LUNs de array, você deve garantir que certos requisitos básicos sejam seguidos.
+
+Os requisitos para zoneamento de switch em uma configuração MetroCluster com LUNs de array são os seguintes:
+
+* A configuração do MetroCluster deve seguir o esquema de zoneamento de um único iniciador para um único destino.
++
+O zoneamento de um único iniciador para um único destino limita cada zona a uma única porta de iniciador de FC e uma única porta de destino.
+
+* As portas FC-VI precisam estar zoneadas de ponta a ponta em toda a malha.
+* O compartilhamento de várias portas de iniciador com uma única porta de destino pode causar problemas de desempenho.
++
+Da mesma forma, o compartilhamento de várias portas de destino com uma única porta de iniciador pode causar problemas de desempenho.
+
+* Você deve ter executado uma configuração básica dos switches FC usados na configuração do MetroCluster.
++
+** link:task_fcsw_cisco_configure_a_cisco_switch_supertask.html["Configure os switches Cisco FC manualmente"]
+** link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["Configurar manualmente os switches Brocade FC"]
+
+
+
+
+
+
+== Suporte a iniciador compartilhado e destino compartilhado para configuração MetroCluster com LUNs de array
+
+Ser capaz de compartilhar uma determinada porta do iniciador de FC ou portas de destino é útil para organizações que desejam minimizar o número de portas do iniciador ou de destino usadas. Por exemplo, uma organização que espera baixo uso de e/S em uma porta de iniciador FC ou portas de destino pode preferir compartilhar porta de iniciador FC ou portas de destino em vez de dedicar cada porta de iniciador FC a uma única porta de destino.
+
+No entanto, o compartilhamento de portas de iniciador ou destino pode afetar negativamente o desempenho.
+
+.Informações relacionadas
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_support_Shared_Initiator_and_Shared_Target_configuration_with_Array_LUNs_in_a_MetroCluster_environment["Como dar suporte à configuração Iniciador compartilhado e destino compartilhado com LUNs de array em um ambiente MetroCluster"]
+
+* O zoneamento do switch define caminhos entre nós conetados. A configuração do zoneamento permite definir quais LUNs de array podem ser visualizados por sistemas ONTAP específicos.
++
+link:concept_example_of_switch_zoning_in_a_two_node_mcc_configuration_with_array_luns.html["Exemplo de zoneamento de switch em uma configuração de MetroCluster de dois nós com LUNs de array"]
+
++
+link:concept_example_of_switch_zoning_in_a_four_node_mcc_configuration_with_array_luns.html["Exemplo de zoneamento de switch em uma configuração de MetroCluster de quatro nós com LUNs de array"]
+
++
+link:concept_example_of_switch_zoning_in_an_eight_node_mcc_configuration_with_array_luns.html["Exemplo de zoneamento de switch em uma configuração de MetroCluster de oito nós com LUNs de array"]
+
+

@@ -1,0 +1,328 @@
+---
+permalink: tiebreaker/concept_monitoring_the_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, tiebreaker, software, automate, recovery, process, enabling, enable, monitor, configuration, status, evaluate, snmp, event, trap, netapp, customer, support, operation, configuring, configure, autosupport, display, status, monitor, operation, information, creating, create, dump, file 
+summary: O software tiebreaker do MetroCluster automatiza o processo de recuperação, permitindo que você monitore o status da configuração do MetroCluster, avalie os eventos e traps SNMP enviados ao suporte ao cliente do NetApp e visualize o status das operações de monitoramento. 
+---
+= Monitorização da configuração do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O software tiebreaker do MetroCluster automatiza o processo de recuperação, permitindo que você monitore o status da configuração do MetroCluster, avalie os eventos e traps SNMP enviados ao suporte ao cliente do NetApp e visualize o status das operações de monitoramento.
+
+
+
+== Configurando o AutoSupport
+
+Por padrão, as mensagens AutoSupport são enviadas para o NetApp uma semana após a instalação do software tiebreaker. Os eventos que acionam a notificação do AutoSupport incluem panics do software tiebreaker, detecção de condições de desastre em configurações do MetroCluster ou um status de configuração desconhecido do MetroCluster.
+
+.Antes de começar
+Você deve ter acesso direto para configurar mensagens do AutoSupport.
+
+.Passos
+. Use o comando tiebreaker CLI AutoSupport com qualquer uma das seguintes opções:
++
+[cols="1,2"]
+|===
+
+
+| Opção | Descrição 
+
+
+ a| 
+-invocar
+ a| 
+Envia uma mensagem AutoSupport ao suporte ao cliente
+
+
+
+ a| 
+-configure o assistente
+ a| 
+Assistente para configurar credenciais do servidor proxy
+
+
+
+ a| 
+-eliminar configuração
+ a| 
+Exclui as credenciais do servidor proxy
+
+
+
+ a| 
+--ativar
+ a| 
+Ativa a notificação AutoSupport (esta é a predefinição.)
+
+
+
+ a| 
+-disable
+ a| 
+Desativa a notificação AutoSupport
+
+
+
+ a| 
+-show
+ a| 
+Exibe o status do AutoSupport
+
+|===
++
+O exemplo a seguir mostra que o AutoSupport está ativado ou desativado e o destino para o qual o conteúdo do AutoSupport é publicado:
+
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker :> autosupport enable
+AutoSupport already enabled.
+
+NetApp MetroCluster Tiebreaker :> autosupport disable
+AutoSupport status            : disabled
+Proxy Server IP Address       : 10.234.168.79
+Proxy Server Port Number      : 8090
+Proxy Server Username         : admin
+AutoSupport destination       : https://support.netapp.com/asupprod/post/1.0/postAsup
+
+NetApp MetroCluster Tiebreaker :> autosupport enable
+AutoSupport status            : enabled
+Proxy Server IP Address       : 10.234.168.79
+Proxy Server Port Number      : 8090
+Proxy Server Username         : admin
+AutoSupport destination       : https://support.netapp.com/asupprod/post/1.0/postAsup
+
+NetApp MetroCluster Tiebreaker :> autosupport invoke
+AutoSupport transmission      : success
+Proxy Server IP Address       : 10.234.168.79
+Proxy Server Port Number      : 8090
+Proxy Server Username         : admin
+AutoSupport destination       : https://support.netapp.com/asupprod/post/1.0/postAsup
+----
++
+O exemplo a seguir mostra o AutoSupport configurado por meio de um servidor proxy autenticado, usando um endereço IP e um número de porta:
+
++
+[listing]
+----
+NetApp MetroCluster Tiebreaker :> autosupport configure wizard
+Enter Proxy Server IP address :  10.234.168.79
+Enter Proxy Server port number :  8090
+Enter Proxy Server Username :  admin
+Enter Proxy Server Password : 123abc
+Autosupport configuration updated successfully.
+----
++
+O exemplo a seguir mostra a exclusão de uma configuração do AutoSupport:
+
++
+[listing]
+----
+NetApp MetroCluster Tiebreaker :> autosupport delete configuration
+Autosupport configuration deleted successfully.
+----
+
+
+
+
+=== Eventos e traps SNMP
+
+O software tiebreaker NetApp MetroCluster usa traps SNMP para notificá-lo de eventos significativos. Esses traps fazem parte do arquivo MIB do NetApp. Cada armadilha contém as seguintes informações: Nome da armadilha, gravidade, nível de impactos, carimbo de data/hora e mensagem.
+
+[cols="2,3,1"]
+|===
+
+
+| Nome do evento | Detalhe do evento | Número de armadilha 
+
+
+ a| 
+O disjuntor MetroCluster não consegue alcançar a configuração do MetroCluster
+ a| 
+Avisa o administrador de que o software não consegue detetar um desastre. Este evento ocorre quando ambos os clusters não são alcançáveis.
+ a| 
+25000
+
+
+
+ a| 
+O disjuntor MetroCluster não consegue alcançar o cluster
+ a| 
+Avisa o administrador de que o software não pode alcançar um dos clusters.
+ a| 
+25001
+
+
+
+ a| 
+O disjuntor de ligação MetroCluster detetou um desastre no cluster
+ a| 
+Notifica o administrador de que o software deteta uma falha no local. Uma notificação será entregue.
+ a| 
+25002
+
+
+
+ a| 
+Todos os links entre o cluster de parceiros são cortados.
+ a| 
+O software deteta que ambos os clusters estão acessíveis, mas todos os caminhos de rede entre os dois clusters estão inativos e os clusters não podem se comunicar entre si.
+ a| 
+25005
+
+
+
+ a| 
+Intercetação de teste SNMP
+ a| 
+A configuração SNMP agora pode ser testada executando o comando snmp config test.
+ a| 
+25006
+
+|===
+
+
+== Apresentar o estado das operações de monitorização
+
+Você pode exibir o status geral das operações de monitoramento para uma configuração do MetroCluster.
+
+.Passo
+. Use o comando show do monitor da CLI tiebreaker para exibir o status de uma operação do MetroCluster com qualquer uma das seguintes opções:
++
+[cols="1,2"]
+|===
+
+
+| Opção | Descrição 
+
+
+ a| 
+-monitor-name
+ a| 
+Exibe o status do nome do monitor especificado
+
+
+
+ a| 
+-operação-história
+ a| 
+Exibe até 10 operações de monitoramento que foram executadas pela última vez em um cluster
+
+
+
+ a| 
+-stats
+ a| 
+Apresenta as estatísticas relacionadas com o cluster especificado
+
+
+
+ a| 
+-status
+ a| 
+Exibe o status do cluster especificado *Observação:* o software tiebreaker do MetroCluster pode levar até 10 minutos para refletir o status de conclusão de operações como heal agregados, heal roots ou switchback.
+
+|===
++
+O exemplo a seguir mostra que os clusters cluster_A e cluster_B estão conetados e íntegros:
+
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker:> monitor show -status
+MetroCluster: cluster_A
+    Disaster: false
+    Monitor State: Normal
+    Observer Mode: true
+    Silent Period: 15
+    Override Vetoes: false
+    Cluster: cluster_Ba(UUID:4d9ccf24-080f-11e4-9df2-00a098168e7c)
+        Reachable: true
+        All-Links-Severed: FALSE
+            Node: mcc5-a1(UUID:78b44707-0809-11e4-9be1-e50dab9e83e1)
+                Reachable: true
+                All-Links-Severed: FALSE
+                State: normal
+            Node: mcc5-a2(UUID:9a8b1059-0809-11e4-9f5e-8d97cdec7102)
+                Reachable: true
+                All-Links-Severed: FALSE
+                State: normal
+    Cluster: cluster_B(UUID:70dacd3b-0823-11e4-a7b9-00a0981693c4)
+        Reachable: true
+        All-Links-Severed: FALSE
+            Node: mcc5-b1(UUID:961fce7d-081d-11e4-9ebf-2f295df8fcb3)
+                Reachable: true
+                All-Links-Severed: FALSE
+                State: normal
+            Node: mcc5-b2(UUID:9393262d-081d-11e4-80d5-6b30884058dc)
+                Reachable: true
+                All-Links-Severed: FALSE
+                State: normal
+----
++
+No exemplo a seguir, as últimas sete operações que foram executadas no cluster_B são exibidas:
+
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker:> monitor show -operation-history
+MetroCluster: cluster_B
+ [ 2014-09-15 04:48:32.274 ] MetroCluster Monitor is initialized
+ [ 2014-09-15 04:48:32.278 ] Started Discovery and validation of MetroCluster Setup
+ [ 2014-09-15 04:48:35.078 ] Discovery and validation of MetroCluster Setup succeeded. Started monitoring.
+ [ 2014-09-15 04:48:35.246 ] NetApp MetroCluster Tiebreaker software is able to reach cluster "mcc5a"
+ [ 2014-09-15 04:48:35.256 ] NetApp MetroCluster Tiebreaker software is able to reach cluster "mcc5b"
+ [ 2014-09-15 04:48:35.298 ] Link to remote DR cluster is up for cluster "mcc5a"
+ [ 2014-09-15 04:48:35.308 ] Link to remote DR cluster is up for cluster "mcc5b"
+----
+
+
+
+
+== Exibindo informações de configuração do MetroCluster
+
+Você pode exibir o nome do monitor e o endereço IP de todas as instâncias de configurações do MetroCluster no software tiebreaker.
+
+.Passo
+. Use o comando tiebreaker CLI Configuration show para exibir as informações de configuração do MetroCluster.
++
+O exemplo a seguir mostra as informações dos clusters cluster_A e cluster_B:
+
++
+[listing]
+----
+MetroCluster: North America
+    Monitor Enabled: true
+    ClusterA name: cluster_A
+    ClusterA IpAddress: 10.222.196.130
+    ClusterB name: cluster_B
+    ClusterB IpAddress: 10.222.196.140
+----
+
+
+
+
+== Criando arquivos de despejo
+
+Você salva o status geral do software tiebreaker em um arquivo de despejo para fins de depuração.
+
+.Passo
+. Use o comando tiebreaker CLI monitor dump -status para criar um arquivo de despejo do status geral de todas as configurações do MetroCluster.
++
+O exemplo a seguir mostra a criação bem-sucedida do arquivo de despejo /var/log/NetApp/mcctb/MetroCluster-tiebreaker-status.xml:
+
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker :> monitor dump -status
+MetroCluster Tiebreaker status successfully dumped in file /var/log/netapp/mcctb/metrocluster-tiebreaker-status.xml
+----
+

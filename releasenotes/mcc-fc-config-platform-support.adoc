@@ -1,0 +1,77 @@
+---
+permalink: releasenotes/mcc-fc-config-platform-support.html 
+sidebar: sidebar 
+keywords: metrocluster, fc configuration, platform, support 
+summary:  
+---
+= Novidades no suporte à plataforma MetroCluster FC e switch
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Suporte de plataforma
+
+[cols="2*"]
+|===
+| Plataformas compatíveis em configurações de MetroCluster FC | Disponível a partir do início 
+
+
+ a| 
+AFF A900
+ a| 
+ONTAP 9.10,1
+
+
+
+ a| 
+ASA AFF A700 e ASA AFF A400
+ a| 
+ONTAP 9.7P5
+
+
+
+ a| 
+AFF A400 e FAS8300
+ a| 
+ONTAP 9,7
+
+
+
+ a| 
+AFF A300 e FAS8200
+ a| 
+ONTAP 9,5
+
+|===
+
+
+== Suporte do interrutor
+
+[cols="2*"]
+|===
+| Switches Brocade FC | Disponível a partir do início 
+
+
+ a| 
+G720
+ a| 
+ONTAP 9,8
+
+
+
+ a| 
+G620-1, G630-1
+ a| 
+ONTAP 9,8
+
+
+
+ a| 
+G630
+ a| 
+ONTAP 9,6
+
+|===

@@ -1,0 +1,32 @@
+---
+permalink: disaster-recovery/task_verify_storage_mcfc.html 
+sidebar: sidebar 
+keywords: verify, storage, configuration 
+summary: Você precisa confirmar se todo o storage está visível nos nós sobreviventes. 
+---
+= Verificando a configuração do armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa confirmar se todo o storage está visível nos nós sobreviventes.
+
+.Passos
+. Confirme se todos os componentes de storage no local de desastre são os mesmos em quantidade e tipo no local sobrevivente.
++
+O local sobrevivente e o local de desastre devem ter o mesmo número de stacks de gaveta de disco, gavetas de disco e discos. Em uma configuração MetroCluster conectada a uma ponte ou conetada a malha, os locais devem ter o mesmo número de pontes FC para SAS.
+
+. Confirme se todos os discos que foram substituídos no local de desastre não são de propriedade:
++
+`run local disk show-n`
+
++
+Os discos devem aparecer como sendo não possuídos.
+
+. Se nenhum disco tiver sido substituído, confirme se todos os discos estão presentes:
++
+`disk show`
+
+

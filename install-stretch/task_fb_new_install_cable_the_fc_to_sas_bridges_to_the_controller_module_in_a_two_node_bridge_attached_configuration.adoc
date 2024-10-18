@@ -1,0 +1,119 @@
+---
+permalink: install-stretch/task_fb_new_install_cable_the_fc_to_sas_bridges_to_the_controller_module_in_a_two_node_bridge_attached_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, cable, fc, sas, bridge, controller, module, two, node, configuration 
+summary: Você deve fazer o cabeamento das bridges ao módulo do controlador em uma configuração MetroCluster conetada a ponte de dois nós. 
+---
+= Fazer o cabeamento das pontes FC para SAS ao módulo da controladora em uma configuração MetroCluster conetada a ponte de dois nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve fazer o cabeamento das bridges ao módulo do controlador em uma configuração MetroCluster conetada a ponte de dois nós.
+
+.Passos
+. [[step1-Verify-Detect]]Verifique se cada bridge pode detetar todas as unidades de disco e prateleiras de disco às quais a ponte está conetada.
++
+|===
+
+
+| Se você estiver usando o... | Então... 
+
+
+ a| 
+ATTO ExpressNAV GUI
+ a| 
+.. Em um navegador da Web compatível, insira o endereço IP de uma ponte na caixa do navegador.
++
+Você será levado para a página inicial DO ATTO FibreBridge do link da ponte para o endereço IP inserido.
+
+.. Clique no link e insira seu nome de usuário e a senha que você designou quando configurou a ponte.
++
+A página de status ATTO FibreBridge da ponte é exibida com um menu à esquerda.
+
+.. Clique em *Avançado* no menu.
+.. Execute o seguinte comando e clique em *Submit*
+`sastargets`
+
+
+
+
+ a| 
+Conexão de porta serial
+ a| 
+Execute o seguinte comando:
+
+`sastargets`
+
+|===
++
+O `sastargets` comando output mostra os dispositivos (discos e prateleiras de discos) conetados à ponte. As linhas de saída são numeradas sequencialmente para que você possa contar rapidamente os dispositivos.
+
++
+
+NOTE: Se "'text response truncada'" aparecer no início da saída, você pode usar o Telnet para se conetar à ponte e executar o mesmo comando para exibir toda a saída.
+
++
+A saída a seguir mostra que 10 discos estão conetados:
+
++
+[listing]
+----
+Tgt VendorID ProductID        Type        SerialNumber
+  0 NETAPP   X410_S15K6288A15 DISK        3QP1CLE300009940UHJV
+  1 NETAPP   X410_S15K6288A15 DISK        3QP1ELF600009940V1BV
+  2 NETAPP   X410_S15K6288A15 DISK        3QP1G3EW00009940U2M0
+  3 NETAPP   X410_S15K6288A15 DISK        3QP1EWMP00009940U1X5
+  4 NETAPP   X410_S15K6288A15 DISK        3QP1FZLE00009940G8YU
+  5 NETAPP   X410_S15K6288A15 DISK        3QP1FZLF00009940TZKZ
+  6 NETAPP   X410_S15K6288A15 DISK        3QP1CEB400009939MGXL
+  7 NETAPP   X410_S15K6288A15 DISK        3QP1G7A900009939FNTT
+  8 NETAPP   X410_S15K6288A15 DISK        3QP1FY0T00009940G8PA
+  9 NETAPP   X410_S15K6288A15 DISK        3QP1FXW600009940VERQ
+----
+. Verifique se a saída do comando mostra que a ponte está conetada a todos os discos e compartimentos de disco na pilha que deve ser conetada.
++
+[cols="30,70"]
+|===
+
+
+| Se a saída for... | Então... 
+
+
+ a| 
+Correto
+ a| 
+Repita <<step1-verify-detect,Passo 1>> para cada ponte restante.
+
+
+
+ a| 
+Não está correto
+ a| 
+.. Verifique se há cabos SAS soltos ou corrija o cabeamento SAS reabilitando as gavetas de disco nas pontes.
++
+link:task_fb_new_install_cabl.html["Cabeamento das gavetas de disco para as pontes"]
+
+.. Repita <<step1-verify-detect,Passo 1>> para cada ponte restante.
+
+
+|===
+. [[step3-cable-each-bridge]]Conete cada ponte aos módulos do controlador:
++
+.. Cabo FC porta 1 da ponte para uma porta FC no módulo do controlador em cluster_A.
+.. Cabo FC porta 2 da ponte para uma porta FC no módulo do controlador em cluster_B.
++
+Se o módulo do controlador estiver configurado com um adaptador FC de quatro portas, verifique se as pilhas de armazenamento não estão conetadas a duas portas FC no mesmo ASIC. O porto a e o porto b compartilham o mesmo ASIC, e o porto c e o porto d compartilham o mesmo ASIC. Não conete uma pilha de prateleiras às portas a e b. em vez disso, use as portas a e c ou use as portas b e d para evitar um único ponto de falha se um ASIC falhar.
+
++
+Se o módulo do controlador estiver configurado com mais de um adaptador FC, não faça o cabeamento de ambas as portas de ponte ao mesmo adaptador. Você deve distribuir a porta FC 1 para o adaptador A e a porta FC 2 para o adaptador B para evitar um único ponto de falha.
+
++
+image::../media/cluster_peering_network.gif[rede de peering de cluster]
+
+
+
+. Repita <<step3-cable-each-bridge,Passo 3>>nas outras pontes até que todas as pontes tenham sido cabeadas.
+

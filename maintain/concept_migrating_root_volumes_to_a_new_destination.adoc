@@ -1,0 +1,39 @@
+---
+permalink: maintain/concept_migrating_root_volumes_to_a_new_destination.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, migrate, root, volumes, new, destination 
+summary: Talvez seja necessário mover volumes raiz para outro agregado de raiz em uma configuração de MetroCluster de dois nós ou quatro nós. 
+---
+= Quando migrar volumes raiz para um novo destino
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Talvez seja necessário mover volumes raiz para outro agregado de raiz em uma configuração de MetroCluster de dois nós ou quatro nós.
+
+
+
+== Migração de volumes raiz em uma configuração de MetroCluster de dois nós
+
+Para migrar volumes de raiz para um novo agregado de raiz em uma configuração de MetroCluster de dois nós, https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_move_mroot_to_a_new_root_aggregate_in_a_2-node_Clustered_MetroCluster_with_Switchover["Como mover o mroot para um novo agregado de raiz em um MetroCluster em cluster de 2 nós com switchover"] consulte o . Esse procedimento mostra como migrar os volumes raiz sem interrupções durante uma operação de switchover do MetroCluster. Este procedimento é ligeiramente diferente do procedimento utilizado numa configuração de quatro nós.
+
+
+
+== Migração de volumes raiz em uma configuração de MetroCluster de quatro nós
+
+Para migrar volumes raiz para um novo agregado raiz em uma configuração de MetroCluster de quatro nós, você pode usar o http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-cmpr-930/system%5F%5Fnode%5F%5Fmigrate-root.html["raiz de migração do nó do sistema"] comando enquanto atende aos requisitos a seguir.
+
+* Você pode usar a migração-raiz de nó do sistema para mover agregados de raiz em uma configuração de MetroCluster de quatro nós.
+* Todos os agregados de raiz devem ser espelhados.
+* Você pode adicionar novas gavetas em ambos os locais com unidades menores para hospedar o agregado de raiz.
+* Você deve verificar os limites de unidade suportados pela plataforma antes de conetar novas unidades.
++
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+* Se você mover o agregado raiz para unidades menores, precisará acomodar o tamanho mínimo do volume raiz da plataforma para garantir que todos os arquivos principais sejam salvos.
+
+
+
+NOTE: O procedimento de quatro nós também pode ser aplicado a uma configuração de oito nós.

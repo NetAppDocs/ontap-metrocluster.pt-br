@@ -1,0 +1,26 @@
+---
+permalink: tiebreaker/concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html 
+sidebar: sidebar 
+keywords: switchover, upon, detection, site, failure, automatic, metrocluster, tiebreaker, active, mode, supplement, ontap, fas, capability, risk, limitation 
+summary: O switchover na deteção de uma falha no local acontece automaticamente, com o MetroCluster Tiebreaker no modo ativo. Este modo pode ser utilizado para complementar a capacidade de comutação automática ONTAP/FAS. 
+---
+= Riscos e limitações do uso do MetroCluster Tiebreaker no modo ativo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O switchover na deteção de uma falha no local acontece automaticamente, com o MetroCluster Tiebreaker no modo ativo. Este modo pode ser utilizado para complementar a capacidade de comutação automática ONTAP/FAS.
+
+Quando você implementa o tiebreaker do MetroCluster no modo ativo, os seguintes problemas conhecidos podem levar à perda de dados:
+
+* Quando o link entre sites falha, os controladores em cada site continuam a atender os clientes. No entanto, os controladores não serão espelhados. A falha de um controlador em um local é identificada como uma falha no local e o tiebreaker do MetroCluster inicia um switchover. Os dados que não são espelhados após a falha do link entre sites com o local remoto serão perdidos.
+* Um switchover ocorre quando os agregados em local remoto estão em estado degradado. Os dados não serão replicados se o switchover tiver ocorrido antes da ressincronização agregada.
+* Ocorre uma falha de storage remoto quando o switchover está em andamento.
+* A memória não volátil (NVRAM ou NVMEM, dependendo do modelo da plataforma) nas controladoras de storage não é espelhada para o parceiro de recuperação de desastres (DR) remota no local do parceiro.
+* Os metadados são perdidos se a rede de peering de cluster estiver inativa por um período prolongado e os volumes de metadados não estiverem online após um switchover.
+
+
+
+NOTE: Você pode encontrar cenários que não são mencionados. A NetApp não é responsável por quaisquer danos que possam surgir fora do uso do MetroCluster Tiebreaker no modo ativo. Não use o tiebreaker do MetroCluster no modo ativo se os riscos e limitações não forem aceitáveis para você.

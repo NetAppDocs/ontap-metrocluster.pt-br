@@ -1,0 +1,31 @@
+---
+permalink: install-stretch/concept_in_band_management_of_the_fc_to_sas_bridges.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, in, band, management, fc, sas, bridges 
+summary: Começando com o ONTAP 9.5 com o FibreBridge 7500N ou 7600N bridges, o gerenciamento em banda das pontes é suportado como uma alternativa ao gerenciamento IP das pontes. A partir do ONTAP 9.8, o gerenciamento fora da banda está obsoleto. 
+---
+= Gerenciamento na banda das pontes FC para SAS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Começando com o ONTAP 9.5 com o FibreBridge 7500N ou 7600N bridges, _in-band Management_ das bridges é suportado como uma alternativa ao gerenciamento IP das bridges. A partir do ONTAP 9.8, o gerenciamento fora da banda está obsoleto.
+
+
+NOTE: A partir de ONTAP 9.8, o `*storage bridge*` comando é substituído pelo `*system bridge*` comando. As etapas a seguir mostram o `*storage bridge*` comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o `*system bridge*` comando é preferido.
+
+Ao usar o gerenciamento na banda, as bridges podem ser gerenciadas e monitoradas a partir da CLI do ONTAP por meio da conexão FC à ponte. O acesso físico à ponte através das portas Ethernet da ponte não é necessário, reduzindo a vulnerabilidade de segurança da ponte.
+
+A disponibilidade do gerenciamento em banda das pontes depende da versão do ONTAP:
+
+* A partir do ONTAP 9.8, as bridges são gerenciadas por meio de conexões na banda por padrão e o gerenciamento fora da banda das bridges via SNMP é obsoleto.
+* ONTAP 9.5 a 9,7: O gerenciamento na banda ou o gerenciamento SNMP fora da banda é suportado.
+* Antes do ONTAP 9.5, somente o gerenciamento SNMP fora da banda é suportado.
+
+
+Os comandos Bridge CLI podem ser emitidos a partir do comando ONTAP interface `storage bridge run-cli -name _bridge-name_ -command _bridge-command-name_` na interface ONTAP.
+
+
+NOTE: O uso do gerenciamento na banda com acesso IP desativado é recomendado para melhorar a segurança limitando a conetividade física da ponte.

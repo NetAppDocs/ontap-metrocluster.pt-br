@@ -1,0 +1,63 @@
+= 
+:allow-uri-read: 
+
+
+.Passos
+. Acesse o link:https://mysupport.netapp.com/site/["Site de suporte da NetApp"^] para baixar os arquivos usados para executar o netboot do sistema.
+. Transfira o software ONTAP adequado a partir da secção de transferência de software do site de suporte da NetApp e guarde o ficheiro ONTAP-version_image.tgz num diretório acessível à Web.
+. Vá para o diretório acessível pela Web e verifique se os arquivos que você precisa estão disponíveis.
++
+|===
+
+
+| Se o modelo da plataforma for... | Então... 
+
+
+| Sistemas da série FAS/AFF8000 | Extraia o conteúdo do arquivo ONTAP-version_image.tgzfile para o diretório de destino: Tar -zxvf ONTAP-version_image.tgz NOTA: Se você estiver extraindo o conteúdo no Windows, use 7-Zip ou WinRAR para extrair a imagem netboot. Sua lista de diretórios deve conter uma pasta netboot com um arquivo do kernel:netboot/kernel 
+
+
+| Todos os outros sistemas | Sua lista de diretórios deve conter uma pasta netboot com um arquivo do kernel: ONTAP-version_image.tgz você não precisa extrair o arquivo ONTAP-version_image.tgz. 
+|===
+. No prompt Loader, configure a conexão netboot para um LIF de gerenciamento:
++
+** Se o endereçamento IP for DHCP, configure a conexão automática:
++
+`ifconfig e0M -auto`
+
+** Se o endereçamento IP for estático, configure a conexão manual:
++
+`ifconfig e0M -addr=ip_addr -mask=netmask` `-gw=gateway`
+
+
+
+. Execute o netboot.
++
+** Se a plataforma for um sistema da série 80xx, use este comando:
++
+`netboot \http://web_server_ip/path_to_web-accessible_directory/netboot/kernel`
+
+** Se a plataforma for qualquer outro sistema, use o seguinte comando:
++
+`netboot \http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`
+
+
+
+. No menu de arranque, selecione a opção *(7) Instalar primeiro o novo software* para transferir e instalar a nova imagem de software no dispositivo de arranque.
++
+ Disregard the following message: "This procedure is not supported for Non-Disruptive Upgrade on an HA pair". It applies to nondisruptive upgrades of software, not to upgrades of controllers.
+. Se você for solicitado a continuar o procedimento, digite `y` e, quando solicitado a fornecer o pacote, digite o URL do arquivo de imagem: `\http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`
++
+....
+Enter username/password if applicable, or press Enter to continue.
+....
+. Certifique-se de entrar `n` para ignorar a recuperação de backup quando você vir um prompt semelhante ao seguinte:
++
+....
+Do you want to restore the backup configuration now? {y|n}
+....
+. Reinicie entrando `y` quando você vir um prompt semelhante ao seguinte:
++
+....
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+....
+

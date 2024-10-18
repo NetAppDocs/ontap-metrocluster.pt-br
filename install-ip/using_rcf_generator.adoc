@@ -1,0 +1,44 @@
+---
+permalink: install-ip/using_rcf_generator.html 
+sidebar: sidebar 
+keywords: cabling, cable, component, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure, rcf, file, generator, RcfFileGenerator 
+summary: Você deve entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos RCF. 
+---
+= Usando as tabelas de portas com a ferramenta RcfFileGenerator ou várias configurações do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos RCF.
+
+.Antes de começar
+Reveja estas considerações antes de utilizar as tabelas:
+
+* As tabelas a seguir mostram o uso da porta para o local A. o mesmo cabeamento é usado para o local B.
+* Os switches não podem ser configurados com portas de velocidades diferentes (por exemplo, uma combinação de portas de 100 Gbps e portas de 40 Gbps).
+* Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, etc.). Você precisará dessas informações ao usar a ferramenta RcfFileGenerator, conforme descrito mais adiante neste procedimento de configuração.
+* O https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"] também fornece uma visão geral do cabeamento por porta para cada switch. Use esta visão geral do cabeamento para verificar o cabeamento.
+
+
+
+
+== Cabeamento de configurações de MetroCluster de oito nós
+
+Para a configuração do MetroCluster executando o ONTAP 9.8 e anterior, alguns procedimentos que são executados para fazer a transição de uma atualização exigem a adição de um segundo grupo de DR de quatro nós à configuração para criar uma configuração temporária de oito nós. A partir do ONTAP 9.9,1, são suportadas configurações permanentes de MetroCluster de oito nós.
+
+.Sobre esta tarefa
+Para tais configurações, você usa o mesmo método descrito acima. Em vez de um segundo MetroCluster, você está fazendo o cabeamento de um grupo adicional de DR de quatro nós.
+
+Por exemplo, sua configuração inclui o seguinte:
+
+* Interrutores Cisco 3132Q-V.
+* MetroCluster 1: Plataformas FAS2750
+* MetroCluster 2: Plataformas AFF A700 (essas plataformas estão sendo adicionadas como um segundo grupo de DR de quatro nós)
+
+
+.Passos
+. Para o MetroCluster 1, faça o cabeamento dos switches Cisco 3132Q-V usando a tabela para a plataforma FAS2750 e as linhas para interfaces MetroCluster 1.
+. Para o MetroCluster 2 (o segundo grupo DR), faça o cabeamento dos switches Cisco 3132Q-V usando a tabela para a plataforma AFF A700 e as linhas para interfaces MetroCluster 2.
+

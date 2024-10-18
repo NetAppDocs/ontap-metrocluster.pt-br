@@ -1,0 +1,14 @@
+---
+permalink: install-fc/concept_planning_for_a_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, plan, array, luns 
+summary: A criação de um plano detalhado para a configuração do MetroCluster ajuda você a entender os requisitos exclusivos de uma configuração do MetroCluster que usa LUNs em storage arrays. A instalação de uma configuração do MetroCluster envolve a conexão e configuração de vários dispositivos, o que pode ser feito por pessoas diferentes. Portanto, o plano também ajuda você a se comunicar com outras pessoas envolvidas na instalação. 
+---
+= Planejando uma configuração MetroCluster com LUNs de array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A criação de um plano detalhado para a configuração do MetroCluster ajuda você a entender os requisitos exclusivos de uma configuração do MetroCluster que usa LUNs em storage arrays. A instalação de uma configuração do MetroCluster envolve a conexão e configuração de vários dispositivos, o que pode ser feito por pessoas diferentes. Portanto, o plano também ajuda você a se comunicar com outras pessoas envolvidas na instalação.

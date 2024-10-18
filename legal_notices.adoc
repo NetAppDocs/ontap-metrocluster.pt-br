@@ -1,0 +1,8 @@
+---
+permalink: legal_notices.html 
+redirect: ontap-metrocluster/legal-notices.html 
+---
+= 
+:allow-uri-read: 
+
+

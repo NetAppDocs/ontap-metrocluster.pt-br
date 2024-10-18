@@ -1,0 +1,80 @@
+---
+indexpage:
+  title: Documentação do MetroCluster
+  keywords: metrocluster configuration, array-based, clustering, synchronous, replication,
+    duplicating, mission critical data
+  lead: As configurações do NetApp MetroCluster combinam clustering baseado em array
+    com replicação síncrona para oferecer disponibilidade contínua, duplicando imediatamente
+    todos os dados essenciais a cada transação. As configurações do MetroCluster aprimoram
+    as operações ininterruptas e de alta disponibilidade incorporadas ao hardware
+    da NetApp e ao software de storage da ONTAP, fornecendo uma camada adicional de
+    proteção para todo o ambiente de storage e de host.
+  tiles:
+  - title: Comece agora
+    links:
+    - title: Instale o MetroCluster IP
+      url: "/install-ip/index.html"
+    - title: Instale o MetroCluster conectado à malha
+      url: "/install-fc/index.html"
+    - title: Instale o Stretch MetroCluster
+      url: "/install-stretch/index.html"
+    - title: Instale o desempate
+      url: "/tiebreaker/concept_overview_of_the_tiebreaker_software.html"
+    - title: Instalar Mediador (somente IP MetroCluster)
+      url: "/install-ip/concept_mediator_requirements.html"
+  - title: Manutenção
+    links:
+    - title: Switches FC
+      url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html"
+    - title: Switches IP
+      url: "/maintain/task_replace_an_ip_switch.html"
+    - title: Pontes ATTO
+      url: "/maintain/concept_using_fibrebridge_7600n_bridges_in_mcc_configurations.html"
+    - title: Compartimentos de unidades
+      url: "/maintain/index.html"
+  - title: Ficheiros RCF
+    links:
+    - title: Arquivos RCF do MetroCluster
+      url: https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/docsandkb-tab
+  - title: Atualize, expanda e converta
+    links:
+    - title: Atualizar e atualizar o hardware
+      url: "/upgrade/concept_choosing_an_upgrade_method_mcc.html"
+    - title: Expanda um MetroCluster de dois nós
+      url: "/upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html"
+    - title: Expanda um MetroCluster de quatro nós
+      url: "/upgrade/task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html"
+    - title: Converter MetroCluster FC para MetroCluster IP
+      url: "/transition/concept_choosing_your_transition_procedure_mcc_transition.html"
+    - title: Atualize os arquivos MetroCluster IP RCF
+      url: "/maintain/task_upgrade_rcf_files_on_mcc_ip_switches.html"
+    - title: Atualizar o ONTAP nos clusters do MetroCluster
+      url: https://docs.netapp.com/us-en/ontap/task_metrocluster_ANDU_upgrade.html
+  - title: Proteção de dados com o MetroCluster
+    links:
+    - title: Entenda a proteção de dados e a recuperação de desastres da MetroCluster
+      url: "/manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html"
+    - title: Execute switchover, cura e switchback
+      url: "/manage/task_perform_switchover_for_tests_or_maintenance.html"
+    - title: Recuperar de um desastre
+      url: "/disaster-recovery/concept_dr_workflow.html"
+  - title: Firmware da ponte ATTO
+    links:
+    - title: FibreBridge 7600N
+      url: https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Protocol+Bridge&platform=ATTO+FibreBridge+7600N
+    - title: FibreBridge 7500N
+      url: https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Protocol+Bridge&platform=ATTO+FibreBridge+7500N
+  - title: Mais recursos
+    links:
+    - title: NetApp Config Advisor
+      url: https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor
+    - title: NetApp Hardware Universe
+      url: https://hwu.netapp.com/
+    - title: Base de Conhecimento de suporte da NetApp
+      url: https://kb.netapp.com/
+  - title: Saiba mais
+    links:
+    - title: Arquitetura e Design de soluções da NetApp MetroCluster | TR-4705
+      url: https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf
+    - title: Arquitetura e design da solução IP da MetroCluster | TR-4689
+      url: https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf

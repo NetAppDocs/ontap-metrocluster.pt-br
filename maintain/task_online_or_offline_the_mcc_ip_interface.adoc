@@ -1,0 +1,123 @@
+---
+permalink: maintain/task_online_or_offline_the_mcc_ip_interface.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, online, offline, ip, interface port 
+summary: Ao executar a manutenção, você pode precisar derrubar a porta de interface IP do MetroCluster. 
+---
+= Portas de interface IP MetroCluster online ou offline
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando você executa tarefas de manutenção, talvez seja necessário colocar uma porta de interface IP do MetroCluster offline ou online.
+
+.Sobre esta tarefa
+link:enable-console-logging-before-maintenance.html["Ativar o registo da consola"] antes de executar esta tarefa.
+
+.Passos
+Você pode usar as etapas a seguir para colocar uma porta de interface IP do MetroCluster online ou colocá-la offline.
+
+. Defina o nível de privilégio como avançado.
++
+[source, cli]
+----
+set -privilege advanced
+----
++
+*Exemplo de saída*
+
++
+[listing]
+----
+Cluster A_1::> set -privilege advanced
+Warning: These advanced commands are potentially dangerous; use them only when
+         directed to do so by NetApp personnel.
+Do you want to continue? {y|n}: y
+----
+. Coloque a porta de interface IP do MetroCluster offline.
++
+[source, cli]
+----
+system ha interconnect link off -node <node_name> -link <link_num, 0 or 1>
+----
++
+*Exemplo de saída*
+
++
+[listing]
+----
+Cluster_A1::*> system ha interconnect link off -node node-a1 -link 0
+----
++
+.. Verifique se a interface IP do MetroCluster está offline.
++
+[source, cli]
+----
+Cluster_A1::*> system ha interconnect port show
+----
++
+*Exemplo de saída*
+
++
+[listing]
+----
+Cluster_A1::*> system ha interconnect port show
+                               Physical  Link
+                Link           Layer     Layer      Physical   Physical  Active
+Node            Monitor  Port  State     State       Link Up  Link Down  Link
+--------------  -------  ----  --------  ---------  --------  ---------  ------
+node-a1        off
+                            0  disabled  down              4          3  false
+                            1  linkup    active            4          2  true
+node-a2        off
+                            0  linkup    active            4          2  true
+                            1  linkup    active            4          2  true
+2 entries were displayed.
+----
+
+
+. Coloque a porta de interface IP do MetroCluster online.
++
+[source, cli]
+----
+system ha interconnect link on -node <node_name> -link <link_num, 0 or 1>
+----
++
+*Exemplo de saída*
+
++
+[listing]
+----
+Cluster_A1::*> system ha interconnect link on -node node-a1 -link 0
+----
++
+.. Verifique se a porta de interface IP do MetroCluster está online.
++
+[source, cli]
+----
+Cluster_A1::*> system ha interconnect port show
+----
++
+*Exemplo de saída*
+
++
+[listing]
+----
+Cluster_A1::*> system ha interconnect port show
+                               Physical  Link
+                Link           Layer     Layer      Physical   Physical  Active
+Node            Monitor  Port  State     State       Link Up  Link Down  Link
+--------------  -------  ----  --------  ---------  --------  ---------  ------
+node-a1        off
+                            0  linkup    active            5          3  true
+                            1  linkup    active            4          2  true
+node-a2        off
+                            0  linkup    active            4          2  true
+                            1  linkup    active            4          2  true
+2 entries were displayed.
+----
+
+
+

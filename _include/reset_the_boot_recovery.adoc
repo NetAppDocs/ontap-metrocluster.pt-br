@@ -1,0 +1,31 @@
+= 
+:allow-uri-read: 
+
+
+[role="lead"]
+Se necessário, você pode redefinir o boot_recovery e o rdb_corrupt_bootargs
+
+.Passos
+. Interrompa o nó de volta ao prompt DO Loader:
++
+[listing]
+----
+node_A_1::*> halt -node _node-name_
+----
+. Verifique se os seguintes bootargs foram definidos:
++
+[listing]
+----
+LOADER> printenv bootarg.init.boot_recovery
+LOADER> printenv bootarg.rdb_corrupt
+----
+. Se qualquer bootarg tiver sido definido como um valor, desconfigure-o e inicie o ONTAP:
++
+[listing]
+----
+LOADER> unsetenv bootarg.init.boot_recovery
+LOADER> unsetenv bootarg.rdb_corrupt
+LOADER> saveenv
+LOADER> bye
+----
+

@@ -1,0 +1,80 @@
+---
+permalink: upgrade/task_apply_the_rcf_files_and_recable_the_switches.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, apply, rcf, files, recable, switches 
+summary: Você deve aplicar os arquivos RCF para reconfigurar seu zoneamento para acomodar os novos nós. 
+---
+= Recable e reconfigure os interrutores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve aplicar os arquivos RCF para reconfigurar seu zoneamento para acomodar os novos nós.
+
+Se você não puder usar os arquivos RCF para configurar os switches, você deverá configurar os switches manualmente. Consulte:
+
+* link:../install-fc/task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["Configure os switches Brocade FC manualmente"]
+* link:../install-fc/task_fcsw_cisco_configure_a_cisco_switch_supertask.html["Configure os switches Cisco FC manualmente"]
+
+
+.Passos
+. Localize os arquivos RCF para sua configuração.
++
+Você deve usar os arquivos RCF para uma configuração de oito nós e que corresponda ao modelo de switch.
+
+. Aplique os arquivos RCF, seguindo as instruções na página de download, ajustando as configurações ISL conforme necessário.
+. Certifique-se de que a configuração do interrutor é guardada.
+. Reinicie os switches FC.
+. Faça o cabeamento das pontes FC para SAS e pré-existentes, usando o layout de cabeamento criado anteriormente.
++
+O uso da porta do switch FC deve corresponder ao uso de oito nós do MetroCluster descrito em link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"] para que os arquivos de configuração de referência (RCFs) possam ser usados.
+
+. Verifique se as portas estão online usando o comando correto para o switch.
++
+|===
+
+
+| Fornecedor de switch | Comando 
+
+
+ a| 
+Brocade
+ a| 
+switchshow
+
+
+
+ a| 
+Cisco
+ a| 
+mostrar resumo da interface
+
+|===
+. Use o procedimento descrito no link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"] para fazer o cabeamento das portas FC-VI das controladoras novas e existentes, usando o layout de cabeamento criado anteriormente.
++
+O uso da porta do switch FC deve corresponder ao uso de oito nós do MetroCluster descrito em link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"] para que os arquivos de configuração de referência (RCFs) possam ser usados.
+
+. Nos nós existentes, verifique se as portas FC-VI estão online:
++
+`metrocluster interconnect adapter show`
+
++
+`metrocluster interconnect mirror show`
+
+. Faça o cabeamento das portas HBA dos controladores atual e novos.
+. Nos módulos de controladora existentes, habilite as portas conectadas à malha do switch em manutenção:
++
+`storage port enable -node _node-name_ -port _port-ID_`
+
+. Inicie os novos controladores e inicialize-os no modo Manutenção:
++
+`boot_ontap maint`
+
+. Verifique se somente o armazenamento que será usado pelo novo grupo de DR está visível para os novos módulos do controlador.
++
+Nenhum storage usado pelo outro grupo de DR deve estar visível.
+
+. Volte ao início deste processo para voltar a efetuar o cabo da segunda estrutura do interrutor.
+

@@ -1,0 +1,8 @@
+---
+permalink: install-ip/concept_considerations_isls.html 
+redirect: ontap-metrocluster/install-ip/overview-isl-requirements.html 
+---
+= 
+:allow-uri-read: 
+
+

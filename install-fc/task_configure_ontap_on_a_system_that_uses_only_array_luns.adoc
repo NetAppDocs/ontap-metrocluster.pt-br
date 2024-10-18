@@ -1,0 +1,205 @@
+---
+permalink: install-fc/task_configure_ontap_on_a_system_that_uses_only_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, array luns, ontap 
+summary: Se você quiser configurar o ONTAP para uso com LUNs de array, configure o agregado raiz e o volume raiz, reserve espaço para operações de diagnóstico e recuperação e configure o cluster. 
+---
+= Configuração do ONTAP em um sistema que usa apenas LUNs de array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você quiser configurar o ONTAP para uso com LUNs de array, configure o agregado raiz e o volume raiz, reserve espaço para operações de diagnóstico e recuperação e configure o cluster.
+
+.Antes de começar
+* O sistema ONTAP deve ser conetado ao storage array.
+* O administrador do storage array deve ter criado LUNs e apresentado ao ONTAP.
+* O administrador da matriz de armazenamento deve ter configurado a segurança LUN.
+
+
+.Sobre esta tarefa
+Você deve configurar cada nó que deseja usar com LUNs de array. Se o nó estiver em um par de HA, será necessário concluir o processo de configuração em um nó antes de prosseguir com a configuração no nó do parceiro.
+
+.Passos
+. Ligue o nó principal e interrompa o processo de inicialização pressionando Ctrl-C quando você vir a seguinte mensagem no console:
++
+`Press CTRL-C for special boot menu.`
+
+. Selecionar a opção *4 (limpar configuração e inicializar todos os discos)* no menu de inicialização.
++
+É apresentada a lista de LUNs de array disponibilizados para o ONTAP. Além disso, o tamanho do LUN do array necessário para a criação do volume raiz também é especificado. O tamanho necessário para a criação de volume raiz difere de um sistema ONTAP para outro.
+
++
+** Se nenhum LUN de array foi atribuído anteriormente, o ONTAP deteta e exibe os LUNs de array disponíveis, como mostrado no exemplo a seguir:
++
+[listing]
+----
+mcc8040-ams1::> disk show  NET-1.6 -instance
+                  Disk: NET-1.6
+        Container Type: aggregate
+            Owner/Home: mcc8040-ams1-01 / mcc8040-ams1-01
+               DR Home: -
+    Stack ID/Shelf/Bay: -  / -  / -
+                   LUN: 0
+                 Array: NETAPP_INF_1
+                Vendor: NETAPP
+                 Model: INF-01-00
+         Serial Number: 60080E50004317B4000003B158E35974
+                   UID: 60080E50:004317B4:000003B1:58E35974:00000000:00000000:00000000:00000000:00000000:00000000
+                   BPS: 512
+         Physical Size: 87.50GB
+              Position: data
+Checksum Compatibility: block
+             Aggregate: eseries
+                  Plex: plex0
+Paths:
+                                LUN  Initiator Side        Target Side                                                        Link
+Controller         Initiator     ID  Switch Port           Switch Port           Acc Use  Target Port                TPGN    Speed      I/O KB/s          IOPS
+------------------ ---------  -----  --------------------  --------------------  --- ---  -----------------------  ------  -------  ------------  ------------
+mcc8040-ams1-01    2c             0  mccb6505-ams1:16      mccb6505-ams1:18      AO  INU  20330080e54317b4              1   4 Gb/S             0             0
+mcc8040-ams1-01    2a             0  mccb6505-ams1:17      mccb6505-ams1:19      ANO RDY  20320080e54317b4              0   4 Gb/S             0             0
+
+Errors:
+-
+----
+** Se os LUNs de storage tiverem sido atribuídos anteriormente, por exemplo, pelo modo de manutenção, eles serão marcados como locais ou parceiros na lista dos LUNs de storage disponíveis, dependendo se os LUNs de storage foram selecionados no nó no qual você está instalando o ONTAP ou seu parceiro de HA:
++
+Neste exemplo, LUNs de array com números de índice 3 e 6 são marcados como "local" porque tinham sido previamente atribuídos a partir deste nó específico:
+
++
+[listing]
+----
+
+**********************************************************************
+* No disks are owned by this node, but array LUNs are assigned.      *
+* You can use the following information to verify connectivity from  *
+* HBAs to switch ports.  If the connectivity of HBAs to switch ports *
+* does not match your expectations, configure your SAN and rescan.   *
+* You can rescan by entering 'r' at the prompt for selecting         *
+* array LUNs below.
+
+**********************************************************************
+             HBA  HBA WWPN           Switch port      Switch port WWPN
+              ---  --------           -----------      ----------------
+              0e 500a098001baf8e0  vgbr6510s203:25      20190027f88948dd
+              0f 500a098101baf8e0 vgci9710s202:1-17      2011547feeead680
+              0g 500a098201baf8e0  vgbr6510s203:27      201b0027f88948dd
+              0h 500a098301baf8e0 vgci9710s202:1-18      2012547feeead680
+
+
+No native disks were detected, but array LUNs were detected.
+You will need to select an array LUN to be used to create the root aggregate and root volume.
+
+The array LUNs visible to the system are listed below.  Select one array LUN to be used to
+create the root aggregate and root volume.  **The root volume requires 350.0 GB of space.**
+
+ Warning: The contents of the array LUN you select will be erased by ONTAP prior to their use.
+
+Index  Array LUN Name           Model   Vendor    Size    Owner   Checksum  Serial Number
+-----  -----------------------  ------  ------  --------  ------  --------  ------------------------
+   0   vgci9710s202:2-24.0L19   RAID5   DGC     217.3 GB          Block     6006016083402B0048E576D7
+   1   vgbr6510s203:30.126L20   RAID5   DGC     217.3 GB          Block     6006016083402B0049E576D7
+   2   vgci9710s202:2-24.0L21   RAID5   DGC     217.3 GB          Block     6006016083402B004AE576D7
+   3   vgbr6510s203:30.126L22   RAID5   DGC     405.4 GB  local   Block     6006016083402B004BE576D7
+   4   vgci9710s202:2-24.0L23   RAID5   DGC     217.3 GB          Block     6006016083402B004CE576D7
+   5   vgbr6510s203:30.126L24   RAID5   DGC     217.3 GB          Block     6006016083402B004DE576D7
+   6   vgbr6510s203:30.126L25   RAID5   DGC     423.5 GB  local   Block     6006016083402B003CF93694
+   7   vgci9710s202:2-24.0L26   RAID5   DGC     423.5 GB          Block     6006016083402B003DF93694
+----
+
+
+. Selecione o número de índice correspondente ao LUN de matriz que deseja atribuir como volume raiz.
++
+O LUN de array deve ser de tamanho suficiente para criar o volume raiz.
+
++
+O LUN de array selecionado para criação de volume raiz é marcado como "local (raiz)".
+
++
+No exemplo a seguir, o LUN de matriz com o número de índice 3 é marcado para a criação de volume raiz:
+
++
+[listing]
+----
+
+The root volume will be created on switch 0:5.183L33.
+
+**ONTAP requires that 11.0 GB of space be reserved for use in diagnostic and recovery
+operations.**  Select one array LUN to be used as spare for diagnostic and recovery operations.
+
+Index Array LUN Name    Model       Vendor    Size   Owner           Checksum  Serial Number
+----- ----------------- ----------  ------  -------- --------------  --------  ------------------------
+   0  switch0:5.183L1   SYMMETRIX   EMC     266.1 GB                 Block     600604803436313734316631
+   1  switch0:5.183L3   SYMMETRIX   EMC     266.1 GB                 Block     600604803436316333353837
+   2  switch0:5.183L31  SYMMETRIX   EMC     266.1 GB                 Block     600604803436313237643666
+   3  switch0:5.183L33  SYMMETRIX   EMC     658.3 GB local  (root)   Block     600604803436316263613066
+   4  switch0:7.183L0   SYMMETRIX   EMC     173.6 GB                 Block     600604803436313261356235
+   5  switch0:7.183L2   SYMMETRIX   EMC     173.6 GB                 Block     600604803436313438396431
+   6  switch0:7.183L4   SYMMETRIX   EMC     658.3 GB                 Block     600604803436313161663031
+   7  switch0:7.183L30  SYMMETRIX   EMC     173.6 GB                 Block     600604803436316538353834
+   8  switch0:7.183L32  SYMMETRIX   EMC     266.1 GB                 Block     600604803436313237353738
+   9  switch0:7.183L34  SYMMETRIX   EMC     658.3 GB                 Block     600604803436313737333662
+----
+. Selecione o número de índice correspondente ao LUN de matriz que deseja atribuir para uso nas opções de diagnóstico e recuperação.
++
+O LUN do array deve ser de tamanho suficiente para ser usado nas opções de diagnóstico e recuperação. Se necessário, você também pode selecionar vários LUNs de matriz com um tamanho combinado maior ou igual ao tamanho especificado. Para selecionar várias entradas, você deve inserir os valores separados por vírgulas de todos os números de índice correspondentes aos LUNs de matriz que deseja selecionar para opções de diagnóstico e recuperação.
+
++
+O exemplo a seguir mostra uma lista de LUNs de array selecionados para criação de volume raiz e para opções de diagnóstico e recuperação:
+
++
+[listing]
+----
+
+Here is a list of the selected array LUNs
+Index Array LUN Name     Model      Vendor    Size    Owner          Checksum  Serial Number
+----- -----------------  ---------  ------  --------  -------------  --------  ------------------------
+   2  switch0:5.183L31   SYMMETRIX  EMC     266.1 GB  local          Block     600604803436313237643666
+   3  switch0:5.183L33   SYMMETRIX  EMC     658.3 GB  local   (root) Block     600604803436316263613066
+   4  switch0:7.183L0    SYMMETRIX  EMC     173.6 GB  local          Block     600604803436313261356235
+   5  switch0:7.183L2    SYMMETRIX  EMC     173.6 GB  local          Block     600604803436313438396431
+Do you want to continue (yes|no)?
+----
++
+
+NOTE: Selecionar "'no'" limpa a seleção de LUN.
+
+. Digite `*y*` quando solicitado pelo sistema para continuar com o processo de instalação.
++
+O agregado raiz e o volume raiz são criados e o restante do processo de instalação continua.
+
+. Insira os detalhes necessários para criar a interface de gerenciamento de nós.
++
+O exemplo a seguir mostra a tela da interface de gerenciamento de nó com uma mensagem confirmando a criação da interface de gerenciamento de nó:
+
++
+[listing]
+----
+Welcome to node setup.
+
+You can enter the following commands at any time:
+  "help" or "?" - if you want to have a question clarified,
+  "back" - if you want to change previously answered questions, and
+  "exit" or "quit" - if you want to quit the setup wizard.
+     Any changes you made before quitting will be saved.
+
+To accept a default or omit a question, do not enter a value.
+
+Enter the node management interface port [e0M]:
+Enter the node management interface IP address: 192.0.2.66
+
+Enter the node management interface netmask: 255.255.255.192
+Enter the node management interface default gateway: 192.0.2.7
+A node management interface on port e0M with IP address 192.0.2.66 has been created.
+
+This node has its management address assigned and is ready for cluster setup.
+----
+
+
+.Depois de terminar
+Depois de configurar o ONTAP em todos os nós que você deseja usar com LUNs de array, você deve concluir o https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["Processo de configuração do cluster"]
+
+.Informações relacionadas
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Referência e requisitos de instalação da virtualização do FlexArray"]

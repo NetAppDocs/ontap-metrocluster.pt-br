@@ -1,0 +1,41 @@
+---
+permalink: transition/concept_how_transition_impacts_the_mcc_hardware_components.html 
+sidebar: sidebar 
+keywords: complete, completing, transition, procedure, key, component, exist, metrocluster, configuration, replace, reconfigure, impact, hardware, component 
+summary: Após concluir o procedimento de transição, os componentes principais da configuração do MetroCluster existente foram substituídos ou reconfigurados. 
+---
+= Como a transição afeta os componentes de hardware do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após concluir o procedimento de transição, os componentes principais da configuração do MetroCluster existente foram substituídos ou reconfigurados.
+
+* *Módulos de controlador*
++
+Os módulos do controlador existentes são substituídos por novos módulos do controlador. Os módulos de controlador existentes são desativados no final dos procedimentos de transição.
+
+* * Prateleiras de armazenamento*
++
+Os dados são movidos das gavetas antigas para as novas gavetas. As prateleiras antigas são desativadas no final dos procedimentos de transição.
+
+* *MetroCluster (back-end) e switches de cluster*
++
+A funcionalidade do switch back-end é substituída pela malha do switch IP. Se a configuração de FC do MetroCluster incluir switches FC e pontes FC para SAS, eles serão desativados no final deste procedimento.
+
++
+Se a configuração MetroCluster FC usou switches de cluster para a interconexão de cluster, em alguns casos eles podem ser reutilizados para fornecer a malha de switch IP de back-end. Os switches de cluster reutilizados devem ser reconfigurados com os procedimentos de CFs específicos da plataforma e do switch.
+
++
+Se a configuração MetroCluster FC não usasse switches de cluster, novos switches IP serão adicionados para fornecer a malha do switch de back-end.
+
++
+link:concept_considerations_for_using_existing_ip_switches.html["Considerações para switches IP"]
+
+* *Rede de peering de cluster*
++
+A rede de peering de cluster existente fornecida pelo cliente pode ser usada para a nova configuração IP do MetroCluster. O peering de cluster é configurado nos nós IP do MetroCluster como parte do procedimento de transição.
+
+

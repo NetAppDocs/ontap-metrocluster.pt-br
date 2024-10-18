@@ -1,0 +1,220 @@
+---
+permalink: disaster-recovery/task_assign_ownership_mcfc.html 
+sidebar: sidebar 
+keywords: assign, ownership, drives, replaced 
+summary: Se você substituiu unidades ao restaurar o hardware no local de desastre, deverá atribuir propriedade às unidades afetadas. 
+---
+= Atribuição de propriedade para unidades substituídas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você substituiu unidades ao restaurar o hardware no local de desastre ou se você tivesse que zero unidades ou remover a propriedade, você deverá atribuir propriedade às unidades afetadas.
+
+.Antes de começar
+O local de desastre deve ter pelo menos quantas unidades disponíveis antes do desastre.
+
+O arranjo de compartimentos e unidades de unidades deve atender aos requisitos link:../install-ip/concept_required_mcc_ip_components_and_naming_guidelines_mcc_ip.html["Componente IP do MetroCluster necessário e convenções de nomenclatura"] da link:../install-ip/concept_considerations_differences.html["Instalação e configuração IP do MetroCluster"]seção do .
+
+.Sobre esta tarefa
+Essas etapas são executadas no cluster no local do desastre.
+
+Este procedimento mostra a reatribuição de todas as unidades e a criação de novos plexos no local de desastre. Os novos plexos são plexos remotos do local sobrevivente e dos plexos locais do local do desastre.
+
+Esta seção fornece exemplos para configurações de dois e quatro nós. Para configurações de dois nós, você pode ignorar referências ao segundo nó em cada local. Para configurações de oito nós, você deve ter em conta os nós adicionais no segundo grupo de DR. Os exemplos fazem as seguintes suposições:
+
+* O local A é o local do desastre.
++
+** O nó_A_1 foi substituído.
+** O nó_A_2 foi substituído.
++
+Presente apenas em configurações de MetroCluster de quatro nós.
+
+
+
+* O local B é o local sobrevivente.
++
+** Node_B_1 está em bom estado.
+** Node_B_2 está em bom estado.
++
+Presente apenas em configurações de MetroCluster de quatro nós.
+
+
+
+
+
+Os módulos do controlador têm as seguintes IDs de sistema originais:
+
+|===
+
+
+| Número de nós na configuração do MetroCluster | Nó | ID do sistema original 
+
+
+ a| 
+Quatro
+ a| 
+node_A_1
+ a| 
+4068741258
+
+
+
+ a| 
+node_A_2
+ a| 
+4068741260
+ a| 
+node_B_1
+
+
+
+ a| 
+4068741254
+ a| 
+node_B_2
+ a| 
+4068741256
+
+
+
+ a| 
+Dois
+ a| 
+node_A_1
+ a| 
+4068741258
+
+|===
+Você deve ter em mente os seguintes pontos ao atribuir as unidades:
+
+* A contagem antiga de discos deve ter pelo menos o mesmo número de discos para cada nó que estava presente antes do desastre.
++
+Se um número menor de discos for especificado ou presente, as operações de recuperação podem não ser concluídas devido a espaço insuficiente.
+
+* Os novos plexos a serem criados são plexos remotos pertencentes ao local sobrevivente (node_B_x pool1) e plexos locais pertencentes ao local de desastre (node_B_x pool0).
+* O número total de unidades necessárias não deve incluir os discos raiz aggrr.
++
+Se n discos forem atribuídos a pool1 do local sobrevivente, os discos n-3 devem ser atribuídos ao local de desastre com a suposição de que o agregado raiz usa três discos.
+
+* Nenhum dos discos pode ser atribuído a um pool que é diferente daquele ao qual todos os outros discos na mesma pilha são atribuídos.
+* Os discos pertencentes ao local sobrevivente são atribuídos ao pool 1 e os discos pertencentes ao local de desastre são atribuídos ao pool 0.
+
+
+.Passos
+. Atribua as novas unidades sem propriedade com base se você tem uma configuração de MetroCluster de quatro nós ou dois nós:
++
+** Para configurações de MetroCluster de quatro nós, atribua os novos discos não possuídos aos pools de discos apropriados usando a seguinte série de comandos nos nós de substituição:
++
+... Atribua sistematicamente os discos substituídos para cada nó aos respetivos pools de discos:
++
+`disk assign -s sysid -n old-count-of-disks -p pool`
+
++
+No site sobrevivente, você emite um comando de atribuição de disco para cada nó:
+
++
+[listing]
+----
+cluster_B::> disk assign -s node_B_1-sysid -n old-count-of-disks -p 1 **\(remote pool of surviving site\)**
+cluster_B::> disk assign -s node_B_2-sysid -n old-count-of-disks -p 1 **\(remote pool of surviving site\)**
+cluster_B::> disk assign -s node_A_1-old-sysid -n old-count-of-disks -p 0 **\(local pool of disaster site\)**
+cluster_B::> disk assign -s node_A_2-old-sysid -n old-count-of-disks -p 0 **\(local pool of disaster site\)**
+----
++
+O exemplo a seguir mostra os comandos com as IDs do sistema:
+
++
+[listing]
+----
+cluster_B::> disk assign -s 4068741254 -n 21 -p 1
+cluster_B::> disk assign -s 4068741256 -n 21 -p 1
+cluster_B::> disk assign -s 4068741258 -n 21 -p 0
+cluster_B::> disk assign -s 4068741260 -n 21 -p 0
+----
+... Confirme a propriedade dos discos:
++
+`storage disk show -fields owner, pool`
+
++
+[listing]
+----
+storage disk show -fields owner, pool
+cluster_A::> storage disk show -fields owner, pool
+disk     owner          pool
+-------- ------------- -----
+0c.00.1  node_A_1      Pool0
+0c.00.2  node_A_1      Pool0
+.
+.
+.
+0c.00.8  node_A_1      Pool1
+0c.00.9  node_A_1      Pool1
+.
+.
+.
+0c.00.15 node_A_2      Pool0
+0c.00.16 node_A_2      Pool0
+.
+.
+.
+0c.00.22 node_A_2      Pool1
+0c.00.23 node_A_2      Pool1
+.
+.
+.
+----
+
+
+** Para configurações de MetroCluster de dois nós, atribua os novos discos não possuídos aos pools de discos apropriados usando a seguinte série de comandos no nó de substituição:
++
+... Exibir as IDs de gaveta locais:
++
+`run local storage show shelf`
+
+... Atribua os discos substituídos para o nó íntegro ao pool 1:
++
+`run local disk assign -shelf shelf-id -n old-count-of-disks -p 1 -s node_B_1-sysid -f`
+
+... Atribua os discos substituídos para o nó de substituição ao pool 0:
++
+`run local disk assign -shelf shelf-id -n old-count-of-disks -p 0 -s node_A_1-sysid -f`
+
+
+
+
+
+. No site sobrevivente, ative novamente a atribuição automática de disco:
++
+`storage disk option modify -autoassign on *`
+
++
+[listing]
+----
+cluster_B::> storage disk option modify -autoassign on *
+2 entries were modified.
+----
+. No site sobrevivente, confirme se a atribuição automática de disco está em:
++
+`storage disk option show`
+
++
+[listing]
+----
+ cluster_B::> storage disk option show
+ Node     BKg. FW. Upd.  Auto Copy   Auto Assign  Auto Assign Policy
+--------  -------------  -----------  -----------  ------------------
+node_B_1       on            on          on             default
+node_B_2       on            on          on             default
+2 entries were displayed.
+
+ cluster_B::>
+----
+
+
+.Informações relacionadas
+link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"^]
+
+link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html#how-metrocluster-configurations-use-syncmirror-to-provide-data-redundancy["Como as configurações do MetroCluster usam o SyncMirror para fornecer redundância de dados"]

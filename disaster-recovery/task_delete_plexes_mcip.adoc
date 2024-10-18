@@ -1,0 +1,301 @@
+---
+permalink: disaster-recovery/task_delete_plexes_mcip.html 
+sidebar: sidebar 
+keywords: deleting, delete, fail, plex, own 
+summary: É necessário ligar os componentes dos compartimentos de disco e dos switches IP MetroCluster no local de desastre. 
+---
+= Exclusão de plexes com falha de propriedade do site sobrevivente (configurações IP do MetroCluster)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de substituir o hardware e atribuir discos, você deve excluir plexes remotos com falha que são de propriedade dos nós do local sobreviventes, mas localizados no local de desastre.
+
+.Sobre esta tarefa
+Estas etapas são executadas no cluster sobrevivente.
+
+.Passos
+. Identificar os agregados locais:
+`storage aggregate show -is-home true`
++
+[listing]
+----
+cluster_B::> storage aggregate show -is-home true
+
+cluster_B Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_B_1_aggr0 1.49TB  74.12GB 95% online       1 node_B_1         raid4,
+                                                                   mirror
+                                                                   degraded
+node_B_2_aggr0 1.49TB  74.12GB 95% online       1 node_B_2         raid4,
+                                                                   mirror
+                                                                   degraded
+node_B_1_aggr1 2.99TB  2.88TB   3% online      15 node_B_1         raid_dp,
+                                                                   mirror
+                                                                   degraded
+node_B_1_aggr2 2.99TB  2.91TB   3% online      14 node_B_1         raid_tec,
+                                                                   mirror
+                                                                   degraded
+node_B_2_aggr1 2.95TB  2.80TB   5% online      37 node_B_2         raid_dp,
+                                                                   mirror
+                                                                   degraded
+node_B_2_aggr2 2.99TB  2.87TB   4% online      35 node_B_2         raid_tec,
+                                                                   mirror
+                                                                   degraded
+6 entries were displayed.
+
+cluster_B::>
+----
+. Identificar os plexes remotos com falha:
++
+`storage aggregate plex show`
+
++
+O exemplo a seguir chama os plexes que são remotos (não plex0) e têm um status de "failed" (Falha):
+
++
+[listing]
+----
+cluster_B::> storage aggregate plex show -fields aggregate,status,is-online,Plex,pool
+aggregate    plex  status        is-online pool
+------------ ----- ------------- --------- ----
+node_B_1_aggr0 plex0 normal,active true     0
+node_B_1_aggr0 plex4 failed,inactive false  - <<<<---Plex at remote site
+node_B_2_aggr0 plex0 normal,active true     0
+node_B_2_aggr0 plex4 failed,inactive false  - <<<<---Plex at remote site
+node_B_1_aggr1 plex0 normal,active true     0
+node_B_1_aggr1 plex4 failed,inactive false  - <<<<---Plex at remote site
+node_B_1_aggr2 plex0 normal,active true     0
+node_B_1_aggr2 plex1 failed,inactive false  - <<<<---Plex at remote site
+node_B_2_aggr1 plex0 normal,active true     0
+node_B_2_aggr1 plex4 failed,inactive false  - <<<<---Plex at remote site
+node_B_2_aggr2 plex0 normal,active true     0
+node_B_2_aggr2 plex1 failed,inactive false  - <<<<---Plex at remote site
+node_A_1_aggr1 plex0 failed,inactive false  -
+node_A_1_aggr1 plex4 normal,active true     1
+node_A_1_aggr2 plex0 failed,inactive false  -
+node_A_1_aggr2 plex1 normal,active true     1
+node_A_2_aggr1 plex0 failed,inactive false  -
+node_A_2_aggr1 plex4 normal,active true     1
+node_A_2_aggr2 plex0 failed,inactive false  -
+node_A_2_aggr2 plex1 normal,active true     1
+20 entries were displayed.
+
+cluster_B::>
+----
+. Fique offline cada um dos plexes com falha e, em seguida, exclua-os:
++
+.. Fique offline os plexes com falha:
++
+`storage aggregate plex offline -aggregate aggregate-name -plex plex-id`
+
++
+O exemplo a seguir mostra o agregado "node_B_2_aggr1/plex1" sendo colocado offline:
+
++
+[listing]
+----
+cluster_B::> storage aggregate plex offline -aggregate node_B_1_aggr0 -plex plex4
+
+Plex offline successful on plex: node_B_1_aggr0/plex4
+----
+.. Eliminar o Plex com falha:
++
+`storage aggregate plex delete -aggregate aggregate-name -plex plex-id`
+
++
+Você pode destruir o Plex quando solicitado.
+
++
+O exemplo a seguir mostra o Plex node_B_2_aggr1/plex1 sendo excluído.
+
++
+[listing]
+----
+cluster_B::> storage aggregate plex delete -aggregate  node_B_1_aggr0 -plex plex4
+
+Warning: Aggregate "node_B_1_aggr0" is being used for the local management root
+         volume or HA partner management root volume, or has been marked as
+         the aggregate to be used for the management root volume after a
+         reboot operation. Deleting plex "plex4" for this aggregate could lead
+         to unavailability of the root volume after a disaster recovery
+         procedure. Use the "storage aggregate show -fields
+         has-mroot,has-partner-mroot,root" command to view such aggregates.
+
+Warning: Deleting plex "plex4" of mirrored aggregate "node_B_1_aggr0" on node
+         "node_B_1" in a MetroCluster configuration will disable its
+         synchronous disaster recovery protection. Are you sure you want to
+         destroy this plex? {y|n}: y
+[Job 633] Job succeeded: DONE
+
+cluster_B::>
+----
+
+
++
+Você deve repetir estas etapas para cada um dos plexos com falha.
+
+. Confirme se os plexos foram removidos:
++
+`storage aggregate plex show -fields aggregate,status,is-online,plex,pool`
+
++
+[listing]
+----
+cluster_B::> storage aggregate plex show -fields aggregate,status,is-online,Plex,pool
+aggregate    plex  status        is-online pool
+------------ ----- ------------- --------- ----
+node_B_1_aggr0 plex0 normal,active true     0
+node_B_2_aggr0 plex0 normal,active true     0
+node_B_1_aggr1 plex0 normal,active true     0
+node_B_1_aggr2 plex0 normal,active true     0
+node_B_2_aggr1 plex0 normal,active true     0
+node_B_2_aggr2 plex0 normal,active true     0
+node_A_1_aggr1 plex0 failed,inactive false  -
+node_A_1_aggr1 plex4 normal,active true     1
+node_A_1_aggr2 plex0 failed,inactive false  -
+node_A_1_aggr2 plex1 normal,active true     1
+node_A_2_aggr1 plex0 failed,inactive false  -
+node_A_2_aggr1 plex4 normal,active true     1
+node_A_2_aggr2 plex0 failed,inactive false  -
+node_A_2_aggr2 plex1 normal,active true     1
+14 entries were displayed.
+
+cluster_B::>
+----
+. Identificar os agregados comutados:
++
+`storage aggregate show -is-home false`
+
++
+Você também pode usar o `storage aggregate plex show -fields aggregate,status,is-online,plex,pool` comando para identificar agregados comutados do Plex 0. Eles terão um status de "falhou, inativo".
+
++
+Os comandos a seguir mostram quatro agregados comutados:
+
++
+** node_A_1_aggr1
+** node_A_1_aggr2
+** node_A_2_aggr1
+** node_A_2_aggr2
+
+
++
+[listing]
+----
+cluster_B::> storage aggregate show -is-home false
+
+cluster_A Switched Over Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1_aggr1 2.12TB  1.88TB   11% online      91 node_B_1        raid_dp,
+                                                                   mirror
+                                                                   degraded
+node_A_1_aggr2 2.89TB  2.64TB    9% online      90 node_B_1        raid_tec,
+                                                                   mirror
+                                                                   degraded
+node_A_2_aggr1 2.12TB  1.86TB   12% online      91 node_B_2        raid_dp,
+                                                                   mirror
+                                                                   degraded
+node_A_2_aggr2 2.89TB  2.64TB    9% online      90 node_B_2        raid_tec,
+                                                                   mirror
+                                                                   degraded
+4 entries were displayed.
+
+cluster_B::>
+----
+. Identificar plexos comutados:
++
+`storage aggregate plex show -fields aggregate,status,is-online,Plex,pool`
+
++
+Você deseja identificar os plexes com um status de "falhou, inativo".
+
++
+Os comandos a seguir mostram quatro agregados comutados:
+
++
+[listing]
+----
+cluster_B::> storage aggregate plex show -fields aggregate,status,is-online,Plex,pool
+aggregate    plex  status        is-online pool
+------------ ----- ------------- --------- ----
+node_B_1_aggr0 plex0 normal,active true     0
+node_B_2_aggr0 plex0 normal,active true     0
+node_B_1_aggr1 plex0 normal,active true     0
+node_B_1_aggr2 plex0 normal,active true     0
+node_B_2_aggr1 plex0 normal,active true     0
+node_B_2_aggr2 plex0 normal,active true     0
+node_A_1_aggr1 plex0 failed,inactive false  -  <<<<-- Switched over aggr/Plex0
+node_A_1_aggr1 plex4 normal,active true     1
+node_A_1_aggr2 plex0 failed,inactive false  -  <<<<-- Switched over aggr/Plex0
+node_A_1_aggr2 plex1 normal,active true     1
+node_A_2_aggr1 plex0 failed,inactive false  -  <<<<-- Switched over aggr/Plex0
+node_A_2_aggr1 plex4 normal,active true     1
+node_A_2_aggr2 plex0 failed,inactive false  -  <<<<-- Switched over aggr/Plex0
+node_A_2_aggr2 plex1 normal,active true     1
+14 entries were displayed.
+
+cluster_B::>
+----
+. Eliminar o Plex com falha:
++
+`storage aggregate plex delete -aggregate node_A_1_aggr1 -plex plex0`
+
++
+Você pode destruir o Plex quando solicitado.
+
++
+O exemplo a seguir mostra o nó Plex_A_1_aggr1/plex0 sendo excluído:
+
++
+[listing]
+----
+cluster_B::> storage aggregate plex delete -aggregate node_A_1_aggr1 -plex plex0
+
+Warning: Aggregate "node_A_1_aggr1" hosts MetroCluster metadata volume
+         "MDV_CRS_e8457659b8a711e78b3b00a0988fe74b_A". Deleting plex "plex0"
+         for this aggregate can lead to the failure of configuration
+         replication across the two DR sites. Use the "volume show -vserver
+         <admin-vserver> -volume MDV_CRS*" command to verify the location of
+         such volumes.
+
+Warning: Deleting plex "plex0" of mirrored aggregate "node_A_1_aggr1" on node
+         "node_A_1" in a MetroCluster configuration will disable its
+         synchronous disaster recovery protection. Are you sure you want to
+         destroy this plex? {y|n}: y
+[Job 639] Job succeeded: DONE
+
+cluster_B::>
+----
++
+Você deve repetir essas etapas para cada um dos agregados com falha.
+
+. Verifique se não há plexo com falha restante no local sobrevivente.
++
+A saída a seguir mostra que todos os plexes são normais, ativos e online.
+
++
+[listing]
+----
+cluster_B::> storage aggregate plex show -fields aggregate,status,is-online,Plex,pool
+aggregate    plex  status        is-online pool
+------------ ----- ------------- --------- ----
+node_B_1_aggr0 plex0 normal,active true     0
+node_B_2_aggr0 plex0 normal,active true     0
+node_B_1_aggr1 plex0 normal,active true     0
+node_B_2_aggr2 plex0 normal,active true     0
+node_B_1_aggr1 plex0 normal,active true     0
+node_B_2_aggr2 plex0 normal,active true     0
+node_A_1_aggr1 plex4 normal,active true     1
+node_A_1_aggr2 plex1 normal,active true     1
+node_A_2_aggr1 plex4 normal,active true     1
+node_A_2_aggr2 plex1 normal,active true     1
+10 entries were displayed.
+
+cluster_B::>
+----
+

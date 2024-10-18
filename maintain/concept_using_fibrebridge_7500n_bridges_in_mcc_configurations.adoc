@@ -1,0 +1,59 @@
+---
+permalink: maintain/concept_using_fibrebridge_7500n_bridges_in_mcc_configurations.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, support, fibrebridge, configurations 
+summary: A ponte FibreBridge 7500N é suportada como um substituto para a ponte FibreBridge 6500N ou para ao adicionar novo armazenamento à configuração do MetroCluster. As configurações suportadas têm requisitos de zoneamento e restrições em relação ao uso das portas FC da ponte e dos limites de stack e shelf de armazenamento. 
+---
+= Suporte para bridgeBridge 7500N em configurações MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A ponte FibreBridge 7500N é suportada como um substituto para a ponte FibreBridge 6500N ou para ao adicionar novo armazenamento à configuração do MetroCluster. As configurações suportadas têm requisitos de zoneamento e restrições em relação ao uso das portas FC da ponte e dos limites de stack e shelf de armazenamento.
+
+
+NOTE: As bridges FibreBridge 6500N não são suportadas em configurações que executam o ONTAP 9.8 e posterior.
+
+[cols="27,19,27,27"]
+|===
+| Caso de uso | Mudanças de zoneamento necessárias? | Restrições | Procedimento 
+
+
+ a| 
+Substituindo uma única ponte FibreBridge 6500N por uma única ponte FibreBridge 7500N
+ a| 
+Não
+ a| 
+A ponte FibreBridge 7500N deve ser configurada exatamente da mesma forma que a ponte FibreBridge 6500N, usando uma única porta FC e anexando a uma única pilha. A segunda porta FC no FibreBridge 7500N não deve ser usada.
+ a| 
+link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["Troca quente de uma ponte FibreBridge 6500N com uma ponte FibreBridge 7600N ou 7500N"]
+
+
+
+ a| 
+Consolidando várias pilhas substituindo vários pares de pontes FibreBridge 6500N por um único par de pontes FibreBridge 7500N
+ a| 
+Sim
+ a| 
+Neste caso, você tira as pontes FibreBridge 6500N fora de serviço e as substitui por um único par de pontes FibreBridge 7500N. Cada par de pontes FibreBridge 7500N ou 7600N pode suportar até quatro pilhas.
+
+No final do procedimento, tanto a parte superior como a parte inferior das pilhas devem ser conetadas às portas correspondentes nas pontes FibreBridge 7500N.
+ a| 
+link:task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_bridges.html["Substituição de um par de pontes FibreBridge 6500N por pontes 7600N ou 7500N"]
+
+
+
+ a| 
+Adicionando um novo armazenamento através da adição de um novo par de pontes FibreBridge 7500N
+ a| 
+Sim
+
+É necessário adicionar zonas de storage para cada uma das portas FC das novas pontes.
+ a| 
+Você precisa ter portas disponíveis na malha do switch FC (em uma configuração MetroCluster conectada à malha) ou nos controladores de storage (em uma configuração Stretch MetroCluster). Cada par de pontes do FibreBridge 7500N ou 7600N pode oferecer suporte a até quatro stacks.
+ a| 
+link:task_fb_hot_add_stack_of_shelves_and_bridges.html["Adição rápida de uma stack de shelves de disco SAS e bridges a um sistema MetroCluster"]
+
+|===

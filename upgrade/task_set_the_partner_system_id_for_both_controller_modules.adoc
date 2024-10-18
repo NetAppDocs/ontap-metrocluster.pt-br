@@ -1,0 +1,28 @@
+---
+permalink: upgrade/task_set_the_partner_system_id_for_both_controller_modules.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, set, up, partner, system, id, controller, module 
+summary: Você precisa definir o ID do sistema do parceiro em ambos os módulos da controladora para que eles possam formar um par de HA. 
+---
+= Definir a ID do sistema do parceiro para ambos os módulos do controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa definir o ID do sistema do parceiro em ambos os módulos da controladora para que eles possam formar um par de HA.
+
+.Sobre esta tarefa
+Esta tarefa é executada com ambos os módulos do controlador no prompt Loader.
+
+.Passos
+. No módulo do controlador existente, defina a ID do sistema do parceiro para a ID do novo módulo do controlador:
++
+`setenv partner-sysid _sysID_of_new_controller_`
+
+. No novo módulo do controlador, defina a ID do sistema do parceiro para a ID do módulo do controlador existente:
++
+`setenv partner-sysid _sysID_of_existing_controller_`
+
+

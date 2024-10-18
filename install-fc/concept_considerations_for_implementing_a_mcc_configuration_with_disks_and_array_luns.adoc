@@ -1,0 +1,80 @@
+---
+permalink: install-fc/concept_considerations_for_implementing_a_mcc_configuration_with_disks_and_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, considerations, configuration, disks, array, luns 
+summary: Ao Planejar a configuração do MetroCluster para uso com discos e LUNs de array, você deve considerar vários fatores, como a ordem de configuração de acesso ao storage, a localização de agregado de raiz e a utilização de portas de iniciador FC, switches e pontes FC para SAS. 
+---
+= Considerações ao implementar uma configuração MetroCluster com discos e LUNs de array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao Planejar a configuração do MetroCluster para uso com discos e LUNs de array, você deve considerar vários fatores, como a ordem de configuração de acesso ao storage, a localização de agregado de raiz e a utilização de portas de iniciador FC, switches e pontes FC para SAS.
+
+Considere as informações na tabela a seguir ao Planejar sua configuração:
+
+|===
+
+
+| Consideração | Diretriz 
+
+
+ a| 
+Ordem de configurar o acesso ao armazenamento
+ a| 
+Você pode configurar primeiro o acesso a discos ou LUNs de array. Você deve concluir toda a configuração para esse tipo de armazenamento e verificar se ele está configurado corretamente antes de configurar o outro tipo de armazenamento.
+
+
+
+ a| 
+Localização do agregado raiz
+ a| 
+* Se você estiver configurando uma implantação _new_ MetroCluster com discos e LUNs de array, será necessário criar o agregado raiz em discos nativos.
++
+Ao fazer isso, certifique-se de que _pelo menos um_ compartimento de disco (com 24 unidades de disco) esteja configurado em cada um dos sites.
+
+* Se você estiver adicionando discos nativos a uma configuração _existente_ MetroCluster que use LUNs de array, o agregado raiz poderá permanecer em um LUN de array.
+
+
+
+
+ a| 
+Uso de switches e pontes FC para SAS
+ a| 
+As pontes FC para SAS são necessárias em configurações de quatro nós e em configurações conectadas à malha de dois nós para conectar os sistemas ONTAP às gavetas de disco por meio dos switches.
+
+Você precisa usar os mesmos switches para se conectar aos storage arrays e às pontes FC para SAS.
+
+
+
+ a| 
+Usando portas do iniciador FC
+ a| 
+As portas do iniciador usadas para se conectar a uma ponte FC para SAS devem ser diferentes das portas usadas para conexão aos switches, que se conectam aos storage arrays.
+
+Um mínimo de oito portas de iniciador é necessário para conetar um sistema ONTAP a discos e LUNs de array.
+
+|===
+.Informações relacionadas
+* Os procedimentos e comandos de configuração do switch são diferentes, dependendo do fornecedor do switch.
++
+link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["Configuração manual dos switches Brocade FC"]
+
++
+link:task_fcsw_cisco_configure_a_cisco_switch_supertask.html["Configuração manual dos switches Cisco FC"]
+
+* Você instala e faz o cabeamento de pontes ATTO FibreBridge e gavetas de disco SAS ao adicionar novo armazenamento à configuração.
++
+link:task_fb_new_install.html["Instalação de pontes FC para SAS e gavetas de disco SAS"]
+
+* O zoneamento do switch define caminhos entre nós conetados. Configurar o zoneamento permite definir quais LUNs de array podem ser visualizados por um sistema ONTAP específico.
++
+link:concept_example_of_switch_zoning_in_a_four_node_mcc_configuration_with_array_luns.html["Exemplo de zoneamento de switch em uma configuração de MetroCluster de quatro nós com LUNs de array"]
+
++
+link:concept_example_of_switch_zoning_in_an_eight_node_mcc_configuration_with_array_luns.html["Exemplo de zoneamento de switch em uma configuração de MetroCluster de oito nós com LUNs de array"]
+
+* https://hwu.netapp.com["NetApp Hardware Universe"]
+

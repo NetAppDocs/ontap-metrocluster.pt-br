@@ -1,0 +1,137 @@
+---
+permalink: maintain/task_replace_a_shelf_nondisruptively_in_a_stretch_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, replace, shelf, nondisruptively, stretch, configuration 
+summary: Você pode substituir os compartimentos de disco sem interrupção em uma configuração Stretch MetroCluster por um compartimento de disco totalmente preenchido ou um chassi de compartimento de disco e transferir componentes da gaveta que você está removendo. 
+---
+= Substituição de uma gaveta sem interrupções em uma configuração Stretch MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode substituir os compartimentos de disco sem interrupção em uma configuração Stretch MetroCluster por um compartimento de disco totalmente preenchido ou um chassi de compartimento de disco e transferir componentes da gaveta que você está removendo.
+
+O modelo de compartimento de disco que você está instalando deve atender aos requisitos de sistema de storage especificados no link:https://hwu.netapp.com["Hardware Universe"^], que inclui modelos de gaveta compatíveis, tipos de unidades de disco compatíveis, o número máximo de compartimentos de disco em uma pilha e versões ONTAP compatíveis.
+
+.Passos
+. Aterre-se corretamente.
+. Identifique todos os agregados e volumes que têm discos do loop que contém a gaveta que você está substituindo e anote o nome do Plex afetado.
++
+Qualquer nó pode conter discos do loop da gaveta afetada e agregados de host ou volumes de host.
+
+. Escolha uma das duas opções a seguir com base no cenário de substituição que você está planejando.
++
+** Se você estiver substituindo um compartimento de disco completo, incluindo o chassi da gaveta, discos e módulos de e/S (IOM), execute a ação correspondente conforme descrito na tabela abaixo:
++
+|===
+
+
+| Cenário | Ação 
+
+
+ a| 
+O Plex afetado contém menos discos da gaveta afetada.
+ a| 
+Substitua os discos um a um na gaveta afetada por peças sobressalentes de outra gaveta.
+
+
+NOTE: Você pode colocar o Plex off-line depois de concluir a substituição do disco.
+
+
+
+ a| 
+O Plex afetado contém mais discos do que na gaveta afetada.
+ a| 
+Mova o Plex off-line e, em seguida, exclua o Plex.
+
+
+
+ a| 
+O Plex afetado tem qualquer disco da prateleira afetada.
+ a| 
+Mova o Plex off-line, mas não o exclua.
+
+|===
+** Se você estiver substituindo apenas o chassi do compartimento de disco e nenhum outro componente, execute as seguintes etapas:
++
+... Offline os plexes afetados do controlador onde estão hospedados:
++
+`aggregate offline`
+
+... Verifique se os plexes estão offline:
++
+`aggregate status -r`
+
+
+
+
+
+. Identifique as portas SAS da controladora às quais o loop do compartimento afetado está conetado e desative as portas SAS em ambos os controladores do local:
++
+`storage port disable -node _node_name_ -port _SAS_port_`
+
++
+O loop de prateleira afetado é conetado a ambos os locais.
+
+. Aguarde que o ONTAP reconheça que o disco está ausente.
++
+.. Verifique se o disco está em falta:
++
+`sysconfig -a` ou `sysconfig -r`
+
+
+
+. Desligue o interrutor de alimentação no compartimento de disco.
+. Desconete todos os cabos de energia do compartimento de disco.
+. Faça um Registro das portas a partir das quais você desconete os cabos para que você possa fazer o cabeamento da nova gaveta de disco da mesma maneira.
+. Desconete e remova os cabos que conetam o compartimento de disco às outras gavetas de disco ou ao sistema de storage.
+. Remova o compartimento de disco do rack.
++
+Para tornar o compartimento de disco mais leve e fácil de manobrar, remova as fontes de alimentação e a IOM. Se você estiver instalando um chassi de compartimento de disco, remova também as unidades de disco ou as operadoras. Caso contrário, evite remover unidades de disco ou transportadores, se possível, porque o manuseio excessivo pode causar danos internos na unidade.
+
+. Instale e fixe o compartimento de disco de substituição nos suportes de suporte e no rack.
+. Se você instalou um chassi de compartimento de disco, reinstale as fontes de alimentação e IOM.
+. Reconfigure a pilha de compartimentos de disco conetando todos os cabos às portas do compartimento de disco de substituição exatamente como eles foram configurados no compartimento de disco que você removeu.
+. Ligue a alimentação do compartimento de disco de substituição e aguarde até que as unidades de disco girem.
+. Altere a ID do compartimento de disco para uma ID exclusiva de 0 a 98.
+. Ative todas as portas SAS que você desativou anteriormente .
++
+.. Aguarde que o ONTAP reconheça que os discos estão inseridos.
+.. Verifique se os discos estão inseridos:
++
+`sysconfig -a` ou `sysconfig -r`
+
+
+
+. Se estiver substituindo a gaveta de disco completa (chassi da gaveta de disco, discos, IOM), execute o seguinte procedimento:
++
+
+NOTE: Se estiver a substituir apenas o chassis do compartimento de disco e nenhum outro componente, avance para o passo 19.
+
++
+.. Determine se a atribuição automática de disco está ativada (ligada).
++
+`storage disk option modify -autoassign`
+
++
+A atribuição de disco ocorrerá automaticamente.
+
+.. Se a atribuição automática do disco não estiver ativada, atribua a propriedade do disco manualmente.
+
+
+. Mova os plexes de volta online:
++
+`aggregate online _plex name_`
+
+. Recrie quaisquer plexes que foram excluídos espelhando o agregado.
+. Monitorize os plexos à medida que começam a ressincronizar:
++
+`aggregate status -r <aggregate name>`
+
+. Verifique se o sistema de armazenamento está funcionando conforme esperado:
++
+`system health alert show`
+
+

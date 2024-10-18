@@ -1,0 +1,24 @@
+---
+permalink: install-fc/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, new, controller, module, fc, vi, hba, ports, fc, switches, mcc 
+summary: 'As portas FC-VI e HBAs (adaptadores de barramento de host) devem ser cabeadas para os switches FC do local em cada módulo de controladora na configuração MetroCluster.' 
+---
+= Faça o cabeamento das portas FC-VI e HBA do novo módulo de controladora aos switches FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As portas FC-VI e HBAs (adaptadores de barramento do host) devem ser cabeadas para os switches FC do local em cada módulo de controladora na configuração do MetroCluster.
+
+.Passos
+. Faça o cabeamento das portas FC-VI e das portas HBA, usando a tabela para sua configuração e modelo de switch.
++
+** link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+** link:concept_AFF_A900_port_assign_fc_switches_ontap_9_1.html["Atribuições de portas para switches FC ao usar sistemas AFF A900"]
+** link:concept_port_assignments_for_systems_using_two_initiator_ports.html["Atribuições de portas para sistemas que usam duas portas de iniciador"]
+
+
+

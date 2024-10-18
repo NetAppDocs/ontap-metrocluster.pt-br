@@ -1,0 +1,124 @@
+---
+permalink: transition/concept_choosing_your_transition_procedure_mcc_transition.html 
+sidebar: sidebar 
+keywords: select, transition, procedure, depend, exist, metrocluster, fc, configuration, choosing, choose 
+summary: Você deve selecionar um procedimento de transição dependendo da configuração existente do MetroCluster FC. 
+---
+= Escolha o procedimento de transição
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao fazer a transição para uma configuração IP do MetroCluster, você deve ter uma combinação de modelos de plataforma compatíveis.
+
+Você também deve garantir que a plataforma IP do MetroCluster seja um tamanho apropriado para a carga que você está migrando da configuração do MetroCluster FC para a configuração IP do MetroCluster.
+
+
+
+== Combinações de plataformas suportadas
+
+* Todos os procedimentos de transição requerem ONTAP 9.8 ou posterior, salvo indicação em contrário nas notas ou conforme exigido por uma plataforma individual.
+* Todos os nós na configuração do MetroCluster devem estar executando a mesma versão do ONTAP. Por exemplo, se você tiver uma configuração de oito nós, todos os oito nós devem estar executando a mesma versão do ONTAP.
+
+
+[NOTE]
+====
+* Não exceda quaisquer limites de objeto do "inferior" das plataformas na combinação. Aplique o limite inferior de objetos das duas plataformas.
+* Se os limites da plataforma de destino forem inferiores aos limites do MetroCluster, você deverá reconfigurar o MetroCluster para estar nos limites da plataforma de destino ou inferiores antes de adicionar os novos nós.
+* Consulte a link:https://hwu.netapp.com["Hardware Universe"^]para obter os limites da plataforma.
+
+
+====
+.Combinações de transição AFF e FAS suportadas
+A tabela a seguir mostra as combinações de plataforma suportadas. Você pode fazer a transição de plataformas na coluna esquerda para plataformas listadas como suportadas nas colunas para a direita, conforme indicado pelas células da tabela coloridas.
+
+Por exemplo, a transição de uma configuração MetroCluster FC que consiste em módulos de controlador AFF8060 para uma configuração IP que consiste em módulos de controlador AFF A400 é suportada.
+
+image::../media/4node-transition-9151-update.png[Mostra as combinações de plataforma compatíveis para transição de IP para FC]
+
+* Nota 1: Esta combinação de plataforma requer ONTAP 9.11,1 ou posterior.
+* Observação 2: Você precisa ter uma interface 40GbE para as interfaces de cluster local nos nós FC.
+* Observação 3: Você precisa ter uma interface 100GbE para as interfaces de cluster local nos nós FC.
+
+
+.Combinações de plataforma de transição ASA suportadas
+A tabela a seguir mostra as combinações de plataforma suportadas para sistemas ASA.
+
+[cols="3*"]
+|===
+| Fonte da plataforma MetroCluster FC | Plataforma IP MetroCluster de destino | Suportado? 
+
+
+.2+| ASA A400 | ASA A400 | Sim 
+
+
+| ASA A900 | Não 
+
+
+.2+| ASA A900 | ASA A400 | Não 
+
+
+| ASA A900 | Sim 
+|===
+
+
+== Escolha o procedimento de transição
+
+Você deve selecionar um procedimento de transição dependendo da configuração existente do MetroCluster FC.
+
+Um procedimento de transição substitui a malha de switch FC de back-end ou a conexão FC-VI por uma rede de switch IP. O procedimento exato depende da configuração inicial.
+
+As plataformas originais e os switches FC (se presentes) são desativados no final do procedimento de transição.
+
+[cols="20,20,20,40"]
+|===
+
+
+| A iniciar a configuração | Interrupções ou interrupções | Requisitos | Procedimento 
+
+
+ a| 
+Quatro ou oito nós
+ a| 
+Sem interrupções
+ a| 
+Novas gavetas de storage são compatíveis com novas plataformas.
+ a| 
+link:concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["Ligação ao procedimento"]
+
+
+
+ a| 
+Dois nós
+ a| 
+Interrupções
+ a| 
+Novas gavetas de storage são compatíveis com plataformas originais e novas.
+ a| 
+link:task_disruptively_transition_from_a_two_node_mcc_fc_to_a_four_node_mcc_ip_configuration.html["Ligação ao procedimento"]
+
+
+
+ a| 
+Dois nós
+ a| 
+Interrupções
+ a| 
+Novas gavetas de storage são compatíveis com plataformas originais e novas. É preciso desativar as gavetas de storage antigas.
+ a| 
+link:task_disruptively_transition_while_move_volumes_from_old_shelves_to_new_shelves.html["Ligação ao procedimento"]
+
+
+
+ a| 
+Dois nós
+ a| 
+Interrupções
+ a| 
+Compartimentos de storage antigos não são compatíveis com novas plataformas. É preciso desativar as gavetas de storage antigas.
+ a| 
+link:task_disruptively_transition_when_exist_shelves_are_not_supported_on_new_controllers.html["Ligação ao procedimento"]
+
+|===

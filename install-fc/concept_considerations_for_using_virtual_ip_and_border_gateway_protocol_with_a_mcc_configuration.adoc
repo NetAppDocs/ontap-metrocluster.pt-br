@@ -1,0 +1,58 @@
+---
+permalink: install-fc/concept_considerations_for_using_virtual_ip_and_border_gateway_protocol_with_a_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, virtual, ip, border, gateway, protocol, configuration 
+summary: 'A partir do ONTAP 9.5, o ONTAP suporta a conetividade da camada 3 usando IP virtual (VIP) e protocolo de gateway de borda (BGP). A combinação VIP e BGP para redundância na rede front-end com a redundância MetroCluster back-end fornece uma solução de recuperação de desastres de camada 3.' 
+---
+= Considerações para usar IP virtual e protocolo de gateway de borda com uma configuração MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.5, o ONTAP oferece suporte à conetividade da camada 3 usando IP virtual (VIP) e protocolo de gateway de borda (BGP). A combinação VIP e BGP para redundância na rede front-end com a redundância MetroCluster back-end fornece uma solução de recuperação de desastres de camada 3.
+
+Revise as diretrizes e a ilustração a seguir ao Planejar sua solução de camada 3. Para obter detalhes sobre como implementar o VIP e o BGP no ONTAP, link:https://docs.netapp.com/us-en/ontap/networking/configure_virtual_ip_@vip@_lifs.html["Configurar IP LIFs virtuais"^]consulte .
+
+image::../media/vip_and_bgp_in_metrocluster_2.png[vip e bgp em MetroCluster 2]
+
+
+
+== Limitações DE ONTAP
+
+O ONTAP não verifica automaticamente se todos os nós em ambos os sites da configuração do MetroCluster estão configurados com peering BGP.
+
+O ONTAP não executa agregação de rotas, mas anuncia todos os IPs de LIF virtuais individuais como rotas de host exclusivas em todos os momentos.
+
+O ONTAP não suporta True anycast -- apenas um único nó no cluster apresenta um IP de LIF virtual específico (mas é aceito por todas as interfaces físicas, independentemente de serem LIFs BGP, desde que a porta física faça parte do espaço IPspace correto). Diferentes LIFs podem migrar independentemente um do outro para diferentes nós de hospedagem.
+
+
+
+== Diretrizes para o uso desta solução de camada 3 com uma configuração MetroCluster
+
+Você deve configurar seu BGP e VIP corretamente para fornecer a redundância necessária.
+
+Cenários de implantação mais simples são preferidos em relação a arquiteturas mais complexas (por exemplo, um roteador de peering BGP é acessível em um roteador intermediário não BGP). No entanto, o ONTAP não aplica restrições de design ou topologia de rede.
+
+Os LIFs VIP cobrem apenas a rede frontend/data.
+
+Dependendo da sua versão do ONTAP, você deve configurar LIFs de peering BGP no nó SVM, não no sistema ou na SVM de dados. No ONTAP 9.8, as LIFs de BGP são visíveis no SVM do cluster (sistema) e as SVMs de nó não estão mais presentes.
+
+Cada SVM de dados requer a configuração de todos os endereços potenciais de gateway de primeiro salto (normalmente, o endereço IP de peering do roteador BGP), de modo que o caminho de dados de retorno esteja disponível se ocorrer uma migração de LIF ou failover de MetroCluster.
+
+As LIFs BGP são específicas de nós, semelhantes às LIFs entre clusters - cada nó tem uma configuração exclusiva, que não precisa ser replicado para os nós do local de DR.
+
+Uma vez configurado, a existência do v0a (v0b e assim por diante) valida continuamente a conetividade, garantindo que uma migração de LIF ou failover seja bem-sucedida (ao contrário do L2, onde uma configuração quebrada só é visível após a interrupção).
+
+Uma grande diferença de arquitetura é que os clientes não devem mais compartilhar a mesma sub-rede IP que o VIP de SVMs de dados. Um roteador L3 com recursos apropriados de resiliência e redundância de nível empresarial habilitados (por exemplo, VRRP/HSRP) deve estar no caminho entre o armazenamento e os clientes para que o VIP funcione corretamente.
+
+O processo de atualização confiável do BGP permite migrações de LIF mais suaves, pois elas são marginalmente mais rápidas e têm menor chance de interrupção para alguns clientes
+
+Você pode configurar o BGP para detetar algumas classes de comportamentos incorretos de rede ou switch mais rápido do que o LACP, se configurado de acordo.
+
+O BGP externo (EBGP) usa números diferentes entre nós ONTAP e roteadores de peering e é a implantação preferida para facilitar a agregação e redistribuição de rotas nos roteadores. O BGP interno (IBGP) e o uso de refletores de rota não são impossíveis, mas fora do escopo de uma configuração VIP direta.
+
+Após a implantação, você deve verificar se o SVM de dados está acessível quando o LIF virtual associado é migrado entre todos os nós em cada local (incluindo switchover de MetroCluster) para verificar a configuração correta das rotas estáticas para o mesmo SVM de dados.
+
+O VIP funciona para a maioria dos protocolos baseados em IP (NFS, SMB, iSCSI).

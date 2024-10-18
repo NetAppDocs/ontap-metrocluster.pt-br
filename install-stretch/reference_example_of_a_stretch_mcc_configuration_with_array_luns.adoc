@@ -1,0 +1,29 @@
+---
+permalink: install-stretch/reference_example_of_a_stretch_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, example, stretch, configuration, array, luns, e-series, FAS9000 
+summary: Em uma configuração Stretch MetroCluster com LUNs de array, você precisa fazer o cabeamento das portas FC-VI para conectividade direta entre os controladores. Além disso, você deve fazer o cabeamento de cada porta HBA do controlador para alternar as portas nos switches FC correspondentes. O cabeamento das LUNs de array é igual ao de uma MetroCluster conectada à malha, com exceção das LUNs de array e-Series, que podem ser conectadas diretamente. 
+---
+= Exemplo de uma configuração Stretch MetroCluster com LUNs de array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Em uma configuração Stretch MetroCluster com LUNs de array, você precisa fazer o cabeamento das portas FC-VI para conectividade direta entre os controladores. Além disso, você deve fazer o cabeamento de cada porta HBA do controlador para alternar as portas nos switches FC correspondentes. O cabeamento das LUNs de array é igual ao de uma MetroCluster conectada à malha, com exceção das LUNs de array e-Series, que podem ser conectadas diretamente.
+
+A ilustração a seguir mostra as portas FC-VI cabeadas entre os controladores A e B em uma configuração Stretch MetroCluster:
+
+image::../media/fc_vi_connections_campus.gif[campus de conexões fc vi]
+
+
+NOTE: Os módulos dos controladores de sistemas de storage da FAS9000 usam quatro portas FC-VI cada uma.
+
+Para configurações com LUNs de array e-Series, é possível conectar diretamente aos LUNs e-Series.
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/Direct_Attach_support_for_Stretch_MetroCluster_Configuration_with_NetApp_E-Series_array["Suporte de conexão direta para configuração Stretch MetroCluster com array NetApp e-Series"]
+
+Com exceção da conexão das portas FC-VI, o restante deste procedimento é para a configuração de uma configuração MetroCluster com LUNs de array, que não estejam usando LUNs de array e-Series. Isso requer switches FC que são iguais ao uso de LUNs de array em configurações conectadas à malha.
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]

@@ -1,0 +1,76 @@
+---
+permalink: upgrade/task_configure_the_fc_to_sas_bridges_for_health_monitor.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, configure, fc, sas, bridges, health, monitoring 
+summary: Ferramentas de monitoramento SNMP de terceiros não são suportadas para bridges FibreBridge. A partir do ONTAP 9.8, as bridges FC para SAS são monitoradas por meio de conexões na banda por padrão, e não é necessária configuração adicional. 
+---
+= Configuração de pontes FC para SAS para monitoramento de integridade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba como configurar as pontes FC-para-SAS para monitoramento de integridade.
+
+.Sobre esta tarefa
+* Ferramentas de monitoramento SNMP de terceiros não são suportadas para bridges FibreBridge.
+* A partir do ONTAP 9.8, as bridges FC para SAS são monitoradas por meio de conexões na banda por padrão, e não é necessária configuração adicional.
+
+
+
+NOTE: A partir de ONTAP 9.8, o `storage bridge` comando é substituído por `system bridge`. As etapas a seguir mostram o `storage bridge` comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o `system bridge` comando é preferido.
+
+.Passo
+. No prompt do cluster do ONTAP, adicione a ponte ao monitoramento de integridade:
++
+.. Adicione a ponte, usando o comando para sua versão do ONTAP:
++
+|===
+
+
+| Versão de ONTAP | Comando 
+
+
+ a| 
+9,5 e mais tarde
+ a| 
+`storage bridge add -address 0.0.0.0 -managed-by in-band -name _bridge-name_`
+
+
+
+ a| 
+9,4 e anteriores
+ a| 
+`storage bridge add -address _bridge-ip-address_ -name _bridge-name_`
+
+|===
+.. Verifique se a ponte foi adicionada e está configurada corretamente:
++
+`storage bridge show`
+
++
+Pode levar até 15 minutos para refletir todos os dados por causa do intervalo de votação. O monitor de integridade do ONTAP pode entrar em Contato e monitorar a ponte se o valor na coluna "Status" for "ok", e outras informações, como o nome mundial (WWN), forem exibidas.
+
++
+O exemplo a seguir mostra que as bridges FC para SAS estão configuradas:
+
++
+[listing]
+----
+controller_A_1::> storage bridge show
+
+Bridge              Symbolic Name Is Monitored  Monitor Status  Vendor Model                Bridge WWN
+------------------  ------------- ------------  --------------  ------ -----------------    ----------
+ATTO_10.10.20.10  atto01        true          ok              Atto   FibreBridge 7500N   	20000010867038c0
+ATTO_10.10.20.11  atto02        true          ok              Atto   FibreBridge 7500N   	20000010867033c0
+ATTO_10.10.20.12  atto03        true          ok              Atto   FibreBridge 7500N   	20000010867030c0
+ATTO_10.10.20.13  atto04        true          ok              Atto   FibreBridge 7500N   	2000001086703b80
+
+4 entries were displayed
+
+ controller_A_1::>
+----
+
+
+

@@ -1,0 +1,38 @@
+---
+permalink: install-fc/task_mirror_the_root_aggregates_mcc_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, mirror, root, aggregates 
+summary: Você precisa espelhar os agregados raiz em sua configuração do MetroCluster para garantir a proteção de dados. 
+---
+= Espelhamento dos agregados de raiz
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa espelhar os agregados raiz em sua configuração do MetroCluster para garantir a proteção de dados.
+
+.Antes de começar
+Você precisa garantir que os requisitos do SyncMirror para a configuração MetroCluster com LUNs de array sejam atendidos. link:reference_requirements_for_a_mcc_configuration_with_array_luns_reference.html["Requisitos para uma configuração MetroCluster com LUNs de array"]Consulte a .
+
+.Sobre esta tarefa
+Você deve repetir esta tarefa para cada controlador na configuração do MetroCluster.
+
+.Passo
+. Espelhar o agregado de raiz sem espelhamento:
++
+`storage aggregate mirror`
+
++
+O comando a seguir espelha o agregado raiz para controller_A_1:
+
++
+[listing]
+----
+controller_A_1::> storage aggregate mirror aggr0_controller_A_1
+----
++
+O agregado de raiz é espelhado com LUNs de array de pool1.
+
+

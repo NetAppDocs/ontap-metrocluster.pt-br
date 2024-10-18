@@ -1,0 +1,16 @@
+---
+permalink: install-stretch/concept_stretch_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, connections, stretch, configuration, array, lun 
+summary: Em uma configuração Stretch MetroCluster com LUNs de array, você precisa conectar as portas FC-VI entre controladores. Há suporte para conectividade direta entre os controladores e os storage arrays e-Series. Para todas as outras configurações de LUN de array, você deve usar switches FC na configuração. 
+---
+= Conexões em configurações Stretch MetroCluster com LUNs de array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Em uma configuração Stretch MetroCluster, com LUNs de array, você precisa conectar as portas FC-VI entre controladores. Há suporte para conectividade direta entre os controladores e os storage arrays e-Series. Para todos os outros arrays de configurações de LUN, você deve usar switches FC na configuração.
+
+Você também pode configurar uma configuração Stretch MetroCluster com discos e LUNs de array. Em tal configuração, você precisa usar pontes FC para SAS ou cabos óticos SAS para conectar controladores a discos.

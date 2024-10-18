@@ -1,0 +1,133 @@
+= 
+:allow-uri-read: 
+
+
+Para garantir uma instalação bem-sucedida do MetroCluster, redefina e restaure padrões nos módulos do controlador.
+
+.Importante
+Essa tarefa só é necessária para configurações Stretch usando bridges FC-para-SAS.
+
+.Passos
+. No prompt Loader, retorne as variáveis ambientais à configuração padrão:
++
+`set-defaults`
+
+. Inicialize o nó no modo Manutenção e, em seguida, configure as configurações para quaisquer HBAs no sistema:
++
+.. Arranque no modo de manutenção:
++
+`boot_ontap maint`
+
+.. Verifique as definições atuais das portas:
++
+`ucadmin show`
+
+.. Atualize as definições da porta conforme necessário.
+
+
++
+|===
+
+
+| Se você tem este tipo de HBA e modo desejado... | Use este comando... 
+
+
+ a| 
+CNA FC
+ a| 
+`ucadmin modify -m fc -t initiator _adapter_name_`
+
+
+
+ a| 
+CNA Ethernet
+ a| 
+`ucadmin modify -mode cna _adapter_name_`
+
+
+
+ a| 
+Destino de FC
+ a| 
+`fcadmin config -t target _adapter_name_`
+
+
+
+ a| 
+Iniciador FC
+ a| 
+`fcadmin config -t initiator _adapter_name_`
+
+|===
+. Sair do modo de manutenção:
++
+`halt`
+
++
+Depois de executar o comando, aguarde até que o nó pare no prompt DO Loader.
+
+. Inicialize o nó novamente no modo Manutenção para permitir que as alterações de configuração entrem em vigor:
++
+`boot_ontap maint`
+
+. Verifique as alterações feitas:
++
+|===
+
+
+| Se você tem este tipo de HBA... | Use este comando... 
+
+
+ a| 
+CNA
+ a| 
+`ucadmin show`
+
+
+
+ a| 
+FC
+ a| 
+`fcadmin show`
+
+|===
+. Sair do modo de manutenção:
++
+`halt`
+
++
+Depois de executar o comando, aguarde até que o nó pare no prompt DO Loader.
+
+. Inicialize o nó no menu de inicialização:
++
+`boot_ontap menu`
+
++
+Depois de executar o comando, aguarde até que o menu de inicialização seja exibido.
+
+. Limpe a configuração do nó digitando "wipeconfig" no prompt do menu de inicialização e pressione Enter.
++
+A tela a seguir mostra o prompt do menu de inicialização:
+
++
+--
+....
+Please choose one of the following:
+
+     (1) Normal Boot.
+     (2) Boot without /etc/rc.
+     (3) Change password.
+     (4) Clean configuration and initialize all disks.
+     (5) Maintenance mode boot.
+     (6) Update flash from backup config.
+     (7) Install new software first.
+     (8) Reboot node.
+     (9) Configure Advanced Drive Partitioning.
+     Selection (1-9)?  wipeconfig
+ This option deletes critical system configuration, including cluster membership.
+ Warning: do not run this option on a HA node that has been taken over.
+ Are you sure you want to continue?: yes
+ Rebooting to finish wipeconfig request.
+....
+--
+

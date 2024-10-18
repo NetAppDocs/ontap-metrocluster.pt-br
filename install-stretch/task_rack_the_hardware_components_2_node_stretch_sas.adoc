@@ -1,0 +1,36 @@
+---
+permalink: install-stretch/task_rack_the_hardware_components_2_node_stretch_sas.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, rack, hardware, components 
+summary: Se você não recebeu o equipamento já instalado em armários, você deve colocar os componentes em rack. 
+---
+= Colocar em pilha os componentes de hardware
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você não recebeu o equipamento já instalado em armários, você deve colocar os componentes em rack.
+
+Esta tarefa tem de ser executada em ambos os sites da MetroCluster.
+
+.Passos
+. Planeie o posicionamento dos componentes do MetroCluster.
++
+A quantidade de espaço em rack necessária depende do modelo de plataforma das controladoras de storage, dos tipos de switch e do número de stacks de compartimento de disco na configuração.
+
+. Utilizando práticas de oficina padrão para trabalhar com equipamentos elétricos, certifique-se de que está devidamente ligado à terra.
+. Instale os controladores de armazenamento no rack ou gabinete.
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+. Instale as gavetas de disco, encadeie em série as gavetas de disco em cada pilha, ligue-as e defina as IDs de gaveta.
++
+Consulte o guia apropriado para o modelo do compartimento de disco para obter informações sobre prateleiras de disco em encadeamento em série e sobre a configuração de IDs de gaveta.
+
++
+
+NOTE: As IDs de gaveta devem ser exclusivas para cada gaveta de disco SAS em cada grupo de DR do MetroCluster (incluindo ambos os locais). Ao definir manualmente as IDs de gaveta, você deve desligar o compartimento de disco.
+
+

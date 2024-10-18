@@ -1,0 +1,160 @@
+---
+permalink: upgrade/task_boot_the_new_controllers_and_join_them_to_the_cluster.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, boot, new, controller, join, cluster 
+summary: Para unir os novos controladores ao cluster, você deve inicializar cada novo módulo de controladora e usar o assistente de configuração do cluster do ONTAP para identificar o cluster que será associado. 
+---
+= Inicializando os novos controladores e juntando-os ao cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para unir os novos controladores ao cluster, você deve inicializar cada novo módulo de controladora e usar o assistente de configuração do cluster do ONTAP para identificar o cluster que será associado.
+
+.Antes de começar
+Você deve ter cabeado a configuração do MetroCluster.
+
+Você não deve ter configurado o processador de serviço antes de executar esta tarefa.
+
+.Sobre esta tarefa
+Essa tarefa deve ser executada em cada uma das novas controladoras em ambos os clusters na configuração MetroCluster.
+
+.Passos
+. Se você ainda não fez isso, ligue cada nó e deixe-os inicializar completamente.
++
+Se o sistema estiver no modo Manutenção, emita o `halt` comando para sair do modo Manutenção e, em seguida, emita o seguinte comando a partir do prompt Loader:
+
++
+`boot_ontap`
+
++
+O módulo do controlador entra no assistente de configuração do nó.
+
++
+A saída deve ser semelhante ao seguinte:
+
++
+[listing]
+----
+Welcome to node setup
+
+You can enter the following commands at any time:
+  "help" or "?" - if you want to have a question clarified,
+  "back" - if you want to change previously answered questions, and
+  "exit" or "quit" - if you want to quit the setup wizard.
+				Any changes you made before quitting will be saved.
+
+To accept a default or omit a question, do not enter a value.
+.
+.
+.
+----
+. Ative a ferramenta AutoSupport seguindo as instruções fornecidas pelo sistema.
+. Responda aos prompts para configurar a interface de gerenciamento de nós.
++
+Os prompts são semelhantes aos seguintes:
+
++
+[listing]
+----
+Enter the node management interface port: [e0M]:
+Enter the node management interface IP address: 10.228.160.229
+Enter the node management interface netmask: 225.225.252.0
+Enter the node management interface default gateway: 10.228.160.1
+----
+. Confirme se os nós estão configurados no modo de alta disponibilidade:
++
+`storage failover show -fields mode`
+
++
+Caso contrário, você deve emitir o seguinte comando em cada nó e, em seguida, reinicializar o nó:
+
++
+`storage failover modify -mode ha -node localhost`
+
++
+Este comando configura o modo de alta disponibilidade, mas não ativa o failover de armazenamento. O failover de armazenamento é ativado automaticamente quando você emite o `metrocluster configure` comando mais tarde no processo de configuração.
+
+. Confirme se você tem quatro portas configuradas como interconexões de cluster:
++
+`network port show`
+
++
+O exemplo a seguir mostra a saída para dois controladores em cluster_A. Se for uma configuração de MetroCluster de dois nós, a saída mostrará apenas um nó.
+
++
+[listing]
+----
+cluster_A::> network port show
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+node_A_1
+       **e0a       Cluster      Cluster          up       1500  auto/1000
+       e0b       Cluster      Cluster          up       1500  auto/1000**
+       e0c       Default      Default          up       1500  auto/1000
+       e0d       Default      Default          up       1500  auto/1000
+       e0e       Default      Default          up       1500  auto/1000
+       e0f       Default      Default          up       1500  auto/1000
+       e0g       Default      Default          up       1500  auto/1000
+node_A_2
+       **e0a       Cluster      Cluster          up       1500  auto/1000
+       e0b       Cluster      Cluster          up       1500  auto/1000**
+       e0c       Default      Default          up       1500  auto/1000
+       e0d       Default      Default          up       1500  auto/1000
+       e0e       Default      Default          up       1500  auto/1000
+       e0f       Default      Default          up       1500  auto/1000
+       e0g       Default      Default          up       1500  auto/1000
+14 entries were displayed.
+----
+. Como você está usando a CLI para configurar o cluster, saia do assistente de configuração do nó:
++
+`exit`
+
+. Inicie sessão na conta de administrador utilizando o `admin` nome de utilizador.
+. Inicie o assistente Configuração de cluster e, em seguida, junte-se ao cluster existente:
++
+`cluster setup`
+
++
+[listing]
+----
+::> cluster setup
+
+Welcome to the cluster setup wizard.
+
+You can enter the following commands at any time:
+  "help" or "?" - if you want to have a question clarified,
+  "back" - if you want to change previously answered questions, and
+  "exit" or "quit" - if you want to quit the cluster setup wizard.
+     Any changes you made before quitting will be saved.
+
+You can return to cluster setup at any time by typing "cluster setup".
+To accept a default or omit a question, do not enter a value.
+
+
+Do you want to create a new cluster or join an existing cluster? {create, join}:`join`
+----
+. Depois de concluir o assistente *Cluster Setup* e ele sair, verifique se o cluster está ativo e se o nó está em bom estado:
++
+`cluster show`
+
++
+O exemplo a seguir mostra um cluster no qual o primeiro nó (cluster1-01) está íntegro e qualificado para participar:
+
++
+[listing]
+----
+cluster_A::> cluster show
+Node               Health  Eligibility
+------------------ ------- ------------
+node_A_1           true    true
+node_A_2           true    true
+node_A_3           true    true
+----
++
+Se for necessário alterar qualquer uma das configurações inseridas para o SVM ou nó SVM admin, você poderá acessar o assistente *Configuração de cluster* usando o `cluster setup command`.
+
+

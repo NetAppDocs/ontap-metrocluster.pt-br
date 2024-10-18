@@ -1,0 +1,111 @@
+---
+permalink: maintain/reference_mcc_failure_scenarios.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, failure, recovery, scenarios 
+summary: Você deve estar ciente de como a configuração do MetroCluster responde a diferentes eventos de falha. 
+---
+= Cenários de falha e recuperação do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve estar ciente de como a configuração do MetroCluster responde a diferentes eventos de falha.
+
+
+NOTE: Para obter informações adicionais sobre a recuperação de falhas de nó, consulte a seção "escolher o procedimento de recuperação correto" no link:../disaster-recovery/concept_dr_workflow.html["Recuperar de um desastre"].
+
+|===
+
+
+| Evento | Impacto | Recuperação 
+
+
+ a| 
+Falha de nó único
+ a| 
+Um failover é acionado.
+ a| 
+A configuração se recupera por meio de uma aquisição local. RAID não é afetado. Revise as mensagens do sistema e substitua as FRUs com falha, conforme necessário.
+
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+
+
+ a| 
+Dois nós falham em um local
+ a| 
+Dois nós só falharão se o switchover automatizado for habilitado no software tiebreaker do MetroCluster.
+ a| 
+Switchover não planejado manual (USO) se o switchover automatizado no software tiebreaker do MetroCluster não estiver ativado.
+
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+
+
+ a| 
+Interface IP MetroCluster - falha de uma porta
+ a| 
+O sistema está degradado. Falha de porta adicional afeta o espelhamento de HA.
+ a| 
+A segunda porta é usada. O Monitor de integridade gera um alerta se o link físico para a porta estiver quebrado. Revise as mensagens do sistema e substitua as FRUs com falha, conforme necessário.
+
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+
+
+ a| 
+Interface IP MetroCluster - falha de ambas as portas
+ a| 
+A capacidade DE HA é afetada. O RAID SyncMirror do nó pára a sincronização.
+ a| 
+É necessária uma recuperação manual imediata, uma vez que não existe uma aquisição de HA. Revise as mensagens do sistema e substitua as FRUs com falha, conforme necessário.
+
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+
+
+ a| 
+Falha de um switch IP MetroCluster
+ a| 
+Sem impactos. A redundância é fornecida através da segunda rede.
+ a| 
+Substitua o interrutor com falha, conforme necessário.
+
+link:task_replace_an_ip_switch.html["Substituição de um switch IP"]
+
+
+
+ a| 
+Falha de dois switches IP MetroCluster que estão na mesma rede
+ a| 
+Sem impactos. A redundância é fornecida através da segunda rede.
+ a| 
+Substitua o interrutor com falha, conforme necessário.
+
+link:task_replace_an_ip_switch.html["Substituição de um switch IP"]
+
+
+
+ a| 
+Falha de dois switches IP MetroCluster que estão em um local
+ a| 
+O RAID SyncMirror do nó pára a sincronização. A capacidade DE HA é afetada e o cluster fica sem quorum.
+ a| 
+Substitua o interrutor com falha, conforme necessário.
+
+link:task_replace_an_ip_switch.html["Substituição de um switch IP"]
+
+
+
+ a| 
+Falha de dois switches IP MetroCluster que estão em locais diferentes e não na mesma rede (falha diagonal)
+ a| 
+O RAID SyncMirror do nó pára a sincronização.
+ a| 
+O RAID SyncMirror do nó pára a sincronização. Os recursos de cluster e HA não são afetados. Substitua o interrutor com falha, conforme necessário.
+
+link:task_replace_an_ip_switch.html["Substituição de um switch IP"]
+
+|===

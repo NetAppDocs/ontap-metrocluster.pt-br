@@ -1,0 +1,24 @@
+---
+permalink: transition/task_remove_tiebreaker_4n_transition.html 
+sidebar: sidebar 
+keywords: Transitioning from MetroCluster FC to MetroCluster IP configurations, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: 'Se a configuração existente for monitorada com a configuração tiebreaker do MetroCluster ou outros aplicativos de terceiros (por exemplo, ClusterLion) que possam iniciar um switchover, você deverá remover a configuração do MetroCluster do tiebreaker ou de outro software antes da transição.' 
+---
+= Remoção da configuração existente do tiebreaker ou de outro software de monitoramento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se a configuração existente for monitorada com a configuração tiebreaker do MetroCluster ou outros aplicativos de terceiros (por exemplo, ClusterLion) que possam iniciar um switchover, você deverá remover a configuração do MetroCluster do tiebreaker ou de outro software antes da transição.
+
+. Remova a configuração existente do MetroCluster do software tiebreaker.
++
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["Remoção das configurações do MetroCluster"]
+
+. Remova a configuração do MetroCluster existente de qualquer aplicativo de terceiros que possa iniciar o switchover.
++
+Consulte a documentação da aplicação.
+
+

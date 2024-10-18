@@ -1,0 +1,26 @@
+---
+permalink: install-fc/task_cable_the_management_and_data_connections.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, management, data, connections 
+summary: Você deve encaminhar as portas de gerenciamento e dados em cada controlador de storage para as redes do local. 
+---
+= Cabeamento das conexões de dados e gerenciamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve encaminhar as portas de gerenciamento e dados em cada controlador de storage para as redes do local.
+
+.Sobre esta tarefa
+Esta tarefa deve ser repetida para cada novo controlador em ambos os locais do MetroCluster.
+
+Você pode conetar as portas de gerenciamento do controlador e do switch de cluster a switches existentes na rede ou a novos switches de rede dedicados, como os switches de gerenciamento de cluster NetApp CN1601.
+
+.Passo
+. Faça o cabeamento das portas de gerenciamento e dados do controlador para as redes de gerenciamento e dados no local.
++
+https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
+
+

@@ -1,0 +1,106 @@
+---
+permalink: tiebreaker/reference_where_to_find_additional_information_tb_icg.html 
+sidebar: sidebar 
+keywords: metrocluster, configuration, operation, netapp, documentation, additional, information, miscellaneous, guide 
+summary: Você pode saber mais sobre a configuração e operação do MetroCluster. 
+---
+= Onde encontrar informações adicionais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode saber mais sobre a configuração e operação do MetroCluster.
+
+
+
+== MetroCluster e informações diversas
+
+|===
+
+
+| Informações | Assunto 
+
+
+ a| 
+link:../index.html["Documentação do MetroCluster"]
+ a| 
+* Todas as informações do MetroCluster
+
+
+
+
+ a| 
+https://www.netapp.com/pdf.html?item=/media/13482-tr4375pdf.pdf["Relatório Técnico da NetApp 4375: NetApp MetroCluster for ONTAP 9.3"^]
+ a| 
+* Uma visão geral técnica da configuração e operação do MetroCluster.
+* Práticas recomendadas para a configuração do MetroCluster.
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]
+ a| 
+* Arquitetura MetroCluster conectada à malha
+* Fazer o cabeamento da configuração
+* Configuração de pontes FC para SAS
+* Configuração dos switches FC
+* Configurando o MetroCluster no ONTAP
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-stretch/concept_considerations_differences.html["Instalação e configuração do Stretch MetroCluster"]
+ a| 
+* Arquitetura Stretch MetroCluster
+* Fazer o cabeamento da configuração
+* Configuração de pontes FC para SAS
+* Configurando o MetroCluster no ONTAP
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_differences.html["Instalação e configuração IP do MetroCluster"]
+ a| 
+* Arquitetura IP do MetroCluster
+* Cabeamento da configuração IP do MetroCluster
+* Configurando o MetroCluster no ONTAP
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/maintain/index.html["Mantenha os componentes do MetroCluster"]
+ a| 
+* Diretrizes para manutenção em uma configuração MetroCluster
+* Procedimentos de substituição ou atualização de hardware e atualização de firmware para bridges FC para SAS e switches FC
+* Adição automática de um compartimento de disco em uma configuração de MetroCluster elástica ou conetada à malha
+* Remoção automática de uma gaveta de disco em uma configuração de MetroCluster elástica ou conetada à malha
+* Substituição de hardware em um local de desastre em uma configuração de MetroCluster alongada ou conetada à malha
+* Expansão de uma configuração de MetroCluster Stretch ou conectada à malha de dois nós para uma configuração de MetroCluster de quatro nós.
+* Expansão de uma configuração de MetroCluster alongada ou conectada à malha de quatro nós para uma configuração de MetroCluster de oito nós.
+
+
+
+
+ a| 
+Documentação do Active IQ Unified Manager
+
+https://docs.netapp.com["Documentação do NetApp: Guias de produto e recursos"^]
+ a| 
+* Monitoramento da configuração e do desempenho do MetroCluster
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-7mode-transition/copy-based/index.html["Transição baseada em cópia"]
+ a| 
+* Transição de dados de sistemas de storage 7-Mode para sistemas de armazenamento em cluster
+
+
+|===

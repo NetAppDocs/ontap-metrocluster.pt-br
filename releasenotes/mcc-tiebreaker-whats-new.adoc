@@ -1,0 +1,267 @@
+---
+permalink: releasenotes/mcc-tiebreaker-whats-new.html 
+sidebar: sidebar 
+keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
+summary: O software tiebreaker fornece recursos de monitoramento para um ambiente de storage em cluster. Ele também envia notificações SNMP em caso de problemas de conetividade de nó e desastres de site. 
+---
+= Novidades no suporte ao tiebreaker do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead lead"]
+As melhorias no software tiebreaker MetroCluster são fornecidas em cada versão. Veja o que há de novo em lançamentos recentes do MetroCluster Tiebreaker.
+
+
+
+== Melhorias
+
+[cols="25,75"]
+|===
+
+
+| Versão de desempate do ONTAP | Melhorias 
+
+
+ a| 
+1.6P1
+ a| 
+* Atualização de bibliotecas de suporte
+* Melhorias de segurança
+
+
+
+
+ a| 
+1,6
+ a| 
+* Maior facilidade de instalação
+* Atualização de bibliotecas de suporte
+* Melhorias de segurança
+
+
+
+
+ a| 
+1,5
+ a| 
+* Atualização de bibliotecas de suporte
+* Melhorias de segurança
+
+
+
+
+ a| 
+1,4
+ a| 
+* Atualização de bibliotecas de suporte
+
+
+|===
+
+
+== Matriz de suporte de SO
+
+A tabela a seguir indica os sistemas operacionais suportados para cada versão do tiebreaker.
+
+|===
+
+
+| SO para desempate | 1.6P1 | 1,6 | 1,5 | 1,4 
+
+
+ a| 
+Rocky Linux 9,4
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Rocky Linux 9,0
+ a| 
+Não
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Rocky Linux 8,10
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Chapéu vermelho 9,4
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Chapéu vermelho 9,3
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Chapéu vermelho 9,2
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Chapéu vermelho 9,1
+ a| 
+Não
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Chapéu vermelho 9,0
+ a| 
+Não
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Red Hat 8,11 - 9,0
+ a| 
+Não
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Chapéu vermelho 8,10
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Chapéu vermelho 8,9
+ a| 
+Não
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Chapéu vermelho 8,8
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Red Hat 8,1 - 8,7
+ a| 
+Não
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+Red Hat 7 - 7,9
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+ a| 
+Sim
+
+
+
+ a| 
+CentOS 7 - 7,9
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+ a| 
+Sim
+
+|===

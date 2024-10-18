@@ -1,0 +1,128 @@
+---
+permalink: maintain/verify-health-mcc-config.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, fc, verify, health, troubleshoot, cli, system manager, error, event, problem, maintenance, fix, correction, check 
+summary: Saiba como verificar se os componentes do MetroCluster estão saudáveis. 
+---
+= Verifique a integridade de uma configuração do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba como verificar se os componentes do MetroCluster estão saudáveis.
+
+.Sobre esta tarefa
+* Nas configurações MetroCluster IP e FC, você pode usar a CLI para executar comandos de verificação de integridade e verificar o estado dos componentes do MetroCluster.
+* Nas configurações IP do MetroCluster executando o ONTAP 9.8 ou posterior, você também pode usar o Gerenciador do sistema ONTAP para monitorar e solucionar problemas de alertas de verificação de integridade.
+
+
+.Passos
+Verifique a integridade da configuração do MetroCluster dependendo se você está usando a CLI ou o Gerenciador de sistema.
+
+[role="tabbed-block"]
+====
+.CLI
+--
+Siga as etapas a seguir para verificar a integridade de uma configuração do MetroCluster usando a CLI.
+
+.Passos
+. Verifique se os componentes do MetroCluster estão em bom estado:
++
+[source, cli]
+----
+metrocluster check run
+----
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+----
++
+A operação é executada em segundo plano.
+
+. Após a `metrocluster check run` conclusão da operação, exiba os resultados:
++
+[source, cli]
+----
+metrocluster check show
+----
++
+Após cerca de cinco minutos, são apresentados os seguintes resultados:
+
++
+[listing]
+----
+cluster_A:::*> metrocluster check show
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         not-applicable
+volumes             ok
+7 entries were displayed.
+----
+. Verificar o estado do funcionamento da verificação do MetroCluster em curso:
++
+[source, cli]
+----
+metrocluster operation history show -job-id <id>
+----
+. Verifique se não há alertas de saúde:
++
+[source, cli]
+----
+system health alert show
+----
+
+
+--
+.Gerenciador do sistema ONTAP (somente MetroCluster IP)
+--
+A partir do ONTAP 9.8, o Gerenciador do sistema monitora a integridade das configurações IP do MetroCluster e ajuda a identificar e corrigir problemas que possam ocorrer.
+
+O Gerenciador do sistema verifica periodicamente a integridade da configuração IP do MetroCluster. Quando você visualiza a seção MetroCluster no Painel de Controle, geralmente a mensagem é "os sistemas MetroCluster estão saudáveis".
+
+No entanto, quando ocorrer um problema, a mensagem mostrará o número de eventos. Você pode clicar nesta mensagem e exibir os resultados da verificação de integridade dos seguintes componentes:
+
+* Nó
+* Interface de rede
+* Camada (storage)
+* Cluster
+* Ligação
+* Volume
+* Replicação de configuração
+
+
+A coluna *Status* identifica quais componentes têm problemas e a coluna *Detalhes* sugere como corrigir o problema.
+
+.Passos
+. No System Manager, selecione *Dashboard*.
+. Veja a mensagem na seção *MetroCluster*:
++
+.. Se a mensagem indicar que a configuração do MetroCluster está saudável e as conexões entre os clusters e o Mediador do ONTAP estão saudáveis (mostradas com marcas de verificação), então você não terá problemas para corrigir.
+.. Se a mensagem indicar o número de eventos ou se as ligações tiverem diminuído (apresentado com um "X"), avance para o passo seguinte.
+
+
+. Clique na mensagem que mostra o número de eventos.
++
+É apresentado o Relatório de estado do MetroCluster.
+
+. Solucione os problemas que aparecem no relatório usando as sugestões na coluna *Detalhes*.
+. Quando todos os problemas tiverem sido corrigidos, clique em *verificar o estado do MetroCluster*.
++
+
+NOTE: Você deve executar todas as tarefas de solução de problemas antes de executar a verificação porque a Verificação de integridade do MetroCluster usa uma quantidade intensiva de recursos.
+
++
+A Verificação de integridade do MetroCluster é executada em segundo plano. Você pode trabalhar em outras tarefas enquanto espera que ele termine.
+
+
+
+--
+====

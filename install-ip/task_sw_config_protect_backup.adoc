@@ -1,0 +1,23 @@
+---
+permalink: install-ip/task_sw_config_protect_backup.html 
+sidebar: sidebar 
+keywords: backup files, configuration backup 
+summary: 'Você pode fornecer proteção adicional para os arquivos de backup de configuração de cluster especificando um URL remoto (HTTP ou FTP) onde os arquivos de backup de configuração serão carregados além dos locais padrão no cluster local.' 
+---
+= Protegendo arquivos de backup de configuração
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode fornecer proteção adicional para os arquivos de backup de configuração de cluster especificando um URL remoto (HTTP ou FTP) onde os arquivos de backup de configuração serão carregados além dos locais padrão no cluster local.
+
+.Passo
+. Defina o URL do destino remoto para os arquivos de backup de configuração:
++
+`system configuration backup settings modify URL-of-destination`
+
+
+
+O https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["Gerenciamento de clusters com a CLI"] contém informações adicionais na seção _Gerenciando backups de configuração_.

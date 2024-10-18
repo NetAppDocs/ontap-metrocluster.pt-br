@@ -1,0 +1,217 @@
+---
+permalink: install-fc/concept_required_mcc_components_and_naming_conventions_fabric_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, required, fc, components, naming, conventions 
+summary: Ao Planejar a configuração do MetroCluster FC, você precisa entender os componentes de software e hardware necessários e compatíveis. Para conveniência e clareza, você também deve entender as convenções de nomenclatura usadas para componentes em exemplos ao longo da documentação. Por exemplo, um site é referido como Site A e o outro site é referido como Site B. 
+---
+= Componentes e convenções de nomenclatura necessários do MetroCluster FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao Planejar a configuração do MetroCluster FC, você precisa entender os componentes de software e hardware necessários e compatíveis. Para conveniência e clareza, você também deve entender as convenções de nomenclatura usadas para componentes em exemplos ao longo da documentação. Por exemplo, um site é referido como Site A e o outro site é referido como Site B.
+
+
+
+== Software e hardware suportados
+
+O hardware e o software devem ser compatíveis com a configuração MetroCluster FC.
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+Ao usar sistemas AFF, todos os módulos do controlador na configuração do MetroCluster devem ser configurados como sistemas AFF.
+
+
+NOTE: SFPs de onda longa não são suportados nos switches de armazenamento MetroCluster. Para obter uma tabela de SPFs compatíveis, consulte o Relatório técnico da MetroCluster.
+
+
+
+== Redundância de hardware na configuração MetroCluster FC
+
+Devido à redundância de hardware na configuração MetroCluster FC, há dois de cada componente em cada local. Os sites são arbitrariamente atribuídos às letras A e B e os componentes individuais são arbitrariamente atribuídos aos números 1 e 2.
+
+
+
+== Requisito para dois clusters ONTAP
+
+A configuração de MetroCluster FC conectada à malha requer dois clusters ONTAP, um em cada local da MetroCluster.
+
+A nomeação deve ser única dentro da configuração do MetroCluster.
+
+Nomes de exemplo:
+
+* Local A: Cluster_A
+* Local B: Cluster_B
+
+
+
+
+== Requisito para quatro switches FC
+
+A configuração MetroCluster FC conectada à malha requer quatro switches FC (modelos Brocade ou Cisco compatíveis).
+
+Os quatro switches formam duas malhas de storage de switch que fornecem o ISL entre cada um dos clusters na configuração MetroCluster FC.
+
+A nomeação deve ser única dentro da configuração do MetroCluster.
+
+
+
+== Requisito para dois, quatro ou oito módulos de controlador
+
+A configuração MetroCluster FC conectada à malha requer dois, quatro ou oito módulos de controladora.
+
+Em uma configuração de MetroCluster de quatro ou oito nós, os módulos de controladora em cada local formam um ou dois pares de HA. Cada módulo de controladora tem um parceiro de recuperação de desastres no outro local.
+
+Os módulos do controlador devem atender aos seguintes requisitos:
+
+* A nomeação deve ser única dentro da configuração do MetroCluster.
+* Todos os módulos do controlador na configuração do MetroCluster devem estar executando a mesma versão do ONTAP.
+* Todos os módulos de controladora em um grupo de DR devem ter o mesmo modelo.
++
+No entanto, em configurações com dois grupos de DR, cada grupo de DR pode consistir em diferentes modelos de módulo de controladora.
+
+* Todos os módulos de controladora em um grupo de DR devem usar a mesma configuração FC-VI.
++
+Alguns módulos de controladora suportam duas opções de conectividade FC-VI:
+
++
+** Portas FC-VI integradas
+** Uma placa FC-VI no slot 1 Uma combinação de um módulo de controladora usando portas FC-VI integradas e outra usando uma placa FC-VI complementar não é compatível. Por exemplo, se um nó usar a configuração FC-VI integrada, todos os outros nós do grupo de DR também precisarão usar a configuração FC-VI integrada.
+
+
+
+
+Nomes de exemplo:
+
+* Local A: Controller_A_1
+* Local B: Controller_B_1
+
+
+
+
+== Requisito para quatro switches de interconexão de cluster
+
+A configuração de FC MetroCluster conectado à malha requer quatro switches de interconexão de cluster (se você não estiver usando clusters sem switch de dois nós)
+
+Esses switches fornecem comunicação de cluster entre os módulos do controlador em cada cluster. Os switches não são necessários se os módulos do controlador em cada local forem configurados como um cluster sem switch de dois nós.
+
+
+
+== Requisito para pontes FC para SAS
+
+A configuração de FC MetroCluster conectado à malha requer um par de pontes FC para SAS para cada grupo de stack de gavetas SAS.
+
+
+NOTE: As bridges FibreBridge 6500N não são suportadas em configurações que executam o ONTAP 9.8 e posterior.
+
+* As bridges FibreBridge 7600N ou 7500N suportam até quatro stacks SAS.
+* Cada stack pode usar diferentes modelos de IOM.
++
+Uma combinação de IOM12 módulos e IOM3 módulos não é suportada na mesma pilha de storage. Uma combinação de IOM12 módulos e IOM6 módulos é compatível com a mesma pilha de storage se o sistema estiver executando uma versão compatível do ONTAP.
+
++
+Os módulos IOM suportados dependem da versão do ONTAP que você está executando.
+
+* A nomeação deve ser única dentro da configuração do MetroCluster.
+
+
+Os nomes sugeridos usados como exemplos nesta documentação identificam o módulo do controlador e a pilha à qual a ponte se coneta, conforme mostrado abaixo.
+
+
+
+== Requisitos de pool e unidade (mínimo suportado)
+
+São recomendadas oito gavetas de disco SAS (quatro gavetas em cada local) para permitir a propriedade de disco por compartimento.
+
+A configuração do MetroCluster requer a configuração mínima em cada local:
+
+* Cada nó tem pelo menos um pool local e um pool remoto no local.
++
+Por exemplo, em uma configuração de MetroCluster de quatro nós com dois nós em cada local, quatro pools são necessários em cada local.
+
+* Pelo menos sete unidades em cada pool.
++
+Em uma configuração de MetroCluster de quatro nós com um único agregado de dados espelhados por nó, a configuração mínima requer 24 discos no local.
+
+
+
+Em uma configuração mínima suportada, cada pool tem o seguinte layout de unidade:
+
+* Três unidades raiz
+* Três unidades de dados
+* Uma unidade sobressalente
+
+
+Em uma configuração mínima com suporte, pelo menos um compartimento é necessário por local.
+
+As configurações do MetroCluster são compatíveis com RAID-DP e RAID4.
+
+
+
+== Considerações sobre o local da unidade para compartimentos parcialmente preenchidos
+
+Para a atribuição automática correta de unidades ao usar compartimentos com metade população (12 unidades em um compartimento de 24 unidades), as unidades devem estar localizadas nos slots 0-5 e 18-23.
+
+Em uma configuração com um compartimento parcialmente preenchido, as unidades precisam ser distribuídas uniformemente nos quatro quadrantes da gaveta.
+
+
+
+== Misturando módulos IOM12 e IOM 6 em uma pilha
+
+Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a ferramenta de Matriz de interoperabilidade (IMT) para ver se a sua versão do ONTAP suporta a mistura de prateleiras. https://imt.netapp.com/matrix/["IMT"^]
+
+Para obter mais detalhes sobre a mistura de prateleiras, consulte: https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Gavetas de adição dinâmica com IOM12 módulos para uma stack de gavetas com IOM6 módulos"]
+
+
+
+== Convenções de nomenclatura de ponte
+
+As pontes usam o seguinte exemplo de nomenclatura:
+
+`bridge_site_stack grouplocation in pair`
+
+|===
+
+
+| Esta parte do nome... | Identifica o... | Valores possíveis... 
+
+
+ a| 
+local
+ a| 
+Local no qual o par de pontes reside fisicamente.
+ a| 
+A ou B
+
+
+
+ a| 
+grupo de pilha
+ a| 
+Número do grupo de pilha ao qual o par de ponte se coneta.
+
+FibreBridge 7600N ou 7500N bridges suportam até quatro stacks no grupo stack.
+
+O grupo de stack não pode conter mais de 10 gavetas de storage.
+ a| 
+1, 2, etc.
+
+
+
+ a| 
+localização em par
+ a| 
+Ponte dentro do par de ponte.Um par de pontes se coneta a um grupo de pilha específico.
+ a| 
+a ou b
+
+|===
+Exemplos de nomes de bridge para um grupo de pilha em cada local:
+
+* bridge_A_1a
+* bridge_A_1b
+* bridge_B_1a
+* bridge_B_1b
+

@@ -1,0 +1,41 @@
+---
+permalink: install-stretch/task_install_the_fc_to_sas_bridge_and_sas_shelves_fb_new_install_parent.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, install, fc, sas, bridge, shelves 
+summary: 'Depois de garantir que o sistema atenda a todos os requisitos na seção "preparação para a instalação", você pode instalar o novo sistema.' 
+---
+= Instalar a ponte FC para SAS e as gavetas SAS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de garantir que o sistema atenda a todos os requisitos da seção "preparando a instalação", você pode instalar seu novo sistema.
+
+* A configuração do disco e do compartimento em ambos os locais deve ser idêntica.
++
+Se um agregado não espelhado for usado, a configuração de disco e compartimento em cada local pode ser diferente.
+
++
+
+NOTE: Todos os discos no grupo de recuperação de desastres (DR) devem usar o mesmo tipo de conexão e estar visíveis para todos os nós no grupo de recuperação de desastres, independentemente dos discos usados para agregado espelhado ou não espelhado.
+
+* Os requisitos de conetividade do sistema para distâncias máximas para prateleiras de disco, switches FC e dispositivos de fita de backup usando cabos de fibra ótica multimodo de 50 mícrones, também se aplicam a pontes FibreBridge.
++
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+* Uma combinação de IOM12 módulos e IOM3 módulos não é suportada na mesma pilha de storage. Uma combinação de IOM12 módulos e IOM6 módulos é compatível com a mesma pilha de storage se o sistema estiver executando uma versão compatível do ONTAP.
+
+
+[NOTE]
+====
+O ACP na banda é compatível sem cabeamento adicional nas seguintes gavetas e ponte FibreBridge 7500N ou 7600N:
+
+* IOM12 (DS460C) atrás de uma ponte de 7500N ou 7600N com ONTAP 9.2 e posterior
+* IOM12 (DS212C e DS224C) atrás de uma ponte 7500N ou 7600N com ONTAP 9.1 e posterior
+
+
+====
+
+NOTE: As gavetas SAS em configurações de MetroCluster não são compatíveis com cabeamento ACP.

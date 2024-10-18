@@ -1,0 +1,16 @@
+---
+permalink: install-stretch/reference_example_of_a_stretch_mcc_configuration_with_e_series_storage_arrays.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, example, stretch, configuraiton, e, series, storage, arrays 
+summary: Em uma configuração Stretch MetroCluster com LUNs de storage array e-Series, você pode conetar diretamente os controladores de armazenamento e os arrays de armazenamento. Ao contrário de outros LUNs de array, os switches FC não são necessários. 
+---
+= Exemplo de uma configuração Stretch MetroCluster com storage arrays e-Series
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Em uma configuração Stretch MetroCluster com um storage array LUNs e-Series, você pode conetar diretamente os controladores de armazenamento e os arrays de armazenamento. Ao contrário de outros LUNs de array, os switches FC não são necessários.
+
+O link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/Direct_Attach_support_for_Stretch_MetroCluster_Configuration_with_NetApp_E-Series_array["Suporte de conexão direta para configuração Stretch MetroCluster com array NetApp e-Series"]artigo da base de conhecimento fornece exemplos de configurações com LUNs de array e-Series.

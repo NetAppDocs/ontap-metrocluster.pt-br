@@ -1,0 +1,501 @@
+---
+permalink: install-ip/task_switch_config_nvidia.html 
+sidebar: sidebar 
+keywords: ip, switch, connection, configuring, configure, NVIDIA, factory defaults, MSN2100, SN2100 
+summary: Você deve configurar os switches IP NVIDIA para uso como interconexão de cluster e para conetividade IP do MetroCluster de back-end. 
+---
+= Configure o switch NVIDIA IP SN2100
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve configurar os switches IP NVIDIA SN2100 para uso como interconexão de cluster e para conetividade IP MetroCluster de back-end.
+
+
+
+== [[Reset-the-switch]] Reponha o switch NVIDIA IP SN2100 para os padrões de fábrica
+
+Você pode escolher entre os seguintes métodos para redefinir um switch para as configurações padrão de fábrica.
+
+* <<RCF-file-option,Reponha o interrutor utilizando a opção de ficheiro RCF>>
+* <<Cumulus-install-option,Baixe e instale o software Cumulus>>
+
+
+
+
+=== [[RCF-file-option]]Reponha o switch usando a opção de arquivo RCF
+
+Antes de instalar uma nova configuração RCF, você deve reverter as configurações do switch NVIDIA.
+
+.Sobre esta tarefa
+Para restaurar o switch para as configurações padrão, execute o arquivo RCF com a `restoreDefaults` opção. Esta opção copia os ficheiros de cópia de segurança originais para a sua localização original e, em seguida, reinicia o interrutor. Após a reinicialização, o switch fica online com a configuração original que existia quando você executou o arquivo RCF pela primeira vez para configurar o switch.
+
+Os seguintes detalhes de configuração não são redefinidos:
+
+* Configuração de usuário e credencial
+* Configuração da porta de rede de gerenciamento, eth0
+
+
+
+NOTE: Todas as outras alterações de configuração que ocorrem durante a aplicação do ficheiro RCF são revertidas para a configuração original.
+
+.Antes de começar
+* Tem de configurar o interrutor de acordo <<Download-and-install,Baixe e instale o arquivo NVIDIA RCF>>com . Se não tiver configurado desta forma ou tiver configurado funcionalidades adicionais antes de executar o ficheiro RCF, não pode utilizar este procedimento.
+* Você deve repetir estas etapas em cada um dos switches IP na configuração IP do MetroCluster.
+* Você deve estar conetado ao switch com uma conexão de console serial.
+* Esta tarefa repõe a configuração da rede de gestão.
+
+
+.Passos
+. Verifique se a configuração do RCF foi aplicada com sucesso com a mesma ou uma versão de arquivo RCF compatível e se os arquivos de backup existem.
++
+
+NOTE: A saída pode mostrar arquivos de backup, arquivos preservados ou ambos. Se arquivos de backup ou arquivos preservados não aparecerem na saída, você não poderá usar este procedimento.
+
++
+[listing, subs="+quotes"]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo python3 SN2100_v2.0.0_IP_switch_A_1.py
+[sudo] password for cumulus:
+>>> Opened RcfApplyLog
+*A RCF configuration has been successfully applied.*
+  *Backup files exist.*
+    *Preserved files exist.*
+    Listing completion of the steps:
+        Success: Step: 1: Performing Backup and Restore
+        Success: Step: 2: updating MOTD file
+        Success: Step: 3: Disabling apt-get
+        Success: Step: 4: Disabling cdp
+        Success: Step: 5: Adding lldp config
+        Success: Step: 6: Creating interfaces
+        Success: Step: 7: Configuring switch basic settings: Hostname, SNMP
+        Success: Step: 8: Configuring switch basic settings: bandwidth allocation
+        Success: Step: 9: Configuring switch basic settings: ecn
+        Success: Step: 10: Configuring switch basic settings: cos and dscp remark
+        Success: Step: 11: Configuring switch basic settings: generic egress cos mappings
+        Success: Step: 12: Configuring switch basic settings: traffic classification
+        Success: Step: 13: Configuring LAG load balancing policies
+        Success: Step: 14: Configuring the VLAN bridge
+        Success: Step: 15: Configuring local cluster ISL ports
+        Success: Step: 16: Configuring MetroCluster ISL ports
+        Success: Step: 17: Configuring ports for MetroCluster-1, local cluster and MetroCluster interfaces
+        Success: Step: 18: Configuring ports for MetroCluster-2, local cluster and MetroCluster interfaces
+        Success: Step: 19: Configuring ports for MetroCluster-3, local cluster and MetroCluster interfaces
+        Success: Step: 20: Configuring L2FC for MetroCluster interfaces
+        Success: Step: 21: Configuring the interface to UP
+        Success: Step: 22: Final commit
+        Success: Step: 23: Final reboot of the switch
+    Exiting ...
+<<< Closing RcfApplyLog
+cumulus@IP_switch_A_1:mgmt:~$
+
+----
+. Execute o arquivo RCF com a opção para restaurar os padrões: `restoreDefaults`
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo python3 SN2100_v2.0.0_IP_switch_A_2.py restoreDefaults
+[sudo] password for cumulus:
+>>> Opened RcfApplyLog
+Can restore from backup directory. Continuing.
+This will reboot the switch !!!
+Enter yes or no: yes
+----
+. Responda "sim" ao prompt. O interrutor reverte para a configuração original e reinicializa.
+. Aguarde até que o switch seja reiniciado.
++
+O switch é redefinido e mantém a configuração inicial, como configuração de rede de gerenciamento e credenciais atuais, conforme existiam antes de aplicar o arquivo RCF. Após a reinicialização, você pode aplicar uma nova configuração usando a mesma ou uma versão diferente do arquivo RCF.
+
+
+
+
+
+=== [[Cumulus-install-Option]] Baixe e instale o software Cumulus
+
+.Sobre esta tarefa
+Siga estas etapas se você quiser redefinir completamente o switch aplicando a imagem Cumulus.
+
+.Antes de começar
+* Você deve estar conetado ao switch com uma conexão de console serial.
+* A imagem do software Cumulus switch é acessível através de HTTP.
++
+
+NOTE: Para obter mais informações sobre a instalação do Cumulus Linux, consulte link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html#initial-configuration-overview["Visão geral da instalação e configuração dos switches NVIDIA SN2100"^]
+
+* Você deve ter a senha raiz para `sudo` acesso aos comandos.
+
+
+.Passos
+. A partir do download do console Cumulus e coloque em fila a instalação do software do switch com o comando `onie-install -a -i` seguido do caminho do arquivo para o software do switch:
++
+Neste exemplo, o arquivo de firmware `cumulus-linux-4.4.3-mlx-amd64.bin` é copiado do servidor HTTP '50.50.50.50' para o switch local.
+
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo onie-install -a -i http://50.50.50.50/switchsoftware/cumulus-linux-4.4.3-mlx-amd64.bin
+Fetching installer: http://50.50.50.50/switchsoftware/cumulus-linux-4.4.3-mlx-amd64.bin
+Downloading URL: http://50.50.50.50/switchsoftware/cumulus-linux-4.4.3-mlx-amd64.bin
+######################################################################### 100.0%
+Success: HTTP download complete.
+tar: ./sysroot.tar: time stamp 2021-01-30 17:00:58 is 53895092.604407122 s in the future
+tar: ./kernel: time stamp 2021-01-30 17:00:58 is 53895092.582826352 s in the future
+tar: ./initrd: time stamp 2021-01-30 17:00:58 is 53895092.509682557 s in the future
+tar: ./embedded-installer/bootloader/grub: time stamp 2020-12-10 15:25:16 is 49482950.509433937 s in the future
+tar: ./embedded-installer/bootloader/init: time stamp 2020-12-10 15:25:16 is 49482950.509336507 s in the future
+tar: ./embedded-installer/bootloader/uboot: time stamp 2020-12-10 15:25:16 is 49482950.509213637 s in the future
+tar: ./embedded-installer/bootloader: time stamp 2020-12-10 15:25:16 is 49482950.509153787 s in the future
+tar: ./embedded-installer/lib/init: time stamp 2020-12-10 15:25:16 is 49482950.509064547 s in the future
+tar: ./embedded-installer/lib/logging: time stamp 2020-12-10 15:25:16 is 49482950.508997777 s in the future
+tar: ./embedded-installer/lib/platform: time stamp 2020-12-10 15:25:16 is 49482950.508913317 s in the future
+tar: ./embedded-installer/lib/utility: time stamp 2020-12-10 15:25:16 is 49482950.508847367 s in the future
+tar: ./embedded-installer/lib/check-onie: time stamp 2020-12-10 15:25:16 is 49482950.508761477 s in the future
+tar: ./embedded-installer/lib: time stamp 2020-12-10 15:25:47 is 49482981.508710647 s in the future
+tar: ./embedded-installer/storage/blk: time stamp 2020-12-10 15:25:16 is 49482950.508631277 s in the future
+tar: ./embedded-installer/storage/gpt: time stamp 2020-12-10 15:25:16 is 49482950.508523097 s in the future
+tar: ./embedded-installer/storage/init: time stamp 2020-12-10 15:25:16 is 49482950.508437507 s in the future
+tar: ./embedded-installer/storage/mbr: time stamp 2020-12-10 15:25:16 is 49482950.508371177 s in the future
+tar: ./embedded-installer/storage/mtd: time stamp 2020-12-10 15:25:16 is 49482950.508293856 s in the future
+tar: ./embedded-installer/storage: time stamp 2020-12-10 15:25:16 is 49482950.508243666 s in the future
+tar: ./embedded-installer/platforms.db: time stamp 2020-12-10 15:25:16 is 49482950.508179456 s in the future
+tar: ./embedded-installer/install: time stamp 2020-12-10 15:25:47 is 49482981.508094606 s in the future
+tar: ./embedded-installer: time stamp 2020-12-10 15:25:47 is 49482981.508044066 s in the future
+tar: ./control: time stamp 2021-01-30 17:00:58 is 53895092.507984316 s in the future
+tar: .: time stamp 2021-01-30 17:00:58 is 53895092.507920196 s in the future
+Staging installer image...done.
+WARNING:
+WARNING: Activating staged installer requested.
+WARNING: This action will wipe out all system data.
+WARNING: Make sure to back up your data.
+WARNING:
+Are you sure (y/N)? y
+Activating staged installer...done.
+Reboot required to take effect.
+cumulus@IP_switch_A_1:mgmt:~$
+----
+. Responda `y` ao aviso para confirmar a instalação quando a imagem é transferida e verificada.
+. Reinicie o switch para instalar o novo software: `sudo reboot`
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo reboot
+----
++
+
+NOTE: O interrutor reinicia e entra na instalação do software do interrutor, o que demora algum tempo. Quando a instalação estiver concluída, o interrutor reinicializa e permanece no prompt de 'login'.
+
+. Configure as definições básicas do interrutor
++
+.. Quando o switch é inicializado e no prompt de login, faça login e altere a senha.
++
+
+NOTE: O nome de usuário é 'Cumulus' e a senha padrão é 'Cumulus'.
+
+
+
++
+[listing]
+----
+Debian GNU/Linux 10 cumulus ttyS0
+
+cumulus login: cumulus
+Password:
+You are required to change your password immediately (administrator enforced)
+Changing password for cumulus.
+Current password:
+New password:
+Retype new password:
+Linux cumulus 4.19.0-cl-1-amd64 #1 SMP Cumulus 4.19.206-1+cl4.4.3u1 (2021-12-18) x86_64
+
+Welcome to NVIDIA Cumulus (R) Linux (R)
+
+For support and online technical documentation, visit
+http://www.cumulusnetworks.com/support
+
+The registered trademark Linux (R) is used pursuant to a sublicense from LMI,
+the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide
+basis.
+
+cumulus@cumulus:mgmt:~$
+----
+. Configure a interface de rede de gerenciamento.
++
+Os comandos que você usa dependem da versão do firmware do switch que você está executando.
+
++
+
+NOTE: Os comandos de exemplo a seguir configuram o nome do host como IP_switch_A_1, o endereço IP como 10.10.10.10, a máscara de rede como 255.255.255.0 (24) e o endereço de gateway como 10.10.10.1.
+
++
+[role="tabbed-block"]
+====
+.Cumulus 4,4.x
+--
+Os comandos de exemplo a seguir configuram o nome do host, endereço IP, máscara de rede e gateway em um switch executando Cumulus 4,4.x.
+
+[listing]
+----
+cumulus@cumulus:mgmt:~$ net add hostname IP_switch_A_1
+cumulus@cumulus:mgmt:~$ net add interface eth0 ip address 10.0.10.10/24
+cumulus@cumulus:mgmt:~$ net add interface eth0 ip gateway 10.10.10.1
+cumulus@cumulus:mgmt:~$ net pending
+
+.
+.
+.
+
+
+cumulus@cumulus:mgmt:~$ net commit
+
+.
+.
+.
+
+
+net add/del commands since the last "net commit"
+
+
+User Timestamp Command
+
+cumulus 2021-05-17 22:21:57.437099 net add hostname Switch-A-1
+cumulus 2021-05-17 22:21:57.538639 net add interface eth0 ip address 10.10.10.10/24
+cumulus 2021-05-17 22:21:57.635729 net add interface eth0 ip gateway 10.10.10.1
+
+cumulus@cumulus:mgmt:~$
+----
+--
+.Cumulus 5,4.x e posterior
+--
+Os comandos de exemplo a seguir configuram o nome de host, endereço IP, máscara de rede e gateway em um switch executando Cumulus 5,4.x. ou posterior.
+
+[listing]
+----
+cumulus@cumulus:mgmt:~$ nv set system hostname IP_switch_A_1
+
+cumulus@cumulus:mgmt:~$ nv set interface eth0 ip address 10.0.10.10/24
+
+cumulus@cumulus:mgmt:~$ nv set interface eth0 ip gateway 10.10.10.1
+
+cumulus@cumulus:mgmt:~$ nv config apply
+
+cumulus@cumulus:mgmt:~$ nv config save
+----
+--
+====
+. Reinicie o switch usando o `sudo reboot` comando.
++
+[listing]
+----
+cumulus@cumulus:~$ sudo reboot
+----
++
+Quando o switch for reinicializado, você poderá aplicar uma nova configuração usando as etapas em <<Download-and-install,Baixe e instale o arquivo NVIDIA RCF>>.
+
+
+
+
+
+== [[Download-and-install]]Baixe e instale os arquivos RCF do NVIDIA
+
+Você deve gerar e instalar o arquivo RCF do switch em cada switch na configuração IP do MetroCluster.
+
+.Antes de começar
+* Você deve ter a senha raiz para `sudo` acesso aos comandos.
+* O software do switch está instalado e a rede de gerenciamento está configurada.
+* Você seguiu os passos para instalar inicialmente o switch usando o método 1 ou o método 2.
+* Você não aplicou nenhuma configuração adicional após a instalação inicial.
++
+
+NOTE: Se efetuar uma configuração adicional depois de reiniciar o comutador e antes de aplicar o ficheiro RCF, não poderá utilizar este procedimento.
+
+
+
+.Sobre esta tarefa
+Você deve repetir estas etapas em cada um dos switches IP na configuração IP do MetroCluster (nova instalação) ou no comutador de substituição (substituição do comutador).
+
+.Passos
+. Gerar os arquivos RCF do NVIDIA para MetroCluster IP.
++
+.. Faça download do https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"^].
+.. Gere o arquivo RCF para sua configuração usando o RcfFileGenerator para MetroCluster IP.
+.. Navegue para o seu diretório inicial. Se você estiver logado como 'Cumulus', o caminho do arquivo é `/home/cumulus`.
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ cd ~
+cumulus@IP_switch_A_1:mgmt:~$ pwd
+/home/cumulus
+cumulus@IP_switch_A_1:mgmt:~$
+----
+.. Transfira o ficheiro RCF para este diretório. O exemplo a seguir mostra que você usa SCP para baixar o arquivo `SN2100_v2.0.0_IP_switch_A_1.txt` do servidor '50.50.50.50' para o diretório principal e salvá-lo como `SN2100_v2.0.0_IP_switch_A_1.py`:
++
+[listing]
+----
+cumulus@Switch-A-1:mgmt:~$ scp username@50.50.50.50:/RcfFiles/SN2100_v2.0.0_IP_switch_A_1.txt ./SN2100_v2.0.0_IP_switch-A1.py
+The authenticity of host '50.50.50.50 (50.50.50.50)' can't be established.
+RSA key fingerprint is SHA256:B5gBtOmNZvdKiY+dPhh8=ZK9DaKG7g6sv+2gFlGVF8E.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '50.50.50.50' (RSA) to the list of known hosts.
+***********************************************************************
+Banner of the SCP server
+***********************************************************************
+username@50.50.50.50's password:
+SN2100_v2.0.0_IP_switch_A1.txt 100% 55KB 1.4MB/s 00:00
+cumulus@IP_switch_A_1:mgmt:~$
+----
+
+
+. Execute o arquivo RCF. O arquivo RCF requer uma opção para aplicar uma ou mais etapas. A menos que instruído pelo suporte técnico, execute o arquivo RCF sem a opção de linha de comando. Para verificar o estado de conclusão dos vários passos do ficheiro RCF, utilize a opção '-1' ou 'All' para aplicar todos os passos (pendentes).
++
+[listing]
+----
+
+cumulus@IP_switch_A_1:mgmt:~$ sudo python3 SN2100_v2.0.0_IP_switch_A_1.py
+all
+[sudo] password for cumulus:
+The switch will be rebooted after the step(s) have been run.
+Enter yes or no: yes
+
+
+
+... the steps will apply - this is generating a lot of output ...
+
+
+
+Running Step 24: Final reboot of the switch
+
+
+
+... The switch will reboot if all steps applied successfully ...
+----
+. Se a sua configuração utilizar cabos DAC, ative a opção DAC nas portas do switch:
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo python3 SN2100_v2.0.0-X10_Switch-A1.py runCmd <switchport> DacOption [enable | disable]
+----
++
+O exemplo a seguir ativa a opção DAC para a porta `swp7`:
+
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo python3 SN2100_v2.00_Switch-A1.py runCmd swp7 DacOption enable
+    Running cumulus version  : 5.4.0
+    Running RCF file version : v2.00
+    Running command: Enabling the DacOption for port swp7
+    runCmd: 'nv set interface swp7 link fast-linkup on', ret: 0
+    runCmd: committed, ret: 0
+    Completion: SUCCESS
+cumulus@IP_switch_A_1:mgmt:~$
+----
+. Reinicie o switch depois de ativar a opção DAC nas portas do switch:
++
+`sudo reboot`
+
++
+
+NOTE: Ao definir a opção DAC para várias portas de switch, você só precisa reiniciar o switch uma vez.
+
+
+
+
+
+== Defina a velocidade da porta do switch para as interfaces IP do MetroCluster
+
+.Sobre esta tarefa
+Use este procedimento para definir a velocidade da porta do switch para 100g para os seguintes sistemas:
+
+* AFF A70
+* AFF A90
+* AFF A1K
+
+
+.Passo
+. Utilize o ficheiro RCF com a `runCmd` opção para definir a velocidade. Isso aplica a configuração e salva a configuração.
++
+Os comandos a seguir definem a velocidade para as interfaces MetroCluster `swp7` e `swp8`:
+
++
+[source, cli]
+----
+sudo python3 SN2100_v2.20 _Switch-A1.py runCmd swp7 speed 100
+----
++
+[source, cli]
+----
+sudo python3 SN2100_v2.20 _Switch-A1.py runCmd swp8 speed 100
+----
++
+*Exemplo*
+
++
+[listing]
+----
+cumulus@Switch-A-1:mgmt:~$ sudo python3 SN2100_v2.20_Switch-A1.py runCmd swp7 speed 100
+[sudo] password for cumulus: <password>
+    Running cumulus version  : 5.4.0
+    Running RCF file version : v2.20
+    Running command: Setting switchport swp7 to 100G speed
+    runCmd: 'nv set interface swp7 link auto-negotiate off', ret: 0
+    runCmd: 'nv set interface swp7 link speed 100G', ret: 0
+    runCmd: committed, ret: 0
+    Completion: SUCCESS
+cumulus@Switch-A-1:mgmt:~$
+----
+
+
+
+
+== Desative portas ISL e canais de portas não utilizados
+
+A NetApp recomenda a desativação de portas e canais de portas ISL não utilizados para evitar alertas de integridade desnecessários.
+
+. Identifique as portas ISL e os canais de portas não utilizados usando o banner de arquivo RCF:
++
+
+NOTE: Se a porta estiver no modo de divisão, o nome da porta que você especificar no comando pode ser diferente do nome indicado no banner RCF. Você também pode usar os arquivos de cabeamento RCF para encontrar o nome da porta.
+
++
+`net show interface`
+
+. Desative as portas ISL e os canais de portas não utilizados usando o arquivo RCF.
++
+[listing]
+----
+cumulus@mcc1-integrity-a1:mgmt:~$ sudo python3 SN2100_v2.0_IP_Switch-A1.py runCmd
+[sudo] password for cumulus:
+    Running cumulus version  : 5.4.0
+    Running RCF file version : v2.0
+Help for runCmd:
+    To run a command execute the RCF script as follows:
+    sudo python3 <script> runCmd <option-1> <option-2> <option-x>
+    Depending on the command more or less options are required. Example to 'up' port 'swp1'
+        sudo python3 SN2100_v2.0_IP_Switch-A1.py runCmd swp1 up
+    Available commands:
+        UP / DOWN the switchport
+            sudo python3 SN2100_v2.0_IP_Switch-A1.py runCmd <switchport> state <up | down>
+        Set the switch port speed
+            sudo python3 SN2100_v2.0_Switch-A1.py runCmd <switchport> speed <10 | 25 | 40 | 100 | AN>
+        Set the fec mode on the switch port
+            sudo python3 SN2100_v2.0_Switch-A1.py runCmd <switchport> fec <default | auto | rs | baser | off>
+        Set the [localISL | remoteISL] to 'UP' or 'DOWN' state
+            sudo python3 SN2100_v2.0_Switch-A1.py runCmd [localISL | remoteISL] state [up | down]
+        Set the option on the port to support DAC cables. This option does not support port ranges.
+            You must reload the switch after changing this option for the required ports. This will disrupt traffic.
+            This setting requires Cumulus 5.4 or a later 5.x release.
+            sudo python3 SN2100_v2.0_Switch-A1.py runCmd <switchport> DacOption [enable | disable]
+cumulus@mcc1-integrity-a1:mgmt:~$
+----
++
+O seguinte comando de exemplo desativa a porta "swp14":
+
++
+`sudo python3 SN2100_v2.0_Switch-A1.py runCmd swp14 state down`
+
++
+Repita esta etapa para cada porta ou canal de porta não utilizado identificado.
+
+

@@ -1,0 +1,35 @@
+---
+permalink: install-fc/task_cable_the_cluster_peering_connections.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, cluster, peering, connections 
+summary: Você deve enviar por cabo as portas do módulo do controlador usadas para peering de cluster para que elas tenham conetividade com o cluster no site do parceiro. 
+---
+= Cabeamento das conexões de peering de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve enviar por cabo as portas do módulo do controlador usadas para peering de cluster para que elas tenham conetividade com o cluster no site do parceiro.
+
+.Sobre esta tarefa
+Esta tarefa deve ser executada em cada módulo do controlador na configuração do MetroCluster.
+
+Pelo menos duas portas em cada módulo de controlador devem ser usadas para peering de cluster.
+
+A largura de banda mínima recomendada para as portas e a conetividade de rede é de 1 GbE.
+
+.Passo
+. Identifique e faça a cabeamento de pelo menos duas portas para peering de cluster e verifique se elas têm conetividade de rede com o cluster do parceiro.
++
+O peering de cluster pode ser feito em portas dedicadas ou em portas de dados. O uso de portas dedicadas fornece maior taxa de transferência para o tráfego de peering de cluster.
+
+
+
+.Informações relacionadas
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["Configuração expressa de peering de cluster e SVM"]
+
+Cada site do MetroCluster é configurado como um ponto do site do parceiro. Você deve estar familiarizado com os pré-requisitos e diretrizes para configurar os relacionamentos de peering e ao decidir se usar portas compartilhadas ou dedicadas para esses relacionamentos.
+
+link:concept_considerations_peering.html["Peering de clusters"]

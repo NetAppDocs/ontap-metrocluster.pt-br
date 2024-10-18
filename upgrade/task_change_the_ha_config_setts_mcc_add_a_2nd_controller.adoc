@@ -1,0 +1,75 @@
+---
+permalink: upgrade/task_change_the_ha_config_setts_mcc_add_a_2nd_controller.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, change, ha, config, sett, existing, new, controller, modules 
+summary: Ao expandir uma configuração do MetroCluster, você deve atualizar a configuração ha-config do módulo de controladora existente e do novo módulo de controladora. Você também deve determinar a ID do sistema do novo módulo do controlador. 
+---
+= Alterar a configuração ha-config nos módulos de controladora existentes e novos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao expandir uma configuração do MetroCluster, você deve atualizar a configuração ha-config do módulo de controladora existente e do novo módulo de controladora. Você também deve determinar a ID do sistema do novo módulo do controlador.
+
+.Sobre esta tarefa
+Esta tarefa é executada no modo Manutenção nos módulos do controlador existentes e novos.
+
+.Passos
+. Altere a configuração ha-config do módulo controlador existente:
++
+.. Exiba a configuração ha-config do módulo de controladora e do chassi existentes:
++
+`ha-config show`
+
++
+A configuração ha-config é "mcc-2n" para todos os componentes porque o módulo controlador estava em uma configuração MetroCluster de dois nós.
+
+.. Altere a configuração ha-config do módulo controlador existente para "mcc"
+`ha-config modify controller mcc`
+.. Altere a configuração ha-config do chassi existente para "mcc":
++
+`ha-config modify chassis mcc`
+
+.. Recupere a ID do sistema para o módulo do controlador existente:
++
+`sysconfig`
+
++
+Anote a ID do sistema. Você precisa dele quando você definir o ID do parceiro no novo módulo do controlador.
+
+.. Saia do modo de manutenção para retornar ao prompt Loader:
++
+`halt`
+
+
+
+. Altere a configuração ha-config e recupere a ID do sistema do novo módulo do controlador:
++
+.. Se o novo módulo do controlador ainda não estiver no modo de manutenção, inicie-o no modo de manutenção:
++
+`boot_ontap maint`
+
+.. Altere a configuração ha-config do novo módulo de controlador para "mcc":
++
+`ha-config modify controller mcc`
+
+.. Altere a configuração ha-config do novo chassi para mcc:
++
+`ha-config modify chassis mcc`
+
+.. Recupere a ID do sistema para o novo módulo do controlador:
++
+`sysconfig`
+
++
+Anote a ID do sistema. Você precisa dele quando você definir o ID do parceiro e atribuir discos ao novo módulo do controlador.
+
+.. Saia do modo de manutenção para retornar ao prompt Loader:
++
+`halt`
+
+
+
+

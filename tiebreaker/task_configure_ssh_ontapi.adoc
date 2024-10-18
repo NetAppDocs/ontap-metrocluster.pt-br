@@ -1,0 +1,25 @@
+---
+permalink: tiebreaker/task_configure_ssh_ontapi.html 
+sidebar: sidebar 
+keywords: admin, access, ontapi, ssh, configure 
+summary: Você pode configurar o acesso de administrador à API ONTAP e SSH. 
+---
+= Configure o acesso de administrador à API ONTAP e SSH
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar o acesso de administrador à API ONTAP e SSH.
+
+.Passos
+. Crie um usuário de administrador com acesso à API do ONTAP: `security login create -user-or-group-name _mcctb_ -application ontapi -authentication-method _password_`
+. Criar um usuário admin com acesso SSH: `security login create -user-or-group-name _mcctb_ -application _ssh_ -authentication-method _password_`
+. Verifique se os novos usuários admin foram criados: `security login show`
+. Repita estas etapas no cluster de parceiros.
++
+
+NOTE: link:https://docs.netapp.com/us-en/ontap/concepts/administrator-authentication-rbac-concept.html["Autenticação de administrador e RBAC"^] está implementado.
+
+

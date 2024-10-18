@@ -1,0 +1,683 @@
+---
+permalink: install-ip/task_test_the_mcc_configuration.html 
+sidebar: sidebar 
+keywords: test, metrocluster, configuration, failure, correct, operation, metrocluster, verify, negotiate, switchover, heal, manual, switchback, power, line, disruption, loss, single, storage, shelf 
+summary: Você pode testar cenários de falha para confirmar o funcionamento correto da configuração do MetroCluster. 
+---
+= Testando a configuração do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode testar cenários de falha para confirmar o funcionamento correto da configuração do MetroCluster.
+
+
+
+== Verificando o switchover negociado
+
+Você pode testar a operação switchover negociado (planejada) para confirmar a disponibilidade de dados ininterrupta.
+
+.Sobre esta tarefa
+Este teste valida que a disponibilidade de dados não é afetada (exceto para os protocolos SMB (Server Message Block) da Microsoft e Fibre Channel do Solaris), alternando o cluster para o segundo data center.
+
+Este teste deve levar cerca de 30 minutos.
+
+Este procedimento tem os seguintes resultados esperados:
+
+* O `metrocluster switchover` comando apresentará um prompt de aviso.
++
+Se você responder `yes` ao prompt, o site do qual o comando é emitido mudará para o site do parceiro.
+
+
+
+Para configurações IP do MetroCluster:
+
+* Para o ONTAP 9.4 e versões anteriores:
++
+** Os agregados espelhados ficarão degradados após o switchover negociado.
+
+
+* Para o ONTAP 9.5 e posterior:
++
+** Agregados espelhados permanecerão no estado normal se o storage remoto estiver acessível.
+** Os agregados espelhados ficarão degradados após o switchover negociado se o acesso ao storage remoto for perdido.
+
+
+* Para o ONTAP 9.8 e posterior:
++
+** Agregados não espelhados localizados no local de desastre ficarão indisponíveis se o acesso ao storage remoto for perdido. Isso pode levar a uma interrupção do controlador.
+
+
+
+
+.Passos
+. Confirme se todos os nós estão no estado configurado e no modo normal:
++
+`metrocluster node show`
+
++
+[listing]
+----
+cluster_A::>  metrocluster node show
+
+Cluster                        Configuration State    Mode
+------------------------------ ---------------------- ------------------------
+ Local: cluster_A               configured             normal
+Remote: cluster_B               configured             normal
+----
+. Inicie a operação de comutação:
++
+`metrocluster switchover`
+
++
+[listing]
+----
+cluster_A::> metrocluster switchover
+Warning: negotiated switchover is about to start. It will stop all the data Vservers on cluster "cluster_B" and
+automatically re-start them on cluster "cluster_A". It will finally gracefully shutdown cluster "cluster_B".
+----
+. Confirme se o cluster local está no estado configurado e no modo de comutação:
++
+`metrocluster node show`
+
++
+[listing]
+----
+cluster_A::>  metrocluster node show
+
+Cluster                        Configuration State    Mode
+------------------------------ ---------------------- ------------------------
+Local: cluster_A                configured             switchover
+Remote: cluster_B               not-reachable          -
+              configured             normal
+----
+. Confirme se a operação de comutação foi bem-sucedida:
++
+`metrocluster operation show`
+
++
+[listing]
+----
+cluster_A::>  metrocluster operation show
+
+cluster_A::> metrocluster operation show
+  Operation: switchover
+      State: successful
+ Start Time: 2/6/2016 13:28:50
+   End Time: 2/6/2016 13:29:41
+     Errors: -
+----
+. Use os `vserver show` comandos e `network interface show` para verificar se as SVMs e LIFs de DR estão online.
+
+
+
+
+== Verificando a cura e a troca manual
+
+Você pode testar as operações de reparo e switchback manual para verificar se a disponibilidade de dados não é afetada (exceto para configurações SMB e Solaris FC), alternando o cluster para o data center original após um switchover negociado.
+
+.Sobre esta tarefa
+Este teste deve levar cerca de 30 minutos.
+
+O resultado esperado deste procedimento é que os serviços devem ser reenviados para os seus nós domésticos.
+
+Os passos de recuperação não são necessários em sistemas que executam o ONTAP 9.5 ou posterior, nos quais a recuperação é realizada automaticamente após um switchover negociado. Em sistemas que executam o ONTAP 9.6 e posterior, a recuperação também é executada automaticamente após o switchover não programado.
+
+.Passos
+. Se o sistema estiver executando o ONTAP 9.4 ou anterior, corrija o agregado de dados:
++
+`metrocluster heal aggregates`
+
++
+O exemplo a seguir mostra a conclusão bem-sucedida do comando:
+
++
+[listing]
+----
+cluster_A::> metrocluster heal aggregates
+[Job 936] Job succeeded: Heal Aggregates is successful.
+----
+. Se o sistema estiver executando o ONTAP 9.4 ou anterior, sane o agregado raiz:
++
+`metrocluster heal root-aggregates`
+
++
+Esta etapa é necessária nas seguintes configurações:
+
++
+** Configurações de FC MetroCluster.
+** Configurações IP do MetroCluster executando o ONTAP 9.4 ou anterior. O exemplo a seguir mostra a conclusão bem-sucedida do comando:
+
+
++
+[listing]
+----
+cluster_A::> metrocluster heal root-aggregates
+[Job 937] Job succeeded: Heal Root Aggregates is successful.
+----
+. Verifique se a cicatrização está concluída:
++
+`metrocluster node show`
+
++
+O exemplo a seguir mostra a conclusão bem-sucedida do comando:
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1         configured     enabled   heal roots completed
+      cluster_B
+              node_B_2         unreachable    -         switched over
+42 entries were displayed.metrocluster operation show
+----
++
+Se a operação de recuperação automática falhar por qualquer motivo, você deve emitir os `metrocluster heal` comandos manualmente, como feito nas versões do ONTAP anteriores ao ONTAP 9.5. Você pode usar os `metrocluster operation show` comandos e `metrocluster operation history show -instance` para monitorar o status da recuperação e determinar a causa de uma falha.
+
+. Verifique se todos os agregados estão espelhados:
++
+`storage aggregate show`
+
++
+O exemplo a seguir mostra que todos os agregados têm um status RAID espelhado:
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+cluster Aggregates:
+Aggregate Size     Available Used% State   #Vols  Nodes       RAID Status
+--------- -------- --------- ----- ------- ------ ----------- ------------
+data_cluster
+            4.19TB    4.13TB    2% online       8 node_A_1    raid_dp,
+                                                              mirrored,
+                                                              normal
+root_cluster
+           715.5GB   212.7GB   70% online       1 node_A_1    raid4,
+                                                              mirrored,
+                                                              normal
+cluster_B Switched Over Aggregates:
+Aggregate Size     Available Used% State   #Vols  Nodes       RAID Status
+--------- -------- --------- ----- ------- ------ ----------- ------------
+data_cluster_B
+            4.19TB    4.11TB    2% online       5 node_A_1    raid_dp,
+                                                              mirrored,
+                                                              normal
+root_cluster_B    -         -     - unknown      - node_A_1   -
+----
+. Verifique o status da recuperação de switchback:
++
+`metrocluster node show`
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+             node_A_1            configured     enabled   heal roots completed
+      cluster_B
+             node_B_2            configured     enabled   waiting for switchback
+                                                          recovery
+2 entries were displayed.
+----
+. Execute o interrutor de retorno:
++
+`metrocluster switchback`
+
++
+[listing]
+----
+cluster_A::> metrocluster switchback
+[Job 938] Job succeeded: Switchback is successful.Verify switchback
+----
+. Confirme o status dos nós:
++
+`metrocluster node show`
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1         configured     enabled   normal
+      cluster_B
+              node_B_2         configured     enabled   normal
+
+2 entries were displayed.
+----
+. Confirmar o estado da operação MetroCluster:
++
+`metrocluster operation show`
+
++
+A saída deve mostrar um estado bem-sucedido.
+
++
+[listing]
+----
+cluster_A::> metrocluster operation show
+  Operation: switchback
+      State: successful
+ Start Time: 2/6/2016 13:54:25
+   End Time: 2/6/2016 13:56:15
+     Errors: -
+----
+
+
+
+
+== Verificação da operação após interrupção da linha elétrica
+
+Você pode testar a resposta da configuração do MetroCluster à falha de uma PDU.
+
+.Sobre esta tarefa
+A prática recomendada é que cada unidade de fonte de alimentação (PSU) de um componente seja conetada a fontes de alimentação separadas. Se ambas as PSUs estiverem conetadas à mesma unidade de distribuição de energia (PDU) e ocorrer uma interrupção elétrica, o local pode ficar inativo ou um compartimento completo pode ficar indisponível. A falha de uma linha de alimentação é testada para confirmar que não há incompatibilidade de cabeamento que possa causar uma interrupção do serviço.
+
+Este teste deve levar cerca de 15 minutos.
+
+Este teste requer a desativação da energia de todas as PDUs do lado esquerdo e, em seguida, de todas as PDUs do lado direito em todos os racks que contêm os componentes do MetroCluster.
+
+Este procedimento tem os seguintes resultados esperados:
+
+* Erros devem ser gerados à medida que as PDUs são desconetadas.
+* Nenhum failover ou perda de serviço deve ocorrer.
+
+
+.Passos
+. Desligue a alimentação das PDUs no lado esquerdo do rack que contém os componentes MetroCluster.
+. Monitore o resultado no console:
++
+`system environment sensors show -state fault`
+
++
+`storage shelf show -errors`
+
++
+[listing]
+----
+cluster_A::> system environment sensors show -state fault
+
+Node Sensor 			State Value/Units Crit-Low Warn-Low Warn-Hi Crit-Hi
+---- --------------------- ------ ----------- -------- -------- ------- -------
+node_A_1
+		PSU1 			fault
+							PSU_OFF
+		PSU1 Pwr In OK 	fault
+							FAULT
+node_A_2
+		PSU1 			fault
+							PSU_OFF
+		PSU1 Pwr In OK 	fault
+							FAULT
+4 entries were displayed.
+
+cluster_A::> storage shelf show -errors
+    Shelf Name: 1.1
+     Shelf UID: 50:0a:09:80:03:6c:44:d5
+ Serial Number: SHFHU1443000059
+
+Error Type          Description
+------------------  ---------------------------
+Power               Critical condition is detected in storage shelf power supply unit "1". The unit might fail.Reconnect PSU1
+----
+. Ligue a alimentação novamente para as PDUs do lado esquerdo.
+. Certifique-se de que o ONTAP limpa a condição de erro.
+. Repita os passos anteriores com as PDUs do lado direito.
+
+
+
+
+== Verificação da operação após a perda de uma única prateleira de armazenamento
+
+Você pode testar a falha de um único compartimento de storage para verificar se não há um ponto único de falha.
+
+.Sobre esta tarefa
+Este procedimento tem os seguintes resultados esperados:
+
+* Uma mensagem de erro deve ser comunicada pelo software de monitorização.
+* Nenhum failover ou perda de serviço deve ocorrer.
+* A ressincronização do espelho é iniciada automaticamente após a restauração da falha de hardware.
+
+
+.Passos
+. Verifique o status de failover de armazenamento:
++
+`storage failover show`
+
++
+[listing]
+----
+cluster_A::> storage failover show
+
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+node_A_1       node_A_2       true     Connected to node_A_2
+node_A_2       node_A_1       true     Connected to node_A_1
+2 entries were displayed.
+----
+. Verifique o status agregado:
++
+`storage aggregate show`
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+
+cluster Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1data01_mirrored
+            4.15TB    3.40TB   18% online       3 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_1root
+           707.7GB   34.29GB   95% online       1 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data01_mirrored
+            4.15TB    4.12TB    1% online       2 node_A_2       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data02_unmirrored
+            2.18TB    2.18TB    0% online       1 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_root
+           707.7GB   34.27GB   95% online       1 node_A_2       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+----
+. Verifique se todas as SVMs e volumes de dados estão on-line e fornecendo dados:
++
+`vserver show -type data`
+
++
+`network interface show -fields is-home false`
+
++
+`volume show !vol0,!MDV*`
+
++
+[listing]
+----
+cluster_A::> vserver show -type data
+                               Admin      Operational Root
+Vserver     Type    Subtype    State      State       Volume     Aggregate
+----------- ------- ---------- ---------- ----------- ---------- ----------
+SVM1        data    sync-source           running     SVM1_root  node_A_1_data01_mirrored
+SVM2        data    sync-source	          running     SVM2_root  node_A_2_data01_mirrored
+
+cluster_A::> network interface show -fields is-home false
+There are no entries matching your query.
+
+cluster_A::> volume show !vol0,!MDV*
+Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+--------- ------------ ------------ ---------- ---- ---------- ---------- -----
+SVM1
+          SVM1_root
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.50GB    5%
+SVM1
+          SVM1_data_vol
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.49GB    5%
+SVM2
+          SVM2_root
+                       node_A_2_data01_mirrored
+                                    online     RW         10GB     9.49GB    5%
+SVM2
+          SVM2_data_vol
+                       node_A_2_data02_unmirrored
+                                    online     RW          1GB    972.6MB    5%
+----
+. Identifique um compartimento no pool 1 para o nó "node_A_2" para desligar para simular uma falha repentina de hardware:
++
+`storage aggregate show -r -node _node-name_ !*root`
+
++
+O compartimento selecionado deve conter unidades que fazem parte de um agregado de dados espelhados.
+
++
+No exemplo a seguir, o ID do compartimento "31" é selecionado para falhar.
+
++
+[listing]
+----
+cluster_A::> storage aggregate show -r -node node_A_2 !*root
+Owner Node: node_A_2
+ Aggregate: node_A_2_data01_mirrored (online, raid_dp, mirrored) (block checksums)
+  Plex: /node_A_2_data01_mirrored/plex0 (online, normal, active, pool0)
+   RAID Group /node_A_2_data01_mirrored/plex0/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  2.30.3                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   2.30.4                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.6                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.8                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.5                       0   BSAS    7200  827.7GB  828.0GB (normal)
+
+  Plex: /node_A_2_data01_mirrored/plex4 (online, normal, active, pool1)
+   RAID Group /node_A_2_data01_mirrored/plex4/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  1.31.7                       1   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   1.31.6                       1   BSAS    7200  827.7GB  828.0GB (normal)
+     data     1.31.3                       1   BSAS    7200  827.7GB  828.0GB (normal)
+     data     1.31.4                       1   BSAS    7200  827.7GB  828.0GB (normal)
+     data     1.31.5                       1   BSAS    7200  827.7GB  828.0GB (normal)
+
+ Aggregate: node_A_2_data02_unmirrored (online, raid_dp) (block checksums)
+  Plex: /node_A_2_data02_unmirrored/plex0 (online, normal, active, pool0)
+   RAID Group /node_A_2_data02_unmirrored/plex0/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  2.30.12                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   2.30.22                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.21                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.20                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.14                      0   BSAS    7200  827.7GB  828.0GB (normal)
+15 entries were displayed.
+----
+. Desligue fisicamente a prateleira selecionada.
+. Verifique novamente o status do agregado:
++
+`storage aggregate show`
+
++
+`storage aggregate show -r -node node_A_2 !*root`
+
++
+O agregado com unidades no compartimento desligado deve ter um status RAID "degradado" e as unidades no Plex afetado devem ter um status de "falha", como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1data01_mirrored
+            4.15TB    3.40TB   18% online       3 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_1root
+           707.7GB   34.29GB   95% online       1 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data01_mirrored
+            4.15TB    4.12TB    1% online       2 node_A_2       raid_dp,
+                                                                   mirror
+                                                                   degraded
+node_A_2_data02_unmirrored
+            2.18TB    2.18TB    0% online       1 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_root
+           707.7GB   34.27GB   95% online       1 node_A_2       raid_dp,
+                                                                   mirror
+                                                                   degraded
+cluster_A::> storage aggregate show -r -node node_A_2 !*root
+Owner Node: node_A_2
+ Aggregate: node_A_2_data01_mirrored (online, raid_dp, mirror degraded) (block checksums)
+  Plex: /node_A_2_data01_mirrored/plex0 (online, normal, active, pool0)
+   RAID Group /node_A_2_data01_mirrored/plex0/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  2.30.3                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   2.30.4                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.6                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.8                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.5                       0   BSAS    7200  827.7GB  828.0GB (normal)
+
+  Plex: /node_A_2_data01_mirrored/plex4 (offline, failed, inactive, pool1)
+   RAID Group /node_A_2_data01_mirrored/plex4/rg0 (partial, none checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  FAILED                       -   -          -  827.7GB        - (failed)
+     parity   FAILED                       -   -          -  827.7GB        - (failed)
+     data     FAILED                       -   -          -  827.7GB        - (failed)
+     data     FAILED                       -   -          -  827.7GB        - (failed)
+     data     FAILED                       -   -          -  827.7GB        - (failed)
+
+ Aggregate: node_A_2_data02_unmirrored (online, raid_dp) (block checksums)
+  Plex: /node_A_2_data02_unmirrored/plex0 (online, normal, active, pool0)
+   RAID Group /node_A_2_data02_unmirrored/plex0/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  2.30.12                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   2.30.22                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.21                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.20                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.14                      0   BSAS    7200  827.7GB  828.0GB (normal)
+15 entries were displayed.
+----
+. Verifique se os dados estão sendo fornecidos e se todos os volumes ainda estão online:
++
+`vserver show -type data`
+
++
+`network interface show -fields is-home false`
+
++
+`volume show !vol0,!MDV*`
+
++
+[listing]
+----
+cluster_A::> vserver show -type data
+
+cluster_A::> vserver show -type data
+                               Admin      Operational Root
+Vserver     Type    Subtype    State      State       Volume     Aggregate
+----------- ------- ---------- ---------- ----------- ---------- ----------
+SVM1        data    sync-source           running     SVM1_root  node_A_1_data01_mirrored
+SVM2        data    sync-source	          running     SVM2_root  node_A_1_data01_mirrored
+
+cluster_A::> network interface show -fields is-home false
+There are no entries matching your query.
+
+cluster_A::> volume show !vol0,!MDV*
+Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+--------- ------------ ------------ ---------- ---- ---------- ---------- -----
+SVM1
+          SVM1_root
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.50GB    5%
+SVM1
+          SVM1_data_vol
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.49GB    5%
+SVM2
+          SVM2_root
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.49GB    5%
+SVM2
+          SVM2_data_vol
+                       node_A_2_data02_unmirrored
+                                    online     RW          1GB    972.6MB    5%
+----
+. Ligue fisicamente a prateleira.
++
+A ressincronização é iniciada automaticamente.
+
+. Verifique se a ressincronização foi iniciada:
++
+`storage aggregate show`
+
++
+O agregado afetado deve ter um status RAID de "ressincronização", como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+cluster Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1_data01_mirrored
+            4.15TB    3.40TB   18% online       3 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_1_root
+           707.7GB   34.29GB   95% online       1 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data01_mirrored
+            4.15TB    4.12TB    1% online       2 node_A_2       raid_dp,
+                                                                   resyncing
+node_A_2_data02_unmirrored
+            2.18TB    2.18TB    0% online       1 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_root
+           707.7GB   34.27GB   95% online       1 node_A_2       raid_dp,
+                                                                   resyncing
+----
+. Monitore o agregado para confirmar que a ressincronização está concluída:
++
+`storage aggregate show`
+
++
+O agregado afetado deve ter um status RAID "normal", como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+cluster Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1data01_mirrored
+            4.15TB    3.40TB   18% online       3 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_1root
+           707.7GB   34.29GB   95% online       1 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data01_mirrored
+            4.15TB    4.12TB    1% online       2 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_data02_unmirrored
+            2.18TB    2.18TB    0% online       1 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_root
+           707.7GB   34.27GB   95% online       1 node_A_2       raid_dp,
+                                                                   resyncing
+----
+

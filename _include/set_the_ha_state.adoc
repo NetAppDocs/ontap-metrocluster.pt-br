@@ -1,0 +1,32 @@
+= 
+:allow-uri-read: 
+
+
+É necessário verificar o estado de HA dos controladores e do chassi e, se necessário, atualizar o estado para corresponder à configuração do sistema.
+
+.Passos
+. No modo de manutenção, apresentar o estado HA do módulo do controlador e do chassis:
++
+`ha-config show`
+
++
+O estado HA para todos os componentes deve ser `mccip`.
+
+. Se o estado do sistema apresentado do controlador ou do chassis não estiver correto, defina o estado HA:
++
+`ha-config modify controller mccip`
+
++
+`ha-config modify chassis mccip`
+
+. Parar o nó: `halt`
++
+O nó deve parar no `LOADER>` prompt.
+
+. Em cada nó, verifique a data, a hora e o fuso horário do sistema: `show date`
+. Se necessário, defina a data em UTC ou GMT: `set date <mm/dd/yyyy>`
+. Verifique a hora usando o seguinte comando no prompt do ambiente de inicialização: `show time`
+. Se necessário, defina a hora em UTC ou GMT: `set time <hh:mm:ss>`
+. Guarde as definições: `saveenv`
+. Reunir variáveis de ambiente: `printenv`
+

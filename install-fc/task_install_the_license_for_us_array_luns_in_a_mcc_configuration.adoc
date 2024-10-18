@@ -1,0 +1,57 @@
+---
+permalink: install-fc/task_install_the_license_for_us_array_luns_in_a_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, license, array, luns, configuration 
+summary: Você deve instalar a licença V_StorageAttach em cada nó MetroCluster que deseja usar com LUNs de array. Não é possível usar LUNs de array em um agregado até que a licença seja instalada. 
+---
+= Instalar a licença para o uso de LUNs de array em uma configuração MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve instalar a licença V_StorageAttach em cada nó MetroCluster que deseja usar com LUNs de array. Não é possível usar LUNs de array em um agregado até que a licença seja instalada.
+
+.Antes de começar
+* O cluster deve ser instalado.
+* Você deve ter a chave de licença para a licença V_StorageAttach.
+
+
+.Sobre esta tarefa
+Você deve usar uma chave de licença separada para cada nó no qual deseja instalar a licença V_StorageAttach.
+
+.Passos
+. Instale a licença V_StorageAttach.
++
+`system license add`
+
++
+Repita esta etapa para cada nó de cluster no qual você deseja instalar a licença.
+
+. Verifique se a licença V_StorageAttach está instalada em todos os nós necessários em um cluster.
++
+`system license show`
+
++
+A saída de exemplo a seguir mostra que a licença V_StorageAttach está instalada nos nós de cluster_A:
+
++
+[listing]
+----
+
+cluster_A::> system license show
+Serial Number: nnnnnnnn
+Owner: controller_A_1
+Package           Type    Description           Expiration
+----------------- ------- --------------------- --------------------
+V_StorageAttach   license Virtual Attached Storage
+
+
+Serial Number: llllllll
+Owner: controller_A_2
+Package           Type    Description           Expiration
+----------------- ------- --------------------- --------------------
+V_StorageAttach   license Virtual Attached Storage
+----
+
