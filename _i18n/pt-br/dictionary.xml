@@ -5610,7 +5610,6 @@
   <block id="c83195c9d5e5dd5960c0976c81d14ea5" category="paragraph">Cisco 3232C</block>
   <block id="cdd7ce1b4fb53a24815dfe597e2d9bf4" category="paragraph">6 ISLs usando 40Gbps ou 100Gbps</block>
   <block id="939d3efe7d4070c6c8be39404639b5db" category="paragraph">Cisco 9336C-FX2 (não conecta gavetas NS224)</block>
-  <block id="5f464862c3ad92817ffd0d939008e569" category="paragraph">16 ISLs usando 10</block>
   <block id="b94f047c1e1eaf1f0b0b1b5ef5819d6b" category="paragraph">Cisco 9336C-FX2 (conexão de NS224 gavetas)</block>
   <block id="a47530745311f9d2efa307163eb1ee61" category="paragraph">Portas nativas (Nota 2)</block>
   <block id="a86749ca3f0eb199f6cde6d8cc60d442" category="paragraph">4 ISLs usando 40Gbps ou 100Gbps</block>
@@ -14257,4 +14256,6 @@
   <block id="41a799bcc3e4afaad880fb5ecde437ff" category="sidebar">Configurar pontes FC para SAS para monitoramento de integridade</block>
   <block id="dd20522d7848c343bdb11bf7a434d0ad" category="sidebar">Envie uma mensagem AutoSupport personalizada depois para adicionar nós à configuração do MetroCluster</block>
   <block id="0344e1867e953d0d51eac7e816dee9fe" category="sidebar">Remover um grupo de recuperação de desastres</block>
+  <block id="f292b4f87450c271c690d67e1d3a03e8" category="paragraph">16 ISLs usando 10Gbps ou 25Gbps</block>
+  <block id="d20d5c9d070e6369690ed4a79cf3c4bd" category="admonition">Você não precisa reiniciar os nós em uma ordem específica, mas você deve esperar até que um nó seja totalmente inicializado e todas as conexões sejam estabelecidas antes de reiniciar o próximo nó.</block>
 </blocks>

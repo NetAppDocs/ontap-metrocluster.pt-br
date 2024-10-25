@@ -645,6 +645,14 @@ Você deve responder `y` quando for solicitado a continuar no modo avançado e v
 
 NOTE: A prática recomendada é ter vários agregados de dados espelhados. Quando há apenas um agregado espelhado, há menos proteção porque os volumes de metadados estão localizados no mesmo agregado, em vez de em agregados separados.
 
+. Reinicie cada um dos novos nós:
++
+`node reboot -node <node_name> -inhibit-takeover true`
+
++
+
+NOTE: Você não precisa reiniciar os nós em uma ordem específica, mas você deve esperar até que um nó seja totalmente inicializado e todas as conexões sejam estabelecidas antes de reiniciar o próximo nó.
+
 . Verifique se os nós são adicionados ao grupo de DR:
 +
 `metrocluster node show`

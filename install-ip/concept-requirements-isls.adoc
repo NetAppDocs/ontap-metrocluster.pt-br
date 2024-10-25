@@ -128,7 +128,7 @@ Cisco 3232C
  a| 
 Cabos de arranque
  a| 
-16 ISLs usando 10Gbps
+16 ISLs usando 10Gbps ou 25Gbps
 
 
 
@@ -146,7 +146,7 @@ Cisco 9336C-FX2 (não conecta gavetas NS224)
  a| 
 Cabos de arranque
  a| 
-16 ISLs usando 10
+16 ISLs usando 10Gbps ou 25Gbps
 
 
 
@@ -164,7 +164,7 @@ Cisco 9336C-FX2 (conexão de NS224 gavetas)
  a| 
 Cabos de arranque (Nota 2)
  a| 
-16 ISLs usando 10Gbps
+16 ISLs usando 10Gbps ou 25Gbps
 
 
 
