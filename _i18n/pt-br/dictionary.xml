@@ -9173,10 +9173,8 @@
   <block id="0eb57575de5c7f4d680f1a39b29ec2b1" category="paragraph">Você pode inserir os comandos nas etapas restantes a partir do console de qualquer um dos módulos do controlador.</block>
   <block id="1f06fb185175c42c17ad8392e330767e" category="paragraph">Você deve responder com "'y'" quando solicitado para continuar no modo avançado e ver o prompt do modo avançado (*&gt;).</block>
   <block id="3240aad2738f70e3ab16c6dadcff4f64" category="list-text">Atualize o firmware da ponte:</block>
-  <block id="661e2204cb2e8d5d76cdeb2ec6dd4c82" category="paragraph"><block ref="f9b3a6511f32ab6d850680461374c7cc" prefix="" category="inline-code"></block></block>
   <block id="4b3afe92d6efd942da2f6c9cc0193156" category="list-text">Verifique se a atualização do firmware está concluída:</block>
   <block id="e8ecfd692141a2af654944f772388550" category="paragraph"><block ref="35cf6f7333734661dc09591dc27f71cd" prefix="" category="inline-code"></block></block>
-  <block id="c91321ecefb3f3097824082b2b8ad47e" category="paragraph">O exemplo a seguir mostra que a tarefa "atualização do firmware da ponte de toragem" ainda está em execução:</block>
   <block id="57218ce2b3683cc3d220300cdb1a5112" category="paragraph">Após cerca de 10 minutos, o novo firmware é totalmente instalado e o estado da tarefa será bem-sucedido:</block>
   <block id="1023e499127e1c9705dbc019dc65ffca" category="list-text">Conclua as etapas de acordo com se o gerenciamento na banda está habilitado e qual versão do ONTAP seu sistema está executando:</block>
   <block id="ad4a04ec96320f2893d5f6989086846f" category="list-text">Se você estiver executando o ONTAP 9.4, o gerenciamento na banda não é suportado e o comando deve ser emitido a partir do console de bridge:</block>
@@ -9184,9 +9182,7 @@
   <block id="26fdc702129a16aafe7405c5c6bbf046" category="admonition">O exemplo mostra que a imagem flash principal mostra a nova imagem de firmware, enquanto a imagem flash secundária mostra a imagem antiga.</block>
   <block id="fc586f4b0980908d4372323e410963a4" category="list-text">Reinicie a ponte executando o<block ref="b7ea2b43f07f5f6c853aa524246c8c7b" prefix=" " category="inline-code"></block> comando a partir da ponte.</block>
   <block id="d47da404b64fa7f223a274546a4f333a" category="list-text">Se você estiver executando o ONTAP 9.5 ou posterior, o gerenciamento na banda é suportado e o comando pode ser emitido a partir do prompt do cluster:</block>
-  <block id="dae4d2e67917b362ddd1f681a84bbf3c" category="list-text">Executar o<block ref="6a59c2d96331786a99a23717c5dc3dfd" prefix=" " category="inline-code"></block> comando.</block>
   <block id="5bd4b5b50c5ac874303a8d602e07a3df" category="list-text">Se necessário, reinicie a ponte:</block>
-  <block id="58a8b36ecd6128fba6f2a930d1870915" category="paragraph"><block ref="67db4214d6ce80df20dbfa3f689f86a4" prefix="" category="inline-code"></block></block>
   <block id="befb8d9c3b9caecfce0121a43afa3ce1" category="admonition">A partir da versão 2,95 do firmware ATTO, a ponte será reiniciada automaticamente e esta etapa não é necessária.</block>
   <block id="2667ea3cde22695f6975f497f96d298f" category="list-text">Verifique se a ponte foi reiniciada corretamente:</block>
   <block id="6ecfdc621994ad7a88af8d731165c43a" category="paragraph"><block ref="d4b15528721ed3ac7910f1fa2cacec13" prefix="" category="inline-code"></block></block>
@@ -10154,16 +10150,13 @@
   <block id="7b195fd8d412843052bdca8035a73b9b" category="paragraph">Saiba o que há de novo no suporte à plataforma IP MetroCluster.</block>
   <block id="7616cb7bf661fe6377270c352ec2ff82" category="cell">Plataformas compatíveis em configurações IP do MetroCluster</block>
   <block id="5fa70989a3e04b27c407da750f3d94fe" category="paragraph">AFF A70, AFF A90, AFF A1K</block>
-  <block id="4b96de8aec25594d2021f91d86aa38cb" category="paragraph">ONTAP 9.15,1 e posterior</block>
   <block id="09165c2d4ac9e01ef347c57ffcbe1ce5" category="paragraph">ASA A150, ASA A250, ASA A400, ASA A800, ASA A900, ASA C250, ASA C400, ASA C800</block>
-  <block id="fafe6583a668a5a00cfd6d5e611b9ce3" category="paragraph">ONTAP 9.14,1 e posterior</block>
   <block id="8a1d06fd27bf0bfc6535b6a49185e591" category="paragraph">AFF A150</block>
   <block id="dcc3f7f0ec763ead07e62fab778e446f" category="paragraph">ONTAP 9.13,1 e posterior</block>
   <block id="f3975a91159eff9969dbd4feb2dec392" category="paragraph">ONTAP 9.12.1P1</block>
   <block id="ee64dfb34bd2ed3e08d63eaf38462ec7" category="paragraph">ONTAP 9.11.1P8</block>
   <block id="fc0954dc49e631cf41dcb343d7e02893" category="paragraph">ONTAP 9.10.1P12</block>
   <block id="7c3d41bb91a832b194d140ed72b101e7" category="paragraph">AFF C250, AFF C400, AFF C800</block>
-  <block id="f8f1cacc3272f3e60fb1b860d1134be6" category="paragraph">ONTAP 9.13,1 GA e posterior</block>
   <block id="2f709669cbfb385626cf55d7c80120be" category="paragraph">ASA AFF A220, ASA AFF A250, ASA AFF A400, ASA AFF A700, ASA AFF A800</block>
   <block id="b9893a4b8d000616198b04d3642b5fb8" category="paragraph">ONTAP 9.6P3</block>
   <block id="e4d3a0569925dd58f4e2c0c40b889993" category="paragraph">AFF A220, FAS2750</block>
@@ -14258,4 +14251,28 @@
   <block id="0344e1867e953d0d51eac7e816dee9fe" category="sidebar">Remover um grupo de recuperação de desastres</block>
   <block id="f292b4f87450c271c690d67e1d3a03e8" category="paragraph">16 ISLs usando 10Gbps ou 25Gbps</block>
   <block id="d20d5c9d070e6369690ed4a79cf3c4bd" category="admonition">Você não precisa reiniciar os nós em uma ordem específica, mas você deve esperar até que um nó seja totalmente inicializado e todas as conexões sejam estabelecidas antes de reiniciar o próximo nó.</block>
+  <block id="65a32997b66c0fa9964c46d8ce3023c5" category="admonition">A partir de ONTAP 9.8, o<block ref="81f0734b378bc1ed5fb99125faf1d47a" prefix=" " category="inline-code"></block> comando substitui o<block ref="c5c5939ad24a4bc4cca8c77f5105d463" prefix=" " category="inline-code"></block>. As etapas a seguir mostram o<block ref="81f0734b378bc1ed5fb99125faf1d47a" prefix=" " category="inline-code"></block> comando, mas se você estiver executando uma versão anterior ao ONTAP 9.8, você deve usar o<block ref="c5c5939ad24a4bc4cca8c77f5105d463" prefix=" " category="inline-code"></block> comando.</block>
+  <block id="e0b676f47094dac51c79372806a1021a" category="list-text">Atualize o firmware da ponte.</block>
+  <block id="1e8d4e4a0ce5b464f6997d0bbb8d8ba2" category="paragraph">A partir do ONTAP 9.16,1, você pode usar credenciais para atualizar o firmware da bridge se for necessário pelo servidor para baixar o pacote de firmware.</block>
+  <block id="38cbc38ca036975e59d1ee4168bc50a2" category="open-title">Se as credenciais não forem necessárias:</block>
+  <block id="db7fff50b13f73830f7aaaf34fd5371e" category="open-title">Se forem necessárias credenciais:</block>
+  <block id="c540a55c1af8888d4507b7c80af2d372" category="list-text">Atualize o firmware da ponte e especifique o nome de usuário necessário:</block>
+  <block id="e9b9a2eac9e5ccde661c85666e1bebfc" category="list-text">Digite a senha quando solicitado na saída, como mostrado no exemplo a seguir:</block>
+  <block id="9f81eba7dfa3609b17894df364395597" category="paragraph">O exemplo a seguir mostra que a tarefa "atualização do firmware da ponte ystem" ainda está em execução:</block>
+  <block id="92289ea5a47b731862869f48712c9527" category="list-text">Executar o<block ref="e595c34083a230fd789d64c7de21c72a" prefix=" " category="inline-code"></block> comando.</block>
+  <block id="52e06a42c952a2b1bdb77dfc0f6f90ff" category="paragraph"><block ref="a51df89c214b1838fdbc8273e8704555" prefix="" category="inline-code"></block></block>
+  <block id="968258a4c4370a9f6fe8b87ce4255cca" category="paragraph"><block ref="6604a22a7f45489dfc4b36fa6c37c036" prefix="" category="inline-code"></block></block>
+  <block id="afdf08fe53823e29ce4e277959c64b1e" category="paragraph">Suporte de mobilidade de dados SVM para migração de configurações do MetroCluster</block>
+  <block id="61576ee193ce4ae8f8a1aea237cc4781" category="paragraph">O ONTAP é compatível com a migração de um par de HA que não é MetroCluster para uma configuração MetroCluster ou de uma configuração MetroCluster para um par de HA que não é MetroCluster. Não é possível migrar um SVM entre configurações do MetroCluster.</block>
+  <block id="aeaa758085c5e2389b9072b1ced2dc57" category="inline-link-macro">Mobilidade de dados do SVM</block>
+  <block id="deff601e347d3753345e223f0dece2ac" category="paragraph"><block ref="deff601e347d3753345e223f0dece2ac" category="inline-link-macro-rx"></block></block>
+  <block id="31272abf1c9209ab4acd0bf10f129338" category="paragraph">ONTAP 9.16,1</block>
+  <block id="b186fa8da6778f3ac2d4aa8499deffeb" category="paragraph">Suporte de autenticação MD5.1X para grupos de pares BGP</block>
+  <block id="a74281ed4b15e1a42fc798b20f31018b" category="paragraph">O ONTAP suporta autenticação MD5 em grupos de pares BGP para proteger sessões BGP. Quando o MD5 está ativado, as sessões de BGP só podem ser estabelecidas e processadas entre pares autorizados, evitando possíveis interrupções da sessão por um ator não autorizado.</block>
+  <block id="ef78f11e7aec890f1dc53f6a0176cdf4" category="inline-link-macro">Configurar LIFs de IP virtual (VIP)</block>
+  <block id="43d93948b7becfd15462e91085fd63cc" category="paragraph"><block ref="43d93948b7becfd15462e91085fd63cc" category="inline-link-macro-rx"></block></block>
+  <block id="94ffd34b73e540c50265688d834cea45" category="paragraph">ONTAP 9.13,1 GA</block>
+  <block id="0cb8709673d91d9b41f7a2d9110be6db" category="paragraph">Atualização de firmware do Fibrebridge usando credenciais</block>
+  <block id="cca6b3113bea250bb0e5ecb42fcd1f6b" category="paragraph">Você pode atualizar o firmware em bridges do Fibrebridge usando credenciais se elas forem necessárias pelo servidor para baixar o pacote de firmware.</block>
+  <block id="7f35c16e72037a8dea668c5bb0e6327d" category="paragraph"><block ref="7f35c16e72037a8dea668c5bb0e6327d" category="inline-link-macro-rx"></block></block>
 </blocks>

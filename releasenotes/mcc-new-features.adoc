@@ -19,6 +19,17 @@ Saiba mais sobre os novos recursos do MetroCluster.
 
 
  a| 
+Atualização de firmware do Fibrebridge usando credenciais
+ a| 
+Você pode atualizar o firmware em bridges do Fibrebridge usando credenciais se elas forem necessárias pelo servidor para baixar o pacote de firmware.
+
+link:../maintain/task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html["Atualize o firmware em uma ponte FibreBridge"]
+ a| 
+ONTAP 9.16,1
+
+
+
+ a| 
 Suporte IP MetroCluster para criptografia de ponta a ponta
  a| 
 A criptografia de ponta a ponta é compatível com sistemas AFF A400, FAS8300 e FAS8700 para criptografar o tráfego de back-end, como NVlog e dados de replicação de storage, entre os locais em uma configuração IP do MetroCluster.
