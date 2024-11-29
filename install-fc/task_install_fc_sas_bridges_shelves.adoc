@@ -47,95 +47,45 @@ A disponibilidade do gerenciamento em banda das pontes depende da versão do ONT
 Os comandos Bridge CLI podem ser emitidos a partir do comando ONTAP interface `storage bridge run-cli -name _bridge_name_ -command _bridge_command_name_` na interface ONTAP.
 
 
-NOTE: O uso do gerenciamento na banda com acesso IP desativado é recomendado para melhorar a segurança limitando a conetividade física da ponte.
+NOTE: O uso do gerenciamento na banda com acesso IP desativado é recomendado para melhorar a segurança limitando a conetividade física à ponte.
 
 
 
-== Número suportado de discos e gavetas nas pontes FibreBridge 7600N e 7500N
+== Limites e regras de anexo da ponte FibreBridge 7600N e 7500N
 
-As tabelas a seguir mostram o número de discos e gavetas suportados por um par de bridges 7600N e 7500N.
+Reveja os limites e considerações ao anexar pontes FibreBridge 7600N e 7500N.
 
-[NOTE]
-====
-* O primeiro limite que você atingir se aplica.
-* Se você estiver usando DS460C gavetas, somente até 240 unidades podem ser usadas, o que equivale a 4 gavetas.
-* Se você estiver usando DS212C gavetas, somente até 120 unidades podem ser usadas, o que equivale a 10 gavetas.
+.Limites das pontes FibreBridge 7600N e 7500N
+* O número máximo de unidades HDD e SSD combinadas é 240.
+* O número máximo de unidades SSD é 96.
+* O número máximo de SSDs por porta SAS é 48.
+* O número máximo de gavetas por porta SAS é de 10.
 
 
-====
-.Número suportado de discos
-Revise o número de discos suportados por um par de bridges 7600N ou 7500N:
+.Regras de anexo de ponte FibreBridge 7600N e 7500N
+* Não misture unidades SSD e HDD na mesma porta SAS.
+* Distribua as gavetas uniformemente entre as portas SAS.
+* Você não deve ter DS460 gavetas na mesma porta SAS que outros tipos de gaveta (por exemplo, DS212 ou DS224 gavetas).
 
-[cols="3*"]
+
+.Exemplo de configuração
+A seguir mostra um exemplo de configuração para conectar quatro gavetas DS224 com unidades SSD e seis gavetas DS224 com unidades HDD:
+
+[cols="2*"]
 |===
-| Configuração de disco | Tipo de disco | Total de discos por par de bridge 
+| Porta de SAS | Compartimentos e unidades 
 
 
-| Todos os SSDs | SSD | 96 
+| Porta SAS A | 2x DS224 gavetas com unidades SSD 
 
 
-| Todos os HDDs | HDD | 240 
+| Porta SAS-B | 2x DS224 gavetas com unidades SSD 
 
 
-.2+| Misto (96 SSDs) | SSD | 96 
+| Porta SAS-C | 3x DS224 gavetas com unidades HDD 
 
 
-| HDD | 144 
-
-
-.2+| Misto (72 SSDs) | SSD | 72 
-
-
-| HDD | 168 
-
-
-.2+| Misto (48 SSDs) | SSD | 48 
-
-
-| HDD | 192 
-
-
-.2+| Misto (24 SSDs) | SSD | 24 
-
-
-| HDD | 216 
-|===
-.Número suportado de gavetas
-Analise o número de prateleiras suportadas por trás de um par de pontes FibreBridge 7600N e 7500N:
-
-[cols="3*"]
-|===
-| Configuração de disco | Tipo de disco | Número total de prateleiras 
-
-
-| Todos os SSDs | SSD | 4 
-
-
-| Todos os HDDs | HDD | 10 
-
-
-.2+| Misto | SSD | 1 
-
-
-| HDD | 9 
-
-
-.2+| Misto | SSD | 2 
-
-
-| HDD | 8 
-
-
-.2+| Misto | SSD | 3 
-
-
-| HDD | 7 
-
-
-.2+| Misto | SSD | 4 
-
-
-| HDD | 6 
+| Porta SAS-D | 3x DS224 gavetas com unidades HDD 
 |===
 
 

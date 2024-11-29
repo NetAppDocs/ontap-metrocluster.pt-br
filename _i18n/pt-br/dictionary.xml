@@ -4704,33 +4704,6 @@
   <block id="1a534d06146fed22a868cc0761122200" category="list-text">Antes do ONTAP 9.5, somente o gerenciamento SNMP fora da banda é suportado.</block>
   <block id="e824a21e3028938aa47fe624ef80f849" category="paragraph">Os comandos Bridge CLI podem ser emitidos a partir do comando ONTAP interface<block ref="a4eebdf41596af4a8e3786060287e543" prefix=" " category="inline-code"></block> na interface ONTAP.</block>
   <block id="f5c160717de61a4450a76be740a98cf2" category="admonition">O uso do gerenciamento na banda com acesso IP desativado é recomendado para melhorar a segurança limitando a conetividade física da ponte.</block>
-  <block id="11ceccfd751fe28a61b558ba07583aff" category="section-title">Número suportado de discos e gavetas nas pontes FibreBridge 7600N e 7500N</block>
-  <block id="ff2961229b46cc89dffec4aab67d010d" category="paragraph">As tabelas a seguir mostram o número de discos e gavetas suportados por um par de bridges 7600N e 7500N.</block>
-  <block id="b8cbb75a8c2b1413bcddd7c532ccc064" category="list-text">O primeiro limite que você atingir se aplica.</block>
-  <block id="2a3f0c8b0ca6744889b3ffa76d4b9f5b" category="list-text">Se você estiver usando DS460C gavetas, somente até 240 unidades podem ser usadas, o que equivale a 4 gavetas.</block>
-  <block id="5ccf1f9193b673f77fa0a023f0c64238" category="list-text">Se você estiver usando DS212C gavetas, somente até 120 unidades podem ser usadas, o que equivale a 10 gavetas.</block>
-  <block id="402fb729f11d0452c518d4172b605b2c" category="paragraph-title">Número suportado de discos</block>
-  <block id="c75f82dd210bf38bdd42ff246823dd9e" category="paragraph">Revise o número de discos suportados por um par de bridges 7600N ou 7500N:</block>
-  <block id="3baa66bdd3ca9158478ad78d6079db1c" category="cell">Configuração de disco</block>
-  <block id="3d0bf05155f3dfd0eeccf9e953d46156" category="cell">Tipo de disco</block>
-  <block id="eda8b8dec444e51f3afb1c089a183afc" category="cell">Total de discos por par de bridge</block>
-  <block id="4a761ba24826218f4585e8feddc64d7c" category="cell">Todos os SSDs</block>
-  <block id="34df20bab5e85dc75bfc94ef569cced9" category="cell">SSD</block>
-  <block id="b0df25be54449fa53d1180d01ad8bdc5" category="cell">Todos os HDDs</block>
-  <block id="9c2dc227590d4220750b52b21b0aeb99" category="cell">HDD</block>
-  <block id="335f5352088d7d9bf74191e006d8e24c" category="cell">240</block>
-  <block id="de97ed9eb6dc112873264b693e05c88c" category="cell">Misto (96 SSDs)</block>
-  <block id="0a09c8844ba8f0936c20bd791130d6b6" category="cell">144</block>
-  <block id="1b48b5dfad482eb966c69b885c217e13" category="cell">Misto (72 SSDs)</block>
-  <block id="006f52e9102a8d3be2fe5614f42ba989" category="cell">168</block>
-  <block id="79fa5a72c63f064bf5ae4709ac221926" category="cell">Misto (48 SSDs)</block>
-  <block id="58a2fc6ed39fd083f55d4182bf88826d" category="cell">192</block>
-  <block id="1c151db89d2679449be5c45bb7b8d994" category="cell">Misto (24 SSDs)</block>
-  <block id="45fbc6d3e05ebd93369ce542e8f2322d" category="cell">216</block>
-  <block id="c742d6affaef84b501d784319fca6de4" category="paragraph-title">Número suportado de gavetas</block>
-  <block id="22daa6b9c9c5e98028929434af5223de" category="paragraph">Analise o número de prateleiras suportadas por trás de um par de pontes FibreBridge 7600N e 7500N:</block>
-  <block id="ca7ac3a83947da614de147e934674475" category="cell">Número total de prateleiras</block>
-  <block id="699b4f79215d191584653efebf156e52" category="cell">Misto</block>
   <block id="6f47fdb0056f04198e0f13d4914a9c42" category="section-title">Preparação para a instalação</block>
   <block id="b9af642f4c94393d1d86928e1df7b939" category="paragraph">Ao se preparar para instalar as pontes como parte do novo sistema MetroCluster, você deve garantir que o sistema atenda a certos requisitos, incluindo atender aos requisitos de configuração e configuração das pontes. Outros requisitos incluem o download dos documentos necessários, o utilitário ATTO Quicknav e o firmware da ponte.</block>
   <block id="58eb0a3f95df2104f4ac005bbd51d244" category="list-text">Seu sistema já deve ser instalado em um rack se ele não foi enviado em um gabinete do sistema.</block>
@@ -9174,7 +9147,6 @@
   <block id="1f06fb185175c42c17ad8392e330767e" category="paragraph">Você deve responder com "'y'" quando solicitado para continuar no modo avançado e ver o prompt do modo avançado (*&gt;).</block>
   <block id="3240aad2738f70e3ab16c6dadcff4f64" category="list-text">Atualize o firmware da ponte:</block>
   <block id="4b3afe92d6efd942da2f6c9cc0193156" category="list-text">Verifique se a atualização do firmware está concluída:</block>
-  <block id="e8ecfd692141a2af654944f772388550" category="paragraph"><block ref="35cf6f7333734661dc09591dc27f71cd" prefix="" category="inline-code"></block></block>
   <block id="57218ce2b3683cc3d220300cdb1a5112" category="paragraph">Após cerca de 10 minutos, o novo firmware é totalmente instalado e o estado da tarefa será bem-sucedido:</block>
   <block id="1023e499127e1c9705dbc019dc65ffca" category="list-text">Conclua as etapas de acordo com se o gerenciamento na banda está habilitado e qual versão do ONTAP seu sistema está executando:</block>
   <block id="ad4a04ec96320f2893d5f6989086846f" category="list-text">Se você estiver executando o ONTAP 9.4, o gerenciamento na banda não é suportado e o comando deve ser emitido a partir do console de bridge:</block>
@@ -9188,7 +9160,6 @@
   <block id="6ecfdc621994ad7a88af8d731165c43a" category="paragraph"><block ref="d4b15528721ed3ac7910f1fa2cacec13" prefix="" category="inline-code"></block></block>
   <block id="6e4b7fcf9090d34cd27cab087264a169" category="paragraph">O sistema deve ser cabeado para ter alta disponibilidade de multipath (ambas as controladoras têm acesso por meio das pontes aos compartimentos de disco em cada stack).</block>
   <block id="67fe76fc6c243ad7a07dba1bedbd68be" category="list-text">Verifique se o firmware do FibreBridge foi atualizado:</block>
-  <block id="871912239094dc44baa2ec93ffb8d632" category="paragraph"><block ref="d6532f205af7738fbda4ce33335d4e04" prefix="" category="inline-code"></block></block>
   <block id="f7600c022afd87e76a4e915ac9399e45" category="list-text">Verifique se as partições são atualizadas a partir do prompt da ponte:</block>
   <block id="06e7ec6ae7f944544771022d467d0496" category="paragraph"><block ref="c27e24b8b45de3e3c43ee4f5da981459" prefix="" category="inline-code"></block></block>
   <block id="98e693f628e7057fb87edf44897d2df1" category="paragraph">A imagem flash principal apresenta a nova imagem de firmware, enquanto a imagem flash secundária apresenta a imagem antiga.</block>
@@ -9196,23 +9167,6 @@
   <block id="aebdbdde32f31274fe9fc6e75b482c32" category="list-text">Verifique se ambas as imagens flash estão atualizadas para a mesma versão.</block>
   <block id="1b7c547e0c44744faa2a37c6b0435cc2" category="paragraph">A saída deve mostrar a mesma versão para ambas as partições.</block>
   <block id="bb7439d72897f5b031319c5576c3cc67" category="list-text">Repita os passos 5 a 13 na próxima ponte até que todas as pontes na configuração do MetroCluster tenham sido atualizadas.</block>
-  <block id="e49bc35e0118f2b5a5904c13e1833761" category="section-title">Atualização do firmware no FibreBridge 7500N em configurações com ONTAP 9.3.x e anteriores</block>
-  <block id="1a5e839afe7a716dd2640f7fdb69669a" category="paragraph">Talvez seja necessário atualizar o firmware em suas bridges do FibreBridge para verificar se você tem os recursos mais recentes ou para resolver possíveis problemas. Este procedimento deve ser usado para o FibreBridge 7500N em configurações executando o ONTAP 9.3.x.</block>
-  <block id="ef1eae725a44cfeb66559e3d3e94f7ec" category="paragraph">A partir do ONTAP 9.3, você pode usar o comando de atualização do firmware da ponte de armazenamento ONTAP para atualizar o firmware da ponte em bridges FibreBridge 7500N.</block>
-  <block id="2ff283b5fcea4bdb853d6b9da8d8948c" category="paragraph"><block ref="2ff283b5fcea4bdb853d6b9da8d8948c" category="inline-link-macro-rx"></block></block>
-  <block id="2d0700f1234a9f9dd9937555291170ec" category="paragraph">"'_maintenance-window-in-hours_" especifica o comprimento da janela de manutenção, com um máximo de 72 horas. Se a manutenção for concluída antes do tempo decorrido, você poderá invocar uma mensagem AutoSupport indicando o fim do período de manutenção:</block>
-  <block id="8c3f1a5045c47c008de3de6fa5352da3" category="list-text">Faça o download do arquivo de firmware da ponte usando as etapas 1 a 3 do procedimento na página Download de firmware da ATTO FibreBridge.</block>
-  <block id="3083b982cc912e364f9e1bc28cc6915a" category="list-text">Faça uma cópia da página de download do firmware DO ATTO FibreBridge e as notas de versão para referência quando for instruído a atualizar o firmware em cada bridge.</block>
-  <block id="ae87d5531ab43f90dedaa89f103356a1" category="list-text">Atualize a ponte:</block>
-  <block id="05791e70fbe1537753bf5a023b7623eb" category="list-text">Instale o firmware na ponte FibreBridge 7500N.</block>
-  <block id="c1a1962dd8879c856d3b821c9622f94c" category="paragraph">Você deve consultar as instruções fornecidas na seção ""Atualizar firmware"" do _ATTO FibreBridge 7500N Manual de Instalação e operação_.</block>
-  <block id="8458ea1c3c1ea2053887d2f331da77f4" category="paragraph">*ATENÇÃO:* Certifique-se de ligar a ponte individual agora. Se você esperar e desligar ambas as pontes em uma pilha simultaneamente, a controladora poderá perder o acesso às unidades, resultando em uma falha Plex ou pânico em vários discos.</block>
-  <block id="6eee07f1028e6e37c9b9675c78a3ecab" category="paragraph">A ponte deve reiniciar.</block>
-  <block id="86b1ef008f18b43ce62a9069606c0c6d" category="list-text">No console de qualquer controlador, verifique se a ponte foi reiniciada corretamente:</block>
-  <block id="7eb8d2db2d90e516a56d7472a56b99bd" category="list-text">No console de qualquer controlador, verifique se o firmware do FibreBridge foi atualizado:</block>
-  <block id="ed0f0385ac6d639a877dbd50ffe09fc9" category="list-text">Repita as subetapas anteriores na mesma ponte para atualizar a segunda partição.</block>
-  <block id="c1e404b965bd033d8d0a2284a04382d6" category="list-text">Verifique se ambas as partições estão atualizadas:</block>
-  <block id="f716521a03deca3c493b0dbaa94f969c" category="list-text">Repita a etapa anterior na próxima ponte, até que todas as pontes na configuração do MetroCluster tenham sido atualizadas.</block>
   <block id="245370f7754738e7db5a3ff87aab25cc" category="summary">Atualizando o firmware em switches IP MetroCluster.</block>
   <block id="666408818b617858e00b40c2eb3d365a" category="paragraph">Talvez seja necessário atualizar o firmware em um switch IP MetroCluster.</block>
   <block id="9630e0ae86014261ce835fe1e1ffcd0e" category="paragraph">Você deve repetir esta tarefa em cada uma das opções sucessivamente.</block>
@@ -14259,7 +14213,6 @@
   <block id="c540a55c1af8888d4507b7c80af2d372" category="list-text">Atualize o firmware da ponte e especifique o nome de usuário necessário:</block>
   <block id="e9b9a2eac9e5ccde661c85666e1bebfc" category="list-text">Digite a senha quando solicitado na saída, como mostrado no exemplo a seguir:</block>
   <block id="9f81eba7dfa3609b17894df364395597" category="paragraph">O exemplo a seguir mostra que a tarefa "atualização do firmware da ponte ystem" ainda está em execução:</block>
-  <block id="92289ea5a47b731862869f48712c9527" category="list-text">Executar o<block ref="e595c34083a230fd789d64c7de21c72a" prefix=" " category="inline-code"></block> comando.</block>
   <block id="52e06a42c952a2b1bdb77dfc0f6f90ff" category="paragraph"><block ref="a51df89c214b1838fdbc8273e8704555" prefix="" category="inline-code"></block></block>
   <block id="968258a4c4370a9f6fe8b87ce4255cca" category="paragraph"><block ref="6604a22a7f45489dfc4b36fa6c37c036" prefix="" category="inline-code"></block></block>
   <block id="afdf08fe53823e29ce4e277959c64b1e" category="paragraph">Suporte de mobilidade de dados SVM para migração de configurações do MetroCluster</block>
@@ -14275,4 +14228,30 @@
   <block id="0cb8709673d91d9b41f7a2d9110be6db" category="paragraph">Atualização de firmware do Fibrebridge usando credenciais</block>
   <block id="cca6b3113bea250bb0e5ecb42fcd1f6b" category="paragraph">Você pode atualizar o firmware em bridges do Fibrebridge usando credenciais se elas forem necessárias pelo servidor para baixar o pacote de firmware.</block>
   <block id="7f35c16e72037a8dea668c5bb0e6327d" category="paragraph"><block ref="7f35c16e72037a8dea668c5bb0e6327d" category="inline-link-macro-rx"></block></block>
+  <block id="dd5e73f11c8453deab39cc51184b718c" category="admonition">O uso do gerenciamento na banda com acesso IP desativado é recomendado para melhorar a segurança limitando a conetividade física à ponte.</block>
+  <block id="794172cd90da1900d6103d0859717cae" category="section-title">Limites e regras de anexo da ponte FibreBridge 7600N e 7500N</block>
+  <block id="6640e784b645fe9fb8ac2e43bbd6435c" category="paragraph">Reveja os limites e considerações ao anexar pontes FibreBridge 7600N e 7500N.</block>
+  <block id="2578541f645016c0cd8de75379c88d3e" category="list-title">Limites das pontes FibreBridge 7600N e 7500N</block>
+  <block id="33993760dba186d29e6c1b1c4a5a9eb6" category="list-text">O número máximo de unidades HDD e SSD combinadas é 240.</block>
+  <block id="0ea95754c61ccceaa6093ef60f306589" category="list-text">O número máximo de unidades SSD é 96.</block>
+  <block id="6aa9ec42d5ec998ae8c42e6ff59ac177" category="list-text">O número máximo de SSDs por porta SAS é 48.</block>
+  <block id="3443a5a71e5726152a93cb7f1222c252" category="list-text">O número máximo de gavetas por porta SAS é de 10.</block>
+  <block id="c15552ec0e1dcd2dc0268b8f8853f8b0" category="list-title">Regras de anexo de ponte FibreBridge 7600N e 7500N</block>
+  <block id="cd4785cfe3cc59dcc3af8a0b3d1c2d26" category="list-text">Não misture unidades SSD e HDD na mesma porta SAS.</block>
+  <block id="bfbbc9e02b02d4cba470cc14b2b71995" category="list-text">Distribua as gavetas uniformemente entre as portas SAS.</block>
+  <block id="b2d9a3d2403921e9bad0f2de39898557" category="list-text">Você não deve ter DS460 gavetas na mesma porta SAS que outros tipos de gaveta (por exemplo, DS212 ou DS224 gavetas).</block>
+  <block id="881aa664fe300b14a430d83d71657f1b" category="paragraph-title">Exemplo de configuração</block>
+  <block id="4849ab8ff2c4f06051acea06836aec90" category="paragraph">A seguir mostra um exemplo de configuração para conectar quatro gavetas DS224 com unidades SSD e seis gavetas DS224 com unidades HDD:</block>
+  <block id="b13899cc9055a7a129cc3597a28caf33" category="cell">Porta de SAS</block>
+  <block id="b559966ca417caecbc925fd04a9d4253" category="cell">Compartimentos e unidades</block>
+  <block id="a56114e15d97418161a772996c894a0c" category="cell">Porta SAS A</block>
+  <block id="823cebd40c22009076dea45c51d568b3" category="cell">2x DS224 gavetas com unidades SSD</block>
+  <block id="d375b409cacda3ce9f6afe9379e101ce" category="cell">Porta SAS-B</block>
+  <block id="0b7b249cf6a212613080ac29d6eda992" category="cell">Porta SAS-C</block>
+  <block id="c394385c28e9969eb81c66b053fd009c" category="cell">3x DS224 gavetas com unidades HDD</block>
+  <block id="f7cdd2784709f45955fc9f25497956ae" category="cell">Porta SAS-D</block>
+  <block id="e5246bcdb743ec1c543a9253bc3a20f0" category="inline-link-macro">Site de suporte da Broadcom</block>
+  <block id="7e8efc833fbde0ff722d85e00415edec" category="list-text">Transfira o firmware do switch a partir do <block ref="7b0bfad9e7dd6186ed0f14c867034109" category="inline-link-macro-rx"></block>.</block>
+  <block id="e6d64e0eb5e781bce7f755d1457a9170" category="paragraph"><block ref="b2f8990b0f3f5de2520bc483556b14eb" prefix="" category="inline-code"></block></block>
+  <block id="b0782c02cc2d2b20315a3f6a825b3fbe" category="list-text">Executar o<block ref="2586ba33015a99bfc10dda523f819039" prefix=" " category="inline-code"></block> comando.</block>
 </blocks>
