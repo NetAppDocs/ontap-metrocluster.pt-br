@@ -6007,7 +6007,6 @@
   <block id="777915564b2f2870366331ca85d7d9a9" category="paragraph">X1116A</block>
   <block id="2adc2b7878fdb2191078a23343a8729e" category="paragraph">FAS2750, AFF A150, ASA A150 e AFF A220</block>
   <block id="d30fc67c2a1cee6e54e9714145270705" category="paragraph">Portas integradas</block>
-  <block id="f1044ba6bab78a278fa587f690217ea7" category="paragraph">Ranhura 0</block>
   <block id="021129e5b6cda3c7398d4240f38ab938" category="paragraph">e0a, e0b</block>
   <block id="58783907a3fbb2ae3dd67c785764d060" category="paragraph">FAS500f, AFF A250, ASA A250, ASA C250 e AFF C250</block>
   <block id="976dfaa29917d0a4edcbb9a22b57a8e5" category="paragraph">e0c, e0d</block>
@@ -12407,7 +12406,6 @@
   <block id="437238e14c493f4cd7340eb1bdcdd921" category="summary">Ferramentas de monitoramento SNMP de terceiros não são suportadas para bridges FibreBridge. A partir do ONTAP 9.8, as bridges FC para SAS são monitoradas por meio de conexões na banda por padrão, e não é necessária configuração adicional.</block>
   <block id="99b40f9970dd46441776d7fc691341bd" category="paragraph">Saiba como configurar as pontes FC-para-SAS para monitoramento de integridade.</block>
   <block id="b2fa14e3df9342c7d9ce9f5ac1643744" category="paragraph">Você pode usar os procedimentos na documentação _Instalação e Configuração_ para sua plataforma e prateleiras de disco.</block>
-  <block id="29d368b17fa8f6a4c00f53e0b1b0ddcd" category="paragraph"><block ref="4cafcb14d2185733637950489e651a6a" prefix="" category="inline-code"></block></block>
   <block id="0d687993b6b67e20ff0472f32d9693b0" category="summary">É necessário determinar o cabeamento dos novos módulos de controladora e de quaisquer novas gavetas de disco para os switches FC existentes.</block>
   <block id="fd1f71815b5abfc5d58a282353d2ba84" category="doc">Determinando o novo layout de cabeamento</block>
   <block id="6485f9afbf9c5f34e988054e67e3b142" category="paragraph">Esta tarefa deve ser executada em cada local do MetroCluster.</block>
@@ -14254,4 +14252,9 @@
   <block id="7e8efc833fbde0ff722d85e00415edec" category="list-text">Transfira o firmware do switch a partir do <block ref="7b0bfad9e7dd6186ed0f14c867034109" category="inline-link-macro-rx"></block>.</block>
   <block id="e6d64e0eb5e781bce7f755d1457a9170" category="paragraph"><block ref="b2f8990b0f3f5de2520bc483556b14eb" prefix="" category="inline-code"></block></block>
   <block id="b0782c02cc2d2b20315a3f6a825b3fbe" category="list-text">Executar o<block ref="2586ba33015a99bfc10dda523f819039" prefix=" " category="inline-code"></block> comando.</block>
+  <block id="a32cead873928387fe22f14cfa816430" category="admonition">As portas integradas são incorporadas ao hardware do controlador (slot 0) e não podem ser substituídas, portanto, o slot necessário para o adaptador não é aplicável.</block>
+  <block id="ca024a4ac8a10799527aecc96451c4ce" category="paragraph">Slot 1/não aplicável para portas integradas</block>
+  <block id="ad084693a846cdc2cf77ad2bb2e7382a" category="paragraph"><block ref="1c61f86d2f111f8c80a5d8ff728df70d" prefix="" category="inline-code"></block></block>
+  <block id="5f9a9e91fc7e98f1998a1dcee4eab83f" category="paragraph">Verifique se você está incluindo apenas unidades na gaveta sem espelhamento para o agregado.</block>
+  <block id="6f1eb898d916ac10201421006f5406e2" category="admonition">Você também pode usar o<block ref="2ee4c97cd7e2dff2e12ae3225818c09b" prefix=" " category="inline-code"></block> parâmetro no comando para especificar os discos que deseja usar para o agregado.</block>
 </blocks>
