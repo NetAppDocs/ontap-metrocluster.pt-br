@@ -14257,4 +14257,5 @@
   <block id="ad084693a846cdc2cf77ad2bb2e7382a" category="paragraph"><block ref="1c61f86d2f111f8c80a5d8ff728df70d" prefix="" category="inline-code"></block></block>
   <block id="5f9a9e91fc7e98f1998a1dcee4eab83f" category="paragraph">Verifique se você está incluindo apenas unidades na gaveta sem espelhamento para o agregado.</block>
   <block id="6f1eb898d916ac10201421006f5406e2" category="admonition">Você também pode usar o<block ref="2ee4c97cd7e2dff2e12ae3225818c09b" prefix=" " category="inline-code"></block> parâmetro no comando para especificar os discos que deseja usar para o agregado.</block>
+  <block id="668c968f31daa1f3b0b86ddf4b09543e" category="list-text">Você deve criar um objeto de sub-rede antes de criar um LIF. Um objeto de sub-rede permite que o ONTAP determine destinos de failover no cluster de destino porque tem um domínio de broadcast associado.</block>
 </blocks>

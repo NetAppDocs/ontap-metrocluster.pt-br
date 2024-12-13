@@ -237,6 +237,7 @@ Você deve considerar as seguintes diretrizes ao criar LIFs:
 * Broadcasts ARP: Você deve habilitar broadcasts ARP entre os dois clusters
 * LIFs duplicadas: Você não deve criar vários LIFs com o mesmo endereço IP (LIFs duplicadas) em um espaço IPspace
 * Configurações NFS e SAN: Você precisa usar diferentes máquinas virtuais de storage (SVMs) para agregados sem espelhamento e espelhados
+* Você deve criar um objeto de sub-rede antes de criar um LIF. Um objeto de sub-rede permite que o ONTAP determine destinos de failover no cluster de destino porque tem um domínio de broadcast associado.
 
 
 
