@@ -362,7 +362,7 @@ Antes de iniciar o switchover, a operação de automação é interrompida para 
 
 === Prepare a configuração de rede dos controladores antigos
 
-Para garantir que a rede seja retomada de forma limpa nos novos controladores, você deve mover LIFs para uma porta comum e remover a configuração de rede dos controladores antigos.
+Para permitir que a rede seja retomada de forma limpa nos novos controladores, verifique se o posicionamento de LIF está correto e remova a configuração de rede dos controladores antigos.
 
 .Sobre esta tarefa
 * Esta tarefa deve ser executada em cada um dos nós antigos.
@@ -426,6 +426,10 @@ Repita o comando para cada LIF entre clusters que não está na porta inicial.
 
 . [[controller_replace_upgrade_prepare_network_ports_3]]atribua a porta inicial de todos os LIFs de dados no controlador antigo a uma porta comum que é a mesma nos módulos de controladora antigos e novos.
 +
+
+CAUTION: Se os controladores antigos e novos não tiverem uma porta comum, não será necessário modificar as LIFs de dados. Pule esta etapa e vá diretamente para <<upgrades_assisted_without_matching_ports,Passo 4>>.
+
++
 .. Apresentar os LIFs:
 +
 `network interface show`
@@ -457,7 +461,7 @@ network interface modify -vserver vs0 -lif datalif1 -home-port e0d
 ----
 
 
-. Modifique domínios de broadcast para remover VLAN e portas físicas que precisam ser excluídas:
+. [[Upgrades_Assisted_without_Matching_ports]] Modificar domínios de broadcast para remover a VLAN e as portas físicas que precisam ser excluídas:
 +
 `broadcast-domain remove-ports -broadcast-domain <broadcast-domain-name>-ports <node-name:port-id>`
 
@@ -1323,12 +1327,68 @@ Gerenciamento de chaves externas
 Para obter mais informações, https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["Restaurar chaves de criptografia de gerenciamento de chaves externas"^]consulte .
 
 |===
-. Antes de retomar a operação, verifique se o MetroCluster está configurado corretamente. Verifique o status do nó:
+. Verifique se o MetroCluster está configurado corretamente. Verifique o status do nó:
 +
 `metrocluster node show`
 
 +
 Verifique se os novos nós (site_B) estão em *aguardando o estado switchback* do site_A.
+
+
+
+
+
+=== Verifique e restaure a configuração do LIF
+
+Verifique se os LIFs estão hospedados em nós apropriados antes de prosseguir com a operação de switchback automatizado.
+
+.Sobre esta tarefa
+* Esta tarefa é executada no site_B.
+
+
+
+CAUTION: Você deve verificar se o local das LIFs de dados está correto nos novos nós antes de executar um switchback. Quando você alterna a configuração, o ONTAP tenta retomar o tráfego na porta inicial usada pelos LIFs. A falha de e/S pode ocorrer quando a conexão da porta inicial com a porta do switch e VLAN estiver incorreta.
+
+.Passos
+. Verifique se os LIFs estão hospedados no nó e portas apropriados antes do switchback.
++
+.. Mude para o nível de privilégio avançado:
++
+`set -privilege advanced`
+
+.. Exiba os LIFs e confirme se cada data LIF está usando a porta inicial correta:
++
+`network interface show`
+
+.. Modifique quaisquer LIFs que não estejam usando a porta inicial correta:
++
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
+
++
+Se o comando retornar um erro, você pode substituir a configuração da porta:
+
++
+`vserver config override -command "network interface modify -vserver <svm-name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>"`
+
++
+Ao entrar no comando Network Interface Modify dentro `vserver config override` do comando, não é possível usar o recurso Tab Autocomplete. Você pode criar a rede `interface modify` usando o autocomplete e, em seguida, incorporá-la no `vserver config override` comando.
+
+.. Confirme se todas as LIFs de dados estão agora na porta inicial correta:
++
+`network interface show`
+
+.. Voltar ao nível de privilégio de administrador:
++
+`set -privilege admin`
+
+
+
+. Reverter as interfaces para o seu nó inicial:
++
+`network interface revert * -vserver <svm-name>`
+
++
+Execute esta etapa em todas as SVMs, conforme necessário.
 
 . Retomar a operação:
 +

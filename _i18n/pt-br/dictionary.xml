@@ -4704,7 +4704,6 @@
   <block id="1a534d06146fed22a868cc0761122200" category="list-text">Antes do ONTAP 9.5, somente o gerenciamento SNMP fora da banda é suportado.</block>
   <block id="e824a21e3028938aa47fe624ef80f849" category="paragraph">Os comandos Bridge CLI podem ser emitidos a partir do comando ONTAP interface<block ref="a4eebdf41596af4a8e3786060287e543" prefix=" " category="inline-code"></block> na interface ONTAP.</block>
   <block id="f5c160717de61a4450a76be740a98cf2" category="admonition">O uso do gerenciamento na banda com acesso IP desativado é recomendado para melhorar a segurança limitando a conetividade física da ponte.</block>
-  <block id="6f47fdb0056f04198e0f13d4914a9c42" category="section-title">Preparação para a instalação</block>
   <block id="b9af642f4c94393d1d86928e1df7b939" category="paragraph">Ao se preparar para instalar as pontes como parte do novo sistema MetroCluster, você deve garantir que o sistema atenda a certos requisitos, incluindo atender aos requisitos de configuração e configuração das pontes. Outros requisitos incluem o download dos documentos necessários, o utilitário ATTO Quicknav e o firmware da ponte.</block>
   <block id="58eb0a3f95df2104f4ac005bbd51d244" category="list-text">Seu sistema já deve ser instalado em um rack se ele não foi enviado em um gabinete do sistema.</block>
   <block id="f824444af694573f23438938a9e1aa1e" category="list-text">Sua configuração deve estar usando modelos de hardware e versões de software compatíveis.</block>
@@ -4792,7 +4791,6 @@
   <block id="cf6dca2d67d60a19d4a17cee9ded8839" category="list-text">A ponte FibreBridge 7600N suporta até 32, 16 ou 8 Gbps.</block>
   <block id="eaf41f2c4105da1a7df1e2d6212b3c1f" category="list-text">A ponte FibreBridge 7500N suporta até 16, 8 ou 4 Gbps.</block>
   <block id="489a36de5fc8a9824314b5b3d0c0c069" category="admonition">A velocidade FCDataRate selecionada é limitada à velocidade máxima suportada pela ponte e pela porta FC do módulo do controlador à qual a porta de ponte se coneta. As distâncias de cabeamento não devem exceder as limitações dos SFPs e de outro hardware.</block>
-  <block id="63f92d601e0f07d76d9c59bbdcfeed47" category="paragraph"><block ref="25dfa3c9e1bfe0dbadf9eaffa9e73bb8" prefix="" category="inline-code"></block></block>
   <block id="0690be6eb1d3773f24e0f2ab2ccaa146" category="list-text">Se você estiver configurando uma ponte FibreBridge 7500N, configure o modo de conexão que a porta usa para "ptp".</block>
   <block id="135eebaf5471e868b5ae345b781b21d2" category="admonition">A configuração FCConnMode não é necessária ao configurar uma ponte FibreBridge 7600N.</block>
   <block id="0d75f039d58b1a4c51a1e6fa7f5db62a" category="paragraph"><block ref="704a5ed3030182e5f20024676c1b21e3" prefix="" category="inline-code"></block></block>
@@ -4824,17 +4822,11 @@
   <block id="59583139c0c6a4bb9d3bdaee0a866cfa" category="paragraph"><block ref="56915b40c2c5fda6044a36517e4d4152" prefix="" category="inline-code"></block></block>
   <block id="147fd0500c6c6d57f507339941c4ecdb" category="paragraph">Você é solicitado a reiniciar a ponte.</block>
   <block id="6d6d091bdd8c4127ee8d80f23b429e80" category="list-text">Depois de concluir a configuração do MetroCluster, use o<block ref="c27e24b8b45de3e3c43ee4f5da981459" prefix=" " category="inline-code"></block> comando para verificar sua versão do firmware do FibreBridge e, se as bridges não estiverem usando a versão mais recente suportada, atualize o firmware em todas as bridges na configuração.</block>
-  <block id="98e83072472ff49bb361fe30e4df171e" category="paragraph"><block ref="98e83072472ff49bb361fe30e4df171e" category="inline-link-macro-rx"></block></block>
-  <block id="9e67b76e63359167fbde69e351c8b8b0" category="section-title">Cabeamento das gavetas de disco para as pontes</block>
   <block id="dddcbe39d238e711998c52c432aeaa31" category="paragraph">Você precisa usar as pontes FC para SAS corretas para fazer o cabeamento das gavetas de disco.</block>
   <block id="c53ab245e3b357260ea30380dfbae527" category="inline-xref">Cabeamento de uma ponte FibreBridge 7600N ou 7500N com compartimentos de disco usando módulos IOM12</block>
-  <block id="4e14469d1b9cb5857e2b83704c8ab8d4" category="list-text"><block ref="d277051460abcb0f3a19fb6f4b09af32" category="inline-xref-macro-rx"></block></block>
-  <block id="1098ebf3ac123d908705a49af90988ba" category="inline-xref">Cabeamento de uma ponte FibreBridge 7600N ou 7500N com compartimentos de disco usando módulos IOM6 ou IOM3</block>
-  <block id="572e966b8fd8a186b019d7c5d26ff32c" category="list-text"><block ref="f3f03af6d08c988efd686559fcd15483" category="inline-xref-macro-rx"></block></block>
   <block id="fcf216ba8187b4017a22716585d4a6fa" category="paragraph">Depois de configurar a ponte, você pode iniciar o cabeamento do seu novo sistema.</block>
   <block id="3745e1eacc753de05da3d0afc4e15cea" category="paragraph">Para compartimentos de disco, você insere um conetor de cabo SAS com a aba de puxar orientada para baixo (na parte inferior do conetor).</block>
   <block id="95a5b0b928eb5c6139f9cd2a021f72a6" category="list-text">Encadeie em série as gavetas de disco em cada pilha:</block>
-  <block id="779c08e01ec265d0aff357c180fceb48" category="list-text">Começando com a primeira gaveta lógica na stack, conecte Iom A porta 3 à IOM A porta 1 da próxima gaveta até que cada Iom A na stack seja conectada.</block>
   <block id="dd2732570ab5d206b7d405c05f7d2831" category="list-text">Repita o subpasso anterior para IOM B.</block>
   <block id="3e57f4f14607c1133fa7931d611d438f" category="list-text">Repita as subetapas anteriores para cada pilha.</block>
   <block id="6f369feb5288638d34aed30c30f64056" category="paragraph">O _Installation and Service Guide_ do modelo de compartimento de disco fornece informações detalhadas sobre as prateleiras de disco em encadeamento em série.</block>
@@ -4862,7 +4854,6 @@
   <block id="f7e3d93b4c145bf696a9e6f193ce4fb7" category="list-text">Para stacks de gaveta adicionais, repita as etapas anteriores usando a próxima porta SAS disponível nas bridges do FibreBridge, usando a porta B para uma segunda stack, a porta C para uma terceira stack e a porta D para uma quarta stack.</block>
   <block id="9111bd303b0cb06989b91c9e131eb156" category="paragraph">A ilustração a seguir mostra quatro pilhas conetadas a um par de pontes FibreBridge 7600N ou 7500N.</block>
   <block id="6704e0f472546c04c5cdc225c2656ec5" category="image-alt">ponte de cabeamento mcc e pilha sas com 7500n e quatro stacks</block>
-  <block id="8cbdbb5be51e2a78d7b472e23327b938" category="section-title">Verificação da conectividade de ponte e do cabeamento das portas FC de ponte</block>
   <block id="605157b79e898676481d263489be287d" category="paragraph">Você deve verificar se cada bridge pode detetar todas as unidades de disco e, em seguida, fazer o cabeamento de cada bridge para os switches FC locais.</block>
   <block id="8bfac37f0565c6922aeced47caf18f6a" category="list-text">[[step1_bridge]] Verifique se cada bridge pode detetar todas as unidades de disco e prateleiras de disco às quais está conetada:</block>
   <block id="51618dab77295eddd5c15097ed80ca2d" category="cell">Se você estiver usando o...</block>
@@ -4884,7 +4875,6 @@
   <block id="eb443924112f8c71329400ac78de9284" category="paragraph">Repita <block ref="2f9ed640880ac5dd95c2cb30edbb02d0" category="inline-xref-macro-rx"></block> para cada ponte restante.</block>
   <block id="03f13166de52c74a41327e27684b674e" category="paragraph">Não está correto</block>
   <block id="234d9ba6039ff899b95d32b2d5738596" category="list-text">Verifique se há cabos SAS soltos ou corrija o cabeamento SAS repetindo o cabeamento.</block>
-  <block id="0aeba4fd83ea38faeb00ddbf389be6ad" category="paragraph"><block ref="48f604bdf2d3bf06f58ee9f10e668948" category="inline-xref-macro-rx"></block></block>
   <block id="2c0892c11c37aec07e0a746c4c7fbe0d" category="list-text">Repita <block ref="2f9ed640880ac5dd95c2cb30edbb02d0" category="inline-xref-macro-rx"></block>.</block>
   <block id="22fa5db9179793221a81bd3cfceea63a" category="list-text">Faça o cabeamento de cada ponte aos switches FC locais, usando o cabeamento da tabela para sua configuração e modelo de switch e o modelo de ponte FC para SAS:</block>
   <block id="cbf21b0a1a6cb9d0bb203c817705311a" category="admonition">A segunda conexão de porta FC na ponte FibreBridge 7500N não deve ser cabeada até que o zoneamento seja concluído.</block>
@@ -7498,33 +7488,13 @@
   <block id="f4a6a04204d80f2884055d8da7f250ae" category="paragraph"><block ref="39ce37a4ba621b15824f25d3ead980cb" prefix="" category="inline-code"></block> pode especificar uma das seguintes opções:</block>
   <block id="9d05079a491a98497153e953bbaddaa4" category="list-text">Se estiver a ativar o SNMP, também tem de emitir o comando Set SNMP enabled (Definir SNMP ativado):</block>
   <block id="944957367bcbba5f885d8dc885354148" category="paragraph"><block ref="27009b25568d408f9f05d4ea68455493" prefix="" category="inline-code"></block></block>
-  <block id="632ac78de4a389af16d655089761a651" category="paragraph">Este procedimento pressupõe que você esteja usando as interfaces de gerenciamento de bridge recomendadas: A GUI ATTO ExpressNAV e o utilitário ATTO Quicknav.</block>
-  <block id="132ab6e1ba78a445b535028fd5d74260" category="paragraph">Use a GUI ATTO ExpressNAV para configurar e gerenciar uma bridge e atualizar o firmware da bridge. Você usa o utilitário ATTO Quicknav para configurar a porta 1 de gerenciamento Ethernet bridge.</block>
-  <block id="d970522a2c535f4a798076f2c36b8af8" category="paragraph">Você precisa usar as pontes FC para SAS corretas para fazer o cabeamento dessas gavetas de disco.</block>
-  <block id="4b82b05e56bc303e7e70ebb815ebfc6c" category="summary">Você deve fazer o cabeamento das bridges ao módulo do controlador em uma configuração MetroCluster conetada a ponte de dois nós.</block>
-  <block id="468824e6d6059f37612b1e891b27c464" category="doc">Fazer o cabeamento das pontes FC para SAS ao módulo da controladora em uma configuração MetroCluster conetada a ponte de dois nós</block>
-  <block id="a977177241046fa392e812a609420ace" category="list-text">[[step1-Verify-Detect]]Verifique se cada bridge pode detetar todas as unidades de disco e prateleiras de disco às quais a ponte está conetada.</block>
-  <block id="3a23706b743b24f9521e22417f1d30d0" category="paragraph">Você será levado para a página inicial DO ATTO FibreBridge do link da ponte para o endereço IP inserido.</block>
-  <block id="6a711c2982ba094c44be794ffb3bf1a2" category="list-text">Clique no link e insira seu nome de usuário e a senha que você designou quando configurou a ponte.</block>
   <block id="33c31ec720ddb611e48abaebec39e651" category="list-text">Clique em *Avançado* no menu.</block>
-  <block id="13174ed6300232fa48d1a5b59eb7e2f4" category="list-text">Execute o seguinte comando e clique em *Submit*<block ref="2aa3751083baf48c1e1ddef8df4ddcc3" prefix=" " category="inline-code"></block></block>
-  <block id="337d79852891a37d41285c9101c3fff4" category="paragraph">Execute o seguinte comando:</block>
   <block id="3fff43b275954b2824b3aee6836ae256" category="paragraph">O<block ref="2aa3751083baf48c1e1ddef8df4ddcc3" prefix=" " category="inline-code"></block> comando output mostra os dispositivos (discos e prateleiras de discos) conetados à ponte. As linhas de saída são numeradas sequencialmente para que você possa contar rapidamente os dispositivos.</block>
-  <block id="3d40cc4f5f094dc369c0eb1e445aecea" category="admonition">Se "'text response truncada'" aparecer no início da saída, você pode usar o Telnet para se conetar à ponte e executar o mesmo comando para exibir toda a saída.</block>
   <block id="436b7e523e46e6ba6d8fedac266d39ab" category="paragraph">A saída a seguir mostra que 10 discos estão conetados:</block>
-  <block id="4948cb8b3eded5b39ec6d64f06687462" category="list-text">Verifique se a saída do comando mostra que a ponte está conetada a todos os discos e compartimentos de disco na pilha que deve ser conetada.</block>
   <block id="065575055836b7cada67fa8852ea3ef7" category="paragraph">Repita <block ref="760439458840ee59fb7794af4bb5b199" category="inline-xref-macro-rx"></block> para cada ponte restante.</block>
   <block id="1d1fa4befa7e2188095e2cc64c17fc9e" category="list-text">Verifique se há cabos SAS soltos ou corrija o cabeamento SAS reabilitando as gavetas de disco nas pontes.</block>
-  <block id="4c86d491f2865662ab58a2679a13b3ab" category="paragraph"><block ref="4c86d491f2865662ab58a2679a13b3ab" category="inline-link-macro-rx"></block></block>
   <block id="fa5d02c46c643a9eedee519211b4d9d4" category="list-text">Repita <block ref="760439458840ee59fb7794af4bb5b199" category="inline-xref-macro-rx"></block> para cada ponte restante.</block>
-  <block id="b29b8c83f7d8c55b39ae87067330f426" category="list-text">[[step3-cable-each-bridge]]Conete cada ponte aos módulos do controlador:</block>
-  <block id="4422c879aa9ea654583488de1d4d4e82" category="list-text">Cabo FC porta 1 da ponte para uma porta FC no módulo do controlador em cluster_A.</block>
-  <block id="db0e7a22facf5e7460258a2022b5e9d5" category="list-text">Cabo FC porta 2 da ponte para uma porta FC no módulo do controlador em cluster_B.</block>
-  <block id="77139d079fd912afd88e4ca7f5623393" category="paragraph">Se o módulo do controlador estiver configurado com um adaptador FC de quatro portas, verifique se as pilhas de armazenamento não estão conetadas a duas portas FC no mesmo ASIC. O porto a e o porto b compartilham o mesmo ASIC, e o porto c e o porto d compartilham o mesmo ASIC. Não conete uma pilha de prateleiras às portas a e b. em vez disso, use as portas a e c ou use as portas b e d para evitar um único ponto de falha se um ASIC falhar.</block>
-  <block id="48dda5bb7b1f8b58b068fa47d9879c67" category="paragraph">Se o módulo do controlador estiver configurado com mais de um adaptador FC, não faça o cabeamento de ambas as portas de ponte ao mesmo adaptador. Você deve distribuir a porta FC 1 para o adaptador A e a porta FC 2 para o adaptador B para evitar um único ponto de falha.</block>
-  <block id="67d7a49e616a0e579f0506ada050a36b" category="image-alt">rede de peering de cluster</block>
   <block id="13044932159e150c28f3e3cabd33ea68" category="list-text">Repita <block ref="92a9f0aaafd1755c239f3740bca9b5f0" category="inline-xref-macro-rx"></block>nas outras pontes até que todas as pontes tenham sido cabeadas.</block>
-  <block id="d08fe7e603a9a3906a2ac376ce5a88c1" category="summary">Quando estiver se preparando para instalar as pontes como parte do seu novo sistema MetroCluster, certifique-se de que o sistema atende a certos requisitos. Isso inclui atender aos requisitos de configuração e configuração para as bridges. Outros requisitos incluem o download dos documentos necessários, o utilitário ATTO Quicknav e o firmware da ponte.</block>
   <block id="ba47f416cbc346bd4f20db246cb5ea02" category="summary">Depois de garantir que o sistema atenda a todos os requisitos na seção "preparação para a instalação", você pode instalar o novo sistema.</block>
   <block id="44cf292b45fcf91c7481e1ee996ccaec" category="paragraph">Depois de garantir que o sistema atenda a todos os requisitos da seção "preparando a instalação", você pode instalar seu novo sistema.</block>
   <block id="45cf701b8697cab4c349ec98dae373d6" category="admonition">Todos os discos no grupo de recuperação de desastres (DR) devem usar o mesmo tipo de conexão e estar visíveis para todos os nós no grupo de recuperação de desastres, independentemente dos discos usados para agregado espelhado ou não espelhado.</block>
@@ -10047,7 +10017,6 @@
   <block id="e6425dc24f9a2e2af2f6d10b0fe7e9bd" category="list-text">Confirme se os SVMs secundários estão online usando o comando vserver show.</block>
   <block id="c7e147724ec887db5c26cc6637032f19" category="paragraph">Neste exemplo, os SVMs de destino de sincronização anteriormente adormecidos no site secundário foram ativados e têm um estado de administração em execução:</block>
   <block id="7814aadb42b148f35b4d559e400b4895" category="summary">Depois de executar o switchback, você deseja confirmar que todos os agregados e máquinas virtuais de armazenamento (SVMs) são comutados de volta e on-line.</block>
-  <block id="7b173496e8f6041144abc83f7e17506f" category="list-text">Verifique se todos os SVMs de destino de sincronização no cluster sobrevivente estão inativos (mostrando um estado de administrador "coberto") e os SVMs de origem de sincronização no cluster de desastres estão ativos e em execução:</block>
   <block id="90755aace4dbf79660e4f610c3481e12" category="paragraph">Os agregados de sincronização de destino na configuração MetroCluster têm o sufixo "'-mc" automaticamente anexado ao seu nome para ajudar a identificá-los.</block>
   <block id="bce17534235ea414fd168aec560670ba" category="doc">Novidades no suporte à configuração do MetroCluster para recursos do ONTAP</block>
   <block id="e90d1c6a70648051cbe5131fdb8a8227" category="paragraph">Cada versão do software de gerenciamento de dados ONTAP 9 oferece recursos novos e aprimorados que melhoram os recursos, a capacidade de gerenciamento e o desempenho das configurações do ONTAP MetroCluster.</block>
@@ -13637,7 +13606,6 @@
   <block id="84662b9fedef1d258fb8d10005e76090" category="list-text">Execute o seguinte comando no cluster_A:</block>
   <block id="982f6eba58d95bda2318d44b2dcea2e3" category="paragraph">A recuperação automática de agregados após o switchover negociado é desativada durante a atualização do controlador.</block>
   <block id="d9014ee527061be66eca52c07922ed61" category="section-title">Remova as configurações de interface e desinstale os controladores antigos</block>
-  <block id="0486f17c3c2c0ba93636ea2cc6f050dd" category="paragraph">Você deve mover LIFs de dados para uma porta comum, remover VLANs e grupos de interface nos controladores antigos e desinstalar fisicamente os controladores.</block>
   <block id="895a79b8b51d133ae9c32d8cb48b9eb7" category="list-text">Essas etapas são executadas nos controladores antigos (node_B_1-old, node_B_2-old).</block>
   <block id="d2d52925cbd8484ff94ad34530b8e39e" category="list-text">Consulte as informações coletadas no <block ref="00db6c743ab233bbb7a0f2af5426c89f" category="inline-link-macro-rx"></block>.</block>
   <block id="4339dfdd37f410724931874e2a95e452" category="list-text">Inicialize os nós antigos e faça login nos nós:</block>
@@ -13771,7 +13739,6 @@
   <block id="48e70a95a504e447ce8a3651dbabebad" category="paragraph"><block ref="48e70a95a504e447ce8a3651dbabebad" category="inline-link-rx"></block></block>
   <block id="5c45da4ca5ec7e9d28eb987314a5305e" category="paragraph"><block ref="5c45da4ca5ec7e9d28eb987314a5305e" category="inline-link-rx"></block></block>
   <block id="eee74a5fbb91c1e61f0861dec4f05ecf" category="list-text">Consulte o plano de mapeamento de portas criado no <block ref="ab9fddb5e9f46cc8a59622b30650af49" category="inline-link-macro-rx"></block>.</block>
-  <block id="c46b37082c4b8a5ecb54ed082719f5fa" category="paragraph"><block ref="6ed2488c75aad6332e02665ab7c30031" prefix="" category="inline-code"></block></block>
   <block id="a51de836d51a26774e16aa7066519185" category="paragraph"><block ref="6a6db1083e2f8c53b07cc196dec3cafb" prefix="" category="inline-code"></block></block>
   <block id="641cba091515001a3bb48d030bddd608" category="section-title">Atualize os nós no cluster_A</block>
   <block id="50f4e96f99c70a7e3b9840b8f3295862" category="list-text">Repita as etapas para atualizar os nós no cluster_A, começando com <block ref="757f7f08bca76a1242dc77528a445472" category="inline-link-macro-rx"></block>.</block>
@@ -14258,4 +14225,94 @@
   <block id="5f9a9e91fc7e98f1998a1dcee4eab83f" category="paragraph">Verifique se você está incluindo apenas unidades na gaveta sem espelhamento para o agregado.</block>
   <block id="6f1eb898d916ac10201421006f5406e2" category="admonition">Você também pode usar o<block ref="2ee4c97cd7e2dff2e12ae3225818c09b" prefix=" " category="inline-code"></block> parâmetro no comando para especificar os discos que deseja usar para o agregado.</block>
   <block id="668c968f31daa1f3b0b86ddf4b09543e" category="list-text">Você deve criar um objeto de sub-rede antes de criar um LIF. Um objeto de sub-rede permite que o ONTAP determine destinos de failover no cluster de destino porque tem um domínio de broadcast associado.</block>
+  <block id="6d42a1c65d48ed3ec77f037a50004258" category="list-text">Se você usar uma rede dedicada para monitoramento de integridade, cada nó deve ter um LIF de gerenciamento de nós nessa rede dedicada.</block>
+  <block id="b729f80ba307f8a8e8ea6189b1ed6313" category="paragraph">O NetApp oferece suporte apenas às seguintes ferramentas para monitorar os componentes em uma configuração do MetroCluster FC:</block>
+  <block id="f60d1385c75cfef525be8497e2137ee8" category="list-text">Consultor de rede Brocade (BNA)</block>
+  <block id="138e272b0320fc1ffcdc8dee378b177b" category="list-text">Brocade SANnav</block>
+  <block id="865e9b4ef52f3b0d3050c8b3c14eb660" category="list-text">Active IQ Config Advisor</block>
+  <block id="5ed4e53c285d1a7046c38f429a94ef7b" category="list-text">Monitoramento NetApp de Saúde (ONTAP)</block>
+  <block id="fb4d5d69523a984853a5295db93de123" category="list-text">Coletor de dados MetroCluster (MC_DC)</block>
+  <block id="0d48c29aadd238b08bcb06f357acd9d8" category="section-title">Prepare-se para a instalação</block>
+  <block id="e30f0ace1e7e67755e7318eeab1b0204" category="section-title">Instalar a ponte FC para SAS e as gavetas SAS</block>
+  <block id="0dc04f427f83d4c5afa311fe8042eddc" category="list-text">Acesse a interface do console de ponte conetando um cabo serial à porta serial na ponte FibreBridge 7600N.</block>
+  <block id="2323990b6fbb7b7ee5ee14dbdb21eaf0" category="section-title">Configurar as pontes FC para SAS</block>
+  <block id="ff48ad0dc104d3885573fa0f45161299" category="paragraph"><block ref="77d54c8e2e9adc9e2bc031facbe82b7c" prefix="" category="inline-code"></block></block>
+  <block id="a21e2af264b592c03f6b1f88af93dd36" category="paragraph"><block ref="a32ef1a4f91191b408d6aa3ceeed03a8" prefix="" category="inline-code"></block></block>
+  <block id="49cc2eac13c61da60904b157e05ec5dc" category="paragraph"><block ref="e9580cd86794b774ad27b65b0a805b73" prefix="" category="inline-code"></block></block>
+  <block id="b2c196d04c27ee6d1c55877714d8d6f9" category="section-title">Cable disk shelves to the bridges</block>
+  <block id="4273704f66fca16606c90100e4c57808" category="inline-xref">Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando IOM12 módulos</block>
+  <block id="242108261e892329ec8e41357fad0678" category="list-text"><block ref="57fecdddd64dc6d4f5e9d97874ea43bc" category="inline-xref-macro-rx"></block></block>
+  <block id="e3136c071e40d473a2ed2f7295c2ead2" category="inline-xref">Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando módulos IOM6 ou IOM3</block>
+  <block id="e88d980772f7b12fbca752322a5e5307" category="list-text"><block ref="e59f261da41fd9be2eaf7f1b955dc162" category="inline-xref-macro-rx"></block></block>
+  <block id="e42bb9af7fd1e3b1641a18782a424fb0" category="list-text">Começando pela primeira gaveta lógica na stack, conecte Iom A porta 3 à IOM a porta 1 na próxima gaveta até que cada IOM A na stack seja conectada.</block>
+  <block id="df728bff4207a1d17e007189ab445eaa" category="section-title">Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras usando módulos IOM6 ou IOM3</block>
+  <block id="8a6b192e89e003168a9dec4c4b9059a7" category="section-title">Verifique a conectividade da ponte e o cabeamento das portas FC da ponte</block>
+  <block id="1127370baf663b49c7993f8a6ab9f41e" category="paragraph"><block ref="eba7ba40406886cad3add195d043cd08" category="inline-xref-macro-rx"></block></block>
+  <block id="d277bf5cc4237c95ff26e4f98eefaf07" category="paragraph">Instale e faça o cabeamento das pontes ATTO FibreBridge e das gavetas de disco SAS quando você adicionar novo armazenamento à configuração.</block>
+  <block id="760e34100c7db8b067f655d415a342c1" category="paragraph">Ao usar o gerenciamento na banda, as bridges podem ser gerenciadas e monitoradas a partir da CLI do ONTAP usando a conexão FC à ponte. O acesso físico à ponte através das portas Ethernet da ponte não é necessário, reduzindo a vulnerabilidade de segurança da ponte.</block>
+  <block id="74f6533c5153d90867b32b519b275c65" category="list-text">Antes do ONTAP 9,5, somente o gerenciamento SNMP fora da banda é suportado.</block>
+  <block id="967c96558959e91e943843e6263ec970" category="paragraph">Os comandos Bridge CLI podem ser emitidos a partir do comando ONTAP interface<block ref="52f6597c8dcf79b6137c2435b9c9efcb" prefix=" " category="inline-code"></block> na interface ONTAP.</block>
+  <block id="d22ab9487f4f57c6ecf56a0875e0c070" category="paragraph">Quando estiver se preparando para instalar as bridges como parte do seu novo sistema MetroCluster, verifique se o sistema atende a certos requisitos, incluindo atender aos requisitos de configuração e configuração das bridges. Outros requisitos incluem o download dos documentos necessários, o utilitário ATTO Quicknav e o firmware da ponte.</block>
+  <block id="9d46de9346ca8af89ab03ed382fc9ab1" category="paragraph">No<block ref="a5900d751cd970c3de875b616ebb9e28" category="inline-link-rx"></block>, você pode usar o campo *solução de armazenamento* para selecionar sua solução MetroCluster. Você pode usar o *Explorador de componentes* para selecionar os componentes e a versão do ONTAP para refinar sua pesquisa. Você pode selecionar *Mostrar resultados* para exibir a lista de configurações compatíveis que correspondem aos critérios.</block>
+  <block id="1654c802242a5762f6e28996b1f5e854" category="list-text">Cada controlador FC precisa ter uma porta FC disponível para uma ponte para se conectar a ele.</block>
+  <block id="4178aa1558026aafc5b0376eacf267e6" category="list-text">Você deve estar familiarizado com como lidar com cabos SAS e com os considerações e práticas recomendadas para a instalação e o cabeamento das gavetas de disco.</block>
+  <block id="e0661cfc6d44d7098774766995e5913c" category="list-text">Os requisitos de conetividade do sistema para distâncias máximas para compartimentos de disco, controladores FC e dispositivos de fita de backup usando cabos de fibra ótica multimodo de 50 mícrones, também se aplicam a pontes FibreBridge.</block>
+  <block id="7bcf16804afe2d3ed86d658c4f355f74" category="paragraph"><block ref="eece6350c77c4c173bc5eac22d38a3d8" prefix="" category="inline-code"></block></block>
+  <block id="8f94293e801572ab9458b1e91111b45b" category="list-text">Começando pela primeira gaveta lógica na stack, conecte Iom A porta 3 à IOM A porta 1 à IOM A na próxima gaveta até que cada IOM A na stack seja conectada.</block>
+  <block id="a73aaf062bae9a1d7a52d1bdd78a1927" category="section-title">Verifique a conectividade de ponte e faça o cabeamento das pontes FC para SAS às portas FC do controlador</block>
+  <block id="40eba83ddff63a60c0f3132156cbb034" category="paragraph">É necessário fazer o cabeamento das pontes às portas FC do controlador em uma configuração MetroCluster conetada a ponte de dois nós.</block>
+  <block id="3ce46fc9a15b5c37d69e1d5ae43448c1" category="list-text">[[step1-Verify-Detect]]Verifique se cada bridge pode detetar todas as unidades de disco e prateleiras de disco às quais a ponte está conetada:</block>
+  <block id="78d9123f52b553c11386801c7e6ee30c" category="list-text">Verifique se o comando output mostra que a ponte está conetada aos discos e compartimentos de disco corretos na pilha.</block>
+  <block id="84be3f4668a661e6d6ab8a9c8e8b7640" category="list-text">[[step3-cable-each-bridge]]Cable cada bridge para as portas FC do controlador:</block>
+  <block id="1832e58c6444b28a1738bf5e7d5f4bad" category="list-text">Cabo FC porta 1 da ponte para uma porta FC no controlador em cluster_A.</block>
+  <block id="147fb5a8c36cf6f6239310bbf3fbd96d" category="list-text">Cabo FC porta 2 da ponte para uma porta FC no controlador em cluster_B.</block>
+  <block id="620ef8e255d79ca87184c0f6bd5b96c6" category="list-text">Se o controlador estiver configurado com um adaptador FC de quatro portas, certifique-se de que as bridges em ambas as extremidades da pilha de armazenamento não estejam conetadas a duas portas FC no mesmo ASIC. Por exemplo:</block>
+  <block id="7def08188c3514b9c48ff9e90fc4b0e8" category="list-text">O porto a e o porto b compartilham o mesmo ASIC.</block>
+  <block id="02ab53167e774ae8d9d95cd3bfbfc09a" category="list-text">A porta c e a porta d compartilham o mesmo ASIC.</block>
+  <block id="00476bfdbf527b84c0b7fbcbde326f75" category="paragraph">Neste exemplo, conete FC_bridge_A_1 à porta a e FC_bridge_A2 à porta c.</block>
+  <block id="db25c93b70e2d449bc0eacd997bc5392" category="list-text">Se o controlador estiver configurado com mais de um adaptador FC, não faça o cabeamento das pontes de ambas as extremidades da pilha de storage ao mesmo adaptador.</block>
+  <block id="860a61ba6dae3941046ced6d468fe4e9" category="paragraph">Nesse cenário, você deve conetar FC_bridge_A_1 a uma porta FC integrada e conetar FC_bridge_A_2 a uma porta FC em um adaptador em um slot de expansão.</block>
+  <block id="fdd11dfe0e9d69317902be2abf4845cf" category="inline-image-macro">Ilustração de uma rede de peering de cluster</block>
+  <block id="56571215fb83a5614f4f1ed3deb7e93c" category="paragraph"><block ref="56571215fb83a5614f4f1ed3deb7e93c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c451d21d9b1e4faa6b241f172e690c0b" category="paragraph"><block ref="deceade8c0d17544f65a6ede664b23e2" prefix="" category="inline-code"></block></block>
+  <block id="be4fd0012ddc006ea303591c9df6f76d" category="paragraph"><block ref="39b06b9a26b49c3db6d9409a6abaa9d8" prefix="" category="inline-code"></block></block>
+  <block id="9e1d9b9e8b88355df08194559af6865a" category="summary">Durante uma mudança, certas operações não devem ser executadas.</block>
+  <block id="fa33dcb38c0cd6e15dd757f1ef3072ee" category="doc">Limitações quando a configuração do MetroCluster está em switchover</block>
+  <block id="5722cde27dfa05f795a5466b6d0859c9" category="paragraph">Quando o sistema está em mudança, certas operações não devem ser executadas. Saiba mais sobre operações restritas quando o sistema está em switchover.</block>
+  <block id="b72a4837907e7fef0771c42da901c811" category="section-title">Operações restritas em switchover</block>
+  <block id="1b5f91752d52b3bac4319cf07ea0efb8" category="paragraph">As seguintes operações não são suportadas quando o sistema está em switchover:</block>
+  <block id="272c8dfc8e0821088d85ed5d0fe037a8" category="list-text">Criar ou excluir agregados e volumes</block>
+  <block id="d825dd35fde2fe33a56ef95c52f545a0" category="list-text">Criando ou excluindo SVMs</block>
+  <block id="8c120d60e412429a6f43b748c02dc233" category="list-text">Criando ou excluindo LIFs</block>
+  <block id="9cc6607cba1650bc799439425f9b085e" category="list-text">Adicionar ou remover discos (somente se você estiver substituindo-os como parte de um procedimento de recuperação)</block>
+  <block id="8fe0d36b4759e6e40b887b096584644e" category="list-text">Realizar alterações de configuração no SnapMirror SVM DR</block>
+  <block id="d6509169a6409458c70d9934cd8159d0" category="list-text">Modificar domínios de broadcast existentes ou criar novos domínios de broadcast</block>
+  <block id="0e4fc6663e95531e1c48cb8fcdc5fc7c" category="list-text">Modificação de sub-redes de rede</block>
+  <block id="be2a1f6ebcf2096180a7211fc2d40f49" category="section-title">Substituição de hardware em switchover</block>
+  <block id="1bf38e1e76b1ffa01784928faef533bd" category="paragraph">Use os seguintes procedimentos para substituir o hardware do controlador quando o sistema estiver em switchover:</block>
+  <block id="35ee9e73034b599a0e2236f1e215fb3d" category="list-text">Se você precisar substituir um controlador do mesmo tipo, no local que não está em switchover, siga o procedimento para <block ref="9b067f6cfdd46edd11b6f92353f05956" category="inline-link-macro-rx"></block>.</block>
+  <block id="787b5b0c67b18976c91dc3f6628778e0" category="list-text">Se for necessário substituir os módulos do controlador e o chassis enquanto os nós estiverem comutados no local que sobrevive, encerre ambos os controladores e execute o procedimento para <block ref="9b067f6cfdd46edd11b6f92353f05956" category="inline-link-macro-rx"></block>.</block>
+  <block id="49ad2bb3d2de07281d3d8fd2e16644ed" category="list-text">Se for necessário substituir um controlador por um tipo diferente de controlador, siga o procedimento para a sua configuração no <block ref="1bee30f9c5932b39ca60631e46d351c4" category="inline-link-macro-rx"></block>.</block>
+  <block id="e9e319505f06fc728bd8dcb2a9b67412" category="list-text">Se o seu sistema estiver em switchover devido a uma falha no controlador ou se você tiver uma falha no controlador durante o switchover, você deve primeiro substituir o hardware do controlador, executar um switchback e, em seguida, executar uma atualização do controlador:</block>
+  <block id="d54ffc167bc880d77acd9d1b6d020080" category="list-text">Para substituir o hardware do controlador e executar o switchback, siga <block ref="9b067f6cfdd46edd11b6f92353f05956" category="inline-link-macro-rx"></block>.</block>
+  <block id="f63242f4292325b063838517abc2c1a1" category="list-text">Depois de substituir o hardware, execute uma atualização da controladora usando os procedimentos descritos no <block ref="1bee30f9c5932b39ca60631e46d351c4" category="inline-link-macro-rx"></block>.</block>
+  <block id="1dc725a140606a258f54d59d9ad3d9bd" category="list-text">Verifique se todos os SVMs de destino de sincronização no cluster sobrevivente estão inativos (mostrando um estado operacional "coberto"):</block>
+  <block id="5dfed22feb54647dbd9e9ae827290f6b" category="paragraph"><block ref="67611e9f528c6078257c414670af6b52" prefix="" category="inline-code"></block></block>
+  <block id="1225fe0de146a130add7eeefae9e0925" category="list-text">Verifique se os SVMs de origem sincronizada no cluster de desastres estão ativos e em execução:</block>
+  <block id="ad29c49a8377862a59f9aae0ab4431cd" category="paragraph">Verifique a colocação correta de LIF. Em seguida, remova as VLANs e os grupos de interface nos controladores antigos e desinstale fisicamente os controladores.</block>
+  <block id="253982549e381b6f58f66b3e289a0a83" category="admonition">Se os controladores antigos e novos não tiverem uma porta comum, não será necessário modificar as LIFs de dados. Pule esta etapa e vá diretamente para <block ref="45cc57eb3654a2ae89efabc6fb9d271a" category="inline-xref-macro-rx"></block>.</block>
+  <block id="ba20cbe478ea7b912f1d044734df2884" category="list-text">[[Upgrades_manual_without_Matching_ports]] Modificar domínios de broadcast para remover a VLAN e as portas físicas que precisam ser excluídas:</block>
+  <block id="ae359c5763df3f6130f697d17d090551" category="admonition">Você deve verificar se o local das LIFs de dados está correto nos novos nós antes de executar um switchback. Quando você alterna a configuração, o ONTAP tenta retomar o tráfego na porta inicial usada pelos LIFs. A falha de e/S pode ocorrer quando a conexão da porta inicial com a porta do switch e VLAN estiver incorreta.</block>
+  <block id="1c780702501fd89538731057505e0a04" category="list-text">Verifique se os LIFs estão hospedados no nó e portas apropriados antes do switchback.</block>
+  <block id="bc12d3bc2a2c1526b655930b56efc183" category="list-text">Exiba os LIFs e confirme se cada data LIF está usando a porta inicial correta:</block>
+  <block id="b98ffe19185977668c0712d9626bb6b1" category="list-text">Modifique quaisquer LIFs que não estejam usando a porta inicial correta:</block>
+  <block id="823bc5ae6e724dd8994efcc4dbeb49d2" category="paragraph">Se o comando retornar um erro, você pode substituir a configuração da porta:</block>
+  <block id="ec14487a214982a1ea6572636724761f" category="paragraph"><block ref="afdc229346561af3e5aba3a6d67eea09" prefix="" category="inline-code"></block></block>
+  <block id="c9ba655979127851f6a6f01489815e47" category="list-text">Confirme se todas as LIFs de dados estão agora na porta inicial correta:</block>
+  <block id="fd7b222b3cb6aff1e0aef0b1e7a16998" category="paragraph">Para permitir que a rede seja retomada de forma limpa nos novos controladores, verifique se o posicionamento de LIF está correto e remova a configuração de rede dos controladores antigos.</block>
+  <block id="ef1038ce81a2c9d70181057dd381a59a" category="admonition">Se os controladores antigos e novos não tiverem uma porta comum, não será necessário modificar as LIFs de dados. Pule esta etapa e vá diretamente para <block ref="186451ebe57c46550834233237ebac90" category="inline-xref-macro-rx"></block>.</block>
+  <block id="3432abc562d1049e115fc0bcb6f569ab" category="list-text">[[Upgrades_Assisted_without_Matching_ports]] Modificar domínios de broadcast para remover a VLAN e as portas físicas que precisam ser excluídas:</block>
+  <block id="07bfa9093a8ef293dfd6099e38fde255" category="list-text">Verifique se o MetroCluster está configurado corretamente. Verifique o status do nó:</block>
+  <block id="d64694bac02c7b4eea890e175a53a0c7" category="paragraph">Verifique se os LIFs estão hospedados em nós apropriados antes de prosseguir com a operação de switchback automatizado.</block>
+  <block id="db85d3fd5e7d7beaa319d4ebe299145b" category="sidebar">Limitações quando o sistema está em mudança</block>
 </blocks>

@@ -6,6 +6,8 @@ entries:
   entries:
   - title: Visão geral
     url: "/manage/task_perform_switchover_for_tests_or_maintenance.html"
+  - title: Limitações quando o sistema está em mudança
+    url: "/manage/switchover-limitations.html"
   - title: Verifique se o seu sistema está pronto para um switchover
     url: "/manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html"
   - title: Envie uma mensagem AutoSupport personalizada antes do switchover negociado

@@ -3033,6 +3033,15 @@ A partir do Fabric os 9,0.1, o SNMPv2 não é suportado para monitoramento de in
 
 
 ====
+O NetApp oferece suporte apenas às seguintes ferramentas para monitorar os componentes em uma configuração do MetroCluster FC:
+
+* Consultor de rede Brocade (BNA)
+* Brocade SANnav
+* Active IQ Config Advisor
+* Monitoramento NetApp de Saúde (ONTAP)
+* Coletor de dados MetroCluster (MC_DC)
+
+
 
 
 ==== Configuração dos switches MetroCluster FC para monitoramento de integridade

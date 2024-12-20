@@ -1,0 +1,52 @@
+---
+permalink: manage/switchover-limitations.html 
+sidebar: sidebar 
+keywords: switchover, perform, heal, operation, restore, metrocluster, functionality, fc, configuration, ip, limitations, 
+summary: Durante uma mudança, certas operações não devem ser executadas. 
+---
+= Limitações quando a configuração do MetroCluster está em switchover
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando o sistema está em mudança, certas operações não devem ser executadas. Saiba mais sobre operações restritas quando o sistema está em switchover.
+
+
+
+== Operações restritas em switchover
+
+As seguintes operações não são suportadas quando o sistema está em switchover:
+
+* Criar ou excluir agregados e volumes
+* Criando ou excluindo SVMs
+* Criando ou excluindo LIFs
+* Adicionar ou remover discos (somente se você estiver substituindo-os como parte de um procedimento de recuperação)
+* Realizar alterações de configuração no SnapMirror SVM DR
+* Modificar domínios de broadcast existentes ou criar novos domínios de broadcast
+* Modificação de sub-redes de rede
+
+
+
+
+== Substituição de hardware em switchover
+
+Use os seguintes procedimentos para substituir o hardware do controlador quando o sistema estiver em switchover:
+
+* Se você precisar substituir um controlador do mesmo tipo, no local que não está em switchover, siga o procedimento para link:../disaster-recovery/task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperar de uma falha de vários controladores ou armazenamento"].
++
+** Se for necessário substituir os módulos do controlador e o chassis enquanto os nós estiverem comutados no local que sobrevive, encerre ambos os controladores e execute o procedimento para link:../disaster-recovery/task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperar de uma falha de vários controladores ou armazenamento"].
+
+
+* Se for necessário substituir um controlador por um tipo diferente de controlador, siga o procedimento para a sua configuração no link:../upgrade/concept_choosing_controller_upgrade_mcc.html["Escolha um procedimento de atualização da controladora"].
++
+** Se o seu sistema estiver em switchover devido a uma falha no controlador ou se você tiver uma falha no controlador durante o switchover, você deve primeiro substituir o hardware do controlador, executar um switchback e, em seguida, executar uma atualização do controlador:
++
+... Para substituir o hardware do controlador e executar o switchback, siga link:../disaster-recovery/task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperar de uma falha de vários controladores ou armazenamento"].
+... Depois de substituir o hardware, execute uma atualização da controladora usando os procedimentos descritos no link:../upgrade/concept_choosing_controller_upgrade_mcc.html["Escolha um procedimento de atualização da controladora"].
+
+
+
+
+

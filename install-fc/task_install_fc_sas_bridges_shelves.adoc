@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, installing, fc-to-sas, fc, sas, bridges, disk, shelves, atto, fibrebridge 
 summary: Você instala e faz o cabeamento de pontes ATTO FibreBridge e gavetas de disco SAS ao adicionar novo armazenamento à configuração. 
 ---
-= Instalação de pontes FC para SAS e gavetas de disco SAS
+= Instalar pontes FC a SAS e gavetas de disco SAS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -89,7 +89,7 @@ A seguir mostra um exemplo de configuração para conectar quatro gavetas DS224 
 |===
 
 
-== Preparação para a instalação
+== Prepare-se para a instalação
 
 Ao se preparar para instalar as pontes como parte do novo sistema MetroCluster, você deve garantir que o sistema atenda a certos requisitos, incluindo atender aos requisitos de configuração e configuração das pontes. Outros requisitos incluem o download dos documentos necessários, o utilitário ATTO Quicknav e o firmware da ponte.
 
@@ -112,7 +112,8 @@ As Notas de versão do produto _ATTO_ têm uma lista atualizada de navegadores d
 
 .Passos
 . Faça o download do _Installation and Service Guide_ do modelo do compartimento de disco:
-. Acesse o site DA ATTO usando o link fornecido para o modelo do FibreBridge e baixe o manual e o utilitário Quicknav.
++
+.. Acesse o site DA ATTO usando o link fornecido para o modelo do FibreBridge e baixe o manual e o utilitário Quicknav.
 +
 [NOTE]
 ====
@@ -121,6 +122,8 @@ O _ATTO FibreBridge Installation and Operation Manual_ para sua ponte de modelo 
 Você pode acessar este e outros conteúdos no SITE DA ATTO usando o link fornecido na página Descrição DO ATTO Fibrebridge.
 
 ====
+
+
 . Reúna o hardware e as informações necessárias para usar as interfaces de gerenciamento de bridge recomendadas, a GUI ATTO ExpressNAV e o utilitário ATTO Quicknav:
 +
 .. Determine um nome de usuário e uma senha não padrão (para acessar as pontes).
@@ -173,7 +176,7 @@ NOTE: As gavetas SAS em configurações de MetroCluster não são compatíveis c
 
 
 
-=== Ativar o acesso à porta IP na ponte FibreBridge 7600N, se necessário
+=== Ative o acesso à porta IP na ponte FibreBridge 7600N, se necessário
 
 Se você estiver usando uma versão do ONTAP anterior a 9,5, ou de outra forma planeja usar o acesso fora da banda à ponte FibreBridge 7600N usando telnet ou outros protocolos e serviços de porta IP (FTP, ExpressNAV, ICMP ou Quicknav), você pode ativar os serviços de acesso através da porta do console.
 
@@ -187,7 +190,7 @@ A partir do ONTAP 9.8, _gerenciamento na banda_ das bridges é suportado por pad
 Essa tarefa é necessária se você estiver usando *não* o gerenciamento na banda para gerenciar as bridges. Neste caso, você precisa configurar a ponte através da porta de gerenciamento Ethernet.
 
 .Passos
-. Acesse a interface do console da ponte conetando um cabo serial à porta serial na ponte FibreBridge 7600N.
+. Acesse a interface do console de ponte conetando um cabo serial à porta serial na ponte FibreBridge 7600N.
 . Usando o console, ative os serviços de acesso e salve a configuração:
 +
 `set closeport none`
@@ -233,7 +236,7 @@ SNMP é o único protocolo que requer um comando de ativação separado.
 
 
 
-=== Configuração de pontes FC para SAS
+=== Configurar as pontes FC para SAS
 
 Antes de fazer o cabeamento do modelo das pontes FC para SAS, você deve configurar as configurações no software FibreBridge.
 
@@ -358,7 +361,7 @@ NOTE: A velocidade FCDataRate selecionada é limitada à velocidade máxima supo
 
 Se estiver usando a CLI, você deve executar o seguinte comando:
 
-`set FCDataRate _port-number_ _port-speed_`
+`set FCDataRate <port-number> <port-speed>`
 
 --
 .. Se você estiver configurando uma ponte FibreBridge 7500N, configure o modo de conexão que a porta usa para "ptp".
@@ -370,14 +373,14 @@ NOTE: A configuração FCConnMode não é necessária ao configurar uma ponte Fi
 Se estiver usando a CLI, você deve executar o seguinte comando:
 
 +
-`set FCConnMode _port-number_ ptp`
+`set FCConnMode <port-number> ptp`
 
 .. Se você estiver configurando uma ponte FibreBridge 7600N ou 7500N, você deve configurar ou desativar a porta FC2.
 +
 *** Se estiver usando a segunda porta, repita as subetapas anteriores para a porta FC2.
 *** Se você não estiver usando a segunda porta, então você deve desativar a porta:
 +
-`FCPortDisable _port-number_`
+`FCPortDisable <port-number>`
 
 +
 O exemplo a seguir mostra a desativação da porta FC 2:
@@ -484,23 +487,20 @@ link:../maintain/index.html["Mantenha os componentes do MetroCluster"]
 
 
 
-.Informações relacionadas
-link:task_fb_new_install.html["Gerenciamento na banda das pontes FC para SAS"]
 
 
-
-=== Cabeamento das gavetas de disco para as pontes
+=== Cable disk shelves to the bridges
 
 Você precisa usar as pontes FC para SAS corretas para fazer o cabeamento das gavetas de disco.
 
 .Opções
-* <<cabling_fb_7600N_7500N_with_iom12,Cabeamento de uma ponte FibreBridge 7600N ou 7500N com compartimentos de disco usando módulos IOM12>>
-* <<cabling_fb_7600N_7500N_with_iom6_iom3,Cabeamento de uma ponte FibreBridge 7600N ou 7500N com compartimentos de disco usando módulos IOM6 ou IOM3>>
+* <<cabling_fb_7600N_7500N_with_iom12,Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando IOM12 módulos>>
+* <<cabling_fb_7600N_7500N_with_iom6_iom3,Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando módulos IOM6 ou IOM3>>
 
 
 
 
-==== Cabeamento de uma ponte FibreBridge 7600N ou 7500N com compartimentos de disco usando módulos IOM12
+==== Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando IOM12 módulos
 
 Depois de configurar a ponte, você pode iniciar o cabeamento do seu novo sistema.
 
@@ -510,7 +510,7 @@ Para compartimentos de disco, você insere um conetor de cabo SAS com a aba de p
 .Passos
 . Encadeie em série as gavetas de disco em cada pilha:
 +
-.. Começando com a primeira gaveta lógica na stack, conecte Iom A porta 3 à IOM A porta 1 da próxima gaveta até que cada Iom A na stack seja conectada.
+.. Começando pela primeira gaveta lógica na stack, conecte Iom A porta 3 à IOM a porta 1 na próxima gaveta até que cada IOM A na stack seja conectada.
 .. Repita o subpasso anterior para IOM B.
 .. Repita as subetapas anteriores para cada pilha.
 
@@ -545,7 +545,7 @@ image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks
 
 
 
-==== Cabeamento de uma ponte FibreBridge 7600N ou 7500N com prateleiras usando módulos IOM6 ou IOM3
+==== Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras usando módulos IOM6 ou IOM3
 
 Depois de configurar a ponte, você pode iniciar o cabeamento do seu novo sistema. A ponte FibreBridge 7600N ou 7500N usa conetores mini-SAS e suporta prateleiras que usam módulos IOM6 ou IOM3.
 
@@ -582,7 +582,7 @@ image::../media/mcc_cabling_bridge_and_sas_stack_with_7500n_four_stacks.gif[pont
 
 
 
-=== Verificação da conectividade de ponte e do cabeamento das portas FC de ponte
+=== Verifique a conectividade da ponte e o cabeamento das portas FC da ponte
 
 Você deve verificar se cada bridge pode detetar todas as unidades de disco e, em seguida, fazer o cabeamento de cada bridge para os switches FC locais.
 
@@ -664,7 +664,7 @@ Não está correto
  a| 
 .. Verifique se há cabos SAS soltos ou corrija o cabeamento SAS repetindo o cabeamento.
 +
-<<Cabeamento das gavetas de disco para as pontes>>
+<<Cable disk shelves to the bridges>>
 
 .. Repita <<step1_bridge,Passo 1>>.
 
@@ -682,13 +682,13 @@ Consulte as atribuições de portas da sua versão do ONTAP.
 
 
 .Informações relacionadas
-link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
-
 Você precisa verificar se está usando as atribuições de portas especificadas quando você faz o cabeamento dos switches FC ao usar o ONTAP 9.1 e posterior.
 
+link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
 
 
-== Fixar ou desprender a ponte FibreBridge
+
+== Proteja ou desprenda a ponte FibreBridge
 
 Para desativar facilmente protocolos Ethernet potencialmente inseguros em uma ponte, começando com o ONTAP 9.5, você pode proteger a ponte. Isto desativa as portas Ethernet da ponte. Você também pode reativar o acesso Ethernet.
 

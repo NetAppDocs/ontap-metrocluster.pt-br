@@ -896,7 +896,7 @@ A recuperação automática de agregados após o switchover negociado é desativ
 
 == Remova as configurações de interface e desinstale os controladores antigos
 
-Você deve mover LIFs de dados para uma porta comum, remover VLANs e grupos de interface nos controladores antigos e desinstalar fisicamente os controladores.
+Verifique a colocação correta de LIF. Em seguida, remova as VLANs e os grupos de interface nos controladores antigos e desinstale fisicamente os controladores.
 
 .Sobre esta tarefa
 * Essas etapas são executadas nos controladores antigos (node_B_1-old, node_B_2-old).
@@ -960,6 +960,10 @@ Repita o comando para cada LIF entre clusters que não está na porta inicial.
 
 . [[controller_manual_upgrade_prepare_network_ports_3]]atribua a porta inicial de todos os LIFs de dados no controlador antigo a uma porta comum que é a mesma nos módulos de controladora antigos e novos.
 +
+
+CAUTION: Se os controladores antigos e novos não tiverem uma porta comum, não será necessário modificar as LIFs de dados. Pule esta etapa e vá diretamente para <<upgrades_manual_without_matching_ports,Passo 4>>.
+
++
 .. Apresentar os LIFs:
 +
 `network interface show`
@@ -989,7 +993,7 @@ network interface modify -vserver vs0 -lif datalif1 -home-port e0d
 ----
 
 
-. Modifique domínios de broadcast para remover VLAN e portas físicas que precisam ser excluídas:
+. [[Upgrades_manual_without_Matching_ports]] Modificar domínios de broadcast para remover a VLAN e as portas físicas que precisam ser excluídas:
 +
 `broadcast-domain remove-ports -broadcast-domain <broadcast-domain-name> -ports <node-name:port-id>`
 
@@ -1796,19 +1800,36 @@ Verifique se os LIFs estão hospedados em nós e portas apropriados, conforme ma
 * Consulte o plano de mapeamento de portas criado no link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html["Mapeamento de portas dos nós antigos para os novos nós"].
 
 
+
+CAUTION: Você deve verificar se o local das LIFs de dados está correto nos novos nós antes de executar um switchback. Quando você alterna a configuração, o ONTAP tenta retomar o tráfego na porta inicial usada pelos LIFs. A falha de e/S pode ocorrer quando a conexão da porta inicial com a porta do switch e VLAN estiver incorreta.
+
 .Passos
-. Verifique se os LIFs estão hospedados no nó e nas portas apropriadas antes do switchback.
+. Verifique se os LIFs estão hospedados no nó e portas apropriados antes do switchback.
 +
 .. Mude para o nível de privilégio avançado:
 +
 `set -privilege advanced`
 
-.. Substituir a configuração da porta para garantir o posicionamento correto do LIF:
+.. Exiba os LIFs e confirme se cada data LIF está usando a porta inicial correta:
 +
-`vserver config override -command "network interface modify -vserver <svm-name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>`
+`network interface show`
+
+.. Modifique quaisquer LIFs que não estejam usando a porta inicial correta:
++
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
+
++
+Se o comando retornar um erro, você pode substituir a configuração da porta:
+
++
+`vserver config override -command "network interface modify -vserver <svm-name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>"`
 
 +
 Ao entrar no comando Network Interface Modify dentro `vserver config override` do comando, não é possível usar o recurso Tab Autocomplete. Você pode criar a rede `interface modify` usando o autocomplete e, em seguida, incorporá-la no `vserver config override` comando.
+
+.. Confirme se todas as LIFs de dados estão agora na porta inicial correta:
++
+`network interface show`
 
 .. Voltar ao nível de privilégio de administrador:
 +
