@@ -1296,10 +1296,124 @@ Siga as etapas na seção para o fornecedor do switch:
 Certos valores de inicialização IP do MetroCluster devem ser configurados nos novos módulos do controlador. Os valores devem corresponder aos configurados nos módulos do controlador antigos.
 
 .Sobre esta tarefa
-Nesta tarefa, você usará os UUIDs e IDs do sistema identificados anteriormente no procedimento de atualização no <<gather_info_so_sb,Reúna informações antes da atualização>>.
+* Você precisa dos UUIDs e IDs de sistema identificados anteriormente no procedimento de atualização no <<gather_info_so_sb,Reúna informações antes da atualização>>.
+* Dependendo do modelo da plataforma, você pode especificar o ID da VLAN usando o `-vlan-id` parâmetro. As seguintes plataformas não suportam o `-vlan-id` parâmetro:
++
+** FAS8200 e AFF A300
+** AFF A320
+** FAS9000 e AFF A700
+** AFF C800, ASA C800, AFF A800 e ASA A800
++
+Todas as outras plataformas suportam o `-vlan-id` parâmetro.
+
+
+
+* Os valores de bootarg do MetroCluster definidos dependem se o novo sistema utiliza portas de cluster/HA partilhadas ou portas MetroCluster/HA partilhadas.
++
+Os sistemas listados na tabela a seguir usam *portas MetroCluster/HA compartilhadas*.
+
++
+Todos os outros sistemas usam *portas de cluster/HA compartilhadas*.
+
++
+[cols="2*"]
+|===
+| Sistemas AFF e ASA usando portas MetroCluster/HA compartilhadas | Sistemas FAS que usam portas MetroCluster/HA compartilhadas 
+
+
+ a| 
+** AFF A150, ASA A150
+** AFF A220
+** AFF C250, ASA C250
+** AFF A250, ASA A250
+** AFF A300
+** AFF A320
+** AFF C400, ASA C400
+** AFF A400, ASA A400
+** AFF A700
+** AFF C800, ASA C800
+** AFF A800, ASA A800
+** AFF A900, ASA A900
+
+ a| 
+** FAS2750
+** FAS500f
+** FAS8200
+** FAS8300
+** FAS8700
+** FAS9000
+** FAS9500
+
+
+|===
+
 
 .Passos
-. Se os nós que estão sendo atualizados forem modelos AFF A400, FAS8300 ou FAS8700, defina os seguintes bootargs no prompt Loader:
+.  `LOADER>`No prompt, defina os seguintes bootargs nos novos nós no site_B:
++
+As etapas a seguir dependem das portas usadas pelo novo modelo de plataforma.
+
++
+[role="tabbed-block"]
+====
+.Sistemas que usam portas de cluster/HA compartilhadas
+--
+.. Defina os seguintes bootargs:
++
+`setenv bootarg.mcc.port_a_ip_config <local-IP-address/local-IP-mask,0,0,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
+
++
+`setenv bootarg.mcc.port_b_ip_config <local-IP-address/local-IP-mask,0,0,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
+
++
+
+NOTE: Se as interfaces estiverem usando um ID de VLAN padrão, o `vlan-id` parâmetro não será necessário.
+
++
+O exemplo a seguir define os valores para node_B_1-novo usando VLAN 120 para a primeira rede e VLAN 130 para a segunda rede:
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,0,172.17.26.13,172.17.26.12,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,0,172.17.27.13,172.17.27.12,130
+----
++
+O exemplo a seguir define os valores para node_B_2-novo usando VLAN 120 para a primeira rede e VLAN 130 para a segunda rede:
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,0,172.17.26.12,172.17.26.13,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,0,172.17.27.12,172.17.27.13,130
+----
++
+O exemplo a seguir define os valores para node_B_1-novo usando VLANs padrão para todas as conexões de DR IP MetroCluster:
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.10/23,0,0,172.17.26.13,172.17.26.12
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.10/23,0,0,172.17.27.13,172.17.27.12
+----
++
+O exemplo a seguir define os valores para node_B_2-novo usando VLANs padrão para todas as conexões de DR IP MetroCluster:
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.11/23,0,0,172.17.26.12,172.17.26.13
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.11/23,0,0,172.17.27.12,172.17.27.13
+----
+
+
+--
+.Sistemas que usam portas MetroCluster/HA compartilhadas
+.. Defina os seguintes bootargs:
 +
 `setenv bootarg.mcc.port_a_ip_config <local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
 
@@ -1308,10 +1422,10 @@ Nesta tarefa, você usará os UUIDs e IDs do sistema identificados anteriormente
 
 +
 
-NOTE: Se as interfaces estiverem usando as VLANs padrão, o vlan-id não será necessário.
+NOTE: Se as interfaces estiverem usando um ID de VLAN padrão, o `vlan-id` parâmetro não será necessário.
 
 +
-Os comandos a seguir definem os valores para node_B_1-novo usando VLAN 120 para a primeira rede e VLAN 130 para a segunda rede:
+O exemplo a seguir define os valores para node_B_1-novo usando VLAN 120 para a primeira rede e VLAN 130 para a segunda rede:
 
 +
 [listing]
@@ -1320,7 +1434,7 @@ setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,
 setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12,130
 ----
 +
-Os comandos a seguir definem os valores para node_B_2-novo usando VLAN 120 para a primeira rede e VLAN 130 para a segunda rede:
+O exemplo a seguir define os valores para node_B_2-novo usando VLAN 120 para a primeira rede e VLAN 130 para a segunda rede:
 
 +
 [listing]
@@ -1329,48 +1443,33 @@ setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,172.17.26.10,172.17.26.12,
 setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13,130
 ----
 +
-O exemplo a seguir mostra os comandos para node_B_1-novo quando a VLAN padrão é usada:
+O exemplo a seguir define os valores para node_B_1-novo usando VLANs padrão para todas as conexões de DR IP MetroCluster:
 
 +
 [listing]
 ----
-setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12
-setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
 ----
 +
-O exemplo a seguir mostra os comandos para node_B_2-novo quando a VLAN padrão é usada:
+O exemplo a seguir define os valores para node_B_2-novo usando VLANs padrão para todas as conexões de DR IP MetroCluster:
 
 +
 [listing]
 ----
-setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,172.17.26.10,172.17.26.12,172.17.26.13
-setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.11/23,0,172.17.26.10,172.17.26.12,172.17.26.13
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13
 ----
-. Se os nós que estão sendo atualizados não forem sistemas listados na etapa anterior, no prompt Loader para cada um dos nós sobreviventes, defina os seguintes bootargs com local_IP/mask:
-+
-`setenv bootarg.mcc.port_a_ip_config <local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address>`
 
-+
-`setenv bootarg.mcc.port_b_ip_config <local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address>`
 
-+
-Os comandos a seguir definem os valores para node_B_1-novo:
+--
 
-+
-[listing]
-----
-setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12
-setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
-----
-+
-Os comandos a seguir definem os valores para node_B_2-novo:
-
-+
-[listing]
-----
-setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,172.17.26.10,172.17.26.12,172.17.26.13
-setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13
-----
+--
+====
 . No prompt Loader dos novos nós, defina os UUIDs:
 +
 `setenv bootarg.mgwd.partner_cluster_uuid <partner-cluster-UUID>`
