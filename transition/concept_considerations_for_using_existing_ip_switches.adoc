@@ -31,6 +31,9 @@ Você deve usar switches fornecidos pelo NetApp.
 
 
 
-Consulte o _NetApp Hardware Universe_ para obter informações sobre o modelo da plataforma e suporte ao switch.
+[CAUTION]
+====
+Se você estiver usando switches MetroCluster de armazenamento compartilhado, só poderá fazer a transição para uma configuração IP MetroCluster de quatro nós. A transição para uma configuração MetroCluster IP de oito nós usando switches MetroCluster de armazenamento compartilhado não é suportada. Depois de concluir a transição para uma configuração IP MetroCluster de quatro nós, você pode link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["Expanda para uma configuração IP MetroCluster de oito nós"].
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+====
+Consulte o https://hwu.netapp.com["Hardware Universe"^] para obter informações sobre modelos de plataforma e suporte de switch.

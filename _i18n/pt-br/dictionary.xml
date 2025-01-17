@@ -10774,7 +10774,6 @@
   <block id="ee6ed7097775dc1dd54c183bab7fabca" category="list-text">O MetroCluster FC é um cluster sem switch, portanto, novos switches são necessários.</block>
   <block id="f6ee19cc42b9955140e50bd5845ab941" category="list-text">O MetroCluster FC é um cluster comutado, mas os switches IP existentes não são suportados na configuração IP do MetroCluster.</block>
   <block id="f2e4f8254f9371aba3bca00c7ae823a3" category="list-text">Você deseja usar diferentes switches para a configuração IP do MetroCluster.</block>
-  <block id="4ee1b040d263e389d67330e3d505f6c5" category="paragraph">Consulte o _NetApp Hardware Universe_ para obter informações sobre o modelo da plataforma e suporte ao switch.</block>
   <block id="39128f9051c3d4355aead1a61c996c25" category="summary">Você deve entender as diferenças entre uma atualização, expansão ou transição do MetroCluster e escolher o procedimento que corresponde à sua meta.</block>
   <block id="c614230ffa3ceef0cb27e7fbc1f50307" category="doc">Decidir qual procedimento usar</block>
   <block id="c708a2b6841470715a7b74102c0ae1aa" category="list-text">*Upgrade*</block>
@@ -11007,12 +11006,9 @@
   <block id="715a557335c993fbdddacfeead63bcfb" category="list-text">Remova a configuração do MetroCluster existente de qualquer aplicativo de terceiros que possa iniciar o switchover.</block>
   <block id="c587e54ff9ed88f954efbfffaff5cb81" category="paragraph">Consulte a documentação da aplicação.</block>
   <block id="26335ad95c44f5e233c28d27ab09f461" category="doc">Requisitos para transição FC para IP sem interrupções</block>
-  <block id="bb6c47f32358fe5242b175ac608f7d32" category="list-text">Se você tiver uma configuração de oito nós, todos os nós devem estar executando o ONTAP 9.13,1 ou posterior.</block>
-  <block id="d8e49cb116ea5302a217647ce0506ea6" category="list-text">Se você tiver uma configuração de quatro nós, todos os nós devem estar executando o ONTAP 9.8 ou posterior.</block>
   <block id="ab15e3a0446aa2c30baef0a6d039dff1" category="list-text">As plataformas existentes e novas devem ser uma combinação suportada para a transição.</block>
   <block id="c5ca83d0e723113560fb2c95b33b532b" category="inline-link-macro">Plataformas compatíveis para transição sem interrupções</block>
   <block id="fd8a65566a0bac859d93882f20cc0c7d" category="paragraph"><block ref="fd8a65566a0bac859d93882f20cc0c7d" category="inline-link-macro-rx"></block></block>
-  <block id="1c80ea06ae866b6e42e9d266e0cb8906" category="list-text">Ele deve suportar uma configuração de cluster comutada.</block>
   <block id="ea4f6a54a922436f4da19eeae7b7be02" category="summary">Dependendo da etapa do processo de transição, as operações de switchover, recuperação e switchback do MetroCluster usam o fluxo de trabalho MetroCluster FC ou MetroCluster IP.</block>
   <block id="2169fc2df99c9e0a2b4c8c14a8dea264" category="doc">Operações de switchover, recuperação e switchback durante a transição sem interrupções</block>
   <block id="5dfe60da7e5d2327335ff9aa47ac355c" category="paragraph">A tabela a seguir mostra quais fluxos de trabalho são usados em diferentes estágios do processo de transição. Em alguns estágios, o switchover e o switchback não são suportados.</block>
@@ -14315,4 +14311,16 @@
   <block id="f4c0383379a5ae93d0b5e4c4f8586e47" category="open-title">Sistemas que usam portas de cluster/HA compartilhadas</block>
   <block id="fce1683696c48d3d34e98e19d634ae19" category="open-title">Sistemas que usam portas MetroCluster/HA compartilhadas</block>
   <block id="eabf799ca909dc7fa9808c3abb476773" category="paragraph">Digite a senha de autenticação quando solicitado.</block>
+  <block id="8c62b33499e87d946c3be674c109e802" category="inline-link-macro">Expanda para uma configuração IP MetroCluster de oito nós</block>
+  <block id="d3f54bf5e1d7bcb93c8d615f71713d7f" category="paragraph">Se você estiver usando switches MetroCluster de armazenamento compartilhado, só poderá fazer a transição para uma configuração IP MetroCluster de quatro nós. A transição para uma configuração MetroCluster IP de oito nós usando switches MetroCluster de armazenamento compartilhado não é suportada. Depois de concluir a transição para uma configuração IP MetroCluster de quatro nós, você pode <block ref="6dee49609367b51155e32a3a9526bace" category="inline-link-macro-rx"></block>.</block>
+  <block id="2e6fac9e7be327118126470b28ac80e9" category="paragraph">Consulte o<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block> para obter informações sobre modelos de plataforma e suporte de switch.</block>
+  <block id="e77208401ec89552ec5e85789d235879" category="paragraph">Antes de iniciar o processo de transição, verifique se a configuração atende aos requisitos.</block>
+  <block id="1229d62fc62771990d4aca35e86babbb" category="paragraph">Você pode realizar uma transição sem interrupções de FC para IP se sua configuração atender aos seguintes requisitos:</block>
+  <block id="c93eb5b603c598e0771b611b95a1f13a" category="list-text">Se você tiver uma configuração de oito nós, todos os nós estão executando o ONTAP 9.13.1 ou posterior.</block>
+  <block id="fbe14351123598a8a64fee33aa1a2a2b" category="list-text">Se você tiver uma configuração de quatro nós, todos os nós estão executando o ONTAP 9,8 ou posterior.</block>
+  <block id="d7b625bf0290f633deca10fab483feb9" category="list-text">As plataformas existentes e novas são uma combinação suportada para a transição.</block>
+  <block id="449f221b85b0830ccbe6f932311166dc" category="list-text">A sua configuração suporta uma configuração de cluster comutada.</block>
+  <block id="ec4312d0db3bce928129e7e5c3a58d73" category="paragraph"><block ref="ec4312d0db3bce928129e7e5c3a58d73" category="inline-link-rx"></block></block>
+  <block id="c42a1c17fcba2c3f1c614f6d301144e6" category="paragraph">Se você estiver usando switches MetroCluster de armazenamento compartilhado, só poderá fazer a transição para uma configuração IP MetroCluster de quatro nós. A transição para uma configuração MetroCluster IP de oito nós usando switches MetroCluster de armazenamento compartilhado não é suportada. Depois de concluir a transição para uma configuração IP MetroCluster de quatro nós, você pode <block ref="6dee49609367b51155e32a3a9526bace" category="inline-link-macro-rx"></block>.</block>
+  <block id="fb9168c2e293c1ba8ecd781a9f35d00f" category="list-text">Sua configuração atende a todos os requisitos e é cabeada conforme descrito nos seguintes procedimentos _Instalação e Configuração do MetroCluster_.</block>
 </blocks>

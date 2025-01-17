@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, upgrade, firmware. ip, switches, cisco, broadcom, efos, nxos, nx-os, software, install 
 summary: Atualizando o firmware em switches IP MetroCluster. 
 ---
-= Atualizando o firmware em switches IP MetroCluster
+= Atualize o firmware nos switches IP MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -63,9 +63,22 @@ Group Cluster Node           State          Mirroring Mode
 +
 [listing]
 ----
-cluster_A::> metrocluster check run
+cluster_A::*> metrocluster check run
+----
++
+A operação é executada em segundo plano.
 
-Last Checked On: 10/1/2014 16:03:37
+.. Após `metrocluster check run` a conclusão da operação, execute:
++
+`metrocluster check show`
+
++
+Após cerca de cinco minutos, são apresentados os seguintes resultados:
+
++
+[listing]
+----
+cluster_A:::*> metrocluster check show
 
 Component           Result
 ------------------- ---------
@@ -73,10 +86,10 @@ nodes               ok
 lifs                ok
 config-replication  ok
 aggregates          ok
-4 entries were displayed.
-
-Command completed. Use the "metrocluster check show -instance" command or sub-commands in "metrocluster check" directory for detailed results.
-To check if the nodes are ready to do a switchover or switchback operation, run "metrocluster switchover -simulate" or "metrocluster switchback -simulate", respectively.
+clusters            ok
+connections         ok
+volumes             ok
+7 entries were displayed.
 ----
 .. Verifique se não existem alertas de saúde:
 +

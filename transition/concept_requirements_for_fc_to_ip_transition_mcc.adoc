@@ -11,19 +11,28 @@ summary: Antes de iniciar o processo de transição, você deve garantir que a c
 
 
 [role="lead"]
-Antes de iniciar o processo de transição, você deve garantir que a configuração atenda aos requisitos.
+Antes de iniciar o processo de transição, verifique se a configuração atende aos requisitos.
 
-* Se você tiver uma configuração de oito nós, todos os nós devem estar executando o ONTAP 9.13,1 ou posterior.
-* Se você tiver uma configuração de quatro nós, todos os nós devem estar executando o ONTAP 9.8 ou posterior.
-* As plataformas existentes e novas devem ser uma combinação suportada para a transição.
+Você pode realizar uma transição sem interrupções de FC para IP se sua configuração atender aos seguintes requisitos:
+
+* Se você tiver uma configuração de oito nós, todos os nós estão executando o ONTAP 9.13.1 ou posterior.
+* Se você tiver uma configuração de quatro nós, todos os nós estão executando o ONTAP 9,8 ou posterior.
+* As plataformas existentes e novas são uma combinação suportada para a transição.
 +
 link:concept_choosing_your_transition_procedure_mcc_transition.html["Plataformas compatíveis para transição sem interrupções"]
 
-* Ele deve suportar uma configuração de cluster comutada.
+* A sua configuração suporta uma configuração de cluster comutada.
 +
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://hwu.netapp.com["Hardware Universe"^]
 
-* Ele deve atender a todos os requisitos e cabeamento, conforme descrito nos procedimentos _Instalação e Configuração do MetroCluster_.
+
+
+[CAUTION]
+====
+Se você estiver usando switches MetroCluster de armazenamento compartilhado, só poderá fazer a transição para uma configuração IP MetroCluster de quatro nós. A transição para uma configuração MetroCluster IP de oito nós usando switches MetroCluster de armazenamento compartilhado não é suportada. Depois de concluir a transição para uma configuração IP MetroCluster de quatro nós, você pode link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["Expanda para uma configuração IP MetroCluster de oito nós"].
+
+====
+* Sua configuração atende a todos os requisitos e é cabeada conforme descrito nos seguintes procedimentos _Instalação e Configuração do MetroCluster_.
 +
 link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]
 
