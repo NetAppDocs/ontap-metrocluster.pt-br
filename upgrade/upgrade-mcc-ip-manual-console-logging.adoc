@@ -1,0 +1,27 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-console-logging.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc, console, logging 
+summary: Ative o registo da consola nos seus dispositivos antes de efetuar a atualização da controladora. 
+---
+= Ative o registo da consola antes da atualização do controlador IP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ative o registo da consola nos seus dispositivos antes de efetuar a atualização da controladora.
+
+O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
+
+* Deixe o AutoSupport ativado durante a manutenção.
+* Acione uma mensagem de manutenção do AutoSupport antes e depois da manutenção para desativar a criação de casos durante a atividade de manutenção.
++
+Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["Como suprimir a criação automática de casos durante as janelas de manutenção programada"^].
+
+* Ative o registo de sessão para qualquer sessão CLI. Para obter instruções sobre como ativar o registo de sessão, consulte a secção "saída de sessão de registo" no artigo da base de dados de conhecimento link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["Como configurar o PuTTY para uma conetividade ideal aos sistemas ONTAP"^].
+
+
+.O que se segue?
+Revise as informações em link:upgrade-mcc-ip-manual-set-bootarg.html["Defina o bootarg necessário (para atualizações para sistemas introduzidos em 9.15.1 ou posterior)"] para confirmar se você precisa definir um bootarg necessário no sistema existente.

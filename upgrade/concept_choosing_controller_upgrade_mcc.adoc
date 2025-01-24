@@ -47,24 +47,25 @@ Por exemplo, se a plataforma que você deseja atualizar for um FAS8200, você po
 
 
 
-* Todos os nós (antigos e novos) na configuração do MetroCluster devem estar executando a mesma versão do ONTAP.
+* Todos os nós (antigos e novos) na configuração do MetroCluster devem estar executando a mesma versão do ONTAP. Consulte link:https://hwu.netapp.com["Hardware Universe"^]a para obter a versão mínima suportada do ONTAP para a sua combinação.
 
 
 .Atualizações suportadas do controlador IP AFF e FAS MetroCluster
 A tabela a seguir mostra as combinações de plataforma suportadas para atualizar um sistema AFF ou FAS manualmente em uma configuração IP MetroCluster:
 
-image::../media/metrocluster_ip_upgrade_so_sb_aff_fas.png[atualização ip MetroCluster so sb AFF FAS]
+image:../media/mccip_manual_controller_upgrade_comb.png["Mostra as plataformas AFF e FAS compatíveis para atualizar manualmente controladores usando switchover e switchback"]
 
 * Nota 1: Para esta atualização, utilize o procedimento link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html["Atualizar controladores de AFF A700/FAS9000 para AFF A900/FAS9500 em uma configuração IP MetroCluster usando switchover e switchback (ONTAP 9.10,1 ou posterior)"]
 * Observação 2: Atualizações de controladora são suportadas em sistemas que executam o ONTAP 9.13,1 ou posterior.
 * Nota 3: A plataforma de destino não pode ter unidades internas até que a atualização da controladora esteja concluída. Você pode adicionar as unidades internas após a atualização.
 * Nota 4: Requer a substituição dos módulos do controlador.
+* Observação 5: Requer módulos IOM para converter as controladoras antigas em uma gaveta SAS externa. Consulte a link:https://hwu.netapp.com/["Hardware Universe"^] para obter os módulos IOM suportados.
 
 
 .Atualizações suportadas do controlador IP ASA MetroCluster
 A tabela a seguir mostra as combinações de plataforma suportadas para atualizar um sistema ASA manualmente em uma configuração IP do MetroCluster:
 
-image::../media/metrocluster_ip_upgrade_so_sb_asa_fas.png[atualização ip MetroCluster so sb ASA FAS]
+image:../media/mcc-ip-upgrade-asa-comb-9161.png["Mostra as combinações da plataforma de atualização do controlador MetroCluster IP suportado pela ASA"]
 
 * Observação 1: Atualizações de controladora são suportadas em sistemas que executam o ONTAP 9.13,1 ou posterior.
 
@@ -85,7 +86,7 @@ Por exemplo, se a plataforma que você deseja atualizar for um FAS8200, você po
 
 
 
-* Todos os nós (antigos e novos) na configuração do MetroCluster devem estar executando a mesma versão do ONTAP.
+* Todos os nós (antigos e novos) na configuração do MetroCluster devem estar executando a mesma versão do ONTAP. Consulte link:https://hwu.netapp.com["Hardware Universe"^]a para obter a versão mínima suportada do ONTAP para a sua combinação.
 
 
 .Atualizações compatíveis de controladora AFF e FAS MetroCluster FC

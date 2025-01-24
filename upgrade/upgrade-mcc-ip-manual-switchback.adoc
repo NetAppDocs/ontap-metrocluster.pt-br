@@ -1,0 +1,81 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: Execute a operação de switchback para retornar a configuração do MetroCluster à operação normal. Os nós no site_A ainda estão aguardando atualização. 
+---
+= Volte a ativar a configuração IP do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Execute a operação de switchback para retornar a configuração do MetroCluster à operação normal. Os nós no site_A ainda estão aguardando atualização.
+
+image::../media/mcc_upgrade_cluster_a_switchback.png[cluster de atualização do mcc a switchback]
+
+.Passos
+. Emita o `metrocluster node show` comando no site_B e verifique a saída.
++
+.. Verifique se os novos nós estão representados corretamente.
+.. Verifique se os novos nós estão em "aguardando pelo estado de switchback".
+
+
+. Execute a recuperação e o switchback executando os comandos necessários de qualquer nó no cluster ativo (o cluster que não está sendo atualizado).
++
+.. Curar os agregados de dados
+`metrocluster heal aggregates`
+.. Curar os agregados de raiz:
++
+`metrocluster heal root`
+
+.. Comutar o cluster:
++
+`metrocluster switchback`
+
+
+
+. Verifique o progresso do funcionamento do interrutor de comutação:
++
+`metrocluster show`
+
++
+A operação de switchback ainda está em andamento quando a saída exibe `waiting-for-switchback`:
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+A operação de comutação está concluída quando a saída exibe normal:
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+Se um switchback levar muito tempo para terminar, você pode verificar o status das linhas de base em andamento usando o `metrocluster config-replication resync-status show` comando. Este comando está no nível de privilégio avançado.
+
+
+
+.O que se segue?
+link:upgrade-mcc-ip-manual-complete-upgrade.html["Conclua a atualização"].

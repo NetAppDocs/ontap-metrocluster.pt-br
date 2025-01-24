@@ -1,0 +1,29 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: A partir do ONTAP 9.8, você pode usar a operação de switchover do MetroCluster para fornecer serviços sem interrupções aos clientes enquanto os módulos de controladora no cluster de parceiros são atualizados. 
+---
+= Fluxo de trabalho para atualizações do controlador IP MetroCluster usando switchover e switchback (ONTAP 9,8 e posterior)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.8, você pode usar a operação de switchover do MetroCluster para fornecer serviços sem interrupções aos clientes enquanto os módulos de controladora no cluster de parceiros são atualizados. Outros componentes (como prateleiras de armazenamento ou switches) não podem ser atualizados como parte deste procedimento.
+
+.Sobre este fluxo de trabalho
+Você pode usar esse fluxo de trabalho para atualizar controladores IP MetroCluster usando o switchover e o switchback em sistemas que executam o ONTAP 9,8 ou posterior.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]link:upgrade-mcc-ip-manual-requirements.html["Prepare-se para atualizar"]
+[role="quick-margin-para"]
+Reveja as combinações e os requisitos de atualização suportados e conclua as tarefas necessárias para preparar o sistema para a atualização da controladora.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"]link:upgrade-mcc-ip-manual-switchover.html["Atualize seus controladores"]
+[role="quick-margin-para"]
+Alterne a configuração do MetroCluster para remover a configuração dos controladores antigos, rack e instalar os novos controladores, reatribuir os discos agregados raiz e inicializar os novos controladores antes de executar um switchback.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"]link:upgrade-mcc-ip-manual-complete-upgrade.html["Conclua a atualização"]
+[role="quick-margin-para"]
+Conclua a atualização do controlador repetindo as tarefas de atualização no segundo local e restaurando qualquer configuração de monitoramento.

@@ -94,8 +94,8 @@ As tabelas a seguir mostram as combinações de plataforma suportadas para confi
 
 [IMPORTANT]
 ====
-* Todos os nós na configuração do MetroCluster devem estar executando a mesma versão do ONTAP. Por exemplo, se você tiver uma configuração de oito nós, todos os oito nós devem estar executando a mesma versão do ONTAP.
-* As combinações nesta tabela aplicam-se apenas a configurações de nós 8 regulares ou permanentes.
+* Todos os nós na configuração do MetroCluster devem estar executando a mesma versão do ONTAP. Por exemplo, se você tiver uma configuração de oito nós, todos os oito nós devem estar executando a mesma versão do ONTAP. Consulte link:https://hwu.netapp.com["Hardware Universe"^]a para obter a versão mínima suportada do ONTAP para a sua combinação.
+* As combinações nesta tabela aplicam-se apenas a configurações de oito nós regulares ou permanentes.
 * As combinações de plataforma mostradas nesta tabela *não* se aplicam se você estiver usando os procedimentos de transição ou atualização.
 * Todos os nós em um grupo de DR devem ter o mesmo tipo e configuração.
 
@@ -104,7 +104,7 @@ As tabelas a seguir mostram as combinações de plataforma suportadas para confi
 .Combinações de expansão IP AFF e FAS MetroCluster suportadas
 A tabela a seguir mostra as combinações de plataforma compatíveis para expandir um sistema AFF ou FAS em uma configuração IP MetroCluster:
 
-image::../media/8node_comb_ip_aff_fas.png[Combinações de plataforma para configurações de 8 nós]
+image::../media/mccip_expand_ip_8node_9161.png[Combinações de plataforma para configurações de 8 nós]
 
 * *Nota 1*: ONTAP 9.9,1 ou posterior (ou a versão mínima do ONTAP suportada na plataforma) é necessária para estas combinações.
 * *Nota 2*: ONTAP 9.13,1 ou posterior (ou a versão mínima do ONTAP suportada na plataforma) é necessária para estas combinações.

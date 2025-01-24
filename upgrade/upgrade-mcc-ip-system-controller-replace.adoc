@@ -1,0 +1,29 @@
+---
+permalink: upgrade/upgrade-mcc-ip-system-controller-replace.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: Você pode usar essa operação de switchover automatizado guiado por MetroCluster para executar uma atualização sem interrupções do controlador para uma configuração de IP MetroCluster de quatro nós. 
+---
+= Fluxo de trabalho para atualização de controladores IP MetroCluster usando comandos "System controller replace" (ONTAP 9.13.1 ou posterior)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar essa operação de switchover automatizado guiado por MetroCluster para executar uma atualização sem interrupções do controlador em uma configuração de IP MetroCluster de quatro nós executando o ONTAP 9.13.1 posteriormente. Outros componentes (como prateleiras de armazenamento ou switches) não podem ser atualizados como parte deste procedimento.
+
+.Sobre este fluxo de trabalho
+Você pode usar esse fluxo de trabalho para atualizar controladores IP MetroCluster executando o ONTAP 9.13.1 ou posterior usando switchover e switchback com `system controller replace` comandos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]link:upgrade-mcc-ip-system-controller-replace-supported-platforms.html["Prepare-se para atualizar"]
+[role="quick-margin-para"]
+Reveja as combinações e os requisitos de atualização suportados e conclua as tarefas necessárias para preparar o sistema para a atualização da controladora. O processo de atualização automatizada do controlador começa com uma série de pré-verificações antes de coletar as informações de configuração e remover qualquer software de monitoramento existente.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"]link:upgrade-mcc-ip-system-controller-replace-prepare-network-configuration.html["Atualize seus controladores"]
+[role="quick-margin-para"]
+A operação de automação inicia as operações de comutação. Depois que essas operações forem concluídas, a operação será interrompida para que você possa preparar a configuração de rede dos controladores antigos, rack e instalar os novos controladores, reatribuir os discos agregados raiz e inicializar os novos controladores.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"]link:upgrade-mcc-ip-system-controller-replace-complete-upgrade.html["Conclua a atualização"]
+[role="quick-margin-para"]
+Conclua a atualização automática do controlador verificando a acessibilidade da rede, repetindo as tarefas de atualização no segundo site e restaurando a configuração do monitoramento.

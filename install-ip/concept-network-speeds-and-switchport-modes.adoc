@@ -18,4 +18,4 @@ A tabela a seguir fornece velocidades de rede específicas da plataforma e modos
 
 NOTE: Valores ausentes indicam que a plataforma não pode ser usada com um switch compatível com MetroCluster.
 
-image::../media/mcc-compliant-switches-network-speed-9151.png[Mostra as velocidades de rede específicas da plataforma e os modos de porta do switch para switches compatíveis com MetroCluster.]
+image:../media/mcc-compliant-network-speed-9161.png["Mostra as velocidades de rede específicas da plataforma e os modos de porta do switch para switches compatíveis com MetroCluster."]

@@ -1,0 +1,264 @@
+---
+permalink: upgrade/upgrade-mcc-ip-system-controller-replace-boot-new-controllers.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: Reinicie os controladores a partir do menu de arranque para atualizar a imagem flash do controlador. Etapas adicionais são necessárias se a criptografia estiver configurada. 
+---
+= Inicialize os novos controladores IP MetroCluster e restaure a configuração de LIF
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Inicialize os novos controladores e verifique se LIFs estão hospedados em nós e portas apropriados antes de retomar a operação usando o `system controller replace resume` comando.
+
+
+
+== Inicialize os novos controladores
+
+Inicialize os novos controladores,verifique se as variáveis bootarg estão corretas e, se necessário, execute as etapas de recuperação de criptografia.
+
+.Sobre esta tarefa
+Esta tarefa deve ser executada em todos os novos controladores.
+
+.Passos
+. Parar o nó:
++
+`halt`
+
+. Se o gerenciador de chaves externo estiver configurado, defina os bootargs relacionados:
++
+`setenv bootarg.kmip.init.ipaddr <ip-address>`
+
++
+`setenv bootarg.kmip.init.netmask <netmask>`
+
++
+`setenv bootarg.kmip.init.gateway <gateway-address>`
+
++
+`setenv bootarg.kmip.init.interface <interface-id>`
+
+. Apresentar o menu de arranque:
++
+`boot_ontap menu`
+
+. Se a criptografia raiz for usada, selecione a opção do menu de inicialização para a configuração de gerenciamento de chaves.
++
+|===
+
+
+| Se você estiver usando... | Selecione esta opção do menu de arranque... 
+
+
+ a| 
+Gerenciamento de chaves integrado
+ a| 
+Opção "'10"
+
+Siga as instruções para fornecer as entradas necessárias para recuperar e restaurar a configuração do gerenciador de chaves.
+
+
+
+ a| 
+Gerenciamento de chaves externas
+ a| 
+Opção "'11"
+
+Siga as instruções para fornecer as entradas necessárias para recuperar e restaurar a configuração do gerenciador de chaves.
+
+|===
+. No menu de inicialização, execute a opção "'6".
++
+
+NOTE: A opção "'6" reinicializa o nó duas vezes antes que o processo seja concluído.
+
++
+Responda com "y" para os prompts de alteração de ID do sistema. Aguarde a segunda mensagem de reinicialização:
+
++
+[listing]
+----
+Successfully restored env file from boot media...
+
+Rebooting to load the restored env file...
+----
++
+Durante uma das reinicializações após a opção "'6", o prompt de confirmação `Override system ID? {y|n}` aparece. Introduza `y`.
+
+. Se a criptografia raiz for usada, selecione a opção do menu de inicialização novamente para a configuração de gerenciamento de chaves.
++
+|===
+
+
+| Se você estiver usando... | Selecione esta opção do menu de arranque... 
+
+
+ a| 
+Gerenciamento de chaves integrado
+ a| 
+Opção "'10"
+
+Siga as instruções para fornecer as entradas necessárias para recuperar e restaurar a configuração do gerenciador de chaves.
+
+
+
+ a| 
+Gerenciamento de chaves externas
+ a| 
+Opção "'11"
+
+Siga as instruções para fornecer as entradas necessárias para recuperar e restaurar a configuração do gerenciador de chaves.
+
+|===
++
+Dependendo da configuração do gerenciador de chaves, execute o procedimento de recuperação selecionando a opção ""10"" ou a opção ""11"", seguida da opção ""6"" no primeiro prompt do menu de inicialização. Para inicializar os nós completamente, você pode precisar repetir o procedimento de recuperação continuado pela opção "'1'" (inicialização normal).
+
+. Inicialize os nós:
++
+`boot_ontap`
+
+. Aguarde que os nós substituídos iniciem.
++
+Se um dos nós estiver no modo de aquisição, execute um giveback usando o `storage failover giveback` comando.
+
+. Verifique se todas as portas estão em um domínio de broadcast:
++
+.. Veja os domínios de broadcast:
++
+`network port broadcast-domain show`
+
+.. Se um novo domínio de broadcast for criado para as portas de dados nos controladores recém-atualizados, exclua o domínio de broadcast:
++
+
+NOTE: Exclua apenas o novo domínio de broadcast. Não exclua nenhum dos domínios de broadcast que existiam antes de iniciar a atualização.
+
++
+`broadcast-domain delete -broadcast-domain <broadcast_domain_name>`
+
+.. Adicione quaisquer portas a um domínio de broadcast conforme necessário.
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["Adicionar ou remover portas de um domínio de broadcast"^]
+
+.. Adicione a porta física que hospedará os LIFs entre clusters ao domínio de broadcast correspondente.
+.. Modifique LIFs entre clusters para usar a nova porta física como porta inicial.
+.. Depois que os LIFs entre clusters estiverem ativos, verifique o status de peer do cluster e restabeleça o peering de cluster conforme necessário.
++
+Talvez seja necessário reconfigurar o peering de cluster.
+
++
+link:../install-ip/task_sw_config_configure_clusters.html#peering-the-clusters["Crie um relacionamento de pares de cluster"]
+
+.. Recrie VLANs e grupos de interface conforme necessário.
++
+A associação de VLAN e grupo de interface pode ser diferente da do nó antigo.
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["Crie uma VLAN"^]
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["Combine portas físicas para criar grupos de interface"^]
+
+.. Verifique se o cluster de parceiros está acessível e se a configuração é ressincronizada com êxito no cluster de parceiros:
++
+`metrocluster switchback -simulate true`
+
+
+
+. Se a criptografia for usada, restaure as chaves usando o comando correto para sua configuração de gerenciamento de chaves.
++
+|===
+
+
+| Se você estiver usando... | Use este comando... 
+
+
+ a| 
+Gerenciamento de chaves integrado
+ a| 
+`security key-manager onboard sync`
+
+Para obter mais informações, https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["Restaurar chaves de criptografia integradas de gerenciamento de chaves"^]consulte .
+
+
+
+ a| 
+Gerenciamento de chaves externas
+ a| 
+`security key-manager external restore -vserver <svm-name> -node <node-name> -key-server <host_name|IP_address:port> -key-id <key_id> -key-tag key_tag <node-name>`
+
+Para obter mais informações, https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["Restaurar chaves de criptografia de gerenciamento de chaves externas"^]consulte .
+
+|===
+. Verifique se o MetroCluster está configurado corretamente. Verifique o status do nó:
++
+`metrocluster node show`
+
++
+Verifique se os novos nós (site_B) estão em *aguardando o estado switchback* do site_A.
+
+
+
+
+
+== Verifique e restaure a configuração do LIF
+
+Verifique se os LIFs estão hospedados em nós apropriados antes de prosseguir com a operação de switchback automatizado.
+
+.Sobre esta tarefa
+* Esta tarefa é executada no site_B.
+
+
+
+CAUTION: Você deve verificar se o local das LIFs de dados está correto nos novos nós antes de executar um switchback. Quando você alterna a configuração, o ONTAP tenta retomar o tráfego na porta inicial usada pelos LIFs. A falha de e/S pode ocorrer quando a conexão da porta inicial com a porta do switch e VLAN estiver incorreta.
+
+.Passos
+. Verifique se os LIFs estão hospedados no nó e portas apropriados antes do switchback.
++
+.. Mude para o nível de privilégio avançado:
++
+`set -privilege advanced`
+
+.. Exiba os LIFs e confirme se cada data LIF está usando a porta inicial correta:
++
+`network interface show`
+
+.. Modifique quaisquer LIFs que não estejam usando a porta inicial correta:
++
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
+
++
+Se o comando retornar um erro, você pode substituir a configuração da porta:
+
++
+`vserver config override -command "network interface modify -vserver <svm-name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>"`
+
++
+Ao entrar no comando Network Interface Modify dentro `vserver config override` do comando, não é possível usar o recurso Tab Autocomplete. Você pode criar a rede `interface modify` usando o autocomplete e, em seguida, incorporá-la no `vserver config override` comando.
+
+.. Confirme se todas as LIFs de dados estão agora na porta inicial correta:
++
+`network interface show`
+
+.. Voltar ao nível de privilégio de administrador:
++
+`set -privilege admin`
+
+
+
+. Reverter as interfaces para o seu nó inicial:
++
+`network interface revert * -vserver <svm-name>`
+
++
+Execute esta etapa em todas as SVMs, conforme necessário.
+
+. Retomar a operação:
++
+`system controller replace resume`
+
+
+
+.O que se segue?
+link:upgrade-mcc-ip-system-controller-replace-complete-upgrade.html["Conclua a atualização da controladora"].

@@ -35,6 +35,9 @@ O procedimento utilizado depende do tipo de MetroCluster e do número de control
 
 
 
+
+CAUTION: Se a migração para SVM estiver em andamento, aguarde até que todos os processos de migração estejam concluídos antes de iniciar os procedimentos de atualização da controladora ou do sistema. Não inicie novas operações de migração de SVM durante o processo de atualização ou atualização.
+
 [cols="2,5"]
 |===
 

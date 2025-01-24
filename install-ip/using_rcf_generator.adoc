@@ -19,7 +19,8 @@ Reveja estas considerações antes de utilizar as tabelas:
 * As tabelas a seguir mostram o uso da porta para o local A. o mesmo cabeamento é usado para o local B.
 * Os switches não podem ser configurados com portas de velocidades diferentes (por exemplo, uma combinação de portas de 100 Gbps e portas de 40 Gbps).
 * Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, etc.). Você precisará dessas informações ao usar a ferramenta RcfFileGenerator, conforme descrito mais adiante neste procedimento de configuração.
-* O https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"] também fornece uma visão geral do cabeamento por porta para cada switch. Use esta visão geral do cabeamento para verificar o cabeamento.
+* Você deve fazer o cabeamento de todos os nós da mesma maneira. Se houver diferentes opções de combinação de portas disponíveis para fazer o cabeamento dos nós, todos os nós devem usar as mesmas combinações de portas. Por exemplo, e1a em node1 e e1a em node2 devem ser conetados a um interrutor. Da mesma forma, a segunda porta de ambos os nós deve ser conetada ao segundo switch.
+* O https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"^] também fornece uma visão geral do cabeamento por porta para cada switch. Use esta visão geral do cabeamento para verificar o cabeamento.
 
 
 

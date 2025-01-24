@@ -232,7 +232,7 @@ e0a, e0b
  a| 
 e3a, e3b
  a| 
-Nenhuma porta correspondente. Após a atualização, você deve recriar as portas do cluster. link:task_prepare_cluster_ports_on_the_exist_controller.html["Preparando portas do cluster em um módulo do controlador existente"]
+Nenhuma porta correspondente. Após a atualização, recrie as portas do cluster. link:task_prepare_cluster_ports_on_the_exist_controller.html["Preparando portas do cluster em um módulo do controlador existente"]
 
 
 
@@ -869,15 +869,14 @@ The node must be rebooted to start using the newly installed software. Do you wa
 
 === Limpando a configuração em um módulo do controlador
 
-[role="lead"]
 Antes de usar um novo módulo de controlador na configuração do MetroCluster, você deve limpar a configuração existente.
 
 .Passos
-. Se necessário, interrompa o nó para exibir o prompt Loader:
+. Se necessário, interrompa o nó para exibir o `LOADER` prompt:
 +
 `halt`
 
-. No prompt Loader, defina as variáveis ambientais como valores padrão:
+.  `LOADER`No prompt, defina as variáveis ambientais como valores padrão:
 +
 `set-defaults`
 
@@ -885,7 +884,7 @@ Antes de usar um novo módulo de controlador na configuração do MetroCluster, 
 +
 `saveenv`
 
-. No prompt DO Loader, inicie o menu de inicialização:
+.  `LOADER`No prompt, inicie o menu de inicialização:
 +
 `boot_ontap menu`
 

@@ -1,0 +1,166 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-hba-set-ha.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: Configure as placas HBA no módulo do controlador e verifique e defina o estado HA do controlador e do chassis. 
+---
+= Restaure a configuração do HBA e defina o estado de HA do controlador IP e do chassi do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Configure as placas HBA no módulo do controlador e verifique e defina o estado HA do controlador e do chassis.
+
+
+
+== Restaure a configuração do HBA
+
+Dependendo da presença e configuração das placas HBA no módulo controlador, você precisa configurá-las corretamente para o seu site.
+
+.Passos
+. No modo Manutenção, configure as definições para quaisquer HBAs no sistema:
++
+.. Verifique as definições atuais das portas: `ucadmin show`
+.. Atualize as definições da porta conforme necessário.
+
+
++
+|===
+
+
+| Se você tem este tipo de HBA e modo desejado... | Use este comando... 
+
+
+ a| 
+CNA FC
+ a| 
+`ucadmin modify -m fc -t initiator <adapter-name>`
+
+
+
+ a| 
+CNA Ethernet
+ a| 
+`ucadmin modify -mode cna <adapter-name>`
+
+
+
+ a| 
+Destino de FC
+ a| 
+`fcadmin config -t target <adapter-name>`
+
+
+
+ a| 
+Iniciador FC
+ a| 
+`fcadmin config -t initiator <adapter-name>`
+
+|===
+. Sair do modo de manutenção:
++
+`halt`
+
++
+Depois de executar o comando, aguarde até que o nó pare no `LOADER` prompt.
+
+. Inicialize o nó novamente no modo Manutenção para aplicar as alterações de configuração:
++
+`boot_ontap maint`
+
+. Verifique as alterações:
++
+|===
+
+
+| Se você tem este tipo de HBA... | Use este comando... 
+
+
+ a| 
+CNA
+ a| 
+`ucadmin show`
+
+
+
+ a| 
+FC
+ a| 
+`fcadmin show`
+
+|===
+
+
+
+
+== Defina o estado de HA nos novos controladores e chassi
+
+É necessário verificar o estado de HA dos controladores e do chassi e, se necessário, atualizar o estado para corresponder à configuração do sistema.
+
+.Passos
+. No modo de manutenção, apresentar o estado HA do módulo do controlador e do chassis:
++
+`ha-config show`
+
++
+O estado HA para todos os componentes deve ser `mccip`.
+
+. Se o estado do sistema apresentado do controlador ou do chassis não estiver correto, defina o estado HA:
++
+`ha-config modify controller mccip`
+
++
+`ha-config modify chassis mccip`
+
+. Verifique e modifique as portas Ethernet conetadas a gavetas NS224 ou switches de storage.
++
+.. Verifique as portas Ethernet conetadas a gavetas NS224 ou switches de armazenamento:
++
+`storage port show`
+
+.. Defina todas as portas Ethernet conetadas a gavetas Ethernet ou switches de armazenamento, incluindo switches compartilhados para armazenamento e cluster, para o `storage` modo:
++
+`storage port modify -p <port> -m storage`
+
++
+Exemplo:
+
++
+[listing]
+----
+*> storage port modify -p e5b -m storage
+Changing NVMe-oF port e5b to storage mode
+----
++
+
+NOTE: Isso deve ser definido em todas as portas afetadas para uma atualização bem-sucedida.
+
++
+Os discos das gavetas conetadas às portas Ethernet são reportados `sysconfig -v` na saída.
+
++
+Consulte a link:https://hwu.netapp.com["Hardware Universe"^] para obter informações sobre as portas de armazenamento para o sistema para o qual está a atualizar.
+
+.. Verifique se `storage` o modo está definido e confirme se as portas estão no estado online:
++
+`storage port show`
+
+
+
+. Parar o nó: `halt`
++
+O nó deve parar no `LOADER>` prompt.
+
+. Em cada nó, verifique a data, a hora e o fuso horário do sistema: `show date`
+. Se necessário, defina a data em UTC ou GMT: `set date <mm/dd/yyyy>`
+. Verifique a hora usando o seguinte comando no prompt do ambiente de inicialização: `show time`
+. Se necessário, defina a hora em UTC ou GMT: `set time <hh:mm:ss>`
+. Guarde as definições: `saveenv`
+. Reunir variáveis de ambiente: `printenv`
+
+
+.O que se segue?
+link:upgrade-mcc-ip-manual-apply-rcf-set-bootarg.html["Atualize os RCFs do switch e defina os valores de bootarg IP do MetroCluster"].

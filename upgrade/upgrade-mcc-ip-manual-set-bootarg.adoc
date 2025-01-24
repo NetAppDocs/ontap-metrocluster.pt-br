@@ -1,0 +1,113 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-set-bootarg.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc, bootarg 
+summary: As atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg antes de prosseguir com a atualização da controladora. 
+---
+= Defina o bootarg necessário (para atualizações MetroCluster IP para sistemas introduzidos no ONTAP 9.15.1 ou posterior)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As atualizações de controladora para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg antes de iniciar a atualização.
+
+
+
+== Passo 1: Determine o bootarg que você precisa definir nos controladores antigos
+
+Todas as atualizações com suporte para os sistemas a seguir exigem que você defina um bootarg nas controladoras antigas antes de executar a atualização da controladora:
+
+* AFF A70, AFF A90, AFF A1K
+* FAS70, FAS90
+* AFF C80
+* AFF A50, AFF A20, AFF A30
+* AFF C30, AFF C60
+
+
+
+CAUTION: Se você estiver atualizando para qualquer um dos sistemas listados, você *deve* definir um bootarg necessário no sistema existente antes de executar a atualização. Para todas as outras atualizações, você pode pular esta tarefa e ir diretamente para link:upgrade-mcc-ip-prepare-system.html["Prepare o sistema para a atualização"].
+
+A maioria das atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior requer que você defina o `hw.cxgbe.toe_keepalive_disable` bootarg nas controladoras antigas. No entanto, certos caminhos de atualização exigem que você defina o `bootarg.siw.interop_enabled` bootarg em vez disso.
+
+Use a tabela a seguir para determinar qual bootarg você precisa definir para sua combinação de atualização específica.
+
+[cols="2*"]
+|===
+| Para esta atualização... | Jogos de Bicicleta de monta... 
+
+
+| De AFF A250 a AFF A30 | `bootarg.siw.interop_enabled` 
+
+
+| De AFF C250 a AFF C30 | `bootarg.siw.interop_enabled` 
+
+
+| De AFF A150 a AFF A20 | `bootarg.siw.interop_enabled` 
+
+
+| De AFF A220 a AFF A20 | `bootarg.siw.interop_enabled` 
+
+
+| Todas as outras atualizações compatíveis com sistemas AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A20, AFF A30, AFF C30 ou AFF C60 | `hw.cxgbe.toe_keepalive_disable` 
+|===
+
+
+== Passo 2: Defina o bootarg necessário nos controladores antigos
+
+Esta tarefa é *somente* necessária quando você atualiza para um sistema AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A20, AFF A30, AFF C30 ou AFF C60.
+
+.Passos
+. Pare um nó em cada local e permita que seu parceiro de HA faça um takeover do nó:
++
+`halt  -node <node_name>`
+
+. Defina o bootarg necessário para sua combinação de upgrade. Você já determinou o bootarg que precisa definir usando a tabela no <<upgrade_paths_bootarg_manual,determine qual bootarg você precisa definir>>.
++
+[role="tabbed-block"]
+====
+.hw.cxgbe.toe_keepalive_disable
+--
+.. No `LOADER` prompt do nó interrompido, digite o seguinte:
++
+`setenv hw.cxgbe.toe_keepalive_disable 1`
+
++
+`saveenv`
+
++
+`printenv hw.cxgbe.toe_keepalive_disable`
+
+
+
+--
+.bootarg.siw.interop_enabled
+--
+.. No `LOADER` prompt do nó interrompido, digite o seguinte:
++
+`setenv bootarg.siw.interop_enabled 1`
+
++
+`saveenv`
+
++
+`printenv bootarg.siw.interop_enabled`
+
+
+
+--
+====
+. Inicialize o nó:
++
+`boot_ontap`
+
+. Quando o nó for inicializado, execute um giveback para o nó no prompt:
++
+`storage failover giveback -ofnode <node_name>`
+
+. Repita as etapas em cada nó no grupo DR que está sendo atualizado.
+
+
+.O que se segue?
+link:upgrade-mcc-ip-prepare-system.html["Prepare o sistema para a atualização"].

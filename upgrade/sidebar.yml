@@ -14,21 +14,89 @@ entries:
     url: "/upgrade/concept_choosing_expansion_method_mcc.html"
 - title: Atualizar controladores em IP MetroCluster de quatro nós usando switchover
     e switchback com comandos "System controller replace" (ONTAP 9.13,1 e posterior)
-  url: "/upgrade/task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html"
+  entries:
+  - title: Atualizar fluxo de trabalho
+    url: "/upgrade/upgrade-mcc-ip-system-controller-replace.html"
+  - title: Prepare-se para atualizar
+    entries:
+    - title: Atualizações suportadas do controlador IP MetroCluster usando os comandos
+        "System controller replace"
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-supported-platforms.html"
+    - title: Requisitos para utilizar este procedimento de atualização
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-requirements.html"
+    - title: Ativar o registo da consola
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-console-logging.html"
+    - title: Defina o bootarg necessário (para atualizações para sistemas introduzidos
+        no ONTAP 9.15.1 ou posterior)
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-set-bootarg.html"
+    - title: Prepare o sistema para a atualização
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-prechecks.html"
+  - title: Atualize seus controladores
+    entries:
+    - title: Prepare a configuração de rede dos controladores antigos
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-prepare-network-configuration.html"
+    - title: Configure e netboot os novos controladores
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-setup-new-controllers.html"
+    - title: Restaure a configuração do HBA e defina o estado HA
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-restore-hba-set-ha.html"
+    - title: Atualize os arquivos RCF do switch e defina os valores de inicialização
+        IP do MetroCluster
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-apply-rcf-set-bootarg.html"
+    - title: Reatribuir discos agregados de raiz
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-reassign-root-agg.html"
+    - title: Inicialize os novos controladores e restaure a configuração de LIF
+      url: "/upgrade/upgrade-mcc-ip-system-controller-replace-boot-new-controllers.html"
+  - title: Conclua a atualização
+    url: "/upgrade/upgrade-mcc-ip-system-controller-replace-complete-upgrade.html"
+- title: Atualize controladores no MetroCluster IP usando switchover e switchback
+    (ONTAP 9.8 e posterior)
+  entries:
+  - title: Atualizar fluxo de trabalho
+    url: "/upgrade/upgrade-mcc-ip-manual.html"
+  - title: Prepare-se para atualizar
+    entries:
+    - title: Requisitos para utilizar este procedimento de atualização
+      url: "/upgrade/upgrade-mcc-ip-manual-requirements.html"
+    - title: Ativar o registo da consola
+      url: "/upgrade/upgrade-mcc-ip-manual-console-logging.html"
+    - title: Defina o bootarg necessário (para atualizações para sistemas introduzidos
+        no ONTAP 9.15.1 ou posterior)
+      url: "/upgrade/upgrade-mcc-ip-manual-set-bootarg.html"
+    - title: Prepare o sistema para a atualização
+      url: "/upgrade/upgrade-mcc-ip-prepare-system.html"
+  - title: Atualize seus controladores
+    entries:
+    - title: Alterne a configuração do MetroCluster
+      url: "/upgrade/upgrade-mcc-ip-manual-switchover.html"
+    - title: Remova as configurações de interface e desinstale os controladores antigos
+      url: "/upgrade/upgrade-mcc-ip-manual-uninstall-controllers.html"
+    - title: Configure os novos controladores
+      url: "/upgrade/upgrade-mcc-ip-manual-setup-controllers.html"
+    - title: Restaure a configuração do HBA e defina o estado HA
+      url: "/upgrade/upgrade-mcc-ip-manual-hba-set-ha.html"
+    - title: Atualize os arquivos RCF do switch e defina os valores de inicialização
+        IP do MetroCluster
+      url: "/upgrade/upgrade-mcc-ip-manual-apply-rcf-set-bootarg.html"
+    - title: Reatribuir discos agregados de raiz
+      url: "/upgrade/upgrade-mcc-ip-manual-reassign-root-agg.html"
+    - title: Inicialize os novos controladores e restaure a configuração de LIF
+      url: "/upgrade/upgrade-mcc-ip-manual-boot-new-controllers.html"
+    - title: Volte a ativar a configuração
+      url: "/upgrade/upgrade-mcc-ip-manual-switchback.html"
+  - title: Conclua a atualização
+    url: "/upgrade/upgrade-mcc-ip-manual-complete-upgrade.html"
+- title: Atualizar controladores (AFF A700 para AFF A900, FAS9000 para FAS9500) no
+    MetroCluster IP usando switchover e switchback (ONTAP 9.10.1 ou posterior)
+  url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html"
 - title: Atualizar controladores no MetroCluster FC usando switchover e switchback
   url: "/upgrade/task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html"
-- title: Atualizar controladores (AFF A700/FAS9000 para AFF A900/FAS9500) em uma configuração
-    MetroCluster FC usando switchover e switchback (ONTAP 9.10,1 ou posterior)
+- title: Atualizar controladores (AFF A700 para AFF A900, FAS9000 para FAS9500) em
+    uma configuração MetroCluster FC usando switchover e switchback (ONTAP 9.10.1
+    ou posterior)
   url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html"
 - title: Atualizar controladores no MetroCluster FC de quatro nós usando switchover
     e switchback com os comandos "System controller replace" (ONTAP 9.10,1 e posterior)
   url: "/upgrade/task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html"
-- title: Atualize controladores no MetroCluster IP usando switchover e switchback
-    (ONTAP 9.8 e posterior)
-  url: "/upgrade/task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html"
-- title: Atualizar controladores (AFF A700/FAS9000 para AFF A900/FAS9500) no MetroCluster
-    IP usando switchover e switchback (ONTAP 9.10,1 ou posterior)
-  url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html"
 - title: Atualizar uma configuração de MetroCluster FC de quatro nós
   url: "/upgrade/task_refresh_4n_mcc_fc.html"
 - title: Atualizar uma configuração IP MetroCluster de quatro ou oito nós (ONTAP 9.8

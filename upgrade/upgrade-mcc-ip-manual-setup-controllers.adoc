@@ -1,0 +1,107 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-setup-controllers.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: Rack e cabo os novos controladores IP MetroCluster. 
+---
+= Configure os novos controladores IP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Rack e cabo os novos controladores IP MetroCluster.
+
+.Passos
+. Planeje o posicionamento dos novos módulos de controladora e compartimentos de armazenamento conforme necessário.
++
+O espaço em rack depende do modelo de plataforma dos módulos de controladora, dos tipos de switch e do número de compartimentos de storage em sua configuração.
+
+. Aterre-se corretamente.
+. Se a atualização exigir a substituição dos módulos da controladora, por exemplo, a atualização de um AFF A800 para um sistema AFF A90 ou de um AFF C800 para um sistema AFF C80, você deve remover o módulo da controladora do chassi quando substituir o módulo da controladora. Para todas as outras atualizações, vá para <<ip_upgrades_so_sb_4,Passo 4>>.
++
+Na parte frontal do chassis, utilize os polegares para empurrar firmemente cada unidade até sentir um batente positivo. Isto confirma que as unidades estão firmemente assentadas contra o plano médio do chassis.
+
++
+image::../media/drw-a800-drive-seated.png[Mostra a remoção do módulo do controlador do chassis]
+
+. [[IP_Upgrades_SO_SB_4]] instale os módulos do controlador.
++
+As etapas de instalação a seguir dependem se a atualização requer a substituição dos módulos da controladora ou se os módulos IOM são necessários para converter as controladoras antigas em uma gaveta externa.
+
++
+[cols="2*"]
+|===
+| Se você está atualizando... | Siga os passos para ... 
+
+
+ a| 
+** Um AFF A150 para um sistema AFF A20
+** Um AFF A220 para um sistema AFF A20
+
+| Conversão de controladora para compartimento externo 
+
+
+ a| 
+** Um AFF A800 para um sistema AFF A90
+** Um AFF C800 para um sistema AFF C80
+
+| Substituição do módulo do controlador 
+
+
+| Quaisquer outras combinações de atualização de controladora | Todas as outras atualizações 
+|===
++
+[role="tabbed-block"]
+====
+.Conversão de controladora para compartimento externo
+--
+Se seus controladores IP MetroCluster originais forem modelos AFF A150 ou AFF A220, você poderá converter o par de HA AFF A150 ou AFF A220 em um compartimento de unidades de DS224C TB e anexá-lo aos novos nós.
+
+Por exemplo, ao atualizar de um sistema AFF A150 ou AFF A220 para um sistema AFF A20, você pode converter o par de HA AFF A150 ou AFF A220 em uma gaveta de DS224C TB trocando os módulos de controladora AFF A150 ou AFF A220 por IOM12 módulos.
+
+.Passos
+.. Substitua os módulos do controlador no nó que você está convertendo por módulos de gaveta IOM12.
++
+https://hwu.netapp.com["Hardware Universe"^]
+
+.. Defina a ID do compartimento de unidades.
++
+Cada compartimento de unidade, incluindo o chassi, precisa de uma ID exclusiva.
+
+.. Redefina outras IDs de gaveta de unidade conforme necessário.
+.. Desligue as prateleiras.
+.. Cable o compartimento de unidade convertido a uma porta SAS no novo sistema e, se você estiver usando cabeamento ACP fora da banda, à porta ACP no novo nó.
+.. Ligue a energia do compartimento de unidades convertido e de quaisquer outros compartimentos de unidades conectados aos novos nós.
+.. Ligue a energia para os novos nós e, em seguida, interrompa o processo de inicialização em cada nó pressionando Ctrl-C para acessar o prompt do ambiente de inicialização.
+
+
+--
+.Substituição do módulo do controlador
+--
+A instalação dos novos controladores separadamente não se aplica a atualizações de sistemas integrados com discos e controladores no mesmo chassi, por exemplo, de um sistema AFF A800 para um sistema AFF A90. Você deve trocar os novos módulos do controlador e as placas de e/S depois de desligar os controladores antigos, como mostrado na imagem abaixo.
+
+A imagem de exemplo a seguir é apenas para representação, os módulos do controlador e as placas de e/S podem variar entre sistemas.
+
+image::../media/a90-a70-pcm-swap.png[Mostra a troca do módulo do controlador]
+
+--
+.Todas as outras atualizações
+--
+Instale os módulos do controlador no rack ou gabinete.
+
+--
+====
+. Faça o cabeamento das conexões de alimentação, console serial e gerenciamento dos controladores, conforme descrito em link:../install-ip/using_rcf_generator.html["Cable os switches IP MetroCluster"].
++
+Não conete nenhum outro cabo que tenha sido desconetado dos controladores antigos neste momento.
+
++
+https://docs.netapp.com/us-en/ontap-systems/index.html["Documentação dos sistemas de hardware da ONTAP"^]
+
+. Ligue os novos nós e inicialize-os no modo Manutenção.
+
+
+.O que se segue?
+link:upgrade-mcc-ip-manual-hba-set-ha.html["Restaure a configuração do HBA e defina o estado HA"].

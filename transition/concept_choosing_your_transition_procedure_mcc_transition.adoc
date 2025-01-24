@@ -20,7 +20,7 @@ Você também deve garantir que a plataforma IP do MetroCluster seja um tamanho 
 == Combinações de plataformas suportadas
 
 * Todos os procedimentos de transição requerem ONTAP 9.8 ou posterior, salvo indicação em contrário nas notas ou conforme exigido por uma plataforma individual.
-* Todos os nós na configuração do MetroCluster devem estar executando a mesma versão do ONTAP. Por exemplo, se você tiver uma configuração de oito nós, todos os oito nós devem estar executando a mesma versão do ONTAP.
+* Todos os nós na configuração do MetroCluster devem estar executando a mesma versão do ONTAP. Por exemplo, se você tiver uma configuração de oito nós, todos os oito nós devem estar executando a mesma versão do ONTAP. Consulte link:https://hwu.netapp.com["Hardware Universe"^]a para obter a versão mínima suportada do ONTAP para a sua combinação.
 
 
 [NOTE]
@@ -36,7 +36,7 @@ A tabela a seguir mostra as combinações de plataforma suportadas. Você pode f
 
 Por exemplo, a transição de uma configuração MetroCluster FC que consiste em módulos de controlador AFF8060 para uma configuração IP que consiste em módulos de controlador AFF A400 é suportada.
 
-image::../media/4node-transition-9151-update.png[Mostra as combinações de plataforma compatíveis para transição de IP para FC]
+image::../media/mcc_transition_comb_9161.png[Mostra as combinações de plataforma compatíveis para transição de IP para FC]
 
 * Nota 1: Esta combinação de plataforma requer ONTAP 9.11,1 ou posterior.
 * Observação 2: Você precisa ter uma interface 40GbE para as interfaces de cluster local nos nós FC.
