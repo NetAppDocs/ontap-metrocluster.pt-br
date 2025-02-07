@@ -111,3 +111,6 @@ Siga as etapas a seguir para configurar o usuário SNMPv3 no ONTAP.
 
 
 
+
+.Depois de terminar
+Opcionalmente, siga os passos para link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-cshm/config-log-collection.html["Configurar a coleção de registos"^].
