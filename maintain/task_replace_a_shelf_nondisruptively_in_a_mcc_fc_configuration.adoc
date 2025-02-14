@@ -30,7 +30,7 @@ Verifique a integridade geral da configuração. Se o sistema não parecer saud�
 `aggr offline _plex_name_`
 
 +
-O exemplo mostra os comandos para offlining plexes para um controlador que executa OTNAP agrupado.
+O exemplo mostra os comandos para offlining plexes para um controlador que executa o ONTAP.
 
 +
 [listing]

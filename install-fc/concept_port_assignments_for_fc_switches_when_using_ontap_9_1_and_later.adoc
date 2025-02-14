@@ -13,7 +13,7 @@ summary: Você precisa verificar se está usando as atribuições de portas espe
 [role="lead"]
 Você precisa verificar se está usando as atribuições de portas especificadas quando você faz o cabeamento dos switches FC usando o ONTAP 9.1 e posterior.
 
-As portas que não são usadas para anexar portas do iniciador, portas FC-VI ou ISLs podem ser reconfiguradas para agir como portas de storage. No entanto, se os RCFs suportados estiverem sendo usados, o zoneamento deve ser alterado em conformidade.
+É possível reconfigurar portas que não são usadas para anexar portas do iniciador, portas FC-VI ou ISLs para agir como portas de storage. No entanto, se os RCFs suportados estiverem sendo usados, você deve alterar o zoneamento de acordo.
 
 Se os RCFs suportados forem usados, as portas ISL podem não se conetar às mesmas portas mostradas e podem precisar ser reconfiguradas manualmente.
 
@@ -32,7 +32,7 @@ Você deve estar ciente das seguintes diretrizes ao usar as tabelas de cabeament
 
 
 * O cabeamento é o mesmo para cada switch FC na malha do switch.
-* Os sistemas de storage AFF A300 e FAS8200 podem ser solicitados com uma das duas opções de conectividade FC-VI:
+* É possível solicitar sistemas de storage AFF A300 e FAS8200 com uma das duas opções de conectividade FC-VI:
 +
 ** Portas integradas 0e e 0f configuradas no modo FC-VI.
 ** Portas 1a e 1b em uma placa FC-VI no slot 1.
@@ -68,19 +68,22 @@ As tabelas a seguir mostram o uso de portas nos switches Brocade. As tabelas mos
 
 
 ====
+
+
+=== Configurações do controlador usando bridgeBridge 7500N ou 7600N
+
+A tabela a seguir mostra o uso da porta Brocade para controladores que usam bridges 7500N ou 7600N.
+
 |===
 
 
-5+| Configurações usando o FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2) 
+9+| MetroCluster 1 ou Grupo de RD 1 
 
 
-5+| MetroCluster 1 ou Grupo de RD 1 
+.2+| Componente .2+| Porta 7+| Conexão da porta do modelo do comutador Brocade 
 
 
-.2+| Componente .2+| Porta 2+| Interrutor Brocade modelos 6505, 6510, 6520, 7810, 7840, G610, G620, G620-1, G630, G630-1 e DCX 8510-8 | Interrutor Brocade modelo G720 
-
-
-| Liga ao interrutor FC... | Liga à porta do switch... | Liga à porta do switch... 
+| Liga ao interrutor FC... | 6505, G610 | 6510, DCX 8510-8 | 6520 | 7840, DCX 8510-8 | G620, G620-1, G630, G630-1 | G720, G730 
 
 
  a| 
@@ -89,6 +92,14 @@ controller_x_1
 Porta a FC-VI
  a| 
 1
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
  a| 
 0
  a| 
@@ -104,11 +115,27 @@ Porta FC-VI b
 0
  a| 
 0
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
 
 
 
  a| 
 Porta FC-VI c
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
  a| 
 1
  a| 
@@ -126,6 +153,14 @@ Porta d. FC-VI
 1
  a| 
 1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
 
 
 
@@ -136,12 +171,28 @@ HBA porta a
  a| 
 2
  a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
 8
 
 
 
  a| 
 Porta HBA b
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
  a| 
 2
  a| 
@@ -158,6 +209,14 @@ Porta HBA c
  a| 
 3
  a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
 9
 
 
@@ -166,6 +225,14 @@ Porta HBA c
 Porta d. HBA
  a| 
 2
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+3
  a| 
 3
  a| 
@@ -183,6 +250,14 @@ Porta a FC-VI
 4
  a| 
 4
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
 
 
 
@@ -190,6 +265,14 @@ Porta a FC-VI
 Porta FC-VI b
  a| 
 2
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
  a| 
 4
  a| 
@@ -205,6 +288,14 @@ Porta FC-VI c
 5
  a| 
 5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
 
 
 
@@ -212,6 +303,14 @@ Porta FC-VI c
 Porta d. FC-VI
  a| 
 2
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
  a| 
 5
  a| 
@@ -226,6 +325,14 @@ HBA porta a
  a| 
 6
  a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
 12
 
 
@@ -234,6 +341,14 @@ HBA porta a
 Porta HBA b
  a| 
 2
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
  a| 
 6
  a| 
@@ -248,6 +363,14 @@ Porta HBA c
  a| 
 7
  a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
 13
 
 
@@ -259,22 +382,357 @@ Porta d. HBA
  a| 
 7
  a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
 13
 
 |===
 |===
 
 
-5+| Configurações usando o FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2) 
+9+| MetroCluster 2 ou Grupo de RD 2 
 
 
-5+| MetroCluster 1 ou Grupo de RD 1 
+.2+| Componente .2+| Porta 7+| Conexão da porta do modelo do comutador Brocade 
 
 
-.2+| Componente .2+| Porta 2+| Interrutor Brocade modelos 6505, 6510, 6520, 7810, 7840, G610, G620, G620-1, G630, G630-1 e DCX 8510-8 | Interrutor Brocade modelo G720 
+| Liga ao interrutor FC... | 6505, G610 | 6510, DCX 8510-8 | 6520 | 7840, DCX 8510-8 | G620, G620-1, G630, G630-1 | G720, G730 
 
 
-| Liga ao interrutor FC... | Liga à porta do switch... | Liga à porta do switch... 
+ a| 
+controller_x_3
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+24
+ a| 
+48
+ a| 
+12
+ a| 
+18
+ a| 
+18
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+24
+ a| 
+48
+ a| 
+12
+ a| 
+18
+ a| 
+18
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+25
+ a| 
+49
+ a| 
+13
+ a| 
+19
+ a| 
+19
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+25
+ a| 
+49
+ a| 
+13
+ a| 
+19
+ a| 
+19
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+26
+ a| 
+50
+ a| 
+14
+ a| 
+24
+ a| 
+26
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+26
+ a| 
+50
+ a| 
+14
+ a| 
+24
+ a| 
+26
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+27
+ a| 
+51
+ a| 
+15
+ a| 
+25
+ a| 
+27
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+27
+ a| 
+51
+ a| 
+15
+ a| 
+25
+ a| 
+27
+
+
+
+ a| 
+controller_x_4
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+28
+ a| 
+52
+ a| 
+16
+ a| 
+22
+ a| 
+22
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+28
+ a| 
+52
+ a| 
+16
+ a| 
+22
+ a| 
+22
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+29
+ a| 
+53
+ a| 
+17
+ a| 
+23
+ a| 
+23
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+29
+ a| 
+53
+ a| 
+17
+ a| 
+23
+ a| 
+23
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+30
+ a| 
+54
+ a| 
+18
+ a| 
+28
+ a| 
+30
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+30
+ a| 
+54
+ a| 
+18
+ a| 
+28
+ a| 
+30
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+31
+ a| 
+55
+ a| 
+19
+ a| 
+29
+ a| 
+31
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+31
+ a| 
+55
+ a| 
+19
+ a| 
+29
+ a| 
+31
+
+|===
+
+
+=== Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2)
+
+.MetroCluster 1 ou grupo de RD 1
+A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 1 ou no Grupo de DR 1 usando o FibreBridge 7500N ou 7600N e apenas uma porta FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:
+
+* Nos switches 6510 e DCX 8510-8, você pode conetar pontes adicionais às portas 16-19.
+* Nos switches 6520, você pode conetar pontes adicionais às portas 16-21 e 24-45.
+
+
+|===
+
+
+9+| MetroCluster 1 ou Grupo de RD 1 
+
+
+.2+| Componente .2+| Porta 7+| Conexão da porta do modelo do comutador Brocade 
+
+
+| Liga ao interrutor FC... | 6505, G610 | 6510, DCX 8510-8 | 6520 | 7840, DCX 8510-8 | G620, G620-1, G630, G630-1 | G720, G730 
 
 
  a| 
@@ -283,6 +741,14 @@ Pilha 1
 bridge_x_1a
  a| 
 1
+ a| 
+8
+ a| 
+8
+ a| 
+8
+ a| 
+8
  a| 
 8
  a| 
@@ -297,6 +763,14 @@ bridge_x_1b
  a| 
 8
  a| 
+8
+ a| 
+8
+ a| 
+8
+ a| 
+8
+ a| 
 10
 
 
@@ -307,6 +781,14 @@ Pilha 2
 bridge_x_2a
  a| 
 1
+ a| 
+9
+ a| 
+9
+ a| 
+9
+ a| 
+9
  a| 
 9
  a| 
@@ -321,6 +803,14 @@ bridge_x_2b
  a| 
 9
  a| 
+9
+ a| 
+9
+ a| 
+9
+ a| 
+9
+ a| 
 11
 
 
@@ -331,6 +821,14 @@ Pilha 3
 bridge_x_3a
  a| 
 1
+ a| 
+10
+ a| 
+10
+ a| 
+10
+ a| 
+10
  a| 
 10
  a| 
@@ -345,16 +843,32 @@ bridge_x_4b
  a| 
 10
  a| 
+10
+ a| 
+10
+ a| 
+10
+ a| 
+10
+ a| 
 14
 
 
 
  a| 
-Empilha y
+Pilha 4
  a| 
-bridge_x_ya
+bridge_x_4a
  a| 
 1
+ a| 
+11
+ a| 
+11
+ a| 
+11
+ a| 
+11
  a| 
 11
  a| 
@@ -363,9 +877,17 @@ bridge_x_ya
 
 
  a| 
-ponte_x_yb
+bridge_x_4b
  a| 
 2
+ a| 
+11
+ a| 
+11
+ a| 
+11
+ a| 
+11
  a| 
 11
  a| 
@@ -374,318 +896,196 @@ ponte_x_yb
 
 
  a| 
-[NOTE]
-====
-* Nos switches G620, G630, G620-1 e G630-1, as pontes adicionais podem ser cabeadas para as portas 12 - 17, 20 e 21.
-* Nos switches G610, bridges adicionais podem ser cabeadas para as portas 12 - 19.
-* Nos switches G720, as pontes adicionais podem ser cabeadas para as portas 16 - 17, 20 e 21.
-
-
-====
-|===
-|===
-
-
-8+| Configurações usando o FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2) 
-
-
-8+| MetroCluster 2 ou Grupo de RD 2 
-
-
-3+|  5+| Modelo de interrutor Brocade 
-
-
-| Componente | Porta | Liga ao FC_switch... | 6510, DCX 8510-8 | 6520 | 7840, DCX 8510-8 | G620, G620-1, G630, G630-1 | G720 
-
-
+Pilha 5
  a| 
-controller_x_3
- a| 
-Porta a FC-VI
+bridge_x_5a
  a| 
 1
- a| 
-24
- a| 
-48
  a| 
 12
  a| 
-18
- a| 
-18
-
-
-
- a| 
-Porta FC-VI b
- a| 
-2
- a| 
-24
- a| 
-48
+12
  a| 
 12
  a| 
-18
+Não aplicável
  a| 
-18
+12
+ a| 
+16
 
 
 
  a| 
-Porta FC-VI c
+bridge_x_5b
+ a| 
+2
+ a| 
+12
+ a| 
+12
+ a| 
+12
+ a| 
+Não aplicável
+ a| 
+12
+ a| 
+16
+
+
+
+ a| 
+Pilha 6
+ a| 
+bridge_x_6a
  a| 
 1
- a| 
-25
- a| 
-49
  a| 
 13
  a| 
-19
- a| 
-19
-
-
-
- a| 
-Porta d. FC-VI
- a| 
-2
- a| 
-25
- a| 
-49
+13
  a| 
 13
  a| 
-19
+Não aplicável
  a| 
-19
+13
+ a| 
+17
 
 
 
  a| 
-HBA porta a
+bridge_x_6b
+ a| 
+2
+ a| 
+13
+ a| 
+13
+ a| 
+13
+ a| 
+Não aplicável
+ a| 
+13
+ a| 
+17
+
+
+
+ a| 
+Pilha 7
+ a| 
+bridge_x_7a
  a| 
 1
- a| 
-26
- a| 
-50
  a| 
 14
  a| 
-24
- a| 
-26
-
-
-
- a| 
-Porta HBA b
- a| 
-2
- a| 
-26
- a| 
-50
+14
  a| 
 14
  a| 
-24
+Não aplicável
  a| 
-26
+14
+ a| 
+20
 
 
 
  a| 
-Porta HBA c
+bridge_x_7b
+ a| 
+2
+ a| 
+14
+ a| 
+14
+ a| 
+14
+ a| 
+Não aplicável
+ a| 
+14
+ a| 
+20
+
+
+
+ a| 
+Pilha 8
+ a| 
+bridge_x_8a
  a| 
 1
- a| 
-27
- a| 
-51
  a| 
 15
  a| 
-25
- a| 
-27
-
-
-
- a| 
-Porta d. HBA
- a| 
-2
- a| 
-27
- a| 
-51
+15
  a| 
 15
  a| 
-25
+Não aplicável
  a| 
-27
+15
+ a| 
+21
 
 
 
  a| 
-controller_x_4
- a| 
-Porta a FC-VI
- a| 
-1
- a| 
-28
- a| 
-52
- a| 
-16
- a| 
-22
- a| 
-22
-
-
-
- a| 
-Porta FC-VI b
+bridge_x_8b
  a| 
 2
  a| 
-28
+15
  a| 
-52
+15
  a| 
-16
+15
  a| 
-22
+Não aplicável
  a| 
-22
+15
+ a| 
+21
+
+|===
+.MetroCluster 2 ou grupo de RD 2
+A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 2 ou no Grupo de DR 2 para bridges FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:
+
+* Nos switches 6520, você pode conetar pontes adicionais às portas 64-69 e 72-93.
 
 
-
- a| 
-Porta FC-VI c
- a| 
-1
- a| 
-29
- a| 
-53
- a| 
-17
- a| 
-23
- a| 
-23
+|===
 
 
-
- a| 
-Porta d. FC-VI
- a| 
-2
- a| 
-29
- a| 
-53
- a| 
-17
- a| 
-23
- a| 
-23
+9+| MetroCluster 2 ou Grupo de RD 2 
 
 
-
- a| 
-HBA porta a
- a| 
-1
- a| 
-30
- a| 
-54
- a| 
-18
- a| 
-28
- a| 
-30
+.2+| Componente .2+| Porta 7+| Conexão da porta do modelo do comutador Brocade 
 
 
-
- a| 
-Porta HBA b
- a| 
-2
- a| 
-30
- a| 
-54
- a| 
-18
- a| 
-28
- a| 
-30
-
-
-
- a| 
-Porta HBA c
- a| 
-1
- a| 
-31
- a| 
-55
- a| 
-19
- a| 
-29
- a| 
-31
-
-
-
- a| 
-Porta d. HBA
- a| 
-2
- a| 
-32
- a| 
-55
- a| 
-19
- a| 
-29
- a| 
-31
-
+| Liga ao interrutor FC... | 6505, G610 | 6510, DCX 8510-8 | 6520 | 7840, DCX 8510-8 | G620, G620-1, G630, G630-1 | G720, G730 
 
 
  a| 
 Pilha 1
  a| 
-bridge_x_51a
+bridge_x_1a
  a| 
 1
+ a| 
+Não aplicável
  a| 
 32
  a| 
 56
  a| 
-20
+29
  a| 
 26
  a| 
@@ -694,15 +1094,17 @@ bridge_x_51a
 
 
  a| 
-bridge_x_51b
+bridge_x_1b
  a| 
 2
+ a| 
+Não aplicável
  a| 
 32
  a| 
 56
  a| 
-20
+29
  a| 
 26
  a| 
@@ -713,9 +1115,11 @@ bridge_x_51b
  a| 
 Pilha 2
  a| 
-bridge_x_52a
+bridge_x_2a
  a| 
 1
+ a| 
+Não aplicável
  a| 
 33
  a| 
@@ -730,9 +1134,11 @@ bridge_x_52a
 
 
  a| 
-bridge_x_52b
+bridge_x_2b
  a| 
 2
+ a| 
+Não aplicável
  a| 
 33
  a| 
@@ -749,9 +1155,11 @@ bridge_x_52b
  a| 
 Pilha 3
  a| 
-bridge_x_53a
+bridge_x_3a
  a| 
 1
+ a| 
+Não aplicável
  a| 
 34
  a| 
@@ -766,9 +1174,11 @@ bridge_x_53a
 
 
  a| 
-bridge_x_54b
+bridge_x_4b
  a| 
 2
+ a| 
+Não aplicável
  a| 
 34
  a| 
@@ -783,12 +1193,14 @@ bridge_x_54b
 
 
  a| 
-Empilha y
+Pilha 4
  a| 
-bridge_x_ya
+bridge_x_4a
  a| 
 1
  a| 
+Não aplicável
+ a| 
 35
  a| 
 59
@@ -802,10 +1214,12 @@ bridge_x_ya
 
 
  a| 
-ponte_x_yb
+bridge_x_4b
  a| 
 2
  a| 
+Não aplicável
+ a| 
 35
  a| 
 59
@@ -819,26 +1233,185 @@ ponte_x_yb
 
 
  a| 
-[NOTE]
-====
-* Nos switches G720, bridges adicionais podem ser cabeadas para as portas 36-39.
+Pilha 5
+ a| 
+bridge_x_5a
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+Não aplicável
+ a| 
+60
+ a| 
+Não aplicável
+ a| 
+32
+ a| 
+36
 
 
-====
+
+ a| 
+bridge_x_5b
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+Não aplicável
+ a| 
+60
+ a| 
+Não aplicável
+ a| 
+32
+ a| 
+36
+
+
+
+ a| 
+Pilha 6
+ a| 
+bridge_x_6a
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+Não aplicável
+ a| 
+61
+ a| 
+Não aplicável
+ a| 
+33
+ a| 
+37
+
+
+
+ a| 
+bridge_x_6b
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+Não aplicável
+ a| 
+61
+ a| 
+Não aplicável
+ a| 
+33
+ a| 
+37
+
+
+
+ a| 
+Pilha 7
+ a| 
+bridge_x_7a
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+Não aplicável
+ a| 
+62
+ a| 
+Não aplicável
+ a| 
+34
+ a| 
+38
+
+
+
+ a| 
+bridge_x_7b
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+Não aplicável
+ a| 
+62
+ a| 
+Não aplicável
+ a| 
+34
+ a| 
+38
+
+
+
+ a| 
+Pilha 8
+ a| 
+bridge_x_8a
+ a| 
+1
+ a| 
+Não aplicável
+ a| 
+Não aplicável
+ a| 
+63
+ a| 
+Não aplicável
+ a| 
+35
+ a| 
+39
+
+
+
+ a| 
+bridge_x_8b
+ a| 
+2
+ a| 
+Não aplicável
+ a| 
+Não aplicável
+ a| 
+63
+ a| 
+Não aplicável
+ a| 
+35
+ a| 
+39
+
 |===
+
+
+=== Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2)
+
+.MetroCluster 1 ou grupo de RD 1
+A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 1 ou no Grupo de DR 1 para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:
+
+* Nos switches 6510 e DCX 8510-8, você pode conetar pontes adicionais às portas 16-19.
+* Nos switches 6520, você pode conetar pontes adicionais às portas 16-21 e 24-45.
+
+
 |===
 
 
-6+| Configurações usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) 
+10+| MetroCluster 1 ou Grupo de RD 1 
 
 
-6+| MetroCluster 1 ou Grupo de RD 1 
+2.2+| Componente .2+| Porta 7+| Conexão da porta do modelo do comutador Brocade 
 
 
-2.2+| Componente .2+| Porta 2+| Interrutor Brocade modelos 6505, 6510, 6520, 7810, 7840, G610, G620, G620-1, G630, G630-1 e DCX 8510-8 | Interrutor Brocade G720 
-
-
-| Liga ao FC_switch... | Liga à porta do switch... | Liga à porta do switch... 
+| Liga ao interrutor FC... | 6505, G610 | 6510, DCX 8510-8 | 6520 | 7840, DCX 8510-8 | G620, G620-1, G630, G630-1 | G720, G730 
 
 
  a| 
@@ -852,6 +1425,14 @@ FC1
  a| 
 8
  a| 
+8
+ a| 
+8
+ a| 
+8
+ a| 
+8
+ a| 
 10
 
 
@@ -863,16 +1444,32 @@ FC2
  a| 
 8
  a| 
+8
+ a| 
+8
+ a| 
+8
+ a| 
+8
+ a| 
 10
 
 
 
  a| 
-bridge_x_1B
+bridge_x_1b
  a| 
 FC1
  a| 
 1
+ a| 
+9
+ a| 
+9
+ a| 
+9
+ a| 
+9
  a| 
 9
  a| 
@@ -884,6 +1481,14 @@ FC1
 FC2
  a| 
 2
+ a| 
+9
+ a| 
+9
+ a| 
+9
+ a| 
+9
  a| 
 9
  a| 
@@ -902,6 +1507,14 @@ FC1
  a| 
 10
  a| 
+10
+ a| 
+10
+ a| 
+10
+ a| 
+10
+ a| 
 14
 
 
@@ -913,16 +1526,32 @@ FC2
  a| 
 10
  a| 
+10
+ a| 
+10
+ a| 
+10
+ a| 
+10
+ a| 
 14
 
 
 
  a| 
-bridge_x_2B
+bridge_x_2b
  a| 
 FC1
  a| 
 1
+ a| 
+11
+ a| 
+11
+ a| 
+11
+ a| 
+11
  a| 
 11
  a| 
@@ -934,6 +1563,14 @@ FC1
 FC2
  a| 
 2
+ a| 
+11
+ a| 
+11
+ a| 
+11
+ a| 
+11
  a| 
 11
  a| 
@@ -950,7 +1587,15 @@ FC1
  a| 
 1
  a| 
-12*
+12
+ a| 
+12
+ a| 
+12
+ a| 
+Não aplicável
+ a| 
+12
  a| 
 16
 
@@ -961,20 +1606,36 @@ FC2
  a| 
 2
  a| 
-12*
+12
+ a| 
+12
+ a| 
+12
+ a| 
+Não aplicável
+ a| 
+12
  a| 
 16
 
 
 
  a| 
-bridge_x_3B
+bridge_x_3b
  a| 
 FC1
  a| 
 1
  a| 
-13*
+13
+ a| 
+13
+ a| 
+13
+ a| 
+Não aplicável
+ a| 
+13
  a| 
 17
 
@@ -985,22 +1646,38 @@ FC2
  a| 
 2
  a| 
-13*
+13
+ a| 
+13
+ a| 
+13
+ a| 
+Não aplicável
+ a| 
+13
  a| 
 17
 
 
 
  a| 
-Empilha y
+Pilha 4
  a| 
-bridge_x_ya
+bridge_x_4a
  a| 
 FC1
  a| 
 1
  a| 
-14*
+14
+ a| 
+14
+ a| 
+14
+ a| 
+Não aplicável
+ a| 
+14
  a| 
 20
 
@@ -1011,20 +1688,36 @@ FC2
  a| 
 2
  a| 
-14*
+14
+ a| 
+14
+ a| 
+14
+ a| 
+Não aplicável
+ a| 
+14
  a| 
 20
 
 
 
  a| 
-ponte_x_yb
+bridge_x_4b
  a| 
 FC1
  a| 
 1
  a| 
-15*
+15
+ a| 
+15
+ a| 
+15
+ a| 
+Não aplicável
+ a| 
+15
  a| 
 21
 
@@ -1035,318 +1728,47 @@ FC2
  a| 
 2
  a| 
-15*
+15
+ a| 
+15
+ a| 
+15
+ a| 
+Não aplicável
+ a| 
+15
  a| 
 21
 
-
-
- a| 
-& N.o 42; as portas 12 a 15 são reservadas para o segundo grupo de MetroCluster ou DR no switch Brocade 7840.
-
-
-NOTE: As pontes adicionais podem ser cabeadas para as portas 16, 17, 20 e 21 nos switches G620, G630, G620-1 e G630-1.
-
 |===
+.MetroCluster 2 ou grupo de RD 2
+A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 2 ou no Grupo de DR 2 para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:
+
+* Nos switches 6520, você pode conetar pontes adicionais às portas 64-69 e 72-93.
+
+
 |===
 
 
-9+| Configurações usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) 
+10+| MetroCluster 2 ou Grupo de RD 2 
 
 
-9+| MetroCluster 2 ou Grupo de RD 2 
+2.2+| Componente .2+| Porta 7+| Conexão da porta do modelo do comutador Brocade 
 
 
-2.2+| Componente .2+| Porta 6+| Modelo de interrutor Brocade 
-
-
-| Liga ao FC_switch... | 6510, DCX 8510-8 | 6520 | 7840, DCX 8510-8 | G620, G620-1, G630, G630-1 | G720 
-
-
- a| 
-controller_x_3
- a| 
-Porta a FC-VI
- a| 
-1
- a| 
-24
- a| 
-48
- a| 
-12
- a| 
-18
- a| 
-18
-
-
-
- a| 
-Porta FC-VI b
- a| 
-2
- a| 
-24
- a| 
-48
- a| 
-12
- a| 
-18
- a| 
-18
-
-
-
- a| 
-Porta FC-VI c
- a| 
-1
- a| 
-25
- a| 
-49
- a| 
-13
- a| 
-19
- a| 
-19
-
-
-
- a| 
-Porta d. FC-VI
- a| 
-2
- a| 
-25
- a| 
-49
- a| 
-13
- a| 
-19
- a| 
-19
-
-
-
- a| 
-HBA porta a
- a| 
-1
- a| 
-26
- a| 
-50
- a| 
-14
- a| 
-24
- a| 
-26
-
-
-
- a| 
-Porta HBA b
- a| 
-2
- a| 
-26
- a| 
-50
- a| 
-14
- a| 
-24
- a| 
-26
-
-
-
- a| 
-Porta HBA c
- a| 
-1
- a| 
-27
- a| 
-51
- a| 
-15
- a| 
-25
- a| 
-27
-
-
-
- a| 
-Porta d. HBA
- a| 
-2
- a| 
-27
- a| 
-51
- a| 
-15
- a| 
-25
- a| 
-27
-
-
-
- a| 
-controller_x_4
- a| 
-Porta a FC-VI
- a| 
-1
- a| 
-28
- a| 
-52
- a| 
-16
- a| 
-22
- a| 
-22
-
-
-
- a| 
-Porta FC-VI b
- a| 
-2
- a| 
-28
- a| 
-52
- a| 
-16
- a| 
-22
- a| 
-22
-
-
-
- a| 
-Porta FC-VI c
- a| 
-1
- a| 
-29
- a| 
-53
- a| 
-17
- a| 
-23
- a| 
-23
-
-
-
- a| 
-Porta d. FC-VI
- a| 
-2
- a| 
-29
- a| 
-53
- a| 
-17
- a| 
-23
- a| 
-23
-
-
-
- a| 
-HBA porta a
- a| 
-1
- a| 
-30
- a| 
-54
- a| 
-18
- a| 
-28
- a| 
-30
-
-
-
- a| 
-Porta HBA b
- a| 
-2
- a| 
-30
- a| 
-54
- a| 
-18
- a| 
-28
- a| 
-30
-
-
-
- a| 
-Porta HBA c
- a| 
-1
- a| 
-31
- a| 
-55
- a| 
-19
- a| 
-29
- a| 
-31
-
-
-
- a| 
-Porta d. HBA
- a| 
-2
- a| 
-31
- a| 
-55
- a| 
-19
- a| 
-29
- a| 
-31
-
+| Liga ao interrutor FC... | 6505, G610 | 6510, DCX 8510-8 | 6520 | 7840, DCX 8510-8 | G620, G620-1, G630, G630-1 | G720, G730 
 
 
  a| 
 Pilha 1
  a| 
-bridge_x_51a
+bridge_x_1a
  a| 
 FC1
  a| 
 1
+ a| 
+Não aplicável
  a| 
 32
  a| 
@@ -1365,6 +1787,8 @@ FC2
  a| 
 2
  a| 
+Não aplicável
+ a| 
 32
  a| 
 56
@@ -1378,11 +1802,13 @@ FC2
 
 
  a| 
-bridge_x_51b
+bridge_x_1b
  a| 
 FC1
  a| 
 1
+ a| 
+Não aplicável
  a| 
 33
  a| 
@@ -1400,6 +1826,8 @@ FC1
 FC2
  a| 
 2
+ a| 
+Não aplicável
  a| 
 33
  a| 
@@ -1416,11 +1844,13 @@ FC2
  a| 
 Pilha 2
  a| 
-bridge_x_52a
+bridge_x_2a
  a| 
 FC1
  a| 
 1
+ a| 
+Não aplicável
  a| 
 34
  a| 
@@ -1439,6 +1869,8 @@ FC2
  a| 
 2
  a| 
+Não aplicável
+ a| 
 34
  a| 
 58
@@ -1452,11 +1884,13 @@ FC2
 
 
  a| 
-bridge_x_52b
+bridge_x_2b
  a| 
 FC1
  a| 
 1
+ a| 
+Não aplicável
  a| 
 35
  a| 
@@ -1474,6 +1908,8 @@ FC1
 FC2
  a| 
 2
+ a| 
+Não aplicável
  a| 
 35
  a| 
@@ -1490,17 +1926,19 @@ FC2
  a| 
 Pilha 3
  a| 
-bridge_x_53a
+bridge_x_3a
  a| 
 FC1
  a| 
 1
  a| 
-36
+Não aplicável
+ a| 
+Não aplicável
  a| 
 60
  a| 
--
+Não aplicável
  a| 
 32
  a| 
@@ -1513,11 +1951,13 @@ FC2
  a| 
 2
  a| 
-36
+Não aplicável
+ a| 
+Não aplicável
  a| 
 60
  a| 
--
+Não aplicável
  a| 
 32
  a| 
@@ -1526,19 +1966,21 @@ FC2
 
 
  a| 
-bridge_x_53b
+bridge_x_3b
  a| 
 FC1
  a| 
 1
  a| 
-37
+Não aplicável
+ a| 
+Não aplicável
  a| 
 61
  a| 
--
+Não aplicável
  a| 
-33
+32
  a| 
 37
 
@@ -1549,32 +1991,36 @@ FC2
  a| 
 2
  a| 
-37
+Não aplicável
+ a| 
+Não aplicável
  a| 
 61
  a| 
--
+Não aplicável
  a| 
-33
+32
  a| 
 37
 
 
 
  a| 
-Empilha y
+Pilha 4
  a| 
-bridge_x_5ya
+bridge_x_4a
  a| 
 FC1
  a| 
 1
  a| 
-38
+Não aplicável
+ a| 
+Não aplicável
  a| 
 62
  a| 
--
+Não aplicável
  a| 
 34
  a| 
@@ -1587,11 +2033,13 @@ FC2
  a| 
 2
  a| 
-38
+Não aplicável
+ a| 
+Não aplicável
  a| 
 62
  a| 
--
+Não aplicável
  a| 
 34
  a| 
@@ -1600,17 +2048,19 @@ FC2
 
 
  a| 
-bridge_x_5yb
+bridge_x_4b
  a| 
 FC1
  a| 
 1
  a| 
-39
+Não aplicável
+ a| 
+Não aplicável
  a| 
 63
  a| 
--
+Não aplicável
  a| 
 35
  a| 
@@ -1623,22 +2073,17 @@ FC2
  a| 
 2
  a| 
-39
+Não aplicável
+ a| 
+Não aplicável
  a| 
 63
  a| 
--
+Não aplicável
  a| 
 35
  a| 
 39
-
-
-
- a| 
-
-NOTE: Pontes adicionais podem ser cabeadas para as portas 36 a 39 nos switches G620, G630, G620-1 e G630-1.
- a| 
 
 |===
 
@@ -2956,7 +3401,7 @@ FC2
 16
 
 |===
-Pontes adicionais podem ser anexadas usando as portas 17 a 40 e 57 a 88 seguindo o mesmo padrão.
+Você pode anexar pontes adicionais usando as portas 17 a 40 e 57 a 88 seguindo o mesmo padrão.
 
 |===
 
@@ -3126,7 +3571,7 @@ FC2
 16
 
 |===
-Bridges adicionais para um segundo grupo de DR ou segunda configuração de MetroCluster podem ser conetadas usando as portas 33 a 40 seguindo o mesmo padrão.
+Você pode anexar pontes adicionais para um segundo grupo de DR ou uma segunda configuração de MetroCluster usando as portas 33 a 40 seguindo o mesmo padrão.
 
 |===
 
@@ -3296,9 +3741,9 @@ FC2
 23
 
 |===
-Bridges adicionais para um segundo grupo de DR ou segunda configuração de MetroCluster podem ser conetadas usando as portas 25 a 48 seguindo o mesmo padrão.
+Você pode anexar pontes adicionais para um segundo grupo de DR ou uma segunda configuração de MetroCluster usando as portas 25 a 48 seguindo o mesmo padrão.
 
-As tabelas a seguir mostram o uso da porta de ponte ao usar pontes FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2). Para pontes FibreBridge 7500N ou 7600N usando uma porta FC, FC1 ou FC2 podem ser cabeados para a porta indicada como FC1. Pontes adicionais podem ser anexadas usando as portas 25-48.
+As tabelas a seguir mostram o uso da porta de ponte ao usar pontes FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2). Para pontes FibreBridge 7500N ou 7600N usando uma porta FC, você pode fazer o cabo FC1 ou FC2 para a porta indicada como FC1. Você também pode anexar pontes adicionais usando as portas 25-48.
 
 |===
 
@@ -3487,7 +3932,7 @@ FC1
 16
 
 |===
-Pontes adicionais podem ser anexadas usando as portas 17 a 40 e 57 a 88 seguindo o mesmo padrão.
+Você pode anexar pontes adicionais usando as portas 17 a 40 e 57 a 88 seguindo o mesmo padrão.
 
 |===
 
@@ -3676,7 +4121,7 @@ FC1
 16
 
 |===
-Bridges adicionais para um segundo grupo de DR ou segunda configuração de MetroCluster podem ser conetadas usando as portas 25 a 48 seguindo o mesmo padrão.
+Você pode anexar pontes adicionais para um segundo grupo de DR ou uma segunda configuração de MetroCluster usando as portas 25 a 48 seguindo o mesmo padrão.
 
 |===
 
@@ -3862,7 +4307,7 @@ FC1
 23
 
 |===
-Pontes adicionais podem ser anexadas usando as portas 25 a 48 seguindo o mesmo padrão.
+você pode anexar pontes adicionais usando as portas 25 a 48 seguindo o mesmo padrão.
 
 
 
@@ -3972,10 +4417,399 @@ ISL 4
 
 == Uso da porta Cisco 9132T nas configurações de quatro nós e oito nós do MetroCluster executando o ONTAP 9.4 e posterior
 
-As tabelas a seguir mostram o uso da porta em um switch Cisco 9132T. As tabelas mostram o máximo de configurações suportadas com quatro e oito módulos de controladores em dois grupos de DR.
+As tabelas a seguir mostram o uso da porta em um switch Cisco 9132T.
+
+
+
+=== Configurações de controladora usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2)
+
+A tabela a seguir mostra as configurações do controlador usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2). As tabelas mostram o máximo de configurações suportadas com quatro e oito módulos de controladores em dois grupos de DR.
 
 
 NOTE: Para configurações de oito nós, você deve executar o zoneamento manualmente porque os RCFs não são fornecidos.
+
+|===
+
+
+7+| MetroCluster 1 ou Grupo de RD 1 
+
+
+4+|  2+| Quatro nós | Oito nós 
+
+
+2+| Componente | Porta | Liga ao FC_switch... | 9132T (1x LEM) | 9132T (2x LEM) | 9132T (2x LEM) 
+
+
+ a| 
+controller_x_1
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+LEM1-1
+ a| 
+LEM1-1
+ a| 
+LEM1-1
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+LEM1-1
+ a| 
+LEM1-1
+ a| 
+LEM1-1
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+LEM1-2
+ a| 
+LEM1-2
+ a| 
+LEM1-2
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+LEM1-2
+ a| 
+LEM1-2
+ a| 
+LEM1-2
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+LEM1-5
+ a| 
+LEM1-5
+ a| 
+LEM1-3
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+LEM1-5
+ a| 
+LEM1-5
+ a| 
+LEM1-3
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+LEM1-6
+ a| 
+LEM1-6
+ a| 
+LEM1-4
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+LEM1-6
+ a| 
+LEM1-6
+ a| 
+LEM1-4
+
+
+
+ a| 
+controller_x_2
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+LEM1-7
+ a| 
+LEM1-7
+ a| 
+LEM1-5
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+LEM1-7
+ a| 
+LEM1-7
+ a| 
+LEM1-5
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+LEM1-8
+ a| 
+LEM1-8
+ a| 
+LEM1-6
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+LEM1-8
+ a| 
+LEM1-8
+ a| 
+LEM1-6
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+LEM1-11
+ a| 
+LEM1-11
+ a| 
+LEM1-7
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+LEM1-11
+ a| 
+LEM1-11
+ a| 
+LEM1-7
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+LEM1-12
+ a| 
+LEM1-12
+ a| 
+LEM1-8
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+LEM1-12
+ a| 
+LEM1-12
+ a| 
+LEM1-8
+
+
+
+7+| MetroCluster 2 ou Grupo de RD 2 
+
+
+ a| 
+controller_x_3
+ a| 
+Porta a FC-VI
+ a| 
+1
+| - | -  a| 
+LEM2-1
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+| - | -  a| 
+LEM2-1
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+| - | -  a| 
+LEM2-2
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+| - | -  a| 
+LEM2-2
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+| - | -  a| 
+LEM2-3
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+| - | -  a| 
+LEM2-3
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+| - | -  a| 
+LEM2-4
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+| - | -  a| 
+LEM2-4
+
+
+
+ a| 
+controller_x_4
+ a| 
+Porta a FC-VI-1
+ a| 
+1
+| - | -  a| 
+LEM2-5
+
+
+
+ a| 
+Porta FC-VI-1 b
+ a| 
+2
+| - | -  a| 
+LEM2-5
+
+
+
+ a| 
+Porta FC-VI-1 c
+ a| 
+1
+| - | -  a| 
+LEM2-6
+
+
+
+ a| 
+FC-VI-1 porta d
+ a| 
+2
+| - | -  a| 
+LEM2-6
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+| - | -  a| 
+LEM2-7
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+| - | -  a| 
+LEM2-7
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+| - | -  a| 
+LEM2-8
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+| - | -  a| 
+LEM2-8
+
+|===
+
+
+=== Cisco 9132T com 1x LEM e um grupo de MetroCluster ou DR de quatro nós
+
+As tabelas a seguir mostram o uso da porta de um switch Cisco 9132T com 1x LEM e um MetroCluster ou grupo de DR de quatro nós.
+
+
+NOTE: Apenas uma (1) pilha de ponte é suportada usando 9132T switches com 1x módulo LEM.
 
 |===
 
@@ -4032,12 +4866,15 @@ LEM1-14
 
 |===
 
-NOTE: Apenas uma (1) pilha de ponte é suportada usando 9132T switches com 1x módulo LEM.
+
+=== Cisco 9132T com 2x LEM e um grupo de MetroCluster ou DR de quatro nós
+
+A tabela a seguir mostra o uso da porta de um switch Cisco 9132T com 2x LEM e um MetroCluster ou grupo de DR de quatro nós.
+
+
+NOTE: Em configurações de quatro nós, você pode fazer o cabeamento de pontes adicionais às portas LEM2-5 a LEM2-8 em switches 9132T com 2x LEMs.
 
 |===
-
-
-4+| Cisco 9132T com 2x LEM e um grupo de MetroCluster ou DR de quatro nós 
 
 
 4+| MetroCluster 1 ou Grupo de RD 1 
@@ -4209,12 +5046,15 @@ LEM2-4
 
 |===
 
-NOTE: Em configurações de quatro nós, você pode fazer o cabeamento de pontes adicionais às portas LEM2-5 a LEM2-8 em switches 9132T com 2x LEMs.
+
+=== Cisco 9132T com dois Metroclusters de quatro nós ou um MetroCluster de oito nós com dois grupos de DR
+
+A tabela a seguir mostra o uso da porta de um switch Cisco 9132T com dois Metroclusters de quatro nós ou um MetroCluster de oito nós com dois grupos de DR.
+
+
+NOTE: Em configurações de oito nós, você pode fazer o cabeamento de pontes adicionais às portas LEM2-13 a LEM2-16 em switches 9132T com 2x LEMs.
 
 |===
-
-
-4+| Cisco 9132T com dois Metroclusters de quatro nós ou um MetroCluster de oito nós com dois grupos de DR 
 
 
 4+| MetroCluster 1 ou Grupo de RD 1 
@@ -4389,9 +5229,6 @@ LEM2-12
 
 |===
 
-NOTE: Em configurações de oito nós, você pode fazer o cabeamento de pontes adicionais às portas LEM2-13 a LEM2-16 em switches 9132T com 2x LEMs.
-
-
 
 == Uso de porta Cisco 9132T para ISLs em configurações de quatro e oito nós em uma configuração MetroCluster executando o ONTAP 9.1 ou posterior
 
@@ -4415,20 +5252,20 @@ A tabela a seguir mostra o uso da porta ISL para um switch Cisco 9132T.
 | ISL2 | LEM1-16 | LEM2-10 | LEM1-14 
 
 
-| ISL3 |  | LEM2-11 | LEM1-15 
+| ISL3 | - | LEM2-11 | LEM1-15 
 
 
-| ISL4 |  | LEM2-12 | LEM1-16 
+| ISL4 | - | LEM2-12 | LEM1-16 
 
 
-| ISL5 |  | LEM2-13 |  
+| ISL5 | - | LEM2-13 | - 
 
 
-| ISL6 |  | LEM2-14 |  
+| ISL6 | - | LEM2-14 | - 
 
 
-| ISL7 |  | LEM2-15 |  
+| ISL7 | - | LEM2-15 | - 
 
 
-| ISL8 |  | LEM2-16 |  
+| ISL8 | - | LEM2-16 | - 
 |===

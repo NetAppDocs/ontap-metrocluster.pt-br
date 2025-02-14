@@ -78,7 +78,9 @@ Revise as atribuições de portas da plataforma para enviar um sistema AFF A150,
 image:../media/mcc-ip-cabling-a150-a220-a250-to-a-cisco-3232c-or-cisco-9336c-switch-9161.png["Mostra atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C"]
 
 .Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C (grupo 2)
-Revise as atribuições de portas da plataforma para enviar um sistema AFF A20 para um switch Cisco 3232C ou 9336C: image:../media/mcc-ip-cabling-aff-a20-9161.png["Mostra atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C"]
+Revise as atribuições de portas da plataforma para enviar um sistema AFF A20 para um switch Cisco 3232C ou 9336C:
+
+image:../media/mcc-ip-cabling-aff-a20-9161.png["Mostra atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C"]
 
 .Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C (grupo 3)
 Revise as atribuições de portas da plataforma para enviar um sistema AFF A30, AFF C30 ou AFF C60 para um switch Cisco 3232C ou 9336C:
@@ -118,4 +120,4 @@ NOTE: O uso de portas no grupo "MetroCluster 4" requer o ONTAP 9.13,1 ou posteri
 .Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C (grupo 8)
 Revise as atribuições de portas da plataforma para enviar um sistema AFF A70, FAS70, AFF C80, FAS90, AFF A90 ou AFF A1K para um switch Cisco 3232C ou 9336C:
 
-image:../media/mcc-ip-cabling-a90-fas90-c80-fas70-a70-a1k-cisco-3232C-or-9336c-switch.png["Mostra atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C"]
+image:../media/mcc-ip-cabling-a90-fas90-c80-fas70-a70-a1k-cisco-3232C-or-9336c-switch-updated.png["Mostra atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C"]

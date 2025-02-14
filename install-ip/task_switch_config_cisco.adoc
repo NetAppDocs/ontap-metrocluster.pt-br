@@ -84,6 +84,10 @@ to skip the remaining dialogs.
 Você insere informações básicas no próximo conjunto de prompts, incluindo o nome do switch, endereço de gerenciamento e gateway, e seleciona SSH com RSA.
 
 +
+
+NOTE: Este exemplo mostra as informações mínimas necessárias para configurar o RCF, opções adicionais podem ser configuradas após a aplicação do RCF. Por exemplo, você pode configurar SNMPv3, NTP ou SCP/SFTP depois de aplicar o RCF.
+
++
 [listing]
 ----
 Would you like to enter the basic configuration dialog (yes/no): yes

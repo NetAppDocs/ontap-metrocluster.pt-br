@@ -28,13 +28,13 @@ O MetroCluster de malha de 7 modos existente pode permanecer conetado a portas u
 
 * Em cada um dos quatro switches Brocade 6510, as portas 24 a 45 devem estar disponíveis para conetar as portas dos novos componentes do MetroCluster.
 * Você deve verificar se os ISLs existentes estão nas portas 46 e 47.
-* Os switches Brocade 6510 devem estar executando uma versão de firmware FOS compatível com o 7-Mode Fabric MetroCluster e a configuração Clustered ONTAP MetroCluster.
+* Os switches Brocade 6510 devem estar executando uma versão de firmware FOS compatível com a configuração 7-Mode Fabric MetroCluster e ONTAP MetroCluster.
 
 
 .Depois de terminar
 Depois de compartilhar a malha e concluir a configuração do MetroCluster, você pode migrar dados da configuração do MetroCluster de malha de 7 modos.
 
-Após a transição dos dados, você poderá remover o cabeamento MetroCluster de malha de 7 modos e, se desejar, mover o cabeamento ONTAP MetroCluster em cluster para as portas de número inferior usadas anteriormente para o cabeamento MetroCluster de 7 modos. As portas são mostradas na seção "Revisão de atribuições de portas de switch FC para um MetroCluster de quatro nós". Você deve ajustar o zoneamento para as portas reorganizadas.
+Após a transição dos dados, você poderá remover o cabeamento MetroCluster de malha de 7 modos e, se desejar, mover o cabeamento ONTAP MetroCluster para as portas de número inferior usadas anteriormente para o cabeamento MetroCluster de 7 modos. As portas são mostradas na seção "Revisão de atribuições de portas de switch FC para um MetroCluster de quatro nós". Você deve ajustar o zoneamento para as portas reorganizadas.
 
 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
 

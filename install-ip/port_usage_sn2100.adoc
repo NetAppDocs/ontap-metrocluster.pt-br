@@ -114,4 +114,4 @@ image::../media/mcc_ip_cabling_fas8300_aff_asa_a800_a900_fas9500_MSN2100.png[Mos
 .Atribuições de portas da plataforma NVIDIA SN2100 (grupo 7)
 Reveja as atribuições de portas da plataforma para o cabo de um sistema FAS70, AFF A70, AFF C80, FAS90, AFF A90 ou AFF A1K para um switch NVIDIA SN2100:
 
-image::../media/mccip-cabling-fas90-fas70-aff-a70--a90-c80-a1k-nvidia-sn2100.png[Mostra atribuições de porta da plataforma NVIDIA SN2100]
+image::../media/mccip-cabling-fas90-fas70-aff-a70--a90-c80-a1k-nvidia-sn2100-updated.png[Mostra atribuições de porta da plataforma NVIDIA SN2100]

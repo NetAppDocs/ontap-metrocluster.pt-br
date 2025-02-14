@@ -210,7 +210,6 @@
   <block id="f4761f37bd40b125eed6852317322784" category="list-text">Nos switches Brocade, a primeira porta é numerada 0.</block>
   <block id="db20382966fd63b8be7c9d7a472e152f" category="list-text">Nos switches Cisco, a primeira porta é numerada 1.</block>
   <block id="1f7b281ef3cc2c4d33df1c4ab4725a50" category="list-text">O cabeamento é o mesmo para cada switch FC na malha do switch.</block>
-  <block id="fa15cd6e7a73a7cac602236af691b901" category="list-text">Os sistemas de storage AFF A300 e FAS8200 podem ser solicitados com uma das duas opções de conectividade FC-VI:</block>
   <block id="f8ead55cd533754df60e1d996c261dcc" category="list-text">Portas integradas 0e e 0f configuradas no modo FC-VI.</block>
   <block id="f39eec234d6cdc6ec6c13fbe95529ebe" category="list-text">Portas 1a e 1b em uma placa FC-VI no slot 1.</block>
   <block id="17f7fd76f6e7b1f621872307ce959576" category="list-text">Os sistemas de storage AFF A700 e FAS9000 exigem quatro portas FC-VI. As tabelas a seguir mostram o cabeamento dos switches FC com quatro portas FC-VI em cada controladora, exceto o switch Cisco 9250i.</block>
@@ -228,8 +227,6 @@
   <block id="dbe4a4387a11d1625ae218ef9f43a996" category="cell">MetroCluster 1 ou Grupo de RD 1</block>
   <block id="2cb05e4bb7830be982f0922fed86b4cd" category="cell">Componente</block>
   <block id="60aaf44d4b562252c04db7f98497e9aa" category="cell">Porta</block>
-  <block id="bb349429f6224b4b4899cca4143d00a3" category="cell">Interrutor Brocade modelos 6505, 6510, 6520, 7810, 7840, G610, G620, G620-1, G630, G630-1 e DCX 8510-8</block>
-  <block id="b4559ed331225a2442a15ec2c2b78e38" category="cell">Interrutor Brocade modelo G720</block>
   <block id="d151432733d339221bd143c714a56a84" category="cell">Liga ao interrutor FC...</block>
   <block id="b23f9c7f7d005f5b0859bf207898cd47" category="cell">Liga à porta do switch...</block>
   <block id="85e2ca58f06c6fc43bb1278027917574" category="paragraph">controller_x_1</block>
@@ -270,9 +267,6 @@
   <block id="4a87af04f657dbee0a87a82c074c8b74" category="paragraph">bridge_x_ya</block>
   <block id="9bf31c7ff062936a96d3c8bd1f8f2ff3" category="paragraph">15</block>
   <block id="5021af697beed999ef21aef7e7c30df5" category="paragraph">ponte_x_yb</block>
-  <block id="d4fbd23b7658d01598df05d6bfd31a84" category="list-text">Nos switches G620, G630, G620-1 e G630-1, as pontes adicionais podem ser cabeadas para as portas 12 - 17, 20 e 21.</block>
-  <block id="b5724498433d204fa7a87a5aa56bdb5b" category="list-text">Nos switches G610, bridges adicionais podem ser cabeadas para as portas 12 - 19.</block>
-  <block id="f9218b899a7f952d28deaa191d54faaa" category="list-text">Nos switches G720, as pontes adicionais podem ser cabeadas para as portas 16 - 17, 20 e 21.</block>
   <block id="36fc2959d3a1c97d86b1331aa7ad751f" category="cell">MetroCluster 2 ou Grupo de RD 2</block>
   <block id="dd8bf985111cb958a0114d6fab888dfb" category="cell">Modelo de interrutor Brocade</block>
   <block id="28eb6ba701b729e5df3fbc86e28c4f9a" category="cell">Liga ao FC_switch...</block>
@@ -321,7 +315,6 @@
   <block id="d7760a23e875716291c1c6fde455d8d4" category="paragraph">bridge_x_54b</block>
   <block id="1c383cd30b7c298ab50293adfecb7b18" category="paragraph">35</block>
   <block id="093f65e080a295f8076b1c5722a46aa2" category="paragraph">59</block>
-  <block id="b71713ca01ebff14cbc13bd7cfcb2b05" category="list-text">Nos switches G720, bridges adicionais podem ser cabeadas para as portas 36-39.</block>
   <block id="49fd30fd43d4f8a06753b8f9677ba26a" category="cell">Configurações usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2)</block>
   <block id="f5ab0ecfb91169073465c75b07499fce" category="cell">Interrutor Brocade modelos 6505, 6510, 6520, 7810, 7840, G610, G620, G620-1, G630, G630-1 e DCX 8510-8</block>
   <block id="d67bdc8865becf65979a7e07c7541fe7" category="cell">Interrutor Brocade G720</block>
@@ -334,8 +327,6 @@
   <block id="4fcb10feecff8bf153e2155f987003d3" category="paragraph">13*</block>
   <block id="6d8c2a2025c082966f6b8171ae6d840e" category="paragraph">14*</block>
   <block id="f5edf414716a52037ee3226c67a63760" category="paragraph">15*</block>
-  <block id="e409cbaf30133c40afd8ba79b71e06ee" category="paragraph">&amp; N.o 42; as portas 12 a 15 são reservadas para o segundo grupo de MetroCluster ou DR no switch Brocade 7840.</block>
-  <block id="58a6d226fae48ef8f89925466eabd9b3" category="admonition">As pontes adicionais podem ser cabeadas para as portas 16, 17, 20 e 21 nos switches G620, G630, G620-1 e G630-1.</block>
   <block id="19ca14e7ea6328a42e0eb13d585e4c22" category="paragraph">36</block>
   <block id="072b030ba126b2f4b2374f342be9ed44" category="paragraph">60</block>
   <block id="336d5ebc5436534e61d16e63ddfca327" category="paragraph">-</block>
@@ -348,7 +339,6 @@
   <block id="a2f788120886d7c7eb7f12ec724169e1" category="paragraph">bridge_x_5yb</block>
   <block id="d67d8ab4f4c10bf22aa353e27879133c" category="paragraph">39</block>
   <block id="03afdbd66e7929b125f8597834fa83a4" category="paragraph">63</block>
-  <block id="b7cb27e7b76aef35eeb752371e5bd6b8" category="admonition">Pontes adicionais podem ser cabeadas para as portas 36 a 39 nos switches G620, G630, G620-1 e G630-1.</block>
   <block id="f140d3cb033a0d8cb337abc8ffd37e35" category="section-title">Uso de porta Brocade para ISLs em uma configuração MetroCluster executando o ONTAP 9.1 ou posterior</block>
   <block id="31140865c6da8bd64c2cc352591fd97f" category="paragraph">A tabela a seguir mostra o uso da porta ISL para os switches Brocade.</block>
   <block id="16efd6bef533569cdadd01e7d8f034c9" category="admonition">Os sistemas AFF A700 ou FAS9000 suportam até oito ISLs para melhorar o desempenho. Oito ISLs são suportadas nos switches Brocade 6510 e G620.</block>
@@ -405,11 +395,7 @@
   <block id="3a4842c9952a7c657d04e55a3d69b1a4" category="cell">FibreBridge 7500N ou 7600N usando duas portas FC</block>
   <block id="5f3d7a8eab09d202517da1abc99331dc" category="paragraph">bridge_x_3b</block>
   <block id="b2f10ca95ea95e075db7adc2d019047e" category="paragraph">bridge_x_4a</block>
-  <block id="89eaf3610015ecc12505a2408ff9fda6" category="paragraph">Pontes adicionais podem ser anexadas usando as portas 17 a 40 e 57 a 88 seguindo o mesmo padrão.</block>
-  <block id="a1d4f21ed73518b99dbbab05134b5c9a" category="paragraph">Bridges adicionais para um segundo grupo de DR ou segunda configuração de MetroCluster podem ser conetadas usando as portas 33 a 40 seguindo o mesmo padrão.</block>
   <block id="f656d69f7bbae519056da03a8e9e50d0" category="cell">Cisco 9250i</block>
-  <block id="a6bd250708a75e43f157a7b657e654c5" category="paragraph">Bridges adicionais para um segundo grupo de DR ou segunda configuração de MetroCluster podem ser conetadas usando as portas 25 a 48 seguindo o mesmo padrão.</block>
-  <block id="f9805d94598bd6a841fddbff1c6ddc7b" category="paragraph">As tabelas a seguir mostram o uso da porta de ponte ao usar pontes FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2). Para pontes FibreBridge 7500N ou 7600N usando uma porta FC, FC1 ou FC2 podem ser cabeados para a porta indicada como FC1. Pontes adicionais podem ser anexadas usando as portas 25-48.</block>
   <block id="126b9e3a8501d897a2356aba96828af6" category="cell">FibreBridge 7500N ou 7600N pontes usando uma porta FC</block>
   <block id="69abf6cf7deeba7ace2f747f7661208f" category="cell">FibreBridge 7500N ou 7600N usando uma porta FC</block>
   <block id="f49308486cec24e5559590a8e8ab5f10" category="paragraph">bridge_x_5a</block>
@@ -421,7 +407,6 @@
   <block id="968f63536cc26e1ac460060836284646" category="paragraph">bridge_x_8a</block>
   <block id="4409c993164a314b23d52edf9f7ddb07" category="paragraph">bridge_x_8b</block>
   <block id="de8504b73ea228d0ea9bbce69752092e" category="cell">Ponte</block>
-  <block id="1d8dd340273647eae3a36eff43fc547e" category="paragraph">Pontes adicionais podem ser anexadas usando as portas 25 a 48 seguindo o mesmo padrão.</block>
   <block id="4968e1c4a92e0df27646933918f92be2" category="section-title">Uso de porta Cisco para ISLs em uma configuração de oito nós em uma configuração MetroCluster executando o ONTAP 9.1 ou posterior</block>
   <block id="81cc761cd2e2757421a8e9242e8e12cc" category="paragraph">A tabela a seguir mostra o uso da porta ISL. O uso da porta ISL é o mesmo em todos os switches na configuração.</block>
   <block id="da1fe90f1a7c8d5426c9fb653143159c" category="inline-xref">Uso da porta ISL para Cisco 9132T em uma configuração MetroCluster executando o ONTAP 9.1 ou posterior</block>
@@ -434,7 +419,6 @@
   <block id="26657d5ff9020d2abefe558796b99584" category="paragraph">96</block>
   <block id="670a9fef898ab1cd3ff1896d659f86f0" category="paragraph">Cisco 9250i com licença de 24 portas</block>
   <block id="b6adc54642d6ea9466bf5956bfd90921" category="section-title">Uso da porta Cisco 9132T nas configurações de quatro nós e oito nós do MetroCluster executando o ONTAP 9.4 e posterior</block>
-  <block id="478093bd7e01c5abe587038bf808af00" category="paragraph">As tabelas a seguir mostram o uso da porta em um switch Cisco 9132T. As tabelas mostram o máximo de configurações suportadas com quatro e oito módulos de controladores em dois grupos de DR.</block>
   <block id="65ac5210a13e16ff0c09cc508d39f010" category="admonition">Para configurações de oito nós, você deve executar o zoneamento manualmente porque os RCFs não são fornecidos.</block>
   <block id="83e876af5f485a9a733864cbf5a3e21b" category="cell">Cisco 9132T com 1x LEM</block>
   <block id="95e351a6be60cc62a4dd8db3ec98a00f" category="cell">Quatro nós</block>
@@ -1063,9 +1047,7 @@
   <block id="5a64108d7ac092878672067dc635803d" category="paragraph">No exemplo a seguir, aggr_B2 no nó B2 mudou de volta:</block>
   <block id="04008409e45af76f1283ce88932da449" category="inline-link-macro">Como remover entradas agregadas sem espelhamento obsoletas em um MetroCluster após desastre em que o armazenamento foi perdido.</block>
   <block id="d903b046ad4e23192a38f289cf8b3677" category="paragraph">Se o local de desastre incluiu agregados sem espelhamento e os agregados sem espelhamento não estiverem mais presentes, o agregado pode aparecer com um estado de "'desconhecido'" na saída do comando storage Aggregate show. Para remover as entradas desatualizadas para os agregados sem espelhamento, consulte o artigo da base de dados de Conhecimento <block ref="5f58a40bfe898f128ca76e4a4e4715d4" category="inline-link-macro-rx"></block></block>
-  <block id="aa22b9d198bd6a038b670437eee9be3f" category="list-text">Verifique se todos os SVMs de destino de sincronização no cluster sobrevivente estão inativos (mostrando um estado de administrador "coberto") e os SVMs de origem de sincronização no cluster de desastres estão ativos e em execução:</block>
   <block id="529311fd1dafee8998290952c2b30156" category="paragraph"><block ref="c70b3db0a26508c0192b84ef7e14e0eb" prefix="" category="inline-code"></block></block>
-  <block id="a657e2ecdb4e6ab9790d126a51b552c5" category="paragraph">Os agregados de destino de sincronização na configuração do MetroCluster têm o sufixo "-mc" automaticamente anexado ao seu nome para ajudar a identificá-los.</block>
   <block id="842c1547cc0bfd1bffb5a2f2520f3453" category="list-text">Confirme se as operações de switchback foram bem-sucedidas usando o<block ref="0d47d8f5f26b2a71aacf597494f0adbb" prefix=" " category="inline-code"></block> comando.</block>
   <block id="5c945fee1574a4bb0517f957c89636c8" category="cell">Se o comando output mostrar...</block>
   <block id="e4767f7883cc2ff4bd389f83ad93c3c4" category="paragraph">Que o estado de operação de comutação é bem-sucedido.</block>
@@ -1458,7 +1440,6 @@
   <block id="1a6e48b2a6235c74edaba37deae7d383" category="paragraph"><block ref="dd68048309ddfb4eefb721ea7b1ab4bb" prefix="" category="inline-code"></block></block>
   <block id="838e866ece9701e5a58755a132b144d0" category="paragraph">Se um switchback levar muito tempo para terminar, você pode verificar o status das linhas de base em andamento usando o seguinte comando no nível avançado de privilégio.</block>
   <block id="2acb95fae93eb0a712fe18af796439f5" category="paragraph">Se o local de desastre incluiu agregados sem espelhamento e os agregados sem espelhamento não estiverem mais presentes, o agregado pode aparecer com um estado de "desconhecido" na saída<block ref="773df797e06568bea1288447c8921502" prefix=" " category="inline-code"></block> do comando. Contacte o suporte técnico para remover as entradas desatualizadas para os agregados sem espelhamento e consulte o artigo da base de dados de Conhecimento <block ref="5f58a40bfe898f128ca76e4a4e4715d4" category="inline-link-macro-rx"></block></block>
-  <block id="8d90a1ad74872449b69dcbc9a1230a79" category="list-text">Verifique se todos os SVMs de destino de sincronização no cluster sobrevivente estão inativos (mostrando um estado de administrador de "parado") e os SVMs de origem de sincronização no cluster de desastres estão ativos e em execução:</block>
   <block id="702f8c89c26d6cb5eb222b0149dcf136" category="list-text">Confirme se as operações de switchback foram bem-sucedidas:</block>
   <block id="de5c9351bdabfd381218bfd88e214584" category="paragraph">Que a operação ou operação de comutação<block ref="304407e084227ccad94a3fb309747b8e" prefix=" " category="inline-code"></block> é parcialmente bem-sucedida.</block>
   <block id="74d0ac509bf41a2ba522d67804739943" category="paragraph">Execute a correção sugerida fornecida na saída do<block ref="0d47d8f5f26b2a71aacf597494f0adbb" prefix=" " category="inline-code"></block> comando.</block>
@@ -1635,9 +1616,6 @@
   <block id="8a5c2788729f7d71adc6ea3073bef0a7" category="list-text">e5b: 172.17.27.12</block>
   <block id="84880048c8db4bb557c571e15f6437c7" category="list-text">A partir do site sobrevivente, reúna os endereços IP das interfaces MetroCluster no local de desastre:</block>
   <block id="7a401d723d877e99188e0a3d18003e13" category="paragraph">Os endereços necessários são os endereços do parceiro DR mostrados na coluna *Endereço de rede de destino*.</block>
-  <block id="5304f5c74d3938f229fd289a3a4c7335" category="paragraph">A saída do comando varia dependendo do modelo da plataforma.</block>
-  <block id="a5742dd38006c09197d0e488bba89bf7" category="open-title">Sistemas introduzidos no ONTAP 9.15,1 ou posterior</block>
-  <block id="566a13604e83a8fff73bdf14020a980a" category="paragraph">Os sistemas introduzidos no ONTAP 9.15,1 ou posterior (AFF A70, AFF A90 e AFF A1K) têm portas separadas para HA e DR, como mostrado na saída de exemplo a seguir:</block>
   <block id="5703319e138fc00c827014acd16d0376" category="paragraph">A saída a seguir mostra os endereços IP de uma configuração com sistemas AFF A700 e FAS9000 com as interfaces IP MetroCluster nas portas E5A e e5b. As interfaces podem variar dependendo do tipo de plataforma.</block>
   <block id="940e6eb81cb9ea67ed6a7924fe4f6444" category="list-text">Se você precisar determinar o ID da VLAN ou o endereço de gateway para a interface, determine os IDs da VLAN do local sobrevivente:</block>
   <block id="e98f1370c6e6734e34547668e2b7885e" category="paragraph"><block ref="0dea99cd92a8ce54e8bf65bd553a3e89" prefix="" category="inline-code"></block></block>
@@ -1647,11 +1625,9 @@
   <block id="9bf56cc2253be8d861d865a698757a1d" category="list-text">Você precisa do endereço de gateway se estiver usando <block ref="ce44afd681653d8855acb4c64f0faa01" category="inline-link-macro-rx"></block>o .</block>
   <block id="70f2df2269f2a1af431f6c7afe2c28b0" category="paragraph">Os IDs de VLAN estão incluídos na coluna *Endereço de rede* da saída. A coluna *Gateway* mostra o endereço IP do gateway.</block>
   <block id="04b05a0396e80bba731a6b78af98fe76" category="paragraph">Neste exemplo, as interfaces são e0a com a VLAN ID 120 e e0b com a VLAN ID 130:</block>
-  <block id="e2974b23926ca4d7d377fe83a01893cc" category="list-text">No prompt DO Loader para cada um dos nós do local de desastre, defina o valor do bootarg dependendo do modelo da plataforma:</block>
   <block id="99d8e07cf22b54bf1c4fe9ecde3bd413" category="list-text">Se as interfaces estiverem usando as VLANs padrão ou o modelo de plataforma não usar um ID de VLAN (consulte a <block ref="05a2d2a273433dceaaaa95abd8b74c34" category="inline-xref-macro-rx"></block>), o _vlan-id_ não será necessário.</block>
   <block id="cc997c6aa09f0b58d3cda4d07c45dfea" category="inline-link-macro">Layer3 redes de grande área</block>
   <block id="d992f59da3c242fbd359bd74609b115f" category="list-text">Se a configuração não estiver usando <block ref="18d2d299a9720b9b0e4881f2a80c6547" category="inline-link-macro-rx"></block>, o valor para _gateway-IP-address_ será *0* (zero).</block>
-  <block id="7e9ada96e6c7ea5b82a0e953f38fc85c" category="paragraph">O valor para _HA-Partner-IP-address_ deve ser definido como *0* (zero) em sistemas introduzidos no ONTAP 9.15,1 ou posterior porque eles têm portas separadas para DR e HA.</block>
   <block id="fd053f45281bc461c7ff13c80dc7a0ef" category="paragraph">Defina o seguinte bootarg:</block>
   <block id="fb767d614f1f408436a71720cc6d0d6f" category="paragraph">Os comandos a seguir definem os valores para node_A_1 usando VLAN 120 para a primeira rede e VLAN 130 para a segunda rede:</block>
   <block id="4cdd25046d5b2527b052f754ec55b8b2" category="paragraph">O exemplo a seguir mostra os comandos para node_A_1 sem um ID de VLAN:</block>
@@ -4632,9 +4608,7 @@
   <block id="0216568f67e5d703868ec3f45bbaaa79" category="paragraph">O MetroCluster de malha de 7 modos existente pode permanecer conetado a portas usando SFPs de 8 Gbps ou 16 Gbps.</block>
   <block id="05d631d42f259bf07f58147a7f7c98d4" category="list-text">Em cada um dos quatro switches Brocade 6510, as portas 24 a 45 devem estar disponíveis para conetar as portas dos novos componentes do MetroCluster.</block>
   <block id="a009195558b1c4cd3b61cdf61cb6fb25" category="list-text">Você deve verificar se os ISLs existentes estão nas portas 46 e 47.</block>
-  <block id="ceacc62e7a4eaa1af37396810acfd3ae" category="list-text">Os switches Brocade 6510 devem estar executando uma versão de firmware FOS compatível com o 7-Mode Fabric MetroCluster e a configuração Clustered ONTAP MetroCluster.</block>
   <block id="121789800a2a17c2b44944d1aba6cec3" category="paragraph">Depois de compartilhar a malha e concluir a configuração do MetroCluster, você pode migrar dados da configuração do MetroCluster de malha de 7 modos.</block>
-  <block id="516b14cf2c8d48e0d3bc843b88989702" category="paragraph">Após a transição dos dados, você poderá remover o cabeamento MetroCluster de malha de 7 modos e, se desejar, mover o cabeamento ONTAP MetroCluster em cluster para as portas de número inferior usadas anteriormente para o cabeamento MetroCluster de 7 modos. As portas são mostradas na seção "Revisão de atribuições de portas de switch FC para um MetroCluster de quatro nós". Você deve ajustar o zoneamento para as portas reorganizadas.</block>
   <block id="86358b89edd72e0dd870d6d017be4af1" category="paragraph"><block ref="86358b89edd72e0dd870d6d017be4af1" category="inline-link-rx"></block></block>
   <block id="5da1ba53dad54d5e6efca627cd4e913f" category="summary">Você deve excluir o zoneamento de TI existente e reconfigurar as configurações de entrega de pedidos (IOD) na malha do switch.</block>
   <block id="bda671bafb9e307e601d1f48d41ee87e" category="doc">Eliminar o zoneamento do TI e configurar as definições do IOD</block>
@@ -8746,7 +8720,6 @@
   <block id="1d3341e7be6e06b23e20e2501177f02e" category="paragraph">Verifique a integridade geral da configuração. Se o sistema não parecer saudável, aborde o problema primeiro antes de prosseguir.</block>
   <block id="776259e77c1e67fef13df14be8a5ad8e" category="list-text">Em ambos os clusters, todos os plexos off-line com discos na pilha de gaveta afetada:</block>
   <block id="1590893d0510686df21eee9955ff2b29" category="paragraph"><block ref="38758defd45a8d80197584573d94684a" prefix="" category="inline-code"></block></block>
-  <block id="e7b29b3d771c4dde26a00503e0f4bccf" category="paragraph">O exemplo mostra os comandos para offlining plexes para um controlador que executa OTNAP agrupado.</block>
   <block id="901bf599127fc5e5f378a91c41a6e7f4" category="list-text">Verifique se os plexes estão offline:</block>
   <block id="1ed890744eec3126bbb25e9377ed2123" category="paragraph"><block ref="e3a5d3011561dd012ac46f3c31a6ec5c" prefix="" category="inline-code"></block></block>
   <block id="8a6a5908684ff060e64e57e3561d66f0" category="paragraph">O exemplo mostra os comandos para verificar se os agregados estão offline para uma controladora executando o cMode.</block>
@@ -14240,13 +14213,11 @@
   <block id="de34f03873cad278e1b5cd4034a7ed03" category="inline-xref">Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C (grupo 8)</block>
   <block id="f17bf6b1d2e916bc883701ca762c7d31" category="cell"><block ref="4ae0459daad462bd8cb96fe95602c48c" category="inline-xref-macro-rx"></block></block>
   <block id="9e741c4a3ec9010708b84c50ab61cf6e" category="paragraph"><block ref="9e741c4a3ec9010708b84c50ab61cf6e" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b55dcdcc0e907408a3a25b6bcf0040c8" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A20 para um switch Cisco 3232C ou 9336C: <block ref="cc80c8cbafd505af3cd79f69a7bd10e3" category="inline-image-macro-rx" type="image"></block></block>
   <block id="85f49e412a48aec206a5bcf559b8fb51" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A30, AFF C30 ou AFF C60 para um switch Cisco 3232C ou 9336C:</block>
   <block id="4ddd72f5e814500908f0ff1c734ddaf1" category="paragraph"><block ref="4ddd72f5e814500908f0ff1c734ddaf1" category="inline-image-macro-rx" type="image"></block></block>
   <block id="267e30226a55e10038a24c84fc6de6d0" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A50 para um switch Cisco 3232C ou 9336C:</block>
   <block id="ca69a76035ac5f2a63eff361c33eb7c2" category="paragraph">*Nota 1*: Utilize as portas e4a e e4e ou e4a e e8a se estiver a utilizar um adaptador X91440A (40Gbps). Utilize as portas e4a e e4b ou e4a e e8a se estiver a utilizar um adaptador X91153A (100Gbps).</block>
   <block id="5e579c5398f759c591e5b8c0846adbb0" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A70, FAS70, AFF C80, FAS90, AFF A90 ou AFF A1K para um switch Cisco 3232C ou 9336C:</block>
-  <block id="f9bdd6da8ab810967faa5779c97025ed" category="paragraph"><block ref="f9bdd6da8ab810967faa5779c97025ed" category="inline-image-macro-rx" type="image"></block></block>
   <block id="da0acefbf33111de9e67d3fee11be371" category="cell">AFF C30, AFF A30 AFF C60</block>
   <block id="c13a6988988f63fb2f0783cdb7f3480a" category="inline-xref">Atribuições de porta de plataforma de switch compartilhado Cisco 9336C-FX2 (grupo 4)</block>
   <block id="80013ebf782c405ff60125a0a3b79606" category="cell"><block ref="9ad543bbe652f0e404a3df2b4a4d1b1f" category="inline-xref-macro-rx"></block></block>
@@ -14612,4 +14583,57 @@
   <block id="661221d64894eb71f90ac5ef75331837" category="paragraph">Opcionalmente, siga os passos para <block ref="d3ee677e2efae042d4f3199a44815074" category="inline-link-macro-rx"></block>.</block>
   <block id="3931310703263c726d52a1768504781f" category="list-text">Configure o novo switch seguindo os procedimentos do Brocade em <block ref="8891b6de7b2070c584bdeb67b522b51b" category="inline-link-macro-rx"></block>.</block>
   <block id="a01a953cf57a4a3591be7c4dd9dd14fa" category="list-text">Para ativar a encriptação ISL, <block ref="fb6e086ddbfd6d800d2c601996554df4" category="inline-link-macro-rx"></block>consulte a .</block>
+  <block id="180e0613653267779e5c48b1089eec2b" category="paragraph">É possível reconfigurar portas que não são usadas para anexar portas do iniciador, portas FC-VI ou ISLs para agir como portas de storage. No entanto, se os RCFs suportados estiverem sendo usados, você deve alterar o zoneamento de acordo.</block>
+  <block id="29c89e3d0b280775787b67d96a4087d3" category="list-text">É possível solicitar sistemas de storage AFF A300 e FAS8200 com uma das duas opções de conectividade FC-VI:</block>
+  <block id="731feab1fd0d4fca6b5d978a166b21f9" category="section-title">Configurações do controlador usando bridgeBridge 7500N ou 7600N</block>
+  <block id="e840d63b8d91be60055156853f6cb3c0" category="paragraph">A tabela a seguir mostra o uso da porta Brocade para controladores que usam bridges 7500N ou 7600N.</block>
+  <block id="0dae6454bb8066f80d3cee1de6e36505" category="cell">Conexão da porta do modelo do comutador Brocade</block>
+  <block id="536d2d681b1289cbeefda0c9fdcc09f3" category="cell">G720, G730</block>
+  <block id="3aeb504465245afd2f26ab0917c07244" category="section-title">Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2)</block>
+  <block id="50c0f59cb89ba3dd0b9b105da94810f5" category="paragraph-title">MetroCluster 1 ou grupo de RD 1</block>
+  <block id="d7628d9cfe849878c0b1b626bda3e165" category="paragraph">A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 1 ou no Grupo de DR 1 usando o FibreBridge 7500N ou 7600N e apenas uma porta FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:</block>
+  <block id="9fc34d6bbec9982b1e0510d6a6fef0a1" category="list-text">Nos switches 6510 e DCX 8510-8, você pode conetar pontes adicionais às portas 16-19.</block>
+  <block id="9678df63e5e138898c1a3a9d745f250a" category="list-text">Nos switches 6520, você pode conetar pontes adicionais às portas 16-21 e 24-45.</block>
+  <block id="1938afd24289f82f1eccb1f5fc03bee0" category="paragraph">Pilha 4</block>
+  <block id="b02ceda2473562359e0f31ddee5b9fd7" category="paragraph">Pilha 5</block>
+  <block id="d6dc0baaa910da78635865e2a526300a" category="paragraph">Pilha 6</block>
+  <block id="384b8992b8f33d81d1be8af75815ce43" category="paragraph">Pilha 7</block>
+  <block id="d711b8d9ad84315aa5329b39f947dedd" category="paragraph">Pilha 8</block>
+  <block id="3692c9ba1350a63df24145cf798b7a8d" category="paragraph-title">MetroCluster 2 ou grupo de RD 2</block>
+  <block id="3931538ae618e65321b4b3317e9b03d1" category="paragraph">A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 2 ou no Grupo de DR 2 para bridges FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:</block>
+  <block id="2903ceed0cbc44b8b559bfff7873b906" category="list-text">Nos switches 6520, você pode conetar pontes adicionais às portas 64-69 e 72-93.</block>
+  <block id="38429f80adfb1ee89a7fbf6f07f19fd5" category="section-title">Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2)</block>
+  <block id="6a72af091f5308d35341ed6e94d995c3" category="paragraph">A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 1 ou no Grupo de DR 1 para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:</block>
+  <block id="90630a6ca649afd90e4b45c9af3d157d" category="paragraph">A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 2 ou no Grupo de DR 2 para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:</block>
+  <block id="742bcddd5d6452c898c549e1b60cd513" category="paragraph">Você pode anexar pontes adicionais usando as portas 17 a 40 e 57 a 88 seguindo o mesmo padrão.</block>
+  <block id="391ee14bc6581827dc4f2d88ff91afcf" category="paragraph">Você pode anexar pontes adicionais para um segundo grupo de DR ou uma segunda configuração de MetroCluster usando as portas 33 a 40 seguindo o mesmo padrão.</block>
+  <block id="785ca789cd5d47a1b40d11e4fa3a608a" category="paragraph">Você pode anexar pontes adicionais para um segundo grupo de DR ou uma segunda configuração de MetroCluster usando as portas 25 a 48 seguindo o mesmo padrão.</block>
+  <block id="3914736797bebae05c8e9387dd6727f0" category="paragraph">As tabelas a seguir mostram o uso da porta de ponte ao usar pontes FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2). Para pontes FibreBridge 7500N ou 7600N usando uma porta FC, você pode fazer o cabo FC1 ou FC2 para a porta indicada como FC1. Você também pode anexar pontes adicionais usando as portas 25-48.</block>
+  <block id="8e92988c7461b180dbee8d97f92e6742" category="paragraph">você pode anexar pontes adicionais usando as portas 25 a 48 seguindo o mesmo padrão.</block>
+  <block id="23a48f21ed38a9e3df523f469f325385" category="paragraph">As tabelas a seguir mostram o uso da porta em um switch Cisco 9132T.</block>
+  <block id="b38a704e8751bf228cfb309f0668b3e1" category="section-title">Configurações de controladora usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2)</block>
+  <block id="2d98516f0953aef9ad21de45b1d6ed89" category="paragraph">A tabela a seguir mostra as configurações do controlador usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2). As tabelas mostram o máximo de configurações suportadas com quatro e oito módulos de controladores em dois grupos de DR.</block>
+  <block id="24ce95dff7cdbe82f47d82b0c5e3c3bd" category="paragraph">LEM2-5</block>
+  <block id="d1219ba7b45f6028da9ef53dc1d962dc" category="paragraph">LEM2-6</block>
+  <block id="d72635ed8e78c8bf248888485d54fefc" category="paragraph">LEM2-7</block>
+  <block id="bf56acff15a22deda5e2b827afffd42e" category="paragraph">LEM2-8</block>
+  <block id="ebbda15a69930ca8edcac4149ee0cd6b" category="section-title">Cisco 9132T com 1x LEM e um grupo de MetroCluster ou DR de quatro nós</block>
+  <block id="d1d3effcd2e3b543a6d69f1de82ab93f" category="paragraph">As tabelas a seguir mostram o uso da porta de um switch Cisco 9132T com 1x LEM e um MetroCluster ou grupo de DR de quatro nós.</block>
+  <block id="59bea19cbabb48065c7357317b97432c" category="paragraph">A tabela a seguir mostra o uso da porta de um switch Cisco 9132T com 2x LEM e um MetroCluster ou grupo de DR de quatro nós.</block>
+  <block id="71b8d98cdcca6f6c9703e8e704b1bc15" category="paragraph">A tabela a seguir mostra o uso da porta de um switch Cisco 9132T com dois Metroclusters de quatro nós ou um MetroCluster de oito nós com dois grupos de DR.</block>
+  <block id="401f98cd1747471e0821c98c1d0564ff" category="paragraph">Todos os outros sistemas usam *portas de cluster/HA compartilhadas*.</block>
+  <block id="9fc6290b0188dfeebf0e0bc3aa659923" category="list-text">Os valores de bootarg do MetroCluster definidos dependem se o novo sistema utiliza portas de cluster/HA partilhadas ou portas MetroCluster/HA partilhadas. Use as informações a seguir para determinar as portas do seu sistema.</block>
+  <block id="9e6ae12e9968c12ca89b65cbfc98c1a6" category="paragraph">A saída do comando varia dependendo se o modelo da plataforma usa portas de cluster/HA compartilhadas ou portas MetroCluster/HA compartilhadas.</block>
+  <block id="f4c0383379a5ae93d0b5e4c4f8586e47" category="open-title">Sistemas que usam portas de cluster/HA compartilhadas</block>
+  <block id="fce1683696c48d3d34e98e19d634ae19" category="open-title">Sistemas que usam portas MetroCluster/HA compartilhadas</block>
+  <block id="d28dfcbdf9345468d87d930393f61e28" category="list-text"><block ref="82b8350d28f0a14e36de1958b3be9205" prefix=" " category="inline-code"></block>No prompt de cada um dos nós do local de desastre, defina o valor do bootarg dependendo se seu modelo de plataforma usa portas de cluster/HA compartilhadas ou portas MetroCluster/HA compartilhadas:</block>
+  <block id="e29199cddef5792300b3b221f3ce1de2" category="paragraph">Em cada controlador na configuração ONTAP MetroCluster, o adaptador FC-VI e HBAs devem ser cabeados para portas específicas nos switches FC existentes.</block>
+  <block id="7c18898ad95897990e485c3e2e9a3d5a" category="list-text">Os switches Brocade 6510 devem estar executando uma versão de firmware FOS compatível com a configuração 7-Mode Fabric MetroCluster e ONTAP MetroCluster.</block>
+  <block id="f408004d3c0a89f19911c0f8ff32d59b" category="paragraph">Após a transição dos dados, você poderá remover o cabeamento MetroCluster de malha de 7 modos e, se desejar, mover o cabeamento ONTAP MetroCluster para as portas de número inferior usadas anteriormente para o cabeamento MetroCluster de 7 modos. As portas são mostradas na seção "Revisão de atribuições de portas de switch FC para um MetroCluster de quatro nós". Você deve ajustar o zoneamento para as portas reorganizadas.</block>
+  <block id="ca7159868d1e601ba93c3e1c51f92171" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A20 para um switch Cisco 3232C ou 9336C:</block>
+  <block id="cc80c8cbafd505af3cd79f69a7bd10e3" category="paragraph"><block ref="cc80c8cbafd505af3cd79f69a7bd10e3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ae95cdcb11c16af71b2c54420e47f0dd" category="paragraph"><block ref="ae95cdcb11c16af71b2c54420e47f0dd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f6c5a69060b62d046efbd190570cf383" category="admonition">Este exemplo mostra as informações mínimas necessárias para configurar o RCF, opções adicionais podem ser configuradas após a aplicação do RCF. Por exemplo, você pode configurar SNMPv3, NTP ou SCP/SFTP depois de aplicar o RCF.</block>
+  <block id="6ca034f6a518722187e6a10bfc2df9e6" category="admonition">Não ligue as gavetas antes de ligar os controladores. Isso impede que os controladores iniciem uma inicialização não intencional no ONTAP.</block>
+  <block id="604b473cd250fb4d83bbbab434f091fb" category="paragraph">O exemplo mostra os comandos para offlining plexes para um controlador que executa o ONTAP.</block>
 </blocks>

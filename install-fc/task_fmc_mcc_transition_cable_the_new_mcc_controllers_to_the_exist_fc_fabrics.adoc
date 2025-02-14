@@ -11,7 +11,7 @@ summary: Em cada controladora na configuração de cluster ONTAP MetroCluster, o
 
 
 [role="lead"]
-Em cada controladora na configuração de cluster ONTAP MetroCluster, o adaptador FC-VI e HBAs devem ser cabeados para portas específicas nos switches FC existentes.
+Em cada controlador na configuração ONTAP MetroCluster, o adaptador FC-VI e HBAs devem ser cabeados para portas específicas nos switches FC existentes.
 
 .Passos
 . Faça o cabeamento das portas FC-VI e HBA de acordo com a seguinte tabela:

@@ -320,6 +320,10 @@ Deve ligar primeiro os interrutores. Eles podem ter sido ligados durante a etapa
 +
 Se a inicialização automática estiver ativada, pressione `Ctrl+C` para impedir que os controladores iniciem automaticamente.
 
++
+
+CAUTION: Não ligue as gavetas antes de ligar os controladores. Isso impede que os controladores iniciem uma inicialização não intencional no ONTAP.
+
 . Ligue as prateleiras, permitindo tempo suficiente para que elas se liguem completamente.
 . Verifique se o armazenamento está visível.
 +

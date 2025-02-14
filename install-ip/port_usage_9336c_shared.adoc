@@ -81,7 +81,7 @@ image:../media/mcc_ip_cabling_a700_c800_a800_a900_to_cisco_9336c_shared_switch.p
 .Atribuições de porta de plataforma de switch compartilhado Cisco 9336C-FX2 (grupo 5)
 Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A70, AFF C80, AFF A90 ou AFF A1K que esteja conetando gavetas NSS24 conetadas a um switch compartilhado Cisco 9336C-FX2:
 
-image::../media/mcc-ip-cabling-a70-c80-a90-a1k-to-cisco-9336c-shared-switch.png[Mostra as atribuições de portas da plataforma de switch compartilhada do Cisco 9336C-FX2]
+image::../media/mcc-ip-cabling-a70-c80-a90-a1k-to-cisco-9336c-shared-switch-updated.png[Mostra as atribuições de portas da plataforma de switch compartilhada do Cisco 9336C-FX2]
 
 
 
@@ -165,4 +165,4 @@ image::../media/mcc_ip_cabling_a700_a800_fas9000_fas9500_to_cisco_9336c_shared_s
 .Atribuições de porta de plataforma de switch compartilhado Cisco 9336C-FX2 (grupo 14)
 Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A70, FAS70, AFF C80, FAS90, AFF A90 ou AFF A1K que não esteja conetando as gavetas NSS24 conetadas a um switch compartilhado Cisco 9336C-FX2:
 
-image::../media/mcc-ip-cabling-aff-a70-fas70-c80-fas90-a90-a1k-cisco-9336c-shared-switch-not-connecting.png[Mostra as atribuições de portas da plataforma de switch compartilhada do Cisco 9336C-FX2]
+image::../media/mcc-ip-cabling-aff-a70-fas70-c80-fas90-a90-a1k-cisco-9336c-shared-switch-not-connecting-updated.png[Mostra as atribuições de portas da plataforma de switch compartilhada do Cisco 9336C-FX2]
