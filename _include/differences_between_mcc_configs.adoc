@@ -18,7 +18,7 @@ Em todas as configurações, cada um dos dois locais do MetroCluster é configur
  a| 
 Número de controladores
  a| 
-Quatro ou oito*
+1
  a| 
 Quatro ou oito
  a| 
@@ -207,15 +207,15 @@ Sim
 Sim
 
 |===
-*Importante*
+*Notas*
 
-Observe as seguintes considerações para configurações de IP MetroCluster de oito nós:
+. Analise as seguintes considerações para configurações IP do MetroCluster de oito nós:
++
+** As configurações de oito nós são suportadas a partir do ONTAP 9.9,1.
+** Somente switches MetroCluster validados pela NetApp (solicitados pela NetApp) são compatíveis.
+** Configurações que usam conexões de back-end roteadas por IP (camada 3) não são suportadas.
 
-* As configurações de oito nós são suportadas a partir do ONTAP 9.9,1.
-* Somente switches MetroCluster validados pela NetApp (solicitados pela NetApp) são compatíveis.
-* Configurações que usam conexões de back-end roteadas por IP (camada 3) não são suportadas.
-* As configurações que usam redes de camada privada compartilhada 2 não são suportadas.
-* As configurações que usam um switch compartilhado Cisco 9336C-FX2 não são suportadas.
+
 
 
 

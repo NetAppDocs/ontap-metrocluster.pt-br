@@ -29,6 +29,10 @@ Você deve implementar as conexões IP do MetroCluster, atualizar a configuraç�
 
 . Criar interfaces IP MetroCluster (node_A_1-IP, node_A_2-IP, node_B_1-IP, node_B_2-IP) - duas interfaces precisam ser criadas por controladora; oito interfaces no total:
 +
+
+CAUTION: Não use endereços IP 169.254.17.x ou 169.254.18.x ao criar interfaces IP MetroCluster para evitar conflitos com endereços IP de interface gerados automaticamente pelo sistema no mesmo intervalo.
+
++
 `metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <controller_name> -home-port <port_name> -address <ip_address> -netmask <netmask_address> -vlan-id <vlan_id>`
 
 +

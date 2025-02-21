@@ -28,6 +28,51 @@ A operação de automação inicia as operações de comutação. Depois que ess
 +
 `boot_ontap`
 
+. Se o sistema para o qual você está atualizando NÃO estiver na tabela a seguir, verifique se as interfaces IP do MetroCluster estão usando endereços IP suportados.
++
+|===
+
+
+| Sistemas AFF e ASA | Sistemas FAS 
+
+
+ a| 
+** AFF A150, ASA A150
+** AFF A220
+** AFF C250, ASA C250
+** AFF A250, ASA A250
+** AFF A300
+** AFF A320
+** AFF C400, ASA C400
+** AFF A400, ASA A400
+** AFF A700
+** AFF C800, ASA C800
+** AFF A800, ASA A800
+** AFF A900, ASA A900
+
+ a| 
+** FAS2750
+** FAS500f
+** FAS8200
+** FAS8300
+** FAS8700
+** FAS9000
+** FAS9500
+
+
+|===
++
+.. Verifique os endereços IP das interfaces MetroCluster nos controladores antigos:
++
+`metrocluster configuration-settings interface show`
+
+.. Se as interfaces MetroCluster estiverem usando endereços IP 169.254.17.x ou 169.254.18.x, link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/How_to_modify_the_properties_of_a_MetroCluster_IP_interface["O artigo da base de dados de Conhecimento "como modificar as propriedades de uma interface IP do MetroCluster""^]consulte para modificar os endereços IP da interface antes de prosseguir com a atualização.
++
+
+CAUTION: A atualização para qualquer sistema que não esteja listado na tabela não é suportada se as interfaces MetroCluster estiverem configuradas com endereços IP 169.254.17.x ou 169.254.18.x.
+
+
+
 . Modifique as LIFs entre clusters nos controladores antigos para usar uma porta inicial diferente das portas usadas para interconexão de HA ou interconexão de DR IP MetroCluster nos novos controladores.
 +
 
@@ -56,7 +101,7 @@ Execute uma das ações a seguir, dependendo se as LIFs entre clusters nos contr
 | Use a mesma porta inicial | <<controller_replace_upgrade_prepare_network_ports_2b,Subpasso b>> 
 
 
-| Utilize uma porta inicial diferente | <<controller_replace_upgrade_prepare_network_ports_3,Passo 3>> 
+| Utilize uma porta inicial diferente | <<controller_replace_upgrade_prepare_network_ports_3,Passo 4>> 
 |===
 .. [[controller_replace_upgrade_prepare_network_ports_2b]]modifique os LIFs entre clusters para usar uma porta inicial diferente:
 +
@@ -81,7 +126,7 @@ Repita o comando para cada LIF entre clusters que não está na porta inicial.
 . [[controller_replace_upgrade_prepare_network_ports_3]]atribua a porta inicial de todos os LIFs de dados no controlador antigo a uma porta comum que é a mesma nos módulos de controladora antigos e novos.
 +
 
-CAUTION: Se os controladores antigos e novos não tiverem uma porta comum, não será necessário modificar as LIFs de dados. Pule esta etapa e vá diretamente para <<upgrades_assisted_without_matching_ports,Passo 4>>.
+CAUTION: Se os controladores antigos e novos não tiverem uma porta comum, não será necessário modificar as LIFs de dados. Pule esta etapa e vá diretamente para <<upgrades_assisted_without_matching_ports,Passo 5>>.
 
 +
 .. Apresentar os LIFs:
@@ -89,7 +134,7 @@ CAUTION: Se os controladores antigos e novos não tiverem uma porta comum, não 
 `network interface show`
 
 +
-Todos os dados LIFS, incluindo SAN e nas, serão administradores e operacionais "próprios", uma vez que eles estão ativos no local de comutação (cluster_A).
+Todos os LIFs de dados, incluindo SAN e nas, serão administradores e operacionais "próprios", uma vez que eles estão ativos no local de comutação (cluster_A).
 
 .. Revise a saída para encontrar uma porta de rede física comum que seja a mesma nos controladores antigos e novos que não seja usada como uma porta de cluster.
 +

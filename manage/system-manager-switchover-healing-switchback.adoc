@@ -37,18 +37,18 @@ Em outras ocasiões, quando o ONTAP não consegue determinar o status de um dos 
 
 Para qualquer tipo de procedimento de comutação, a capacidade de manutenção de dados é retornada ao cluster usando um processo _switchback_.
 
-Você executa diferentes processos de comutação e switchback para ONTAP 9.7 e 9,8:
+O processo de comutação e switchback que você segue depende da sua versão do ONTAP:
 
-* <<sm97-sosb,Use o Gerenciador de sistemas no ONTAP 9.7 para comutação e switchback>>
-* <<sm98-sosb,Use o Gerenciador de sistemas no ONTAP 9.8 para comutação e switchback>>
-
-
+* <<sm97-sosb,Use o Gerenciador de sistemas no ONTAP 9,6 ou 9,7 para comutação e switchback>>
+* <<sm98-sosb,Use o Gerenciador do sistema no ONTAP 9,8 ou posterior para switchover e switchback>>
 
 
-== Use o Gerenciador de sistemas no ONTAP 9.7 para comutação e switchback
+
+
+== Use o Gerenciador de sistemas no ONTAP 9,6 ou 9,7 para comutação e switchback
 
 .Passos
-. Inicie sessão no Gestor de sistema no ONTAP 9.7.
+. Inicie sessão no Gestor de sistema no ONTAP 9,6 ou 9,7.
 . Clique em *(retornar à versão clássica)*.
 . Clique em *Configuração > MetroCluster*.
 +
@@ -71,14 +71,14 @@ O System Manager verifica se um switchover negociado é possível.
 
 
 
-== Use o Gerenciador de sistemas no ONTAP 9.8 para comutação e switchback
+== Use o Gerenciador do sistema no ONTAP 9,8 ou posterior para switchover e switchback
 
 
 
-=== Executar um switchover planejado (ONTAP 9.8)
+=== Executar um switchover planejado (ONTAP 9,8 ou posterior)
 
 .Passos
-. Inicie sessão no Gestor de sistema no ONTAP 9.8.
+. Inicie sessão no Gestor de sistema no ONTAP 9,8 ou posterior.
 . Selecione *Painel*. Na seção *MetroCluster*, os dois clusters são mostrados com uma conexão.
 . No cluster local (mostrado à esquerda), clique image:icon_kabob.gif["ícone de kebab"]em e selecione *mudar serviços de dados remotos para o local*.
 +
@@ -94,12 +94,12 @@ NOTE: O cluster remoto não deve ser usado para manutenção de dados até que v
 
 
 
-=== Executar um switchover não planejado (ONTAP 9.8)
+=== Executar um switchover não planejado (ONTAP 9,8 ou posterior)
 
 Um switchover não planejado pode ser iniciado automaticamente pelo ONTAP. Se o ONTAP não puder determinar se um switchback é necessário, o administrador do sistema do local do MetroCluster que ainda está em execução iniciará o switchover com as seguintes etapas:
 
 .Passos
-. Inicie sessão no Gestor de sistema no ONTAP 9.8.
+. Inicie sessão no Gestor de sistema no ONTAP 9,8 ou posterior.
 . Selecione *Painel*.
 +
 Na seção *MetroCluster*, a conexão entre os dois clusters é mostrada com um "X" nele. Isso significa que não é possível detetar uma conexão e que as conexões ou o cluster estão inoperantes.
@@ -121,13 +121,13 @@ NOTE: Depois que o cluster remoto for colocado on-line, ele não deve ser usado 
 
 
 
-=== Executar um switchback (ONTAP 9.8)
+=== Executar um switchback (ONTAP 9,8 ou posterior)
 
 .Antes de começar
 Se o cluster remoto estava inativo devido a manutenção planejada ou devido a um desastre, ele agora deve estar funcionando e aguardando o switchback.
 
 .Passos
-. No cluster local, inicie sessão no Gestor do sistema no ONTAP 9.8.
+. No cluster local, inicie sessão no Gestor do sistema no ONTAP 9,8 ou posterior.
 . Selecione *Painel*.
 +
 Na seção *MetroCluster*, os dois clusters são exibidos.

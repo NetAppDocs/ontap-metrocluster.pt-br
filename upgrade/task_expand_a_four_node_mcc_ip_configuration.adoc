@@ -104,7 +104,7 @@ As tabelas a seguir mostram as combinações de plataforma suportadas para confi
 .Combinações de expansão IP AFF e FAS MetroCluster suportadas
 A tabela a seguir mostra as combinações de plataforma compatíveis para expandir um sistema AFF ou FAS em uma configuração IP MetroCluster:
 
-image::../media/mccip_expand_ip_8node_9161.png[Combinações de plataforma para configurações de 8 nós]
+image::../media/mccip_expand_ip_8node_9161-updated.png[Combinações de plataforma para configurações de 8 nós]
 
 * *Nota 1*: ONTAP 9.9,1 ou posterior (ou a versão mínima do ONTAP suportada na plataforma) é necessária para estas combinações.
 * *Nota 2*: ONTAP 9.13,1 ou posterior (ou a versão mínima do ONTAP suportada na plataforma) é necessária para estas combinações.
@@ -208,7 +208,6 @@ Intervalos de VLAN válidos:
 
 * Ambos os grupos de DR usam as mesmas VLANs quando você expande de uma configuração de MetroCluster de quatro nós para oito nós.
 * Se ambos os grupos de DR não puderem ser configurados usando a mesma VLAN, você deverá atualizar o grupo de DR que não suporta o `vlan-id` parâmetro para usar uma VLAN suportada pelo outro grupo de DR.
-* Dependendo da versão do ONTAP, você pode alterar algumas propriedades da interface IP do MetroCluster após a configuração inicial. link:../maintain/task-modify-ip-netmask-properties.html["Modifique as propriedades de uma interface IP do MetroCluster"]Consulte para obter detalhes sobre o que é suportado.
 
 
 
@@ -693,6 +692,7 @@ cluster_A::>
 +
 [NOTE]
 ====
+** Não use endereços IP 169.254.17.x ou 169.254.18.x ao criar interfaces IP MetroCluster para evitar conflitos com endereços IP de interface gerados automaticamente pelo sistema no mesmo intervalo.
 ** Se suportado, você pode especificar uma VLAN diferente (não padrão) maior que 100 (entre 101 e 4095) usando o `-vlan-id` parâmetro no `metrocluster configuration-settings interface create` comando. <<Considerações para VLANs ao adicionar um novo grupo de DR>>Consulte para obter informações sobre a plataforma suportada.
 ** Você pode configurar as interfaces IP do MetroCluster a partir de qualquer cluster.
 
