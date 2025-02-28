@@ -1,60 +1,8 @@
 ---
 permalink: maintain/task_fb_hot_add_shelf_prepare_7500n.html 
-sidebar: sidebar 
-keywords: metrocluster, maintain, service, prepare, hot, add, sas, disk, shelves 
-summary: Preparar para adicionar um compartimento de disco SAS a quente envolve o download de documentos, bem como o firmware da unidade de disco e do compartimento de disco. 
+redirect: ontap-metrocluster/maintain/task_fb_hot_add_a_disk_shelf_install_7500n.html 
 ---
-= Preparação para gavetas de disco SAS hot-add
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
-
-
-[role="lead"]
-Preparar para adicionar um compartimento de disco SAS a quente envolve o download de documentos, bem como o firmware da unidade de disco e do compartimento de disco.
-
-* Seu sistema deve ser uma configuração com suporte e ter uma versão com suporte do ONTAP.
-* Todas as unidades de disco e compartimentos de disco no sistema devem estar executando a versão de firmware mais recente.
-+
-Talvez você queira atualizar o firmware do disco e do compartimento em toda a configuração do MetroCluster antes de adicionar gavetas.
-
-+
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["Atualize, reverta ou downgrade"]
-
-
-
-
-NOTE: Uma combinação de IOM12 módulos e IOM6 módulos é suportada dentro da mesma pilha se o sistema estiver executando uma versão suportada do ONTAP. Para determinar se a sua versão do ONTAP suporta a mistura de prateleiras, consulte o link:https://imt.netapp.com/matrix/["Ferramenta de Matriz de interoperabilidade (IMT)"^]. Se a sua versão do ONTAP não for suportada e você não puder atualizar ou fazer o downgrade dos módulos IOM na stack existente ou na nova gaveta que deve ser adicionada a uma combinação suportada de módulos IOM, você precisará fazer um dos seguintes procedimentos:
-
-* Inicie uma nova pilha em uma nova porta SAS (se suportada pelo par de pontes).
-* Inicie uma nova pilha em um par de pontes adicional.
-
-
-.Passos
-. Faça o download ou veja os seguintes documentos no site de suporte da NetApp:
-+
-** https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"]
-** O _Installation Guide_ para o modelo do seu compartimento de disco.
-
-
-. Verifique se o compartimento de disco que você está adicionando a quente é suportado.
-+
-https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"]
-
-. Transfira o firmware mais recente do compartimento de disco e disco:
-+
-
-NOTE: Nesta etapa, você só está completando a parte de download das instruções fornecidas nos links. Você precisa seguir as etapas encontradas na link:task_fb_hot_add_a_disk_shelf_install_7500n.html["Adição automática de um compartimento de disco"]seção para instalar o compartimento de disco.
-
-+
-.. Faça download do firmware do disco e faça uma cópia das instruções de firmware do disco para referência posterior.
-+
-https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["Downloads do NetApp: Firmware da unidade de disco"]
-
-.. Faça download do firmware do compartimento de disco e faça uma cópia das instruções de firmware do compartimento de disco para referência posteriormente.
-+
-https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["Downloads do NetApp: Firmware da gaveta de disco"]
-
-
 
 

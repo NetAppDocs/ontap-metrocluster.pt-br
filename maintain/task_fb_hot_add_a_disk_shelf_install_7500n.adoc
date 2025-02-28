@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, add, disk, shelf 
 summary: É possível adicionar um compartimento de disco a quente quando quiser aumentar o storage sem reduzir a performance. 
 ---
-= Adição automática de um compartimento de disco
+= Adicionar um compartimento de disco SAS a uma stack de gavetas de disco SAS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,14 +13,79 @@ summary: É possível adicionar um compartimento de disco a quente quando quiser
 [role="lead"]
 É possível adicionar um compartimento de disco a quente quando quiser aumentar o storage sem reduzir a performance.
 
-* O sistema deve satisfazer todos os requisitos da link:task_fb_hot_add_shelf_prepare_7500n.html["Preparação para gavetas de disco SAS hot-add"].
-* Para adicionar uma gaveta a quente, seu ambiente precisa atender a um dos cenários a seguir:
+
+
+== Etapa 1: Prepare-se para adicionar um compartimento de disco SAS a quente
+
+Para se preparar para adicionar um compartimento de disco SAS a quente, você precisa baixar documentos juntamente com a unidade de disco e o firmware do compartimento de disco.
+
+.Antes de começar
+* Verifique se o seu sistema é uma configuração suportada e está a executar uma versão suportada do ONTAP.
+* Verifique se todas as unidades de disco e compartimentos de disco no sistema estão executando a versão de firmware mais recente.
++
+Talvez você queira atualizar o firmware do disco e do compartimento em toda a configuração do MetroCluster antes de adicionar gavetas.
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["Atualize, reverta ou downgrade"]
+
+
+
+[NOTE]
+====
+Uma combinação de IOM12 módulos e IOM6 módulos é suportada dentro da mesma pilha se o sistema estiver executando uma versão ONTAP suportada. Para determinar se a versão do ONTAP suporta a mistura de prateleiras, consulte o link:https://imt.netapp.com/matrix/["Ferramenta de Matriz de interoperabilidade (IMT)"^]. Se a sua versão do ONTAP não for suportada e você não puder atualizar ou fazer o downgrade dos módulos IOM na stack existente ou na nova gaveta que deve ser adicionada a uma combinação suportada de módulos IOM, você precisará fazer um dos seguintes procedimentos:
+
+* Inicie uma nova pilha em uma nova porta SAS (se suportada pelo par de pontes).
+* Inicie uma nova pilha em um par de pontes adicional.
+
+
+====
+.Passos
+. Faça o download ou veja os seguintes documentos no site de suporte da NetApp:
++
+** https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade"]
+** O _Installation Guide_ para o modelo do seu compartimento de disco.
+
+
+. Verifique se o compartimento de disco que você está adicionando a quente é suportado.
++
+https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade"^]
+
+. Transfira o firmware mais recente do compartimento de disco e disco:
++
+
+NOTE: Nesta etapa, você só conclui a parte de download das instruções. Você precisa seguir as etapas em <<step_2_hot_add_shelf,adicionar um compartimento de disco a quente>> para instalar o compartimento de disco.
+
++
+.. Faça download do firmware do disco e faça uma cópia das instruções de firmware do disco para referência posterior.
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["Downloads do NetApp: Firmware da unidade de disco"^]
+
+.. Faça download do firmware do compartimento de disco e faça uma cópia das instruções de firmware do compartimento de disco para referência posteriormente.
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["Downloads do NetApp: Firmware da gaveta de disco"^]
+
+
+
+
+
+
+
+== Etapa 2: Adicionar um compartimento de disco a quente
+
+Use o procedimento a seguir para adicionar um compartimento de disco a uma pilha.
+
+.Antes de começar
+* Verifique se o sistema atende a todos os requisitos do <<prepare_to_hot_add_disk,Prepare-se para gavetas de disco SAS hot-add>>.
+* Verifique se o seu ambiente atende a um dos seguintes cenários antes de adicionar um compartimento a quente:
 +
 ** Você tem duas pontes do FibreBridge 7500N conetadas a uma pilha de gavetas de disco SAS.
 ** Você tem duas pontes do FibreBridge 7600N conetadas a uma pilha de gavetas de disco SAS.
 ** Você tem uma ponte FibreBridge 7500N e uma ponte FibreBridge 7600N conetada a uma pilha de gavetas de disco SAS.
 
 
+
+
+.Sobre esta tarefa
 * Esse procedimento serve para adicionar um compartimento de disco à última gaveta de disco em uma pilha.
 +
 Este procedimento é escrito com o pressuposto de que o último compartimento de disco em uma stack está conetado da IOM A à ponte A e da IOM B à ponte B.
@@ -29,22 +94,22 @@ Este procedimento é escrito com o pressuposto de que o último compartimento de
 * Você deve adicionar um número igual de compartimentos de disco em cada local.
 * Se você estiver adicionando mais de um compartimento de disco, adicione um compartimento de disco de cada vez.
 +
-
-NOTE: Cada par de pontes FibreBridge 7500N ou 7600N pode suportar até quatro pilhas.
-
+Cada par de pontes FibreBridge 7500N ou 7600N pode suportar até quatro pilhas.
 
 
 
-IMPORTANT: Adicionar um compartimento de disco requer que você atualize o firmware da unidade de disco no compartimento de disco hot-added executando o `storage disk firmware update` comando no modo avançado. A execução deste comando pode causar interrupções se o firmware nas unidades de disco existentes no seu sistema for uma versão mais antiga.
+[CAUTION]
+====
+Adicionar um compartimento de disco requer que você atualize o firmware da unidade de disco no compartimento de disco hot-added executando o `storage disk firmware update` comando no modo avançado. A execução deste comando pode causar interrupções se o firmware nas unidades de disco existentes no seu sistema for uma versão mais antiga.
 
+Se você inserir um cabo SAS na porta errada, depois de remover o cabo de uma porta SAS, aguarde pelo menos 120 segundos antes de conetar o cabo a uma porta SAS diferente. Se você não conseguir fazer isso, o sistema não reconhecerá que você moveu o cabo para uma porta diferente.
 
-IMPORTANT: Se você inserir um cabo SAS na porta errada, ao remover o cabo de uma porta SAS, deverá aguardar pelo menos 120 segundos antes de conetar o cabo a uma porta SAS diferente. Se não o fizer, o sistema não reconhecerá que o cabo foi movido para outra porta.
-
+====
 .Passos
 . Aterre-se corretamente.
 . Verifique a conectividade do compartimento de disco a partir do console do sistema de qualquer controlador:
 +
-`*sysconfig -v*`
+`sysconfig -v`
 
 +
 A saída é semelhante ao seguinte:
@@ -74,12 +139,12 @@ cisco_A_1-1:9.126L2   : NETAPP   X421_HCOBD450A10 NA01 418.0GB (879097968 520B/s
 ----
 
 
-. Verifique se o sistema tem atribuição automática de disco ativada a partir do console de qualquer controlador:
+. Verifique se o sistema tem atribuição automática de disco ativada a partir da consola de qualquer controlador:
 +
-`*storage disk option show*`
+`storage disk option show`
 
 +
-A política de atribuição automática é mostrada na coluna atribuição automática.
+A política de atribuição automática é apresentada na coluna atribuição automática.
 
 +
 [listing]
@@ -98,15 +163,14 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gere
 +
 [NOTE]
 ====
-Se você estiver dividindo uma única pilha de compartimentos de disco entre duas controladoras, a atribuição automática de disco deve ser desativada antes de atribuir a propriedade de disco; caso contrário, quando você atribuir qualquer unidade de disco única, as unidades de disco restantes podem ser atribuídas automaticamente ao mesmo controlador e pool.
+** Se você estiver dividindo uma única pilha de compartimentos de disco entre dois controladores, a atribuição automática de disco deve ser desativada antes de atribuir a propriedade de disco; caso contrário, quando você atribuir qualquer unidade de disco única, as unidades de disco restantes podem ser atribuídas automaticamente ao mesmo controlador e pool.
++
+ `storage disk option modify -node <node-name> -autoassign off`O comando desativa a atribuição automática do disco.
 
- `storage disk option modify -node _node-name_ -autoassign off`O comando desativa a atribuição automática do disco.
+** Não é possível adicionar unidades a agregados ou volumes até que você tenha atualizado o firmware da unidade de disco e do compartimento de disco.
+
 
 ====
-+
-
-NOTE: As unidades de disco não devem ser adicionadas a agregados ou volumes até que o firmware da unidade de disco e do compartimento de disco tenham sido atualizados.
-
 . Atualize o firmware do compartimento de disco para a versão mais atual usando as instruções para o firmware baixado.
 +
 Você pode executar os comandos no procedimento a partir do console do sistema de qualquer controlador.
@@ -144,14 +208,14 @@ https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["Downlo
 
 +
 .. Mude para o nível de privilégio avançado
-`*set -privilege advanced*`
+`set -privilege advanced`
 +
 Você precisa responder com `*y*` quando solicitado para continuar no modo avançado e ver o prompt do modo avançado (*>).
 
 .. Atualize o firmware da unidade de disco para a versão mais atual a partir da consola do sistema
-`*storage disk firmware update*`
+`storage disk firmware update`
 .. Voltar para o nível de privilégio de administrador
-`*set -privilege admin*`
+`set -privilege admin`
 .. Repita as subetapas anteriores no outro controlador.
 
 
@@ -159,23 +223,23 @@ Você precisa responder com `*y*` quando solicitado para continuar no modo avan�
 +
 .. Verifique se o sistema é multipathed:
 +
-`*node run -node _node-name_ sysconfig -a*`
+`node run -node <node-name> sysconfig -a`
 
 .. Verifique se há alertas de integridade em ambos os clusters
-`*system health alert show*`
+`system health alert show`
 .. Confirme a configuração do MetroCluster e se o modo operacional está normal
-`*metrocluster show*`
+`metrocluster show`
 .. Execute uma verificação MetroCluster
-`*metrocluster check run*`
+`metrocluster check run`
 .. Apresentar os resultados da verificação MetroCluster:
 +
-`*metrocluster check show*`
+`metrocluster check show`
 
 .. Verifique se existem alertas de estado nos interrutores (se presentes):
 +
-`*storage switch show*`
+`storage switch show`
 
-.. Execute o Config Advisor.
+.. Execute o Active IQ Config Advisor.
 +
 https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"]
 

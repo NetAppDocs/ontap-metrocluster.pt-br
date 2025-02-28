@@ -17,7 +17,7 @@ Depois de inicializar cada nó, você será solicitado a executar a configuraç�
 * Você deve ter cabeado a configuração do MetroCluster.
 
 
-Se for necessário inicializar via rede os novos controladores, link:../upgrade/task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html#netboot-the-new-controllers["Netboot os novos módulos do controlador"]consulte .
+Se for necessário inicializar via rede os novos controladores, link:../upgrade/upgrade-mcc-ip-prepare-system.html#netboot-the-new-controllers["Netboot os novos módulos do controlador"]consulte .
 
 .Sobre esta tarefa
 Essa tarefa deve ser executada em ambos os clusters na configuração do MetroCluster.

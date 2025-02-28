@@ -3118,7 +3118,7 @@ Essas tarefas se aplicam somente a sistemas com pontes FC para SAS.
 Em uma configuração do MetroCluster conectado à malha, você precisa executar algumas etapas adicionais de configuração para monitorar os switches FC.
 
 
-NOTE: A partir de ONTAP 9.8, o `storage switch` comando é substituído por `system switch`. As etapas a seguir mostram o `storage switch` comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o `system switch` comando é preferido.
+NOTE: A partir de ONTAP 9.8, o `storage switch` comando é substituído por `system switch fibre-channel`. As etapas a seguir mostram o `storage switch` comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o `system switch fibre-channel` comando é preferido.
 
 .Passos
 . Adicione um switch com um endereço IP a cada nó do MetroCluster:

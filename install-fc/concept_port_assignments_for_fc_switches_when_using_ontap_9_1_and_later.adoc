@@ -4307,11 +4307,11 @@ FC1
 23
 
 |===
-você pode anexar pontes adicionais usando as portas 25 a 48 seguindo o mesmo padrão.
+Você pode anexar pontes adicionais usando as portas 25 a 48 seguindo o mesmo padrão.
 
 
 
-== Uso de porta Cisco para ISLs em uma configuração de oito nós em uma configuração MetroCluster executando o ONTAP 9.1 ou posterior
+== Uso de porta Cisco para ISLs em uma configuração de MetroCluster de oito nós executando o ONTAP 9,1 ou posterior
 
 A tabela a seguir mostra o uso da porta ISL. O uso da porta ISL é o mesmo em todos os switches na configuração.
 

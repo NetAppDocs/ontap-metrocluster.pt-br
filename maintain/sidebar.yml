@@ -87,11 +87,7 @@ entries:
         url: "/maintain/task_fb_hot_add_stack_of_shelves_and_bridges.html"
       - title: Adicionar um compartimento de disco SAS a uma stack de gavetas de disco
           SAS
-        entries:
-        - title: Preparação para gavetas de disco SAS hot-add
-          url: "/maintain/task_fb_hot_add_shelf_prepare_7500n.html"
-        - title: Adicione um compartimento de disco a quente
-          url: "/maintain/task_fb_hot_add_a_disk_shelf_install_7500n.html"
+        url: "/maintain/task_fb_hot_add_a_disk_shelf_install_7500n.html"
       - title: Adicione um compartimento de disco de IOM12 TB a uma stack de IOM6
           shelves de disco em uma configuração MetroCluster conetada a uma ponte
         url: "/maintain/task_hot_add_an_iom12_disk_shelf_to_a_stack_of_iom6_disk_shelves.html"

@@ -402,7 +402,6 @@
   <block id="968f63536cc26e1ac460060836284646" category="paragraph">bridge_x_8a</block>
   <block id="4409c993164a314b23d52edf9f7ddb07" category="paragraph">bridge_x_8b</block>
   <block id="de8504b73ea228d0ea9bbce69752092e" category="cell">Ponte</block>
-  <block id="4968e1c4a92e0df27646933918f92be2" category="section-title">Uso de porta Cisco para ISLs em uma configuração de oito nós em uma configuração MetroCluster executando o ONTAP 9.1 ou posterior</block>
   <block id="81cc761cd2e2757421a8e9242e8e12cc" category="paragraph">A tabela a seguir mostra o uso da porta ISL. O uso da porta ISL é o mesmo em todos os switches na configuração.</block>
   <block id="da1fe90f1a7c8d5426c9fb653143159c" category="inline-xref">Uso da porta ISL para Cisco 9132T em uma configuração MetroCluster executando o ONTAP 9.1 ou posterior</block>
   <block id="ebaff03f6ed502f4a413a1ce08e7b523" category="admonition">Para o Cisco 9132T, <block ref="745f667c2207ac60e33bebf6a26d4908" category="inline-xref-macro-rx"></block>consulte .</block>
@@ -2327,7 +2326,6 @@
   <block id="7271fe2deb2377f6fe3e360239e1a3ff" category="list-text">Se você usar uma rede dedicada para monitoramento de integridade, cada nó deve ter um LIF de gerenciamento de nós nessa rede dedicada.</block>
   <block id="9245afe84f46306a811d61036f2f5698" category="section-title">Configuração dos switches MetroCluster FC para monitoramento de integridade</block>
   <block id="6d8346a61b76a8b57a9dd1d8b8188d3f" category="paragraph">Em uma configuração do MetroCluster conectado à malha, você precisa executar algumas etapas adicionais de configuração para monitorar os switches FC.</block>
-  <block id="51070538b9cde5e5b54a8cbc07f43009" category="admonition">A partir de ONTAP 9.8, o<block ref="688266bc53c9ead911ef4b45027ac96a" prefix=" " category="inline-code"></block> comando é substituído por<block ref="de1f6d32042385fcaa11b87930ec5f53" prefix=" " category="inline-code"></block>. As etapas a seguir mostram o<block ref="688266bc53c9ead911ef4b45027ac96a" prefix=" " category="inline-code"></block> comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o<block ref="de1f6d32042385fcaa11b87930ec5f53" prefix=" " category="inline-code"></block> comando é preferido.</block>
   <block id="2699745f7ba3417d015d2b62691bd3b8" category="list-text">Adicione um switch com um endereço IP a cada nó do MetroCluster:</block>
   <block id="a4bed89e9f2e162a1bad93f81efe2681" category="paragraph">O comando executado depende se você está usando SNMPv2 ou SNMPv3.</block>
   <block id="bd041cb07dda4e5f8fbcf9fc40cd8e53" category="open-title">Adicione um switch usando SNMPv3:</block>
@@ -6673,7 +6671,6 @@
   <block id="08fcfce40ddd768f4ab6ad0534a40c73" category="paragraph"><block ref="08fcfce40ddd768f4ab6ad0534a40c73" category="inline-link-macro-rx"></block></block>
   <block id="4d8cac4d4c182ff6fe50e9fb53cc4d82" category="summary">Você deve redefinir e restaurar padrões nos módulos do controlador para garantir uma configuração limpa.</block>
   <block id="1ff31a738d26e47dfa5c26bac0568556" category="summary">Depois de inicializar cada nó, você será solicitado a executar a configuração básica do nó e do cluster. Depois de configurar o cluster, você retorna à CLI do ONTAP para criar agregados e criar a configuração do MetroCluster.</block>
-  <block id="a629fe794ff2e51df541a99e4468ebb2" category="paragraph">Se for necessário inicializar via rede os novos controladores, <block ref="a7e3b7fa9390de21e9e66df9d4048c53" category="inline-link-macro-rx"></block>consulte .</block>
   <block id="6ac62fa13c69ad320702cd9a98f97b12" category="list-text">Ligue cada nó no site local se você ainda não o fez e deixe todos iniciarem completamente.</block>
   <block id="c77851b696911673647cb7bed20ed179" category="paragraph">Se o sistema estiver no modo Manutenção, você precisará emitir o comando halt para sair do modo Manutenção e, em seguida, emitir o<block ref="ce54ef17bebf280339d340bd40dff593" prefix=" " category="inline-code"></block> comando para inicializar o sistema e chegar à configuração do cluster.</block>
   <block id="2c4ba3dc166bed104e5a7cb242a33b52" category="list-text">No primeiro nó em cada cluster, prossiga pelos prompts para configurar o cluster.</block>
@@ -8188,9 +8185,6 @@
   <block id="fa76faa2bc68c42d3d664aab14f9b476" category="paragraph">O exemplo a seguir mostra que as portas SAS C e D foram desativadas. Observe que o asterisco não aparece mais, indicando que a configuração foi salva.</block>
   <block id="7692cf69e09d1b6c2d8bea7841918e4c" category="list-text">Repita a etapa anterior na ponte FC-para-SAS inferior.</block>
   <block id="0f03e15eba6bd2b5d72c3bf12b9e6464" category="summary">É possível adicionar um compartimento de disco a quente quando quiser aumentar o storage sem reduzir a performance.</block>
-  <block id="85c019b69442635697fc1b5b3f6cfad3" category="inline-link-macro">Preparação para gavetas de disco SAS hot-add</block>
-  <block id="e57ca4b3df83a88b6254675613163df0" category="list-text">O sistema deve satisfazer todos os requisitos da <block ref="08d6c3cbf42a81a0c26843f87c874545" category="inline-link-macro-rx"></block>.</block>
-  <block id="5c96ab4a94ce2c03e50e3170dc50e8be" category="list-text">Para adicionar uma gaveta a quente, seu ambiente precisa atender a um dos cenários a seguir:</block>
   <block id="dc7e96665a67891a688cad5299c9216d" category="list-text">Você tem duas pontes do FibreBridge 7500N conetadas a uma pilha de gavetas de disco SAS.</block>
   <block id="9abd59a18f57d6cb4282adb209f8b563" category="list-text">Você tem duas pontes do FibreBridge 7600N conetadas a uma pilha de gavetas de disco SAS.</block>
   <block id="fc35f0bbf60965f7ec34001ad687a3f3" category="list-text">Você tem uma ponte FibreBridge 7500N e uma ponte FibreBridge 7600N conetada a uma pilha de gavetas de disco SAS.</block>
@@ -8202,18 +8196,10 @@
   <block id="4854106a7e78843664930c4dc2100549" category="admonition">Cada par de pontes FibreBridge 7500N ou 7600N pode suportar até quatro pilhas.</block>
   <block id="2d0d17a81f0643f24076c9d6053d77c6" category="admonition">Adicionar um compartimento de disco requer que você atualize o firmware da unidade de disco no compartimento de disco hot-added executando o<block ref="da6a6b7cd3f4972b2a5426b567597f96" prefix=" " category="inline-code"></block> comando no modo avançado. A execução deste comando pode causar interrupções se o firmware nas unidades de disco existentes no seu sistema for uma versão mais antiga.</block>
   <block id="6cf82bfa742937a27072b88c527e1707" category="list-text">Verifique a conectividade do compartimento de disco a partir do console do sistema de qualquer controlador:</block>
-  <block id="14eed54cda8c3aab4e76c858751a1903" category="paragraph"><block ref="b69a08e3a245ecaded81bdc0df023669" prefix="" category="inline-code"></block></block>
   <block id="e9a0680136bcf6c65f2b08336c359725" category="paragraph">A saída é semelhante ao seguinte:</block>
   <block id="71acbd7b99f4163d9bdf49cc4896c1d8" category="list-text">Cada ponte em uma linha separada e sob cada porta FC à qual ela é visível; por exemplo, adicionar um compartimento de disco a um conjunto de bridgeBridge 7500N resulta na seguinte saída:</block>
   <block id="ee60b9bc622c703e1065f07dcdc02e73" category="list-text">Cada compartimento de disco em uma linha separada sob cada porta FC à qual ele é visível:</block>
   <block id="4f4cc17134e7a0dec2fd6c91d9961c0e" category="list-text">Cada unidade de disco em uma linha separada sob cada porta FC para a qual ela é visível:</block>
-  <block id="12c600f2f4991508e5f17240b49e8493" category="list-text">Verifique se o sistema tem atribuição automática de disco ativada a partir do console de qualquer controlador:</block>
-  <block id="128d6bb86b0214622ee2f48931f27dc8" category="paragraph"><block ref="d657fc9a7a565dff61fc29c4771341b5" prefix="" category="inline-code"></block></block>
-  <block id="3afff8040872589b8f259af1b1b02113" category="paragraph">A política de atribuição automática é mostrada na coluna atribuição automática.</block>
-  <block id="37ecabf9d8255c1ef714fdd4b6878eb6" category="list-text">Se o sistema não tiver atribuição automática de disco ativada ou se as unidades de disco na mesma pilha forem de propriedade de ambos os controladores, atribua unidades de disco aos pools apropriados.</block>
-  <block id="21dc7cf52756619aa7572059edd48927" category="paragraph">Se você estiver dividindo uma única pilha de compartimentos de disco entre duas controladoras, a atribuição automática de disco deve ser desativada antes de atribuir a propriedade de disco; caso contrário, quando você atribuir qualquer unidade de disco única, as unidades de disco restantes podem ser atribuídas automaticamente ao mesmo controlador e pool.</block>
-  <block id="c6a74b565a0bfaf4ae27e4430afa45d3" category="paragraph"><block ref="288479a9c6226aa028a286d1be971626" prefix=" " category="inline-code"></block>O comando desativa a atribuição automática do disco.</block>
-  <block id="5b63e4a9bc611666d00f442d845ec5c6" category="admonition">As unidades de disco não devem ser adicionadas a agregados ou volumes até que o firmware da unidade de disco e do compartimento de disco tenham sido atualizados.</block>
   <block id="8a58a56b38ad1b914e9565360ad9f6b0" category="list-text">Atualize o firmware do compartimento de disco para a versão mais atual usando as instruções para o firmware baixado.</block>
   <block id="03aa0e95dbfb628416dcdc56332bc6b4" category="paragraph">Você pode executar os comandos no procedimento a partir do console do sistema de qualquer controlador.</block>
   <block id="6805cea5c8147284b27002a3dfc8e4af" category="inline-link">Downloads do NetApp: Firmware da gaveta de disco</block>
@@ -8230,30 +8216,23 @@
   <block id="345e380efa5afa2a2afb3abe3096922a" category="list-text">Atualize o firmware da unidade de disco para a versão mais atual a partir da consola do sistema.</block>
   <block id="9b862d0c04151d954efe49c5341a3541" category="inline-link">Downloads do NetApp: Firmware da unidade de disco</block>
   <block id="6d8db2137b9e061e374fe522ee024f3c" category="paragraph"><block ref="6d8db2137b9e061e374fe522ee024f3c" category="inline-link-rx"></block></block>
-  <block id="7c4d248493f91032503b9fa1ff16b78a" category="list-text">Mude para o nível de privilégio avançado<block ref="69cfa26d6e6345bb4eef9a298daa32f3" prefix=" " category="inline-code"></block></block>
   <block id="f20ec4a663953b8413f93cdcbc65817b" category="paragraph">Você precisa responder com<block ref="13a9c4ec1810b3cc11a9e77c220f41c9" prefix=" " category="inline-code"></block> quando solicitado para continuar no modo avançado e ver o prompt do modo avançado (*&gt;).</block>
-  <block id="0ffb0a1b769b7a5cb0f4a4adc97d95ff" category="list-text">Atualize o firmware da unidade de disco para a versão mais atual a partir da consola do sistema<block ref="b7f15bbb562e83813b06727133789742" prefix=" " category="inline-code"></block></block>
-  <block id="87576e79d18b52132e5cb37d09d7cf8b" category="list-text">Voltar para o nível de privilégio de administrador<block ref="d5ca624cb3a7e6be13a829c838df3f7b" prefix=" " category="inline-code"></block></block>
   <block id="06157b5d60c5ad595acb6690d509af40" category="list-text">Repita as subetapas anteriores no outro controlador.</block>
   <block id="fa634ad56afbbccc6627976c9b99f372" category="paragraph"><block ref="980128e66cbc950381050e9f0f63328d" prefix="" category="inline-code"></block></block>
   <block id="f651a97719cc15e1caa3c5174bbfe1c5" category="list-text">Verifique se há alertas de integridade em ambos os clusters<block ref="2276e1ddeca4d4fe74d3a3b8adf6cdda" prefix=" " category="inline-code"></block></block>
   <block id="72fef016a314fe19829bf53a238ef0d5" category="paragraph"><block ref="4a17c7fe0d64ac54ba1ec5e6a7dcbaa9" prefix="" category="inline-code"></block></block>
   <block id="4ee78dd22a95c5815f5b6e1e4acc364b" category="paragraph"><block ref="3e23026a2bd29e421f319572a9111881" prefix="" category="inline-code"></block></block>
-  <block id="b6c8d49615b2216ec73c49f38815ee2b" category="list-text">Se você estiver adicionando mais de um compartimento de disco a quente, repita as etapas anteriores para cada compartimento de disco que você está adicionando a quente.</block>
-  <block id="5cb7ce670094889d3c954b543759f688" category="summary">Preparar para adicionar um compartimento de disco SAS a quente envolve o download de documentos, bem como o firmware da unidade de disco e do compartimento de disco.</block>
   <block id="98f4bbee1fe7223d4a878a15a9e719ad" category="list-text">Seu sistema deve ser uma configuração com suporte e ter uma versão com suporte do ONTAP.</block>
   <block id="79fb12280740c382675b2f2b02401b80" category="list-text">Todas as unidades de disco e compartimentos de disco no sistema devem estar executando a versão de firmware mais recente.</block>
   <block id="623d27fb1a71775c853589b6aa232fcb" category="paragraph">Talvez você queira atualizar o firmware do disco e do compartimento em toda a configuração do MetroCluster antes de adicionar gavetas.</block>
   <block id="c3204e26e12ab80395709eeaa0f8642d" category="paragraph"><block ref="c3204e26e12ab80395709eeaa0f8642d" category="inline-link-rx"></block></block>
   <block id="c9dd6bad4c7d561872f2e2d498a990bf" category="inline-link-macro">Ferramenta de Matriz de interoperabilidade (IMT)</block>
-  <block id="520ac91f29d97371c4fac829efc70617" category="admonition">Uma combinação de IOM12 módulos e IOM6 módulos é suportada dentro da mesma pilha se o sistema estiver executando uma versão suportada do ONTAP. Para determinar se a sua versão do ONTAP suporta a mistura de prateleiras, consulte o <block ref="cd3982462c40dc1b1a511ada7c72bab9" category="inline-link-macro-rx"></block>. Se a sua versão do ONTAP não for suportada e você não puder atualizar ou fazer o downgrade dos módulos IOM na stack existente ou na nova gaveta que deve ser adicionada a uma combinação suportada de módulos IOM, você precisará fazer um dos seguintes procedimentos:</block>
   <block id="64974d0b5eb2e258428a89835ce229c9" category="list-text">Inicie uma nova pilha em uma nova porta SAS (se suportada pelo par de pontes).</block>
   <block id="ad45a06e82c1f0983fdfd0e3d30dc8f8" category="list-text">Inicie uma nova pilha em um par de pontes adicional.</block>
   <block id="b7b17808a6e64c132f3bf8c4f253b38d" category="list-text">Faça o download ou veja os seguintes documentos no site de suporte da NetApp:</block>
   <block id="8e916218cb72668e639a5859eade4041" category="list-text">O _Installation Guide_ para o modelo do seu compartimento de disco.</block>
   <block id="55276018e99703958158b6e0fb364ef6" category="list-text">Verifique se o compartimento de disco que você está adicionando a quente é suportado.</block>
   <block id="a1ea1902849dc9b29d8207ac18e4b9be" category="list-text">Transfira o firmware mais recente do compartimento de disco e disco:</block>
-  <block id="680f2c91c58cc6532106b87cb564cc68" category="admonition">Nesta etapa, você só está completando a parte de download das instruções fornecidas nos links. Você precisa seguir as etapas encontradas na <block ref="47adb28a466429763b049bd78d160e0f" category="inline-link-macro-rx"></block>seção para instalar o compartimento de disco.</block>
   <block id="a2624d2fcb6a24cb4e50b81563b7fea1" category="list-text">Faça download do firmware do disco e faça uma cópia das instruções de firmware do disco para referência posterior.</block>
   <block id="dc4e77926f5cef0f0ad064c20c5a7d0e" category="list-text">Faça download do firmware do compartimento de disco e faça uma cópia das instruções de firmware do compartimento de disco para referência posteriormente.</block>
   <block id="556bbef84d582c44d275b1d259773581" category="paragraph">Você pode adicionar sem interrupções (adicionar sem interrupções) uma stack inteira, incluindo pontes, ao sistema MetroCluster. Deve haver portas disponíveis nos switches FC e você deve atualizar o zoneamento do switch para refletir as alterações.</block>
@@ -13846,7 +13825,6 @@
   <block id="8d07a21c40606b1098d1a2ff5a5b5f1c" category="sidebar">Adicione uma stack de gavetas de disco SAS a um par existente de bridgeBridge 7500N</block>
   <block id="8780e2c60443de7cb84cd78e41b4b572" category="sidebar">Adicione uma stack de shelves de disco SAS e bridges a um sistema MetroCluster</block>
   <block id="404bb11b70239a316af681095fbdeff7" category="sidebar">Adicionar um compartimento de disco SAS a uma stack de gavetas de disco SAS</block>
-  <block id="46738ba3e846392ff7b6408dfb3589f6" category="sidebar">Adicione um compartimento de disco a quente</block>
   <block id="26efac9be7856206ad935a9151a6a64c" category="sidebar">Adicione um compartimento de disco de IOM12 TB a uma stack de IOM6 shelves de disco em uma configuração MetroCluster conetada a uma ponte</block>
   <block id="cabfdbae66cbee4984c63ed2d5544390" category="sidebar">Storage de remoção automática de uma configuração MetroCluster FC</block>
   <block id="98e0abbb33a3ee2f9258bc3cb733233b" category="sidebar">Desligue toda uma configuração do MetroCluster FC</block>
@@ -14566,7 +14544,6 @@
   <block id="391ee14bc6581827dc4f2d88ff91afcf" category="paragraph">Você pode anexar pontes adicionais para um segundo grupo de DR ou uma segunda configuração de MetroCluster usando as portas 33 a 40 seguindo o mesmo padrão.</block>
   <block id="785ca789cd5d47a1b40d11e4fa3a608a" category="paragraph">Você pode anexar pontes adicionais para um segundo grupo de DR ou uma segunda configuração de MetroCluster usando as portas 25 a 48 seguindo o mesmo padrão.</block>
   <block id="3914736797bebae05c8e9387dd6727f0" category="paragraph">As tabelas a seguir mostram o uso da porta de ponte ao usar pontes FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2). Para pontes FibreBridge 7500N ou 7600N usando uma porta FC, você pode fazer o cabo FC1 ou FC2 para a porta indicada como FC1. Você também pode anexar pontes adicionais usando as portas 25-48.</block>
-  <block id="8e92988c7461b180dbee8d97f92e6742" category="paragraph">você pode anexar pontes adicionais usando as portas 25 a 48 seguindo o mesmo padrão.</block>
   <block id="23a48f21ed38a9e3df523f469f325385" category="paragraph">As tabelas a seguir mostram o uso da porta em um switch Cisco 9132T.</block>
   <block id="b38a704e8751bf228cfb309f0668b3e1" category="section-title">Configurações de controladora usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2)</block>
   <block id="2d98516f0953aef9ad21de45b1d6ed89" category="paragraph">A tabela a seguir mostra as configurações do controlador usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2). As tabelas mostram o máximo de configurações suportadas com quatro e oito módulos de controladores em dois grupos de DR.</block>
@@ -14622,4 +14599,36 @@
   <block id="6750be268fde99a8fc70da3cae96763b" category="cell"><block ref="dc13cd459e510658615266395ba927b0" category="inline-xref-macro-rx"></block></block>
   <block id="3485285ca38e1ca4c0a680f9bcf47989" category="admonition">Se os controladores antigos e novos não tiverem uma porta comum, não será necessário modificar as LIFs de dados. Pule esta etapa e vá diretamente para <block ref="d2fd743661c244ff041df8d51a55b2b7" category="inline-xref-macro-rx"></block>.</block>
   <block id="57e1aa86ef1214c6b5a618674a806136" category="paragraph">Todos os LIFs de dados, incluindo SAN e nas, serão administradores e operacionais "próprios", uma vez que eles estão ativos no local de comutação (cluster_A).</block>
+  <block id="10a71a5f735ab2b1b550a2d004b57ffb" category="paragraph">Você pode anexar pontes adicionais usando as portas 25 a 48 seguindo o mesmo padrão.</block>
+  <block id="937a8da9d8c2c67fd94deda08131bfdd" category="section-title">Uso de porta Cisco para ISLs em uma configuração de MetroCluster de oito nós executando o ONTAP 9,1 ou posterior</block>
+  <block id="3940782c6ee1e8e37bce75ab000a6d7d" category="admonition">Para maior segurança, a NetApp recomenda que você configure SNMPv2 ou SNMPv3 para monitorar o estado do switch.</block>
+  <block id="0d81f0b5554e85bb5f4956551639b630" category="admonition">A partir de ONTAP 9.8, o<block ref="688266bc53c9ead911ef4b45027ac96a" prefix=" " category="inline-code"></block> comando é substituído por<block ref="07a3b9d70f925392ee8d0581b56ebc10" prefix=" " category="inline-code"></block>. As etapas a seguir mostram o<block ref="688266bc53c9ead911ef4b45027ac96a" prefix=" " category="inline-code"></block> comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o<block ref="07a3b9d70f925392ee8d0581b56ebc10" prefix=" " category="inline-code"></block> comando é preferido.</block>
+  <block id="c8b1f4f0bee22e8e9a9aaaca29899782" category="paragraph">Se for necessário inicializar via rede os novos controladores, <block ref="afb88e8c89f7c0d7fb7d1ebfbdc283e2" category="inline-link-macro-rx"></block>consulte .</block>
+  <block id="a6aee16f598d71d2363e2ad405b96904" category="section-title">Etapa 1: Prepare-se para adicionar um compartimento de disco SAS a quente</block>
+  <block id="cd4905b4e7a5872ce137a31e09bec11f" category="paragraph">Para se preparar para adicionar um compartimento de disco SAS a quente, você precisa baixar documentos juntamente com a unidade de disco e o firmware do compartimento de disco.</block>
+  <block id="1078b9b6fada180d5d2977e8dc4eb310" category="list-text">Verifique se o seu sistema é uma configuração suportada e está a executar uma versão suportada do ONTAP.</block>
+  <block id="a68f0e2c7746e4949e616e09deefa430" category="list-text">Verifique se todas as unidades de disco e compartimentos de disco no sistema estão executando a versão de firmware mais recente.</block>
+  <block id="658991cef9031aff484b78a0f664f5f0" category="paragraph">Talvez você queira atualizar o firmware do disco e do compartimento em toda a configuração do MetroCluster antes de adicionar gavetas.</block>
+  <block id="7cbe99d38a9a2492f41bfc34788b6fac" category="paragraph">Uma combinação de IOM12 módulos e IOM6 módulos é suportada dentro da mesma pilha se o sistema estiver executando uma versão ONTAP suportada. Para determinar se a versão do ONTAP suporta a mistura de prateleiras, consulte o <block ref="cd3982462c40dc1b1a511ada7c72bab9" category="inline-link-macro-rx"></block>. Se a sua versão do ONTAP não for suportada e você não puder atualizar ou fazer o downgrade dos módulos IOM na stack existente ou na nova gaveta que deve ser adicionada a uma combinação suportada de módulos IOM, você precisará fazer um dos seguintes procedimentos:</block>
+  <block id="918d32b75f0ab883abba3a8dc0c3ae8d" category="inline-link">Ferramenta de Matriz de interoperabilidade</block>
+  <block id="5ea32bc696ea7fb5909f26eb6fb24417" category="list-text"><block ref="5ea32bc696ea7fb5909f26eb6fb24417" category="inline-link-rx"></block></block>
+  <block id="0f0f148d21dd2972977d97fb2e7ff5e9" category="paragraph"><block ref="0f0f148d21dd2972977d97fb2e7ff5e9" category="inline-link-rx"></block></block>
+  <block id="8645e21bfe6e4af4b86dc7f347ff1ad6" category="inline-xref">adicionar um compartimento de disco a quente</block>
+  <block id="b3394ffae831094f34a567e6f5658dfb" category="admonition">Nesta etapa, você só conclui a parte de download das instruções. Você precisa seguir as etapas em <block ref="bd373ad10590b532f39995f449879640" category="inline-xref-macro-rx"></block> para instalar o compartimento de disco.</block>
+  <block id="cbeb50ea11dcfbcf2a36bc8effcd7514" category="section-title">Etapa 2: Adicionar um compartimento de disco a quente</block>
+  <block id="c206cf1f63422466bcc0a56ffa34123c" category="paragraph">Use o procedimento a seguir para adicionar um compartimento de disco a uma pilha.</block>
+  <block id="d465e46678961f39056474479053b77c" category="inline-xref">Prepare-se para gavetas de disco SAS hot-add</block>
+  <block id="28c3aa6a67e1038d45e0f61906e2d210" category="list-text">Verifique se o sistema atende a todos os requisitos do <block ref="c0573ce1dde2ba325b85f674f143ecea" category="inline-xref-macro-rx"></block>.</block>
+  <block id="0c91ecf1246b9e97873b4360209bb137" category="list-text">Verifique se o seu ambiente atende a um dos seguintes cenários antes de adicionar um compartimento a quente:</block>
+  <block id="9fec734595e2181d9080ae32be062c8e" category="paragraph">Se você inserir um cabo SAS na porta errada, depois de remover o cabo de uma porta SAS, aguarde pelo menos 120 segundos antes de conetar o cabo a uma porta SAS diferente. Se você não conseguir fazer isso, o sistema não reconhecerá que você moveu o cabo para uma porta diferente.</block>
+  <block id="6d23583b72982551e4b1285062f3285d" category="list-text">Verifique se o sistema tem atribuição automática de disco ativada a partir da consola de qualquer controlador:</block>
+  <block id="109bce5ec1f0d60b99a07c70667f9ec6" category="paragraph">A política de atribuição automática é apresentada na coluna atribuição automática.</block>
+  <block id="d34edb1bb0aabf3ee05da705ddbc6721" category="list-text">Se o sistema não tiver atribuição automática de disco ativada ou se as unidades de disco na mesma pilha forem de propriedade de ambos os controladores, atribua unidades de disco aos pools apropriados.</block>
+  <block id="d5d63af17881e8ca258c6181c1cfda6f" category="list-text">Se você estiver dividindo uma única pilha de compartimentos de disco entre dois controladores, a atribuição automática de disco deve ser desativada antes de atribuir a propriedade de disco; caso contrário, quando você atribuir qualquer unidade de disco única, as unidades de disco restantes podem ser atribuídas automaticamente ao mesmo controlador e pool.</block>
+  <block id="dbde8ddb53b3da1d0f1fca94208162fb" category="paragraph"><block ref="525fe6a472b1a0c1313c938f9357b6f3" prefix=" " category="inline-code"></block>O comando desativa a atribuição automática do disco.</block>
+  <block id="f8133ef8bfee82369ae5763e817990e8" category="list-text">Não é possível adicionar unidades a agregados ou volumes até que você tenha atualizado o firmware da unidade de disco e do compartimento de disco.</block>
+  <block id="13985cb259a6148e54b3c766e90f12d3" category="list-text">Mude para o nível de privilégio avançado<block ref="0581d0d071ad835f74bf419081ce5d75" prefix=" " category="inline-code"></block></block>
+  <block id="1925007e066bed6950af241a5bb2641e" category="list-text">Atualize o firmware da unidade de disco para a versão mais atual a partir da consola do sistema<block ref="da6a6b7cd3f4972b2a5426b567597f96" prefix=" " category="inline-code"></block></block>
+  <block id="0dfe9ec4ea6b3d29900dd8df5b21179e" category="list-text">Execute o Active IQ Config Advisor.</block>
+  <block id="c4d48c87201e87b08fdc19bd686fd707" category="list-text">Se você estiver adicionando mais de um compartimento de disco a quente, repita as etapas anteriores para cada compartimento de disco que você está adicionando a quente.</block>
 </blocks>
