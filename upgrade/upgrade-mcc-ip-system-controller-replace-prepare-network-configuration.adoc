@@ -28,11 +28,46 @@ A operação de automação inicia as operações de comutação. Depois que ess
 +
 `boot_ontap`
 
-. Se o sistema para o qual você está atualizando NÃO estiver na tabela a seguir, verifique se as interfaces IP do MetroCluster estão usando endereços IP suportados.
+. Se o sistema para o qual você está atualizando usar *portas de cluster/HA compartilhadas*, verifique se as interfaces IP do MetroCluster estão usando endereços IP suportados.
 +
+Use as seguintes informações para determinar se o novo sistema usa portas de cluster/HA compartilhadas:
+
++
+[role="tabbed-block"]
+====
+.Portas de cluster/HA compartilhadas
+--
+Os sistemas listados na tabela a seguir usam portas de cluster/HA compartilhadas:
+
+[cols="2*"]
 |===
+| Sistemas AFF e ASA | Sistemas FAS 
 
 
+ a| 
+** AFF A20
+** AFF A30
+** AFF C30
+** AFF A50
+** AFF C60
+** AFF C80
+** AFF A70
+** AFF A90
+** AFF A1K
+
+ a| 
+** FAS70
+** FAS90
+
+
+|===
+--
+.Portas MetroCluster/HA compartilhadas
+--
+Os sistemas listados na tabela a seguir usam portas MetroCluster/HA compartilhadas:
+
+[cols="2*"]
+|===
 | Sistemas AFF e ASA | Sistemas FAS 
 
 
@@ -61,6 +96,8 @@ A operação de automação inicia as operações de comutação. Depois que ess
 
 
 |===
+--
+====
 +
 .. Verifique os endereços IP das interfaces MetroCluster nos controladores antigos:
 +
@@ -69,7 +106,7 @@ A operação de automação inicia as operações de comutação. Depois que ess
 .. Se as interfaces MetroCluster estiverem usando endereços IP 169.254.17.x ou 169.254.18.x, link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/How_to_modify_the_properties_of_a_MetroCluster_IP_interface["O artigo da base de dados de Conhecimento "como modificar as propriedades de uma interface IP do MetroCluster""^]consulte para modificar os endereços IP da interface antes de prosseguir com a atualização.
 +
 
-CAUTION: A atualização para qualquer sistema que não esteja listado na tabela não é suportada se as interfaces MetroCluster estiverem configuradas com endereços IP 169.254.17.x ou 169.254.18.x.
+CAUTION: A atualização para qualquer sistema que use *as portas de cluster/HA compartilhadas* não é suportada se as interfaces MetroCluster estiverem configuradas com endereços IP 169.254.17.x ou 169.254.18.x.
 
 
 

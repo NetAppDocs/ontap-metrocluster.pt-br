@@ -13,6 +13,62 @@ summary: Atualizando o firmware em switches IP MetroCluster.
 [role="lead"]
 Talvez seja necessário atualizar o firmware em um switch IP MetroCluster.
 
+
+
+== Verifique se o RCF é suportado
+
+Ao alterar a versão do ONTAP ou a versão do firmware do switch, você deve verificar se tem um arquivo de configuração de referência (RCF) compatível com essa versão. Se você usar a link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"^] ferramenta, o RCF correto será gerado para sua configuração.
+
+.Passos
+. Use os seguintes comandos dos switches para verificar a versão do RCF:
++
+[cols="30,70"]
+|===
+
+
+| A partir deste interrutor... | Emitir este comando... 
+
+
+ a| 
+Interrutor Broadcom
+ a| 
+`(IP_switch_A_1) # show clibanner`
+
+
+
+ a| 
+Interrutor Cisco
+ a| 
+`IP_switch_A_1# show banner motd`
+
+
+
+ a| 
+Interrutor NVIDIA SN2100
+ a| 
+`cumulus@mcc1:mgmt:~$ nv config find message`
+
+|===
++
+Localize a linha na saída do comando que indica a versão RCF. Por exemplo, a seguinte saída de um switch Cisco indica que a versão RCF é "'v1,80".
+
++
+....
+Filename : NX3232_v1.80_Switch-A2.txt
+....
+. Para verificar quais arquivos são suportados para uma versão, switch e plataforma específica do ONTAP, use o link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"^]. Se você pode gerar o RCF para a configuração que você tem ou para a qual deseja atualizar, então ele é suportado.
+. Para verificar se o firmware do switch é suportado, consulte o seguinte:
++
+** https://hwu.netapp.com["Hardware Universe"]
+** https://imt.netapp.com/matrix/["Matriz de interoperabilidade do NetApp"^]
+
+
+
+
+
+
+== Atualize o firmware do switch
+
 .Sobre esta tarefa
 Você deve repetir esta tarefa em cada uma das opções sucessivamente.
 

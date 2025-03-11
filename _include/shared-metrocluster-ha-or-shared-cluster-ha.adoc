@@ -2,15 +2,42 @@
 :allow-uri-read: 
 
 
-Os sistemas listados na tabela a seguir usam *portas MetroCluster/HA compartilhadas*.
-
-Todos os outros sistemas usam *portas de cluster/HA compartilhadas*.
-
-E
+[role="tabbed-block"]
+====
+.Portas de cluster/HA compartilhadas
+--
+Os sistemas listados na tabela a seguir usam portas de cluster/HA compartilhadas:
 
 [cols="2*"]
 |===
-| Sistemas AFF e ASA usando portas MetroCluster/HA compartilhadas | Sistemas FAS que usam portas MetroCluster/HA compartilhadas 
+| Sistemas AFF e ASA | Sistemas FAS 
+
+
+ a| 
+* AFF A20
+* AFF A30
+* AFF C30
+* AFF A50
+* AFF C60
+* AFF C80
+* AFF A70
+* AFF A90
+* AFF A1K
+
+ a| 
+* FAS70
+* FAS90
+
+
+|===
+--
+.Portas MetroCluster/HA compartilhadas
+--
+Os sistemas listados na tabela a seguir usam portas MetroCluster/HA compartilhadas:
+
+[cols="2*"]
+|===
+| Sistemas AFF e ASA | Sistemas FAS 
 
 
  a| 
@@ -38,3 +65,5 @@ E
 
 
 |===
+--
+====

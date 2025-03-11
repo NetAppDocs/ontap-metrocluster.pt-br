@@ -403,14 +403,37 @@ NOTE: Ao definir a opção DAC para várias portas de switch, você só precisa 
 
 
 
+== Defina a correção de erro de avanço para sistemas que utilizam conetividade de 25 Gbps
+
+Se o sistema estiver configurado usando conetividade de 25 Gbps, defina manualmente o parâmetro Correção de erros de Avanço (fec) para Desativado após aplicar o RCF. O RCF não aplica esta definição.
+
+.Sobre esta tarefa
+* Esta tarefa aplica-se apenas a plataformas que utilizam conetividade de 25 Gbps. link:../install-ip/port_usage_sn2100.html["Atribuições de porta de plataforma para switches IP SN2100 compatíveis com NVIDIA"]Consulte a .
+* Esta tarefa deve ser executada em todos os quatro switches na configuração IP do MetroCluster.
+* É necessário atualizar cada porta do switch individualmente, não é possível especificar várias portas ou intervalos de portas no comando.
+
+
+.Passos
+. Defina o `fec` parâmetro como Desligado para a primeira porta do switch que usa conetividade de 25 Gbps:
++
+`sudo python3 SN2100_v2.0_Switch-A1.py runCmd <switchport> fec off`
+
+. Repita a etapa para cada porta de switch de 25 Gbps conetada a um módulo de controlador.
+
+
+
+
 == Defina a velocidade da porta do switch para as interfaces IP do MetroCluster
 
 .Sobre esta tarefa
-Use este procedimento para definir a velocidade da porta do switch para 100g para os seguintes sistemas:
+* Use este procedimento para definir a velocidade da porta do switch para 100g para os seguintes sistemas:
++
+** AFF A70
+** AFF A90
+** AFF A1K
 
-* AFF A70
-* AFF A90
-* AFF A1K
+
+* É necessário atualizar cada porta do switch individualmente, não é possível especificar várias portas ou intervalos de portas no comando.
 
 
 .Passo
@@ -451,8 +474,9 @@ cumulus@Switch-A-1:mgmt:~$
 
 == Desative portas ISL e canais de portas não utilizados
 
-A NetApp recomenda a desativação de portas e canais de portas ISL não utilizados para evitar alertas de integridade desnecessários.
+A NetApp recomenda a desativação de portas e canais de portas ISL não utilizados para evitar alertas de integridade desnecessários. Você deve desativar cada canal de porta ou porta individualmente, não é possível especificar várias portas ou intervalos de portas no comando.
 
+.Passos
 . Identifique as portas ISL e os canais de portas não utilizados usando o banner de arquivo RCF:
 +
 

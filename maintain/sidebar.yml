@@ -63,10 +63,9 @@ entries:
       url: "/maintain/task_change_isl_properties_isl_ports_or_the_iod_ood_configuration_on_a_brocade_switch.html"
     - title: Substitua um switch Cisco FC
       url: "/maintain/task_replace_a_cisco_fc_switch_mcc.html"
-    - title: Alteração da velocidade das portas ISL em um switch Cisco FC
-      url: "/maintain/task_change_speed_of_isl_ports_on_a_cisco_fc_switch.html"
-    - title: Adicionando lSLs a um switch Cisco
-      url: "/maintain/task_add_lsls_to_a_cisco_fc_switch.html"
+    - title: Altere as propriedades ISL ou a configuração IOD/OOD em um switch Cisco
+        FC
+      url: "/maintain/task-change-isl-properties-iod-ood-ciso-fc.html"
     - title: Alterar o fornecedor ou o modelo de um switch FC
       url: "/maintain/task_change_an_fc_switch.html"
   - title: Substitua uma gaveta sem interrupções em uma configuração MetroCluster
