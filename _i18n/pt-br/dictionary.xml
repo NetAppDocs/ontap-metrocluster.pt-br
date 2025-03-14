@@ -2580,7 +2580,6 @@
   <block id="cb2882d39ecc345874a2172a679345a0" category="list-text">Os clusters precisam ter licenças FabricPool com limites de capacidade correspondentes.</block>
   <block id="da1d8a158d031df0c087914bc717f807" category="list-text">Os clusters devem ter IPspaces com nomes correspondentes.</block>
   <block id="9f437bd3f304cff4e9dd7b48cc5a9500" category="paragraph">Esse pode ser o IPspace padrão ou um IPspace criado por um administrador. Este espaço IPspace será usado para configurações de armazenamento de objetos FabricPool.</block>
-  <block id="eadb8b792e9f449e89ae54e27988217b" category="list-text">Para o espaço IPspace selecionado, cada cluster deve ter um LIF entre clusters definido que possa alcançar o armazenamento de objetos externo</block>
   <block id="b6f8b39e7216b4698097318b7db733fa" category="section-title">Configurando um agregado para uso em um FabricPool espelhado</block>
   <block id="00395061ba5a721f2a906e4ac75f9fde" category="inline-link-macro">Configurar armazenamentos de objetos para FabricPool em uma configuração MetroCluster</block>
   <block id="e0e300856a5e4a2a419fdf0d5fb20e62" category="admonition">Antes de configurar o agregado, você deve configurar armazenamentos de objetos conforme descrito em <block ref="bf6f1feb5dfb0381998cf99478ab26ea" category="inline-link-macro-rx"></block>.</block>
@@ -5866,11 +5865,9 @@
   <block id="12007e1d59f4d09c87dbe2c438256244" category="cell">Destino</block>
   <block id="261addf78c7b2c961032b3dd08ba0b1f" category="cell">Finalidade</block>
   <block id="5946d090ccc9cc4eb9c55cf3e9e8d35a" category="paragraph">31784/tcp</block>
-  <block id="39af2fc562277654190ca9b83e431189" category="paragraph">Interfaces de gerenciamento de clusters do ONTAP</block>
   <block id="47c5e6a166f9432ff96681fa2a62c791" category="paragraph">Servidor web ONTAP Mediator</block>
   <block id="8cf15eeaee2b3382338ecab30027c48b" category="paragraph">API REST (HTTPS)</block>
   <block id="5395ab3ceab5345ee4a1117e436bec89" category="paragraph">3260/tcp</block>
-  <block id="4026cb63b92cdc28e17e39a79de589f7" category="paragraph">Cluster ONTAP (LIF de dados ou LIF de gerenciamento de dados)</block>
   <block id="1c44912242a1c1688be9805f25a62dbd" category="paragraph">ISCSI do Mediador ONTAP</block>
   <block id="a3993ea912c0ecd6926aed69b72fd59a" category="paragraph">Ligação de dados iSCSI para caixas de correio</block>
   <block id="63639615515d028231f302c56bab6ad7" category="section-title">Diretrizes para atualizar o Mediador ONTAP em uma configuração MetroCluster</block>
@@ -9024,7 +9021,6 @@
   <block id="220d6c1bfe741784a72c631856e0b298" category="list-text">Repita o passo anterior para cada um dos interrutores.</block>
   <block id="9caf870a1494e70481403791fcece589" category="list-text">Repita <block ref="b2da07bc854b8a63875843471604110c" category="inline-xref-macro-rx"></block> para verificar a integridade da configuração.</block>
   <block id="e5fe800fef736c2c8af1453a59683d3c" category="summary">Para atualizar ou fazer downgrade do firmware em um switch Brocade FC, você deve usar os comandos específicos do Brocade para desativar o switch, executar e verificar a alteração de firmware e reinicializar e reativar o switch.</block>
-  <block id="1ab0f1fa27ba43bfea0e9de2529316c8" category="doc">Atualizando ou baixando o firmware em um switch Brocade FC</block>
   <block id="423cc95dedd4ee68f0dd8126c7d0dc86" category="paragraph">Confirme se você verificou e executou as seguintes tarefas para sua configuração:</block>
   <block id="577c57afc12db82055cff4fa1ef601e7" category="list-text">Você tem os arquivos de firmware.</block>
   <block id="c6fa690d72fcffddb9bdb475dd8ae167" category="list-text">O sistema está devidamente cabeado.</block>
@@ -14668,4 +14664,31 @@
   <block id="11f90eb1d0dccabe5ea84d5795fc2ef7" category="paragraph">Use as seguintes informações para determinar se o novo sistema usa portas de cluster/HA compartilhadas:</block>
   <block id="fb1ce5d087cc4c4bd39c43bc3af7058b" category="admonition">A atualização para qualquer sistema que use *as portas de cluster/HA compartilhadas* não é suportada se as interfaces MetroCluster estiverem configuradas com endereços IP 169.254.17.x ou 169.254.18.x.</block>
   <block id="25b129509e36ff88d2beb94d08667a62" category="sidebar">Altere as propriedades ISL ou a configuração IOD/OOD em um switch Cisco FC</block>
+  <block id="8b578a27fe20d5a32a06b05afeaa5b16" category="list-text">Para o espaço IPspace selecionado, cada cluster deve ter um LIF entre clusters definido que possa alcançar o armazenamento de objetos externo.</block>
+  <block id="d98545518df18c073a4a75d72759ddfe" category="list-text">A migração para SVM não é compatível com FabricPool quando a origem ou o destino é um cluster do MetroCluster.</block>
+  <block id="de60962ea114e8e20b41343aa7431cbf" category="inline-link-macro">Saiba mais sobre a mobilidade de dados do SVM</block>
+  <block id="cb692d9778a8fa1464d6b442ab90722f" category="paragraph"><block ref="53c488ccbc80272b509e45a126fd033b" category="inline-link-macro-rx"></block>.</block>
+  <block id="b4911e786bbd878f489a84835fcee570" category="list-text">IPv6 não é suportado com o Mediador ONTAP.</block>
+  <block id="d247a27201590148c4ea6bf493729fd1" category="list-text">A porta 22/tcp não é necessária para operação normal, mas você pode ativá-la temporariamente para manutenção e desativá-la quando a sessão de manutenção tiver terminado.</block>
+  <block id="02674a4ef33e11c879283629996c8ff8" category="cell">Direção</block>
+  <block id="c5df47f9068f6d11f238ec77908abf18" category="paragraph">22/tcp</block>
+  <block id="6c7e3200049198face0d2648e9d1a27d" category="paragraph">De entrada</block>
+  <block id="58dc7db50a2e11a9de9e6cc092c59d4d" category="paragraph">ONTAP Mediador</block>
+  <block id="348d25e332990b97eda5823a9561cd76" category="paragraph">Gerenciamento do mediador SSH / ONTAP</block>
+  <block id="abd4328c725637aabedbd02d3b7ffd40" category="paragraph">Bidirecional</block>
+  <block id="7df18ff4393ac59f9af7b68478828591" category="inline-link-macro">Guia de atualização de software do Brocade Fabric os, 9,2.x</block>
+  <block id="81095da37e6499e1af51ce2d0316b8c1" category="paragraph">Se você estiver atualizando para o Fabric os V 9,2.x ou posterior, você deve ter um certificado Brocade TruFOS instalado, consulte <block ref="0c25af31b20d46ca79e55fb8f6beb4c9" category="inline-link-macro-rx"></block>para obter mais informações.</block>
+  <block id="b2fe7ec3c609e490e177268be9c6a2c7" category="open-title">Remover pontes FC-para-SAS</block>
+  <block id="1c5eaf0274c09872a2287c430ed75a60" category="list-text">Identifique as pontes:</block>
+  <block id="4d100b8e119ce2e8a98e720e612260d2" category="paragraph"><block ref="5c2aa4362fb9d40ad679411e69f26e74" prefix="" category="inline-code"></block></block>
+  <block id="679425df5c12f3f894799666283b2fcd" category="list-text">Retire as pontes:</block>
+  <block id="ee90b235e787cdea487ac811b405275d" category="paragraph"><block ref="6ecfba135a48bcb7f43c03b5132edab0" prefix="" category="inline-code"></block></block>
+  <block id="2d3a681bfca3f3afa13da28bbcb3d157" category="list-text">Confirme se as pontes foram removidas:</block>
+  <block id="457c5fa19fe4bf31989022bf10e2133b" category="paragraph">O exemplo a seguir mostra que as pontes são removidas:</block>
+  <block id="9a752ae21c1569c1e94c2b3c0c4ec816" category="open-title">Remova os switches FC</block>
+  <block id="07c2ed77d8d4a66a9da7bc64642f43ac" category="list-text">Identificar os interrutores:</block>
+  <block id="6ac0707c59f9a8bac7c112671ebed890" category="paragraph"><block ref="2fb4e63397068939776b11238421ef0d" prefix="" category="inline-code"></block></block>
+  <block id="a7bb11a2d517e74f775b8aefe3c16638" category="list-text">Retire os interrutores:</block>
+  <block id="027e94eee8bf21f30bcb532977a993c1" category="paragraph"><block ref="4f1415de9c82b1c8c8506139320b0115" prefix="" category="inline-code"></block></block>
+  <block id="fdb1649f24689923739f1476888a8957" category="list-text">Confirme se os interrutores são removidos:</block>
 </blocks>

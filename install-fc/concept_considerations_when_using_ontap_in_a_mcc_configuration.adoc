@@ -74,7 +74,11 @@ Para obter informações gerais sobre como usar o FabricPools, link:https://docs
 +
 Esse pode ser o IPspace padrão ou um IPspace criado por um administrador. Este espaço IPspace será usado para configurações de armazenamento de objetos FabricPool.
 
-* Para o espaço IPspace selecionado, cada cluster deve ter um LIF entre clusters definido que possa alcançar o armazenamento de objetos externo
+* Para o espaço IPspace selecionado, cada cluster deve ter um LIF entre clusters definido que possa alcançar o armazenamento de objetos externo.
+* A migração para SVM não é compatível com FabricPool quando a origem ou o destino é um cluster do MetroCluster.
++
+link:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html["Saiba mais sobre a mobilidade de dados do SVM"^].
+
 
 
 

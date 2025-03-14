@@ -23,6 +23,7 @@ A conetividade entre o Mediador ONTAP e cada site deve ser dois domínios de fal
 
 * O serviço Mediador ONTAP pode suportar até cinco configurações de MetroCluster simultaneamente.
 * O switchover não planejado automático é suportado no ONTAP 9.7 e posterior.
+* IPv6 não é suportado com o Mediador ONTAP.
 
 
 
@@ -89,19 +90,38 @@ Ao usar o firewall padrão Red Hat ou CentOS, o firewall é configurado automati
 
 A tabela a seguir lista as portas que você deve permitir no firewall:
 
+[NOTE]
+====
+* A porta iSCSI só é necessária numa configuração IP MetroCluster.
+* A porta 22/tcp não é necessária para operação normal, mas você pode ativá-la temporariamente para manutenção e desativá-la quando a sessão de manutenção tiver terminado.
 
-NOTE: A porta iSCSI só é necessária numa configuração IP MetroCluster.
 
+====
 |===
 
 
-| Porta/serviços | Fonte | Destino | Finalidade 
+| Porta/serviços | Fonte | Direção | Destino | Finalidade 
+
+
+ a| 
+22/tcp
+ a| 
+Host de gerenciamento
+ a| 
+De entrada
+ a| 
+ONTAP Mediador
+ a| 
+Gerenciamento do mediador SSH / ONTAP
+
 
 
  a| 
 31784/tcp
  a| 
-Interfaces de gerenciamento de clusters do ONTAP
+LIFs de gerenciamento de clusters
+ a| 
+De entrada
  a| 
 Servidor web ONTAP Mediator
  a| 
@@ -112,7 +132,9 @@ API REST (HTTPS)
  a| 
 3260/tcp
  a| 
-Cluster ONTAP (LIF de dados ou LIF de gerenciamento de dados)
+LIFs de gerenciamento de clusters
+ a| 
+Bidirecional
  a| 
 ISCSI do Mediador ONTAP
  a| 
