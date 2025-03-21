@@ -14504,8 +14504,6 @@
   <block id="3692c9ba1350a63df24145cf798b7a8d" category="paragraph-title">MetroCluster 2 ou grupo de RD 2</block>
   <block id="3931538ae618e65321b4b3317e9b03d1" category="paragraph">A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 2 ou no Grupo de DR 2 para bridges FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:</block>
   <block id="2903ceed0cbc44b8b559bfff7873b906" category="list-text">Nos switches 6520, você pode conetar pontes adicionais às portas 64-69 e 72-93.</block>
-  <block id="38429f80adfb1ee89a7fbf6f07f19fd5" category="section-title">Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2)</block>
-  <block id="6a72af091f5308d35341ed6e94d995c3" category="paragraph">A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 1 ou no Grupo de DR 1 para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:</block>
   <block id="90630a6ca649afd90e4b45c9af3d157d" category="paragraph">A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 2 ou no Grupo de DR 2 para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:</block>
   <block id="742bcddd5d6452c898c549e1b60cd513" category="paragraph">Você pode anexar pontes adicionais usando as portas 17 a 40 e 57 a 88 seguindo o mesmo padrão.</block>
   <block id="391ee14bc6581827dc4f2d88ff91afcf" category="paragraph">Você pode anexar pontes adicionais para um segundo grupo de DR ou uma segunda configuração de MetroCluster usando as portas 33 a 40 seguindo o mesmo padrão.</block>
@@ -14691,4 +14689,7 @@
   <block id="a7bb11a2d517e74f775b8aefe3c16638" category="list-text">Retire os interrutores:</block>
   <block id="027e94eee8bf21f30bcb532977a993c1" category="paragraph"><block ref="4f1415de9c82b1c8c8506139320b0115" prefix="" category="inline-code"></block></block>
   <block id="fdb1649f24689923739f1476888a8957" category="list-text">Confirme se os interrutores são removidos:</block>
+  <block id="02637489efdd2722934159348bf04810" category="section-title">Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 GbE e FC2)</block>
+  <block id="19c5470fc0cd91ca38fde0aea868fce3" category="paragraph">A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 1 ou no Grupo de DR 1 para pontes do FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:</block>
+  <block id="844fb1aaef97c4328b587658a21a78d2" category="paragraph">Se você estiver usando um adaptador QSFP para SFP, talvez seja necessário configurar a porta ISL no modo de velocidade nativo em vez do modo de velocidade de fuga. Consulte a documentação do fornecedor do switch para determinar o modo de velocidade da porta ISL.</block>
 </blocks>

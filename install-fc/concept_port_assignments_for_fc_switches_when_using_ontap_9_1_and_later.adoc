@@ -1393,10 +1393,10 @@ Não aplicável
 |===
 
 
-=== Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2)
+=== Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 GbE e FC2)
 
 .MetroCluster 1 ou grupo de RD 1
-A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 1 ou no Grupo de DR 1 para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 ou FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:
+A tabela a seguir mostra as configurações de gaveta compatíveis no MetroCluster 1 ou no Grupo de DR 1 para pontes do FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2). Você deve estar ciente do seguinte ao usar esta tabela de configuração:
 
 * Nos switches 6510 e DCX 8510-8, você pode conetar pontes adicionais às portas 16-19.
 * Nos switches 6520, você pode conetar pontes adicionais às portas 16-21 e 24-45.

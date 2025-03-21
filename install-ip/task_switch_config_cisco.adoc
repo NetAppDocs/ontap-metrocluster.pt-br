@@ -388,6 +388,8 @@ Tem de utilizar a versão do software de comutação suportada.
 
 https://hwu.netapp.com["NetApp Hardware Universe"]
 
+Se você estiver usando um adaptador QSFP para SFP, talvez seja necessário configurar a porta ISL no modo de velocidade nativo em vez do modo de velocidade de fuga. Consulte a documentação do fornecedor do switch para determinar o modo de velocidade da porta ISL.
+
 Existem quatro arquivos RCF, um para cada um dos quatro switches na configuração IP do MetroCluster. Você deve usar os arquivos RCF corretos para o modelo de switch que você está usando.
 
 |===
