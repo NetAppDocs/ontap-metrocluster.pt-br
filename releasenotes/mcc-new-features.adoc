@@ -168,17 +168,6 @@ ONTAP 9.11,1
 
 
  a| 
-Configuração do endereço IP MetroCluster da camada 3 nas configurações IP do MetroCluster
- a| 
-Você pode editar o endereço IP, a máscara de rede e o gateway do MetroCluster para nós em uma configuração da camada 3.
-
-https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_modify_ip_netmask_gateway_properties.html["Modificação de endereço, máscara de rede e gateway em um IP MetroCluster"]
- a| 
-ONTAP 9.10,1
-
-
-
- a| 
 Atualização simplificada do controlador de nós em uma configuração de MetroCluster FC
  a| 
 O procedimento de atualização para o processo de atualização usando switchover e switchback foi simplificado.

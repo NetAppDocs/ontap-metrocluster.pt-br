@@ -50,12 +50,15 @@ Diferentes comprimentos podem ser usados nos diferentes tecidos. A mesma velocid
 Metro-e significa que o enquadramento ou sinalização Ethernet ocorre nativamente ao longo de uma distância Metro ou através de alguma multiplexação por divisão de tempo (TDM), comutação de etiquetas multiprotocolo (MPLS) ou multiplexação por divisão de comprimento de onda (WDM).
 
 * As extensões TDMs, FCR (roteamento FC nativo) ou FCIP não são compatíveis com a malha de switch MetroCluster FC.
-* Certos switches na malha de switch MetroCluster FC são compatíveis com criptografia ou compactação, e às vezes são compatíveis com ambos.
+* Os seguintes switches Brocade FC são compatíveis com criptografia e compactação ISL WAN para malhas back-end MetroCluster FC:
 +
-https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade NetApp (IMT)"]
+** Brocade G720
+** Brocade G630
+** Brocade G620
+** Brocade 6520
 
-+
-No IMT, você pode usar o campo solução de armazenamento para selecionar sua solução MetroCluster. Use o *Explorador de componentes* para selecionar os componentes e a versão do ONTAP para refinar sua pesquisa. Você pode clicar em *Mostrar resultados* para exibir a lista de configurações compatíveis que correspondem aos critérios.
+
+
 
 * O recurso de malha virtual (VF) do Brocade não é suportado.
 * O zoneamento FC baseado na porta de domínio é suportado, mas o zoneamento baseado no nome mundial (WWN) não é suportado.
