@@ -101,16 +101,43 @@ As tabelas a seguir mostram as combinações de plataforma suportadas para confi
 
 
 ====
-.Combinações de expansão IP AFF e FAS MetroCluster suportadas
-A tabela a seguir mostra as combinações de plataforma compatíveis para expandir um sistema AFF ou FAS em uma configuração IP MetroCluster:
-
-image::../media/mccip_expand_ip_8node_9161-updated.png[Combinações de plataforma para configurações de 8 nós]
-
-* *Nota 1*: ONTAP 9.9,1 ou posterior (ou a versão mínima do ONTAP suportada na plataforma) é necessária para estas combinações.
-* *Nota 2*: ONTAP 9.13,1 ou posterior (ou a versão mínima do ONTAP suportada na plataforma) é necessária para estas combinações.
 
 
-.Combinações de expansão IP ASA MetroCluster suportadas
+=== Combinações de expansão IP AFF e FAS MetroCluster suportadas
+
+As tabelas a seguir mostram as combinações de plataforma suportadas para expandir um sistema AFF ou FAS em uma configuração IP MetroCluster. As tabelas são divididas em dois grupos:
+
+* *O Grupo 1* mostra combinações para sistemas AFF A150, AFF A20, FAS2750, FAS8300, FAS500f, AFF C250, AFF A250, FAS50, AFF C30, AFF A30, FAS8200, AFF A300, AFF A320, AFF A220, AFF C400, AFF A400 e FAS8700.
+* *O Grupo 2* mostra combinações para os sistemas AFF C60, AFF A50, FAS70, FAS9000, AFF A700, AFF A70, AFF C800, AFF A800, FAS9500, AFF A900, AFF C80, FAS90, AFF A90 e AFF A1K.
+
+
+As notas a seguir se aplicam a ambos os grupos:
+
+* Nota 1: ONTAP 9.9.1 ou posterior (ou a versão mínima do ONTAP suportada na plataforma) é necessária para estas combinações.
+* Nota 2: ONTAP 9.13.1 ou posterior (ou a versão mínima do ONTAP suportada na plataforma) é necessária para estas combinações.
+
+
+[role="tabbed-block"]
+====
+.Combinações AFF e FAS grupo 1
+--
+Revise as combinações de expansão para sistemas AFF A150, AFF A20, FAS2750, FAS8300, FAS500f, AFF C250, AFF A250, FAS50, AFF C30, AFF A30, FAS8200, AFF A300, AFF A320, AFF A220, AFF C400, AFF A400 e FAS8700.
+
+image:../media/expand-ip-group-1.png[""]
+
+--
+.Combinações AFF e FAS grupo 2
+--
+Revise as combinações de expansão para sistemas AFF C60, AFF A50, FAS70, FAS9000, AFF A700, AFF A70, AFF C800, AFF A800, FAS9500, AFF A900, AFF C80, FAS90, AFF A90 e AFF A1K.
+
+image:../media/expand-ip-group-2.png[""]
+
+--
+====
+
+
+=== Combinações de expansão IP ASA MetroCluster suportadas
+
 A tabela a seguir mostra as combinações de plataforma suportadas para expandir um sistema ASA em uma configuração IP do MetroCluster:
 
 image::../media/8node_comb_ip_asa.png[Combinações de plataforma para configurações de 8 nós]

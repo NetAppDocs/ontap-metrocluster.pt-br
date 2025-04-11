@@ -1,0 +1,21 @@
+---
+permalink: install-ip/concept_using_the_oncommand_management_tools_for_further_configuration_and_monitoring.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, installation, active, iq, unified, manager, system, configuration 
+summary: O Active IQ Unified Manager e o ONTAP System Manager podem ser usados para o gerenciamento de GUI dos clusters e para o monitoramento da configuração. 
+---
+= Use o Active IQ Unified Manager e o Gerenciador de sistemas do ONTAP para obter mais configurações e monitoramento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O Active IQ Unified Manager e o ONTAP System Manager podem ser usados para o gerenciamento de GUI dos clusters e para o monitoramento da configuração.
+
+Cada nó tem o Gerenciador de sistema do ONTAP pré-instalado. Para carregar o System Manager, insira o endereço LIF de gerenciamento de cluster como URL em um navegador da Web que tem conetividade com o nó.
+
+Você também pode usar o Active IQ Unified Manager para monitorar a configuração do MetroCluster.
+
+.Informações relacionadas
+link:https://docs.netapp.com/us-en/active-iq-unified-manager/["Documentação do Active IQ Unified Manager"^]

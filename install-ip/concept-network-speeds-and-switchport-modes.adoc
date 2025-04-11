@@ -15,7 +15,11 @@ Se você estiver usando switches compatíveis com MetroCluster, deve estar cient
 
 A tabela a seguir fornece velocidades de rede específicas da plataforma e modos de porta de switch para switches compatíveis com MetroCluster. Você deve configurar o modo de porta do switch de acordo com a tabela.
 
+[NOTE]
+====
+* Valores ausentes indicam que a plataforma não pode ser usada com um switch compatível com MetroCluster.
+* Os sistemas AFF A30, AFF C30, AFF C60 e FAS50 exigem um adaptador QSFP-para-SFP na placa do controlador para suportar uma velocidade de rede de 25GbpsGbE.
 
-NOTE: Valores ausentes indicam que a plataforma não pode ser usada com um switch compatível com MetroCluster.
 
-image:../media/mcc-compliant-network-speed-9161.png["Mostra as velocidades de rede específicas da plataforma e os modos de porta do switch para switches compatíveis com MetroCluster."]
+====
+image:../media/mccip-compliant-network-speed-switchport-mode-fas50.png["Mostra as velocidades de rede específicas da plataforma e os modos de porta do switch para switches compatíveis com MetroCluster."]

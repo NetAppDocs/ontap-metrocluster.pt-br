@@ -40,7 +40,7 @@ As seções a seguir descrevem o contorno físico do cabeamento. Você também p
 
 Use a tabela a seguir para determinar qual tabela de cabeamento você deve seguir.
 
-[cols="2*"]
+[cols="25,75"]
 |===
 | Se o seu sistema é... | Use esta tabela de cabeamento... 
 
@@ -59,7 +59,13 @@ AFF A250, ASA A250
 | AFF A20 | <<table_2_nvidia_sn2100,Atribuições de portas da plataforma NVIDIA SN2100 (grupo 2)>> 
 
 
-| AFF C30, AFF A30 AFF C60 | <<table_3_nvidia_sn2100,Atribuições de portas da plataforma NVIDIA SN2100 (grupo 3)>> 
+| AFF C30, AFF A30 FAS50 AFF C60  a| 
+A tabela a seguir depende se você está usando uma placa Ethernet 25G (grupo 3a) ou 100g (grupo 3b).
+
+* <<table_3a_nvidia_sn2100,Atribuições de porta da plataforma NVIDIA SN2100 (grupo 3a -25G)>>
+* <<table_3b_nvidia_sn2100,Atribuições de porta da plataforma NVIDIA SN2100 (grupo 3b -100g)>>
+
+
 
 
 | FAS8300 AFF C400, ASA C400 AFF A400, ASA A400 FAS8700 FAS9000, AFF A700 | <<table_4_nvidia_sn2100,Atribuições de portas da plataforma NVIDIA SN2100 (grupo 4)>> 
@@ -83,13 +89,25 @@ image::../media/mcc-ip-cabling-aff-asa-a150-fas500f-a25-c250-MSN2100.png[Mostra 
 Revise as atribuições de portas da plataforma para enviar um sistema AFF A20 para um switch NVIDIA SN2100:
 
 [#table_2_nvidia_sn2100]
-image::../media/mccip-cabling-aff-a20-nvidia-sn2100.png[Mostra atribuições de porta da plataforma NVIDIA SN2100]
+image::../media/mccip-cabling-nvidia-a20-updated.png[Mostra atribuições de porta da plataforma NVIDIA SN2100]
 
-.Atribuições de portas da plataforma NVIDIA SN2100 (grupo 3)
-Revise as atribuições de portas da plataforma para enviar um sistema AFF C30, AFF A30 ou AFF C60 para um switch NVIDIA SN2100:
+.Atribuições de portas da plataforma NVIDIA SN2100 (grupo 3a)
+Revise as atribuições de portas da plataforma para enviar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 para um switch NVIDIA SN2100 usando uma placa Ethernet 25G de quatro portas:
 
-[#table_3_nvidia_sn2100]
-image::../media/mccip-cabling-aff-a30-c30-c60-nvidia-sn2100.png[Mostra atribuições de porta da plataforma NVIDIA SN2100]
+
+NOTE: Essa configuração requer uma placa Ethernet 25G de quatro portas no slot 4 para conetar o cluster local e as interfaces HA.
+
+[#table_3a_nvidia_sn2100]
+image::../media/mccip-cabling-nvidia-a30-c30-fas50-c60-25G.png[Mostra atribuições de porta da plataforma NVIDIA SN2100]
+
+.Atribuições de portas da plataforma NVIDIA SN2100 (grupo 3b)
+Revise as atribuições de portas da plataforma para enviar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 para um switch NVIDIA SN2100 usando uma placa Ethernet 100g de duas portas:
+
+
+NOTE: Essa configuração requer uma placa ETHERNET 100g de duas portas no slot 4 para conetar o cluster local e as interfaces HA.
+
+[#table_3b_nvidia_sn2100]
+image::../media/mccip-cabling-nvidia-a30-c30-fas50-c60-100G.png[Mostra atribuições de porta da plataforma NVIDIA SN2100]
 
 .Atribuições de portas da plataforma NVIDIA SN2100 (grupo 4)
 Revise as atribuições de portas da plataforma para enviar um sistema FAS8300, AFF C400, ASA C400, AFF A400, ASA A400, FAS8700, FAS9000 ou AFF A700 para um switch NVIDIA SN2100:
@@ -114,4 +132,4 @@ image::../media/mcc_ip_cabling_fas8300_aff_asa_a800_a900_fas9500_MSN2100.png[Mos
 .Atribuições de portas da plataforma NVIDIA SN2100 (grupo 7)
 Reveja as atribuições de portas da plataforma para o cabo de um sistema FAS70, AFF A70, AFF C80, FAS90, AFF A90 ou AFF A1K para um switch NVIDIA SN2100:
 
-image::../media/mccip-cabling-fas90-fas70-aff-a70--a90-c80-a1k-nvidia-sn2100-updated.png[Mostra atribuições de porta da plataforma NVIDIA SN2100]
+image::../media/mccip-cabling-nvidia-a70-c80-fas90-fas70-a1k.png[Mostra atribuições de porta da plataforma NVIDIA SN2100]

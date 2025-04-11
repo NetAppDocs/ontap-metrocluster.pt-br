@@ -61,10 +61,10 @@ entries:
     - title: Atribuições de porta de plataforma para switches Cisco 3132Q-V.
       url: "/install-ip/port_usage_3132q.html"
     - title: Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco
-        9336C
-      url: "/install-ip/port_usage_3232c_9336c.html"
-    - title: Atribuições de porta de plataforma para um switch compartilhado Cisco
         9336C-FX2
+      url: "/install-ip/port_usage_3232c_9336c.html"
+    - title: Atribuições de portas de plataforma para um switch Cisco 9336C-FX2 que
+        coneta o armazenamento NS224
       url: "/install-ip/port_usage_9336c_shared.html"
     - title: Atribuições de portas de plataforma para switches IP BES-53248 com suporte
         da Broadcom
@@ -149,5 +149,13 @@ entries:
   url: "/install-ip/concept_considerations_when_removing_mcc_configurations.html"
 - title: Considerações ao usar o ONTAP em uma configuração do MetroCluster
   url: "/install-ip/concept_considerations_when_using_ontap_in_a_mcc_configuration.html"
+- title: Como usar o Active IQ Unified Manager e o Gerenciador de sistemas ONTAP para
+    configuração e monitoramento adicionais
+  entries:
+  - title: Saiba mais sobre como usar o Active IQ Unified Manager e o Gerenciador
+      de sistema para obter mais configurações e monitoramento
+    url: "/install-ip/concept_using_the_oncommand_management_tools_for_further_configuration_and_monitoring.html"
+  - title: Sincronize a hora do sistema usando NTP
+    url: "/install-ip/task-synchronize-the-system-time-us-ntp.html"
 - title: Onde encontrar informações adicionais
   url: "/install-ip/reference_where_to_find_additional_information_mccip_icg.html"

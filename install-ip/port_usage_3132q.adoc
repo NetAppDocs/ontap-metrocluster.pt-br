@@ -24,7 +24,7 @@ Reveja estas diretrizes antes de utilizar as tabelas:
 
 Use a tabela a seguir para determinar qual tabela de cabeamento você deve seguir.
 
-[cols="2*"]
+[cols="25,75"]
 |===
 | Se o seu sistema é... | Use esta tabela de cabeamento... 
 

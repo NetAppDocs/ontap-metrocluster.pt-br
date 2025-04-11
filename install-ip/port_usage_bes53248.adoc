@@ -46,7 +46,7 @@ Qualquer configuração ou recurso que exija que as conexões do cluster local e
 
 Use a tabela a seguir para determinar qual tabela de cabeamento você deve seguir.
 
-[cols="2*"]
+[cols="25,75"]
 |===
 | Se o seu sistema é... | Use esta tabela de cabeamento... 
 
@@ -63,16 +63,19 @@ AFF A220
 | FAS500f AFF C250, ASA C250 AFF A250, ASA A250 | <<table_2_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 2)>> 
 
 
-| AFF A20 AFF C30, AFF A30 AFF C60 | <<table_3_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 3)>> 
+| AFF A20 | <<table_3_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 3)>> 
 
 
-| FAS8200, AFF A300 | <<table_4_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 4)>> 
+| AFF C30, AFF A30 FAS50 AFF C60 | <<table_4_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 4)>> 
 
 
-| AFF A320 | <<table_5_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 5)>> 
+| FAS8200, AFF A300 | <<table_5_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 5)>> 
 
 
-| FAS8300 AFF C400, ASA C400 AFF A400, ASA A400 FAS8700 | <<table_6_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 6)>> 
+| AFF A320 | <<table_6_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 6)>> 
+
+
+| FAS8300 AFF C400, ASA C400 AFF A400, ASA A400 FAS8700 | <<table_7_bes_53248,Atribuições de porta de plataforma Broadcom BES-53248 (grupo 7)>> 
 |===
 .Atribuições de porta de plataforma Broadcom BES-53248 (grupo 1)
 Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A150, ASA A150, FAS2750 ou AFF A220 para um switch BES-53248 da Broadcom:
@@ -93,14 +96,29 @@ image::../media/mcc_ip_cabling_a_aff_asa_c250_a250_fas500f_to_a_broadcom_bes_532
 
 
 .Atribuições de porta de plataforma Broadcom BES-53248 (grupo 3)
-Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A20, AFF C30, AFF A30 ou AFF C60 para um switch Broadcom BES-53248:
+Revise as atribuições de portas da plataforma para fazer o cabo de um sistema AFF A20 para um switch BES-53248 Broadcom:
 
-image:../media/mcc-ip-cabling-aff-a20-a30-c30-c60-to-a-broadcom-bes-53248-switch.png["Mostra atribuições de porta de plataforma Broadcom BES-53248"]
+image:../media/mccip-cabling-bes-a20-updated.png["Mostra atribuições de porta de plataforma Broadcom BES-53248"]
 
 * *Nota 1*: O uso dessas portas requer uma licença adicional.
 
 
 .Atribuições de porta de plataforma Broadcom BES-53248 (grupo 4)
+Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A30, AFF C30, AFF C60 ou FAS50 para um switch BES-53248 Broadcom usando uma placa Ethernet 25G de quatro portas.
+
+[NOTE]
+====
+* Essa configuração requer uma placa Ethernet 25G de quatro portas no slot 4 para conetar o cluster local e as interfaces HA.
+* Esta configuração requer um adaptador QSFP-to-SFP na placa do controlador para suportar uma velocidade de rede de 25GbpsMbps.
+
+
+====
+image:../media/mccip-cabling-bes-a30-c30-fas50-c60-25G.png["Mostra atribuições de porta de plataforma Broadcom BES-53248"]
+
+* *Nota 1*: O uso dessas portas requer uma licença adicional.
+
+
+.Atribuições de porta de plataforma Broadcom BES-53248 (grupo 5)
 Revise as atribuições de portas da plataforma para fazer o cabo de um sistema FAS8200 ou AFF A300 para um switch BES-53248 da Broadcom:
 
 image::../media/mcc-ip-cabling-a-aff-a300-or-fas8200-to-a-broadcom-bes-53248-switch-9161.png[Mostra atribuições de porta de plataforma Broadcom BES-53248]
@@ -108,7 +126,7 @@ image::../media/mcc-ip-cabling-a-aff-a300-or-fas8200-to-a-broadcom-bes-53248-swi
 * *Nota 1*: O uso dessas portas requer uma licença adicional.
 
 
-.Atribuições de porta de plataforma Broadcom BES-53248 (grupo 5)
+.Atribuições de porta de plataforma Broadcom BES-53248 (grupo 6)
 Revise as atribuições de portas da plataforma para fazer o cabo de um sistema AFF A320 para um switch BES-53248 Broadcom:
 
 image::../media/mcc-ip-cabling-a-aff-a320-to-a-broadcom-bes-53248-switch.png[Mostra atribuições de porta de plataforma Broadcom BES-53248]
@@ -120,7 +138,7 @@ Os recursos que exigem um cluster comutado não são suportados nesta configura�
 
 
 
-.Atribuições de porta de plataforma Broadcom BES-53248 (grupo 6)
+.Atribuições de porta de plataforma Broadcom BES-53248 (grupo 7)
 Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema FAS8300, AFF C400, ASA C400, AFF A400, ASA A400 ou FAS8700 para um switch BES-53248 da Broadcom:
 
 image::../media/mcc-ip-cabling-a-fas8300-a400-c400-or-fas8700-to-a-broadcom-bes-53248-switch.png[Mostra atribuições de porta de plataforma Broadcom BES-53248]

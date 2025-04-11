@@ -56,6 +56,7 @@ Os sistemas listados na tabela a seguir usam portas de cluster/HA compartilhadas
 ** AFF A1K
 
  a| 
+** FAS50
 ** FAS70
 ** FAS90
 

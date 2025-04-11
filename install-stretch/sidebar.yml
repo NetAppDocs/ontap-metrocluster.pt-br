@@ -87,9 +87,10 @@ entries:
 - title: Como usar o Active IQ Unified Manager e o Gerenciador de sistemas ONTAP para
     configuração e monitoramento adicionais
   entries:
-  - title: Visão geral
+  - title: Saiba mais sobre como usar o Active IQ Unified Manager e o Gerenciador
+      de sistema para obter mais configurações e monitoramento
     url: "/install-stretch/concept_using_the_oncommand_management_tools_for_further_configuration_and_monitoring.html"
-  - title: Sincronizar a hora do sistema usando NTP
+  - title: Sincronize a hora do sistema usando NTP
     url: "/install-stretch/task_synchronize_the_system_time_us_ntp.html"
 - title: Considerações ao usar o ONTAP em uma configuração do MetroCluster
   url: "/install-stretch/concept_considerations_when_using_ontap_in_a_mcc_configuration.html"

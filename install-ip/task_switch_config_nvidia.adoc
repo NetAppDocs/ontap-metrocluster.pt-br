@@ -430,9 +430,9 @@ Se o sistema estiver configurado usando conetividade de 25 Gbps, defina manualme
 .Sobre esta tarefa
 * Use este procedimento para definir a velocidade da porta do switch para 100g para os seguintes sistemas:
 +
-** AFF A70
-** AFF A90
-** AFF A1K
+** AFF A70, AFF A90, AFF A1K, AFF C80
+** AFF A30, AFF C30, AFF A50, AFF C60
+** FAS50, FAS70, FAS90
 
 
 * É necessário atualizar cada porta do switch individualmente, não é possível especificar várias portas ou intervalos de portas no comando.

@@ -252,6 +252,9 @@ entries:
 - title: Como usar o Active IQ Unified Manager e o Gerenciador de sistemas ONTAP para
     configuração e monitoramento adicionais
   entries:
+  - title: Saiba mais sobre como usar o Active IQ Unified Manager e o Gerenciador
+      de sistema para obter mais configurações e monitoramento
+    url: "/install-fc/concept-fc-oncommand-management.html"
   - title: Sincronize a hora do sistema usando NTP
     url: "/install-fc/task_synchronize_the_system_time_us_ntp.html"
 - title: Considerações ao usar o ONTAP em uma configuração do MetroCluster

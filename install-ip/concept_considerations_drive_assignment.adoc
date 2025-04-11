@@ -375,7 +375,7 @@ Partições em cada prateleira são usadas para criar o agregado raiz. O agregad
  a| 
 48 unidades (unidades externas e internas)
  a| 
-As partições internas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado. As unidades nas gavetas externas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado.
+As partições internas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado. As unidades nas gavetas externas são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.
  a| 
 Cada um dos dois plexos no agregado raiz inclui:
 
@@ -430,7 +430,7 @@ Partições em cada prateleira são usadas para criar o agregado raiz. O agregad
  a| 
 48 unidades (unidades externas e internas)
  a| 
-As partições internas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado. As unidades nas gavetas externas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado.
+As partições internas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado. As unidades nas gavetas externas são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.
  a| 
 Cada um dos dois plexos no agregado raiz inclui:
 
@@ -803,6 +803,44 @@ Mínimo de unidades compatíveis (por local)
 24 unidades
  a| 
 As unidades são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Não aplicável
+
+|===
+
+
+=== Atribuição de disco em sistemas FAS50
+
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+.2+| Mínimo de unidades recomendadas (por local)  a| 
+unidades de 48 tb (somente unidades externas, sem unidades internas)
+ a| 
+As unidades em cada compartimento externo são divididas em dois grupos iguais (metades). Cada meia prateleira é atribuída automaticamente a um pool separado.
+ a| 
+Não aplicável
+
+
+
+ a| 
+48 unidades (unidades externas e internas)
+ a| 
+As partições internas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado. As unidades nas gavetas externas são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Não aplicável
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+24 unidades
+ a| 
+As unidades são divididas em quatro grupos iguais. Cada compartimento é atribuído automaticamente a um pool separado.
  a| 
 Não aplicável
 

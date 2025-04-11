@@ -31,19 +31,48 @@ Você também deve garantir que a plataforma IP do MetroCluster seja um tamanho 
 
 
 ====
-.Combinações de transição AFF e FAS suportadas
-A tabela a seguir mostra as combinações de plataforma suportadas. Você pode fazer a transição de plataformas na coluna esquerda para plataformas listadas como suportadas nas colunas para a direita, conforme indicado pelas células da tabela coloridas.
+
+
+=== Combinações de transição AFF e FAS suportadas
+
+As tabelas a seguir mostram as combinações de plataforma suportadas. Você pode fazer a transição de plataformas na primeira coluna para plataformas listadas como suportadas nas colunas para a direita, conforme indicado pelas células da tabela coloridas.
 
 Por exemplo, a transição de uma configuração MetroCluster FC que consiste em módulos de controlador AFF8060 para uma configuração IP que consiste em módulos de controlador AFF A400 é suportada.
 
-image::../media/mcc_transition_comb_9161-updated.png[Mostra as combinações de plataforma compatíveis para transição de IP para FC]
+As tabelas são divididas em dois grupos:
+
+* *O Grupo 1* mostra combinações para transições para sistemas AFF A150, AFF A20, FAS2750, FAS8300, FAS500f, AFF C250, AFF A250, FAS50, AFF C30, AFF A30, FAS8200, AFF A300, AFF A320, AFF A220, AFF C400, AFF A400 e FAS8700.
+* *O Grupo 2* mostra combinações para transições para sistemas AFF C60, AFF A50, FAS70, FAS9000, AFF A700, AFF A70, AFF C800, AFF A800, FAS9500, AFF A900, AFF C80, FAS90, AFF A90 e AFF A1K.
+
+
+As notas a seguir se aplicam a ambos os grupos:
 
 * Nota 1: Esta combinação de plataforma requer ONTAP 9.11,1 ou posterior.
 * Observação 2: Você precisa ter uma interface 40GbE para as interfaces de cluster local nos nós FC.
 * Observação 3: Você precisa ter uma interface 100GbE para as interfaces de cluster local nos nós FC.
 
 
-.Combinações de plataforma de transição ASA suportadas
+[role="tabbed-block"]
+====
+.Combinações AFF e FAS grupo 1
+--
+Analise as combinações compatíveis para transições para sistemas AFF A150, AFF A20, FAS2750, FAS8300, FAS500f, AFF C250, AFF A250, FAS50, AFF C30, AFF A30, FAS8200, AFF A300, AFF A400, AFF A220, AFF C400, AFF A320 e FAS8700.
+
+image:../media/transition-combinations-group-1.png["Mostra transições suportadas para plataformas do grupo 1"]
+
+--
+.Combinações AFF e FAS grupo 2
+--
+Analise as combinações suportadas para transições para os sistemas AFF C60, AFF A50, FAS70, FAS9000, AFF A700, AFF A70, AFF C800, AFF A800, FAS9500, AFF A900, AFF C80, FAS90, AFF A90 e AFF A1K.
+
+image:../media/transition-combinations-group-2.png["Mostra transições suportadas para plataformas do grupo 2"]
+
+--
+====
+
+
+=== Combinações de plataforma de transição ASA suportadas
+
 A tabela a seguir mostra as combinações de plataforma suportadas para sistemas ASA.
 
 [cols="3*"]
