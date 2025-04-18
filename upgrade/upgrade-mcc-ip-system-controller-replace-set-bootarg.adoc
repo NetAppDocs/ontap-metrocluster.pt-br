@@ -11,7 +11,10 @@ summary: As atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posteri
 
 
 [role="lead"]
-As atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg antes que você possa prosseguir com a atualização.
+As atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg nas controladoras antigas antes de iniciar a atualização.
+
+
+NOTE: Você deve definir o bootarg necessário em todos os nós antigos em ambos os sites antes de iniciar a atualização.
 
 
 
@@ -60,7 +63,7 @@ Use a tabela a seguir para determinar qual bootarg você precisa definir para su
 Esta tarefa é *somente* necessária quando você atualiza para um sistema AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A20, AFF A30, AFF C30, AFF C60 ou FAS50.
 
 .Passos
-. Pare um nó em cada local e permita que seu parceiro de HA faça um takeover do nó:
+. Parar um nó em ambos os locais e permitir que seu parceiro de HA faça um takeover do nó:
 +
 `halt  -node <node_name>`
 
@@ -107,7 +110,7 @@ Esta tarefa é *somente* necessária quando você atualiza para um sistema AFF A
 +
 `storage failover giveback -ofnode <node_name>`
 
-. Repita as etapas em cada nó no grupo DR que está sendo atualizado.
+. Repita as etapas em todos os quatro nós no grupo de DR que você está atualizando.
 
 
 .O que vem a seguir

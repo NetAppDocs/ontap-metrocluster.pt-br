@@ -13282,14 +13282,12 @@
   <block id="cb2b71f7328cfbc51d68290fdef5e64a" category="inline-link-macro">desative a criptografia de ponta a ponta</block>
   <block id="2843a33605079ab99cc2f26a41a2bcbb" category="list-text">Se estiver ativado no seu sistema, <block ref="7a9d12e6dbd7c75c145032be8c2b8549" category="inline-link-macro-rx"></block> antes de executar a atualização.</block>
   <block id="973338f6a10e6b7ac7c39f19d7b492b2" category="list-text">Você reutiliza os endereços IP, as máscaras de rede e os gateways das plataformas originais nas novas plataformas.</block>
-  <block id="77cd2bc0bfe264cad96e3619cb8678b1" category="list-text">Pare um nó em cada local e permita que seu parceiro de HA faça um takeover do nó:</block>
   <block id="8b0fde7ba026b4e4de5c975b52e10b78" category="paragraph"><block ref="fc0e5e4abc6e1b590b3364b384105526" prefix="" category="inline-code"></block></block>
   <block id="807f12cb6d4e38b470996608263f29ac" category="list-text">No<block ref="82b8350d28f0a14e36de1958b3be9205" prefix=" " category="inline-code"></block> prompt do nó interrompido, digite o seguinte:</block>
   <block id="80ce63b6e2ae11a72a38bf7e4ef35369" category="paragraph"><block ref="924cd73da4c8e153eb2de352d5e9a0e1" prefix="" category="inline-code"></block></block>
   <block id="a0fd3a832d10febc3517df104c662c1d" category="paragraph"><block ref="c3e347fd62df99318c1112b24c25c070" prefix="" category="inline-code"></block></block>
   <block id="7fea19d34419d662a854d37c6044222a" category="list-text">Quando o nó for inicializado, execute um giveback para o nó no prompt:</block>
   <block id="9fd57da49ac1975b29677831c2286586" category="paragraph"><block ref="fb72d634bc57a858bd0751f5c6335d6e" prefix="" category="inline-code"></block></block>
-  <block id="c5b67774bb32fdf25c42ebcc33f3e43d" category="list-text">Repita as etapas em cada nó no grupo DR que está sendo atualizado.</block>
   <block id="6383d84a4827bb60fdcfc949929e33de" category="paragraph">1,7 ou posterior</block>
   <block id="79ddbe00231bda83f336a9a9821115f2" category="paragraph">1,3 ou posterior</block>
   <block id="0d4ad75e0716be856c986b26056dc9e0" category="list-text">Planeje o uso da porta e preencha as tabelas a seguir para referência para cada um dos novos nós.</block>
@@ -14124,7 +14122,6 @@
   <block id="3d8c3985ef8f7b9c50308a5dfab923c4" category="paragraph"><block ref="f85c62a3a981a8b83a61b1dc7959165b" category="inline-link-macro-rx"></block>.</block>
   <block id="ed1dd620ec6ed4baac7e1208e4a9d25d" category="summary">As atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg antes de prosseguir com a atualização da controladora.</block>
   <block id="496db1855de52190cc06d85f972a650b" category="doc">Defina o bootarg necessário (para atualizações MetroCluster IP para sistemas introduzidos no ONTAP 9.15.1 ou posterior)</block>
-  <block id="46e4bb8c59f161cfa278e9cc00ce227a" category="paragraph">As atualizações de controladora para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg antes de iniciar a atualização.</block>
   <block id="59b020257dd689cba5d5780a512943fd" category="section-title">Passo 1: Determine o bootarg que você precisa definir nos controladores antigos</block>
   <block id="6e9eadf85899a23a56a99cb9a6df7652" category="paragraph">Todas as atualizações com suporte para os sistemas a seguir exigem que você defina um bootarg nas controladoras antigas antes de executar a atualização da controladora:</block>
   <block id="724bf3ae18d86521a5b9d77a13fcfddb" category="list-text">AFF C80</block>
@@ -14765,4 +14762,10 @@
   <block id="c21a199bc091a4db6d90366971734cf9" category="paragraph"><block ref="c21a199bc091a4db6d90366971734cf9" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4d4e0d3e34b6b8a05aa28d2f8e68fab4" category="paragraph"><block ref="4d4e0d3e34b6b8a05aa28d2f8e68fab4" category="inline-image-macro-rx" type="image"></block></block>
   <block id="e94f3a81af196da788fa0f158f9d57fc" category="sidebar">Saiba mais sobre como usar o Active IQ Unified Manager e o Gerenciador de sistema para obter mais configurações e monitoramento</block>
+  <block id="5c1f1ec5000a0efcdda7a9cf624dafe7" category="paragraph">As atualizações de controladora para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg nas controladoras antigas antes de iniciar a atualização.</block>
+  <block id="d7aa339b18c7637dfafa2ace54386b6c" category="admonition">Você deve definir o bootarg necessário em todos os nós antigos em ambos os sites antes de iniciar a atualização.</block>
+  <block id="ac37738788377720cfa00ec2fd76c841" category="list-text">Parar um nó em ambos os locais e permitir que seu parceiro de HA faça um takeover do nó:</block>
+  <block id="0fd6026f96835994e1e5d178235825d6" category="list-text">Repita as etapas em todos os nós do grupo de DR ou dos grupos de DR que você está atualizando.</block>
+  <block id="29a7afcbdc44731ef5db6482e263bc76" category="paragraph">As atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg nas controladoras antigas antes de iniciar a atualização.</block>
+  <block id="ffb8d6643ebe516c638a6ca5b500299d" category="list-text">Repita as etapas em todos os quatro nós no grupo de DR que você está atualizando.</block>
 </blocks>
