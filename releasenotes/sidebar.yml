@@ -2,8 +2,6 @@
 section: releasenotes
 title: Notas de versão do MetroCluster
 entries:
-- title: Novidades no suporte do MetroCluster para recursos do ONTAP
-  url: "/releasenotes/mcc-config-support-features.html"
 - title: Novidades nas funcionalidades do MetroCluster
   url: "/releasenotes/mcc-new-features.html"
 - title: O que há de novo no suporte a switch e plataforma IP MetroCluster

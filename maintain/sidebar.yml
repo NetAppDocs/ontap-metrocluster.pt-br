@@ -2,9 +2,11 @@
 section: maintain
 title: Mantenha os componentes do MetroCluster
 entries:
+- title: Saiba mais sobre a manutenção do MetroCluster
+  url: "/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html"
 - title: Prepare-se para a manutenção do MetroCluster
   entries:
-  - title: Ative o registo da consola antes de executar tarefas de manutenção
+  - title: Ativar o registo da consola
     url: "/maintain/enable-console-logging-before-maintenance.html"
   - title: Remova a monitorização do Mediador ONTAP ou do tiebreaker antes de executar
       tarefas de manutenção
@@ -14,8 +16,6 @@ entries:
   - title: Como usar a ferramenta Matriz de interoperabilidade para encontrar informações
       do MetroCluster
     url: "/maintain/concept_using_the_interoperability_matrix_tool_to_find_mcc_information.html"
-  - title: Onde encontrar procedimentos para tarefas de manutenção do MetroCluster
-    url: "/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html"
 - title: Procedimentos de manutenção para configurações MetroCluster FC
   entries:
   - title: Modifique um endereço IP de switch ou ponte ATTO para monitoramento de

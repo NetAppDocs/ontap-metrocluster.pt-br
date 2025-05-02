@@ -7502,7 +7502,6 @@
   <block id="810084908a2d14110f44e74be651b281" category="paragraph">Use o *Explorador de componentes* para selecionar os componentes e a versão do ONTAP para refinar sua pesquisa.</block>
   <block id="3a22912e4973e8f3bedeb2bd6bde725d" category="paragraph">Você pode clicar em *Mostrar resultados* para exibir a lista de configurações compatíveis que correspondem aos critérios.</block>
   <block id="240a6a449012d1ff29bd7a375366249a" category="summary">Você deve ter certeza de que selecionou o procedimento correto quando executar tarefas de manutenção de hardware do MetroCluster.</block>
-  <block id="4888a1163bab7e13f5a9de829f599dba" category="doc">Onde encontrar procedimentos para tarefas de manutenção do MetroCluster</block>
   <block id="8c7c7786a78ed0525be3fc73d05a9bd2" category="list-title">Procedimentos de manutenção para diferentes tipos de configurações do MetroCluster</block>
   <block id="04b213f51089d6bf4fefca757c297895" category="inline-link-macro">Procedimentos de manutenção para configurações IP do MetroCluster</block>
   <block id="c684e4d9d94884e7e064b5fce2bca01c" category="list-text">Se tiver uma configuração IP do MetroCluster, reveja os procedimentos em <block ref="0fd30218129ebfd04df2ceba50901cb7" category="inline-link-macro-rx"></block>.</block>
@@ -9792,7 +9791,6 @@
   <block id="c7e147724ec887db5c26cc6637032f19" category="paragraph">Neste exemplo, os SVMs de destino de sincronização anteriormente adormecidos no site secundário foram ativados e têm um estado de administração em execução:</block>
   <block id="7814aadb42b148f35b4d559e400b4895" category="summary">Depois de executar o switchback, você deseja confirmar que todos os agregados e máquinas virtuais de armazenamento (SVMs) são comutados de volta e on-line.</block>
   <block id="90755aace4dbf79660e4f610c3481e12" category="paragraph">Os agregados de sincronização de destino na configuração MetroCluster têm o sufixo "'-mc" automaticamente anexado ao seu nome para ajudar a identificá-los.</block>
-  <block id="bce17534235ea414fd168aec560670ba" category="doc">Novidades no suporte à configuração do MetroCluster para recursos do ONTAP</block>
   <block id="e90d1c6a70648051cbe5131fdb8a8227" category="paragraph">Cada versão do software de gerenciamento de dados ONTAP 9 oferece recursos novos e aprimorados que melhoram os recursos, a capacidade de gerenciamento e o desempenho das configurações do ONTAP MetroCluster.</block>
   <block id="efe451bd1c5b374a05e7d5178bb06987" category="inline-link">ONTAP 9 Notas de versão</block>
   <block id="9342c35c4399c8e6faf7c07d8bae26c5" category="paragraph">Para obter detalhes sobre problemas conhecidos, limitações e precauções de atualização que afetam as configurações do ONTAP MetroCluster, consulte o<block ref="6e7f74aa9001f0524a965144f528bbc2" category="inline-link-rx"></block>. Você deve entrar com sua conta do NetApp ou criar uma conta para acessar as Notas de versão.</block>
@@ -9804,11 +9802,9 @@
   <block id="0523cf29ce37abad9282f80ffd3f533e" category="paragraph"><block ref="0523cf29ce37abad9282f80ffd3f533e" category="inline-link-macro-rx"></block></block>
   <block id="983ef706fb7088bc127ca2ea08447cd2" category="paragraph">Suporte a storage de objetos S3 em agregados espelhados e sem espelhamento</block>
   <block id="9200b87f425cf8ffb4a16ea10431a73e" category="paragraph">Você pode habilitar um servidor de storage de objetos S3 em uma SVM em um agregado espelhado ou sem espelhamento em configurações MetroCluster IP e FC.</block>
-  <block id="c89f9fd1a8019dc4d7a2559a982d3aa8" category="inline-link">Visão geral da configuração do S3</block>
   <block id="8020ad245e7cbc2ac49c84b7f4ace684" category="paragraph">ONTAP 9.14,1</block>
   <block id="1e4cf16edaf417e94a695644f4089a2f" category="paragraph">Suporte para provisionamento de um bucket do S3 em agregados espelhados e sem espelhamento em um cluster MetroCluster</block>
   <block id="54c9cab829044acca6994285d3185409" category="paragraph">Você pode criar um bucket em um agregado espelhado ou sem espelhamento nas configurações do MetroCluster.</block>
-  <block id="ea0c90724ad3d5959704fb91a048c28c" category="inline-link">Crie um bucket em um agregado espelhado ou sem espelhamento em uma configuração do MetroCluster</block>
   <block id="594e1ec3daa27e540baa061f731f028f" category="paragraph">ONTAP 9.12,1</block>
   <block id="f09a5dc7d9c973e1f6ab3e9ffa36921c" category="paragraph">O protocolo NVMe/FC é compatível com configurações MetroCluster IP de quatro nós.</block>
   <block id="6eaae443849a6746c6ace7f4204bd085" category="paragraph">Suporte a IPsec para protocolo de host front-end em configurações de conexão de malha MetroCluster IP e MetroCluster</block>
@@ -9818,11 +9814,6 @@
   <block id="6165c4352e1504dbaeef34d0cc50c187" category="paragraph">Grupos de consistência</block>
   <block id="3fb697436dcc4f2ae2cdd29dc91fd043" category="paragraph">Os grupos de consistência são compatíveis com as configurações do MetroCluster.</block>
   <block id="3447b91e516e4fc6b5dba827fcb68bee" category="paragraph">ONTAP 9,7</block>
-  <block id="7b25d54164390a979173c966708bcd3e" category="paragraph">Espelhos FabricPool nas configurações do MetroCluster</block>
-  <block id="456a60d3d7f70b899491cde66c53e366" category="paragraph">Você pode configurar um FabricPool espelhado nas configurações do MetroCluster para categorizar dados inativos em duas zonas de falha diferentes.</block>
-  <block id="50adf775e4799022cdc6de484f49f3f1" category="inline-link">Configurando armazenamentos de objetos para FabricPool em uma configuração MetroCluster</block>
-  <block id="4bac6a2c11bf11dd13d68729ea0a8869" category="paragraph">Recuperação de desastres da SVM</block>
-  <block id="757efaf9f255f5bc7d684262790601ff" category="paragraph">As máquinas virtuais de storage ativo (SVMs) em uma configuração do MetroCluster podem ser usadas como fontes com o recurso de recuperação de desastres do SnapMirror SVM.</block>
   <block id="0fcf2ee62acd9eae83b609a0e7ecaa72" category="paragraph">ONTAP 9,5</block>
   <block id="76a27f1dad18a5de567d4849d3e76b69" category="doc">Novidades no suporte à plataforma MetroCluster FC e switch</block>
   <block id="4d8d9056b62fc01f5cd3f0898c551fde" category="section-title">Suporte de plataforma</block>
@@ -9860,7 +9851,6 @@
   <block id="74eb178224c5fa701fbcd96998feaafe" category="paragraph">ONTAP 9.9,1</block>
   <block id="aff36115ba8ba0cb671d3dfa2208bed1" category="paragraph">9336C</block>
   <block id="ef0b6886d8755e5cb21c0bd5f9f81c01" category="cell">Switches NVIDIA</block>
-  <block id="d4acd79e74a2b88899e53bc903561aae" category="paragraph">Várias configurações de IP MC no mesmo switch NVIDIA SN2100</block>
   <block id="155bba03249764c61fd72335fd0c56c8" category="paragraph">SN2100</block>
   <block id="47d81ac708cab22da7ea952550b6f757" category="summary">Novos recursos do Mediador ONTAP são fornecidos com cada versão. Eis as novidades.</block>
   <block id="3261bd656e2112e78b0313c87c039420" category="doc">O que há de novo no suporte do ONTAP Mediator</block>
@@ -9873,7 +9863,6 @@
   <block id="581b029a5b5e612bbb2ff34e6b1ff9ad" category="paragraph"><block ref="581b029a5b5e612bbb2ff34e6b1ff9ad" category="inline-link-rx"></block></block>
   <block id="4765407452f01930deae2b9481b69e36" category="paragraph">Suporte inicial para o serviço ONTAP Mediator em configurações IP do MetroCluster</block>
   <block id="63b6c1d0d10ce89604932c62d9b6f4d7" category="doc">Novidades nos recursos do MetroCluster</block>
-  <block id="629ea23148e9d8c2d0f002e89411b05a" category="paragraph">Saiba mais sobre os novos recursos do MetroCluster.</block>
   <block id="3100460fa3d7ba2ea001abefda93f3bc" category="cell">Descrição e onde saber mais</block>
   <block id="efd20e2b544e4614b2e657ac6783ec0a" category="paragraph">Suporte IP MetroCluster para criptografia de ponta a ponta</block>
   <block id="4a4b85199291f3e23fc84fb47fb5ca30" category="paragraph">A criptografia de ponta a ponta é compatível com sistemas AFF A400, FAS8300 e FAS8700 para criptografar o tráfego de back-end, como NVlog e dados de replicação de storage, entre os locais em uma configuração IP do MetroCluster.</block>
@@ -9888,11 +9877,8 @@
   <block id="677eca4ee8daca8d2b9156735c70729b" category="paragraph">Transição do MetroCluster FC para o MetroCluster IP usando um switch compartilhado para storage conetado MetroCluster IP e Ethernet</block>
   <block id="de09b0e8b75c62ac84c620713e05647b" category="paragraph">Você pode fazer a transição de uma configuração MetroCluster FC para uma MetroCluster IP sem interrupções usando um switch de storage compartilhado.</block>
   <block id="2380f44f4dcec1f84b76f71d467c0c65" category="inline-link">Transição de uma configuração IP do MetroCluster FC para uma configuração IP do MetroCluster sem interrupções (ONTAP 9.8 e posterior)</block>
-  <block id="9b9a95d11d51a9dc8ad8f89b7072a66d" category="paragraph"><block ref="9b9a95d11d51a9dc8ad8f89b7072a66d" category="inline-link-rx"></block></block>
   <block id="c8c7ff2d320bb817b5265b97fc451f0b" category="paragraph">Transições ininterruptas de uma configuração de FC MetroCluster de oito nós para uma configuração IP MetroCluster</block>
   <block id="5b9e0c49b03f990a762696dc03ba2d75" category="paragraph">Você pode migrar workloads e dados de uma configuração MetroCluster FC de oito nós existente para uma nova configuração MetroCluster IP sem interrupções.</block>
-  <block id="01040b05589b1144c8bc3e40d5ea5c26" category="inline-link">Transição de uma configuração MetroCluster FC para uma MetroCluster IP sem interrupções</block>
-  <block id="6a542f8c97dec2202fc9175dffd6bfb4" category="paragraph"><block ref="6a542f8c97dec2202fc9175dffd6bfb4" category="inline-link-rx"></block></block>
   <block id="473923750a8b861aba12a03eef005b32" category="paragraph">Upgrades de configuração IP MetroCluster de quatro nós usando switchover e switchback</block>
   <block id="511f52f2a9874038d0730dcea8df8663" category="paragraph">Você pode atualizar controladores em uma configuração IP MetroCluster de quatro nós usando switchover e switchback com<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
   <block id="ac725f3c9959f745d971d1c4af95544e" category="inline-link">Atualize controladores em uma configuração IP MetroCluster de quatro nós</block>
@@ -9900,61 +9886,26 @@
   <block id="de19903f1baec8a806f09acbc21c609c" category="paragraph">O switchover não planejado automático assistido por mediador (MAUSO) é acionado para um desligamento ambiental</block>
   <block id="2baf765df55a69e9c032792bec126f2c" category="paragraph">Suporte para configurações de IP MetroCluster de oito nós</block>
   <block id="5e3aa18041f614fb450ca9a1c9ff1a5b" category="paragraph">Você pode atualizar os controladores e o storage em uma configuração IP do MetroCluster de oito nós expandindo a configuração para se tornar uma configuração temporária de doze nós e removendo os grupos de DR antigos.</block>
-  <block id="ee794ce3325c3c2b6f8e58083826be5a" category="paragraph"><block ref="ee794ce3325c3c2b6f8e58083826be5a" category="inline-link-rx"></block></block>
   <block id="117c4d63306680989486fb689a87e954" category="paragraph">Conversão de configuração IP do MetroCluster para uma configuração de switch MetroCluster de armazenamento compartilhado</block>
   <block id="8cbc10058d52d83f095c5e9f4f0e7163" category="paragraph">Você pode converter uma configuração IP MetroCluster para uma configuração de switch MetroCluster de armazenamento compartilhado.</block>
-  <block id="fd60e91c0a23b684d9542fc4b71afedc" category="paragraph"><block ref="fd60e91c0a23b684d9542fc4b71afedc" category="inline-link-rx"></block></block>
   <block id="f9a53f3d74b05e12c790f44f7befc006" category="paragraph">Recurso de comutação forçada automática do MetroCluster em uma configuração IP do MetroCluster</block>
   <block id="df40423b91d8f5580bf9273c58f9b677" category="paragraph">Você pode habilitar o recurso de switchover forçado automático do MetroCluster em uma configuração IP do MetroCluster. Este recurso é uma extensão do recurso de switchover não planejado assistido por Mediador (MAUSO).</block>
   <block id="413fbf2b200b0928cca102b1a4ec778b" category="inline-link">Limitações de comutação automática</block>
   <block id="a7a1dcf05ac1a96ad6f234699be20abf" category="paragraph"><block ref="a7a1dcf05ac1a96ad6f234699be20abf" category="inline-link-rx"></block></block>
   <block id="d360f541ca25e1873e9d4a8b54ae8934" category="paragraph">S3 em um SVM em um agregado sem espelhamento em uma configuração MetroCluster IP</block>
   <block id="4e1e81f02f6df5acb5f22c116f354c5e" category="paragraph">Você pode habilitar um servidor de storage de objetos do ONTAP Simple Storage Service (S3) em uma SVM em um agregado sem espelhamento em uma configuração IP do MetroCluster.</block>
-  <block id="ebe82213f65d472c79a3846e6c8ee62e" category="inline-link">Configuração do S3 com o Gerenciador de sistemas e a CLI do ONTAP</block>
-  <block id="6e0af3dea79051e350502451cc600f87" category="paragraph"><block ref="6e0af3dea79051e350502451cc600f87" category="inline-link-rx"></block></block>
-  <block id="1f9fcd1010f1e0dd33b166603da0ce84" category="paragraph">Transição de uma configuração MetroCluster FC para uma configuração AFF A250 ou FAS500f MetroCluster IP</block>
   <block id="56d5901b9c1bf4f73e626ae675e092f1" category="paragraph">Você pode fazer a transição de uma configuração MetroCluster FC para uma configuração AFF A250 ou FAS500f MetroCluster IP.</block>
   <block id="96ff13f92c4ce7113cad61adcc09704f" category="inline-link">Mova as conexões do cluster local</block>
   <block id="082e2199f2e8e7e6ff724185b8487f99" category="paragraph"><block ref="082e2199f2e8e7e6ff724185b8487f99" category="inline-link-rx"></block></block>
   <block id="cdafe0852c5285bf1f5846616c50f62d" category="paragraph">Atualização simplificada do controlador de nós em uma configuração de MetroCluster FC</block>
   <block id="407ce0bae822f5f1b99e4d9c2a25b062" category="paragraph">O procedimento de atualização para o processo de atualização usando switchover e switchback foi simplificado.</block>
   <block id="3f28886cbb43f1c7c0c4f4d35ecafdde" category="inline-link">Atualização de controladores em uma configuração MetroCluster FC usando switchover e switchback</block>
-  <block id="f897370f92c3d8ec5324c468747e4210" category="paragraph"><block ref="f897370f92c3d8ec5324c468747e4210" category="inline-link-rx"></block></block>
   <block id="8cdd736be069554622c436a2c599a593" category="paragraph">Suporte IP para link compartilhado na camada 3</block>
   <block id="691914a2d679340737342aafb1bffe11" category="paragraph">As configurações IP do MetroCluster podem ser implementadas com conexões back-end roteadas por IP (camada 3).</block>
   <block id="45186ad241074d94a133e683abb6f70a" category="paragraph"><block ref="45186ad241074d94a133e683abb6f70a" category="inline-link-rx"></block></block>
-  <block id="e31476825cd043b784508d2973f3d14a" category="paragraph">Suporte para clusters de 8 nós</block>
-  <block id="60d69de6171dd30823b37f82c71230f8" category="paragraph">Clusters permanentes de 8 nós são compatíveis com configurações de IP e conexão de malha.</block>
-  <block id="40d7404018dc8febaca6bd91e9b48ba8" category="inline-link">Instalação e cabeamento de componentes MetroCluster</block>
-  <block id="6af2dc37753a5e6e029fb0ae7fc66f1a" category="paragraph"><block ref="6af2dc37753a5e6e029fb0ae7fc66f1a" category="inline-link-rx"></block></block>
-  <block id="0e0332eeed51af7c88c71e42325f06d2" category="paragraph">Interface simplificada para gerenciar operações de IP MetroCluster com o System Manager</block>
-  <block id="3d8c9252712eac4aee5f46e1eaf70281" category="paragraph">Você pode gerenciar as operações do IP MetroCluster com o Gerenciador do sistema, incluindo a configuração de sites do IP MetroCluster, o emparelhamento dos sites e a configuração dos clusters.</block>
-  <block id="d73a7b2e9d0b560c8788684e080bfb89" category="inline-link">Gerenciar sites do MetroCluster</block>
-  <block id="7aec141904db9fbd637afcee9e7edf50" category="paragraph"><block ref="7aec141904db9fbd637afcee9e7edf50" category="inline-link-rx"></block></block>
-  <block id="2fb515b84203369df8a6c693c7612d7a" category="paragraph">Comutação IP MetroCluster e switchback com o Gerenciador de sistemas</block>
-  <block id="0a96686e2876927129d1d5aef0571af3" category="paragraph">Você pode usar o Gerenciador de sistema para executar todas as etapas de procedimentos de comutação e switchback planejados ou não planejados para configurações de IP MetroCluster.</block>
-  <block id="bb1a898150cba9c435ba241d8cba4ec7" category="inline-link">Switchover e switchback do MetroCluster</block>
-  <block id="d39d075b61e472ef8c54018caefa8511" category="paragraph"><block ref="d39d075b61e472ef8c54018caefa8511" category="inline-link-rx"></block></block>
   <block id="1253cddc06d635fa3f41c016a1239e34" category="paragraph">Transição das configurações MetroCluster FC para MetroCluster IP</block>
-  <block id="8e9be644315ddadb5944dcbc8bf1384e" category="paragraph">A transição de workloads e dados de uma configuração MetroCluster FC de quatro nós existente para uma nova configuração MetroCluster IP é compatível.</block>
   <block id="524f05419622851f7f6289320cc91a6e" category="inline-link">Atualize, atualize ou expanda a configuração do MetroCluster</block>
-  <block id="a9824cae56fb744858ebac6acf84c1e6" category="paragraph"><block ref="a9824cae56fb744858ebac6acf84c1e6" category="inline-link-rx"></block></block>
-  <block id="1a68d4a78f68931df0fce4010d4df302" category="paragraph">Novos procedimentos de atualização e atualização</block>
-  <block id="b3288bd86ff4e4636941ad1ebfeb011c" category="paragraph">A atualização ou atualização de hardware de configurações de FC e IP do MetroCluster de quatro nós é compatível.</block>
-  <block id="1beabd2bf8c89043837550cdc3d49b42" category="paragraph">Agregados não espelhados</block>
-  <block id="44852896b9c6d494436e90ceaa1b720f" category="paragraph">Agregados não espelhados são compatíveis com configurações MetroCluster IP.</block>
-  <block id="0900886d76d15efaa0e570bd07d1dc1b" category="paragraph"><block ref="0900886d76d15efaa0e570bd07d1dc1b" category="inline-link-rx"></block></block>
-  <block id="e8bfb35048c0270a42b5363420d8d06e" category="paragraph">Switches compatíveis com MetroCluster</block>
-  <block id="dda2ae45f83910f519a8c4d7c9f92c9c" category="paragraph">As configurações IP do MetroCluster podem suportar switches que não são validados pela NetApp, desde que estejam em conformidade com as especificações da NetApp.</block>
   <block id="598ab8da90f7b08fb85eebf2cdb5b642" category="inline-link">Considerações para usar switches compatíveis com MetroCluster</block>
-  <block id="e86b2272e3f7c48e112d32e70c0b4f1c" category="paragraph"><block ref="e86b2272e3f7c48e112d32e70c0b4f1c" category="inline-link-rx"></block></block>
-  <block id="b4f5e35865c61d6fc5091755a3ab97ea" category="paragraph">Compartilhamento de rede de camada privada 2</block>
-  <block id="8975f88edd1882cbd2188fe69d435802" category="paragraph">As configurações IP do MetroCluster com switches Cisco compatíveis podem compartilhar redes existentes para ISLs, em vez de usar ISLs MetroCluster dedicados. Versões anteriores do ONTAP requerem ISLs dedicados.</block>
-  <block id="83e1d9204a2f1962f867f2b891422e9b" category="paragraph">Os switches IP do MetroCluster são dedicados à configuração do MetroCluster e não podem ser compartilhados. Apenas as portas ISL MetroCluster nos switches IP MetroCluster podem se conetar aos switches compartilhados.</block>
-  <block id="8ac8df48acb2ee9b6d05e12a33e47a64" category="paragraph">Se estiver usando uma rede compartilhada, o cliente será responsável por atender aos requisitos de rede MetroCluster na rede compartilhada.</block>
-  <block id="684d63e7608a9651e2d8bee21d68cf7f" category="paragraph"><block ref="684d63e7608a9651e2d8bee21d68cf7f" category="inline-link-rx"></block></block>
-  <block id="19aa48eac8765adacdffd4326cf95a85" category="paragraph">Você pode permitir que um site de cluster assuma as tarefas de outro site de cluster. Essa funcionalidade permite facilitar a manutenção ou a recuperação de desastres.</block>
-  <block id="5b8155e42c3d2db8152488c62b6cf9ea" category="paragraph"><block ref="5b8155e42c3d2db8152488c62b6cf9ea" category="inline-link-rx"></block></block>
   <block id="d5e32abfbd3e5376cc7d90c1003b3516" category="summary">O software tiebreaker fornece recursos de monitoramento para um ambiente de storage em cluster. Ele também envia notificações SNMP em caso de problemas de conetividade de nó e desastres de site.</block>
   <block id="0cf4c92a4ea3edbf66b4866978237ff3" category="doc">Novidades no suporte ao tiebreaker do MetroCluster</block>
   <block id="a3100bf3334206028c894a5568ddcf09" category="summary">Descreve novos recursos, notas de atualização, problemas corrigidos, limitações conhecidas e problemas conhecidos.</block>
@@ -13728,7 +13679,6 @@
   <block id="5d3a9d93250c5d40157fa4915a4f176f" category="sidebar">Verifique um switchback bem-sucedido</block>
   <block id="9e22e5887d35d0e7eed7b0656d5e7bfa" category="sidebar">Monitore a configuração do MetroCluster</block>
   <block id="ea02090c2efd7c808bf4fb7c6b7bb365" category="sidebar">Monitore e proteja a consistência do sistema de arquivos usando NVFAIL</block>
-  <block id="03e22cbc7470f9e3b1bc635479554ca9" category="sidebar">Novidades no suporte do MetroCluster para recursos do ONTAP</block>
   <block id="3cc716dba68d44285ae03d4a0e650afb" category="sidebar">Novidades nas funcionalidades do MetroCluster</block>
   <block id="89753eb00eabd16383d2c616cc908230" category="sidebar">O que há de novo no suporte a switch e plataforma IP MetroCluster</block>
   <block id="986acab97d190ab2df45c246e97ca539" category="sidebar">O que há de novo no suporte do ONTAP Mediator</block>
@@ -14031,10 +13981,7 @@
   <block id="1066b653c05c9422872505d252585c67" category="list-text">Migração de um SVM entre um par de HA que não seja da MetroCluster e uma configuração MetroCluster IP</block>
   <block id="5816bf9644a6b97b7fab54df8e6d7b87" category="list-text">Migração de um SVM entre duas configurações de MetroCluster IP</block>
   <block id="f2e68eb15ce94074c593f47c4551c279" category="list-text">Migração de um SVM entre uma configuração de MetroCluster FC e uma configuração de MetroCluster IP</block>
-  <block id="3216bae762aaea90ccbe2d5d66257bd4" category="paragraph"><block ref="3216bae762aaea90ccbe2d5d66257bd4" category="inline-link-rx"></block></block>
-  <block id="880eaa973bb0ff52dbc4df4784ed8c3c" category="paragraph"><block ref="880eaa973bb0ff52dbc4df4784ed8c3c" category="inline-link-rx"></block></block>
   <block id="6b4b294441005b502ad66f4e60a001a3" category="paragraph"><block ref="6b4b294441005b502ad66f4e60a001a3" category="inline-link-rx"></block></block>
-  <block id="9bebdd73a8a23cb6bb096e8f8b057db5" category="paragraph"><block ref="9bebdd73a8a23cb6bb096e8f8b057db5" category="inline-link-rx"></block></block>
   <block id="3ced15298365cc7265357bcef11cbe1f" category="paragraph">AFF A20, AFF A30, AFF A50, AFF C30, AFF C60, AFF C80</block>
   <block id="8643f1ec20c68bd9122a5e9c431fe6fe" category="paragraph">FAS70, FAS90</block>
   <block id="cf937098cb61f15ebce14d9fb043e796" category="paragraph">ONTAP 9.15.1P3</block>
@@ -14768,4 +14715,29 @@
   <block id="0fd6026f96835994e1e5d178235825d6" category="list-text">Repita as etapas em todos os nós do grupo de DR ou dos grupos de DR que você está atualizando.</block>
   <block id="29a7afcbdc44731ef5db6482e263bc76" category="paragraph">As atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg nas controladoras antigas antes de iniciar a atualização.</block>
   <block id="ffb8d6643ebe516c638a6ca5b500299d" category="list-text">Repita as etapas em todos os quatro nós no grupo de DR que você está atualizando.</block>
+  <block id="d91bce8efd531c677e67c52eb81908cc" category="doc">Saiba mais sobre a manutenção do MetroCluster</block>
+  <block id="8f618269f9967b96ce33544121035a9a" category="paragraph">Saiba como se preparar para as tarefas de manutenção do MetroCluster e escolha o procedimento de manutenção correto para a sua configuração.</block>
+  <block id="8e6a6bb2a11b393a9057f7dbe3020eb5" category="section-title">Prepare-se para tarefas de manutenção</block>
+  <block id="2f88ee06f39dab40731582574999f455" category="paragraph">Reveja as informações em <block ref="5a8b1a02a6386170f533536223bf98d5" category="inline-link-macro-rx"></block> antes de executar quaisquer procedimentos de manutenção.</block>
+  <block id="fd7c141e5668b744255a1dd7a90f41c4" category="admonition">Você deve habilitar o Registro do console e remover o monitoramento do ONTAP Mediator ou tiebreaker antes de executar tarefas de manutenção.</block>
+  <block id="b80ae8ea59efa256f4a5f942715a890c" category="paragraph">Várias configurações IP do MetroCluster no mesmo switch NVIDIA SN2100</block>
+  <block id="95f1bb399dfbeed60895657cbcc52513" category="inline-link">Suporte S3 com MetroCluster</block>
+  <block id="e99dbc843da5e3a0670e4a0f25d0ac06" category="paragraph"><block ref="e99dbc843da5e3a0670e4a0f25d0ac06" category="inline-link-rx"></block></block>
+  <block id="ead106879beaea3e163b3107feef2e78" category="inline-link-macro">Crie um bucket do ONTAP S3 em um agregado espelhado ou sem espelhamento em uma configuração do MetroCluster</block>
+  <block id="02d7d8d32db9a7cc636933b822e44d81" category="paragraph"><block ref="02d7d8d32db9a7cc636933b822e44d81" category="inline-link-macro-rx"></block></block>
+  <block id="a0b47fb89b5abf26de89a08da113da06" category="paragraph"><block ref="a0b47fb89b5abf26de89a08da113da06" category="inline-link-rx"></block></block>
+  <block id="4fef202bd5cfe67a95fe547260ffbbf1" category="inline-link">Faça a transição de um MetroCluster FC para uma configuração MetroCluster IP sem interrupções</block>
+  <block id="b906747e620a17381dba7bbb539db79b" category="paragraph"><block ref="b906747e620a17381dba7bbb539db79b" category="inline-link-rx"></block></block>
+  <block id="62b2173b522c676cd5b204899e871332" category="inline-link">Atualizar uma configuração de MetroCluster IP de quatro nós</block>
+  <block id="982930ac8fbf4a67945efdee68cd51a9" category="paragraph"><block ref="982930ac8fbf4a67945efdee68cd51a9" category="inline-link-rx"></block></block>
+  <block id="bf8027982a2773871f133f6df59c6ddc" category="inline-link">Substitua um switch IP</block>
+  <block id="9843a2cfc38823fe057e20a590f7c8d5" category="paragraph"><block ref="9843a2cfc38823fe057e20a590f7c8d5" category="inline-link-rx"></block></block>
+  <block id="2cf1e90be4fa4450d57dab069599bee3" category="paragraph">Transição de uma configuração MetroCluster FC para uma configuração AFF A250 ou FAS500f MetroCluster IP</block>
+  <block id="d55368c3594f410657be0f2ce08d4263" category="inline-link">Grupos de consistência nas configurações do MetroCluster</block>
+  <block id="74f7144c1e56934be6456fafbd118a96" category="paragraph"><block ref="74f7144c1e56934be6456fafbd118a96" category="inline-link-rx"></block></block>
+  <block id="9d11e1781fbe5b44456d1d295cddc92b" category="inline-link">Atualize os controladores em uma configuração MetroCluster FC usando o switchover e o switchback</block>
+  <block id="a78d0a3000a64a87d913b2ca0d0a0663" category="paragraph"><block ref="a78d0a3000a64a87d913b2ca0d0a0663" category="inline-link-rx"></block></block>
+  <block id="47c5dc57c727f22af1ac884b3169ca06" category="paragraph">Suporte para configurações de MetroCluster de oito nós</block>
+  <block id="61c5b898fb73fa93fc5e839741da576e" category="paragraph">Clusters permanentes de oito nós são compatíveis com configurações IP e MetroCluster conectadas à malha.</block>
+  <block id="0f58a32a1bffeb9bb247bbf5ce1a2f3f" category="paragraph"><block ref="0f58a32a1bffeb9bb247bbf5ce1a2f3f" category="inline-link-rx"></block></block>
 </blocks>
