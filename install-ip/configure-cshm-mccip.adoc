@@ -1,0 +1,24 @@
+---
+permalink: install-ip/configure-cshm-mccip.html 
+sidebar: sidebar 
+keywords: ip, switch, connection, configuring, configure, snmp, health, monitoring 
+summary: Você pode configurar os switches IP para usar o SNMPv3 para monitoramento de integridade. 
+---
+= Visão geral do monitoramento de integridade do switch em uma configuração de IP do MetroCluster
+:allow-uri-read: 
+
+
+[role="lead"]
+O monitor de integridade do switch Ethernet (CSHM) é responsável por garantir a integridade operacional dos switches de rede Cluster e Storage e coletar logs de switch para fins de depuração.
+
+
+
+== Notas importantes para configurar o CSHM em uma configuração de IP do MetroCluster
+
+Esta seção contém as etapas genéricas para configurar SNMPv3 e coleta de logs em switches Cisco, Broadcom e NVIDIA SN2100. Você deve seguir as etapas para uma versão de firmware de switch compatível com uma configuração de IP do MetroCluster. Consulte a seção link:https://hwu.netapp.com/["Hardware Universe"^] para verificar as versões de firmware suportadas.
+
+Em uma configuração do MetroCluster, você configura o monitoramento de integridade somente nos switches do cluster local.
+
+Para coleta de logs com switches Broadcom e Cisco, um novo usuário deve ser criado no switch para cada cluster com coleta de logs habilitada. Em uma configuração MetroCluster, isso significa que o MetroCluster 1, o MetroCluster 2, o MetroCluster 3 e o MetroCluster 4 exigem a configuração de um usuário separado nos switches. Esses switches não suportam várias chaves SSH para o mesmo usuário. Qualquer configuração adicional de coleção de logs executada substitui quaisquer chaves SSH pré-existentes para o usuário.
+
+Antes de configurar o CSHM, você deve desabilitar ISLs não utilizados para evitar alertas de ISL desnecessários.

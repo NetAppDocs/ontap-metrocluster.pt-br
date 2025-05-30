@@ -2920,6 +2920,10 @@ Controller_A_1::> security login create -user-or-group-name snmpv3user -applicat
 ----
 . Responda às seguintes instruções, conforme necessário, no seu site:
 +
+
+NOTE: Para EngineID, pressione *ENTER* para atribuir o valor padrão.
+
++
 [listing]
 ----
 

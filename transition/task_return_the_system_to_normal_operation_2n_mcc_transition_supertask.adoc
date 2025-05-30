@@ -68,7 +68,7 @@ A operação de renomeação pode levar alguns minutos para ser concluída. Conf
 link:../install-ip/concept_considerations_mediator.html["Considerações para Mediator"]
 
 +
-link:../install-ip/concept_mediator_requirements.html["Configuração do serviço ONTAP Mediator para switchover automático não planejado"]
+link:../install-ip/concept_mediator_requirements.html["Configurar o ONTAP Mediator para comutação automática não planejada"]
 
 +
 link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["Instalação e configuração do software tiebreaker"]

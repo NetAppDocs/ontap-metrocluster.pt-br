@@ -19,7 +19,7 @@ As diferentes configurações do MetroCluster executam o switchover automático 
 +
 Nessas configurações, o AUSO é iniciado se os controladores falharem, mas o armazenamento (e as bridges, se presentes) permanecem operacionais.
 
-* *Configurações IP do MetroCluster usando o serviço Mediador ONTAP (ONTAP 9.7 e posterior)*
+* *Configurações de IP do MetroCluster usando o ONTAP Mediator (ONTAP 9.7 e posterior)*
 +
 Nessas configurações, o MAUSO é iniciado nas mesmas circunstâncias que o AUSO, conforme descrito acima, e também após uma falha completa do local (controladores, armazenamento e switches).
 

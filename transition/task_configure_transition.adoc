@@ -604,7 +604,7 @@ aggr_data_a2
 Você precisa incorporar o novo grupo de DR à configuração do MetroCluster e criar agregados de dados espelhados nos novos nós.
 
 .Passos
-. Configure o MetroCluster dependendo se ele tem um único ou vários agregados de dados:
+. Configure o MetroCluster dependendo se há um ou vários agregados de dados em ambos os clusters:
 +
 |===
 
@@ -613,7 +613,7 @@ Você precisa incorporar o novo grupo de DR à configuração do MetroCluster e 
 
 
  a| 
-Vários agregados de dados
+Vários agregados de dados em ambos os clusters
  a| 
 A partir do prompt de qualquer nó, configure o MetroCluster:
 
@@ -625,7 +625,7 @@ NOTE: Você deve correr `metrocluster configure` e *não* `metrocluster configur
 
 
  a| 
-Um único agregado de dados espelhados
+Um único agregado de dados espelhados em ambos os clusters
  a| 
 .. A partir do prompt de qualquer nó, altere para o nível de privilégio avançado:
 +

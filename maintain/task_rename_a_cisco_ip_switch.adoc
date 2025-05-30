@@ -37,7 +37,7 @@ myswitch(config)#
 `*switchname new-switch-name*`
 
 +
-Se você estiver renomeando ambos os switches na malha, use o mesmo comando em cada switch.
+Se você estiver renomeando ambos os switches na rede, use o mesmo comando em cada switch.
 
 +
 O prompt da CLI muda para refletir o novo nome:

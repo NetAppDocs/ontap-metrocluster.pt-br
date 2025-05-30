@@ -343,7 +343,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metro
  a| 
 Mediador
  a| 
-link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_mediator_requirements.html["Configurando o serviço do Mediador ONTAP a partir de uma configuração IP do MetroCluster"] Em _Instalação e Configuração IP do MetroCluster_.
+link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_mediator_requirements.html["Configurar o ONTAP Mediator a partir de uma configuração de IP do MetroCluster"] Em _Instalação e Configuração IP do MetroCluster_.
 
 
 

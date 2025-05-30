@@ -225,7 +225,7 @@ link:../install-ip/concept_considerations_mediator.html["Diferenças entre ONTAP
 Use esses links para instalar e configurar tiebreaker ou Mediator:
 
 * link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["Instale e configure o software tiebreaker do MetroCluster"]
-* link:../install-ip/concept_mediator_requirements.html["Prepare-se para instalar o serviço Mediador ONTAP"]
+* link:../install-ip/concept_mediator_requirements.html["Preparar para instalar o ONTAP Mediator"]
 
 
 

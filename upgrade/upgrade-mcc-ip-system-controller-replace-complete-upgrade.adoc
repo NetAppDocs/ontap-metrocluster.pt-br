@@ -59,7 +59,7 @@ Você deve repetir as tarefas de atualização para atualizar os nós no cluster
 
 Configure manualmente o ONTAP Mediator que foi removido automaticamente antes de iniciar a atualização.
 
-. Siga as etapas em link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["Configure o serviço do Mediador ONTAP a partir de uma configuração IP do MetroCluster"].
+. Siga as etapas em link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["Configurar o ONTAP Mediator a partir de uma configuração de IP do MetroCluster"].
 
 
 

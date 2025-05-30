@@ -40,7 +40,7 @@ link:https://docs.netapp.com/us-en/ontap/index.html["Documentação do ONTAP 9"^
 
 | link:https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf["Arquitetura e design da solução IP da MetroCluster, TR-4689"^]  a| 
 * Uma visão geral técnica da configuração e operação do MetroCluster IP.
-* Práticas recomendadas para a configuração IP do MetroCluster.
+* Melhores práticas para uma configuração de IP do MetroCluster.
 
 
 

@@ -2,23 +2,23 @@
 permalink: install-ip/task-sm-mediator.html 
 sidebar: sidebar 
 keywords: system manager, mediator, metrocluster, mcc, 8-node, ip, configure, remove, mauso, mediator-assisted automatic switchover, switchover, switchback, health 
-summary: Usando o System Manager, você pode executar tarefas para gerenciar o Mediador. 
+summary: Usando o Gerenciador de Sistema, você pode executar tarefas para gerenciar o Mediador. 
 ---
-= Gerencie o Mediador ONTAP com o Gerenciador de sistemas
+= Gerenciar o ONTAP Mediator com o System Manager
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Usando o Gerenciador do sistema, você pode executar tarefas para gerenciar o Mediador do ONTAP.
+Usando o System Manager, você pode executar tarefas para gerenciar o ONTAP Mediator.
 
 .Sobre estas tarefas
 A partir do ONTAP 9.8, você pode usar o Gerenciador de sistema como uma interface simplificada para gerenciar uma configuração IP MetroCluster de quatro nós, que pode incluir um Mediador ONTAP instalado em um terceiro local.
 
 A partir do ONTAP 9.14,1, você pode usar o Gerenciador do sistema para executar essas operações para um site IP MetroCluster de oito nós. Embora não seja possível configurar ou expandir um sistema de oito nós com o Gerenciador de sistema, se você já configurou um sistema IP MetroCluster de oito nós, então você pode executar essas operações.
 
-Execute as seguintes tarefas para gerenciar o Mediador ONTAP.
+Execute as seguintes tarefas para gerenciar o ONTAP Mediator.
 
 [cols="30,70"]
 |===
@@ -28,7 +28,7 @@ Execute as seguintes tarefas para gerenciar o Mediador ONTAP.
 
 
  a| 
-Configure o serviço Mediator
+Configurar o Mediador ONTAP
  a| 
 Ambos os clusters nos locais do MetroCluster devem estar ativos e colocados em Contato.
 
@@ -36,12 +36,12 @@ Ambos os clusters nos locais do MetroCluster devem estar ativos e colocados em C
 . No Gerenciador do sistema no ONTAP 9.8, selecione *Cluster > Configurações*.
 . Na seção *Mediator*, clique no image:icon_gear.gif["Ícone ações"].
 . Na janela *Configure Mediator*, clique em *Add*.
-. Introduza os detalhes de configuração do Mediador ONTAP.
+. Insira os detalhes de configuração do ONTAP Mediator.
 +
-Você pode inserir os seguintes detalhes ao configurar um Mediador ONTAP com o Gerenciador de sistema.
+Você pode inserir os seguintes detalhes ao configurar o ONTAP Mediator com o System Manager.
 
 +
-** O endereço IP do Mediador.
+** O endereço IP do ONTAP Mediator.
 ** O nome de utilizador.
 ** A palavra-passe.
 
@@ -61,14 +61,14 @@ Ativar ou desativar o switchover automático assistido por Mediator (MAUSO)
 . Introduza o nome de utilizador e a palavra-passe do administrador e, em seguida, clique em *Enable* (Ativar) ou *Disable* (Desativar).
 +
 
-NOTE: Você pode ativar ou desativar o Mediador quando ele pode ser alcançado e ambos os sites estão no modo "normal". O Mediador ainda está acessível quando o MAUSO está ativado ou desativado se o sistema MetroCluster estiver em bom estado.
+NOTE: Você pode habilitar ou desabilitar o Mediador ONTAP quando ele puder ser acessado e ambos os sites estiverem no modo "Normal". O Mediador ONTAP ainda estará acessível quando o MAUSO estiver habilitado ou desabilitado se o sistema MetroCluster estiver íntegro.
 
 
 
 
 
  a| 
-Remova o Mediador da configuração do MetroCluster
+Remover o ONTAP Mediator da configuração do MetroCluster
  a| 
 .Passos
 . No System Manager, clique em *Dashboard*.
@@ -81,7 +81,7 @@ Remova o Mediador da configuração do MetroCluster
 
 
  a| 
-Verifique o estado do Mediador
+Verifique a saúde do ONTAP Mediator
  a| 
 Execute as etapas específicas do System Manager em link:../maintain/verify-health-mcc-config.html["Verifique a integridade de uma configuração do MetroCluster"].
 

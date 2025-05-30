@@ -32,7 +32,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metro
  a| 
 Mediador
  a| 
-link:../install-ip/concept_mediator_requirements.html["Configurando o serviço do Mediador ONTAP a partir de uma configuração IP do MetroCluster"]
+link:../install-ip/concept_mediator_requirements.html["Configurar o ONTAP Mediator a partir de uma configuração de IP do MetroCluster"]
 
 |===
 

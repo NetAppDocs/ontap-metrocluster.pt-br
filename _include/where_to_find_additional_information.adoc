@@ -16,6 +16,15 @@ Você pode saber mais sobre a configuração do MetroCluster.
 
 
  a| 
+link:https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf["Arquitetura e design da solução IP da MetroCluster, TR-4689"]
+ a| 
+* Uma visão geral técnica da configuração e operação do MetroCluster IP.
+* Melhores práticas para uma configuração de IP do MetroCluster.
+
+
+
+
+ a| 
 link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"]
  a| 
 * Arquitetura MetroCluster conectada à malha
