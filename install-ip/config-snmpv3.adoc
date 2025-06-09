@@ -11,8 +11,7 @@ summary: Você pode configurar os switches IP para usar o SNMPv3 para monitorame
 [role="lead"]
 Nas configurações IP do MetroCluster, você pode configurar o SNMPv3 para monitorar a integridade dos switches IP.
 
-.Sobre esta tarefa
-Esta tarefa mostra as etapas genéricas para configurar o SNMPv3 em um switch. Algumas das versões de firmware de switch listadas podem não ser suportadas em uma configuração de IP do MetroCluster.
+Este procedimento mostra as etapas genéricas para configurar o SNMPv3 em um switch. Algumas das versões de firmware de switch listadas podem não ser suportadas em uma configuração de IP do MetroCluster.
 
 Você deve seguir as etapas para uma versão de firmware do switch compatível com uma configuração de IP do MetroCluster. Consulte a link:https://hwu.netapp.com["Hardware Universe"^] para verificar as versões de firmware suportadas.
 

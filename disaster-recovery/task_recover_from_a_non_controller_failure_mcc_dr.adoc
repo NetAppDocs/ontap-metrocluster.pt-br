@@ -186,11 +186,34 @@ Execute o comando: `boot_ontap`
 ====
 . Após a conclusão da inicialização do nó, verifique se os agregados raiz estão espelhados.
 +
-Se ambos os plexos estiverem presentes, qualquer ressincronização será iniciada automaticamente. Se um Plex falhar, destrua-o e restabeleça a relação do espelho utilizando o seguinte comando para recriar o espelho:
+[role="tabbed-block"]
+====
+.Se um plex falhar:
+--
+.. Destrua o plex com falha:
++
+`storage aggregate plex delete -aggregate <aggregate_name> -plex <plex_name>`
 
+.. Restabeleça a relação de espelho recriando o espelho:
 +
 `storage aggregate mirror -aggregate <aggregate-name>`
 
+
+
+--
+.Se um plex estiver offline:
+--
+On-line o plex:
+
+`storage aggregate plex online -aggregate <aggregate_name> -plex <plex_name>`
+
+--
+.Se ambos os plexos estiverem presentes:
+--
+A ressincronização é iniciada automaticamente.
+
+--
+====
 . Simule a operação de switchback:
 +
 .. A partir do prompt de qualquer nó sobrevivente, altere para o nível de privilégio avançado:

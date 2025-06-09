@@ -278,7 +278,7 @@ Depois de o site ser desligado, você pode começar o trabalho de manutenção. 
 
 .Passos
 . Verifique se o cabeamento de todos os componentes é cuidadosamente gravado para que ele possa ser reconetado corretamente no novo local.
-. Realocar fisicamente todo o hardware, controladores de armazenamento, switches IP, FibreBridges e compartimentos de armazenamento.
+. Realoque fisicamente todo o hardware, controladores de armazenamento, switches IP e prateleiras de armazenamento.
 . Configure as portas ISL e verifique a conetividade entre sites.
 +
 .. Ligue os interrutores IP.
@@ -325,14 +325,22 @@ Se a inicialização automática estiver ativada, pressione `Ctrl+C` para impedi
 CAUTION: Não ligue as gavetas antes de ligar os controladores. Isso impede que os controladores iniciem uma inicialização não intencional no ONTAP.
 
 . Ligue as prateleiras, permitindo tempo suficiente para que elas se liguem completamente.
-. Verifique se o armazenamento está visível.
+. Verifique se o armazenamento está visível no modo de manutenção.
 +
-.. Verifique se o armazenamento está visível a partir do local sobrevivente. Coloque os plexes offline novamente online para reiniciar a operação ressincronizada e restabelecer o SyncMirror.
-.. Verifique se o armazenamento local está visível a partir do nó no modo Manutenção:
+.. Inicialize no modo de manutenção:
++
+`boot_ontap maint`
+
+.. Verifique se o armazenamento está visível a partir do local sobrevivente.
+.. Verifique se o armazenamento local está visível no nó no modo de manutenção:
 +
 `disk show -v`
 
 
+
+. Parar os nós:
++
+`halt`
 
 . Restabelecer a configuração do MetroCluster.
 +

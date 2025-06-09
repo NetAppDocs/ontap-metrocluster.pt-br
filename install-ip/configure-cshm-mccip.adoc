@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ip, switch, connection, configuring, configure, snmp, health, monitoring 
 summary: Você pode configurar os switches IP para usar o SNMPv3 para monitoramento de integridade. 
 ---
-= Visão geral do monitoramento de integridade do switch em uma configuração de IP do MetroCluster
+= Saiba mais sobre o monitoramento da integridade do switch em uma configuração de IP do MetroCluster
 :allow-uri-read: 
 
 
