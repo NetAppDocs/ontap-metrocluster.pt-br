@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cabling, cable, component, link, site, management, network, networks, hardware, component, shared, switch, cluster, connection, management, data, configuring, configure 
 summary: O uso da porta em uma configuração IP do MetroCluster depende do modelo do switch e do tipo de plataforma. 
 ---
-= Atribuições de portas de plataforma para um switch Cisco 9336C-FX2 que coneta o armazenamento NS224
+= Atribuições de porta de plataforma para um switch Cisco 9336C-FX2 de 36 portas conectando armazenamento NS224
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -15,10 +15,20 @@ O uso da porta em uma configuração IP do MetroCluster depende do modelo do swi
 
 Revise as seguintes considerações antes de usar as tabelas de configuração:
 
-* Quando você faz um switch Cisco 9336C-FX2 que conecta o storage NS224 por cabo, só pode ter um máximo de duas configurações MetroCluster ou grupos de DR. Pelo menos uma configuração MetroCluster ou grupo de DR precisam ser compatíveis com gavetas NS224 conectadas por switch. As plataformas que não dão suporte a gavetas NS224 conectadas a switch só podem ser conectadas como uma segunda configuração MetroCluster ou como um segundo grupo de DR.
+* As tabelas nesta seção são para switches Cisco 9336C-FX2 de 36 portas quando pelo menos uma configuração MetroCluster ou grupo DR está conectando prateleiras NS224 ao switch MetroCluster.
++
+Se você tiver um switch Cisco 9336C-FX2 de 36 portas que não esteja conectando o armazenamento NS224, use as tabelas em link:port_usage_3232c_9336c.html["Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C-FX2 de 36 portas"] .
+
++
+Se você tiver um switch Cisco 9336C-FX2 de 12 portas, use as tabelas em link:port-usage-9336c-fx-2-12-port.html["Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 12 portas"] .
+
 +
 
-CAUTION: Use essas tabelas somente quando pelo menos uma configuração do MetroCluster ou grupo de DR estiver conetando NS224 gavetas ao switch MetroCluster. Se você estiver usando switches de armazenamento dedicados para conetar as NS224 prateleiras, faça o cabeamento dos switches de acordo com as tabelas em link:port_usage_3232c_9336c.html["Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C-FX2"].
+NOTE: O switch Cisco 9336C-FX2 de 12 portas não suporta a conexão de prateleiras NS224 ao switch MetroCluster.
+
+* Ao conectar um switch Cisco 9336C-FX2 a um armazenamento NS224, você só pode ter no máximo duas configurações do MetroCluster ou grupos de DR. Pelo menos uma configuração do MetroCluster ou grupo de DR deve conectar prateleiras NS224 ao switch MetroCluster. Você só pode conectar plataformas que não conectam prateleiras NS224 conectadas ao switch como uma segunda configuração do MetroCluster ou como um segundo grupo de DR.
++
+Se o seu segundo grupo MetroCluster ou DR não conectar as prateleiras NS224 ao switch MetroCluster, siga as instruções <<tables_not_connecting_ns224,tabelas de cabeamento para controladores que não conectam prateleiras NS224 conectadas a switches>> .
 
 * O RcfFileGenerator só mostra as plataformas elegíveis quando a primeira plataforma é selecionada.
 * A conexão de configurações de um MetroCluster de oito ou dois de quatro nós requer o ONTAP 9.14,1 ou posterior.

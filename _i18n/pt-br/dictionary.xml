@@ -6022,7 +6022,6 @@
   <block id="de42a51018ae76cdec0d5104c4b44724" category="doc">Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C</block>
   <block id="d74c7ca1ea000f4f70f344a02c2ae570" category="paragraph">Reveja estas considerações antes de utilizar as tabelas:</block>
   <block id="bbea4b02ce438e1ae0146e4c5cabb671" category="list-text">As tabelas a seguir mostram o uso da porta para o local A. o mesmo cabeamento é usado para o local B.</block>
-  <block id="f57f407b5a71435a3bd46aac8befd7b8" category="list-text">Os switches não podem ser configurados com portas de velocidades diferentes (por exemplo, uma combinação de portas de 100 Gbps e portas de 40 Gbps).</block>
   <block id="c57a7dcc596f78ac23d59a9297d99a56" category="list-text">Se você estiver configurando um único MetroCluster com os switches, use o grupo de portas *MetroCluster 1*.</block>
   <block id="8232ac4b6380b290738aa1ce5cc7cff3" category="paragraph">Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, MetroCluster 3 ou MetroCluster 4). Você precisará dele ao usar a ferramenta RcfFileGenerator como descrito mais adiante neste procedimento de configuração.</block>
   <block id="240c641ec7d44f443373981bb513fa5c" category="list-text">O RcfFileGenerator para MetroCluster IP também fornece uma visão geral de cabeamento por porta para cada switch.</block>
@@ -6031,7 +6030,6 @@
   <block id="5b43fcab432560bae73db4e0c9e34232" category="list-text">O ONTAP 9.13,1 ou posterior e o arquivo RCF versão 2,00 são necessários para usar uma plataforma diferente do FAS8200 ou do AFF A300 no grupo "MetroCluster 4".</block>
   <block id="c189be7568f7fe77db4a889353024935" category="admonition">A versão do arquivo RCF é diferente da versão da ferramenta RCFfilegerator usada para gerar o arquivo. Por exemplo, você pode gerar um arquivo RCF versão 2,00 usando o RCFfilegerator v1,6c.</block>
   <block id="9ae436c3a98ee403124b8482b69c2296" category="section-title">Cabeamento de duas configurações MetroCluster para os switches</block>
-  <block id="0995dd589b8b5229e4b9e28862db9b91" category="paragraph">Ao fazer o cabeamento de mais de uma configuração MetroCluster para um switch Cisco 3132Q-V, você deve fazer o cabeamento de cada MetroCluster de acordo com a tabela apropriada. Por exemplo, se estiver cabendo um FAS2750 e um AFF A700 ao mesmo switch Cisco 3132Q-V. Em seguida, você faz o cabo do FAS2750 de acordo com "MetroCluster 1" na Tabela 1, e do AFF A700 de acordo com "MetroCluster 2" ou "MetroCluster 3" na Tabela 2. Não é possível ligar fisicamente o FAS2750 e o AFF A700 como "MetroCluster 1".</block>
   <block id="0b3e5d156cf864da2f269d95d3fcc8fa" category="cell">FAS8200, AFF A300</block>
   <block id="393d2d284444ca547331678bf39eda23" category="cell">AFF A320 FAS8300, AFF C400, ASA C400, FAS8700 AFF A400, ASA A400</block>
   <block id="054b22baf62d3195ebaf8ecfe2361739" category="cell">FAS9000, AFF A700 AFF C800, ASA C800, AFF A800, ASA A800 FAS9500, AFF A900, ASA A900</block>
@@ -6934,10 +6932,8 @@
   <block id="ec88ce5186c357a0bc7a0b6036c98881" category="paragraph">O agregado afetado deve ter um status RAID "normal", como mostrado no exemplo a seguir:</block>
   <block id="5b97f056c47eb55f7ac2ec585e184dd9" category="summary">Você deve entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos RCF.</block>
   <block id="673f5a3eeb8366a43231216d5889b9fc" category="doc">Usando as tabelas de portas com a ferramenta RcfFileGenerator ou várias configurações do MetroCluster</block>
-  <block id="6852fcac58b417258b30784060002d89" category="list-text">Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, etc.). Você precisará dessas informações ao usar a ferramenta RcfFileGenerator, conforme descrito mais adiante neste procedimento de configuração.</block>
   <block id="b12eae1983992a43e1aff6798c40b450" category="section-title">Cabeamento de configurações de MetroCluster de oito nós</block>
   <block id="b8b5370c063dd2b4ce4021558a49ac07" category="paragraph">Para a configuração do MetroCluster executando o ONTAP 9.8 e anterior, alguns procedimentos que são executados para fazer a transição de uma atualização exigem a adição de um segundo grupo de DR de quatro nós à configuração para criar uma configuração temporária de oito nós. A partir do ONTAP 9.9,1, são suportadas configurações permanentes de MetroCluster de oito nós.</block>
-  <block id="134c13e2a51797233ea2a5ce24406813" category="paragraph">Para tais configurações, você usa o mesmo método descrito acima. Em vez de um segundo MetroCluster, você está fazendo o cabeamento de um grupo adicional de DR de quatro nós.</block>
   <block id="d5e8fd3a5a09a2e20b7a2ae3865f7eef" category="paragraph">Por exemplo, sua configuração inclui o seguinte:</block>
   <block id="d05e0033e800da35d05e3a88b52e765d" category="list-text">Interrutores Cisco 3132Q-V.</block>
   <block id="87ede0cd4f69bd1090135509c97d39fc" category="list-text">MetroCluster 1: Plataformas FAS2750</block>
@@ -9758,9 +9754,7 @@
   <block id="5575ad3a333d0c5383b802ef33e4e17a" category="cell">Switches IP Broadcom</block>
   <block id="6db27f68adde7b6578b513891108402f" category="paragraph">BES-53248</block>
   <block id="a28a8f1b6ed98f7c514003193e44ac48" category="cell">Switches IP Cisco</block>
-  <block id="f0936c8d947d6fc9958bb86b9f3f74f8" category="paragraph">Nexus 9336C-FX2</block>
   <block id="74eb178224c5fa701fbcd96998feaafe" category="paragraph">ONTAP 9.9,1</block>
-  <block id="aff36115ba8ba0cb671d3dfa2208bed1" category="paragraph">9336C</block>
   <block id="ef0b6886d8755e5cb21c0bd5f9f81c01" category="cell">Switches NVIDIA</block>
   <block id="155bba03249764c61fd72335fd0c56c8" category="paragraph">SN2100</block>
   <block id="47d81ac708cab22da7ea952550b6f757" category="summary">Novos recursos do Mediador ONTAP são fornecidos com cada versão. Eis as novidades.</block>
@@ -14405,7 +14399,6 @@
   <block id="f7bbc76208ab5ade611be3b207fc4964" category="paragraph">As partições internas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado. As unidades nas gavetas externas são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.</block>
   <block id="951ecdd1fc2eee9520c3a6959e6b80fd" category="section-title">Atribuição de disco em sistemas FAS50</block>
   <block id="eac1566268bcf590649d38dfbbc071d8" category="paragraph">AFF A30, AFF C30, AFF C60, FAS50</block>
-  <block id="aa004c86c9d246df59c413de8bb07fa4" category="doc">Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C-FX2</block>
   <block id="d7c09c5c93549b76361e49c52e9d96da" category="cell">AFF A150, ASA A150 FAS2750, AFF A220 FAS500f, AFF C250, ASA C250 AFF A250, ASA A250</block>
   <block id="ed0a8c1dcd72cbf4d807c21d5b375b44" category="inline-xref">Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 1)</block>
   <block id="f4d9a05d20269fa8131e3f2ad476038b" category="cell"><block ref="2617a916d647f27524de777e23ed7a4f" category="inline-xref-macro-rx"></block></block>
@@ -14446,9 +14439,6 @@
   <block id="a46b0b81f79736912aabc245374edb1e" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema FAS9000, AFF A700, AFF C800, ASA C800, AFF A800, ASA A800, FAS9500, AFF A900 ou ASA A900 para um switch Cisco 3232C ou 9336C-FX2:</block>
   <block id="0d3017d486c8217c6fd8ab61555e1cba" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A70, FAS70, AFF C80, FAS90, AFF A90 ou AFF A1K para um switch Cisco 3232C ou 9336C-FX2:</block>
   <block id="4b19e8be7b088862285a882fc40c46eb" category="paragraph"><block ref="4b19e8be7b088862285a882fc40c46eb" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="978829a52b7fb14e061e9c30e8ff7842" category="doc">Atribuições de portas de plataforma para um switch Cisco 9336C-FX2 que coneta o armazenamento NS224</block>
-  <block id="6aa15c1667845a9503228a8c33084aa0" category="list-text">Quando você faz um switch Cisco 9336C-FX2 que conecta o storage NS224 por cabo, só pode ter um máximo de duas configurações MetroCluster ou grupos de DR. Pelo menos uma configuração MetroCluster ou grupo de DR precisam ser compatíveis com gavetas NS224 conectadas por switch. As plataformas que não dão suporte a gavetas NS224 conectadas a switch só podem ser conectadas como uma segunda configuração MetroCluster ou como um segundo grupo de DR.</block>
-  <block id="e2fe191f4e95fee618e24c803250f26e" category="admonition">Use essas tabelas somente quando pelo menos uma configuração do MetroCluster ou grupo de DR estiver conetando NS224 gavetas ao switch MetroCluster. Se você estiver usando switches de armazenamento dedicados para conetar as NS224 prateleiras, faça o cabeamento dos switches de acordo com as tabelas em <block ref="172429233fb9c5bb35fb8fe69de88b73" category="inline-link-macro-rx"></block>.</block>
   <block id="81831b2f87876ca86e780e32db6c147b" category="inline-xref">Tabelas de cabeamento para controladores que conectam as gavetas NS224 conectadas ao switch</block>
   <block id="52c7315ab051ee37478d469443321dba" category="list-text"><block ref="00f586e7c20fe471e99ea3d5eded6927" category="inline-xref-macro-rx"></block></block>
   <block id="de97d5568eefaebab398acd69978f881" category="inline-xref">Tabelas de cabeamento para controladores que não conectam as gavetas NS224 conectadas ao switch</block>
@@ -14842,12 +14832,8 @@
   <block id="cea15dc4611e6036f3dd9fe7aea7cfc4" category="paragraph">Um único agregado de dados espelhados em ambos os clusters</block>
   <block id="04afdd621fe01bc52800f10af27a7c2a" category="list-text"><block ref="2812633e4be142ea6fef81aa2fc3b357" category="inline-link-macro-rx"></block>]</block>
   <block id="1fec7b2b0af82b649786a3fafea0cceb" category="paragraph">5, 6</block>
-  <block id="f4206dbe8a14ad08108f277413f07552" category="paragraph">Cisco 3232C ou 9336C-FX2</block>
   <block id="dd03025041053e9c69b290436fd5dc5d" category="paragraph">5, 6 ou 13, 14</block>
-  <block id="4a1b19255812edcb60c6c44b6d7a5e9a" category="paragraph">*Observação:* as portas 13 e 14 do switch só podem ser usadas quando você seleciona dois modos de velocidade.</block>
-  <block id="e4ecc909d465ec5014d76b60d5fb3593" category="paragraph">Cisco 9336C-FX2 compartilhado</block>
   <block id="c12aeba3053f31f9a1d1d57376477e54" category="paragraph">3,4 ou 11,12</block>
-  <block id="f8997e771791c9a981180a00129637ec" category="paragraph">*Observação:* as portas 11 e 12 do switch só podem ser usadas quando você seleciona dois modos de velocidade.</block>
   <block id="319106ed9ce9f52242209111123407d6" category="paragraph">5,6 ou 11,12</block>
   <block id="b8466cace8606dd997df70d225fbe406" category="list-text"><block ref="b8466cace8606dd997df70d225fbe406" category="inline-link-macro-rx"></block></block>
   <block id="636e793526fcef1247efd0dcb03d56f1" category="list-text"><block ref="636e793526fcef1247efd0dcb03d56f1" category="inline-link-macro-rx"></block></block>
@@ -14894,4 +14880,84 @@
   <block id="ef1806576a0dffd58481510c7525ed90" category="list-text">Inicialize no modo de manutenção:</block>
   <block id="41af2ca5f1002ab08c75f010d70581a4" category="list-text">Verifique se o armazenamento está visível a partir do local sobrevivente.</block>
   <block id="b496741d8a784412385f91b26ad4e4f1" category="list-text">Verifique se o armazenamento local está visível no nó no modo de manutenção:</block>
+  <block id="93ba613931cbee0caca0df20b5380feb" category="doc">Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 12 portas</block>
+  <block id="a696f18cbd32872428df323dcf124b0f" category="list-text">As tabelas nesta seção são para switches Cisco 9336C-FX2 de 12 portas.</block>
+  <block id="9e1541acccf8eedc84b54f8f9ba9022a" category="inline-link-macro">Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C-FX2 de 36 portas</block>
+  <block id="c144049e87444b7880d439a35cc6dcb2" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 36 portas que não esteja conectando prateleiras NS224, use as tabelas em <block ref="5e1610ecd3627713f0895c655a667651" category="inline-link-macro-rx"></block> .</block>
+  <block id="7092da1e1fea0fcc1131162478f82fda" category="inline-link-macro">Atribuições de porta de plataforma para um switch Cisco 9336C-FX2 de 36 portas conectando armazenamento NS224</block>
+  <block id="c0fa50622de6b0941fc67782df76fef3" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 36 portas e pelo menos uma configuração MetroCluster ou grupo DR estiver conectando prateleiras NS224 ao switch MetroCluster, use as tabelas em <block ref="0bde9be66bb65d34d39560c7bec9f5ff" category="inline-link-macro-rx"></block> .</block>
+  <block id="347cf39e3d412a2e80f417e602ae78af" category="admonition">O switch Cisco 9336C-FX2 de 12 portas não suporta a conexão de prateleiras NS224 ao switch MetroCluster.</block>
+  <block id="23aa6285fa7c3546b4aa52950c9ac869" category="list-text">Não é possível configurar os switches com portas de velocidades diferentes (por exemplo, uma mistura de portas de 100 Gbps e portas de 40 Gbps).</block>
+  <block id="4f713bc0f7eb8977f1792b2dbce2b165" category="paragraph">Monitore o grupo de portas do MetroCluster (MetroCluster 1, MetroCluster 2). Você precisará dele ao usar a ferramenta RcfFileGenerator, conforme descrito posteriormente neste procedimento de configuração.</block>
+  <block id="897239c8574f5b63edd50dd13c6d7cf3" category="cell">AFF A150, ASA A150 FAS500f AFF C250, ASA C250 AFF A250, ASA A250</block>
+  <block id="80b2c26f194ad890539872b7c92f3895" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 1)</block>
+  <block id="85a14427800ed439393b5bb470be7d80" category="cell"><block ref="3b548f50ac951005c3b57697db89b587" category="inline-xref-macro-rx"></block></block>
+  <block id="ae8f6037879765647f43daa463c2d9f6" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 2)</block>
+  <block id="57ced6fae2801d6d06484d467d1b63a8" category="cell"><block ref="c72ebc3377994a6acace391540a4f437" category="inline-xref-macro-rx"></block></block>
+  <block id="43a85af0db0b94c52523571a361da240" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 3a - 25G)</block>
+  <block id="d9ccb9e9bd638d71976fd2fd85b324fc" category="list-text"><block ref="7c0cdee2b7c5be6b24b403e15778ce3c" category="inline-xref-macro-rx"></block></block>
+  <block id="1dad8ed122139324dfbff2465006f86b" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 3b - 100G)</block>
+  <block id="69e8634976c147c576f1e214a0550e9a" category="list-text"><block ref="5b9cf5c0f4a61285ad67d0bb263ce927" category="inline-xref-macro-rx"></block></block>
+  <block id="faf0f53c2e9a3fadbedb926822ee4f24" category="cell">FAS8300, AFF C400, ASA C400, FAS8700 AFF A400, ASA A400</block>
+  <block id="6acd1e486078b3860e26aa16cc1b08e4" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 4)</block>
+  <block id="98c2e72a6811dff2a23cd82069bf1526" category="cell"><block ref="7f59e713b9cd81ce166c2146060aa315" category="inline-xref-macro-rx"></block></block>
+  <block id="0edb652fa75412b08f664efe991094b6" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 5)</block>
+  <block id="9985428e868977a96682979580a7f4fe" category="cell"><block ref="74b8e214ff73dc8452e34a7234af634f" category="inline-xref-macro-rx"></block></block>
+  <block id="900e51ace73e4af65fb0f92750aed2cd" category="cell">AFF C800, ASA C800, AFF A800, ASA A800 FAS9500, AFF A900, ASA A900</block>
+  <block id="4761e464022d0e7898566aca053e3d5d" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 6)</block>
+  <block id="a78dfa75a27672d9dcf736e820aea965" category="cell"><block ref="bd344fa4a429b5434b9580b2e855451e" category="inline-xref-macro-rx"></block></block>
+  <block id="9f87e37a7ba63b4c380dfb27098af511" category="inline-xref">Atribuições de portas da plataforma Cisco 9336C-FX2 de 12 portas (grupo 7)</block>
+  <block id="22b08261fbebc7afc5117f5ecf037d83" category="cell"><block ref="efd81923e5d5e6f3bb4df0963dc6cdf6" category="inline-xref-macro-rx"></block></block>
+  <block id="eee1675a365933d14d4875fe05b47f41" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF A150, ASA A150, FAS500f, AFF C250, ASA C250, AFF A250 ou ASA A250 a um switch Cisco 9336C-FX2 de 12 portas:</block>
+  <block id="1b751257539482b3f103553b01553514" category="inline-image-macro">Mostra as atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas</block>
+  <block id="469dff43e2041efcb134544af24084bd" category="paragraph"><block ref="469dff43e2041efcb134544af24084bd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dbb5afc1b3ce5a4d7ef4e08f5bbcd1bc" category="paragraph">*Observação 1:* Você só pode configurar as portas 19 e 20 *ou* as portas 21 e 22. Se você usar as portas 19 e 20 primeiro, as portas 21 e 22 serão bloqueadas. Se você usar as portas 21 e 22 primeiro, as portas 19 e 20 serão bloqueadas.</block>
+  <block id="a8860ed3e6d63bb3e5748a3216f78f95" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF A20 a um switch Cisco 9336C-FX2 de 12 portas:</block>
+  <block id="ead11a9d0b6c45c78bafddaa95af4a5f" category="paragraph"><block ref="ead11a9d0b6c45c78bafddaa95af4a5f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9f89da036eea3b2de29658c5897d57aa" category="paragraph-title">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 3a)</block>
+  <block id="4b70457b584f1d886a4ef66e6a7dae3d" category="paragraph">Revise as atribuições de porta da plataforma para conectar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 a um switch Cisco 9336C-FX2 de 12 portas usando uma placa Ethernet 25G de quatro portas.</block>
+  <block id="54555a6009e372e2ba222be819e827ce" category="paragraph"><block ref="54555a6009e372e2ba222be819e827ce" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1e978c01908eb6448e1c901bc64974fd" category="paragraph-title">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 3b)</block>
+  <block id="b324ed6fa7073456924606243edae554" category="paragraph">Revise as atribuições de porta da plataforma para conectar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 a um switch Cisco 9336C-FX2 de 12 portas usando uma placa Ethernet 100G de duas portas.</block>
+  <block id="b1360434e23230f6a7d340c38e9303bf" category="paragraph"><block ref="b1360434e23230f6a7d340c38e9303bf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b3d5e9e94a54d8bdabf7080283b01dad" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema FAS8300, AFF C400, ASA C400, FAS8700, AFF A400 ou ASA A400 a um switch Cisco 9336C-FX2 de 12 portas:</block>
+  <block id="4d0ccc5efafaf248ac4b73006cd81b20" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF A50 a um switch Cisco 9336C-FX2 de 12 portas:</block>
+  <block id="23135c110d0e57e34de1287d76a39da3" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF C800, ASA C800, AFF A800, ASA A800, FAS9500, AFF A900 ou ASA A900 a um switch Cisco 9336C-FX2 de 12 portas:</block>
+  <block id="9e60ac33bc092c405a097555835b594f" category="paragraph">*Nota 2:* Use as portas e4a e e4e ou e4a e e8a se estiver usando um adaptador X91440A (40 Gbps). Utilize as portas e4a e e4b ou e4a e e8a se estiver a utilizar um adaptador X91153A (100Gbps).</block>
+  <block id="c69b12ce9784f26bc437bc6fde404a3a" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF A70, FAS70, AFF C80, FAS90, AFF A90 ou AFF A1K a um switch Cisco 9336C-FX2 de 12 portas:</block>
+  <block id="d1a900bdae5e9590c4fdafef8c37dedf" category="paragraph"><block ref="d1a900bdae5e9590c4fdafef8c37dedf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="18b57c847127e5c2b7dd8598cc05067c" category="list-text">As tabelas nesta seção são para switches Cisco 3232C ou switches Cisco 9336C-FX2 de 36 portas que não conectam armazenamento NS224.</block>
+  <block id="ca2ba184117d249efe6f978511379d06" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 12 portas, use as tabelas em <block ref="67221021aed93298a4f5ea2fd779fba0" category="inline-link-macro-rx"></block> .</block>
+  <block id="045ecf3a2dbe25ed7ed0298e865ad8aa" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 36 portas e pelo menos uma configuração MetroCluster ou grupo DR estiver conectando prateleiras NS224 ao switch MetroCluster, use as tabelas em <block ref="0bde9be66bb65d34d39560c7bec9f5ff" category="inline-link-macro-rx"></block> .</block>
+  <block id="24a2b83846d1cc0fd499ffd7c44a8766" category="list-text">As tabelas nesta seção são para switches Cisco 9336C-FX2 de 36 portas quando pelo menos uma configuração MetroCluster ou grupo DR está conectando prateleiras NS224 ao switch MetroCluster.</block>
+  <block id="be04f167387be19d404ab8525e42eb36" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 36 portas que não esteja conectando o armazenamento NS224, use as tabelas em <block ref="5e1610ecd3627713f0895c655a667651" category="inline-link-macro-rx"></block> .</block>
+  <block id="67f1cdced842853dcaa748f1574de4a2" category="inline-link-macro">Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 12 portas</block>
+  <block id="38f841f1e9d996375153a7c10a011d16" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 12 portas, use as tabelas em <block ref="ce9e67085330d921aaa0fff0495dc70b" category="inline-link-macro-rx"></block> .</block>
+  <block id="01c9231aeeef68ed3519963715841bfa" category="list-text">Ao conectar um switch Cisco 9336C-FX2 a um armazenamento NS224, você só pode ter no máximo duas configurações do MetroCluster ou grupos de DR. Pelo menos uma configuração do MetroCluster ou grupo de DR deve conectar prateleiras NS224 ao switch MetroCluster. Você só pode conectar plataformas que não conectam prateleiras NS224 conectadas ao switch como uma segunda configuração do MetroCluster ou como um segundo grupo de DR.</block>
+  <block id="674e97a0c22c1388979c98f80b98f4b5" category="inline-xref">tabelas de cabeamento para controladores que não conectam prateleiras NS224 conectadas a switches</block>
+  <block id="93a0ba86005851fcdd55129adf1c0b46" category="paragraph">Se o seu segundo grupo MetroCluster ou DR não conectar as prateleiras NS224 ao switch MetroCluster, siga as instruções <block ref="b9dbe6880b7454d3bcbbe8f7d7793db4" category="inline-xref-macro-rx"></block> .</block>
+  <block id="b3e24b8d0d23855e43550444290c1574" category="list-text">Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, etc.). Você precisará dessas informações ao usar a ferramenta RcfFileGenerator, conforme descrito posteriormente neste procedimento de configuração.</block>
+  <block id="b8b3268e24f1bc7df35cfea685b9683b" category="paragraph">Ao conectar mais de uma configuração do MetroCluster a um switch, conecte cada MetroCluster de acordo com a tabela apropriada. Por exemplo, se você estiver conectando um FAS2750 e um AFF A700 ao mesmo switch, conecte o FAS2750 conforme "MetroCluster 1" na Tabela 1 e o AFF A700 conforme "MetroCluster 2" ou "MetroCluster 3" na Tabela 2. Não é possível ligar fisicamente o FAS2750 e o AFF A700 como "MetroCluster 1".</block>
+  <block id="663e9f366c9d01f8e5aae5c69a84c421" category="paragraph">Para configurações de oito nós, use o mesmo método descrito acima. Em vez de um segundo MetroCluster, você está fazendo o cabeamento de um grupo adicional de DR de quatro nós.</block>
+  <block id="ae82224d59846a6a4a61ec394a0de4cc" category="paragraph">9336C-FX2 (12 portas)</block>
+  <block id="912e887f8c2036c3f03ac7df63957dfd" category="paragraph">9336C-FX2 (36 portas)</block>
+  <block id="5f972a786e3a36fb039bc945267e120a" category="paragraph">3132Q-V</block>
+  <block id="f403fff2bbc7f3e506dae47b9dff52fc" category="paragraph">3232C</block>
+  <block id="addb9e70976c2f94b8ccfc3736a31888" category="paragraph-title">Informações importantes</block>
+  <block id="4debc1eb094b4eed6a7da2386ab54e6c" category="paragraph">Durante os procedimentos de transição, atualização e expansão, você pode adicionar um novo modelo de plataforma à sua configuração do MetroCluster. Em qualquer etapa desses procedimentos, se a sua configuração atual do MetroCluster contiver uma plataforma que use *portas compartilhadas de cluster/HA*, você não poderá adicionar uma plataforma que use *portas compartilhadas de MetroCluster/HA* à configuração sem atualizar sua versão do ONTAP para o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.</block>
+  <block id="d10323563cbf4f5c4867c9d231bc7a43" category="paragraph">Antes de decidir usar este procedimento, revise atentamente as informações na tabela a seguir. Se a sua plataforma existente estiver listada na primeira coluna e a plataforma que você deseja adicionar à configuração estiver listada na segunda coluna, todos os nós na configuração deverão estar executando o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior para oferecer suporte a este procedimento.</block>
+  <block id="2a42ab8cc2bb0692767bdb976d98e5de" category="admonition">A plataforma existente e a plataforma que você deseja adicionar à configuração devem estar executando o ONTAP 9.15.1P11 ou o ONTAP 9.16.1P4 ou posterior.</block>
+  <block id="38c9e66a6eb25313e0ea3390ba7ee1fc" category="cell">Se o seu MetroCluster existente contiver...</block>
+  <block id="afe6ad7caef50aaad15afb83c6f40ca0" category="cell">E a plataforma que você está adicionando é...</block>
+  <block id="12f30f47d5034530ccaa816ade9953fc" category="paragraph">Um sistema AFF usando *portas de cluster/HA compartilhadas*:</block>
+  <block id="1524c1b66420bec4703072f8c83b957d" category="paragraph">Um sistema FAS usando *portas de cluster/HA compartilhadas*:</block>
+  <block id="9f32876abf46baa803dc6fa1757df9d6" category="paragraph">Um sistema AFF usando *portas MetroCluster/HA compartilhadas*:</block>
+  <block id="86ae7e30048a3216a8dd99ea94895709" category="paragraph">Um sistema FAS usando *portas MetroCluster/HA compartilhadas*:</block>
+  <block id="8d0d6d36ce6ea8a131eb2d92d46724a0" category="cell">Antes de adicionar a nova plataforma à sua configuração existente do MetroCluster, atualize todos os nós na configuração existente e nova para ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.</block>
+  <block id="f83ed54662eb344a7625fece5276d265" category="paragraph">Cisco 3232C ou 9336C-FX2 (36 portas)</block>
+  <block id="c352fb103e076b7d23028394a1aa47c7" category="paragraph">*Observação:* para usar as portas 13 e 14 do switch, você deve selecionar dois modos de velocidade.</block>
+  <block id="c82f2ff1cbd6e1d62e65daba43978db4" category="paragraph">Cisco 9336C-FX2 compartilhado (36 portas)</block>
+  <block id="d44a3adbc7ddf926ace3174c29e594fe" category="paragraph">*Observação:* para usar as portas 11 e 12 do switch, você deve selecionar dois modos de velocidade.</block>
+  <block id="22e6a6026dec5bb5059565b00cc3631c" category="paragraph">Durante os procedimentos de transição, atualização, instalação de oito nós e expansão de quatro nós, você pode adicionar um novo modelo de plataforma à sua configuração do MetroCluster. Em qualquer etapa desses procedimentos, se a sua configuração atual do MetroCluster contiver uma plataforma que use *portas compartilhadas de cluster/HA*, você não poderá adicionar uma plataforma que use *portas compartilhadas de MetroCluster/HA* à configuração sem atualizar sua versão do ONTAP para o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.</block>
+  <block id="29c802ab86e25c329e4ce82ab207d848" category="sidebar">Atribuições de portas de plataforma para um switch Cisco 9336C-FX2 de 12 portas</block>
 </blocks>

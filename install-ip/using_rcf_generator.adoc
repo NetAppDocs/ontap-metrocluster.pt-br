@@ -17,11 +17,17 @@ Você deve entender como usar as informações nas tabelas de portas para gerar 
 Reveja estas considerações antes de utilizar as tabelas:
 
 * As tabelas a seguir mostram o uso da porta para o local A. o mesmo cabeamento é usado para o local B.
-* Os switches não podem ser configurados com portas de velocidades diferentes (por exemplo, uma combinação de portas de 100 Gbps e portas de 40 Gbps).
-* Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, etc.). Você precisará dessas informações ao usar a ferramenta RcfFileGenerator, conforme descrito mais adiante neste procedimento de configuração.
+* Não é possível configurar os switches com portas de velocidades diferentes (por exemplo, uma mistura de portas de 100 Gbps e portas de 40 Gbps).
+* Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, etc.). Você precisará dessas informações ao usar a ferramenta RcfFileGenerator, conforme descrito posteriormente neste procedimento de configuração.
 * Você deve fazer o cabeamento de todos os nós da mesma maneira. Se houver diferentes opções de combinação de portas disponíveis para fazer o cabeamento dos nós, todos os nós devem usar as mesmas combinações de portas. Por exemplo, e1a em node1 e e1a em node2 devem ser conetados a um interrutor. Da mesma forma, a segunda porta de ambos os nós deve ser conetada ao segundo switch.
 * O https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"^] também fornece uma visão geral do cabeamento por porta para cada switch. Use esta visão geral do cabeamento para verificar o cabeamento.
 
+
+
+
+== Cabeamento de duas configurações MetroCluster para os switches
+
+Ao conectar mais de uma configuração do MetroCluster a um switch, conecte cada MetroCluster de acordo com a tabela apropriada. Por exemplo, se você estiver conectando um FAS2750 e um AFF A700 ao mesmo switch, conecte o FAS2750 conforme "MetroCluster 1" na Tabela 1 e o AFF A700 conforme "MetroCluster 2" ou "MetroCluster 3" na Tabela 2. Não é possível ligar fisicamente o FAS2750 e o AFF A700 como "MetroCluster 1".
 
 
 
@@ -30,7 +36,7 @@ Reveja estas considerações antes de utilizar as tabelas:
 Para a configuração do MetroCluster executando o ONTAP 9.8 e anterior, alguns procedimentos que são executados para fazer a transição de uma atualização exigem a adição de um segundo grupo de DR de quatro nós à configuração para criar uma configuração temporária de oito nós. A partir do ONTAP 9.9,1, são suportadas configurações permanentes de MetroCluster de oito nós.
 
 .Sobre esta tarefa
-Para tais configurações, você usa o mesmo método descrito acima. Em vez de um segundo MetroCluster, você está fazendo o cabeamento de um grupo adicional de DR de quatro nós.
+Para configurações de oito nós, use o mesmo método descrito acima. Em vez de um segundo MetroCluster, você está fazendo o cabeamento de um grupo adicional de DR de quatro nós.
 
 Por exemplo, sua configuração inclui o seguinte:
 

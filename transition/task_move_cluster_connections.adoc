@@ -74,26 +74,26 @@ Interface de cluster local no nó FC
 
 
  a| 
-Cisco 3232C ou 9336C-FX2
+Cisco 3232C ou 9336C-FX2 (36 portas)
  a| 
 Qualquer
  a| 
 5, 6 ou 13, 14
 
-*Observação:* as portas 13 e 14 do switch só podem ser usadas quando você seleciona dois modos de velocidade.
+*Observação:* para usar as portas 13 e 14 do switch, você deve selecionar dois modos de velocidade.
  a| 
 Interface de cluster local no nó FC
 
 
 
  a| 
-Cisco 9336C-FX2 compartilhado
+Cisco 9336C-FX2 compartilhado (36 portas)
  a| 
 Qualquer
  a| 
 3,4 ou 11,12
 
-*Observação:* as portas 11 e 12 do switch só podem ser usadas quando você seleciona dois modos de velocidade.
+*Observação:* para usar as portas 11 e 12 do switch, você deve selecionar dois modos de velocidade.
  a| 
 Interface de cluster local no nó FC
 
@@ -133,7 +133,7 @@ Qualquer
  a| 
 5,6 ou 11,12
 
-*Observação:* as portas 11 e 12 do switch só podem ser usadas quando você seleciona dois modos de velocidade.
+*Observação:* para usar as portas 11 e 12 do switch, você deve selecionar dois modos de velocidade.
  a| 
 Interface de cluster local no nó FC
 
