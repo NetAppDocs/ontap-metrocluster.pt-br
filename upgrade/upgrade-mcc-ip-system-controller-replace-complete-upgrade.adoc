@@ -49,7 +49,7 @@ Você deve repetir as tarefas de atualização para atualizar os nós no cluster
 .Passos
 . Repita as etapas para atualizar os nós no cluster_A, começando com link:upgrade-mcc-ip-system-controller-replace-supported-platforms.html["Prepare-se para a atualização"].
 +
-À medida que você executa as tarefas, todas as referências de exemplo aos clusters e nós são invertidas.
+Quando você repete o procedimento, todas as referências de exemplo aos clusters e nós são invertidas.
 
 
 

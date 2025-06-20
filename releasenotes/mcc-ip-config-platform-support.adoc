@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: metrocluster, ip configuration, platform, support 
 summary:  
 ---
-= O que há de novo no suporte à plataforma IP MetroCluster
+= O que há de novo no suporte a switch e plataforma IP MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Saiba o que há de novo no suporte à plataforma IP MetroCluster.
+Saiba o que há de novo na plataforma MetroCluster IP e no suporte ao switch.
 
 
 

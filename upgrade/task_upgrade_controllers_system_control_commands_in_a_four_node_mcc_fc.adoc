@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, fc, configuration, net, boot, root, aggregate, system, commands, mcc 
 summary: Você pode usar essa operação de switchover automatizado guiado por MetroCluster para executar uma atualização sem interrupções do controlador para uma configuração de FC MetroCluster de quatro nós. 
 ---
-= Atualização de controladores em uma configuração MetroCluster FC de quatro nós usando switchover e switchback com os comandos "System controller replace" (ONTAP 9.10,1 e posterior)
+= Atualizar controladores em uma configuração FC MetroCluster de quatro nós usando switchover e switchback com comandos "System controller replace" (ONTAP 9.10,1 e posterior)
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -20,7 +20,7 @@ Você pode usar essa operação de switchover automatizado guiado por MetroClust
 * Para obter informações sobre quais combinações de atualização de plataforma são suportadas, consulte a tabela de atualização do MetroCluster FC no link:concept_choosing_controller_upgrade_mcc.html#supported-metrocluster-fc-controller-upgrades["Escolha um procedimento de atualização da controladora"].
 
 
-link:concept_choosing_an_upgrade_method_mcc.html["Escolher um método de atualização ou atualização"]Consulte para obter mais procedimentos.
+link:concept_choosing_an_upgrade_method_mcc.html["Escolha um método de atualização ou atualização"]Consulte para obter mais procedimentos.
 
 
 
@@ -93,23 +93,32 @@ Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Su
 
 
 
-== Preparando-se para a atualização
+== Prepare-se para a atualização
 
 Para se preparar para a atualização da controladora, é necessário realizar pré-verificações do sistema e coletar as informações de configuração.
 
 Em qualquer estágio durante a atualização, você pode executar o `system controller replace show` comando ou `system controller replace show-details` do site A para verificar o status. Se os comandos devolverem uma saída em branco, aguarde alguns minutos e execute novamente o comando.
 
 .Passos
-. Inicie o procedimento de substituição automática do controlador A partir do local A para substituir os controladores no local B:
+. Execute o seguinte comando no site A para substituir os controladores no site B:
 +
 `system controller replace start`
 
 +
-A operação automatizada executa as pré-verificações. Se não forem encontrados problemas, a operação será interrompida para que você possa coletar manualmente as informações relacionadas à configuração.
+[NOTE]
+====
+** Se você repetir o procedimento em um site, após já ter substituído os controladores no outro, ocorrerá um erro devido a uma incompatibilidade entre os nós em cada site. Esse é o comportamento esperado quando há modelos de plataforma diferentes em ambos os sites.
++
+Se apenas o erro de incompatibilidade for retornado, você pode usar o  `-skip-metrocluster-check true` opção com o  `system controller replace start` comando para pular as verificações do MetroCluster.
+
+
+
+====
++
+A operação automatizada executa as verificações. Se não forem encontrados problemas, a operação será interrompida para que você possa coletar manualmente as informações relacionadas à configuração.
 
 +
-
-NOTE: O sistema de origem atual e todos os sistemas de destino compatíveis são apresentados. Se você substituiu o controlador de origem por um controlador que tenha uma versão diferente do ONTAP ou uma plataforma não compatível, a operação de automação pára e relata um erro após os novos nós serem inicializados. Para voltar a colocar o cluster num estado saudável, tem de seguir o procedimento de recuperação manual.
+O sistema de origem atual e todos os sistemas de destino compatíveis são apresentados. Se você tiver substituído o controlador de origem por um controlador com uma versão diferente do ONTAP ou uma plataforma incompatível, a operação de automação será interrompida e relatará um erro após a inicialização dos novos nós. Para restaurar o cluster a um estado íntegro, siga o procedimento de recuperação manual.
 
 +
 O `system controller replace start` comando pode relatar o seguinte erro de pré-verificação:
@@ -130,7 +139,7 @@ Verifique se esse erro ocorreu porque você tem agregados sem espelhamento ou de
 
 
 
-=== Recolha de informações antes da atualização
+=== Reúna informações antes da atualização
 
 Antes de atualizar, se o volume raiz estiver criptografado, você deverá reunir a chave de backup e outras informações para inicializar os novos controladores com os antigos volumes de raiz criptografados.
 
@@ -250,7 +259,7 @@ Você precisará da senha mais tarde no procedimento de atualização.
 
 
 
-=== Remoção da configuração existente do tiebreaker ou de outro software de monitoramento
+=== Remova a configuração existente do tiebreaker ou de outro software de monitoramento
 
 Se a configuração existente for monitorada com a configuração tiebreaker do MetroCluster ou outros aplicativos de terceiros (por exemplo, o ClusterLion) que possam iniciar um switchover, você deverá remover a configuração do MetroCluster do tiebreaker ou de outro software antes de substituir a controladora antiga.
 
@@ -264,7 +273,7 @@ Consulte a documentação da aplicação.
 
 
 
-== Substituindo os controladores antigos e inicializando os novos controladores
+== Substitua os controladores antigos e inicialize os novos controladores
 
 Depois de reunir informações e retomar a operação, a automação prossegue com a operação de comutação.
 
@@ -276,13 +285,13 @@ Antes de iniciar o switchover, a operação de automação é interrompida para 
 
 
 
-=== Preparando a configuração de rede dos controladores antigos
+=== Prepare a configuração de rede dos controladores antigos
 
 Para garantir que a rede seja retomada de forma limpa nos novos controladores, você deve mover LIFs para uma porta comum e remover a configuração de rede dos controladores antigos.
 
 .Sobre esta tarefa
 * Esta tarefa deve ser executada em cada um dos nós antigos.
-* Você usará as informações coletadas em <<Preparando-se para a atualização>>.
+* Você usará as informações coletadas em <<Prepare-se para a atualização>>.
 
 
 .Passos
@@ -377,7 +386,7 @@ Esta etapa deve ser executada em ambos os nós.
 
 
 
-=== Configurando os novos controladores
+=== Configure os novos controladores
 
 É necessário colocar em rack e cabo as novas controladoras.
 
@@ -407,7 +416,7 @@ https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardw
 
 
 
-=== Netbooting os novos controladores
+=== Netboot os novos controladores
 
 Depois de instalar os novos nós, você precisa netboot para garantir que os novos nós estejam executando a mesma versão do ONTAP que os nós originais. O termo netboot significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você deve colocar uma cópia da imagem de inicialização do ONTAP 9 em um servidor da Web que o sistema possa acessar.
 
@@ -475,7 +484,7 @@ The node must be rebooted to start using the newly installed software. Do you wa
 
 
 
-=== Limpando a configuração em um módulo do controlador
+=== Limpe a configuração de um módulo do controlador
 
 Antes de usar um novo módulo de controlador na configuração do MetroCluster, você deve limpar a configuração existente.
 
@@ -514,7 +523,7 @@ Responda `yes` ao prompt de confirmação.
 
 
 
-=== Restaurar a configuração do HBA
+=== Restaure a configuração do HBA
 
 Dependendo da presença e configuração das placas HBA no módulo controlador, você precisa configurá-las corretamente para uso do seu site.
 
@@ -602,7 +611,7 @@ Reatribua os discos agregados raiz ao novo módulo de controladora, usando o `sy
 .Sobre esta tarefa
 Esta tarefa é executada no modo Manutenção.
 
-As IDs de sistema antigas foram identificadas no link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html#gathering-information-before-the-upgrade["Recolha de informações antes da atualização"].
+As IDs de sistema antigas foram identificadas no link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html#gather-information-before-the-upgrade["Reúna informações antes da atualização"].
 
 Os exemplos neste procedimento usam controladores com as seguintes IDs de sistema:
 
@@ -710,7 +719,7 @@ aggr0_node_b_1-root        online      raid_dp, aggr    root, nosnap=on,
 
 
 
-=== Inicializando os novos controladores
+=== Inicialize os novos controladores
 
 Você deve reiniciar os controladores a partir do menu de inicialização para atualizar a imagem flash do controlador. Etapas adicionais são necessárias se a criptografia estiver configurada.
 
@@ -845,17 +854,17 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58
 Talvez seja necessário reconfigurar o peering de cluster.
 
 +
-link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#peering-the-clusters["Criando um relacionamento de cluster peer"]
+link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#peering-the-clusters["Crie um relacionamento de pares de cluster"]
 
 .. Recrie VLANs e grupos de interface conforme necessário.
 +
 A associação de VLAN e grupo de interface pode ser diferente da do nó antigo.
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["Criando um VLAN"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["Crie uma VLAN"^]
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["Combinando portas físicas para criar grupos de interface"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["Combine portas físicas para criar grupos de interface"^]
 
 .. Verifique se o cluster de parceiros está acessível e se a configuração é ressincronizada com êxito no cluster de parceiros:
 +
@@ -903,7 +912,7 @@ Verifique se os novos nós (site_B) estão em *aguardando o estado switchback* d
 
 
 
-== A concluir a atualização
+== Conclua a atualização
 
 A operação de automação executa verificações do sistema e, em seguida, pausa para que você possa verificar a acessibilidade da rede. Após a verificação, a fase de recuperação de recursos é iniciada e a operação de automação executa switchback no local A e pausa nas verificações pós-atualização. Depois de retomar a operação de automação, ele executa as verificações de pós-atualização e, se nenhum erro for detetado, marca a atualização como concluída.
 
@@ -930,9 +939,22 @@ Se as verificações pós-atualização não reportaram erros, a atualização e
 
 
 
+== Atualize os nós no cluster_A
+
+Você deve repetir as tarefas de atualização para atualizar os nós no cluster_A no local A.
+
+.Passos
+. Repita as etapas para atualizar os nós no cluster_A, começando com <<fc_controller_replace_prepare,prepare-se para a atualização>>.
++
+Quando você repete o procedimento, todas as referências de exemplo aos clusters e nós são invertidas.
+
+
+
+
+
 === Restaurar a monitorização do desempate
 
 Se a configuração do MetroCluster tiver sido configurada anteriormente para monitoramento pelo software tiebreaker, você poderá restaurar a conexão tiebreaker.
 
-. Siga as etapas em http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-7259BCA4-104C-49C6-BAD0-1068CA2A3DA5.html["Adição de configurações do MetroCluster"].
+. Siga as etapas em http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-7259BCA4-104C-49C6-BAD0-1068CA2A3DA5.html["Adicione configurações do MetroCluster"].
 

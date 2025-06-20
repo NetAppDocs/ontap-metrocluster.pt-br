@@ -66,7 +66,7 @@ Você deve repetir as tarefas de atualização para atualizar os nós no cluster
 .Passos
 . Repita as etapas para atualizar os nós no cluster_A, começando com link:upgrade-mcc-ip-manual-requirements.html["Prepare-se para a atualização"].
 +
-À medida que você executa as tarefas, todas as referências de exemplo aos clusters e nós são invertidas. Por exemplo, quando o exemplo é dado para o switchover de cluster_A, você irá mudar de cluster_B.
+Quando você repete o procedimento, todas as referências de exemplo aos clusters e nós são invertidas. Por exemplo, quando o exemplo é dado para o switchover de cluster_A, você irá mudar de cluster_B.
 
 
 

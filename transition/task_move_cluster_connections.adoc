@@ -11,21 +11,23 @@ summary: Depois de analisar todos os requisitos e se preparar para a transição
 
 
 [role="lead"]
-É necessário mover as interfaces de cluster da configuração MetroCluster FC para os switches IP.
+Mova as interfaces de cluster da configuração do MetroCluster FC para os switches IP.
 
 
 
-== Mova as conexões de cluster nos nós de FC do MetroCluster
+== Etapa 1: mover as conexões do cluster nos nós do MetroCluster FC
 
-É necessário mover as conexões de cluster nos nós FC do MetroCluster para os switches IP. As etapas dependem se você está usando os switches IP existentes ou se você está usando novos switches IP.
+Mova as conexões do cluster nos nós FC do MetroCluster para os switches IP. As etapas a seguir dependem se você está usando switches IP existentes ou novos.
 
-Você deve executar esta tarefa em ambos os sites do MetroCluster.
+.Sobre esta tarefa
+* Você executa esta tarefa em ambos os sites do MetroCluster.
+
 
 
 
 === Quais conexões mover
 
-A tarefa a seguir assume um módulo de controlador usando duas portas para as conexões do cluster. Alguns modelos de módulo de controlador usam quatro ou mais portas para a conexão de cluster. Nesse caso, para os fins deste exemplo, as portas são divididas em dois grupos, alternando portas entre os dois grupos
+A tarefa a seguir pressupõe que um módulo controlador esteja usando duas portas para as conexões do cluster. Alguns modelos de módulo de controlador usam quatro ou mais portas para a conexão de cluster. Neste exemplo, as portas são divididas em dois grupos, alternando portas entre os dois grupos.
 
 A tabela a seguir mostra as portas de exemplo usadas nesta tarefa.
 
@@ -68,6 +70,19 @@ A tabela a seguir mostra a quais portas de switch os nós FC se conetam. Para o 
 Qualquer
  a| 
 5, 6
+ a| 
+Interface de cluster local no nó FC
+
+
+
+ a| 
+Cisco 9336C-FX2 (12 portas)
+ a| 
+Qualquer
+ a| 
+3,4 ou 11,12
+
+*Observação:* para usar as portas 11 e 12 do switch, você deve selecionar dois modos de velocidade.
  a| 
 Interface de cluster local no nó FC
 
@@ -140,10 +155,11 @@ Interface de cluster local no nó FC
 |===
 
 
-=== Mover as conexões do cluster local quando usar novos switches IP
+=== Mover as conexões do cluster local ao usar novos switches IP
 
-Se você estiver usando novos switches IP, será necessário mover fisicamente as conexões de cluster dos nós FC do MetroCluster existentes para os novos switches.
+Se estiver usando novos switches IP, mova fisicamente as conexões de cluster dos nós FC do MetroCluster existentes para os novos switches.
 
+.Passos
 . Mova as conexões de cluster do grupo de nós FC MetroCluster A para os novos switches IP.
 +
 Use as portas descritas em <<Quais conexões mover>>.
@@ -264,10 +280,12 @@ cluster_A::*>
 
 === Mover as conexões do cluster local ao reutilizar os switches IP existentes
 
-Se estiver a reutilizar os comutadores IP existentes, tem de atualizar o firmware, reconfigurar os comutadores com os RCFs (Reference Configure Files) corretos e mover as ligações para as portas corretas, um switch de cada vez.
+Se você estiver reutilizando switches IP existentes, atualize o firmware, reconfigure os switches com os arquivos de configuração de referência (RCFs) corretos e mova as conexões para as portas corretas, um switch por vez.
 
+.Sobre esta tarefa
 Essa tarefa só será necessária se os nós FC estiverem conetados a switches IP existentes e você estiver reutilizando os switches.
 
+.Passos
 . Desconete as conexões do cluster local que se conetam ao switch_A_1_IP
 +
 .. Desconete as portas do Grupo A do switch IP existente.
@@ -391,10 +409,11 @@ Cluster-A::*>
 
 
 
-== Verificar se as conexões do cluster são movidas e o cluster está funcionando
+== Etapa 2: verifique se as conexões do cluster foram movidas e se o cluster está íntegro
 
-Para garantir que há conetividade adequada e que a configuração esteja pronta para prosseguir com o processo de transição, você deve verificar se as conexões do cluster são movidas corretamente, os switches do cluster são reconhecidos e o cluster está em bom estado.
+Para garantir que haja conectividade adequada e que a configuração esteja pronta para prosseguir com o processo de transição, verifique se as conexões do cluster foram movidas corretamente, os switches do cluster foram reconhecidos e o cluster está íntegro.
 
+.Passos
 . Verifique se todas as portas do cluster estão ativas e em execução:
 +
 `network port show -ipspace Cluster`

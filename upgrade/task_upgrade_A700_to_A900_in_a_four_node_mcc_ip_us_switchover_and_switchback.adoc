@@ -150,7 +150,10 @@ Ao fazer a atualização de um AFF A700 para um AFF A900 ou FAS9000 para FAS9500
 
 === Verifique a integridade do MetroCluster antes da atualização do site
 
-Você deve verificar a integridade e a conectividade da configuração do MetroCluster antes de executar a atualização.
+Verifique a integridade e a conectividade da configuração do MetroCluster antes de executar a atualização.
+
+
+CAUTION: Depois de atualizar os controladores no primeiro site e antes de atualizar o segundo, execute  `metrocluster check run` seguido pela  `metrocluster check show` retorna um erro no  `config-replication` campo. Este erro indica uma incompatibilidade de tamanho de NVRAM entre os nós em cada site e é o comportamento esperado quando há modelos de plataforma diferentes em ambos os sites. Você pode ignorar o erro até que a atualização do controlador seja concluída para todos os nós no grupo DR.
 
 .Passos
 . Verifique a operação da configuração do MetroCluster no ONTAP:
