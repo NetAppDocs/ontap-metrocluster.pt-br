@@ -1,6 +1,12 @@
 ---
 indexpage:
   title: Documentação do MetroCluster
+  summary: As configurações do NetApp MetroCluster combinam clustering baseado em
+    array com replicação síncrona para oferecer disponibilidade contínua, duplicando
+    imediatamente todos os dados essenciais a cada transação. As configurações do
+    MetroCluster aprimoram as operações ininterruptas e de alta disponibilidade incorporadas
+    ao hardware da NetApp e ao software de storage da ONTAP, fornecendo uma camada
+    adicional de proteção para todo o ambiente de storage e de host.
   keywords: metrocluster configuration, array-based, clustering, synchronous, replication,
     duplicating, mission critical data
   lead: As configurações do NetApp MetroCluster combinam clustering baseado em array
