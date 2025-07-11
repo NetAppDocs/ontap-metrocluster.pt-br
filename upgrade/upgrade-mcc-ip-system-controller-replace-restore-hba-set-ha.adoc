@@ -162,5 +162,18 @@ O nó deve parar no `LOADER>` prompt.
 . Reunir variáveis de ambiente: `printenv`
 
 
+
+
+== Remova as unidades internas do chassi no novo controlador
+
+Ao atualizar de um sistema que possui apenas unidades externas para um sistema que possui unidades externas e internas (discos e controladores no mesmo chassi), você precisa remover ou desencaixar todas as unidades internas do novo sistema até concluir a atualização.
+
+
+CAUTION: Esta tarefa é obrigatória para uma atualização bem-sucedida do controlador em sistemas afetados.
+
+Para determinar se sua combinação de atualização é afetada, consulte a tabela em link:upgrade-mcc-ip-system-controller-replace-supported-platforms.html["Atualizações suportadas do controlador IP MetroCluster usando os comandos "System controller replace""] . Se a sua combinação de atualização estiver marcada com *Nota 2*, você deverá remover ou desencaixar as unidades internas do novo sistema.
+
+Após concluir esta tarefa, nenhuma unidade interna deverá estar acessível. Você adicionará as unidades ao novo controlador posteriormente no procedimento.
+
 .O que se segue?
 link:upgrade-mcc-ip-system-controller-replace-apply-rcf-set-bootarg.html["Atualize os arquivos RCF do switch e defina os valores de inicialização IP do MetroCluster"].

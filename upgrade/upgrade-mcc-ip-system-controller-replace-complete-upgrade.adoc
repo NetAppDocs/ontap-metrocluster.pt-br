@@ -55,6 +55,17 @@ Quando você repete o procedimento, todas as referências de exemplo aos cluster
 
 
 
+== Adicione novamente as unidades internas ao novo controlador
+
+Se você atualizou de um sistema que possui apenas unidades externas para um sistema que possui unidades externas e internas (discos e controladores no mesmo chassi), você pode adicionar ou recolocar os discos que removeu ou desinstalou dos slots internos do novo sistema. Você pode fazer isso a qualquer momento após a conclusão da atualização em ambos os sites e após o cluster estar em bom estado.
+
+Depois de adicionar ou reposicionar as unidades, elas podem ser usadas no ONTAP conforme necessário.
+
+
+NOTE: Esta tarefa só se aplica a certas combinações de atualizações. link:upgrade-mcc-ip-system-controller-replace-restore-hba-set-ha.html#remove-internal-drives-from-the-chassis-on-the-new-controller["remova as unidades internas do chassi no novo controlador"]Consulte para obter mais informações.
+
+
+
 == Reconfigure o Mediador ONTAP
 
 Configure manualmente o ONTAP Mediator que foi removido automaticamente antes de iniciar a atualização.
