@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, configuration, ontap, node-level, configuration, node, site, relationship, configuring, configure, 
 summary: É necessário configurar cada nó na configuração do MetroCluster no ONTAP, incluindo as configurações no nível do nó e a configuração dos nós em dois locais. Você também deve implementar a relação MetroCluster entre os dois sites. 
 ---
-= Configurando o software MetroCluster no ONTAP
+= Configure o software MetroCluster no ONTAP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -16,3 +16,9 @@ summary: É necessário configurar cada nó na configuração do MetroCluster no
 Se um módulo do controlador falhar durante a configuração, link:../disaster-recovery/concept_choosing_the_correct_recovery_procedure_parent_concept.html#controller-module-failure-scenarios-during-metrocluster-installation["Cenários de falha do módulo do controlador durante a instalação do MetroCluster"]consulte a .
 
 image::../media/workflow_mcc_ip_high_level_node_and_cluster_configuration_software.svg[software de configuração de cluster e nó de alto nível mcc ip do fluxo de trabalho]
+
+
+
+== Configurar configurações de IP do MetroCluster de oito nós
+
+Uma configuração do MetroCluster de oito nós consiste em dois grupos de DR. Para configurar o primeiro grupo de DR, conclua as tarefas desta seção. Após configurar o primeiro grupo de DR, você pode seguir as etapas para link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["expandir uma configuração de IP MetroCluster de quatro nós para uma configuração de oito nós"] .

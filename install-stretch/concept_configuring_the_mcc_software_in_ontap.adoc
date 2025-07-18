@@ -1727,12 +1727,12 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["
 Você precisa criar um agregado de dados espelhados em cada nó no grupo de DR.
 
 .Antes de começar
-* Você deve saber quais unidades ou LUNs de array serão usados no novo agregado.
+* Você deve saber quais unidades serão usadas no novo agregado.
 * Se você tiver vários tipos de unidade no sistema (armazenamento heterogêneo), você deve entender como pode garantir que o tipo de unidade correto esteja selecionado.
 
 
 .Sobre esta tarefa
-* As unidades e LUNs de array são de propriedade de um nó específico. Quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
+* As unidades são de propriedade de um nó específico; quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
 * Os nomes agregados devem estar em conformidade com o esquema de nomenclatura que você determinou quando você planejou sua configuração do MetroCluster.
 +
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"^]
@@ -1756,7 +1756,7 @@ Você pode especificar as seguintes opções:
 
 +
 ** Nó inicial do agregado (ou seja, o nó que possui o agregado em operação normal)
-** Lista de unidades específicas ou LUNs de storage que devem ser adicionados ao agregado
+** Lista de unidades específicas que devem ser adicionadas ao agregado
 ** Número de unidades a incluir
 +
 
@@ -1767,7 +1767,7 @@ NOTE: Na configuração mínima suportada, na qual um número limitado de unidad
 ** Tamanho das unidades a utilizar
 ** Velocidade de condução a utilizar
 ** Tipo RAID para grupos RAID no agregado
-** Número máximo de unidades ou LUNs de storage que podem ser incluídos em um grupo RAID
+** Número máximo de unidades que podem ser incluídas em um grupo RAID
 ** Se unidades com RPM diferentes são permitidas para obter mais informações sobre essas opções, consulte a `storage aggregate create` página de manual.
 +
 O comando a seguir cria um agregado espelhado com 10 discos:
@@ -1795,7 +1795,7 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 Você pode, opcionalmente, criar agregados de dados sem espelhamento para dados que não exigem o espelhamento redundante fornecido pelas configurações do MetroCluster.
 
 .Antes de começar
-* Você deve saber quais unidades ou LUNs de array serão usados no novo agregado.
+* Você deve saber quais unidades serão usadas no novo agregado.
 * Se você tiver vários tipos de unidade no sistema (armazenamento heterogêneo), você deve entender como pode verificar se o tipo de unidade correto está selecionado.
 
 
@@ -1808,7 +1808,7 @@ Você pode, opcionalmente, criar agregados de dados sem espelhamento para dados 
 
 NOTE: Os agregados sem espelhamento devem ser locais para o nó que os possui.
 
-* As unidades e LUNs de array são de propriedade de um nó específico. Quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
+* As unidades são de propriedade de um nó específico; quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
 * Os nomes agregados devem estar em conformidade com o esquema de nomenclatura que você determinou quando você planejou sua configuração do MetroCluster.
 * O link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de discos e agregados"] contém mais informações sobre o espelhamento de agregados.
 
@@ -1830,14 +1830,14 @@ Você pode especificar as seguintes opções:
 
 +
 ** Nó inicial do agregado (ou seja, o nó que possui o agregado em operação normal)
-** Lista de unidades específicas ou LUNs de storage que devem ser adicionados ao agregado
+** Lista de unidades específicas que devem ser adicionadas ao agregado
 ** Número de unidades a incluir
 ** Estilo de checksum para usar para o agregado
 ** Tipo de unidades a utilizar
 ** Tamanho das unidades a utilizar
 ** Velocidade de condução a utilizar
 ** Tipo RAID para grupos RAID no agregado
-** Número máximo de unidades ou LUNs de storage que podem ser incluídos em um grupo RAID
+** Número máximo de unidades que podem ser incluídas em um grupo RAID
 ** Se unidades com RPM diferentes são permitidas para obter mais informações sobre essas opções, consulte a `storage aggregate create` página de manual.
 +
 O comando a seguir cria um agregado sem espelhamento com 10 discos:

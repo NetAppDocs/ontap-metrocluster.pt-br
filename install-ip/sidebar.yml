@@ -38,7 +38,7 @@ entries:
       url: "/install-ip/concept-network-speeds-and-switchport-modes.html"
     - title: Exemplos de configuração da porta do switch
       url: "/install-ip/concept-configure-mcc-compliant-switches.html"
-  - title: Agregados não espelhados em uma configuração MetroCluster IP
+  - title: Saiba mais sobre agregados não espelhados em configurações de IP do MetroCluster
     url: "/install-ip/concept_considerations_unmirrored_aggrs.html"
   - title: Uso de firewall em sites da MetroCluster
     url: "/install-ip/concept_considerations_firewalls.html"
@@ -79,6 +79,8 @@ entries:
     url: "/install-ip/task_cable_other_connections.html"
   - title: Configure os switches IP MetroCluster
     entries:
+    - title: Escolha o procedimento correto de configuração do switch IP do MetroCluster
+      url: "/install-ip/task_install_and_cable_the_mcc_components.html"
     - title: Configurar switches IP Broadcom
       url: "/install-ip/task_switch_config_broadcom.html"
     - title: Configurar switches IP Cisco
@@ -112,8 +114,6 @@ entries:
     entries:
     - title: Visão geral
       url: "/install-ip/concept_configure_the_mcc_software_in_ontap.html"
-    - title: Como configurar configurações de oito nós
-      url: "/install-ip/task_sw_config_8n.html"
     - title: Reúna as informações necessárias
       url: "/install-ip/task_sw_config_gather_info.html"
     - title: Semelhanças e diferenças entre configurações padrão de cluster e MetroCluster
@@ -130,8 +130,6 @@ entries:
       url: "/install-ip/task_sw_config_configure_clusters.html"
     - title: Configurar criptografia de ponta a ponta
       url: "/install-ip/task-configure-end-to-end-encryption.html"
-    - title: Verifique o switchover, a recuperação e o switchback
-      url: "/install-ip/task_sw_config_verify_switchover.html"
     - title: Configure o software tiebreaker MetroCluster ou o ONTAP Mediator
       url: "/install-ip/task_sw_config_configure_mediator.html"
     - title: Proteja os arquivos de backup de configuração
@@ -161,7 +159,7 @@ entries:
     url: "/install-ip/task-sm-mediator.html"
 - title: Testando a configuração do MetroCluster
   url: "/install-ip/task_test_the_mcc_configuration.html"
-- title: Considerações ao remover configurações do MetroCluster
+- title: Remover configurações do MetroCluster
   url: "/install-ip/concept_considerations_when_removing_mcc_configurations.html"
 - title: Considerações ao usar o ONTAP em uma configuração do MetroCluster
   url: "/install-ip/concept_considerations_when_using_ontap_in_a_mcc_configuration.html"

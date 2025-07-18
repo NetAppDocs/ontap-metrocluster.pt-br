@@ -160,21 +160,6 @@ Sim
 
 
  a| 
-Compatível com LUNs de array
- a| 
-Não
- a| 
-Sim
- a| 
-Sim
- a| 
-Sim
- a| 
-Sim
-
-
-
- a| 
 Suporta o Mediador ONTAP
  a| 
 Sim (começando com ONTAP 9.7)

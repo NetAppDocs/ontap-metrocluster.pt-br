@@ -26,10 +26,6 @@ Cada controlador de storage é configurado como parceiro de recuperação de des
 ** Cabos SAS de cobre podem ser usados para distâncias mais curtas.
 ** Os cabos SAS óticos podem ser usados para distâncias mais longas.
 +
-
-NOTE: Em sistemas que usam LUNs de array e-Series, os controladores de storage podem ser diretamente conectados aos storage arrays e-Series. Para outros LUNs de array, são necessárias conexões por meio de switches FC.
-
-+
 https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"]
 
 +

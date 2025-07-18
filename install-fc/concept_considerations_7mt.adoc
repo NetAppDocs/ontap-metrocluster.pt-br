@@ -1,18 +1,8 @@
 ---
 permalink: install-fc/concept_considerations_7mt.html 
-sidebar: sidebar 
-keywords: preparing, prepare, metrocluster, mcc, installation, install, differences, configurations, between, considerations, all, san, array, asa, cluster, peering, prerequisites, dedicated, ports, sharing, data, ports, native, disk, shelves, array, luns, transitions, 7-mode, isls, tdm/wdm, fabric-attached, iod, ood, encryption, devices, unmirrored, aggregates, maintenance, requiring, power, shutdown, firewall, hardware, racking, cabling, setup, checklist, all san array, asa 
-summary: Ao se preparar para a instalação do MetroCluster, você deve entender a arquitetura de hardware do MetroCluster e os componentes necessários. 
+redirect: ontap-metrocluster/index.html 
 ---
-= Considerações ao fazer a transição do modo 7 para o ONTAP
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
-[role="lead"]
-Você precisa ter a nova configuração do MetroCluster totalmente configurada e operacional antes de usar as ferramentas de transição para mover dados de uma configuração do MetroCluster de 7 modos para uma configuração do ONTAP. Se a configuração do modo 7 usar os switches Brocade 6510, a nova configuração poderá compartilhar as malhas existentes para reduzir os requisitos de hardware.
-
-Se você tiver switches Brocade 6510 e planeja compartilhar as malhas de switch entre o 7-Mode Fabric MetroCluster e o MetroCluster em execução no ONTAP, use o procedimento específico para configurar os componentes do MetroCluster.
-
-link:task_fmc_mcc_transition_configure_the_mcc_hardware_for_share_a_7_mode_brocade_6510_fc_fabric_dure_transition.html["Configuração do hardware do MetroCluster para compartilhar uma malha de FC Brocade 6510 de 7 modos durante a transição"]

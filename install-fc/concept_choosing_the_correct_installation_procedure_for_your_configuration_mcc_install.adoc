@@ -1,43 +1,8 @@
 ---
 permalink: install-fc/concept_choosing_the_correct_installation_procedure_for_your_configuration_mcc_install.html 
-sidebar: sidebar 
-keywords: metrocluster, fabric, installation, correct, procedure, configuration 
-summary: Você deve escolher o procedimento de instalação correto com base no uso de LUNs FlexArray, no número de nós na configuração MetroCluster e se você está compartilhando uma malha de switch FC existente usada por um MetroCluster de malha de 7 modos. 
+redirect: ontap-metrocluster/index.html 
 ---
-= Escolhendo o procedimento de instalação correto para sua configuração
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
-[role="lead"]
-Você deve escolher o procedimento de instalação correto com base no uso de LUNs FlexArray, no número de nós na configuração MetroCluster e se você está compartilhando uma malha de switch FC existente usada por um MetroCluster de malha de 7 modos.
-
-image::../media/workflow_select_your_metrocluster_configuration_fabric.gif[workflow selecione seu MetroCluster configuration fabric]
-
-|===
-
-
-| Para este tipo de instalação... | Utilize estes procedimentos... 
-
-
- a| 
-Configuração conectada à malha com discos NetApp (nativos)
- a| 
-. link:task_configure_the_mcc_hardware_components_fabric.html["Fazer o cabeamento de uma configuração MetroCluster conectada à malha"]
-. link:concept_configure_the_mcc_software_in_ontap.html["Configurando o software MetroCluster no ONTAP"]
-
-
-
-
- a| 
-Configuração conectada à malha ao compartilhar com uma malha de switch FC existente
-
-Isso é suportado apenas como uma configuração temporária com uma configuração de MetroCluster de malha de 7 modos usando os switches Brocade 6510.
- a| 
-. link:task_configure_the_mcc_hardware_components_fabric.html["Fazer o cabeamento de uma configuração MetroCluster conectada à malha"]
-. link:task_fmc_mcc_transition_configure_the_mcc_hardware_for_share_a_7_mode_brocade_6510_fc_fabric_dure_transition.html["Configuração do hardware do MetroCluster para compartilhar uma malha de FC Brocade 6510 de 7 modos durante a transição"]
-. link:concept_configure_the_mcc_software_in_ontap.html["Configurando o software MetroCluster no ONTAP"]
-
-
-|===

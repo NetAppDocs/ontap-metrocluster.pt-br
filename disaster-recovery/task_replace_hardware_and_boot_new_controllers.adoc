@@ -127,7 +127,7 @@ link:http://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de h
 . Verifique se todos os componentes estão cabeados corretamente para sua configuração.
 +
 ** link:../install-ip/using_rcf_generator.html["Configuração IP do MetroCluster"]
-** link:../install-fc/task_fmc_mcc_transition_cable_the_new_mcc_controllers_to_the_exist_fc_fabrics.html["Configuração conectado à malha do MetroCluster"]
+** link:../install-fc/index.html["Configuração conectado à malha do MetroCluster"]
 
 
 

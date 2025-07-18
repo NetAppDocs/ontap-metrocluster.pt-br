@@ -14,7 +14,6 @@ summary: Para instalar a configuração do MetroCluster conectado à malha, voc�
 Para instalar a configuração do MetroCluster conectado à malha, você precisa executar vários procedimentos na ordem correta.
 
 * link:../install-fc/concept_considerations_differences.html["Prepare-se para a instalação e entenda todos os requisitos"].
-* link:../install-fc/concept_choosing_the_correct_installation_procedure_for_your_configuration_mcc_install.html["Escolha o procedimento de instalação correto"]
 * link:../install-fc/task_configure_the_mcc_hardware_components_fabric.html["Faça o cabo dos componentes"]
 * link:../install-fc/concept_configure_the_mcc_software_in_ontap.html["Configure o software"]
 * link:../install-fc/task_test_the_mcc_configuration.html["Teste a configuração"]

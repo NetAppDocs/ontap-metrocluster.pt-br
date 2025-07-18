@@ -2,7 +2,7 @@
 permalink: install-fc/concept_configure_the_mcc_software_in_ontap.html 
 sidebar: sidebar 
 keywords: configure, configuring, metrocluster, software, ontap 
-summary: É necessário configurar cada nó na configuração do MetroCluster no ONTAP, incluindo as configurações no nível do nó e a configuração dos nós em dois locais. Você também deve implementar a relação MetroCluster entre os dois sites. As etapas para sistemas com compartimentos de disco nativos são ligeiramente diferentes das de sistemas com LUNs de array. 
+summary: É necessário configurar cada nó na configuração do MetroCluster no ONTAP, incluindo as configurações no nível do nó e a configuração dos nós em dois locais. 
 ---
 = Configurando o software MetroCluster no ONTAP
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: É necessário configurar cada nó na configuração do MetroCluster no
 
 
 [role="lead"]
-É necessário configurar cada nó na configuração do MetroCluster no ONTAP, incluindo as configurações no nível do nó e a configuração dos nós em dois locais. Você também deve implementar a relação MetroCluster entre os dois sites. As etapas para sistemas com compartimentos de disco nativos são ligeiramente diferentes das de sistemas com LUNs de array.
+É necessário configurar cada nó na configuração do MetroCluster no ONTAP, incluindo as configurações no nível do nó e a configuração dos nós em dois locais. Você também deve implementar a relação MetroCluster entre os dois sites.
 
 image::../media/workflow_high_level_node_and_cluster_configuration_software.gif[software de configuração de cluster e nó de alto nível do fluxo de trabalho]
 
@@ -2505,9 +2505,9 @@ link:https://docs.netapp.com/us-en/ontap/volumes/index.html["Gerenciamento de st
 
 Você precisa criar um agregado de dados espelhados em cada nó no grupo de DR.
 
-* Você deve saber quais unidades ou LUNs de array serão usados no novo agregado.
+* Você deve saber quais unidades serão usadas no novo agregado.
 * Se você tiver vários tipos de unidade no sistema (armazenamento heterogêneo), você deve entender como pode garantir que o tipo de unidade correto esteja selecionado.
-* As unidades e LUNs de array são de propriedade de um nó específico. Quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
+* As unidades são de propriedade de um nó específico; quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
 * Os nomes agregados devem estar em conformidade com o esquema de nomenclatura que você determinou quando você planejou sua configuração do MetroCluster. link:https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gerenciamento de disco e agregado"^]Consulte .
 
 
@@ -2524,7 +2524,7 @@ Se você estiver conetado ao cluster na interface de gerenciamento de cluster, p
 Você pode especificar as seguintes opções:
 
 ** Nó inicial do agregado (ou seja, o nó que possui o agregado em operação normal)
-** Lista de unidades específicas ou LUNs de storage que devem ser adicionados ao agregado
+** Lista de unidades específicas que devem ser adicionadas ao agregado
 ** Número de unidades a incluir
 
 
@@ -2536,7 +2536,7 @@ NOTE: Na configuração com suporte mínimo, na qual um número limitado de unid
 ** Tamanho das unidades a utilizar
 ** Velocidade de condução a utilizar
 ** Tipo RAID para grupos RAID no agregado
-** Número máximo de unidades ou LUNs de storage que podem ser incluídos em um grupo RAID
+** Número máximo de unidades que podem ser incluídas em um grupo RAID
 ** Se unidades com RPM diferentes são permitidas
 
 
@@ -2568,14 +2568,14 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 Você pode, opcionalmente, criar agregados de dados sem espelhamento para dados que não exigem o espelhamento redundante fornecido pelas configurações do MetroCluster.
 
 .Antes de começar
-* Você deve saber quais unidades ou LUNs de array serão usados no novo agregado.
+* Verifique se você sabe quais unidades serão usadas no novo agregado.
 * Se você tiver vários tipos de unidade no sistema (armazenamento heterogêneo), você deve entender como pode verificar se o tipo de unidade correto está selecionado.
 
 
 
 IMPORTANT: Nas configurações de FC MetroCluster, os agregados sem espelhamento só estarão online após um switchover se os discos remotos no agregado estiverem acessíveis. Se os ISLs falharem, o nó local poderá não conseguir aceder aos dados nos discos remotos sem espelhamento. A falha de um agregado pode levar a uma reinicialização do nó local.
 
-* As unidades e LUNs de array são de propriedade de um nó específico. Quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
+* As unidades são de propriedade de um nó específico; quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
 
 
 
@@ -2600,14 +2600,14 @@ Se você estiver conetado ao cluster na interface de gerenciamento de cluster, p
 Você pode especificar as seguintes opções:
 
 ** Nó inicial do agregado (ou seja, o nó que possui o agregado em operação normal)
-** Lista de unidades específicas ou LUNs de storage que devem ser adicionados ao agregado
+** Lista de unidades específicas que devem ser adicionadas ao agregado
 ** Número de unidades a incluir
 ** Estilo de checksum para usar para o agregado
 ** Tipo de unidades a utilizar
 ** Tamanho das unidades a utilizar
 ** Velocidade de condução a utilizar
 ** Tipo RAID para grupos RAID no agregado
-** Número máximo de unidades ou LUNs de storage que podem ser incluídos em um grupo RAID
+** Número máximo de unidades que podem ser incluídas em um grupo RAID
 ** Se unidades com RPM diferentes são permitidas
 
 

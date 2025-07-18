@@ -1,7 +1,7 @@
 ---
 permalink: install-ip/concept-considerations-layer-2-layer-3.html 
 sidebar: sidebar 
-keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, mediator, tiebreaker 
 summary: Dependendo dos seus requisitos, você pode usar redes compartilhadas da camada 2 ou da camada 3 para implantar o MetroCluster. 
 ---
 = Considerações ao implantar o MetroCluster em redes compartilhadas da camada 2 ou da camada 3
