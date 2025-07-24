@@ -50,27 +50,30 @@ entries:
       url: "/install-fc/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html"
     - title: Faça o cabeamento das ISLs entre os locais do MetroCluster
       url: "/install-fc/task_cable_the_isl_between_the_mcc_sites_fabric_config.html"
-    - title: Atribuições de portas para sistemas que usam duas portas de iniciador
-      url: "/install-fc/concept_port_assignments_for_systems_using_two_initiator_ports.html"
-    - title: Atribuições de portas para switches FC ao usar o ONTAP 9.1 ou posterior
-      url: "/install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html"
-    - title: Atribuições de portas para switches FC ao usar sistemas AFF A900
+    - title: Atribuições de portas para switches FC
       entries:
-      - title: Atribuições de portas para switches FC ao usar sistemas AFF A900 ou
-          FAS9500
-        url: "/install-fc/concept_AFF_A900_port_assign_fc_switches_ontap_9_1.html"
-      - title: Uso da porta AFF A900 Brocade para controladores que executam o ONTAP
-          9.10,1 ou posterior
-        url: "/install-fc/concept_AFF_A900_brocade_port_config.html"
-      - title: Utilização da porta AFF A900 Brocade para ISLs que executam o ONTAP
-          9.10,1 ou posterior
-        url: "/install-fc/concept_AFF_A900_brocade_port_ISLs.html"
-      - title: Controladores de utilização de portas AFF A900 Cisco que executam o
-          ONTAP 9.10,1 ou posterior
-        url: "/install-fc/concept_AFF_A900_cisco_port_config.html"
-      - title: Utilização da porta AFF A900 Cisco para ISLs que executam o ONTAP 9.10,1
-          ou posterior
-        url: "/install-fc/concept_AFF_A900_cisco_ISLs.html"
+      - title: Aprenda a usar as tabelas de atribuição de portas para switches FC
+        url: "/install-fc/fc-switch-port-assignment-overview.html"
+      - title: Atribuições de portas para sistemas que usam duas portas de iniciador
+        url: "/install-fc/concept_port_assignments_for_systems_using_two_initiator_ports.html"
+      - title: Uso da porta Brocade para controladores
+        url: "/install-fc/brocade-fc-port-config-controllers.html"
+      - title: Uso da porta Brocade para pontes FC para SAS
+        url: "/install-fc/brocade-fc-port-config-bridges.html"
+      - title: Uso da porta Brocade para ISLs
+        url: "/install-fc/brocade-fc-port-config-isls.html"
+      - title: Uso da porta Cisco para controladores (excluindo Cisco 9132T)
+        url: "/install-fc/cisco-fc-port-config-controllers.html"
+      - title: Uso da porta Cisco para pontes FC para SAS (excluindo Cisco 9132T)
+        url: "/install-fc/cisco-fc-port-config-bridges.html"
+      - title: Uso da porta Cisco para ISLs (excluindo Cisco 9132T)
+        url: "/install-fc/cisco-fc-port-config-isls.html"
+      - title: Uso da porta Cisco 9132T para controladores
+        url: "/install-fc/cisco-9132t-fc-port-config-controllers.html"
+      - title: Uso da porta Cisco 9132T para pontes FC para SAS
+        url: "/install-fc/cisco-9132t-fc-port-config-bridges.html"
+      - title: Uso da porta Cisco 9132T para ISLs
+        url: "/install-fc/cisco-9132t-fc-port-config-isls.html"
     - title: Cabeamento da interconexão de cluster em configurações de oito ou quatro
         nós
       url: "/install-fc/task_cable_the_cluster_interconnect_in_four_node_configurations.html"

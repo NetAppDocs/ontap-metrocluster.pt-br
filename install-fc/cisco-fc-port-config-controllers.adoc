@@ -1,0 +1,868 @@
+---
+permalink: install-fc/cisco-fc-port-config-controllers.html 
+sidebar: sidebar 
+keywords: ONTAP, FC, Cisco, metrocluster, switch, cabling, controllers, port, 
+summary: Aprenda como conectar switches Cisco 9124V, 9148S, 9148V, 9250i e 9396S FC aos seus controladores. 
+---
+= Uso da porta Cisco para controladores em uma configuração MetroCluster FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba mais sobre as atribuições de porta necessárias para conectar os switches FC Cisco 9124V, 9148S, 9148V, 9250i e 9396S aos seus controladores.
+
+As tabelas mostram o máximo de configurações suportadas, com oito módulos de controladora em dois grupos de DR. Para configurações menores, ignore as linhas dos módulos adicionais do controlador.
+
+[NOTE]
+====
+* Para Cisco 9132T, consulte link:cisco-9132t-fc-port-config-controllers.html["Uso da porta Cisco 9132T para controladores em uma configuração MetroCluster FC"] .
+* Os switches Cisco 9124V e 9250i não são suportados em configurações MetroCluster de oito nós.
+
+
+====
+
+
+== MetroCluster 1 ou grupo de RD 1
+
+A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 1 ou grupo DR 1 em switches Cisco (excluindo 9132T).
+
+[cols="2a,2a,2a,2a,2a,2a,2a,2a"]
+|===
+| *Componente* | *Porto* | * Coneta-se ao switch FC...* | *Porta 9124V* | *Porta 9148S* | *Porta 9148V* | *Porta 9250i* | *Porta 9396S* 
+
+
+ a| 
+controller_x_1
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+3
+ a| 
+n / D
+ a| 
+3
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+3
+ a| 
+n / D
+ a| 
+3
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+4
+ a| 
+n / D
+ a| 
+4
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+4
+ a| 
+n / D
+ a| 
+4
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+13
+ a| 
+3
+ a| 
+13
+ a| 
+3
+ a| 
+3
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+13
+ a| 
+3
+ a| 
+13
+ a| 
+3
+ a| 
+3
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+14
+ a| 
+4
+ a| 
+14
+ a| 
+4
+ a| 
+4
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+14
+ a| 
+4
+ a| 
+14
+ a| 
+4
+ a| 
+4
+
+
+
+ a| 
+controller_x_2
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+7
+ a| 
+n / D
+ a| 
+7
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+7
+ a| 
+n / D
+ a| 
+7
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+8
+ a| 
+n / D
+ a| 
+8
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+8
+ a| 
+n / D
+ a| 
+8
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+15
+ a| 
+7
+ a| 
+15
+ a| 
+7
+ a| 
+7
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+15
+ a| 
+7
+ a| 
+15
+ a| 
+7
+ a| 
+7
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+16
+ a| 
+8
+ a| 
+16
+ a| 
+8
+ a| 
+8
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+16
+ a| 
+8
+ a| 
+16
+ a| 
+8
+ a| 
+8
+
+|===
+
+
+== MetroCluster 2 ou grupo de RD 2
+
+A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 2 ou grupo DR 2 em switches Cisco (excluindo 9132T).
+
+[cols="2a,2a,2a,2a,2a,2a,2a,2a"]
+|===
+| *Componente* | *Porto* | * Coneta-se ao switch FC...* | *Porta 9124V* | *Porta 9148S* | *Porta 9148V* | *Porta 9250i* | *Porta 9396S* 
+
+
+ a| 
+controller_x_3
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+n / D
+ a| 
+25
+ a| 
+25
+ a| 
+n / D
+ a| 
+49
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+n / D
+ a| 
+25
+ a| 
+25
+ a| 
+n / D
+ a| 
+49
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+n / D
+ a| 
+26
+ a| 
+26
+ a| 
+n / D
+ a| 
+50
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+n / D
+ a| 
+26
+ a| 
+26
+ a| 
+n / D
+ a| 
+50
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+27
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+27
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+28
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+28
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+n / D
+ a| 
+27
+ a| 
+37
+ a| 
+n / D
+ a| 
+51
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+n / D
+ a| 
+27
+ a| 
+37
+ a| 
+n / D
+ a| 
+51
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+n / D
+ a| 
+28
+ a| 
+38
+ a| 
+n / D
+ a| 
+52
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+n / D
+ a| 
+28
+ a| 
+38
+ a| 
+n / D
+ a| 
+52
+
+
+
+ a| 
+controller_x_4
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+n / D
+ a| 
+29
+ a| 
+29
+ a| 
+n / D
+ a| 
+53
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+n / D
+ a| 
+29
+ a| 
+29
+ a| 
+n / D
+ a| 
+53
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+n / D
+ a| 
+30
+ a| 
+30
+ a| 
+n / D
+ a| 
+54
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+n / D
+ a| 
+30
+ a| 
+30
+ a| 
+n / D
+ a| 
+54
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+31
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+31
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+32
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+32
+ a| 
+n / D
+ a| 
+n / D
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+n / D
+ a| 
+31
+ a| 
+39
+ a| 
+n / D
+ a| 
+55
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+n / D
+ a| 
+31
+ a| 
+39
+ a| 
+n / D
+ a| 
+55
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+n / D
+ a| 
+32
+ a| 
+40
+ a| 
+n / D
+ a| 
+56
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+1
+ a| 
+n / D
+ a| 
+32
+ a| 
+40
+ a| 
+n / D
+ a| 
+56
+
+|===

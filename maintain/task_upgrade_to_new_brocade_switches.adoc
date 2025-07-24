@@ -64,7 +64,7 @@ FC_switch_A_1:admin> switchCfgPersistentDisable
 ----
 .. Faça o cabo do novo switch usando as atribuições de portas recomendadas.
 +
-link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC"]
 
 .. Repita essas subetapas no site do parceiro MetroCluster para substituir o segundo switch na primeira malha de switch.
 +

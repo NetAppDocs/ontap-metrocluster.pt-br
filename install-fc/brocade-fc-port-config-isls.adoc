@@ -1,0 +1,162 @@
+---
+permalink: install-fc/brocade-fc-port-config-isls.html 
+sidebar: sidebar 
+keywords: ONTAP, FAS, FC, Brocade, metrocluster 
+summary: As tabelas a seguir mostram o uso de portas em switches Brocade . 
+---
+= Uso da porta Brocade para ISLs em uma configuração MetroCluster FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba mais sobre as atribuições de portas necessárias para conectar switches Brocade FC a ISLs.
+
+[NOTE]
+====
+* Os sistemas AFF A900 e FAS9500 suportam oito ISLs. Os switches Brocade 6510, G620, G620-1, G630, G630-1, G720 e G730 suportam oito ISLs.
+* Os switches Brocade 6520 suportam oito ISLs, mas não suportam sistemas AFF A900 e FAS9500 .
+
+
+====
+[cols="2a,2a,2a,2a,2a,2a,2a"]
+|===
+| *Porta ISL* | *Porta 6505, G610, G710* | *Porta 6520* | *Porta 7810* | *Porta 7840 (10 Gbps)* | *Porta 7840 (40 Gbps)* | *Porta 6510, G620, G620-1, G630, G630-1, G720, G730* 
+
+
+ a| 
+Porta ISL 1
+ a| 
+20
+ a| 
+22
+ a| 
+ge2
+ a| 
+ge2
+ a| 
+ge0
+ a| 
+40
+
+
+
+ a| 
+Porta ISL 2
+ a| 
+21
+ a| 
+23
+ a| 
+ge3
+ a| 
+ge3
+ a| 
+ge1
+ a| 
+41
+
+
+
+ a| 
+Porta ISL 3
+ a| 
+22
+ a| 
+46
+ a| 
+ge4
+ a| 
+ge10
+ a| 
+n / D
+ a| 
+42
+
+
+
+ a| 
+Porta ISL 4
+ a| 
+23
+ a| 
+47
+ a| 
+ge5
+ a| 
+ge11
+ a| 
+n / D
+ a| 
+43
+
+
+
+ a| 
+Porta ISL 5
+ a| 
+n / D
+ a| 
+70
+ a| 
+ge6
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+44
+
+
+
+ a| 
+Porta ISL 6
+ a| 
+n / D
+ a| 
+71
+ a| 
+ge7
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+45
+
+
+
+ a| 
+Porta ISL 7
+ a| 
+n / D
+ a| 
+94
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+46
+
+
+
+ a| 
+Porta ISL 8
+ a| 
+n / D
+ a| 
+95
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+47
+
+|===

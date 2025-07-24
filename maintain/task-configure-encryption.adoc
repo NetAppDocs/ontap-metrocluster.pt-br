@@ -11,17 +11,27 @@ summary:
 
 
 [role="lead"]
-A partir do ONTAP 9.15,1, é possível configurar a criptografia de ponta a ponta para criptografar o tráfego de back-end, como NVlog e dados de replicação de armazenamento, entre os sites em uma configuração IP do MetroCluster.
+A partir do ONTAP 9.15.1, você pode configurar a criptografia de ponta a ponta em sistemas suportados para criptografar o tráfego de back-end, como NVlog e dados de replicação de armazenamento, entre os sites em uma configuração de IP do MetroCluster .
 
 .Sobre esta tarefa
 * Você deve ser um administrador de cluster para executar esta tarefa.
 * Antes de poder configurar a encriptação de ponta a ponta, tem link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-external-key-management-concept.html["Configurar o gerenciamento de chaves externas"^]de .
 * Revise os sistemas suportados e a versão mínima do ONTAP necessária para configurar a criptografia de ponta a ponta em uma configuração IP do MetroCluster:
 +
+[cols="2*"]
 |===
-
-
 | Versão mínima de ONTAP | Sistemas suportados 
+
+
+ a| 
+ONTAP 9.17.1
+ a| 
+** AFF A800, AFF C800
+** AFF A20, AFF A30, AFF C30, AFF A50, AFF C60
+** AFF A70, AFF A90, AFF A1K, AFF C80
+** FAS50, FAS70, FAS90
+
+
 
 
  a| 

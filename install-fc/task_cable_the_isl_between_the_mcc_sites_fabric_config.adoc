@@ -19,7 +19,7 @@ Isso deve ser feito para ambos os tecidos de troca.
 .Passos
 . Conete os switches FC em cada local a todos os ISLs, usando o cabeamento na tabela que corresponde à configuração e ao modelo de switch.
 +
-** link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+** link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC"]
 
 
 

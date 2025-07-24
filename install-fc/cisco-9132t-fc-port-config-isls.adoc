@@ -1,0 +1,109 @@
+---
+permalink: install-fc/cisco-9132t-fc-port-config-isls.html 
+sidebar: sidebar 
+keywords: ONTAP, FAS, FC, Cisco, metrocluster 
+summary: Saiba mais sobre as atribuições de portas necessárias para cabear switches Cisco 9132T FC para ISLs. 
+---
+= Uso da porta Cisco 9132T para ISLs em uma configuração MetroCluster FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba mais sobre as atribuições de portas necessárias para cabear switches Cisco 9132T FC para ISLs.
+
+A tabela a seguir mostra o uso da porta ISL para um switch Cisco 9132T.
+
+[cols="2a,2a,2a,2a"]
+|===
+| *Porta ISL* | *9132T 1x LEM (quatro nós)* | *9132T 2x LEM (quatro nós)* | *9132T 2x LEM (oito nós)* 
+
+
+ a| 
+Porta ISL 1
+ a| 
+LEM1-15
+ a| 
+LEM2-9
+ a| 
+LEM1-13
+
+
+
+ a| 
+Porta ISL 2
+ a| 
+LEM1-16
+ a| 
+LEM2-10
+ a| 
+LEM1-14
+
+
+
+ a| 
+Porta ISL 3
+ a| 
+n / D
+ a| 
+LEM2-11
+ a| 
+LEM1-15
+
+
+
+ a| 
+Porta ISL 4
+ a| 
+n / D
+ a| 
+LEM2-12
+ a| 
+LEM1-16
+
+
+
+ a| 
+Porta ISL 5
+ a| 
+n / D
+ a| 
+LEM2-13
+ a| 
+n / D
+
+
+
+ a| 
+Porta ISL 6
+ a| 
+n / D
+ a| 
+LEM2-14
+ a| 
+n / D
+
+
+
+ a| 
+Porta ISL 7
+ a| 
+n / D
+ a| 
+LEM2-15
+ a| 
+n / D
+
+
+
+ a| 
+Porta ISL 8
+ a| 
+n / D
+ a| 
+LEM2-16
+ a| 
+n / D
+
+|===

@@ -16,7 +16,7 @@ As portas FC-VI e HBAs (adaptadores de barramento do host) do novo módulo de co
 .Passos
 . Faça o cabeamento das portas FC-VI e das portas HBA, usando a tabela para sua configuração e modelo de switch.
 +
-** link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+** link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC"]
 ** link:../install-fc/concept_port_assignments_for_systems_using_two_initiator_ports.html["Atribuições de portas para sistemas que usam duas portas de iniciador"]
 
 

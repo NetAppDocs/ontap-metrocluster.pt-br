@@ -14,7 +14,7 @@ summary: Se você tiver substituído os switches FC no local de desastre, será 
 Se você tiver substituído os switches FC no local de desastre, será necessário configurá-los usando os procedimentos específicos do fornecedor. Você deve configurar um switch, verificar se o acesso ao armazenamento no site sobrevivente não é afetado e, em seguida, configurar o segundo switch.
 
 .Tarefas relacionadas
-link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC"]
 
 
 
@@ -35,7 +35,7 @@ Os exemplos deste procedimento baseiam-se nas seguintes premissas:
 
 Você deve verificar se está usando as atribuições de portas especificadas quando você faz o cabo dos switches FC:
 
-* link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+* link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC"]
 
 
 Os exemplos mostram duas pontes FC-para-SAS. Se tiver mais bridges, tem de desativar e, posteriormente, ativar as portas adicionais.

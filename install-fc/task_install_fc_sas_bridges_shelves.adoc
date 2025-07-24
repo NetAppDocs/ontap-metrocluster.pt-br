@@ -682,9 +682,9 @@ Consulte as atribuições de portas da sua versão do ONTAP.
 
 
 .Informações relacionadas
-Você precisa verificar se está usando as atribuições de portas especificadas quando você faz o cabeamento dos switches FC ao usar o ONTAP 9.1 e posterior.
+Você precisa verificar se está usando as atribuições de porta especificadas ao conectar os switches FC.
 
-link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC ao usar o ONTAP 9.1 e posterior"]
+link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["Atribuições de portas para switches FC"]
 
 
 

@@ -21,6 +21,51 @@ Para obter detalhes sobre problemas conhecidos, limitações e precauções de a
 
 
  a| 
+Suporte IP MetroCluster para criptografia de ponta a ponta
+ a| 
+A criptografia de ponta a ponta é suportada nos seguintes sistemas para criptografar o tráfego de back-end, como NVlog e dados de replicação de armazenamento, entre os sites em uma configuração de IP do MetroCluster .
+
+* AFF A800, AFF C800
+* AFF A20, AFF A30, AFF C30, AFF A50, AFF C60
+* AFF A70, AFF A90, AFF A1K, AFF C80
+* FAS50, FAS70, FAS90
+
+
+link:../maintain/task-configure-encryption.html["Configurar criptografia de ponta a ponta em uma configuração IP do MetroCluster"]
+ a| 
+ONTAP 9.17.1
+
+
+
+ a| 
+Limite de alterações para configurações de IP do MetroCluster
+ a| 
+O ONTAP 9.17.1 inclui as seguintes atualizações de limite para configurações de IP do MetroCluster de quatro nós:
+
+* Os sistemas AFF C800, AFF A800, AFF A900, AFF A90 e AFF A1K têm os seguintes limites atualizados:
++
+** Limites de FlexVol volume por nó: 1250
+** Limites de SVM: 64 SVMs por cluster
+** Contagem de LIF: 256 LIFs por cluster
+
+
+* Os sistemas AFF A400, AFF C400, ASA A400, ASA C400, AFF C80, AFF A70 e AFF A50 têm os seguintes limites atualizados:
++
+** Limites de FlexVol volume por agregado (único ou múltiplo): 625
+** Limites de FlexVol volume por nó: 1250
+** Limites de FlexVol volume por par de alta disponibilidade (HA): 2500
+** Limites de FlexVol volume por cluster MetroCluster : 5000
+** Limites de SVM: 64 SVMs por cluster
+** Contagem de LIF: 256 LIFs por cluster
+
+
+
+ a| 
+ONTAP 9.17.1
+
+
+
+ a| 
 Atualização de firmware do Fibrebridge usando credenciais
  a| 
 Você pode atualizar o firmware em bridges do Fibrebridge usando credenciais se elas forem necessárias pelo servidor para baixar o pacote de firmware.
@@ -76,7 +121,7 @@ Nas configurações IP do MetroCluster de quatro nós, os seguintes limites de v
 
 * O número máximo de volumes FlexVol por agregado aumentou de 200 para 625.
 * O número máximo de volumes FlexVol por nó aumentou de 800 para 1250.
-* O número máximo de volumes FlexVol por par de alta disponibilidade (HA) aumentou de 1600 para 2500.
+* O número máximo de volumes FlexVol por par de HA aumentou de 1.600 para 2.500.
 
  a| 
 ONTAP 9.15,1
@@ -101,7 +146,7 @@ Nas configurações IP do MetroCluster de quatro nós, os seguintes limites de v
 
 * O número máximo de volumes FlexVol por agregado aumentou de 200 para 625.
 * O número máximo de volumes FlexVol por nó aumentou de 800 para 1250.
-* O número máximo de volumes FlexVol por par de alta disponibilidade (HA) aumentou de 1600 para 2500.
+* O número máximo de volumes FlexVol por par de HA aumentou de 1.600 para 2.500.
 
  a| 
 ONTAP 9.14,1

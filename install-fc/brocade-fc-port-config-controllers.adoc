@@ -1,0 +1,1617 @@
+---
+permalink: install-fc/brocade-fc-port-config-controllers.html 
+sidebar: sidebar 
+keywords: ONTAP, FAS, FC, Brocade, metrocluster 
+summary: As tabelas a seguir mostram o uso de portas em switches Brocade . As tabelas mostram a configuração máxima suportada, com quatro módulos controladores por grupo de DR. 
+---
+= Uso da porta Brocade para controladores em uma configuração MetroCluster FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba mais sobre as atribuições de portas necessárias para conectar switches Brocade FC aos seus controladores.
+
+As tabelas a seguir mostram a configuração máxima suportada, com quatro módulos controladores por grupo de DR. Para configurações menores, ignore as linhas referentes aos módulos controladores adicionais. Observe que oito ISLs são suportados apenas nos switches Brocade 6510, Brocade DCX 8510-8, G620, G630, G620-1, G630-1, G720 e G730.
+
+Revise as seguintes informações antes de usar estas tabelas:
+
+* A utilização de portas para os switches Brocade 6505, G610 e G710 em uma configuração MetroCluster de oito nós não é mostrada. Devido ao número limitado de portas, as atribuições de portas devem ser feitas localmente, dependendo do modelo do módulo controlador e do número de ISLs e pares de pontes em uso.
+* O switch Brocade DCX 8510-8 pode usar o mesmo layout de porta que o switch 6510 *_or_* o switch 7840.
+* Os switches Brocade 6520, 7810 e 7840 não são suportados em sistemas que usam oito portas FC-VI (sistemas AFF A900 e FAS9500 ).
+* Os switches Brocade 7810 suportam apenas um grupo DR.
+
+
+
+
+== MetroCluster 1 ou grupo de RD 1
+
+A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 1 ou no grupo DR 1 em switches Brocade .
+
+[cols="2a,2a,2a,2a,2a,2a,2a,2a,2a,2a"]
+|===
+| *Componente* | *Porto* | * Coneta-se ao switch FC...* | *Porta 6505, G610, G710* | *6510, porta DCX 8510-8* | *Porta 6520* | *Porta 7810* | *Porta 7840* | *Porta G620, G620-1, G630, G630-1* | *Porta G720, G730* 
+
+
+ a| 
+controller_x_1
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
+ a| 
+0
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+ a| 
+1
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+16
+ a| 
+20
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+16
+ a| 
+2
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+16
+ a| 
+20
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+16
+ a| 
+2
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+17
+ a| 
+21
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+17
+ a| 
+3
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+17
+ a| 
+21
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+17
+ a| 
+3
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+8
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+2
+ a| 
+8
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+9
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+3
+ a| 
+9
+
+
+
+ a| 
+controller_x_2
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
+ a| 
+4
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+ a| 
+5
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+18
+ a| 
+22
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+20
+ a| 
+6
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+18
+ a| 
+22
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+20
+ a| 
+6
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+19
+ a| 
+23
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+21
+ a| 
+7
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+19
+ a| 
+23
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+21
+ a| 
+7
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+12
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+6
+ a| 
+12
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+13
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+7
+ a| 
+13
+
+|===
+
+
+== MetroCluster 2 ou grupo de RD 2
+
+A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 2 ou grupo DR 2 em switches Brocade .
+
+[cols="10*"]
+|===
+| *Componente* | *Porto* | * Coneta-se ao switch FC...* | *Porta 6505, G610, G710* | *6510, porta DCX 8510-8* | *Porta 6520* | *Porta 7810* | *Porta 7840* | *Porta G620, G620-1, G630, G630-1* | *Porta G720, G730* 
+
+
+ a| 
+controller_x_3
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+n / D
+ a| 
+24
+ a| 
+48
+ a| 
+n / D
+ a| 
+12
+ a| 
+18
+ a| 
+18
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+n / D
+ a| 
+24
+ a| 
+48
+ a| 
+n / D
+ a| 
+12
+ a| 
+18
+ a| 
+18
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+n / D
+ a| 
+25
+ a| 
+49
+ a| 
+n / D
+ a| 
+13
+ a| 
+19
+ a| 
+19
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+n / D
+ a| 
+25
+ a| 
+49
+ a| 
+n / D
+ a| 
+13
+ a| 
+19
+ a| 
+19
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+n / D
+ a| 
+36
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+36
+ a| 
+24
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+n / D
+ a| 
+36
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+36
+ a| 
+24
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+n / D
+ a| 
+37
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+37
+ a| 
+25
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+n / D
+ a| 
+37
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+37
+ a| 
+25
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+n / D
+ a| 
+26
+ a| 
+50
+ a| 
+n / D
+ a| 
+14
+ a| 
+24
+ a| 
+26
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+n / D
+ a| 
+26
+ a| 
+50
+ a| 
+n / D
+ a| 
+14
+ a| 
+24
+ a| 
+26
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+n / D
+ a| 
+27
+ a| 
+51
+ a| 
+n / D
+ a| 
+15
+ a| 
+25
+ a| 
+27
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+n / D
+ a| 
+27
+ a| 
+51
+ a| 
+n / D
+ a| 
+15
+ a| 
+25
+ a| 
+27
+
+
+
+ a| 
+controller_x_4
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+n / D
+ a| 
+28
+ a| 
+52
+ a| 
+n / D
+ a| 
+16
+ a| 
+22
+ a| 
+22
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+n / D
+ a| 
+28
+ a| 
+52
+ a| 
+n / D
+ a| 
+16
+ a| 
+22
+ a| 
+22
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+n / D
+ a| 
+29
+ a| 
+53
+ a| 
+n / D
+ a| 
+17
+ a| 
+23
+ a| 
+23
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+n / D
+ a| 
+29
+ a| 
+53
+ a| 
+n / D
+ a| 
+17
+ a| 
+23
+ a| 
+23
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+n / D
+ a| 
+38
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+38
+ a| 
+28
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+n / D
+ a| 
+38
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+38
+ a| 
+28
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+n / D
+ a| 
+39
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+39
+ a| 
+29
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+n / D
+ a| 
+39
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+n / D
+ a| 
+39
+ a| 
+29
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+n / D
+ a| 
+30
+ a| 
+54
+ a| 
+n / D
+ a| 
+18
+ a| 
+28
+ a| 
+30
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+n / D
+ a| 
+30
+ a| 
+54
+ a| 
+n / D
+ a| 
+18
+ a| 
+28
+ a| 
+30
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+n / D
+ a| 
+31
+ a| 
+55
+ a| 
+n / D
+ a| 
+19
+ a| 
+29
+ a| 
+31
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+n / D
+ a| 
+31
+ a| 
+55
+ a| 
+n / D
+ a| 
+19
+ a| 
+29
+ a| 
+31
+
+|===
+
+
+== MetroCluster 3 ou grupo DR 3
+
+A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 3 ou no grupo DR 3 em switches Brocade .
+
+[cols="2a,2a,2a,2a,2a"]
+|===
+| *Componente* | *Porto* | * Coneta-se ao switch FC...* | *Porta G630, G630-1* | *Porta G730* 
+
+
+ a| 
+controller_x_5
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+48
+ a| 
+48
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+48
+ a| 
+48
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+49
+ a| 
+49
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+49
+ a| 
+49
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+64
+ a| 
+50
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+64
+ a| 
+50
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+65
+ a| 
+51
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+65
+ a| 
+51
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+50
+ a| 
+56
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+50
+ a| 
+56
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+51
+ a| 
+57
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+51
+ a| 
+57
+
+
+
+ a| 
+controller_x_6
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+52
+ a| 
+52
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+52
+ a| 
+52
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+53
+ a| 
+53
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+53
+ a| 
+53
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+68
+ a| 
+54
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+68
+ a| 
+54
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+69
+ a| 
+55
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+69
+ a| 
+55
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+54
+ a| 
+60
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+54
+ a| 
+60
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+55
+ a| 
+61
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+55
+ a| 
+61
+
+|===
+
+
+== MetroCluster 4 ou grupo DR 4
+
+A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 4 ou grupo DR 4 em switches Brocade .
+
+[cols="2a,2a,2a,2a,2a"]
+|===
+| *Componente* | *Porto* | * Coneta-se ao switch FC...* | *Porta G630, G630-1* | *Porta G730* 
+
+
+ a| 
+controller_x_7
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+66
+ a| 
+66
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+66
+ a| 
+66
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+67
+ a| 
+67
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+67
+ a| 
+67
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+84
+ a| 
+72
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+84
+ a| 
+72
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+85
+ a| 
+73
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+85
+ a| 
+73
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+72
+ a| 
+74
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+72
+ a| 
+74
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+73
+ a| 
+75
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+73
+ a| 
+75
+
+
+
+ a| 
+controller_x_8
+ a| 
+Porta a FC-VI
+ a| 
+1
+ a| 
+70
+ a| 
+70
+
+
+
+ a| 
+Porta FC-VI b
+ a| 
+2
+ a| 
+70
+ a| 
+70
+
+
+
+ a| 
+Porta FC-VI c
+ a| 
+1
+ a| 
+71
+ a| 
+71
+
+
+
+ a| 
+Porta d. FC-VI
+ a| 
+2
+ a| 
+71
+ a| 
+71
+
+
+
+ a| 
+Porta a FC-VI-2
+ a| 
+1
+ a| 
+86
+ a| 
+76
+
+
+
+ a| 
+Porta FC-VI-2 b
+ a| 
+2
+ a| 
+86
+ a| 
+76
+
+
+
+ a| 
+Porta FC-VI-2 c
+ a| 
+1
+ a| 
+87
+ a| 
+77
+
+
+
+ a| 
+FC-VI-2 porta d
+ a| 
+2
+ a| 
+87
+ a| 
+77
+
+
+
+ a| 
+HBA porta a
+ a| 
+1
+ a| 
+76
+ a| 
+78
+
+
+
+ a| 
+Porta HBA b
+ a| 
+2
+ a| 
+76
+ a| 
+78
+
+
+
+ a| 
+Porta HBA c
+ a| 
+1
+ a| 
+77
+ a| 
+79
+
+
+
+ a| 
+Porta d. HBA
+ a| 
+2
+ a| 
+77
+ a| 
+79
+
+|===
