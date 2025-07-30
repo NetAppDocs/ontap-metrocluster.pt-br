@@ -22,4 +22,4 @@ Pode ver a alteração no estado de um módulo de fonte de alimentação atravé
 
 NOTE: O _ATTO FibreBridge Installation and Operation Manual_ para sua ponte de modelo tem mais informações sobre interfaces de gerenciamento.
 
-Você pode acessar este e outros conteúdos no SITE DA ATTO usando o link fornecido na página Descrição DO ATTO Fibrebridge.
+Você pode acessar este e outros conteúdos no site da ATTO usando o link fornecido na página Descrição do ATTO FibreBridge.

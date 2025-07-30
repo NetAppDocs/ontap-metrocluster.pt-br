@@ -54,21 +54,23 @@ O ONTAP 9.17.1 inclui as seguintes atualizações de limite para configurações
 ** Limites de FlexVol volume por agregado (único ou múltiplo): 625
 ** Limites de FlexVol volume por nó: 1250
 ** Limites de FlexVol volume por par de alta disponibilidade (HA): 2500
-** Limites de FlexVol volume por cluster MetroCluster : 5000
+** Limites de FlexVol volume por cluster: 5000
 ** Limites de SVM: 64 SVMs por cluster
 ** Contagem de LIF: 256 LIFs por cluster
 
 
 
+
+Consulte o link:https://hwu.netapp.com["Hardware Universe"^] para maiores informações.
  a| 
 ONTAP 9.17.1
 
 
 
  a| 
-Atualização de firmware do Fibrebridge usando credenciais
+Atualização de firmware FibreBridge usando credenciais
  a| 
-Você pode atualizar o firmware em bridges do Fibrebridge usando credenciais se elas forem necessárias pelo servidor para baixar o pacote de firmware.
+Você pode atualizar o firmware em pontes FibreBridge usando credenciais se elas forem exigidas pelo servidor para baixar o pacote de firmware.
 
 link:../maintain/task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html["Atualize o firmware em uma ponte FibreBridge"]
  a| 
