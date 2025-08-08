@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fc, installation, active, iq, unified, manager, system, configuration 
 summary: O Active IQ Unified Manager e o ONTAP System Manager podem ser usados para o gerenciamento de GUI dos clusters e para o monitoramento da configuração. 
 ---
-= Use o Active IQ Unified Manager e o ONTAP System Manager para configuração e monitoramento adicionais em uma configuração de IP do MetroCluster
+= Use o Active IQ Unified Manager e o Gerenciador de sistemas do ONTAP para obter mais configurações e monitoramento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
