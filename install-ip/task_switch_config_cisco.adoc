@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ip, switch, configuring, configure, factory defaults, cisco, MACsec encryption, 9336C, 9336, forward error correction, fec 
 summary: Você deve configurar os switches IP Cisco para uso como interconexão de cluster e para conetividade IP do MetroCluster de back-end. 
 ---
-= Configurar switches IP Cisco
+= Configurar switches IP da Cisco para interconexão de cluster e conectividade IP MetroCluster de backend
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

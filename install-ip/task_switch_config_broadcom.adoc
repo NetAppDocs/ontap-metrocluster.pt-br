@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ip, switch, connection, configuring, configure, broadcom, factory defaults 
 summary: Você deve configurar os switches IP Broadcom para uso como interconexão de cluster e para conetividade IP MetroCluster de back-end. 
 ---
-= Configuração de switches IP Broadcom
+= Configurar switches IP Broadcom para interconexão de cluster e conectividade IP MetroCluster de backend
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

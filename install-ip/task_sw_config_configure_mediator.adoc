@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster ip, ontap, mediator, tiebreaker 
 summary: Você pode baixar e instalar em um terceiro site o software tiebreaker do MetroCluster ou, a partir do ONTAP 9.7, o Mediador do ONTAP. 
 ---
-= Configurando o software tiebreaker do MetroCluster ou do ONTAP Mediator
+= Configurar o MetroCluster Tiebreaker ou o ONTAP Mediator para uma configuração de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

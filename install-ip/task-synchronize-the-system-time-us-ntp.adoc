@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, synchronize, system, time, ntp 
 summary: 'Cada cluster precisa de seu próprio servidor NTP (Network Time Protocol) para sincronizar o tempo entre os nós e seus clientes.' 
 ---
-= Sincronize a hora do sistema usando NTP
+= Sincronizar a hora do sistema usando NTP em uma configuração de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

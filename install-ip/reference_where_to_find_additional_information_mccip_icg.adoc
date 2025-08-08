@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, operation, netapp, documentation, additional, information, miscellaneous, guide 
 summary: Você pode saber mais sobre a configuração e operação do MetroCluster IP na documentação do NetApp. 
 ---
-= Onde encontrar informações adicionais
+= Onde encontrar informações adicionais sobre o MetroCluster IP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

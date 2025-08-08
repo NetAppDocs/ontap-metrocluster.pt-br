@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, mediator, configure 
 summary: O ONTAP Mediator deve ser configurado no nó ONTAP para uso em uma configuração de IP do MetroCluster. 
 ---
-= Configurar o ONTAP Mediator a partir de uma configuração de IP do MetroCluster
+= Configurar o ONTAP Mediator para uma configuração de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

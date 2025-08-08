@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, hardware, component, interconnect, part, key, element, disaster, recovery, dr, group, illustration, local, ha, pair, configuration, cluster, interconnect, network, peer 
 summary: Ao Planejar sua configuração IP do MetroCluster, você deve entender os componentes de hardware e como eles se interconetam. 
 ---
-= Partes de uma configuração IP do MetroCluster
+= Aprenda sobre interconexões de componentes de hardware em uma configuração de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

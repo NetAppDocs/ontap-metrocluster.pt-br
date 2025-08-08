@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cabling, cable, component, peering, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure 
 summary: Você deve fazer o cabeamento das portas do módulo do controlador usadas para peering de cluster, gerenciamento e conetividade de dados. 
 ---
-= Cabeamento das portas de peering, dados e gerenciamento da controladora
+= Cabear as portas do módulo controlador ONTAP em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

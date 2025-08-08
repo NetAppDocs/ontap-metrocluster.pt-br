@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, mediator, assist, remove, unconfigure, requirements, mediator requirements 
 summary: Você pode remover o mediador ONTAP da configuração de IP do MetroCluster. 
 ---
-= Desconfigurar o ONTAP Mediator da configuração de IP do MetroCluster
+= Remover o mediador ONTAP de uma configuração de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

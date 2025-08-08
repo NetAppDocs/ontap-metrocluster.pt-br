@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: backup files, configuration backup 
 summary: 'Você pode fornecer proteção adicional para os arquivos de backup de configuração de cluster especificando um URL remoto (HTTP ou FTP) onde os arquivos de backup de configuração serão carregados além dos locais padrão no cluster local.' 
 ---
-= Protegendo arquivos de backup de configuração
+= Arquivos de configuração de cluster de backup em uma configuração de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

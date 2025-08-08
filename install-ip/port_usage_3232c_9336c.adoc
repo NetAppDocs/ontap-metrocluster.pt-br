@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cabling, cable, component, link, site, management, network, networks, hardware, component, switch, cluster, connection, management, data, configuring, configure 
 summary: O uso da porta em uma configuração IP do MetroCluster depende do modelo do switch e do tipo de plataforma. 
 ---
-= Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C-FX2 de 36 portas
+= Atribuições de porta de plataforma para switches Cisco 3232C ou Cisco 9336C de 36 portas em uma configuração IP MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

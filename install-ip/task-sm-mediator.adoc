@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: system manager, mediator, metrocluster, mcc, 8-node, ip, configure, remove, mauso, mediator-assisted automatic switchover, switchover, switchback, health 
 summary: Usando o Gerenciador de Sistema, você pode executar tarefas para gerenciar o Mediador. 
 ---
-= Gerenciar o ONTAP Mediator com o System Manager
+= Gerenciar o Mediador ONTAP com o Gerenciador de Sistemas nas configurações de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

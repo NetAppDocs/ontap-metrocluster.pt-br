@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: firewall, port usage, tcip, udp, cluster peering, intercluster lifs, hardware-assist 
 summary: Se você estiver usando um firewall em um site da MetroCluster, você deverá garantir o acesso a determinadas portas necessárias. 
 ---
-= Uso de firewall em sites da MetroCluster
+= Requisitos de porta de firewall para configurações de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

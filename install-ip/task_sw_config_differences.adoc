@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, configuration, ontap, node-level, configuration, node, site, relationship, configuring, configure, similarities, difference, 
 summary: A configuração dos nós em cada cluster em uma configuração MetroCluster é semelhante à dos nós em um cluster padrão. 
 ---
-= Semelhanças e diferenças entre configurações padrão de cluster e MetroCluster
+= Compare as configurações de cluster padrão ONTAP e MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ permalink: install-ip/set-up-mcc-peering-system-manager.html
 keywords: metrocluster, peer, peering, pair, pairing, configuration, config, mcc, HA 
 summary: A partir do ONTAP 9.8, você pode gerenciar as operações do site IP do MetroCluster com o Gerenciador do sistema. Isso envolve a configuração de dois clusters e a execução do peering de cluster. 
 ---
-= Configurar o peering IP do MetroCluster
+= Configurar o peering de IP do MetroCluster com o ONTAP System Manager
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

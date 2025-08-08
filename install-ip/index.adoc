@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, installation 
 summary: Para instalar sua configuração IP do MetroCluster, você deve executar vários procedimentos na ordem correta. 
 ---
-= Visão geral
+= Fluxo de trabalho de instalação do MetroCluster IP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

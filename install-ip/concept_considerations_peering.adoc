@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: considertaions, cluster peering, shared peering ports, dedicated peering ports 
 summary: Cada site do MetroCluster é configurado como um ponto do site do parceiro. 
 ---
-= Peering de clusters
+= Requisitos para peering de cluster em configurações de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

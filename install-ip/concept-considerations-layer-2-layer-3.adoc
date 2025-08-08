@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, mediator, tiebreaker 
 summary: Dependendo dos seus requisitos, você pode usar redes compartilhadas da camada 2 ou da camada 3 para implantar o MetroCluster. 
 ---
-= Considerações ao implantar o MetroCluster em redes compartilhadas da camada 2 ou da camada 3
+= Requisitos para implantar configurações de IP do MetroCluster em redes compartilhadas de camada 2 ou camada 3
 :allow-uri-read: 
 
 

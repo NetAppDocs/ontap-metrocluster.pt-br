@@ -124,7 +124,7 @@ NOTE: A conta de usuário especificada durante a instalação do tiebreaker deve
 
 * Use a criptografia do banco de dados
 +
-** A criptografia de dados em repouso é compatível. link:https://mariadb.com/kb/en/data-at-rest-encryption-overview/["Saiba mais sobre criptografia de dados em repouso"^]
+** A criptografia de dados em repouso é suportada.link:https://mariadb.com/docs/server/security/securing-mariadb/securing-mariadb-encryption/encryption-data-at-rest-encryption/data-at-rest-encryption-overview["Saiba mais sobre criptografia de dados em repouso"^]
 ** Os dados em trânsito não são criptografados. Os dados em voo usam uma conexão de arquivo local "socks".
 ** Conformidade FIPS para MariaDB -- você não precisa ativar a conformidade FIPS no banco de dados. A instalação do host no modo compatível com FIPS é suficiente.
 +
@@ -148,7 +148,7 @@ link:https://dev.mysql.com/doc/refman/8.0/en/access-control.html["Controle de Ac
 link:https://dev.mysql.com/doc/refman/8.0/en/security-against-attack.html["Tornando o MySQL seguro contra invasores"^]
 
 +
-link:https://mariadb.com/kb/en/securing-mariadb/["Protegendo o MariaDB"^]
+link:https://mariadb.com/docs/server/security/securing-mariadb["Protegendo o MariaDB"^]
 
 * Proteja a instalação do Vault
 +

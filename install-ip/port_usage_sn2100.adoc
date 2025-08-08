@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cabling, cable, component, sip, isl, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure 
 summary: O uso da porta em uma configuração IP do MetroCluster depende do modelo do switch e do tipo de plataforma. 
 ---
-= Atribuições de porta de plataforma para switches IP SN2100 compatíveis com NVIDIA
+= Atribuições de porta de plataforma para switches IP SN2100 com suporte da NVIDIA em uma configuração IP MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

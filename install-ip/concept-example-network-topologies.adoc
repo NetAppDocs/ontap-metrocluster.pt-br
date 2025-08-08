@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, requirements, compliant, configuration 
 summary: A partir do ONTAP 9.6, algumas configurações de rede adicionais são suportadas para configurações IP do MetroCluster. 
 ---
-= Exemplos de topologias de rede MetroCluster
+= Exemplos de topologia de rede de configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

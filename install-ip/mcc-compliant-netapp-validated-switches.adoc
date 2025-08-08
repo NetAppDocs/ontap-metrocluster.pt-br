@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: isls, ip, layer 2, layer 3, shared switch 
 summary: Esta seção fornece as informações necessárias para verificar se a configuração do MetroCluster e a rede estão atendendo a todos os requisitos. 
 ---
-= Switches validados pela NetApp e compatíveis com MetroCluster
+= Switches validados pela NetApp e compatíveis com o MetroCluster em uma configuração de IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

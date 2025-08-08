@@ -4,7 +4,7 @@ permalink: install-ip/set-up-mcc-site-system-manager.html
 keywords: system manager, metrocluster, set up, setup, start, initialize, cluster, config, nodes 
 summary: A partir do ONTAP 9.8, você pode usar o Gerenciador do sistema para configurar um site IP do MetroCluster. 
 ---
-= Configure um site IP do MetroCluster
+= Configurar um site IP do MetroCluster com o ONTAP System Manager
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

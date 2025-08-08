@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: drive auto-assignment, drive, adp, advanced disk partitioning, root disk, unmirrored root, data partition, root partition, shelf-by-shelf, AFF A320, AFF A220, AFF A250, C250, AFF A300, AFF A400, C400, AFF A700, AFF A800, FAS2750, FAS8200, FAS500f, FAS9000 
 summary: 'A partir do ONTAP 9.4, as configurações IP do MetroCluster suportam novas instalações com sistemas AFF usando ADP (particionamento avançado de unidade).' 
 ---
-= Considerações para atribuição automática de acionamento e sistemas ADP no ONTAP 9.4 e posterior
+= Considerações de IP do MetroCluster para atribuição automática de unidades e sistemas ADP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

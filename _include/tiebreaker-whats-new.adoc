@@ -103,7 +103,7 @@ Não
 
 
  a| 
-Chapéu vermelho 9,4
+Red Hat Enterprise Linux (RHEL) 9.5
  a| 
 Sim
  a| 
@@ -116,7 +116,20 @@ Não
 
 
  a| 
-Chapéu vermelho 9,3
+RHEL 9.4
+ a| 
+Sim
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+RHEL 9.3
  a| 
 Não
  a| 
@@ -129,7 +142,7 @@ Não
 
 
  a| 
-Chapéu vermelho 9,2
+RHEL 9.2
  a| 
 Sim
  a| 
@@ -142,7 +155,7 @@ Não
 
 
  a| 
-Chapéu vermelho 9,1
+RHEL 9.1
  a| 
 Não
  a| 
@@ -155,7 +168,7 @@ Não
 
 
  a| 
-Chapéu vermelho 9,0
+RHEL 9.0
  a| 
 Não
  a| 
@@ -168,7 +181,7 @@ Não
 
 
  a| 
-Red Hat 8,11 - 9,0
+RHEL 8.11 - 9.0
  a| 
 Não
  a| 
@@ -181,7 +194,7 @@ Não
 
 
  a| 
-Chapéu vermelho 8,10
+RHEL 8.10
  a| 
 Sim
  a| 
@@ -194,7 +207,7 @@ Não
 
 
  a| 
-Chapéu vermelho 8,9
+RHEL 8.9
  a| 
 Não
  a| 
@@ -207,7 +220,7 @@ Não
 
 
  a| 
-Chapéu vermelho 8,8
+RHEL 8.8
  a| 
 Sim
  a| 
@@ -220,7 +233,7 @@ Não
 
 
  a| 
-Red Hat 8,1 - 8,7
+RHEL 8.1 - 8.7
  a| 
 Não
  a| 
@@ -233,7 +246,7 @@ Sim
 
 
  a| 
-Red Hat 7 - 7,9
+RHEL 7 - 7.9
  a| 
 Não
  a| 

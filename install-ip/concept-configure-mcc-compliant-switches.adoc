@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, requirements, compliant, configuration 
 summary: Saiba mais sobre as várias configurações de portas do switch. 
 ---
-= Exemplos de configuração da porta do switch
+= Exemplos de configuração do switch IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

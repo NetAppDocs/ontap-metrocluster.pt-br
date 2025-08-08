@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, configuration, gather information 
 summary: Você precisa reunir os endereços IP necessários para os módulos do controlador antes de iniciar o processo de configuração. 
 ---
-= Recolha de informações necessárias
+= Reúna as informações necessárias para a configuração do IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
