@@ -22,7 +22,7 @@ Esta informação nesta tabela pressupõe que a instalação ou transição est�
 
 
  a| 
-* Sem falha de hardware
+* Nenhuma falha de hardware (por exemplo, uma falha de energia)
 
  a| 
 link:task_recover_from_a_non_controller_failure_mcc_dr.html["Recuperando-se de uma falha não controladora"]

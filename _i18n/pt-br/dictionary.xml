@@ -585,7 +585,6 @@
   <block id="c772808016cce686234dc8c5339463c5" category="paragraph">Esta informação nesta tabela pressupõe que a instalação ou transição está concluída, o que significa que o<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block> comando foi executado com sucesso.</block>
   <block id="415ffa6eddd16a388ef9a2894bcef389" category="cell">Escopo das falhas no local de desastre</block>
   <block id="8c4271e6faf2cea4cfc8e5b7108d8ee9" category="cell">Procedimento</block>
-  <block id="6212a1ad66c5ad9d3c50380aa91aab6a" category="list-text">Sem falha de hardware</block>
   <block id="d0fdde2f6b9874a03c06ea297d33bd22" category="inline-link-macro">Recuperando-se de uma falha não controladora</block>
   <block id="ab1dba64bb6e8de017000d69dfdb9ac8" category="paragraph"><block ref="ab1dba64bb6e8de017000d69dfdb9ac8" category="inline-link-macro-rx"></block></block>
   <block id="9aba6203184cf87e46be86cd2fbac089" category="list-text">Nenhuma falha no módulo do controlador</block>
@@ -2161,12 +2160,9 @@
   <block id="bdad80eac4f87790930258d6cdf7b1dd" category="list-text">Verifique se há uma entrada de login para cada switch:</block>
   <block id="34d50950463bd9deb8050c6afe5d8652" category="paragraph"><block ref="025c83c1a746b39471a98aa72befe950" prefix="" category="inline-code"></block></block>
   <block id="00045154249cbebb0c448b3f16b85947" category="list-text">Configure o SNMPv3 nos switches a partir do prompt do switch:</block>
-  <block id="149bff96621a57d63b9a824d96957df7" category="open-title">Switches Brocade</block>
   <block id="8877f60294cec4f344b4ffc0df4449c3" category="paragraph"><block ref="f508dc950a961eb3d640359c9730a18d" prefix="" category="inline-code"></block></block>
   <block id="250f3098aa37d3a08b48b8157db8a62e" category="open-title">Switches Cisco</block>
   <block id="6204028fd0e3ba079ca2fce4bb224e24" category="paragraph"><block ref="010303eb2e404f6eb49cc314fc8aa294" prefix="" category="inline-code"></block></block>
-  <block id="a1032909a057927264a07294a53b91b5" category="paragraph">Se você precisar de acesso RO, depois de "Usuário (ro):" especifique "snmpv3user". O exemplo a seguir usa switches Brocade:</block>
-  <block id="7c36b0e12ce814681762efb6b2ec6cc4" category="paragraph">O exemplo mostra como configurar um usuário somente leitura. Você pode ajustar os usuários RW, se necessário.</block>
   <block id="046a4dbe28831449e896740fded1c064" category="paragraph">Você também deve definir senhas em contas não utilizadas para protegê-las e usar a melhor criptografia disponível em sua versão do ONTAP.</block>
   <block id="b650107d3033a6cbfd9eec73b7b79ab2" category="list-text">Configure criptografia e senhas nos demais usuários do switch, conforme necessário em seu site.</block>
   <block id="b8faea2432f5d49678ba72e9e265fe05" category="section-title">Configuração de componentes do MetroCluster para monitoramento de integridade</block>
@@ -2978,10 +2974,7 @@
   <block id="431f5b1374f309f2d879bfefd088097b" category="paragraph"><block ref="c23f349c3186dc310f02c82eca9b096e" prefix="" category="inline-code"></block></block>
   <block id="1e70080b98ddae7448b1d47e364336a4" category="paragraph"><block ref="e74f01f7cb8014948ad603538d7f4e67" prefix="" category="inline-code"></block></block>
   <block id="53989b83805e7661f392318f958a6584" category="admonition">Ao configurar o ONTAP nos módulos do controlador, O AID deve ser explicitamente configurado em cada módulo do controlador na configuração do MetroCluster.</block>
-  <block id="8e6415ee4068075bb4d9b0908c9e0ba1" category="list-text">Verifique se o switch está usando o método de licenciamento de porta dinâmica.</block>
   <block id="64fa0d568b3592806aa948b76b25721e" category="list-text">Execute o comando license:</block>
-  <block id="6662b782a3a75b8e31dda70ebe53c4f0" category="paragraph">Executar o comando<block ref="c3d759c84d82a17cd2fc31c0bbd2be02" prefix=" " category="inline-code"></block>.</block>
-  <block id="1fb30ffcb217df70eb8b61a9c76f518f" category="paragraph">Executar o comando<block ref="f7fd6058274b87da3f8cba419f53bb7e" prefix=" " category="inline-code"></block>.</block>
   <block id="39c3f713772acf06f906fa354070ccae" category="admonition">As versões do Brocade FabricOS antes de 8,0 executam os seguintes comandos como admin e as versões 8,0 e posteriores os executam como root.</block>
   <block id="bb455cc655a37d9370a7b572be5c356a" category="list-text">Ative o utilizador raiz.</block>
   <block id="9982799dc107b44357ff54b7e3b835e7" category="paragraph">Se o usuário raiz já estiver desativado pelo Brocade, ative o usuário raiz como mostrado no exemplo a seguir:</block>
@@ -4213,7 +4206,6 @@
   <block id="f66f2933c2717a1cacefad1ec4730aec" category="list-text">Defina a configuração da porta como padrão para todas as portas:</block>
   <block id="d7a01c9755b9d94f47a5a7d930b0905d" category="paragraph"><block ref="45e3f8f9bac635c50d73056054e7260f" prefix="" category="inline-code"></block></block>
   <block id="4461eb2aa0e7be56b07bfd03b50adda3" category="paragraph">Você deve concluir esta etapa para cada porta.</block>
-  <block id="1711fdcc6944bbeddd35a626101f4b4d" category="list-text">Verifique se o switch está usando o método POD (Dynamic Port on Demand).</block>
   <block id="2f3d07c01cbdac4d395d3a14b661150c" category="admonition">Para versões do Brocade Fabric os anteriores a 8,0, você executa os seguintes comandos como admin e, para as versões 8,0 e posteriores, os executa como root.</block>
   <block id="d63c14f8f4da1b2f3355284117aa43d6" category="list-text">Ative o usuário raiz se ele estiver desativado pelo Brocade.</block>
   <block id="06628fac4ad175a059dea1e8992ec356" category="paragraph"><block ref="40c3e9d40d7f5472056a085103ee278b" prefix="" category="inline-code"></block></block>
@@ -14385,4 +14377,15 @@
   <block id="25849b8ea5119a6ccbe0ef06d8e35773" category="doc">Teste a alternância do nó ONTAP para sua configuração de IP do MetroCluster</block>
   <block id="7282d891d20cd1520e021b2ba6c78e20" category="list-text">A criptografia de dados em repouso é suportada.<block ref="6774dcdb02085dead82047685ca775f1" category="inline-link-macro-rx"></block></block>
   <block id="f42ec02236cb8b0134435967892ad733" category="paragraph"><block ref="f42ec02236cb8b0134435967892ad733" category="inline-link-macro-rx"></block></block>
+  <block id="929f699475d2ee16cffb5df619460281" category="list-text">Nenhuma falha de hardware (por exemplo, uma falha de energia)</block>
+  <block id="8e7bac68088266dc4f6ea54160a86aa8" category="open-title">Interruptores Brocade (FOS 9.0 e posterior)</block>
+  <block id="bbf1d4b45eed310475529b62acce8abc" category="paragraph"><block ref="5c14098cbb5e352eab3dbedad51645c3" prefix="" category="inline-code"></block></block>
+  <block id="fb9a60f6eec8993cd6b4f12e486c000c" category="open-title">Interruptores Brocade (FOS 8.x e anteriores)</block>
+  <block id="c713289c1b13431b23b477490f615275" category="paragraph">O exemplo mostra como configurar um usuário somente leitura.  Você pode ajustar os usuários RW, se necessário.  Se você precisar de acesso RO, após "Usuário (ro):" especifique "snmpv3user".</block>
+  <block id="da9939718fb44905950716c648f7501d" category="list-text">Se você estiver executando uma versão anterior ao FOS 9.0, verifique se o switch está usando o método de licenciamento dinâmico Port on Demand (POD).</block>
+  <block id="2fc05e860677e088c66d18d9fe3bb918" category="paragraph"><block ref="c3d759c84d82a17cd2fc31c0bbd2be02" prefix="" category="inline-code"></block></block>
+  <block id="56df97178d6ee4000ee0e436cc180453" category="list-text">Se você estiver executando uma versão anterior ao FOS 9.0, verifique se o switch está usando o método dinâmico Port on Demand (POD).</block>
+  <block id="6eb6a2663a1f73cd3119f3cb6f287206" category="paragraph"><block ref="c3d759c84d82a17cd2fc31c0bbd2be02" prefix="" category="inline-code"></block> .</block>
+  <block id="5667ca92a697e03bc95d429bfe20fda5" category="inline-link">switch de sistema ethernet configurar-monitor-de-saúde</block>
+  <block id="a7692359e6ab53408219d1f4fbab4614" category="paragraph">Veja o<block ref="e8f3e733a7456e37aaeb3c329fac3e94" category="inline-link-rx"></block> comando para mais detalhes.</block>
 </blocks>

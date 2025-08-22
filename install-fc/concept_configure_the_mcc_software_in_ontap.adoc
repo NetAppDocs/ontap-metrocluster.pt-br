@@ -2982,21 +2982,17 @@ node_A_1 SVM 4 snmpv3user     snmp        usm                   10.10.10.13
 +
 [role="tabbed-block"]
 ====
-.Switches Brocade
+.Interruptores Brocade (FOS 9.0 e posterior)
+--
+`snmpconfig --add snmpv3 -index <index> -user <user_name> -groupname <rw/ro> -auth_proto <auth_protocol> -auth_passwd <auth_password> -priv_proto <priv_protocol> -priv_passwd <priv_password>`
+
+--
+.Interruptores Brocade (FOS 8.x e anteriores)
 --
 `snmpconfig --set snmpv3`
 
---
-.Switches Cisco
---
-`snmp-server user <user_name>  auth [md5/sha/sha-256] <auth_password> priv (aes-128) <priv_password>`
+O exemplo mostra como configurar um usuário somente leitura.  Você pode ajustar os usuários RW, se necessário.  Se você precisar de acesso RO, após "Usuário (ro):" especifique "snmpv3user".
 
---
-====
-+
-Se você precisar de acesso RO, depois de "Usuário (ro):" especifique "snmpv3user". O exemplo a seguir usa switches Brocade:
-
-+
 [listing]
 ----
 Switch-A1:admin> snmpconfig --set snmpv3
@@ -3010,11 +3006,16 @@ User (ro): [snmpuser2] snmpv3user
 Auth Protocol [MD5(1)/SHA(2)/noAuth(3)]: (1..3) [2]
 Priv Protocol [DES(1)/noPriv(2)/AES128(3)/AES256(4)]): (2..2) [3]
 ----
-+
-O exemplo mostra como configurar um usuário somente leitura. Você pode ajustar os usuários RW, se necessário.
+--
+.Switches Cisco
+--
+`snmp-server user <user_name>  auth [md5/sha/sha-256] <auth_password> priv (aes-128) <priv_password>`
 
+--
+====
 +
-Você também deve definir senhas em contas não utilizadas para protegê-las e usar a melhor criptografia disponível em sua versão do ONTAP.
+
+NOTE: Você também deve definir senhas em contas não utilizadas para protegê-las e usar a melhor criptografia disponível em sua versão do ONTAP.
 
 . Configure criptografia e senhas nos demais usuários do switch, conforme necessário em seu site.
 
