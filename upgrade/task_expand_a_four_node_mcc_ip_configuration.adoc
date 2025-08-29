@@ -1138,7 +1138,7 @@ Você precisa incorporar o novo grupo de DR à configuração do MetroCluster e 
 +
 `set -privilege advanced`
 
-.. Atualize a configuração do MetroCluster em qualquer um dos nós:
+.. Atualize a configuração do MetroCluster em qualquer um dos nós recém-adicionados:
 +
 [cols="30,70"]
 |===

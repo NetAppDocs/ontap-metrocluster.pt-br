@@ -11243,7 +11243,6 @@
   <block id="2dccf53d6ed326f889d8e764529b9794" category="list-text">Verifique a atribuição automática e o particionamento do disco:</block>
   <block id="3f95b2ea711d433e26a8b5eb63bbd17a" category="paragraph"><block ref="02b924a96c72679822883a70dfe48211" prefix="" category="inline-code"></block></block>
   <block id="6c46e592d5f16891d3a16e5f364e031b" category="section-title">Finalizando a adição dos novos nós</block>
-  <block id="478e4322f0111cf3e7bdad12bea24701" category="list-text">Atualize a configuração do MetroCluster em qualquer um dos nós:</block>
   <block id="4ad402ea3fb0bcfdc921fd3083047f45" category="paragraph">A partir do prompt de qualquer nó, execute:</block>
   <block id="28d0a71b806dfc9c57cc495498c72954" category="paragraph">Um único agregado de dados espelhados em um ou ambos os locais</block>
   <block id="d419812c67afb77388be54f4cb41eb86" category="paragraph">A partir do prompt de qualquer nó, configure o MetroCluster com o<block ref="d972f8bbe9b04d39b8b96b699cf921e9" prefix=" " category="inline-code"></block> parâmetro:</block>
@@ -14388,4 +14387,5 @@
   <block id="6eb6a2663a1f73cd3119f3cb6f287206" category="paragraph"><block ref="c3d759c84d82a17cd2fc31c0bbd2be02" prefix="" category="inline-code"></block> .</block>
   <block id="5667ca92a697e03bc95d429bfe20fda5" category="inline-link">switch de sistema ethernet configurar-monitor-de-saúde</block>
   <block id="a7692359e6ab53408219d1f4fbab4614" category="paragraph">Veja o<block ref="e8f3e733a7456e37aaeb3c329fac3e94" category="inline-link-rx"></block> comando para mais detalhes.</block>
+  <block id="d2d6100dc04e04ad658d21c2678b2c9e" category="list-text">Atualize a configuração do MetroCluster em qualquer um dos nós recém-adicionados:</block>
 </blocks>
