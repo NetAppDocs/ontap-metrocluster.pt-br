@@ -25,7 +25,6 @@ NOTE: Todos os discos no grupo de recuperação de desastres (DR) devem usar o m
 +
 https://hwu.netapp.com["NetApp Hardware Universe"]
 
-* Uma combinação de IOM12 módulos e IOM3 módulos não é suportada na mesma pilha de storage. Uma combinação de IOM12 módulos e IOM6 módulos é compatível com a mesma pilha de storage se o sistema estiver executando uma versão compatível do ONTAP.
 
 
 [NOTE]

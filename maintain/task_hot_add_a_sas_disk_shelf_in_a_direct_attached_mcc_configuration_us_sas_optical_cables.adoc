@@ -15,7 +15,6 @@ Você pode usar cabos óticos SAS para adicionar um compartimento de disco SAS a
 
 * Esse procedimento não causa interrupções e leva aproximadamente duas horas para ser concluído.
 * Você precisa da senha de administrador e acesso a um servidor FTP ou SCP.
-* Se estiver adicionando uma gaveta de IOM12 TB a uma stack de IOM6 gavetas, link:https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Adição automática de IOM12 gavetas a uma stack de IOM6 gavetas"]consulte .
 
 
 Essa tarefa se aplica a uma configuração de FC MetroCluster na qual o storage é conetado diretamente às controladoras de storage com cabos SAS. Isso não se aplica a configurações de FC MetroCluster que usam pontes FC para SAS ou malhas de switches FC.

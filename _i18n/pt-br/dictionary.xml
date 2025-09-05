@@ -2645,8 +2645,6 @@
   <block id="2091b6ecd96a9b581d1553ea683b97f8" category="admonition">As bridges FibreBridge 6500N não são suportadas em configurações que executam o ONTAP 9.8 e posterior.</block>
   <block id="b70216f5078d65c8860a010a7ccdbdd8" category="list-text">As bridges FibreBridge 7600N ou 7500N suportam até quatro stacks SAS.</block>
   <block id="520e16a62f58f9e73a16fda005e8fe2f" category="list-text">Cada stack pode usar diferentes modelos de IOM.</block>
-  <block id="2e98de4abcb4474d7596c55b7adad11e" category="paragraph">Uma combinação de IOM12 módulos e IOM3 módulos não é suportada na mesma pilha de storage. Uma combinação de IOM12 módulos e IOM6 módulos é compatível com a mesma pilha de storage se o sistema estiver executando uma versão compatível do ONTAP.</block>
-  <block id="8db51e2a7c564cc042e840346cc8e77f" category="paragraph">Os módulos IOM suportados dependem da versão do ONTAP que você está executando.</block>
   <block id="c1f9897c71a9ecfa3b9c9f7cf2180518" category="paragraph">Os nomes sugeridos usados como exemplos nesta documentação identificam o módulo do controlador e a pilha à qual a ponte se coneta, conforme mostrado abaixo.</block>
   <block id="f7cf5f699a885086887bab11041a8b25" category="section-title">Requisitos de pool e unidade (mínimo suportado)</block>
   <block id="6ff82d5a1498d9c86d7e0f78acd3c502" category="paragraph">São recomendadas oito gavetas de disco SAS (quatro gavetas em cada local) para permitir a propriedade de disco por compartimento.</block>
@@ -2667,8 +2665,6 @@
   <block id="2ad434ab593fd445c83cdbf1d5d00216" category="section-title">Misturando módulos IOM12 e IOM 6 em uma pilha</block>
   <block id="c5dcd35af16918a17ee9c3a5c153f0af" category="inline-link">IMT</block>
   <block id="24d65add9a27d74b80e9a9cebdfc8e56" category="paragraph">Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a ferramenta de Matriz de interoperabilidade (IMT) para ver se a sua versão do ONTAP suporta a mistura de prateleiras.<block ref="30796bf173a80af0dc9c120f98ffaed6" category="inline-link-rx"></block></block>
-  <block id="420766222a929fd9b32b65dbb060314b" category="inline-link">Gavetas de adição dinâmica com IOM12 módulos para uma stack de gavetas com IOM6 módulos</block>
-  <block id="d963cd5338d788b5f26861ebd6ae6f27" category="paragraph">Para obter mais detalhes sobre a mistura de prateleiras, consulte:<block ref="96c52bfd2d59063b848ae852888ce36d" category="inline-link-rx"></block></block>
   <block id="2577b62ff20a44feeb798ea94e578a0b" category="section-title">Convenções de nomenclatura de ponte</block>
   <block id="9683bc886e03bf0b6fb2555eb820a5b9" category="paragraph">As pontes usam o seguinte exemplo de nomenclatura:</block>
   <block id="bb2f4cb66d4e9c0b103783ed18a0a7af" category="paragraph"><block ref="239fcf9665f818e2d52e17b67307b3b4" prefix="" category="inline-code"></block></block>
@@ -3830,7 +3826,6 @@
   <block id="699c4a19e86935bf6db6214f468bbf09" category="section-title">Configurando o zoneamento em um switch Cisco FC</block>
   <block id="5eb35a1a2b36a57cb8278edbb8e4c431" category="paragraph">É necessário atribuir as portas do switch a zonas separadas para isolar o tráfego de storage (HBA) e controlador (FC-VI).</block>
   <block id="622398e58840c2e545c17c5553d40b89" category="paragraph">Essas etapas devem ser executadas em ambas as malhas de switches FC.</block>
-  <block id="5cd4b63d4d313b63fb7fdd85a23fa4b0" category="paragraph">As etapas a seguir usam o zoneamento descrito na seção Zoneamento para um FibreBridge 7500N em uma configuração de MetroCluster de quatro nós. <block ref="5cec33f3319ecc6a14f118eb655e94d7" category="inline-link-macro-rx"></block>Consulte a .</block>
   <block id="c27c7bc6d232fb55015ebabb19c6746e" category="list-text">Limpe as zonas existentes e o conjunto de zonas, se existir.</block>
   <block id="abdcf12223b4762d5f98706b47d9bd0e" category="list-text">Determine quais zonas e conjuntos de zonas estão ativos:</block>
   <block id="70d65fcccd0bf1367f69f663e93a954d" category="paragraph"><block ref="02a271cf42cee92f9c8ce798576e4b8e" prefix="" category="inline-code"></block></block>
@@ -4044,7 +4039,6 @@
   <block id="59583139c0c6a4bb9d3bdaee0a866cfa" category="paragraph"><block ref="56915b40c2c5fda6044a36517e4d4152" prefix="" category="inline-code"></block></block>
   <block id="147fd0500c6c6d57f507339941c4ecdb" category="paragraph">Você é solicitado a reiniciar a ponte.</block>
   <block id="6d6d091bdd8c4127ee8d80f23b429e80" category="list-text">Depois de concluir a configuração do MetroCluster, use o<block ref="c27e24b8b45de3e3c43ee4f5da981459" prefix=" " category="inline-code"></block> comando para verificar sua versão do firmware do FibreBridge e, se as bridges não estiverem usando a versão mais recente suportada, atualize o firmware em todas as bridges na configuração.</block>
-  <block id="dddcbe39d238e711998c52c432aeaa31" category="paragraph">Você precisa usar as pontes FC para SAS corretas para fazer o cabeamento das gavetas de disco.</block>
   <block id="c53ab245e3b357260ea30380dfbae527" category="inline-xref">Cabeamento de uma ponte FibreBridge 7600N ou 7500N com compartimentos de disco usando módulos IOM12</block>
   <block id="fcf216ba8187b4017a22716585d4a6fa" category="paragraph">Depois de configurar a ponte, você pode iniciar o cabeamento do seu novo sistema.</block>
   <block id="3745e1eacc753de05da3d0afc4e15cea" category="paragraph">Para compartimentos de disco, você insere um conetor de cabo SAS com a aba de puxar orientada para baixo (na parte inferior do conetor).</block>
@@ -4058,24 +4052,9 @@
   <block id="0a54e8b976b2ba4c62dba5071a41e674" category="list-text">Cable disk shelves to the FibreBridge bridges.</block>
   <block id="a7a19c162ddb589e248198c402b08a0c" category="list-text">Para a primeira stack de gavetas de disco, cable IOM A da primeira gaveta para a porta SAS a na FibreBridge A e cable IOM B da última gaveta para a porta SAS a na FibreBridge B.</block>
   <block id="51072c7a051a0ed5cd0de02f8572141d" category="list-text">Para stacks de gaveta adicionais, repita a etapa anterior usando a próxima porta SAS disponível nas bridges do FibreBridge, usando a porta B para a segunda stack, a porta C para a terceira stack e a porta D para a quarta stack.</block>
-  <block id="949c6ddc1bce2ecc53639893363a0be7" category="list-text">Durante o cabeamento, conete as pilhas baseadas nos módulos IOM12 e IOM3/IOM6 à mesma ponte desde que estejam conetadas a portas SAS separadas.</block>
   <block id="f3159eb6d9bf0d2640aa5c47f1ccf18e" category="admonition">Cada stack pode usar modelos diferentes de IOM, mas todas as gavetas de disco em uma stack precisam usar o mesmo modelo.</block>
   <block id="027117a19a991f10e8054babbc4d5966" category="paragraph">A ilustração a seguir mostra as prateleiras de disco conetadas a um par de pontes FibreBridge 7600N ou 7500N:</block>
   <block id="cabad1bab748f10f52cecc964ba3c574" category="image-alt">ponte de cabeamento de mcc e stack de sas3 gbe com 7500n gbe e várias pilhas</block>
-  <block id="f80a33b608fae76a65bf5266714d4698" category="section-title">Cabeamento de uma ponte FibreBridge 7600N ou 7500N com prateleiras usando módulos IOM6 ou IOM3</block>
-  <block id="2c5e8c1a90d9fac55613816da8484fd4" category="paragraph">Depois de configurar a ponte, você pode iniciar o cabeamento do seu novo sistema. A ponte FibreBridge 7600N ou 7500N usa conetores mini-SAS e suporta prateleiras que usam módulos IOM6 ou IOM3.</block>
-  <block id="d9d70d3ed9a2589db6cb3f63716e81bd" category="paragraph">Os módulos IOM3 não são suportados com bridges FibreBridge 7600N.</block>
-  <block id="11089272dcca0cecd2093a1fdf859bbd" category="list-text">Encadeie as prateleiras em cada pilha.</block>
-  <block id="d8a4e77f7d12ed2eb1cf6c9b7b853624" category="list-text">Para a primeira stack de gavetas, cable IOM Uma porta quadrada da primeira gaveta para a porta SAS A na FibreBridge A.</block>
-  <block id="b706cab575b233baa53a76973c0150a1" category="list-text">Para a primeira stack de gavetas, a porta circular IOM B do cabo da última gaveta até a porta SAS A no FibreBridge B.</block>
-  <block id="9d7c91d036b8eef01d1ca3cf21b9ab13" category="paragraph">O _Installation and Service Guide_ para o modelo de prateleira fornece informações detalhadas sobre prateleiras de encadeamento em série.</block>
-  <block id="3b12133410a029964ca42ff42d351d26" category="inline-link">Guia de instalação e serviço das gavetas de disco SAS para DS4243, DS2246, DS4486 e DS4246</block>
-  <block id="dffac67a0b66f79e4f2ff0361643edd1" category="paragraph"><block ref="dffac67a0b66f79e4f2ff0361643edd1" category="inline-link-rx"></block></block>
-  <block id="e2ecca96265ea99bc9158ee49830c008" category="paragraph">A ilustração a seguir mostra um conjunto de pontes cabeadas para uma pilha de prateleiras:</block>
-  <block id="47657524e16e342883a282cfc5c1a756" category="image-alt">ponte de cabeamento mcc e pilha sas com 7500n gbe e uma única stack</block>
-  <block id="f7e3d93b4c145bf696a9e6f193ce4fb7" category="list-text">Para stacks de gaveta adicionais, repita as etapas anteriores usando a próxima porta SAS disponível nas bridges do FibreBridge, usando a porta B para uma segunda stack, a porta C para uma terceira stack e a porta D para uma quarta stack.</block>
-  <block id="9111bd303b0cb06989b91c9e131eb156" category="paragraph">A ilustração a seguir mostra quatro pilhas conetadas a um par de pontes FibreBridge 7600N ou 7500N.</block>
-  <block id="6704e0f472546c04c5cdc225c2656ec5" category="image-alt">ponte de cabeamento mcc e pilha sas com 7500n e quatro stacks</block>
   <block id="605157b79e898676481d263489be287d" category="paragraph">Você deve verificar se cada bridge pode detetar todas as unidades de disco e, em seguida, fazer o cabeamento de cada bridge para os switches FC locais.</block>
   <block id="8bfac37f0565c6922aeced47caf18f6a" category="list-text">[[step1_bridge]] Verifique se cada bridge pode detetar todas as unidades de disco e prateleiras de disco às quais está conetada:</block>
   <block id="51618dab77295eddd5c15097ed80ca2d" category="cell">Se você estiver usando o...</block>
@@ -5170,7 +5149,6 @@
   <block id="8d48afc2af7642b1eb38cbfe7c3b33d8" category="list-text">Quatro unidades no terceiro trimestre: 12, 13, 14, 15</block>
   <block id="807910399f003942a09396612760caef" category="list-text">Quatro unidades no quarto trimestre: 18, 19, 20, 21</block>
   <block id="a786547181c9c8f446791420d2be691f" category="paragraph">Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a<block ref="f93341e63c1888be05256ff042174623" category="inline-link-rx"></block> para ver se a sua versão do ONTAP suporta mistura de prateleiras.</block>
-  <block id="5fdc7ff67ace146413ecd7d44157aca4" category="paragraph">Para obter mais detalhes sobre a mistura de prateleiras, consulte<block ref="532c1f47a9370f9e21538610051f3830" category="inline-link-rx"></block></block>
   <block id="38a72bda83bf45017fe822ff4eba9612" category="summary">A partir do ONTAP 9.8, você pode gerenciar as operações de configuração IP do MetroCluster com o Gerenciador de sistema. Isso envolve a configuração, peering e configuração de dois clusters.</block>
   <block id="36f25b89c535d52dd7602dc98235602e" category="doc">Configurar um site IP do MetroCluster</block>
   <block id="28899ffbbfaa5ea10173ff0ea7d1a3c4" category="paragraph">A partir do ONTAP 9.8, você pode gerenciar as operações de configuração IP do MetroCluster com o Gerenciador de sistema. Isso envolve a configuração de dois clusters, a execução de peering de cluster e a configuração dos clusters.</block>
@@ -6300,7 +6278,6 @@
   <block id="0d321ffcee9b169122e153d66cd398a1" category="list-text">Local B:</block>
   <block id="3045f5f4f1093cf13cd0757dba1576cb" category="list-text">shelf_B_1_1</block>
   <block id="1a10354dd8ac3ce1f01a352c0c19ac1d" category="list-text">shelf_B_1_2</block>
-  <block id="e5e4a159b56e91f667faa79be11c280f" category="paragraph">Para obter mais detalhes sobre a mistura de prateleiras, consulte:<block ref="96c52bfd2d59063b848ae852888ce36d" category="inline-link-rx"></block></block>
   <block id="00ff4e56e2d862a9b4fecd2d5cbdc838" category="summary">Ao Planejar sua configuração do MetroCluster, você deve entender os componentes de hardware e software necessários e suportados. Para conveniência e clareza, você também deve entender as convenções de nomenclatura usadas para componentes em exemplos ao longo da documentação. Por exemplo, um site é referido como Site A e o outro site é referido como Site B.</block>
   <block id="813045b360f361be6e1c786a357f044b" category="doc">Componentes de hardware necessários da MetroCluster e convenções de nomenclatura para configurações de stretch anexadas a ponte de dois nós</block>
   <block id="fed18c1a5df3b7f4ef78a2b27ea2a7f1" category="paragraph">Devido à redundância de hardware na configuração do MetroCluster, há dois de cada componente em cada local. Os sites são arbitrariamente atribuídos às letras A e B e os componentes individuais são arbitrariamente atribuídos aos números 1 e 2.</block>
@@ -6322,7 +6299,6 @@
   <block id="2bd21591ba212d69112eff7b90a435fb" category="section-title">Requisito para pelo menos quatro gavetas SAS (recomendado)</block>
   <block id="47803330a47f5f6462fbb370bb3c2c3f" category="paragraph">A configuração Stretch MetroCluster conetada em ponte requer pelo menos duas gavetas SAS. No entanto, duas gavetas são recomendadas em cada local para permitir a propriedade de disco por compartimento, totalizando quatro gavetas SAS.</block>
   <block id="cf6d9b50978330ba1a392e795fe7b74f" category="paragraph">Há suporte para um mínimo de uma prateleira em cada local.</block>
-  <block id="40478efcbffc865e999b3e1e2108a0cc" category="paragraph">Para obter mais detalhes sobre a mistura de prateleiras, consulte:<block ref="532c1f47a9370f9e21538610051f3830" category="inline-link-rx"></block></block>
   <block id="00ba2d14b7be89e77994c1a63febf02b" category="summary">O Active IQ Unified Manager e o ONTAP System Manager podem ser usados para o gerenciamento de GUI dos clusters e para o monitoramento da configuração.</block>
   <block id="186047a757cb9863fcb93d32f5c0c989" category="paragraph">O Active IQ Unified Manager e o ONTAP System Manager podem ser usados para o gerenciamento de GUI dos clusters e para o monitoramento da configuração.</block>
   <block id="006bae6091d901cbcc3c76defab3d2cd" category="paragraph">Cada nó tem o Gerenciador de sistema do ONTAP pré-instalado. Para carregar o System Manager, insira o endereço LIF de gerenciamento de cluster como URL em um navegador da Web que tem conetividade com o nó.</block>
@@ -6374,8 +6350,6 @@
   <block id="f2d45f03c22fbeb03b74cbd880d693fe" category="list-text">Substituição do hardware em um local de recuperação de desastres em uma configuração MetroCluster FC estendida ou conectada à malha</block>
   <block id="601bd9ca04dd14b95c529c358a4d32e5" category="paragraph">Documentação do Active IQ Unified Manager</block>
   <block id="fc56e4fa678580b339facec8400a6301" category="paragraph"><block ref="fc56e4fa678580b339facec8400a6301" category="inline-link-rx"></block></block>
-  <block id="9f7478d92348559576a9b780c5262d0e" category="summary">Depois de configurar a ponte, você pode iniciar o cabeamento do sistema. A ponte FibreBridge 7600N ou 7500N usa conetores mini-SAS e suporta prateleiras que usam módulos IOM6 ou IOM3.</block>
-  <block id="1c0a5ccd8d43c6efa0824e4f1aaa5610" category="list-text">Para stacks de gaveta adicionais, repita as etapas anteriores usando a próxima porta SAS disponível nas bridges do FibreBridge. Use a porta B para uma segunda pilha, a porta C para uma terceira pilha e a porta D para uma quarta pilha.</block>
   <block id="12e1a43f9bf6da32583b815f8c9f66e1" category="summary">Depois de configurar a ponte, você pode iniciar o cabeamento do sistema.</block>
   <block id="6fd15be7f6a37829673663b10699e3a1" category="paragraph">Para prateleiras de disco, insira um conetor de cabo SAS com a aba de puxar orientada para baixo (na parte inferior do conetor).</block>
   <block id="ffa7a5441f187dc7d843a978ea76034c" category="list-text">Começando pela primeira gaveta lógica na stack, conecte a Iom A porta 3 à porta 1 da IOM A da próxima gaveta. Repita o processo até que cada IOM A na pilha esteja conetada.</block>
@@ -6614,8 +6588,6 @@
   <block id="a12a3079e14ced46e69ba52b8a90b21a" category="paragraph">IP</block>
   <block id="fc8abd12993bfb9d058197d8db6d03fb" category="paragraph">Todos os procedimentos de manutenção das prateleiras. Os procedimentos padrão podem ser usados.</block>
   <block id="08b87b0df84f23bedc3bd35f30bfa073" category="paragraph">Se adicionar prateleiras para um agregado sem espelhamento, consulte<block ref="a4e92f124c7c2dcbe4223de70278d181" category="inline-link-rx"></block></block>
-  <block id="4739016d267c9c4917ce4213d11c83cd" category="paragraph">Adicionar IOM12 gavetas a uma stack de IOM6 gavetas</block>
-  <block id="d9c753202dcda649fdbebfcfe01fdbf3" category="paragraph"><block ref="d9c753202dcda649fdbebfcfe01fdbf3" category="inline-link-rx"></block></block>
   <block id="221a3239afd85b15c0a082e006cc9d76" category="summary">Ative o registo da consola nos seus dispositivos antes de executar tarefas de manutenção.</block>
   <block id="377bd72f596f8fb4cb973eb33ab1c3c3" category="doc">Ative o registo da consola antes de executar tarefas de manutenção</block>
   <block id="60fda9f0d4f66fd0b517637868752be0" category="paragraph">A NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações antes de executar os procedimentos de manutenção:</block>
@@ -7209,9 +7181,6 @@
   <block id="79fb12280740c382675b2f2b02401b80" category="list-text">Todas as unidades de disco e compartimentos de disco no sistema devem estar executando a versão de firmware mais recente.</block>
   <block id="623d27fb1a71775c853589b6aa232fcb" category="paragraph">Talvez você queira atualizar o firmware do disco e do compartimento em toda a configuração do MetroCluster antes de adicionar gavetas.</block>
   <block id="c3204e26e12ab80395709eeaa0f8642d" category="paragraph"><block ref="c3204e26e12ab80395709eeaa0f8642d" category="inline-link-rx"></block></block>
-  <block id="c9dd6bad4c7d561872f2e2d498a990bf" category="inline-link-macro">Ferramenta de Matriz de interoperabilidade (IMT)</block>
-  <block id="64974d0b5eb2e258428a89835ce229c9" category="list-text">Inicie uma nova pilha em uma nova porta SAS (se suportada pelo par de pontes).</block>
-  <block id="ad45a06e82c1f0983fdfd0e3d30dc8f8" category="list-text">Inicie uma nova pilha em um par de pontes adicional.</block>
   <block id="b7b17808a6e64c132f3bf8c4f253b38d" category="list-text">Faça o download ou veja os seguintes documentos no site de suporte da NetApp:</block>
   <block id="8e916218cb72668e639a5859eade4041" category="list-text">O _Installation Guide_ para o modelo do seu compartimento de disco.</block>
   <block id="55276018e99703958158b6e0fb364ef6" category="list-text">Verifique se o compartimento de disco que você está adicionando a quente é suportado.</block>
@@ -7329,8 +7298,6 @@
   <block id="df92c64a65691a83018fb8e62770bbe6" category="list-text">Se aplicável, repita este procedimento para o local do parceiro.</block>
   <block id="181e081727fe2d7b5ddb9d52ce8e9a59" category="summary">Você pode usar cabos óticos SAS para adicionar um compartimento de disco SAS a uma stack existente de gavetas de disco SAS em uma configuração de MetroCluster FC com conexão direta ou como uma nova stack de um HBA SAS ou uma porta SAS integrada na controladora.</block>
   <block id="2ec528ff0528a7d8030d507a7a972248" category="doc">Adição automática de um compartimento de disco SAS em uma configuração de MetroCluster FC com conexão direta usando cabos óticos SAS</block>
-  <block id="d0c324a5f50ea99fae56351b15b63897" category="inline-link-macro">Adição automática de IOM12 gavetas a uma stack de IOM6 gavetas</block>
-  <block id="dab11e3a0cd5b24fb8bd82d98e637c80" category="list-text">Se estiver adicionando uma gaveta de IOM12 TB a uma stack de IOM6 gavetas, <block ref="338189ebc463a222285c1fe3ffe9a61e" category="inline-link-macro-rx"></block>consulte .</block>
   <block id="d544662f9663ae63e285220cbcd631e6" category="paragraph">Essa tarefa se aplica a uma configuração de FC MetroCluster na qual o storage é conetado diretamente às controladoras de storage com cabos SAS. Isso não se aplica a configurações de FC MetroCluster que usam pontes FC para SAS ou malhas de switches FC.</block>
   <block id="26e4dc74b07d1aac080f56a5026ee8ff" category="list-text">Siga as instruções para adicionar um compartimento de disco SAS a quente no _Installation Guide_ para o modelo de compartimento de disco para executar as seguintes tarefas para adicionar um compartimento de disco a quente:</block>
   <block id="0f17aebeed55756948f09eb1338a33df" category="list-text">Instale um compartimento de disco para adicionar um hot-add.</block>
@@ -7359,9 +7326,6 @@
   <block id="6d9bd4cb37e68444afa71d06faf2439f" category="paragraph">Você deve executar este comando em ambos os controladores.</block>
   <block id="1085da58e90873ee49d4724127d66db4" category="admonition">Se você estiver dividindo a propriedade de uma única pilha de compartimentos de disco entre vários controladores, desative a atribuição automática de disco <block ref="bdefdb189a50bac7eca8c2092c06daf4" prefix="(" category="inline-code"></block>de ambos os nós no cluster) antes de atribuir a propriedade de disco; caso contrário, quando você atribuir qualquer unidade de disco, as unidades de disco restantes podem ser atribuídas automaticamente ao mesmo controlador e pool.</block>
   <block id="7ec840edd23c7b1a5bd3b9167d726942" category="list-text">Verifique se há alertas de integridade nas pontes depois de adicionar as novas pilhas:</block>
-  <block id="d57e84b8163149c21e12029ec296e524" category="summary">Dependendo da sua versão do ONTAP, é possível adicionar um compartimento de disco de IOM12 TB a uma pilha de IOM6 compartimentos de disco em uma configuração MetroCluster conetada a uma ponte.</block>
-  <block id="c0b0a005c66dec25318b8f77ccd43de1" category="doc">Adição automática de um compartimento de disco de IOM12 TB a uma stack de IOM6 shelves de disco em uma configuração MetroCluster conetada a uma ponte</block>
-  <block id="a3d256f1f161df27a47bc7770faf92e4" category="paragraph">Para executar este procedimento,<block ref="96c52bfd2d59063b848ae852888ce36d" category="inline-link-rx"></block>consulte .</block>
   <block id="5bbfbe956d6dad1e34c1a96c4ed91491" category="summary">Você pode remover dinamicamente as gavetas de unidades, removendo fisicamente as gavetas que tiveram os agregados removidos das unidades, de uma configuração de MetroCluster FC que está em funcionamento e fornecendo dados. É possível remover uma ou mais gavetas de qualquer lugar dentro de uma stack de gavetas ou remover uma stack de gavetas.</block>
   <block id="ccc8650df45f9c2ac84f26916116810a" category="doc">Storage com remoção automática de uma configuração MetroCluster FC</block>
   <block id="536e5a37c7ed375aaf614a3c5aef399c" category="paragraph">Você pode remover dinamicamente as gavetas de unidade -- remover fisicamente as gavetas que tiveram os agregados removidos das unidades -- de uma configuração de MetroCluster FC que está funcionando e fornecendo dados. É possível remover uma ou mais gavetas de qualquer lugar dentro de uma stack de gavetas ou remover uma stack de gavetas.</block>
@@ -12629,7 +12593,6 @@
   <block id="8d07a21c40606b1098d1a2ff5a5b5f1c" category="sidebar">Adicione uma stack de gavetas de disco SAS a um par existente de bridgeBridge 7500N</block>
   <block id="8780e2c60443de7cb84cd78e41b4b572" category="sidebar">Adicione uma stack de shelves de disco SAS e bridges a um sistema MetroCluster</block>
   <block id="404bb11b70239a316af681095fbdeff7" category="sidebar">Adicionar um compartimento de disco SAS a uma stack de gavetas de disco SAS</block>
-  <block id="26efac9be7856206ad935a9151a6a64c" category="sidebar">Adicione um compartimento de disco de IOM12 TB a uma stack de IOM6 shelves de disco em uma configuração MetroCluster conetada a uma ponte</block>
   <block id="cabfdbae66cbee4984c63ed2d5544390" category="sidebar">Storage de remoção automática de uma configuração MetroCluster FC</block>
   <block id="98e0abbb33a3ee2f9258bc3cb733233b" category="sidebar">Desligue toda uma configuração do MetroCluster FC</block>
   <block id="706be03f02099b320a48663ab49614b7" category="sidebar">Manutenção e substituição do interrutor IP</block>
@@ -12797,15 +12760,9 @@
   <block id="ff48ad0dc104d3885573fa0f45161299" category="paragraph"><block ref="77d54c8e2e9adc9e2bc031facbe82b7c" prefix="" category="inline-code"></block></block>
   <block id="a21e2af264b592c03f6b1f88af93dd36" category="paragraph"><block ref="a32ef1a4f91191b408d6aa3ceeed03a8" prefix="" category="inline-code"></block></block>
   <block id="49cc2eac13c61da60904b157e05ec5dc" category="paragraph"><block ref="e9580cd86794b774ad27b65b0a805b73" prefix="" category="inline-code"></block></block>
-  <block id="b2c196d04c27ee6d1c55877714d8d6f9" category="section-title">Cable disk shelves to the bridges</block>
   <block id="4273704f66fca16606c90100e4c57808" category="inline-xref">Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando IOM12 módulos</block>
-  <block id="242108261e892329ec8e41357fad0678" category="list-text"><block ref="57fecdddd64dc6d4f5e9d97874ea43bc" category="inline-xref-macro-rx"></block></block>
-  <block id="e3136c071e40d473a2ed2f7295c2ead2" category="inline-xref">Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando módulos IOM6 ou IOM3</block>
-  <block id="e88d980772f7b12fbca752322a5e5307" category="list-text"><block ref="e59f261da41fd9be2eaf7f1b955dc162" category="inline-xref-macro-rx"></block></block>
   <block id="e42bb9af7fd1e3b1641a18782a424fb0" category="list-text">Começando pela primeira gaveta lógica na stack, conecte Iom A porta 3 à IOM a porta 1 na próxima gaveta até que cada IOM A na stack seja conectada.</block>
-  <block id="df728bff4207a1d17e007189ab445eaa" category="section-title">Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras usando módulos IOM6 ou IOM3</block>
   <block id="8a6b192e89e003168a9dec4c4b9059a7" category="section-title">Verifique a conectividade da ponte e o cabeamento das portas FC da ponte</block>
-  <block id="1127370baf663b49c7993f8a6ab9f41e" category="paragraph"><block ref="eba7ba40406886cad3add195d043cd08" category="inline-xref-macro-rx"></block></block>
   <block id="d277bf5cc4237c95ff26e4f98eefaf07" category="paragraph">Instale e faça o cabeamento das pontes ATTO FibreBridge e das gavetas de disco SAS quando você adicionar novo armazenamento à configuração.</block>
   <block id="760e34100c7db8b067f655d415a342c1" category="paragraph">Ao usar o gerenciamento na banda, as bridges podem ser gerenciadas e monitoradas a partir da CLI do ONTAP usando a conexão FC à ponte. O acesso físico à ponte através das portas Ethernet da ponte não é necessário, reduzindo a vulnerabilidade de segurança da ponte.</block>
   <block id="74f6533c5153d90867b32b519b275c65" category="list-text">Antes do ONTAP 9,5, somente o gerenciamento SNMP fora da banda é suportado.</block>
@@ -13046,7 +13003,6 @@
   <block id="bf35733b2711515e1aa7614ca7dd1ef0" category="list-text">AFF A50, AFF A20, AFF A30</block>
   <block id="b1a7d02f89c62c97fedf60bb09caa4bc" category="list-text">AFF C30, AFF C60</block>
   <block id="55aa8632230fb0a23186560320c2411c" category="inline-link-macro">Prepare o sistema para a atualização</block>
-  <block id="f5c6ae4b822813aea6f2b6fda7d434b4" category="admonition">Se você estiver atualizando para qualquer um dos sistemas listados, você *deve* definir um bootarg necessário no sistema existente antes de executar a atualização. Para todas as outras atualizações, você pode pular esta tarefa e ir diretamente para <block ref="727f54dda0b5a83234ee2910d3353f77" category="inline-link-macro-rx"></block>.</block>
   <block id="05c6aa6eca73dc8505cf4bcf7e51677a" category="paragraph">A maioria das atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior requer que você defina o<block ref="ee06f9ce95f0e4407845e7566ca3219e" prefix=" " category="inline-code"></block> bootarg nas controladoras antigas. No entanto, certos caminhos de atualização exigem que você defina o<block ref="547c6b727c1ad89e0e0a9fab4efaf59d" prefix=" " category="inline-code"></block> bootarg em vez disso.</block>
   <block id="ffe782ee595f504f732429ce74813c9c" category="paragraph">Use a tabela a seguir para determinar qual bootarg você precisa definir para sua combinação de atualização específica.</block>
   <block id="9a5481a4499f03b428516e1e655b2247" category="cell">Para esta atualização...</block>
@@ -13306,7 +13262,6 @@
   <block id="1078b9b6fada180d5d2977e8dc4eb310" category="list-text">Verifique se o seu sistema é uma configuração suportada e está a executar uma versão suportada do ONTAP.</block>
   <block id="a68f0e2c7746e4949e616e09deefa430" category="list-text">Verifique se todas as unidades de disco e compartimentos de disco no sistema estão executando a versão de firmware mais recente.</block>
   <block id="658991cef9031aff484b78a0f664f5f0" category="paragraph">Talvez você queira atualizar o firmware do disco e do compartimento em toda a configuração do MetroCluster antes de adicionar gavetas.</block>
-  <block id="7cbe99d38a9a2492f41bfc34788b6fac" category="paragraph">Uma combinação de IOM12 módulos e IOM6 módulos é suportada dentro da mesma pilha se o sistema estiver executando uma versão ONTAP suportada. Para determinar se a versão do ONTAP suporta a mistura de prateleiras, consulte o <block ref="cd3982462c40dc1b1a511ada7c72bab9" category="inline-link-macro-rx"></block>. Se a sua versão do ONTAP não for suportada e você não puder atualizar ou fazer o downgrade dos módulos IOM na stack existente ou na nova gaveta que deve ser adicionada a uma combinação suportada de módulos IOM, você precisará fazer um dos seguintes procedimentos:</block>
   <block id="918d32b75f0ab883abba3a8dc0c3ae8d" category="inline-link">Ferramenta de Matriz de interoperabilidade</block>
   <block id="5ea32bc696ea7fb5909f26eb6fb24417" category="list-text"><block ref="5ea32bc696ea7fb5909f26eb6fb24417" category="inline-link-rx"></block></block>
   <block id="0f0f148d21dd2972977d97fb2e7ff5e9" category="paragraph"><block ref="0f0f148d21dd2972977d97fb2e7ff5e9" category="inline-link-rx"></block></block>
@@ -13630,11 +13585,9 @@
   <block id="2077cee62d2dc819ca10d6e3f6a4f59b" category="list-text">Nota 2: ONTAP 9.13.1 ou posterior (ou a versão mínima do ONTAP suportada na plataforma) é necessária para estas combinações.</block>
   <block id="9bc3cb19080afd7c3475f6c80b5ee013" category="paragraph">Revise as combinações de expansão para sistemas AFF A150, AFF A20, FAS2750, FAS8300, FAS500f, AFF C250, AFF A250, FAS50, AFF C30, AFF A30, FAS8200, AFF A300, AFF A320, AFF A220, AFF C400, AFF A400 e FAS8700.</block>
   <block id="99032e371bac241eac644b68481b2c7c" category="paragraph">Revise as combinações de expansão para sistemas AFF C60, AFF A50, FAS70, FAS9000, AFF A700, AFF A70, AFF C800, AFF A800, FAS9500, AFF A900, AFF C80, FAS90, AFF A90 e AFF A1K.</block>
-  <block id="5667d434150380e4826a9c5749e3611d" category="cell">Todas as outras atualizações compatíveis com sistemas AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A20, AFF A30, AFF C30, AFF C60 ou FAS50</block>
   <block id="1f33c4b21d6c848bec5712e27807c50a" category="paragraph">Esta tarefa é *somente* necessária quando você atualiza para um sistema AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A20, AFF A30, AFF C30, AFF C60 ou FAS50.</block>
   <block id="63856cfb46890240aad0d97a958b298b" category="paragraph">A tabela a seguir mostra as combinações de plataforma suportadas para atualizar um sistema AFF ou FAS em uma configuração IP MetroCluster usando comandos "System controller replace", divididos em dois grupos.</block>
   <block id="e94f3a81af196da788fa0f158f9d57fc" category="sidebar">Saiba mais sobre como usar o Active IQ Unified Manager e o Gerenciador de sistema para obter mais configurações e monitoramento</block>
-  <block id="5c1f1ec5000a0efcdda7a9cf624dafe7" category="paragraph">As atualizações de controladora para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg nas controladoras antigas antes de iniciar a atualização.</block>
   <block id="d7aa339b18c7637dfafa2ace54386b6c" category="admonition">Você deve definir o bootarg necessário em todos os nós antigos em ambos os sites antes de iniciar a atualização.</block>
   <block id="ac37738788377720cfa00ec2fd76c841" category="list-text">Parar um nó em ambos os locais e permitir que seu parceiro de HA faça um takeover do nó:</block>
   <block id="0fd6026f96835994e1e5d178235825d6" category="list-text">Repita as etapas em todos os nós do grupo de DR ou dos grupos de DR que você está atualizando.</block>
@@ -13899,7 +13852,6 @@
   <block id="2812633e4be142ea6fef81aa2fc3b357" category="list-text"><block ref="2812633e4be142ea6fef81aa2fc3b357" category="inline-link-macro-rx"></block></block>
   <block id="647ce27315841f29cbbfa6476808aa3a" category="paragraph"><block ref="647ce27315841f29cbbfa6476808aa3a" category="inline-link-macro-rx"></block></block>
   <block id="36cd648a4936aded88f52937ad165653" category="paragraph"><block ref="36cd648a4936aded88f52937ad165653" category="inline-link-macro-rx"></block></block>
-  <block id="999478e5c5f08d315895f0b8ce0c4f9e" category="paragraph"><block ref="999478e5c5f08d315895f0b8ce0c4f9e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="8dd25dc01f672f7f9138b09d96be9fc9" category="paragraph"><block ref="eb2e2a96b50d4592c6a439044f60d9a8" category="inline-link-macro-rx"></block> Em _Instalação e Configuração IP do MetroCluster_.</block>
   <block id="467d42fef84e236db1f47c3587c7d61b" category="paragraph"><block ref="647ce27315841f29cbbfa6476808aa3a" category="inline-link-macro-rx"></block> Na seção _Instalação e Configuração IP do MetroCluster_.</block>
   <block id="3e85cb460e24d971aa2fdfb16bdd62f2" category="paragraph"><block ref="647ce27315841f29cbbfa6476808aa3a" category="inline-link-macro-rx"></block>.</block>
@@ -14388,4 +14340,25 @@
   <block id="5667ca92a697e03bc95d429bfe20fda5" category="inline-link">switch de sistema ethernet configurar-monitor-de-saúde</block>
   <block id="a7692359e6ab53408219d1f4fbab4614" category="paragraph">Veja o<block ref="e8f3e733a7456e37aaeb3c329fac3e94" category="inline-link-rx"></block> comando para mais detalhes.</block>
   <block id="d2d6100dc04e04ad658d21c2678b2c9e" category="list-text">Atualize a configuração do MetroCluster em qualquer um dos nós recém-adicionados:</block>
+  <block id="ba5335bcde9d44f534e3d1f52ca0bc09" category="paragraph">As etapas a seguir usam o zoneamento descrito na seção Zoneamento para um FibreBridge 7500N em uma configuração MetroCluster de quatro nós.</block>
+  <block id="ebcbebb3418f0f51f4443340ff325a84" category="list-text">Durante o cabeamento, conecte as pilhas baseadas nos módulos IOM12 à mesma ponte, desde que estejam conectadas a portas SAS separadas.</block>
+  <block id="11824150050e29484950961f3f0906e9" category="paragraph"><block ref="fb3f1acbe91ec35c5f5605a9b6d4efef" category="inline-xref-macro-rx"></block></block>
+  <block id="317e4f171d10313b7d9f57b9ee71c757" category="paragraph"><block ref="317e4f171d10313b7d9f57b9ee71c757" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="eaf2dec7a97ec668369075c4f3865b63" category="paragraph">Se você estiver atualizando para um sistema introduzido no ONTAP 9.15.1 ou posterior, normalmente será necessário definir um bootarg nos controladores antigos antes de iniciar a atualização.</block>
+  <block id="c845c22e49c5544061c5d10f7d34b798" category="admonition">Se sua combinação de atualização for afetada, será necessário definir um bootarg em todos os controladores antigos para uma atualização bem-sucedida.  Revise as informações nesta seção cuidadosamente para verificar se sua combinação de atualização exige que você defina um bootarg e como definir o bootarg correto para sua combinação.</block>
+  <block id="97009239e0cfec412eecee57adec7fbb" category="section-title">Etapa 1: determine se você precisa definir um bootarg nos controladores antigos</block>
+  <block id="4562de78a80791e72df05ddefb3bd680" category="paragraph">Use as seguintes informações para verificar se você precisa definir um bootarg obrigatório antes de iniciar a atualização:</block>
+  <block id="61cf51d7e6639bbabc9b0e1161cf9d1a" category="list-text">Você *deve* definir um bootarg nos controladores antigos para atualizações suportadas nos seguintes sistemas, a menos que seja indicado o contrário:</block>
+  <block id="8279d52ff386b78e641d51f228ca0759" category="list-text">Você *não* precisa definir nenhum bootarg nos controladores antigos se sua atualização for uma das seguintes combinações:</block>
+  <block id="a208bde2bbdb812d3731f4621c803c41" category="list-text">De um sistema AFF A70 para um sistema AFF A90</block>
+  <block id="5b659b58fce2ec874d7c90658e51b35c" category="list-text">De um sistema FAS70 para um sistema FAS90</block>
+  <block id="289b9127d341366aeb4d65fc8462e224" category="admonition">Se a sua atualização não exigir que você defina nenhum bootarg, você pode pular esta tarefa e ir diretamente para<block ref="727f54dda0b5a83234ee2910d3353f77" category="inline-link-macro-rx"></block> .</block>
+  <block id="49e575725de1f3e6c7107fb68eee5e25" category="section-title">Etapa 2: determine o bootarg que você precisa definir nos controladores antigos</block>
+  <block id="fc58626cb0a62669060e433e85889541" category="paragraph">As atualizações mais afetadas exigem que você defina o<block ref="ee06f9ce95f0e4407845e7566ca3219e" prefix=" " category="inline-code"></block> bootarg nos controladores antigos.  No entanto, certos caminhos de atualização exigem que você defina o<block ref="547c6b727c1ad89e0e0a9fab4efaf59d" prefix=" " category="inline-code"></block> bootarg em vez disso.</block>
+  <block id="50bb0724e98833a5ad53f4aca5baebaf" category="paragraph">Todas as outras atualizações para os sistemas AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A30, AFF C30, AFF C60 ou FAS50</block>
+  <block id="9cd6725fb8f6020f90629ee4847213aa" category="paragraph">*Observação:* você não precisa definir nenhum bootarg se sua atualização for de um sistema AFF A70 para um AFF A90 ou de um sistema FAS70 para um FAS90.</block>
+  <block id="7a8f8d0a76afd2956fbc911927b76065" category="section-title">Etapa 3: defina o bootarg necessário nos controladores antigos</block>
+  <block id="ada21e32b58b8c3670abec0c9bd43b39" category="paragraph">Depois de determinar o bootarg necessário para sua combinação de atualização, siga as etapas para definir o bootarg nos controladores antigos.  Esta tarefa é *somente* necessária para atualizações afetadas.</block>
+  <block id="5c60cc2ba2a9eb0236f0d3ba52d42179" category="admonition">Você deve definir o bootarg em todos os nós antigos em ambos os sites antes de iniciar a atualização.</block>
+  <block id="51e9ae39fa32c368d27f8e565c6a0512" category="cell">Todas as outras atualizações suportadas para os sistemas AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A30, AFF C30, AFF C60 ou FAS50</block>
 </blocks>

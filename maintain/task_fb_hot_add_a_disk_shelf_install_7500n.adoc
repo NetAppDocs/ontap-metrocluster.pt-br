@@ -30,15 +30,6 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["At
 
 
 
-[NOTE]
-====
-Uma combinação de IOM12 módulos e IOM6 módulos é suportada dentro da mesma pilha se o sistema estiver executando uma versão ONTAP suportada. Para determinar se a versão do ONTAP suporta a mistura de prateleiras, consulte o link:https://imt.netapp.com/matrix/["Ferramenta de Matriz de interoperabilidade (IMT)"^]. Se a sua versão do ONTAP não for suportada e você não puder atualizar ou fazer o downgrade dos módulos IOM na stack existente ou na nova gaveta que deve ser adicionada a uma combinação suportada de módulos IOM, você precisará fazer um dos seguintes procedimentos:
-
-* Inicie uma nova pilha em uma nova porta SAS (se suportada pelo par de pontes).
-* Inicie uma nova pilha em um par de pontes adicional.
-
-
-====
 .Passos
 . Faça o download ou veja os seguintes documentos no site de suporte da NetApp:
 +

@@ -1,46 +1,8 @@
 ---
 permalink: install-stretch/task_cable_a_fibrebridge_7600n_or_7500n_bridge_fb_new_install_cable_7500_pangolin.html 
-sidebar: sidebar 
-keywords: metrocluster, stretch, installation, cable, fibrebridge, iom3, iom6, modules, shelves, bridge 
-summary: Depois de configurar a ponte, você pode iniciar o cabeamento do sistema. A ponte FibreBridge 7600N ou 7500N usa conetores mini-SAS e suporta prateleiras que usam módulos IOM6 ou IOM3. 
+redirect: ontap-metrocluster/index.html 
 ---
-= Cabeamento de uma ponte FibreBridge 7600N ou 7500N com prateleiras usando módulos IOM6 ou IOM3
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
-
-
-[role="lead"]
-Depois de configurar a ponte, você pode iniciar o cabeamento do sistema. A ponte FibreBridge 7600N ou 7500N usa conetores mini-SAS e suporta prateleiras que usam módulos IOM6 ou IOM3.
-
-Os módulos IOM3 não são suportados com bridges FibreBridge 7600N.
-
-Para compartimentos de disco, você insere um conetor de cabo SAS com a aba de puxar orientada para baixo (na parte inferior do conetor).
-
-.Passos
-. Encadeie as prateleiras em cada pilha.
-+
-.. Para a primeira stack de gavetas, cable IOM Uma porta quadrada da primeira gaveta para a porta SAS A na FibreBridge A.
-.. Para a primeira stack de gavetas, a porta circular IOM B do cabo da última gaveta até a porta SAS A no FibreBridge B.
-+
-O _Installation and Service Guide_ para o modelo de prateleira fornece informações detalhadas sobre prateleiras de encadeamento em série.
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMP1119629["Guia de instalação e serviço das gavetas de disco SAS para DS4243, DS2246, DS4486 e DS4246"^]
-
-+
-A ilustração a seguir mostra um conjunto de pontes cabeadas para uma pilha de prateleiras:
-
-+
-image::../media/mcc_cabling_bridge_and_sas_stack_with_7500n_and_single_stack.gif[ponte de cabeamento mcc e pilha sas com 7500n gbe e uma única stack]
-
-
-
-. Para stacks de gaveta adicionais, repita as etapas anteriores usando a próxima porta SAS disponível nas bridges do FibreBridge. Use a porta B para uma segunda pilha, a porta C para uma terceira pilha e a porta D para uma quarta pilha.
-+
-A ilustração a seguir mostra quatro pilhas conetadas a um par de pontes FibreBridge 7600N ou 7500N.
-
-+
-image::../media/mcc_cabling_bridge_and_sas_stack_with_7500n_four_stacks.gif[ponte de cabeamento mcc e pilha sas com 7500n e quatro stacks]
 
 

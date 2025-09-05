@@ -134,11 +134,3 @@ Nomes de exemplo:
 
 
 
-
-
-
-== Misturando módulos IOM12 e IOM 6 em uma pilha
-
-Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a ferramenta de Matriz de interoperabilidade (IMT) para ver se a sua versão do ONTAP suporta a mistura de prateleiras. https://imt.netapp.com/matrix/["IMT"^]
-
-Para obter mais detalhes sobre a mistura de prateleiras, consulte: https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Gavetas de adição dinâmica com IOM12 módulos para uma stack de gavetas com IOM6 módulos"^]

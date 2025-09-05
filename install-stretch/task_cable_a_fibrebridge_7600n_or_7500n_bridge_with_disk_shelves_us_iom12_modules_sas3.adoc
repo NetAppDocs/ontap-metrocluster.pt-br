@@ -36,7 +36,7 @@ O _Installation and Service Guide_ do modelo de compartimento de disco fornece i
 +
 .. Para a primeira stack de gavetas de disco, cable IOM A da primeira gaveta para a porta SAS a na FibreBridge A. cable IOM B da última gaveta para a porta SAS a na FibreBridge B.
 .. Para stacks de gaveta adicionais, repita a etapa anterior usando a próxima porta SAS disponível nas bridges do FibreBridge, usando a porta B para a segunda stack, a porta C para a terceira stack e a porta D para a quarta stack.
-.. Durante o cabeamento, conete as pilhas baseadas nos módulos IOM12 e IOM3/IOM6 à mesma ponte desde que estejam conetadas a portas SAS separadas.
+.. Durante o cabeamento, conecte as pilhas baseadas nos módulos IOM12 à mesma ponte, desde que estejam conectadas a portas SAS separadas.
 +
 
 NOTE: Cada stack pode usar modelos diferentes de IOM, mas todas as gavetas de disco em uma stack precisam usar o mesmo modelo.

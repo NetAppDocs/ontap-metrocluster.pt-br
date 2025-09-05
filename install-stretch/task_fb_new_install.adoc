@@ -159,7 +159,6 @@ NOTE: Todos os discos do grupo de recuperação de desastres devem usar o mesmo 
 +
 https://hwu.netapp.com["NetApp Hardware Universe"^]
 
-* Uma combinação de IOM12 módulos e IOM3 módulos não é suportada na mesma pilha de storage. Uma combinação de IOM12 módulos e IOM6 módulos é compatível com a mesma pilha de storage se o sistema estiver executando uma versão compatível do ONTAP.
 
 
 [NOTE]
@@ -489,18 +488,7 @@ link:../maintain/index.html["Mantenha os componentes do MetroCluster"]
 
 
 
-=== Cable disk shelves to the bridges
-
-Você precisa usar as pontes FC para SAS corretas para fazer o cabeamento das gavetas de disco.
-
-.Opções
-* <<cabling_fb_7600N_7500N_with_iom12,Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando IOM12 módulos>>
-* <<cabling_fb_7600N_7500N_with_iom6_iom3,Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando módulos IOM6 ou IOM3>>
-
-
-
-
-==== Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando IOM12 módulos
+=== Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando IOM12 módulos
 
 Depois de configurar a ponte, você pode iniciar o cabeamento do seu novo sistema.
 
@@ -528,7 +516,7 @@ O _Installation and Service Guide_ do modelo de compartimento de disco fornece i
 +
 .. Para a primeira stack de gavetas de disco, cable IOM A da primeira gaveta para a porta SAS a na FibreBridge A e cable IOM B da última gaveta para a porta SAS a na FibreBridge B.
 .. Para stacks de gaveta adicionais, repita a etapa anterior usando a próxima porta SAS disponível nas bridges do FibreBridge, usando a porta B para a segunda stack, a porta C para a terceira stack e a porta D para a quarta stack.
-.. Durante o cabeamento, conete as pilhas baseadas nos módulos IOM12 e IOM3/IOM6 à mesma ponte desde que estejam conetadas a portas SAS separadas.
+.. Durante o cabeamento, conecte as pilhas baseadas nos módulos IOM12 à mesma ponte, desde que estejam conectadas a portas SAS separadas.
 +
 --
 
@@ -540,43 +528,6 @@ image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks
 
 --
 
-
-
-
-
-
-==== Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras usando módulos IOM6 ou IOM3
-
-Depois de configurar a ponte, você pode iniciar o cabeamento do seu novo sistema. A ponte FibreBridge 7600N ou 7500N usa conetores mini-SAS e suporta prateleiras que usam módulos IOM6 ou IOM3.
-
-.Sobre esta tarefa
-Os módulos IOM3 não são suportados com bridges FibreBridge 7600N.
-
-Para compartimentos de disco, você insere um conetor de cabo SAS com a aba de puxar orientada para baixo (na parte inferior do conetor).
-
-.Passos
-. Encadeie as prateleiras em cada pilha.
-+
---
-.. Para a primeira stack de gavetas, cable IOM Uma porta quadrada da primeira gaveta para a porta SAS A na FibreBridge A.
-.. Para a primeira stack de gavetas, a porta circular IOM B do cabo da última gaveta até a porta SAS A no FibreBridge B.
-
-
-O _Installation and Service Guide_ para o modelo de prateleira fornece informações detalhadas sobre prateleiras de encadeamento em série.
-
-https://library.netapp.com/ecm/ecm_download_file/ECMP1119629["Guia de instalação e serviço das gavetas de disco SAS para DS4243, DS2246, DS4486 e DS4246"^]
-
-A ilustração a seguir mostra um conjunto de pontes cabeadas para uma pilha de prateleiras:
-
-image::../media/mcc_cabling_bridge_and_sas_stack_with_7500n_and_single_stack.gif[ponte de cabeamento mcc e pilha sas com 7500n gbe e uma única stack]
-
---
-. Para stacks de gaveta adicionais, repita as etapas anteriores usando a próxima porta SAS disponível nas bridges do FibreBridge, usando a porta B para uma segunda stack, a porta C para uma terceira stack e a porta D para uma quarta stack.
-+
-A ilustração a seguir mostra quatro pilhas conetadas a um par de pontes FibreBridge 7600N ou 7500N.
-
-+
-image::../media/mcc_cabling_bridge_and_sas_stack_with_7500n_four_stacks.gif[ponte de cabeamento mcc e pilha sas com 7500n e quatro stacks]
 
 
 
@@ -633,7 +584,7 @@ Não está correto
  a| 
 .. Verifique se há cabos SAS soltos ou corrija o cabeamento SAS reabilitando as gavetas de disco nas pontes.
 +
-<<Cable disk shelves to the bridges>>
+<<Faça um cabo de uma ponte FibreBridge 7600N ou 7500N com prateleiras de disco usando IOM12 módulos>>
 
 .. Repita <<step1-verify-detect,Passo 1>> para cada ponte restante.
 

@@ -108,12 +108,6 @@ NOTE: As bridges FibreBridge 6500N não são suportadas em configurações que e
 
 * As bridges FibreBridge 7600N ou 7500N suportam até quatro stacks SAS.
 * Cada stack pode usar diferentes modelos de IOM.
-+
-Uma combinação de IOM12 módulos e IOM3 módulos não é suportada na mesma pilha de storage. Uma combinação de IOM12 módulos e IOM6 módulos é compatível com a mesma pilha de storage se o sistema estiver executando uma versão compatível do ONTAP.
-
-+
-Os módulos IOM suportados dependem da versão do ONTAP que você está executando.
-
 * A nomeação deve ser única dentro da configuração do MetroCluster.
 
 
@@ -161,8 +155,6 @@ Em uma configuração com um compartimento parcialmente preenchido, as unidades 
 == Misturando módulos IOM12 e IOM 6 em uma pilha
 
 Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a ferramenta de Matriz de interoperabilidade (IMT) para ver se a sua versão do ONTAP suporta a mistura de prateleiras. https://imt.netapp.com/matrix/["IMT"^]
-
-Para obter mais detalhes sobre a mistura de prateleiras, consulte: https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Gavetas de adição dinâmica com IOM12 módulos para uma stack de gavetas com IOM6 módulos"]
 
 
 

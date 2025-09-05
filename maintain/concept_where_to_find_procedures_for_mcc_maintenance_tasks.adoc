@@ -102,13 +102,4 @@ Se adicionar prateleiras para um agregado sem espelhamento, consulte http://docs
  a| 
 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.html["Mantenha as gavetas de disco DS460C DS224C e DS212C"^]
 
-
-
- a| 
-Ambos
- a| 
-Adicionar IOM12 gavetas a uma stack de IOM6 gavetas
- a| 
-https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["Gavetas de adição dinâmica com IOM12 módulos para uma stack de gavetas com IOM6 módulos"^]
-
 |===

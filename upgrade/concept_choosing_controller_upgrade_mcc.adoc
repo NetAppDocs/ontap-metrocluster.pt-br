@@ -82,7 +82,7 @@ image:../media/manual-upgrade-combination-group-1.png["Mostra as combinações d
 --
 Analise as combinações compatíveis para atualizações para os sistemas AFF C60, AFF A50, FAS70, FAS9000, AFF A700, AFF A70, AFF C800, AFF A800, FAS9500, AFF A900, AFF C80, FAS90, AFF A90 e AFF A1K.
 
-image:../media/manual-upgrade-combination-group-2-updated.png["Mostra as combinações de atualização suportadas para as plataformas do grupo 2"]
+image:../media/manual-upgrade-combination-group-2-a90-fas90.png["Mostra as combinações de atualização suportadas para as plataformas do grupo 2"]
 
 --
 ====

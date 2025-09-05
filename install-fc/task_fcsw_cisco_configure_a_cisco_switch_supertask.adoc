@@ -2418,7 +2418,7 @@ exit
 .Sobre esta tarefa
 Essas etapas devem ser executadas em ambas as malhas de switches FC.
 
-As etapas a seguir usam o zoneamento descrito na seção Zoneamento para um FibreBridge 7500N em uma configuração de MetroCluster de quatro nós. link:task_fcsw_cisco_configure_a_cisco_switch_supertask.html#configuring-fcip-ports-for-a-dual-isl-on-cisco-9250i-fc-switches["Zoneamento para portas FC-VI"]Consulte a .
+As etapas a seguir usam o zoneamento descrito na seção Zoneamento para um FibreBridge 7500N em uma configuração MetroCluster de quatro nós.
 
 .Passos
 . Limpe as zonas existentes e o conjunto de zonas, se existir.
