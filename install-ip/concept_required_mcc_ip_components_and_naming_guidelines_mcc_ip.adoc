@@ -348,9 +348,3 @@ Se este sistema estiver preenchido com 16 unidades, elas devem ser distribuídas
 * Quatro unidades no terceiro trimestre: 12, 13, 14, 15
 * Quatro unidades no quarto trimestre: 18, 19, 20, 21
 
-
-
-
-== Misturando módulos IOM12 e IOM 6 em uma pilha
-
-Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a https://imt.netapp.com/matrix/["Ferramenta de Matriz de interoperabilidade NetApp (IMT)"^] para ver se a sua versão do ONTAP suporta mistura de prateleiras.

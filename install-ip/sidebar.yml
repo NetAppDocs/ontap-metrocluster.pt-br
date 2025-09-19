@@ -63,10 +63,10 @@ entries:
     - title: Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco
         9336C-FX2 de 36 portas
       url: "/install-ip/port_usage_3232c_9336c.html"
-    - title: Atribuições de portas de plataforma para um switch Cisco 9336C-FX2 de
+    - title: Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de
         12 portas
       url: "/install-ip/port-usage-9336c-fx-2-12-port.html"
-    - title: Atribuições de porta de plataforma para um switch Cisco 9336C-FX2 de
+    - title: Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de
         36 portas conectando armazenamento NS224
       url: "/install-ip/port_usage_9336c_shared.html"
     - title: Atribuições de portas de plataforma para switches IP BES-53248 com suporte

@@ -2662,9 +2662,7 @@
   <block id="89a000b961d78cc03e60a01f6562e2c8" category="section-title">Considerações sobre o local da unidade para compartimentos parcialmente preenchidos</block>
   <block id="93d2c0db4f12f10c56f582f82171c52b" category="paragraph">Para a atribuição automática correta de unidades ao usar compartimentos com metade população (12 unidades em um compartimento de 24 unidades), as unidades devem estar localizadas nos slots 0-5 e 18-23.</block>
   <block id="7bf8ecae55a24d61a71e36a03be28010" category="paragraph">Em uma configuração com um compartimento parcialmente preenchido, as unidades precisam ser distribuídas uniformemente nos quatro quadrantes da gaveta.</block>
-  <block id="2ad434ab593fd445c83cdbf1d5d00216" category="section-title">Misturando módulos IOM12 e IOM 6 em uma pilha</block>
   <block id="c5dcd35af16918a17ee9c3a5c153f0af" category="inline-link">IMT</block>
-  <block id="24d65add9a27d74b80e9a9cebdfc8e56" category="paragraph">Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a ferramenta de Matriz de interoperabilidade (IMT) para ver se a sua versão do ONTAP suporta a mistura de prateleiras.<block ref="30796bf173a80af0dc9c120f98ffaed6" category="inline-link-rx"></block></block>
   <block id="2577b62ff20a44feeb798ea94e578a0b" category="section-title">Convenções de nomenclatura de ponte</block>
   <block id="9683bc886e03bf0b6fb2555eb820a5b9" category="paragraph">As pontes usam o seguinte exemplo de nomenclatura:</block>
   <block id="bb2f4cb66d4e9c0b103783ed18a0a7af" category="paragraph"><block ref="239fcf9665f818e2d52e17b67307b3b4" prefix="" category="inline-code"></block></block>
@@ -5148,7 +5146,6 @@
   <block id="89cd18493d151ae11e875d4edf6b6e66" category="list-text">Quatro unidades no segundo trimestre: 6, 7, 8, 9</block>
   <block id="8d48afc2af7642b1eb38cbfe7c3b33d8" category="list-text">Quatro unidades no terceiro trimestre: 12, 13, 14, 15</block>
   <block id="807910399f003942a09396612760caef" category="list-text">Quatro unidades no quarto trimestre: 18, 19, 20, 21</block>
-  <block id="a786547181c9c8f446791420d2be691f" category="paragraph">Sua versão do ONTAP deve suportar a mistura de prateleiras. Consulte a<block ref="f93341e63c1888be05256ff042174623" category="inline-link-rx"></block> para ver se a sua versão do ONTAP suporta mistura de prateleiras.</block>
   <block id="38a72bda83bf45017fe822ff4eba9612" category="summary">A partir do ONTAP 9.8, você pode gerenciar as operações de configuração IP do MetroCluster com o Gerenciador de sistema. Isso envolve a configuração, peering e configuração de dois clusters.</block>
   <block id="36f25b89c535d52dd7602dc98235602e" category="doc">Configurar um site IP do MetroCluster</block>
   <block id="28899ffbbfaa5ea10173ff0ea7d1a3c4" category="paragraph">A partir do ONTAP 9.8, você pode gerenciar as operações de configuração IP do MetroCluster com o Gerenciador de sistema. Isso envolve a configuração de dois clusters, a execução de peering de cluster e a configuração dos clusters.</block>
@@ -10920,49 +10917,27 @@
   <block id="56ad29882b1f5aa7a765e42a0bd3ca97" category="paragraph"><block ref="56ad29882b1f5aa7a765e42a0bd3ca97" category="inline-link-macro-rx"></block></block>
   <block id="ad227e6a4e6deeee2a76bd6b755dad7e" category="summary">A partir do ONTAP 9.8, é possível remover um grupo de DR de uma configuração MetroCluster de oito nós para criar uma configuração MetroCluster de quatro nós.</block>
   <block id="54c28d1cf3d720cc9297f6c3da2658be" category="doc">Removendo um grupo de recuperação de desastres</block>
-  <block id="8c6cfac074d0567f4c5a941062f42343" category="paragraph">Este procedimento é suportado no ONTAP 9.8 e posterior. Para sistemas que executam o ONTAP 9.7 ou anterior, consulte o artigo da base de dados de Conhecimento</block>
   <block id="d5d6932337b2af2eda1bd96fd5aa3832" category="inline-link-macro">Como remover um grupo de DR de uma configuração do MetroCluster</block>
-  <block id="44fa5f61d97cbf15ad67ee9c5aedc1c6" category="paragraph"><block ref="44fa5f61d97cbf15ad67ee9c5aedc1c6" category="inline-link-macro-rx"></block></block>
-  <block id="cba784dbb6dad30cadc1fcb2d1b5ee81" category="paragraph"><block ref="cba784dbb6dad30cadc1fcb2d1b5ee81" category="inline-link-rx"></block></block>
   <block id="19df577c80891b37cfa2f1b29c518f6e" category="paragraph">Uma configuração de oito nós inclui oito nós organizados como dois grupos de RD de quatro nós.</block>
-  <block id="e66e23247af7503f663027daef188754" category="paragraph">Ao remover um grupo de DR, quatro nós permanecem na configuração.</block>
-  <block id="1c08e40b56822a43e7877e2eb26a97fd" category="section-title">Remoção dos nós do grupo de DR de cada cluster</block>
   <block id="f2bf546b53e3f6cc54f274876ab2cb36" category="list-text">O<block ref="4adce10a097546797e77202c6d30906e" prefix=" " category="inline-code"></block> comando é suportado apenas no ONTAP 9.8 e posterior.</block>
-  <block id="cdfb112bdd5ad036d9715bddf30e7912" category="list-text">Prepare-se para a remoção do grupo DR, se ainda não o fez.</block>
   <block id="95e7c6b72cfdf5397dbe8a6653bdc7c1" category="list-text">Mover todos os volumes de dados para outro grupo de recuperação de desastres.</block>
-  <block id="30db39dffca5d3a3ab759b48303153b1" category="list-text">Se o grupo de DR a ser removido contiver volumes de espelhamento de compartilhamento de carga, eles não poderão ser movidos. Crie novamente todos os volumes de espelhamento de compartilhamento de carga em outro grupo de DR e exclua os volumes de espelhamento de compartilhamento de carga no grupo de DR a serem removidos.</block>
   <block id="f624129c4d6772a2f62200de12382ad0" category="list-text">Mova todos os volumes de metadados MDV_CRS para outro grupo DR seguindo o <block ref="9273ba8e8bd1c5c1cc0cd85662f27754" category="inline-link-macro-rx"></block> procedimento.</block>
   <block id="25898a6422d7ded47f2936026a1df6c1" category="list-text">Exclua todos os volumes de metadados MDV_aud que possam existir no grupo DR a serem removidos.</block>
-  <block id="92cccd899142da5e06923ac8991bc5fc" category="list-text">Exclua todos os agregados de dados no grupo DR a serem removidos, como mostrado no exemplo a seguir:</block>
   <block id="73f68d9b46d6064cae47a18da8004723" category="admonition">Agregados raiz não são excluídos.</block>
-  <block id="b79001d76282bba800ccc9b5187d2ad4" category="list-text">Mova os LIFs de dados off-line.<block ref="58d060d8bc95409e743c7b8e95e72710" prefix=" " category="inline-code"></block></block>
-  <block id="29771e568737c4148ab90cda182257df" category="list-text">Migre todas as LIFs de dados para nós iniciais em outro grupo de DR. E<block ref="191a1b4ffe7599d6b279767d21daa9db" prefix=" " category="inline-code"></block></block>
-  <block id="3c01c02ef0bb0d39aaf5f9cbc5c8ea4b" category="paragraph"><block ref="6b5ac3bb2bcffd222567cf972f8a2548" prefix="" category="inline-code"></block></block>
-  <block id="f7967c2b46538ede39d7960526ce1fa4" category="list-text">Mova os LIFs de dados de volta online.<block ref="c5b63f9c60f25a11e5c1cde65fb540f1" prefix=" " category="inline-code"></block></block>
   <block id="4ed819934d8eb4ecfa162dc35324fc32" category="list-text">Migre o LIF de gerenciamento de cluster para um nó inicial em outro grupo de DR.</block>
   <block id="91f41d8c6028070fa5f4cd7a2c56f7be" category="paragraph"><block ref="253b4100066f0d3983139342730b6b59" prefix="" category="inline-code"></block></block>
-  <block id="f677111a20e676139c4a865021fafa0d" category="paragraph"><block ref="850d7b5cf3d569632a8982fc791023b0" prefix="" category="inline-code"></block></block>
-  <block id="0eb68bef79fda0557a1bd86cd43b0afa" category="paragraph">O gerenciamento de nós e LIFs entre clusters não são migrados.</block>
   <block id="85d38d4ee3b9248e142229cf9e215620" category="list-text">Transfira o epsilon para um nó em outro grupo DR, se necessário.</block>
   <block id="aac7ac3bfa9117ebc1368d396b746e00" category="list-text">Identifique e remova o grupo de DR.</block>
   <block id="b32745668eaff06c12feb45539c339e0" category="list-text">Identifique o grupo DR correto para remoção:</block>
   <block id="0373e81430a1cc22dafabd61d4a3cd0e" category="list-text">Remova os nós do grupo de DR<block ref="485c31afa19dfe8599f35cc3307033a1" prefix=" " category="inline-code"></block></block>
   <block id="c31e08573cdaea3b8de26a9f74105469" category="paragraph">O exemplo a seguir mostra a remoção da configuração do grupo DR no cluster_A.</block>
   <block id="d9b49bc2577d68e37a84f80273248aee" category="list-text">Repita a etapa anterior no cluster de parceiros.</block>
-  <block id="4ed5c490b4a22cb265bc48e25109096a" category="list-text">Se estiver em uma configuração IP do MetroCluster, remova as conexões MetroCluster nos nós do grupo de DR antigo.</block>
-  <block id="a64d27abe280b12e33befc92f146357d" category="paragraph">Esses comandos podem ser emitidos de qualquer cluster e aplicados a todo o grupo de DR que abrange ambos os clusters.</block>
   <block id="d172777a2cbbb0c3ec9b70dc45780c5f" category="list-text">Desligar as ligações:</block>
-  <block id="08a665929056fef6a8490b5b0b04f474" category="paragraph"><block ref="afb15fdd6a9dc3aa613a61a4039f0a42" prefix="" category="inline-code"></block></block>
   <block id="e18600ad5da962c033022e8657b0fab3" category="list-text">Exclua as interfaces MetroCluster nos nós do antigo grupo DR:</block>
   <block id="eb5c2cb295b7a9fd5ee2ed559f176f9e" category="paragraph"><block ref="f6dcf8fef0b40f9ec60771b2c98849ae" prefix="" category="inline-code"></block></block>
   <block id="deba5df0dea3cbba9463f219100e5ba4" category="list-text">Exclua a configuração do antigo grupo DR. E<block ref="cd90838db53304393981e5da6c9b9f7e" prefix=" " category="inline-code"></block></block>
   <block id="8d3c998ce16ecd4cdc06e3ddd8c757e6" category="list-text">Desmarque os nós no grupo DR antigo.</block>
-  <block id="ed2e5c7ebbd6b2c749bdb92415d9787c" category="list-text">Desativar o failover de armazenamento:</block>
-  <block id="f6d453c97574893aee9bca0a4faee686" category="paragraph"><block ref="2272fec77dcd7afc65986085c999a68d" prefix="" category="inline-code"></block></block>
-  <block id="cdab15f9840a783bfc35d8f8baa514e9" category="list-text">Unjoin the node<block ref="28573907c93cccf42d4d45b792f8aa49" prefix=" " category="inline-code"></block></block>
   <block id="ff6434ad658fa9ed7826817a3f9f0dff" category="paragraph">Repita esta etapa para o outro nó local no grupo DR antigo.</block>
-  <block id="06b28530123c83dfb519d35b8e3e11f5" category="list-text">Defina o nível de privilégio de administrador<block ref="0a654c13d63710f829bc02c4cbec79ee" prefix=" " category="inline-code"></block></block>
-  <block id="47b7f94ac9af47dcafeea8d4a5f0d377" category="list-text">Reative a HA do cluster no novo grupo de DR:</block>
   <block id="c1f192f6d626bc5f27fc74b0848a1250" category="paragraph"><block ref="acc3b99f812f210de5147296e269009d" prefix="" category="inline-code"></block></block>
   <block id="8917e80351843363583600f118c2fa84" category="list-text">Pare, desligue e remova os antigos módulos de controladora e compartimentos de storage.</block>
   <block id="e3d7ead0f01b9fa985ec5c35c22c44f3" category="paragraph"><block ref="e3d7ead0f01b9fa985ec5c35c22c44f3" category="inline-link-macro-rx"></block></block>
@@ -13962,7 +13937,6 @@
   <block id="c82f2ff1cbd6e1d62e65daba43978db4" category="paragraph">Cisco 9336C-FX2 compartilhado (36 portas)</block>
   <block id="d44a3adbc7ddf926ace3174c29e594fe" category="paragraph">*Observação:* para usar as portas 11 e 12 do switch, você deve selecionar dois modos de velocidade.</block>
   <block id="22e6a6026dec5bb5059565b00cc3631c" category="paragraph">Durante os procedimentos de transição, atualização, instalação de oito nós e expansão de quatro nós, você pode adicionar um novo modelo de plataforma à sua configuração do MetroCluster. Em qualquer etapa desses procedimentos, se a sua configuração atual do MetroCluster contiver uma plataforma que use *portas compartilhadas de cluster/HA*, você não poderá adicionar uma plataforma que use *portas compartilhadas de MetroCluster/HA* à configuração sem atualizar sua versão do ONTAP para o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.</block>
-  <block id="29c802ab86e25c329e4ce82ab207d848" category="sidebar">Atribuições de portas de plataforma para um switch Cisco 9336C-FX2 de 12 portas</block>
   <block id="a65cd2f2d334d9927f9c0f2a89dbb2d0" category="paragraph">Saiba o que há de novo na plataforma MetroCluster IP e no suporte ao switch.</block>
   <block id="cf42f488bd58e2f8f8819f7c720b93a1" category="paragraph">Você deve executar esta etapa em cada cluster no modo de privilégio avançado.</block>
   <block id="c836d30393b0f25c968423f5df80b134" category="paragraph">Mova as interfaces de cluster da configuração do MetroCluster FC para os switches IP.</block>
@@ -14361,4 +14335,56 @@
   <block id="ada21e32b58b8c3670abec0c9bd43b39" category="paragraph">Depois de determinar o bootarg necessário para sua combinação de atualização, siga as etapas para definir o bootarg nos controladores antigos.  Esta tarefa é *somente* necessária para atualizações afetadas.</block>
   <block id="5c60cc2ba2a9eb0236f0d3ba52d42179" category="admonition">Você deve definir o bootarg em todos os nós antigos em ambos os sites antes de iniciar a atualização.</block>
   <block id="51e9ae39fa32c368d27f8e565c6a0512" category="cell">Todas as outras atualizações suportadas para os sistemas AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A30, AFF C30, AFF C60 ou FAS50</block>
+  <block id="9f0a4554064856ae78dbf1c08bc876ce" category="doc">Remover um grupo DR de uma configuração do MetroCluster</block>
+  <block id="2f5075fd2401e26a07990d72f3087874" category="paragraph">A partir do ONTAP 9.8, você pode remover um grupo de recuperação de desastres (DR) de uma configuração MetroCluster de oito nós para criar uma configuração MetroCluster de quatro nós.</block>
+  <block id="73ac4183b96cb40ebb14a9dc72a13298" category="admonition">Use essas etapas durante os fluxos de trabalho de transição e atualização do sistema.</block>
+  <block id="a17f6afa75b317e25d154b29624badd3" category="section-title">Remova os nós do grupo DR de cada cluster</block>
+  <block id="b928a73ca232c9fc08d935ad673557de" category="paragraph">Este procedimento é suportado a partir do ONTAP 9.8.  Para sistemas executando o ONTAP 9.7 ou anterior, consulte o artigo da Base de Conhecimento:<block ref="806d9b447def65eba3e3e2e790c033b4" category="inline-link-macro-rx"></block> .</block>
+  <block id="622b8cea53ef096337834121912a63f3" category="paragraph">Quando você remove um grupo de DR, quatro nós permanecem na configuração.</block>
+  <block id="c1e5c91114c66e4b9a57d82fcc652acd" category="list-text">Prepare-se para remover o grupo DR, caso ainda não o tenha feito.</block>
+  <block id="8ab89d8f614450ad9b0a76ce08cf67b8" category="list-text">Se o grupo DR a ser removido tiver volumes de espelho de compartilhamento de carga, recrie todos os volumes de espelho de compartilhamento de carga em outro grupo DR e exclua-os do grupo DR a ser removido.</block>
+  <block id="a59820a1c3cb9db44ad34809c30b9b83" category="list-text">Exclua todos os agregados de dados no grupo DR a serem removidos:</block>
+  <block id="18fa955273f3f4dcd76a502f9692c60d" category="list-text">Migre todos os LIFs de dados NAS que você usa para NFS e CIFS (SMB) para nós iniciais em outro grupo de DR. + <block ref="7317cdd2b96cce163d969aceb2ba0c1d" prefix=" " category="inline-code"></block></block>
+  <block id="8e0e33777ea372d5fe416dcfc835ca44" category="paragraph"><block ref="8eceacf63a83bbfbc3898284abfafa5f" prefix="" category="inline-code"></block></block>
+  <block id="2b3b2e728783f7895871de7434a53e12" category="list-text">Mova os LIFs de dados para o novo nó inicial em outro grupo de DR.<block ref="80e0d406ea5fcb2ea137507fb844b0fb" prefix=" " category="inline-code"></block></block>
+  <block id="a91858ed54f0d68645cd08be7b25782c" category="paragraph"><block ref="e5bd5c510f2d91722adf52ff19bb0ab9" prefix="" category="inline-code"></block></block>
+  <block id="d92e3b22372c2adfe757906a8734d8f4" category="list-text">O gerenciamento de nós e os LIFs entre clusters não são migrados.  Crie novos LIFs de gerenciamento de nós e interclusters em nós do grupo DR, conforme necessário.</block>
+  <block id="6a16ef52c4b06b07d8c8d1060e0d49d8" category="list-text">Não é possível migrar ou mover interfaces FCP usadas para acesso em bloco (SAN) entre os nós.  Crie novas interfaces FCP conforme necessário.</block>
+  <block id="e4abc9f15e37b97db879c5cf483a2d4b" category="list-text">Os LIFs SAN iSCSI precisam estar inativos antes que o nó inicial e a porta inicial possam ser atualizados.</block>
+  <block id="8f13be73804a56335a7ee2724f13e633" category="list-text">Desabilite o failover de armazenamento nos nós do antigo grupo de DR:</block>
+  <block id="696370864f4b1ce13a84661501b202e5" category="paragraph"><block ref="8c709b243402dd4272dff4833554f25c" prefix="" category="inline-code"></block></block>
+  <block id="05b39754e7e99ec7d60818c2d3ef5bba" category="list-text">Se você estiver em uma configuração de IP do MetroCluster , execute as seguintes etapas para excluir os plexos remotos dos agregados raiz e remover a propriedade do disco nos nós do antigo grupo de DR.</block>
+  <block id="fd413373865c0b35424cdf1d99f3c10f" category="paragraph">Essas etapas precisam ser executadas para ambos os nós no par HA em cada site.</block>
+  <block id="84822d6e81d1f35f15b06141981b397f" category="list-text">Exibir os plexos remotos de agregados raiz nos nós no grupo DR que deve ser excluído:</block>
+  <block id="0bd15b64439187d8dac987c630d7df6d" category="paragraph"><block ref="1bb66b043b34f4120f55cc168b2da3dc" prefix="" category="inline-code"></block></block>
+  <block id="eab2196a69a6fdade5e5bf5d4f300856" category="list-text">Exclua os plexos remotos:</block>
+  <block id="7e159c5d7c595db32d7b3fef9000ac19" category="paragraph"><block ref="9f7f42d9161c2d3ca3716315c375f827" prefix="" category="inline-code"></block></block>
+  <block id="fe068f70e1fc61243b2a0632bd6f34cb" category="list-text">Identifique os discos remotos pertencentes aos nós no grupo DR.</block>
+  <block id="15ce741616536c482daa7a0532c76ca8" category="paragraph">Os comandos que você usa dependem se você está usando discos particionados/compartilhados ou discos inteiros:</block>
+  <block id="176b8742a87f8e897cb6ea9548977e72" category="admonition">Use uma lista separada por vírgulas no<block ref="0953dae02add83b063cc8af7a6dbbff8" prefix=" " category="inline-code"></block> campo para especificar os nomes dos nós no grupo DR que devem ser excluídos.</block>
+  <block id="4bb92469cfa95bb7785c0e8c0cdc02eb" category="open-title">Discos particionados/compartilhados:</block>
+  <block id="0279e95982eb46292810910c2a4325ef" category="list-text">Exibir os discos remotos:</block>
+  <block id="3c1f3ce500e52cec2b93fb29390a174e" category="paragraph"><block ref="749c9bcb383ea88a6558e404e0fa8cb5" prefix="" category="inline-code"></block></block>
+  <block id="52bb09b18cdb1e6dd2fb3324062c1c47" category="open-title">Discos inteiros:</block>
+  <block id="0d1726dab779821975a9ad578a9f0677" category="paragraph"><block ref="6e0d34e5eb1c8ece221755c754743354" prefix="" category="inline-code"></block></block>
+  <block id="3e9c37ca50692bcf4d950da60ba31dd1" category="list-text">Desabilitar atribuição automática de disco:</block>
+  <block id="b2bd91ffa581589b010f7b0cee5b040a" category="paragraph"><block ref="c24efecdd42a886db73de2bcc158cbdc" prefix="" category="inline-code"></block></block>
+  <block id="b06a58f7c6886b9c75c2b66e25e3b03c" category="list-text">Remova a propriedade dos discos do pool1 em cada nó do grupo DR a ser excluído.  Execute estas etapas em cada nó a ser removido.</block>
+  <block id="e352d5e820576fb81acd295d2fa6b382" category="list-text">Vá para o nodeshell:</block>
+  <block id="48b6c5e6c91f5afdf4db95fdce26e45f" category="paragraph"><block ref="1bdb752f72609d817a6beb669061c8b6" prefix="" category="inline-code"></block></block>
+  <block id="0d5dee87e76c9a9f9127dd55f7b1e2eb" category="list-text">Identifique os discos do pool1:</block>
+  <block id="7cb1b8282d7b16c1d998b3403dc7a91f" category="paragraph"><block ref="978a127cc866f54e1830776b846eb9b8" prefix="" category="inline-code"></block></block>
+  <block id="c0b861216beaceb3d375fd9c6df6e6c3" category="paragraph">Todos os discos sobressalentes são exibidos, incluindo os discos sobressalentes pool0 e pool1 de propriedade do nó.</block>
+  <block id="6e07f225393b79b609cb8fc3d86279bf" category="list-text">Remova a propriedade do disco para cada disco sobressalente do pool1:</block>
+  <block id="8d0b8b84becd485c7891597b01240458" category="paragraph"><block ref="a2548e43cec4e94df11e259aa9a83a68" prefix="" category="inline-code"></block></block>
+  <block id="c218a756cd011fd52e8951a24e6900e7" category="paragraph">Para discos particionados, remova a propriedade da partição e, em seguida, remova a propriedade do disco do contêiner.</block>
+  <block id="096ee0b68ed0c4989612306aa1e3fbb5" category="list-text">Se você estiver em uma configuração de IP do MetroCluster , remova as conexões do MetroCluster nos nós do antigo grupo de DR.</block>
+  <block id="bac7003f0be2f7c1ffe91ec5e8146e9e" category="paragraph">Esses comandos podem ser emitidos de qualquer cluster e se aplicam a todo o grupo de DR abrangendo ambos os clusters.</block>
+  <block id="d30c3b2671a8fe1038b0b3608133c703" category="paragraph"><block ref="6864950bb23886bbe435bbce576bc0d6" prefix="" category="inline-code"></block></block>
+  <block id="b1bd9ffb7ba04ba41a6ed8fd479dceb1" category="admonition">Esta etapa deve ser repetida em cada nó do grupo DR.</block>
+  <block id="d321eb0a25003ddc996afe17a7149d6f" category="paragraph">Execute esta etapa em cada cluster.</block>
+  <block id="5dd0fc60033d456ae0a90e5edc267878" category="list-text">Desvincular o nó: +<block ref="1f9e5247574dddf29bedc560cf209d11" prefix=" " category="inline-code"></block></block>
+  <block id="e1bde148bbf0582fd279d9a3c915b31a" category="list-text">Defina o nível de privilégio do administrador:</block>
+  <block id="5465fc7f055cf03040fda6f777f9a2da" category="list-text">Verifique se o cluster HA está habilitado no novo grupo DR.  Se necessário, reative o cluster HA:</block>
+  <block id="4e7f0491b8337902ce9619e04977796b" category="sidebar">Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 36 portas conectando armazenamento NS224</block>
 </blocks>
