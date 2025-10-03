@@ -13,7 +13,7 @@ summary: As pontes FC para SAS fornecem pontes de protocolo entre os discos cone
 [role="lead"]
 As pontes FC para SAS fornecem pontes de protocolo entre os discos conectados a SAS e a malha do switch FC.
 
-image::../media/mcc_hw_architecture_shelf_stacks.gif[pilhas de gaveta da arquitetura de hardware mcc]
+image::../media/mcc_hw_architecture_shelf_stacks.gif[Pontes FC para SAS com arquitetura de hardware mostrando pilhas de prateleira]
 
 .Informações relacionadas
 link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["Ilustração dos pares de HA locais em uma configuração do MetroCluster"]

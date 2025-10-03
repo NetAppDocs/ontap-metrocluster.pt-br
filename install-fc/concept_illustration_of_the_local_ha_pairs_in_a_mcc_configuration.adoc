@@ -15,7 +15,7 @@ Em configurações de MetroCluster de oito ou quatro nós, cada local consiste e
 
 As operações de failover de HA local e giveback são executadas com os comandos de failover de storage, da mesma maneira que uma configuração que não é MetroCluster.
 
-image::../media/mcc_hw_architecture_local_ha.gif[arquitetura de hardware mcc local ha]
+image::../media/mcc_hw_architecture_local_ha.gif[Pares de HA locais de arquitetura de hardware do MetroCluster]
 
 .Informações relacionadas
 link:concept_illustration_of_redundant_fc_to_sas_bridges.html["Ilustração de pontes FC para SAS redundantes"]

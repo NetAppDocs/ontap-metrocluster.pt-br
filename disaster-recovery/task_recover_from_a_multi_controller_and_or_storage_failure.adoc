@@ -37,6 +37,6 @@ link:task_perform_a_forced_switchover_after_a_disaster.html#performing-a-forced-
 
 Este procedimento utiliza o seguinte fluxo de trabalho:
 
-image::../media/workflow_smoking_crater_recovery.png[recuperação da cratera de fumo do fluxo de trabalho]
+image::../media/workflow_smoking_crater_recovery.png[Fluxo de trabalho para recuperação de falhas de vários controladores]
 
 Este procedimento pode ser usado ao executar a recuperação em um sistema que estava em transição intermediária quando a falha ocorreu. Nesse caso, você deve executar as etapas apropriadas ao se preparar para o switchback, como indicado no procedimento.

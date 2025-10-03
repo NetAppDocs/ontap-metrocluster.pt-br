@@ -83,7 +83,7 @@ Armazenamento adicional deve ser adicionado, se necessário, para acomodar os do
 Isso pode exigir prateleiras de armazenamento adicionais, como mostrado na ilustração a seguir.
 
 +
-image::../media/transition_2n_4_new_ip_nodes_on_the_shelves.png[faça a transição de 2n 4 novos nós de ip nas gavetas]
+image::../media/transition_2n_4_new_ip_nodes_on_the_shelves.png[Transição com quatro novos nós de IP em prateleiras existentes]
 
 +
 Você precisa ter mais 14 a 18 unidades cada para o terceiro e quarto controladores (node_A_2-IP e node_B_2-IP):
@@ -112,7 +112,7 @@ Você deve seguir o fluxo de trabalho específico para garantir uma transição 
 
 Enquanto você se prepara para a transição, Planeje viagens entre os sites. Observe que depois que os nós remotos forem colocados em rack e cabeados, você precisará ter acesso ao terminal serial aos nós. O acesso ao processador de serviço não estará disponível até que os nós sejam configurados.
 
-image::../media/workflow_2n_transition_bsaic.png[fluxo de trabalho 2n transição bsaica]
+image::../media/workflow_2n_transition_bsaic.png[Fluxo de trabalho para transição de dois nós]
 
 
 

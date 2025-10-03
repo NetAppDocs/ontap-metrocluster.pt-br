@@ -30,7 +30,7 @@ Essas etapas devem ser executadas em cada um dos nós IP do MetroCluster.
 
 No exemplo a seguir, duas gavetas de storage adicionais são adicionadas em cada local para fornecer storage para acomodar os novos módulos de controladora.
 
-image::../media/transition_2n_4_new_ip_nodes_and_shelves.png[faça a transição de 2n 4 novos nós e gavetas ip]
+image::../media/transition_2n_4_new_ip_nodes_and_shelves.png[Cabeamento de novos nós e prateleiras IP para transição]
 
 .Passos
 . Planeje o posicionamento dos novos módulos de controladora e compartimentos de armazenamento conforme necessário.
@@ -588,7 +588,7 @@ Estas etapas são executadas nos seguintes nós:
 * Node_B_2-IP
 
 
-image::../media/transition_2n_booting_a_2_and_b_2.png[transição 2n inicializando um 2 e b 2]
+image::../media/transition_2n_booting_a_2_and_b_2.png[Inicializando novos nós IP durante a transição]
 
 .Passos
 . Inicialize os novos nós usando a opção de inicialização "'9c".
@@ -802,7 +802,8 @@ node_A_1-IP
              Data: interface_reachable
              ICMP: interface_reachable true       true            true
 node_A_2-IP
-           cluster_B                   node_B_1-IP
+
+image::../media/transition_2n_booting_a_2_and_b_2.png["Booting new IP nodes during transition"]
              Data: interface_reachable
              ICMP: interface_reachable true       true            true
                                        node_B_2-IP

@@ -45,14 +45,14 @@ As notas a seguir se aplicam a ambos os grupos:
 --
 Analise as combinações de atualização do sistema para sistemas AFF A150, AFF A20, FAS2750, FAS8300, FAS500f, AFF C250, AFF A250, FAS50, AFF C30, AFF A30, FAS8200, AFF A300, AFF A320, AFF A220, AFF C400, AFF A400 e FAS8700.
 
-image:../media/tech-refresh-ip-group-1-updated.png[""]
+image:../media/tech-refresh-ip-group-1-updated.png["Combinações de atualização do sistema para plataformas AFF e FAS grupo 1"]
 
 --
 .Combinações AFF e FAS grupo 2
 --
 Reveja as combinações de atualização do sistema para sistemas AFF C60, AFF A50, FAS70, FAS9000, AFF A700, AFF A70, AFF C800, AFF A800, FAS9500, AFF A900, AFF C80, FAS90, AFF A90 e AFF A1K.
 
-image:../media/tech-refresh-ip-group-2-updated.png[""]
+image:../media/tech-refresh-ip-group-2-updated.png["Combinações de atualização do sistema para plataformas AFF e FAS grupo 2"]
 
 --
 ====
@@ -81,7 +81,7 @@ image::../media/mcc-ip-techrefresh-asa-9161.png[Combinações de atualização t
 
 A tabela a seguir mostra as combinações de plataforma compatíveis para atualizar um sistema AFF ou FAS em uma configuração MetroCluster FC:
 
-image::../media/metrocluster_fc_tech_refresh.png[atualização técnica do MetroCluster fc]
+image::../media/metrocluster_fc_tech_refresh.png[Combinações de plataformas suportadas para atualização tecnológica do MetroCluster FC]
 
 
 

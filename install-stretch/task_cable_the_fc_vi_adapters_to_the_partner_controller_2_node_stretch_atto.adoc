@@ -16,7 +16,7 @@ Os adaptadores FC-VI de cada controladora devem ser cabeados diretamente ao parc
 .Passos
 . Cable as portas FC-VI.
 +
-image::../media/mcc_cabling_fc_vi_controller_to_partner.gif[cabeamento de mcc controlador fc vi para parceiro]
+image::../media/mcc_cabling_fc_vi_controller_to_partner.gif[Controlador FC VI de cabeamento do MetroCluster para parceiro]
 
 +
 A ilustração acima é uma representação típica do cabeamento necessário. As portas FC-VI específicas variam de acordo com o módulo do controlador.

@@ -29,7 +29,7 @@ Você deve estar ciente de como os endereços IP e interfaces do MetroCluster s�
 
 Em uma configuração IP do MetroCluster, a replicação do storage e do cache não volátil entre os pares de HA e os parceiros de DR é realizada por meio de links dedicados de alta largura de banda na malha IP do MetroCluster. As conexões iSCSI são usadas para replicação de storage. Os switches IP também são usados para todo o tráfego intra-cluster dentro dos clusters locais. O tráfego MetroCluster é mantido separado do tráfego intra-cluster usando sub-redes IP e VLANs separadas. A malha IP do MetroCluster é distinta e diferente da rede de peering de cluster.
 
-image::../media/mcc_ip_ip_subnets.gif[sub-redes ip ip de mcc]
+image::../media/mcc_ip_ip_subnets.gif[Separação de sub-redes IP e VLANs do MetroCluster]
 
 A configuração IP do MetroCluster requer dois endereços IP em cada nó que são reservados para a malha IP do MetroCluster de back-end. Os endereços IP reservados são atribuídos a interfaces lógicas IP (LIFs) MetroCluster durante a configuração inicial e têm os seguintes requisitos:
 

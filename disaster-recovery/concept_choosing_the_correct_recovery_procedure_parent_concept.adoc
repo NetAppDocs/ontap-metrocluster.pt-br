@@ -132,7 +132,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperan
 Esse cenário também se aplica a configurações de MetroCluster de quatro nós.
 
 +
-image::../media/mcc_dr_groups_8_node_with_a_single_controller_failure.gif[o nó mcc dr agrupa o nó 8 com uma única falha de controladora]
+image::../media/mcc_dr_groups_8_node_with_a_single_controller_failure.gif[Oito grupos de DR do MetroCluster de nós com falha de controlador único]
 
 
 
@@ -146,7 +146,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperan
 
 Esse cenário também se aplica a configurações de MetroCluster de quatro nós.
 
-image::../media/mcc_dr_groups_8_node_with_a_multi_controller_failure.gif[o mcc dr agrupa o nó 8 com uma falha em vários controladores]
+image::../media/mcc_dr_groups_8_node_with_a_multi_controller_failure.gif[Oito grupos de DR do MetroCluster de nós com falha de vários controladores]
 
 
 
@@ -167,7 +167,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperan
 
 
 
-image::../media/mcc_dr_groups_8_node_with_two_single_controller_failures.gif[nós do mcc dr agrupa o nó 8 com duas falhas de controladora única]
+image::../media/mcc_dr_groups_8_node_with_two_single_controller_failures.gif[Oito grupos de DR do MetroCluster de nós com duas falhas de controlador único]
 
 
 
@@ -181,7 +181,7 @@ Você pode usar o procedimento de substituição FRU do módulo do controlador e
 
 https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardware da ONTAP"^]
 
-image::../media/mcc_dr_groups_8_node_with_a_3_controller_failure.gif[o mcc dr agrupa o nó 8 com uma falha do controlador 3]
+image::../media/mcc_dr_groups_8_node_with_a_3_controller_failure.gif[Oito grupos de DR do MetroCluster de nós com três falhas de controlador]
 
 
 
@@ -199,4 +199,4 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperan
 
 
 
-image::../media/mcc_dr_groups_2_node_with_a_single_controller_failure.gif[o nó mcc dr agrupa o nó 2 com uma única falha de controladora]
+image::../media/mcc_dr_groups_2_node_with_a_single_controller_failure.gif[Grupos de DR do MetroCluster de dois nós com falha de controlador único]

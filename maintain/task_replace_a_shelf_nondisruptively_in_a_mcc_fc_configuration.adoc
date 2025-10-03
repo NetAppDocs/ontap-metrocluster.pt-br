@@ -64,7 +64,7 @@ Cluster_A_2::> storage aggregate show -aggr dataA_2_data
 O exemplo a seguir mostra um par de bridges que conetam uma única pilha SAS, que contém o compartimento de destino:
 
 +
-image::../media/mcc_shelf_replacement_bridges_with_a_single_stack.gif[pontes de substituição de prateleira mcc com uma única pilha]
+image::../media/mcc_shelf_replacement_bridges_with_a_single_stack.gif[Pontes de substituição de prateleiras com pilha única]
 
 +
 As portas de switch 8 e 9 em cada switch conetam as pontes à rede.
@@ -107,7 +107,7 @@ FC_switch_A_2(config)# end
 O exemplo a seguir mostra um par de bridges que conetam quatro stacks SAS. A pilha SAS 2 contém o compartimento de destino:
 
 +
-image::../media/mcc_shelf_replacement_bridges_with_four_stacks.gif[pontes de substituição de prateleira mcc com quatro pilhas]
+image::../media/mcc_shelf_replacement_bridges_with_four_stacks.gif[Pontes de substituição de prateleiras com quatro pilhas]
 
 +
 A porta SAS B coneta as pontes ao compartimento de destino. Ao desativar apenas a porta B SAS em ambas as gavetas, as outras stacks SAS podem continuar fornecendo dados durante o procedimento de substituição.

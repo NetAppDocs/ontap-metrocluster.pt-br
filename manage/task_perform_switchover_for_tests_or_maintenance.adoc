@@ -13,7 +13,7 @@ summary: Se quiser testar a funcionalidade do MetroCluster ou executar a manuten
 [role="lead"]
 Se quiser testar a funcionalidade do MetroCluster ou executar a manutenção planejada, você pode executar um switchover negociado no qual um cluster é colocado de forma limpa para o cluster de parceiros. Você pode então curar e voltar a configuração.
 
-image::../media/workflow_performing_nso_and_switchback.gif[fluxo de trabalho executando nso e switchback]
+image::../media/workflow_performing_nso_and_switchback.gif[Fluxo de trabalho para execução de comutação e retorno negociados]
 
 
 NOTE: A partir do ONTAP 9.6, as operações de comutação e switchback podem ser executadas em configurações IP do MetroCluster com o Gerenciador de sistemas do ONTAP.

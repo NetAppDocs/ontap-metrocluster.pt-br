@@ -40,13 +40,13 @@ Quando você adiciona novos nós a um cluster existente sem um domínio de broad
 * Este procedimento é disruptivo e leva aproximadamente quatro horas para ser concluído.
 * Antes de executar esse procedimento, a configuração do MetroCluster FC consiste em dois clusters de nó único:
 +
-image::../media/mcc_dr_groups_2_node.gif[nó de grupos de dr de mcc 2]
+image::../media/mcc_dr_groups_2_node.gif[Configuração do MetroCluster FC com dois nós antes da expansão]
 
 +
 Após concluir este procedimento, a configuração do MetroCluster FC consiste em dois pares de HA, um em cada local:
 
 +
-image::../media/mcc_dr_groups_4_node.gif[nó de grupos de dr de mcc 4]
+image::../media/mcc_dr_groups_4_node.gif[Configuração do MetroCluster FC com quatro nós após expansão]
 
 * Ambos os locais devem ser igualmente expandidos.
 +
@@ -59,4 +59,4 @@ O tempo para inicializar os discos depende do tamanho dos discos.
 * Este procedimento utiliza o seguinte fluxo de trabalho:
 
 
-image::../media/workflow_mcc_2_to_4_node_expansion_high_level.gif[fluxo de trabalho mcc de 2 a 4 nós de expansão de alto nível]
+image::../media/workflow_mcc_2_to_4_node_expansion_high_level.gif[Fluxo de trabalho para expansão do MetroCluster FC de 2 nós para 4 nós]

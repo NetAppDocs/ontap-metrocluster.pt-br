@@ -28,11 +28,11 @@ Este procedimento não é suportado em versões anteriores do ONTAP ou em config
 
 Antes de executar esse procedimento, a configuração do MetroCluster FC consiste em quatro nós, com um par de HA em cada local:
 
-image::../media/mcc_dr_groups_4_node.gif[nó de grupos de dr de mcc 4]
+image::../media/mcc_dr_groups_4_node.gif[Configuração do MetroCluster FC com quatro nós antes da expansão]
 
 Na conclusão desse procedimento, a configuração do MetroCluster FC consiste em dois pares de HA em cada local:
 
-image::../media/mcc_dr_groups_8_node.gif[nó de grupos de dr de mcc 8]
+image::../media/mcc_dr_groups_8_node.gif[Configuração do MetroCluster FC com oito nós após expansão]
 
 Ambos os locais devem ser igualmente expandidos. Uma configuração MetroCluster FC não pode consistir em um número desigual de nós.
 

@@ -28,7 +28,7 @@ Por exemplo, para expandir uma configuração IP MetroCluster de uma configuraç
 Se você quiser substituir um switch com falha pelo mesmo tipo de switch, você só substitui o switch com falha. Se você quiser atualizar ou fazer downgrade de um switch, você deve ajustar dois switches que estão na mesma rede. Dois switches estão na mesma rede quando estão conetados com um link inter-switch (ISL) e não estão localizados no mesmo local. Por exemplo, a rede 1 inclui IP_switch_A_1 e IP_switch_B_1, e a rede 2 inclui IP_switch_A_2 e IP_switch_B_2, como mostrado no diagrama abaixo:
 
 +
-image::../media/mcc_ip_hardware_architecture_ip_interconnect.png[interconexão ip da arquitetura de hardware ip mcc]
+image::../media/mcc_ip_hardware_architecture_ip_interconnect.png[Arquitetura de hardware IP do MetroCluster mostrando links entre switches e tipos de switches]
 
 +
 
@@ -64,7 +64,7 @@ Os campos realçados nesta folha de trabalho indicam o seguinte:
 * Azul: Portas que são novas conexões.
 
 
-image:../media/mcc_port_usage_workflow.png[""]
+image:../media/mcc_port_usage_workflow.png["Fluxo de trabalho para uso da porta IP do MetroCluster e alterações de cabeamento durante a substituição do switch"]
 
 .Passos
 . [[All_step1]]Verifique a integridade da configuração.

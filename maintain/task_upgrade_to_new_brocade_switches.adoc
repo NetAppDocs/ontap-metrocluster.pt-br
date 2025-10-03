@@ -31,7 +31,7 @@ Os tecidos de troca são atualizados um de cada vez.
 
 No final deste procedimento, todos os quatro interrutores serão atualizados para novos interrutores.
 
-image::../media/brocade_upgr_to_g620_replacement_completed.gif[atualização do Brocade para a substituição g620 concluída]
+image::../media/brocade_upgr_to_g620_replacement_completed.gif[Atualização do Brocade para G620 após a conclusão]
 
 .Passos
 . Desative o primeiro tecido do switch:
@@ -44,14 +44,14 @@ image::../media/brocade_upgr_to_g620_replacement_completed.gif[atualização do 
 FC_switch_A_1:admin> switchCfgPersistentDisable
 ----
 +
-image::../media/brocade_upgr_to_g620_fab_1_down.gif[Brocade upgr para g620 fab 1 para baixo]
+image::../media/brocade_upgr_to_g620_fab_1_down.gif[Atualização do Brocade para G620 com o Fabric 1 desativado]
 
 . Substitua os interrutores antigos em um local do MetroCluster.
 +
 .. Solte o cabo e retire o interrutor desativado.
 .. Instale o novo interrutor no rack.
 +
-image::../media/brocade_upgr_to_g620_replaced_a_1.gif[Brocade upgr para g620 substituiu um 1]
+image::../media/brocade_upgr_to_g620_replaced_a_1.gif[Atualização do Brocade para G620 com A1 substituído]
 
 .. Desative os novos switches executando o seguinte comando em ambos os switches:
 +
@@ -71,7 +71,7 @@ link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.htm
 Ambos os switches na malha 1 foram substituídos.
 
 +
-image::../media/brocade_upgr_to_g620_replaced_b_1.gif[Brocade upgr para g620 substituído b 1]
+image::../media/brocade_upgr_to_g620_replaced_b_1.gif[Atualização do Brocade para G620 com B1 substituído]
 
 
 
@@ -175,4 +175,4 @@ Você precisa responder com "'y'" quando solicitado para continuar no modo avan�
 
 Depois de repetir as etapas, todos os quatro switches foram atualizados e a configuração do MetroCluster está em operação normal.
 
-image::../media/brocade_upgr_to_g620_replacement_completed.gif[atualização do Brocade para a substituição g620 concluída]
+image::../media/brocade_upgr_to_g620_replacement_completed.gif[Fluxo de trabalho para MetroCluster após a substituição do switch Brocade G620 e conclusão da atualização]

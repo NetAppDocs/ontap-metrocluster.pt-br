@@ -25,11 +25,11 @@ Uma configuração do Fabric MetroCluster consiste em um ou dois grupos de DR, d
 
 A ilustração a seguir mostra a organização de nós em uma configuração de MetroCluster de oito nós:
 
-image::../media/mcc_dr_groups_8_node.gif[nó de grupos de dr de mcc 8]
+image::../media/mcc_dr_groups_8_node.gif[MetroCluster DR agrupa oito nós]
 
 A ilustração a seguir mostra a organização de nós em uma configuração de MetroCluster de quatro nós:
 
-image::../media/mcc_dr_groups_4_node.gif[nó de grupos de dr de mcc 4]
+image::../media/mcc_dr_groups_4_node.gif[MetroCluster DR agrupa quatro nós]
 
 
 
@@ -83,11 +83,11 @@ A configuração da SVM é replicada na rede de peering de cluster.
 
 A ilustração a seguir mostra uma visualização simplificada de uma configuração de MetroCluster de malha de quatro nós. Para algumas conexões, uma única linha representa várias conexões redundantes entre os componentes. As conexões de rede de gerenciamento e dados não são mostradas.
 
-image::../media/mcc_hardware_architecture_both_clusters.gif[arquitetura de hardware mcc nos dois clusters]
+image::../media/mcc_hardware_architecture_both_clusters.gif[Configuração do MetroCluster de quatro nós em ambos os clusters]
 
 A ilustração a seguir mostra uma visão mais detalhada da conectividade em um único cluster MetroCluster (ambos os clusters têm a mesma configuração):
 
-image::../media/mcc_hardware_architecture_cluster_a_with_7500n.gif[cluster a da arquitetura de hardware mcc com 7500n]
+image::../media/mcc_hardware_architecture_cluster_a_with_7500n.gif[Conectividade do cluster A do MetroCluster com pontes FibreBridge 7500N]
 
 
 
@@ -95,7 +95,7 @@ image::../media/mcc_hardware_architecture_cluster_a_with_7500n.gif[cluster a da 
 
 A ilustração a seguir mostra uma visualização simplificada de uma configuração de MetroCluster de malha de dois nós. Para algumas conexões, uma única linha representa várias conexões redundantes entre os componentes. As conexões de rede de gerenciamento e dados não são mostradas.
 
-image::../media/mcc_hardware_architecture_both_clusters_2_node_fabric.gif[arquitetura de hardware mcc nos dois clusters malha de 2 nós]
+image::../media/mcc_hardware_architecture_both_clusters_2_node_fabric.gif[Configuração de MetroCluster de tecido de dois nós em ambos os clusters]
 
 Uma configuração de dois nós consiste em dois clusters, um em cada local geograficamente separado. O cluster_A está localizado no primeiro site do MetroCluster. O cluster_B está localizado no segundo site do MetroCluster. Cada local tem uma pilha de storage SAS. São suportadas stacks de armazenamento adicionais, mas apenas uma é mostrada em cada local.
 
@@ -104,7 +104,7 @@ NOTE: Em uma configuração de dois nós, os nós não são configurados como um
 
 A ilustração a seguir mostra uma visão mais detalhada da conectividade em um único cluster MetroCluster (ambos os clusters têm a mesma configuração):
 
-image::../media/mcc_hardware_architecture_cluster_a_2_node_with_7500n.gif[cluster de arquitetura de hardware mcc a 2 nós com 7500n]
+image::../media/mcc_hardware_architecture_cluster_a_2_node_with_7500n.gif[Conectividade do cluster A do MetroCluster de dois nós com pontes FibreBridge 7500N]
 
 Uma configuração de dois nós inclui as seguintes conexões:
 

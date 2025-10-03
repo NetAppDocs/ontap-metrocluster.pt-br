@@ -17,7 +17,7 @@ Se você precisar realocar e reconfigurar um local (por exemplo, se precisar exp
 
 O diagrama a seguir mostra uma configuração do MetroCluster. Cluster_B está desligado para manutenção.
 
-image::power-on-off-data-center.gif[ligar fora do data center]
+image::power-on-off-data-center.gif[MetroCluster com cluster desligado para manutenção]
 
 
 

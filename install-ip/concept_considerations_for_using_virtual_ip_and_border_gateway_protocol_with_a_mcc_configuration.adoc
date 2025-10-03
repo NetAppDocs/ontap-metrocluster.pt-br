@@ -17,7 +17,7 @@ Revise as diretrizes e a ilustração a seguir ao Planejar sua solução de cama
 
 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-A8EF6D34-1717-4813-BBFA-AA33E104CF6F.html["*Configurando LIFs de IP virtual (VIP)*"]
 
-image::../media/vip_and_bgp_in_metrocluster_2.png[vip e bgp em MetroCluster 2]
+image::../media/vip_and_bgp_in_metrocluster_2.png[IP virtual e protocolo de gateway de borda no MetroCluster]
 
 *Limitações do ONTAP*
 

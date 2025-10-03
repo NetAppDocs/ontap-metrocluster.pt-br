@@ -387,14 +387,14 @@ Uma fonte pode ser uma SVM de origem sincronizada antes do switchover ou um SVM 
 A imagem a seguir mostra o comportamento de recuperação de desastres do SVM em um estado estável:
 
 +
-image::../media/svm_dr_normal_behavior.gif[comportamento normal do svm dr]
+image::../media/svm_dr_normal_behavior.gif[Recuperação de desastres SVM durante operação em estado estável]
 
 * Quando o SVM de origem sincronizada é a fonte de uma relação SVM DR, as informações de origem no relacionamento de SVM DR são replicadas para o parceiro MetroCluster.
 +
 Isso permite que as atualizações do SVM DR continuem após um switchover, conforme mostrado na imagem a seguir:
 
 +
-image::../media/svm_dr_image_2.gif[imagem svm dr 2]
+image::../media/svm_dr_image_2.gif[Atualizações do SVM após a transição]
 
 * Durante os processos de switchover e switchback, a replicação para o destino SVM DR pode falhar.
 +
@@ -412,7 +412,7 @@ Durante a ressincronização, a fonte de recuperação de desastres (DR) de máq
 
 Durante a ressincronização, o SVM de origem (cluster_A) atua temporariamente como SVM de destino, conforme mostrado na imagem a seguir:
 
-image::../media/svm_dr_resynchronization.gif[ressincronização da svm dr]
+image::../media/svm_dr_resynchronization.gif[Ressincronização de recuperação de desastres SVM]
 
 
 

@@ -13,7 +13,7 @@ summary: É necessário configurar cada nó na configuração do MetroCluster no
 [role="lead"]
 É necessário configurar cada nó na configuração do MetroCluster no ONTAP, incluindo as configurações no nível do nó e a configuração dos nós em dois locais. Você também deve implementar a relação MetroCluster entre os dois sites.
 
-image::../media/workflow_high_level_node_and_cluster_configuration_software.gif[software de configuração de cluster e nó de alto nível do fluxo de trabalho]
+image::../media/workflow_high_level_node_and_cluster_configuration_software.gif[Configuração de cluster e nó de alto nível de fluxo de trabalho no ONTAP]
 
 
 

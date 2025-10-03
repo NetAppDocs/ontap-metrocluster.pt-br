@@ -1606,7 +1606,7 @@ Essa tarefa é apenas para configurações que usam um ISL duplo por malha de sw
 
 Essa tarefa deve ser executada em cada switch FC.
 
-image::../media/fcip_ports_dual_isl.gif[portas fcip duplas isl]
+image::../media/fcip_ports_dual_isl.gif[Diagrama mostrando portas FCIP com configuração ISL dupla em cada switch]
 
 A tarefa e os exemplos usam as seguintes tabelas de configuração de perfil:
 

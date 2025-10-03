@@ -13,7 +13,7 @@ summary: Execute a operação de switchback para retornar a configuração do Me
 [role="lead"]
 Execute a operação de switchback para retornar a configuração do MetroCluster à operação normal. Os nós no site_A ainda estão aguardando atualização.
 
-image::../media/mcc_upgrade_cluster_a_switchback.png[cluster de atualização do mcc a switchback]
+image::../media/mcc_upgrade_cluster_a_switchback.png[Site_A aguardando atualização após retorno do MetroCluster]
 
 .Passos
 . Emita o `metrocluster node show` comando no site_B e verifique a saída.

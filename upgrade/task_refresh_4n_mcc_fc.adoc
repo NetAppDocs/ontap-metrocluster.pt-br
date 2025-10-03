@@ -49,7 +49,7 @@ Siga as etapas a seguir para atualizar a configuração do MetroCluster FC.
 Nesta fase, a configuração de quatro nós aparece como mostrado na seguinte imagem:
 
 +
-image::../media/mcc_dr_group_a.png[mcc dr grupo a]
+image::../media/mcc_dr_group_a.png[Configuração de quatro nós do MetroCluster antes da expansão]
 
 . Execute todas as etapas do procedimento de expansão de quatro nós para o tipo MetroCluster.
 +
@@ -59,7 +59,7 @@ link:task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration
 Quando o procedimento de expansão estiver concluído, a configuração aparece como mostrado na imagem a seguir:
 
 +
-image::../media/mcc_dr_group_b.png[grupo de rd mcc b]
+image::../media/mcc_dr_group_b.png[Configuração do MetroCluster após expansão e migração do volume CRS]
 
 . Mova os volumes CRS.
 +
@@ -84,6 +84,6 @@ link:concept_removing_a_disaster_recovery_group.html["Removendo um grupo de recu
 Depois de remover o antigo grupo de DR (grupo de DR um), a configuração aparece como mostrado na imagem a seguir:
 
 +
-image::../media/mcc_dr_group_d.png[grupo d de rd mcc]
+image::../media/mcc_dr_group_d.png[Configuração do MetroCluster após remover o antigo grupo DR]
 
 

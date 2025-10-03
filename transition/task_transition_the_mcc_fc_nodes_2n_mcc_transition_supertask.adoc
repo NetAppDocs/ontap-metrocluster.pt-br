@@ -351,4 +351,4 @@ cluster1::>
 
 Nesse ponto, as controladoras MetroCluster FC foram removidas e as gavetas foram desconetadas de todas as controladoras.
 
-image::../media/transition_2n_remove_fc_nodes.png[transição 2n remover os nós fc]
+image::../media/transition_2n_remove_fc_nodes.png[Removendo nós FC durante a transição]

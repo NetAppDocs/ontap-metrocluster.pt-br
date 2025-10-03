@@ -13,7 +13,7 @@ summary: 'Cada malha de switch inclui links inter-switch (ISLs) que conetam os s
 [role="lead"]
 Cada malha de switch inclui links inter-switch (ISLs) que conetam os sites. Os dados são replicados de um site para outro através do ISL. Cada malha de switch deve estar em caminhos físicos diferentes para redundância.
 
-image::../media/mcc_hw_architecture_switch_fabrics.gif[malhas de switch de arquitetura de hw mcc]
+image::../media/mcc_hw_architecture_switch_fabrics.gif[Arquitetura de hardware do MetroCluster com tecidos de comutação redundantes]
 
 .Informações relacionadas
 link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["Ilustração dos pares de HA locais em uma configuração do MetroCluster"]

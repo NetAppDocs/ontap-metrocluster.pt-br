@@ -24,7 +24,7 @@ Em vez disso, você pode usar outras interfaces de gerenciamento, se necessário
 
 Este procedimento utiliza o seguinte fluxo de trabalho:
 
-image::../media/workflow_bridge_installation_and_configuration.gif[instalação e configuração da ponte de fluxo de trabalho]
+image::../media/workflow_bridge_installation_and_configuration.gif[Fluxo de trabalho para instalação e configuração de ponte FC para SAS]
 
 
 
@@ -524,7 +524,7 @@ NOTE: Cada stack pode usar modelos diferentes de IOM, mas todas as gavetas de di
 
 A ilustração a seguir mostra as prateleiras de disco conetadas a um par de pontes FibreBridge 7600N ou 7500N:
 
-image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks.gif[ponte de cabeamento de mcc e stack de sas3 gbe com 7500n gbe e várias pilhas]
+image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks.gif[Configuração de cabeamento FibreBridge do MetroCluster com múltiplas pilhas SAS3]
 
 --
 

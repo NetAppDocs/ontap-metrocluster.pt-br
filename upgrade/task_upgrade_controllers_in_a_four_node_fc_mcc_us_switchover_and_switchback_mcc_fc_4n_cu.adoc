@@ -568,7 +568,7 @@ Esta tarefa tem de ser executada no site_A.
 
 Depois de concluir esta tarefa, o cluster_A está ativo e fornecendo dados para ambos os sites. O cluster_B está inativo e pronto para iniciar o processo de atualização, como mostrado na ilustração a seguir.
 
-image::../media/mcc_upgrade_cluster_a_in_switchover.png[cluster a de atualização do mcc em switchover]
+image::../media/mcc_upgrade_cluster_a_in_switchover.png[Site_B inativo e pronto para atualização após a troca do MetroCluster]
 
 .Passos
 . Alterne a configuração do MetroCluster para site_A para que os nós do site_B possam ser atualizados:
@@ -1464,7 +1464,7 @@ Depois que os novos controladores tiverem sido configurados, a configuração do
 .Sobre esta tarefa
 Nesta tarefa, você executará a operação de switchback, retornando a configuração do MetroCluster à operação normal. Os nós no site_A ainda estão aguardando atualização.
 
-image::../media/mcc_upgrade_cluster_a_switchback.png[cluster de atualização do mcc a switchback]
+image::../media/mcc_upgrade_cluster_a_switchback.png[Site_A aguardando atualização após retorno do MetroCluster]
 
 .Passos
 . Emita o `metrocluster node show` comando no site_B e verifique a saída.

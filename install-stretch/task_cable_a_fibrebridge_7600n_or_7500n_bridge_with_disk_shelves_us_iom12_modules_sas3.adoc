@@ -48,4 +48,4 @@ A ilustração a seguir mostra as prateleiras de disco conetadas a um par de pon
 
 
 
-image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks.gif[ponte de cabeamento de mcc e stack de sas3 gbe com 7500n gbe e várias pilhas]
+image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks.gif[Cabeamento MetroCluster para FibreBridge com múltiplas pilhas SAS3]

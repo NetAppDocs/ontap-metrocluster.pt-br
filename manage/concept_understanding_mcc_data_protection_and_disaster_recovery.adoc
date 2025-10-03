@@ -33,7 +33,7 @@ Os dois clusters na rede com peering fornecem recuperação de desastres bidirec
 
 A ilustração a seguir mostra uma configuração MetroCluster FC. A funcionalidade de HA é a mesma nas configurações IP do MetroCluster, exceto que a interconexão de HA é fornecida pelos switches do cluster.
 
-image::../media/mcc_hw_architecture_local_ha.gif[arquitetura de hardware mcc local ha]
+image::../media/mcc_hw_architecture_local_ha.gif[HA local em uma configuração MetroCluster]
 
 .Informações relacionadas
 link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Configuração de alta disponibilidade"^]
@@ -83,11 +83,11 @@ Em um switchover bem-sucedido do cluster A para o cluster B, o SVM_cluster_A é 
 
 
 
-image::../media/mcc_mirroring_of_svms.gif[espelhamento mcc de svms]
+image::../media/mcc_mirroring_of_svms.gif[Espelhamento MetroCluster de SVMs]
 
 Se ocorrer um switchover, o Plex remoto no cluster sobrevivente fica on-line e o SVM secundário começa a fornecer os dados.
 
-image::../media/mcc_svms_after_switchover.gif[mcc svms após comutação]
+image::../media/mcc_svms_after_switchover.gif[SVMs do MetroCluster após a transição]
 
 A disponibilidade de plexes remotos após o switchover depende do tipo de configuração do MetroCluster:
 
@@ -163,7 +163,7 @@ A ilustração a seguir mostra como os pools de discos são espelhados entre os 
 
 IMPORTANT: Se agregados híbridos forem usados, a degradação do desempenho pode ocorrer depois que um Plex SyncMirror falhou devido ao preenchimento da camada de disco de estado sólido (SSD).
 
-image::../media/mcc_mirroring_of_pools.gif[espelhamento de mcc de pools]
+image::../media/mcc_mirroring_of_pools.gif[Espelhamento de pools de armazenamento do MetroCluster]
 
 
 
@@ -185,9 +185,9 @@ Em uma configuração de MetroCluster de quatro nós, o cache não volátil de c
 
 
  a| 
-image:../media/mcc_nvram_quartering.gif[""]
+image:../media/mcc_nvram_quartering.gif["Divisão de cache não volátil na configuração do MetroCluster"]
  a| 
-image:../media/mcc_nvram_split_in_non_mcc_ha_pair.gif[""]
+image:../media/mcc_nvram_split_in_non_mcc_ha_pair.gif["Divisão de cache não volátil em par HA não MetroCluster"]
 
 |===
 Os caches não voláteis armazenam o seguinte conteúdo:
@@ -212,7 +212,7 @@ Em uma configuração de MetroCluster de dois nós, não há nenhuma partição 
 
 Por exemplo, o cache local de um nó (node_A_1) é espelhado tanto localmente quanto remotamente nos sites da MetroCluster. A ilustração a seguir mostra que o cache local de node_A_1 é espelhado para o parceiro de HA (node_A_2) e o parceiro de DR (node_B_1):
 
-image::../media/mcc_nvram_mirroring_example.gif[exemplo de espelhamento mcc NVRAM]
+image::../media/mcc_nvram_mirroring_example.gif[Exemplo de espelhamento de NVRAM do MetroCluster]
 
 
 
@@ -222,7 +222,7 @@ Se um takeover de HA local ocorrer em uma configuração de MetroCluster de quat
 
 Por exemplo, node_B_1 falha e é assumido por node_B_2. O cache local de node_A_1 não pode mais ser espelhado para node_B_1. O espelhamento muda para o parceiro auxiliar de DR, node_B_2.
 
-image::../media/mcc_nvram_mirroring_example_dynamic_dr_aux.gif[exemplo de espelhamento mcc NVRAM dynamic dr aux]
+image::../media/mcc_nvram_mirroring_example_dynamic_dr_aux.gif[Espelhamento NVRAM MetroCluster com DR auxiliar]
 
 
 
@@ -557,7 +557,7 @@ ID do proprietário original do disco dentro da configuração do MetroCluster.
 |===
 A ilustração e tabela a seguir fornecem um exemplo de como a propriedade muda, para um disco no disco pool1 do node_A_1, localizado fisicamente no cluster_B.
 
-image::../media/mcc_disk_ownership.gif[propriedade do disco mcc]
+image::../media/mcc_disk_ownership.gif[Propriedade do disco MetroCluster]
 
 |===
 
@@ -839,7 +839,7 @@ Esse recurso se aplica às configurações IP do MetroCluster executando o ONTAP
 
 Os comandos de recuperação manual ainda são necessários em configurações IP do MetroCluster executando o ONTAP 9.4 e anteriores.
 
-image::../media/mcc_so_sb_with_autoheal.gif[mcc so sb com autheal]
+image::../media/mcc_so_sb_with_autoheal.gif[Comutação e retorno do MetroCluster com autorecuperação]
 
 
 
@@ -865,7 +865,7 @@ Você pode confirmar o status dos nós do local de desastre e se as operações 
 
 
 
-image::../media/mcc_uso_with_autoheal.gif[mcc uso com autheal]
+image::../media/mcc_uso_with_autoheal.gif[Troca não programada do MetroCluster com autorecuperação]
 
 
 

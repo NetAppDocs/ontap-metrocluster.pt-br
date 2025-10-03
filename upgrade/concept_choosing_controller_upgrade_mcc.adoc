@@ -122,7 +122,7 @@ Por exemplo, se a plataforma que você deseja atualizar for um FAS8200, você po
 
 A tabela a seguir mostra as combinações de plataforma compatíveis para atualizar um sistema AFF ou FAS em uma configuração MetroCluster FC:
 
-image::../media/metrocluster_fc_upgrade_table_aff_fas.png[tabela de atualização do MetroCluster fc AFF FAS]
+image::../media/metrocluster_fc_upgrade_table_aff_fas.png[Combinações de plataformas suportadas para atualizações do controlador MetroCluster FC]
 
 * Observação 1: Para atualizar controladores quando as conexões FCVI em nós FAS8020 ou AFF8020 existentes usam as portas 1c e 1D, consulte o seguinte https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/Upgrading_controllers_when_FCVI_connections_on_existing_FAS8020_or_AFF8020_nodes_use_ports_1c_and_1d["artigo da base de conhecimento"^].
 * Observação 2: Atualizações de controladora de plataformas AFF A300 ou FAS8200 usando as portas integradas 0e e 0f como conexões FC-VI só são compatíveis com os seguintes sistemas:

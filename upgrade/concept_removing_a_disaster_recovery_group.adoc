@@ -39,11 +39,11 @@ Este procedimento é suportado a partir do ONTAP 9.8.  Para sistemas executando 
 .Sobre esta tarefa
 Uma configuração de oito nós inclui oito nós organizados como dois grupos de RD de quatro nós.
 
-image::../media/mcc_dr_groups_8_node.gif[nó de grupos de dr de mcc 8]
+image::../media/mcc_dr_groups_8_node.gif[Configuração do MetroCluster com oito nós em dois grupos de DR]
 
 Quando você remove um grupo de DR, quatro nós permanecem na configuração.
 
-image::../media/mcc_dr_groups_4_node.gif[nó de grupos de dr de mcc 4]
+image::../media/mcc_dr_groups_4_node.gif[Configuração do MetroCluster com quatro nós após a remoção do grupo DR]
 
 .Antes de começar
 * É necessário executar esta etapa em ambos os clusters.

@@ -32,12 +32,16 @@ Se você tiver uma configuração MetroCluster FC de dois nós, link:concept_cho
 
 
 .Informações importantes
-Durante os procedimentos de transição, atualização e expansão, você pode adicionar um novo modelo de plataforma à sua configuração do MetroCluster. Em qualquer etapa desses procedimentos, se a sua configuração atual do MetroCluster contiver uma plataforma que use *portas compartilhadas de cluster/HA*, você não poderá adicionar uma plataforma que use *portas compartilhadas de MetroCluster/HA* à configuração sem atualizar sua versão do ONTAP para o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.
+A orientação a seguir é para um cenário incomum em que você precisa adicionar um modelo de plataforma mais antigo (plataformas lançadas antes do ONTAP 9.15.1) a uma configuração existente do MetroCluster que contém um modelo de plataforma mais recente (plataformas lançadas no ONTAP 9.15.1 ou posterior).  Para uma transição de FC para IP de oito nós, esta orientação se aplica se você tiver feito a transição do seu primeiro grupo de DR de FC para um modelo de plataforma introduzido no ONTAP 9.15.1 ou posterior e planeja fazer a transição do segundo grupo de DR para uma plataforma introduzida antes do ONTAP 9.15.1.
 
-Antes de decidir usar este procedimento, revise atentamente as informações na tabela a seguir. Se a sua plataforma existente estiver listada na primeira coluna e a plataforma que você deseja adicionar à configuração estiver listada na segunda coluna, todos os nós na configuração deverão estar executando o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior para oferecer suporte a este procedimento.
+Se a sua configuração existente do MetroCluster contiver uma plataforma que usa *portas de cluster/HA compartilhadas* (plataformas lançadas no ONTAP 9.15.1 ou posterior), você não poderá adicionar uma plataforma que usa *portas de MetroCluster/HA compartilhadas* (plataformas lançadas antes do ONTAP 9.15.1) sem atualizar todos os nós na configuração para o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.
 
+[CAUTION]
+====
+Adicionar um modelo de plataforma mais antigo que usa *portas HA compartilhadas/ do MetroCluster * a um MetroCluster que contém um modelo de plataforma mais novo que usa *portas HA/do cluster compartilhadas* é um cenário incomum e a maioria das combinações não é afetada.
 
-CAUTION: A plataforma existente e a plataforma que você deseja adicionar à configuração devem estar executando o ONTAP 9.15.1P11 ou o ONTAP 9.16.1P4 ou posterior.
+====
+Use a tabela a seguir para verificar se sua combinação é afetada.  Se sua plataforma existente estiver listada na primeira coluna e a plataforma que você deseja adicionar à configuração estiver listada na segunda coluna, todos os nós na configuração deverão estar executando o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior para adicionar o novo grupo de DR.
 
 [cols="20,20,20,20,20"]
 |===

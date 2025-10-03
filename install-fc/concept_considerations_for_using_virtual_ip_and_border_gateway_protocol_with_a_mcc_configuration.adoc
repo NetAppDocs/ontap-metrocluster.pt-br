@@ -15,7 +15,7 @@ A partir do ONTAP 9.5, o ONTAP oferece suporte à conetividade da camada 3 usand
 
 Revise as diretrizes e a ilustração a seguir ao Planejar sua solução de camada 3. Para obter detalhes sobre como implementar o VIP e o BGP no ONTAP, link:https://docs.netapp.com/us-en/ontap/networking/configure_virtual_ip_@vip@_lifs.html["Configurar IP LIFs virtuais"^]consulte .
 
-image::../media/vip_and_bgp_in_metrocluster_2.png[vip e bgp em MetroCluster 2]
+image::../media/vip_and_bgp_in_metrocluster_2.png[IP virtual e protocolo de gateway de borda no MetroCluster]
 
 
 

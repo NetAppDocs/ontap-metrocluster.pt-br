@@ -15,7 +15,7 @@ A partir do ONTAP 9.8, você pode migrar workloads e dados de uma configuração
 
 A ilustração a seguir fornece uma visão simplificada da configuração antes e depois deste procedimento de transição.
 
-image::../media/transition_2n_begin_to_end.png[transição 2n começa a terminar]
+image::../media/transition_2n_begin_to_end.png[Transição de FC de dois nós para configuração IP de quatro nós]
 
 * Este procedimento é suportado em sistemas que executam o ONTAP 9.8 e posterior.
 * Este procedimento é disruptivo.

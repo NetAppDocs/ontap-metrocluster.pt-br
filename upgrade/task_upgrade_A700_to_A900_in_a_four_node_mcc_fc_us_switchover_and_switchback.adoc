@@ -498,7 +498,7 @@ Esta tarefa tem de ser executada no site_A.
 
 Depois de concluir esta tarefa, site_A está ativo e fornecendo dados para ambos os sites. O Site_B está inativo e pronto para iniciar o processo de atualização, como mostrado na ilustração a seguir. (Esta ilustração também se aplica à atualização de um FAS9000 para um controlador FAS9500.)
 
-image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[Cluster de atualização de mcc a no switchover A900]
+image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[Site_B inativo e pronto para atualização]
 
 .Passos
 . Alterne a configuração do MetroCluster para site_A para que os nós do site_B possam ser atualizados:

@@ -16,4 +16,4 @@ Você deve executar certas tarefas para preparar a configuração IP do MetroClu
 .Sobre esta tarefa
 &nbsp;
 
-image::../media/workflow_preparing_for_switchback_in_mcc_ip_dr.gif[fluxo de trabalho preparando para switchback no mcc ip dr]
+image::../media/workflow_preparing_for_switchback_in_mcc_ip_dr.gif[Fluxo de trabalho para preparação para retorno na recuperação de desastres do MetroCluster IP]

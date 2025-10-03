@@ -94,7 +94,7 @@ Você deve seguir o fluxo de trabalho específico para garantir uma transição 
 
 Enquanto você se prepara para a transição, Planeje viagens entre os sites. Observe que depois que os nós remotos forem colocados em rack e cabeados, você precisará ter acesso ao terminal serial aos nós. O acesso ao processador de serviço não estará disponível até que os nós sejam configurados.
 
-image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[transição do fluxo de trabalho 2n migrando os dados para novas gavetas]
+image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[Fluxo de trabalho para mover dados para novas prateleiras durante a transição]
 
 
 

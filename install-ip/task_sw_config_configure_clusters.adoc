@@ -650,7 +650,7 @@ Execute este procedimento em um dos clusters na configuração do MetroCluster p
 
 NOTE: As relações de DR não podem ser alteradas após a criação dos grupos de DR.
 
-image::../media/mcc_dr_groups_4_node.gif[nó de grupos de dr de mcc 4]
+image::../media/mcc_dr_groups_4_node.gif[Grupos de DR do MetroCluster em uma configuração de quatro nós]
 
 .Passos
 . Verifique se os nós estão prontos para a criação do grupo DR inserindo o seguinte comando em cada nó:
