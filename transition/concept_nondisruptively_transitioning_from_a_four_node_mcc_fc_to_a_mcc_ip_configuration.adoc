@@ -31,7 +31,7 @@ Se você tiver uma configuração MetroCluster FC de dois nós, link:concept_cho
 * Você deve atender a todos os requisitos e seguir todas as etapas do procedimento.
 
 
-.Informações importantes
+.Informações importantes se você estiver adicionando um modelo de plataforma mais antigo
 A orientação a seguir é para um cenário incomum em que você precisa adicionar um modelo de plataforma mais antigo (plataformas lançadas antes do ONTAP 9.15.1) a uma configuração existente do MetroCluster que contém um modelo de plataforma mais recente (plataformas lançadas no ONTAP 9.15.1 ou posterior).  Para uma transição de FC para IP de oito nós, esta orientação se aplica se você tiver feito a transição do seu primeiro grupo de DR de FC para um modelo de plataforma introduzido no ONTAP 9.15.1 ou posterior e planeja fazer a transição do segundo grupo de DR para uma plataforma introduzida antes do ONTAP 9.15.1.
 
 Se a sua configuração existente do MetroCluster contiver uma plataforma que usa *portas de cluster/HA compartilhadas* (plataformas lançadas no ONTAP 9.15.1 ou posterior), você não poderá adicionar uma plataforma que usa *portas de MetroCluster/HA compartilhadas* (plataformas lançadas antes do ONTAP 9.15.1) sem atualizar todos os nós na configuração para o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.

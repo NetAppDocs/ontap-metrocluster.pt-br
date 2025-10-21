@@ -205,7 +205,7 @@ Se necessário, você pode redefinir o boot_recovery e o rdb_corrupt_bootargs
 +
 [listing]
 ----
-node_A_1::*> halt -node _node-name_
+siteA::*> halt -node <node-name>
 ----
 . Verifique se os seguintes bootargs foram definidos:
 +

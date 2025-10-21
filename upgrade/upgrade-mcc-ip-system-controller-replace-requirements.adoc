@@ -13,6 +13,9 @@ summary: Verifique se o sistema atende a todos os requisitos antes de executar a
 [role="lead"]
 Verifique se o sistema atende a todos os requisitos antes de executar a atualização da controladora.
 
+
+CAUTION: *Você deve executar este procedimento conforme descrito sempre que atualizar seus controladores.* Quando novas plataformas são lançadas, pode haver etapas novas ou modificadas que devem ser seguidas. Por exemplo, ao atualizar para plataformas introduzidas no ONTAP 9.15.1 ou posterior, você deve link:upgrade-mcc-ip-system-controller-replace-set-bootarg.html["defina o bootarg necessário"] e executar outras etapas adicionais para uma atualização bem-sucedida.
+
 * Você pode usar este procedimento apenas para atualização do controlador.
 +
 Outros componentes na configuração, como compartimentos de armazenamento ou switches, não podem ser atualizados ao mesmo tempo.

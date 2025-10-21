@@ -1199,8 +1199,6 @@
   <block id="e6d0640faf9a5179bcd547053596e9fb" category="admonition">Se você não limpar o conteúdo do NVRAM de um controlador de substituição usado, poderá ver um pânico com a seguinte mensagem:<block ref="a8e5a2abbf8b0835b0d7abd390ed5e55" prefix=" " category="inline-code"></block> Se isso ocorrer, repita estas subetapas para inicializar o sistema no prompt do ONTAP. Então você precisa <block ref="98b89efafafc6baeefb50e35f16eee3c" category="inline-xref-macro-rx"></block></block>
   <block id="f433c39c3c339b913b2223e31d633f9d" category="list-text">Regressar ao modo de manutenção.</block>
   <block id="d74abfb55f46e179952b0f9d29ab5c58" category="list-text">Parar o nó:</block>
-  <block id="b89bea07847accf12561ace475459c4d" category="list-text">Inicialize o nó para Manutenção:</block>
-  <block id="fd02d447099008ddc827133dc034246f" category="paragraph"><block ref="fb866cc030e3e6a5a60ea75e17f86cea" prefix="" category="inline-code"></block></block>
   <block id="3c5b2b94f65ffc6fc4f76f89cd80b62b" category="list-text">Elimine o conteúdo dos discos da caixa de correio:</block>
   <block id="7f7deb46e1585e846e2fd054b1b2af5a" category="paragraph"><block ref="4e4f062874148c4d483ab41225f26147" prefix="" category="inline-code"></block></block>
   <block id="77036813f81882d81f97721da98db74b" category="list-text">Parar os nós: Mais<block ref="4a1bde0ea8bcda2a591f42646813c477" prefix=" " category="inline-code"></block></block>
@@ -4287,7 +4285,6 @@
   <block id="7e756142ca24020ffa4d2170bdd9c135" category="paragraph">Você pode testar cenários de falha para confirmar o funcionamento correto da configuração do MetroCluster.</block>
   <block id="397065d1ea76a7267c1165f18aff1479" category="section-title">Verificando o switchover negociado</block>
   <block id="03daa0db748f01eb3873a439b3ee1ab5" category="paragraph">Você pode testar a operação switchover negociado (planejada) para confirmar a disponibilidade de dados ininterrupta.</block>
-  <block id="3b84985a3046a49bcea85f56e3a28bac" category="paragraph">Este teste valida que a disponibilidade de dados não é afetada (exceto para os protocolos SMB (Server Message Block) da Microsoft e Fibre Channel do Solaris), alternando o cluster para o segundo data center.</block>
   <block id="224eed3317652f7fd4510c7cd1f9c926" category="paragraph">Este teste deve levar cerca de 30 minutos.</block>
   <block id="962f0cdcd4aeaa5d7a845c907458b869" category="paragraph">Este procedimento tem os seguintes resultados esperados:</block>
   <block id="1faa3b4e66d97f34777f91b4ea9930d9" category="list-text">O<block ref="803740ddd57a4d0c8a51c6ede10e3096" prefix=" " category="inline-code"></block> comando apresentará um prompt de aviso.</block>
@@ -5639,7 +5636,6 @@
   <block id="af6415b8e23291050b1c66bd2a86ffaf" category="paragraph">Você deve fazer uma verificação após a configuração inicial e depois de fazer quaisquer alterações na configuração do MetroCluster.</block>
   <block id="def4f4e87a159ca662e15a890598d539" category="paragraph">Você também deve fazer uma verificação antes de um switchover negociado (planejado) ou de uma operação de switchback.</block>
   <block id="7ad4770864f194efb59a5eb45626bdf3" category="list-text">Exibir resultados mais detalhados do comando MetroCluster check run mais recente:</block>
-  <block id="2e012ade7bab556f0392337c78739376" category="paragraph">O exemplo a seguir mostra a saída do comando MetroCluster check cluster show para uma configuração de MetroCluster de quatro nós saudável. Isso indica que os clusters estão prontos para executar um switchover negociado, se necessário.</block>
   <block id="ccc25c1a9a6f63d4acf6c9390b850b64" category="section-title">A concluir a configuração do ONTAP</block>
   <block id="938a9f49acfde2902a8737d1aadbf6a1" category="paragraph">Após configurar, ativar e verificar a configuração do MetroCluster, você pode concluir a configuração do cluster adicionando SVMs adicionais, interfaces de rede e outras funcionalidades do ONTAP, conforme necessário.</block>
   <block id="b1d3a32a00e7d497fcf31c70542c202e" category="summary">Você pode baixar e instalar em um terceiro site o software tiebreaker do MetroCluster ou, a partir do ONTAP 9.7, o Mediador do ONTAP.</block>
@@ -12351,8 +12347,6 @@
   <block id="4e04b2ebfeef2f344cfa9299a14a7f15" category="sidebar">Proteção de dados com o MetroCluster</block>
   <block id="13c1fe346da53d3c9c58ab0c190eb172" category="sidebar">Entenda a proteção de dados e a recuperação de desastres da MetroCluster</block>
   <block id="b7c02f1bc7ffc889ddb9e99702663c56" category="sidebar">Firmware da ponte ATTO</block>
-  <block id="ddac5beff5f77bf22595caa98bac08f9" category="sidebar">FibreBridge 7600N</block>
-  <block id="dcb741f9e6e5d6050aeb3d8fd347e9fd" category="sidebar">FibreBridge 7500N</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">Mais recursos</block>
   <block id="fa0344a10c89a05b4e9232391d5feb01" category="sidebar">NetApp Config Advisor</block>
   <block id="3f2b90ec5a9b43745b9c8c9fedf48d8d" category="sidebar">Base de Conhecimento de suporte da NetApp</block>
@@ -13803,7 +13797,6 @@
   <block id="912e887f8c2036c3f03ac7df63957dfd" category="paragraph">9336C-FX2 (36 portas)</block>
   <block id="5f972a786e3a36fb039bc945267e120a" category="paragraph">3132Q-V</block>
   <block id="f403fff2bbc7f3e506dae47b9dff52fc" category="paragraph">3232C</block>
-  <block id="addb9e70976c2f94b8ccfc3736a31888" category="paragraph-title">Informações importantes</block>
   <block id="38c9e66a6eb25313e0ea3390ba7ee1fc" category="cell">Se o seu MetroCluster existente contiver...</block>
   <block id="afe6ad7caef50aaad15afb83c6f40ca0" category="cell">E a plataforma que você está adicionando é...</block>
   <block id="12f30f47d5034530ccaa816ade9953fc" category="paragraph">Um sistema AFF usando *portas de cluster/HA compartilhadas*:</block>
@@ -14411,4 +14404,11 @@
   <block id="55eb6bfcca1bd3820b0fdab3d788f833" category="image-alt">Instalando o módulo NVRAM no chassi: alinhe e trave no lugar</block>
   <block id="40a8cc8505d7467bde3321410a6e4017" category="image-alt">Instalando o módulo controlador no chassi: alinhar, encaixar e cabear</block>
   <block id="ede06bff35d481aeb275fc59e8e85067" category="image-alt">Site_A aguardando atualização após retorno do MetroCluster</block>
+  <block id="cee412eec19a9c7ecf8848f3e299f815" category="list-text">Inicialize o nó no modo de manutenção:</block>
+  <block id="a9efd65de6ec4fcf881629fcb763598c" category="paragraph">Este teste valida que a disponibilidade dos dados não é afetada (exceto pelos protocolos SMB e Fibre Channel) pela troca do cluster para o segundo data center.</block>
+  <block id="85d885cec8ed47ee2262192224675e42" category="paragraph-title">Informações importantes se você estiver adicionando um modelo de plataforma mais antigo</block>
+  <block id="5176f2410e7713f8043052235a3684ca" category="inline-link-macro">defina o bootarg necessário</block>
+  <block id="101589f08b3d384effc16cfe928ff010" category="admonition">*Você deve executar este procedimento conforme descrito sempre que atualizar seus controladores.* Quando novas plataformas são lançadas, pode haver etapas novas ou modificadas que devem ser seguidas. Por exemplo, ao atualizar para plataformas introduzidas no ONTAP 9.15.1 ou posterior, você deve <block ref="c06c0a0b6c863a89cb5464010bbb6325" category="inline-link-macro-rx"></block> e executar outras etapas adicionais para uma atualização bem-sucedida.</block>
+  <block id="362bfa10bf4c8597f25d4428db1f1ff6" category="admonition">*Você deve executar este procedimento conforme descrito sempre que atualizar seus controladores.* Quando novas plataformas são lançadas, pode haver etapas novas ou modificadas que devem ser seguidas. Por exemplo, ao atualizar para plataformas introduzidas no ONTAP 9.15.1 ou posterior, você deve <block ref="cecfc2493a1700137e5c8906925909ad" category="inline-link-macro-rx"></block> e executar outras etapas adicionais para uma atualização bem-sucedida.</block>
+  <block id="8fe05c00237e990eab631a7b042cf93c" category="sidebar">Downloads de firmware ATTO FibreBridge</block>
 </blocks>

@@ -17,7 +17,7 @@ A partir do ONTAP 9.13,1, é possível expandir temporariamente uma configuraç�
 
 A partir do ONTAP 9.9,1, é possível adicionar quatro novos nós à configuração IP do MetroCluster como um segundo grupo de DR. Isso cria uma configuração MetroCluster de oito nós.
 
-.Informações importantes
+.Informações importantes se você estiver adicionando um modelo de plataforma mais antigo
 A orientação a seguir é para um cenário incomum em que você precisa adicionar um modelo de plataforma mais antigo (plataformas lançadas antes do ONTAP 9.15.1) a uma configuração existente do MetroCluster que contém um modelo de plataforma mais recente (plataformas lançadas no ONTAP 9.15.1 ou posterior).
 
 Se a sua configuração existente do MetroCluster contiver uma plataforma que usa *portas de cluster/HA compartilhadas* (plataformas lançadas no ONTAP 9.15.1 ou posterior), você não poderá adicionar uma plataforma que usa *portas de MetroCluster/HA compartilhadas* (plataformas lançadas antes do ONTAP 9.15.1) sem atualizar todos os nós na configuração para o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.

@@ -92,9 +92,9 @@ Siga estas etapas em ambos os nós do MetroCluster FC.
 +
 `halt`
 
-.. Inicialize o nó para Manutenção:
+.. Inicialize o nó no modo de manutenção:
 +
-`mode:boot_ontap maint`
+`boot_ontap maint`
 
 
 
@@ -149,7 +149,7 @@ Se necessário, você pode redefinir o boot_recovery e o rdb_corrupt_bootargs
 +
 [listing]
 ----
-node_A_1::*> halt -node _node-name_
+siteA::*> halt -node <node-name>
 ----
 . Verifique se os seguintes bootargs foram definidos:
 +
