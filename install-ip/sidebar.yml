@@ -105,7 +105,7 @@ entries:
     - title: Configurar coleta de logs em switches IP do MetroCluster
       url: "/install-ip/task-configure-log-collection-mccip.html"
     - title: Gerenciar monitoramento de switch Ethernet
-      url: "/install-ip/manage-monitor.html"
+      url: "/install-ip/monitor-manage.html"
     - title: Verificar o monitoramento do switch Ethernet
       url: "/install-ip/task-monitor-verify-mccip.html"
 - title: Configure o software MetroCluster no ONTAP

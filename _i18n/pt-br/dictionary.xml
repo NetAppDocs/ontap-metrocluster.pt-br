@@ -4637,14 +4637,12 @@
   <block id="09c51db2a0d87cd77a2ca402ad79db18" category="list-text">Plataformas que compartilham uma interface física para cluster local e tráfego MetroCluster. <block ref="286286065c1258176357731fa5aef554" category="inline-link-macro-rx"></block>Consulte para obter informações sobre as velocidades suportadas.</block>
   <block id="8c425f952493015588fb91113b5b2dd8" category="summary">Esta seção contém os requisitos para links interswitches (ISLs) que transportam tráfego MetroCluster em todas as configurações IP do MetroCluster e topologias de rede.</block>
   <block id="422a6c8c8d23cb29ed822adac0da8cd9" category="paragraph">Links interswitches (ISLs) que transportam tráfego MetroCluster em todas as configurações IP do MetroCluster e topologias de rede têm certos requisitos. Esses requisitos se aplicam a todos os ISLs que transportam tráfego MetroCluster, independentemente de os ISLs serem diretos ou compartilhados entre os switches do cliente.</block>
-  <block id="78464639db6e6acf657d9d576a0f2888" category="section-title">Requisitos gerais do MetroCluster ISL</block>
   <block id="a5c426f5b72cbfd96a6dec4a6e3046d2" category="paragraph">O seguinte aplica-se a ISLs em todas as configurações IP do MetroCluster:</block>
   <block id="f2fe3be43c081827bf52c1013416d414" category="list-text">Ambos os tecidos devem ter o mesmo número de ISLs.</block>
   <block id="baf55d93093b54950152b6be3f9bfec2" category="list-text">ISLs em um tecido devem ter a mesma velocidade e comprimento.</block>
   <block id="4b00dc01ca120693f1539bf736f11069" category="list-text">Os ISLs em ambos os tecidos devem ter a mesma velocidade e comprimento.</block>
   <block id="ef6ab3e28db1093c7315b30edeb84730" category="list-text">A diferença máxima suportada na distância entre o tecido 1 e o tecido 2 é 20km ou 0,2ms.</block>
   <block id="adf442d82428813618df31b5f35c8c5d" category="list-text">Os ISLs devem ter a mesma topologia. Por exemplo, todos devem ser links diretos, ou se a configuração usa WDM, então todos devem usar WDM.</block>
-  <block id="ddf41f2636c98d00a2698837f55a3f74" category="list-text">A velocidade ISL deve ser, no mínimo, 10Gbps.</block>
   <block id="cb806a9b25dfb1d4470413a3c2dd9944" category="list-text">Deve haver pelo menos um porto de 10Gbps ISL por tecido.</block>
   <block id="449a2bdc6a969f884c1d33fb66eecea7" category="section-title">Limites de latência e perda de pacotes nos ISLs</block>
   <block id="25b13aa97e6e9eb228478bfddbcc84e9" category="paragraph">O seguinte se aplica ao tráfego de ida e volta entre os switches IP MetroCluster no site_A e site_B, com a configuração MetroCluster em operação de estado estável:</block>
@@ -14411,4 +14409,8 @@
   <block id="101589f08b3d384effc16cfe928ff010" category="admonition">*Você deve executar este procedimento conforme descrito sempre que atualizar seus controladores.* Quando novas plataformas são lançadas, pode haver etapas novas ou modificadas que devem ser seguidas. Por exemplo, ao atualizar para plataformas introduzidas no ONTAP 9.15.1 ou posterior, você deve <block ref="c06c0a0b6c863a89cb5464010bbb6325" category="inline-link-macro-rx"></block> e executar outras etapas adicionais para uma atualização bem-sucedida.</block>
   <block id="362bfa10bf4c8597f25d4428db1f1ff6" category="admonition">*Você deve executar este procedimento conforme descrito sempre que atualizar seus controladores.* Quando novas plataformas são lançadas, pode haver etapas novas ou modificadas que devem ser seguidas. Por exemplo, ao atualizar para plataformas introduzidas no ONTAP 9.15.1 ou posterior, você deve <block ref="cecfc2493a1700137e5c8906925909ad" category="inline-link-macro-rx"></block> e executar outras etapas adicionais para uma atualização bem-sucedida.</block>
   <block id="8fe05c00237e990eab631a7b042cf93c" category="sidebar">Downloads de firmware ATTO FibreBridge</block>
+  <block id="4500ea599da00d6db7bf0ffa4e13554f" category="section-title">Requisitos do MetroCluster ISL</block>
+  <block id="1e2cb5bcdb8947c91d9b70a1c5ee21c0" category="list-text">A velocidade ISL mínima necessária depende do modelo da plataforma:</block>
+  <block id="fe25d0e834bbf213fee0bc910f4a7054" category="list-text">Nos sistemas AFF A1K e AFF A90 , a velocidade ISL deve ser de pelo menos 100 Gbps. Usar uma velocidade ISL diferente requer uma Solicitação de Variação de Produto de Recurso (FPVR). Para registrar um FPVR, entre em contato com sua equipe de vendas.</block>
+  <block id="9260215cd28aa0daaf49857a4307ca43" category="list-text">Em todas as outras plataformas, a velocidade ISL deve ser de pelo menos 10 Gbps.</block>
 </blocks>
