@@ -388,7 +388,7 @@ Antes de atualizar as plataformas, você deve remover o monitoramento se a confi
  a| 
 Desempate
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["Remoção das configurações do MetroCluster"] No _MetroCluster Tiebreaker Instalação e Configuração conteúdo_
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metrocluster-configurations["Remoção das configurações do MetroCluster"] no conteúdo _Instalação e Configuração do Desempate do MetroCluster_
 
 
 
@@ -1474,7 +1474,7 @@ Depois de concluir a atualização da configuração do MetroCluster, você pode
  a| 
 Desempate
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["Adição de configurações do MetroCluster"] Na seção _MetroCluster tiebreaker Installation and Configuration_.
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["Adição de configurações do MetroCluster"] na seção _Instalação e Configuração do Desempate do MetroCluster_.
 
 
 

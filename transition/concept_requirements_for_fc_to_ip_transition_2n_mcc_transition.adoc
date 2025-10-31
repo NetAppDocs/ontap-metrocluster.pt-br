@@ -741,7 +741,7 @@ Se a configuração existente for monitorada com a configuração tiebreaker do 
 .Passos
 . Remova a configuração existente do MetroCluster do software tiebreaker.
 +
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["Remoção das configurações do MetroCluster"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metrocluster-configurations["Remoção das configurações do MetroCluster"]
 
 . Remova a configuração do MetroCluster existente de qualquer aplicativo de terceiros que possa iniciar o switchover.
 +

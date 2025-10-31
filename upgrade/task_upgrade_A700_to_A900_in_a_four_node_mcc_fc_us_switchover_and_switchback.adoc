@@ -452,7 +452,7 @@ Se a configuração existente for monitorada com a configuração tiebreaker do 
 .Passos
 . Remova a configuração existente do MetroCluster do software tiebreaker.
 +
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["Remoção das configurações do MetroCluster"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metrocluster-configurations["Remoção das configurações do MetroCluster"]
 
 . Remova a configuração do MetroCluster existente de qualquer aplicativo de terceiros que possa iniciar o switchover.
 +
@@ -1428,5 +1428,5 @@ Depois de concluir a atualização, você deve enviar uma mensagem AutoSupport i
 
 Se a configuração do MetroCluster tiver sido configurada anteriormente para monitoramento pelo software tiebreaker, você poderá restaurar a conexão tiebreaker.
 
-. Siga as etapas em: link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["Adição de configurações do MetroCluster"] Na seção _MetroCluster Tiebreaker Installation and Configuration_.
+. Siga os passos em: link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["Adição de configurações do MetroCluster"] na seção _Instalação e Configuração do Desempate do MetroCluster_.
 

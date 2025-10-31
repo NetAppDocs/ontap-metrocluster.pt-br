@@ -303,7 +303,7 @@ Antes de iniciar a atualização, remova a configuração existente do tiebreake
 Se a configuração existente for monitorada com a configuração tiebreaker do MetroCluster ou outros aplicativos de terceiros (por exemplo, o ClusterLion) que possam iniciar um switchover, você deverá remover a configuração do MetroCluster do tiebreaker ou de outro software antes de substituir a controladora antiga.
 
 .Passos
-. link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["Remova a configuração existente do MetroCluster"] Do software tiebreaker.
+. link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metrocluster-configurations["Remova a configuração existente do MetroCluster"] do software Tiebreaker.
 . Remova a configuração do MetroCluster existente de qualquer aplicativo de terceiros que possa iniciar o switchover.
 +
 Consulte a documentação da aplicação.

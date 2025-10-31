@@ -97,7 +97,7 @@ Depois de concluir a atualização da configuração do MetroCluster, você pode
  a| 
 Desempate
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["Adicione configurações do MetroCluster"].
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["Adicione configurações do MetroCluster"].
 
 
 

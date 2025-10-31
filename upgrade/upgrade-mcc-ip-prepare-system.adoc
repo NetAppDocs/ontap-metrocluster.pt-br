@@ -684,7 +684,7 @@ Antes de atualizar as plataformas, você deve remover o monitoramento se a confi
  a| 
 Desempate
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["Remoção das configurações do MetroCluster"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metrocluster-configurations["Remoção das configurações do MetroCluster"]
 
 
 
