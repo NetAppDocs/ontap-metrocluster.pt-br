@@ -90,7 +90,7 @@ Para habilitar o monitoramento contínuo no Tiebreaker 1.6 ou posterior, você p
 * Você executa essa tarefa depois de adicionar com sucesso uma configuração do MetroCluster ao Tiebreaker ou se seus certificados expirarem.
 
 
-.Passo
+.Passos
 . Execute o seguinte comando para cada certificado que você precisa importar (servidor SSL, intermediário ou raiz).
 +
 `/opt/netapp/java/bin/keytool -import -trustcacerts -file <certificate_file_name> -keystore "/opt/netapp/java/lib/security/cacerts" -alias <certificate>`
@@ -109,6 +109,10 @@ O exemplo a seguir mostra como importar um certificado raiz com o nome do arquiv
 /opt/netapp/java/bin/keytool -import -trustcacerts -file ssl_cert.crt -keystore "/opt/netapp/java/lib/security/cacerts" -alias ssl_cert
 ----
 
+
+. Reinicie o software Tiebreaker:
++
+`systemctl restart netapp-metrocluster-tiebreaker-software`
 
 
 

@@ -15,9 +15,9 @@ Você pode fazer transições sem interrupções de workloads e dados de uma con
 
 A partir do ONTAP 9.13,1, esse procedimento é compatível com configurações IP do MetroCluster nas quais o MetroCluster e os compartimentos de unidades são conetados aos mesmos switches IP (uma configuração de switch de armazenamento compartilhado).
 
-A partir do ONTAP 9.13,1, você faz uma transição sem interrupções de workloads e dados de uma configuração MetroCluster FC de oito nós existente para uma nova configuração MetroCluster IP.
+A partir do ONTAP 9.13.1, você pode realizar uma transição não disruptiva de cargas de trabalho e dados de uma configuração MetroCluster FC existente de oito nós para uma nova configuração MetroCluster IP de oito nós.  Você utiliza esse procedimento para migrar um grupo FC DR de quatro nós, remover o grupo FC DR vazio e, em seguida, repetir o procedimento para o segundo grupo FC DR. 
 
-A partir do ONTAP 9.8, você faz uma transição sem interrupções de workloads e dados de uma configuração MetroCluster FC de quatro nós existente para uma nova configuração MetroCluster IP.
+A partir do ONTAP 9.8, você pode realizar uma transição não disruptiva de cargas de trabalho e dados de uma configuração MetroCluster FC existente de quatro nós para uma nova configuração MetroCluster IP de quatro nós.  Após concluir a transição, você poderá expandir para uma configuração IP MetroCluster de oito nós, se necessário. Verlink:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["Expanda uma configuração IP do MetroCluster"] .
 
 * Esse procedimento não causa interrupções.
 +
@@ -28,6 +28,10 @@ A configuração do MetroCluster pode continuar fornecendo dados durante a opera
 Se você tiver uma configuração MetroCluster FC de dois nós, link:concept_choosing_your_transition_procedure_mcc_transition.html["Escolhendo seu procedimento de transição"]consulte .
 
 * Este procedimento descreve as etapas necessárias para fazer a transição de um grupo de RD FC de quatro nós. Se você tiver uma configuração de oito nós (dois grupos de DR FC), repita todo o procedimento para cada grupo de DR FC.
++
+
+NOTE: Ao adicionar ou remover um grupo de recuperação de desastres (DR) como parte deste procedimento, você deve verificar se a remoção ou adição do grupo de DR foi bem-sucedida antes de adicionar ou remover outro grupo de DR.
+
 * Você deve atender a todos os requisitos e seguir todas as etapas do procedimento.
 
 

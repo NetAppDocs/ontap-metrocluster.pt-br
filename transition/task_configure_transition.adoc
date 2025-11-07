@@ -223,6 +223,15 @@ Do you want to use this configuration? {yes, no} [yes]: yes
 
 
 . Repita estas etapas para unir node_B_3-IP e node_B_4-IP ao cluster_B.
+. Se você estiver usando o Onboard Key Manager, execute as seguintes etapas no cluster onde adicionou um novo nó:
++
+.. Sincronizar a configuração do gerenciador de chaves:
++
+`security key-manager onboard sync`
+
+.. Digite a senha do Gerenciador de Chaves de Bordo quando solicitado.
+
+
 
 
 
