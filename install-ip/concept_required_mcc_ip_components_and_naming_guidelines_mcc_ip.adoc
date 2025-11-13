@@ -274,8 +274,6 @@ link:concept_considerations_drive_assignment.html["Saiba mais sobre atribuição
 
 == Requisitos de pool e unidade (mínimo suportado)
 
-São recomendadas oito gavetas de disco SAS (quatro gavetas em cada local) para permitir a propriedade de disco por compartimento.
-
 Uma configuração IP MetroCluster de quatro nós requer a configuração mínima em cada local:
 
 * Cada nó tem pelo menos um pool local e um pool remoto no local.

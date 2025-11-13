@@ -21,6 +21,17 @@ Para obter detalhes sobre problemas conhecidos, limitações e precauções de a
 
 
  a| 
+Suporte a Flash Cache para sistemas FAS50 em configurações IP MetroCluster.
+ a| 
+O Flash Cache é suportado em sistemas FAS50 em configurações IP MetroCluster .
+
+link:../install-ip/concept_considerations_drive_assignment.html#disk-assignment-on-fas50-systems-with-flash-cache["Atribuição de disco em sistemas FAS50 com Flash Cache"]
+ a| 
+ONTAP 9.18.1
+
+
+
+ a| 
 Suporte IP MetroCluster para criptografia de ponta a ponta
  a| 
 A criptografia de ponta a ponta é suportada nos seguintes sistemas para criptografar o tráfego de back-end, como NVlog e dados de replicação de armazenamento, entre os sites em uma configuração de IP do MetroCluster .

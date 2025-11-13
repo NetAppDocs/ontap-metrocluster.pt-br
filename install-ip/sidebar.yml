@@ -5,6 +5,7 @@ entries:
 - title: Visão geral
   url: "/install-ip/index.html"
 - title: Prepare-se para a instalação do MetroCluster
+  pdf-filename: Prepare-se para a instalação do IP MetroCluster.
   entries:
   - title: Diferenças entre as configurações do ONTAP MetroCluster
     url: "/install-ip/concept_considerations_differences.html"
@@ -146,7 +147,7 @@ entries:
   entries:
   - title: Preparar para instalar o ONTAP Mediator
     url: "/install-ip/concept_mediator_requirements.html"
-  - title: Configurando o ONTAP Mediator a partir de uma configuração de IP do MetroCluster
+  - title: Configure o ONTAP Mediator para uma configuração IP do MetroCluster.
     url: "/install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html"
   - title: Desconfigurar o ONTAP Mediator da configuração de IP do MetroCluster
     url: "/install-ip/task_remove_unconfigure_mediator.html"

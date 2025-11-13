@@ -4696,7 +4696,6 @@
   <block id="8bcabb3e778663882c95082b775c75b8" category="summary">A partir do ONTAP 9.4, as configurações IP do MetroCluster suportam novas instalações com sistemas AFF usando ADP (particionamento avançado de unidade).</block>
   <block id="25a1a5e06239d38607850869b12b3607" category="doc">Considerações para atribuição automática de acionamento e sistemas ADP no ONTAP 9.4 e posterior</block>
   <block id="27211cf5d485f8491ca9b566aefe2d6d" category="paragraph">A partir do ONTAP 9.4, as configurações IP do MetroCluster suportam novas instalações usando atribuição automática de disco e ADP (particionamento avançado de unidade).</block>
-  <block id="72a38a5af8be1c706e478add3356ba90" category="paragraph">Você deve estar ciente das seguintes considerações ao usar ADP com configurações IP do MetroCluster:</block>
   <block id="e528d26e96f91b34e70a35c4661d620d" category="list-text">O ONTAP 9.4 e posterior são necessários para usar o ADP com configurações MetroCluster IP em sistemas AFF e ASA.</block>
   <block id="959bb45d9851a2b3efaeb05db74e0a80" category="list-text">O ADPv2 é compatível com configurações IP do MetroCluster.</block>
   <block id="a393732e5defe7b7a921a586e53ec51d" category="list-text">O agregado raiz deve estar localizado na partição 3 para todos os nós em ambos os locais.</block>
@@ -4793,7 +4792,6 @@
   <block id="7b1967ab8b38aa7f5c2c50d91fb6d616" category="section-title">Diferenças de atribuição de ADP e disco por sistema em configurações IP do MetroCluster</block>
   <block id="a9a5083f94ce7d550f0b47f6cc2c908f" category="paragraph">A operação de Advanced Drive Partitioning (ADP) e atribuição automática de disco nas configurações MetroCluster IP varia dependendo do modelo do sistema.</block>
   <block id="d28feffd6ede91f566713f192c5dfd64" category="admonition">Em sistemas que usam ADP, agregados são criados usando partições nas quais cada unidade é particionada em partições P1, P2 e P3. O agregado raiz é criado usando partições P3.</block>
-  <block id="bfaf3f06462f8d34cf668e3270ad1d65" category="paragraph">Você deve atender aos limites do MetroCluster para o número máximo de unidades compatíveis e outras diretrizes.</block>
   <block id="81c8a8438f05c7253ddb8e89ac70d5d9" category="section-title">ADP e atribuição de disco em sistemas AFF A320</block>
   <block id="d466ded16012c3dc3fc619cdfe020258" category="cell">Unidades por local</block>
   <block id="ca9524243098a6f3c33c4b62f722e672" category="cell">Regras de atribuição de unidades</block>
@@ -4973,7 +4971,6 @@
   <block id="d4fda9bf787c3a38a379763f5d621600" category="paragraph">É necessária conetividade independente entre cada local e o Mediador ONTAP. Uma falha em um local não deve interromper a conetividade IP entre os outros dois locais não afetados.</block>
   <block id="fec21bcdc858f42f1c942fd943d09de4" category="paragraph">Você deve garantir que a configuração atenda a vários requisitos de host.</block>
   <block id="aecf60a0046b893cbed6332405eb3aa3" category="list-text">O Mediador ONTAP deve ser instalado em um local externo fisicamente separado dos dois clusters do ONTAP.</block>
-  <block id="6f044e53b0f973c21b9f45e9f29dd890" category="list-text">O Mediador ONTAP suporta um número máximo de cinco configurações MetroCluster.</block>
   <block id="00dcc4021e9b5b5c4107ab832d8a3b22" category="list-text">O ONTAP Mediator não requer mais do que os requisitos mínimos do sistema operacional host para CPU e memória (RAM).</block>
   <block id="3238177a17500506d8e25597811d95a1" category="list-text">Além dos requisitos mínimos do sistema operacional host, pelo menos 30GBMB de espaço em disco utilizável adicional devem estar disponíveis.</block>
   <block id="d87323d7c443195bdfe43686953d17da" category="list-text">Cada grupo de DR requer até 200MB GB de espaço em disco.</block>
@@ -5338,7 +5335,6 @@
   <block id="5213788f29292b96ef1a650e5fce6938" category="list-text">Esta tarefa permite o switchover não planejado automático por padrão.</block>
   <block id="ada003c5d7b06ea1b392045334928823" category="list-text">Esta tarefa pode ser executada na interface ONTAP de qualquer nó na configuração IP do MetroCluster.</block>
   <block id="f8dc7177731310562718d80a3440fa9d" category="paragraph"><block ref="3514c4a480186e54ede98b5d0a79cc77" prefix="" category="inline-code"></block></block>
-  <block id="1645e08f0bfdf72de9dd9cf2ec8208de" category="admonition">Você será solicitado a fornecer o nome de usuário e a senha para a conta de usuário do administrador do Mediator.</block>
   <block id="a4d7653998b91da503a24fc71e65ad4f" category="list-text">Verifique se a funcionalidade de comutação automática está ativada:</block>
   <block id="5c0eb063c7de9ced4fcf06367dc8cf49" category="list-text">Verifique se o Mediador está em execução.</block>
   <block id="241c04bf46a427ee9559a37db9cfc64c" category="list-text">Mostrar os discos virtuais do Mediator:</block>
@@ -8805,9 +8801,7 @@
   <block id="ef0b6886d8755e5cb21c0bd5f9f81c01" category="cell">Switches NVIDIA</block>
   <block id="155bba03249764c61fd72335fd0c56c8" category="paragraph">SN2100</block>
   <block id="47d81ac708cab22da7ea952550b6f757" category="summary">Novos recursos do Mediador ONTAP são fornecidos com cada versão. Eis as novidades.</block>
-  <block id="3261bd656e2112e78b0313c87c039420" category="doc">O que há de novo no suporte do ONTAP Mediator</block>
   <block id="ab67c4c2b9b0f6070e68d79d3a0b6c63" category="cell">Capacidade do mediador ONTAP</block>
-  <block id="e8467e9b509c4924668c01eb7ab2adde" category="cell">Versão de ONTAP</block>
   <block id="5793a46a4020e2b9d210afaa14008d67" category="paragraph">O switchover não planejado automático assistido por mediador (MAUSO) é suportado no caso de um desligamento ambiental.</block>
   <block id="8a6db987355c97228c7eda746c7aab92" category="paragraph">Se um site desligar graciosamente devido a um desligamento ambiental, MAUSO é acionado.</block>
   <block id="581b029a5b5e612bbb2ff34e6b1ff9ad" category="paragraph"><block ref="581b029a5b5e612bbb2ff34e6b1ff9ad" category="inline-link-rx"></block></block>
@@ -13193,7 +13187,6 @@
   <block id="d98545518df18c073a4a75d72759ddfe" category="list-text">A migração para SVM não é compatível com FabricPool quando a origem ou o destino é um cluster do MetroCluster.</block>
   <block id="de60962ea114e8e20b41343aa7431cbf" category="inline-link-macro">Saiba mais sobre a mobilidade de dados do SVM</block>
   <block id="cb692d9778a8fa1464d6b442ab90722f" category="paragraph"><block ref="53c488ccbc80272b509e45a126fd033b" category="inline-link-macro-rx"></block>.</block>
-  <block id="b4911e786bbd878f489a84835fcee570" category="list-text">IPv6 não é suportado com o Mediador ONTAP.</block>
   <block id="d247a27201590148c4ea6bf493729fd1" category="list-text">A porta 22/tcp não é necessária para operação normal, mas você pode ativá-la temporariamente para manutenção e desativá-la quando a sessão de manutenção tiver terminado.</block>
   <block id="02674a4ef33e11c879283629996c8ff8" category="cell">Direção</block>
   <block id="c5df47f9068f6d11f238ec77908abf18" category="paragraph">22/tcp</block>
@@ -13472,7 +13465,6 @@
   <block id="a02702c70aea42098864f08e7416a2d3" category="list-text">Se você planeja atualizar sua versão do Linux, faça isso antes de instalar a versão mais atual do ONTAP Mediator.</block>
   <block id="c53d5657445f71b92e34d86103a86f85" category="list-text">Os softwares ONTAP Mediator e MetroCluster Tiebreaker não devem ser usados com a mesma configuração do MetroCluster.</block>
   <block id="059b37c83fb6387899a2deb16d02458f" category="list-text">O ONTAP Mediator deve ser instalado em um host Linux em um local separado dos sites do MetroCluster.</block>
-  <block id="857725e43c3ed86c03193f33f6382417" category="list-text">O ONTAP Mediator pode suportar até cinco configurações do MetroCluster simultaneamente.</block>
   <block id="c9ffad835642fcae631d9df1be00fc38" category="section-title">Requisitos de rede para usar o ONTAP Mediator em uma configuração MetroCluster</block>
   <block id="4f7415d27a43620353acfcd34858e996" category="paragraph">Para instalar o ONTAP Mediator em uma configuração MetroCluster, você deve garantir que a configuração atenda a vários requisitos de rede.</block>
   <block id="f96926f4c01d2573af8b25445cc69961" category="paragraph">O link entre o ONTAP Mediator e um grupo DR deve ter pelo menos 20 Mbps de largura de banda.</block>
@@ -13638,8 +13630,6 @@
   <block id="c9c78db1df5763fa1ed9a33d8364ecd6" category="list-text">O ONTAP Mediator deve ter sido instalado com sucesso em um local de rede que possa ser acessado por ambos os sites do MetroCluster.</block>
   <block id="f3a4ed516d3573c05bec448b098ee829" category="list-text">Você deve ter o endereço IP do host executando o ONTAP Mediator.</block>
   <block id="81526f6b8e9033c7824d444ad8950ae4" category="list-text">Você deve ter o nome de usuário e a senha do ONTAP Mediator.</block>
-  <block id="c69fdc77c5b94d40ff8bd9d1129290c3" category="list-text">Uma única instalação do ONTAP Mediator pode ser configurada com até cinco configurações de IP do MetroCluster.</block>
-  <block id="5954e0574dae3d22be232db113f0f328" category="list-text">Adicione o ONTAP Mediator ao ONTAP:</block>
   <block id="fffcc6d8d0cf061a4a3bb3e984bed6a4" category="summary">Você pode remover o mediador ONTAP da configuração de IP do MetroCluster.</block>
   <block id="7f0eed44b544654d8519a5ce7f8a8e69" category="doc">Desconfigurar o ONTAP Mediator da configuração de IP do MetroCluster</block>
   <block id="0ca0841611aff3d2fa5059343e27e7fa" category="paragraph">Você pode desconfigurar o ONTAP Mediator da configuração de IP do MetroCluster.</block>
@@ -13662,8 +13652,6 @@
   <block id="11e389769edd0ffd96bc52520e736666" category="paragraph">Se você estiver renomeando ambos os switches na rede, use o mesmo comando em cada switch.</block>
   <block id="daf179095240111942b292cddbac4271" category="list-text">Você precisa da senha de administrador e acesso a um servidor HTTP, FTP ou Trivial File Transfer Protocol (TFTP).</block>
   <block id="dfd2868dd5a4b44891e23870faf6ecda" category="list-text"><block ref="dfd2868dd5a4b44891e23870faf6ecda" category="inline-link-macro-rx"></block></block>
-  <block id="54485326fb6c0b4a273ca75c003d6a9d" category="paragraph">Novos aprimoramentos do ONTAP Mediator são fornecidos com cada versão. Eis as novidades.</block>
-  <block id="0294813eff3958ef43f353e390bb4729" category="paragraph">Para obter detalhes sobre como instalar ou atualizar o ONTAP Mediator na configuração do MetroCluster, acesse <block ref="f7ab7b3d6222d761ab5a933510823b89" category="inline-link-macro-rx"></block>.</block>
   <block id="3114aeea55539bf595af1665b8572d3a" category="paragraph"><block ref="3114aeea55539bf595af1665b8572d3a" category="inline-link-rx"></block></block>
   <block id="f818e428c62e3fad315884b1e49da0dc" category="paragraph">Suporte inicial para o ONTAP Mediator em configurações de IP do MetroCluster</block>
   <block id="8fa6539999f2d3aff134c30600c80e41" category="inline-link-macro">Baixe e instale os arquivos NVIDIA RCF</block>
@@ -13702,7 +13690,6 @@
   <block id="0eaedccc418ca7fe214ff0e2f2fb9d4f" category="sidebar">Configurar coleta de logs em switches IP do MetroCluster</block>
   <block id="fa19a8bee183bfbc767660e140eae8dc" category="sidebar">Gerenciar monitoramento de switch Ethernet</block>
   <block id="eb781ca5db4579a64062bcf161d91cbe" category="sidebar">Verificar o monitoramento do switch Ethernet</block>
-  <block id="3ef38a7332e8a3a92f8540dfdb80708d" category="sidebar">Configurando o ONTAP Mediator a partir de uma configuração de IP do MetroCluster</block>
   <block id="84e085c408a358fe4e512066e45c3837" category="sidebar">Gerencie o ONTAP Mediator com o System Manager</block>
   <block id="d2dfa94f0ec6119f137b05b65f72b726" category="open-title">Se um plex falhar:</block>
   <block id="a3d50ad07bbec0a08b055954bb66cfcb" category="list-text">Destrua o plex com falha:</block>
@@ -14101,7 +14088,6 @@
   <block id="dbbd0d3a920fcce3e934fa0740097c19" category="doc">Requisitos para Inter-Switch Links (ISLs) em configurações de IP do MetroCluster</block>
   <block id="e7a6b008ef2ebf568f593e71d5f62762" category="doc">Configurar os nós e clusters ONTAP na configuração de IP do MetroCluster</block>
   <block id="c6929b82d09d520230d3410f013a4beb" category="doc">Matriz de suporte de configurações do ONTAP MetroCluster</block>
-  <block id="26e7329446b9653c1afcd63d2340cfbf" category="doc">Considerações de IP do MetroCluster para atribuição automática de unidades e sistemas ADP</block>
   <block id="a2e3b015ada3007372f3890d911b3685" category="doc">Requisitos de porta de firewall para configurações de IP do MetroCluster</block>
   <block id="1bcaecfd01f4e5a2ce59bf09e79ab95f" category="doc">Aprenda sobre o uso de IP virtual e Border Gateway Protocol com uma configuração de IP do MetroCluster</block>
   <block id="75ab17da123365d00f2ec499305169d8" category="doc">Saiba mais sobre armazenamento remoto e configurações de IP do MetroCluster</block>
@@ -14432,4 +14418,55 @@
   <block id="d134f3e8bbc2dfac90ce02f2d628c649" category="list-text">Se você estiver usando o Onboard Key Manager, execute as seguintes etapas no cluster onde adicionou um novo nó:</block>
   <block id="87f7e23221d5cdfbe745a1b00fcf1068" category="list-text">Sincronizar a configuração do gerenciador de chaves:</block>
   <block id="65ce095af1b3ce283b41ed1ff6456ed9" category="list-text">Digite a senha do Gerenciador de Chaves de Bordo quando solicitado.</block>
+  <block id="2105de6863814cadf13f4a5adf30bcf8" category="doc">Requisitos de IP do MetroCluster para atribuição automática de unidades e sistemas ADP</block>
+  <block id="8407092afa5cdc22ea9a94ffac556a37" category="paragraph">Ao usar o ADP com configurações de IP do MetroCluster , você deve estar ciente do seguinte:</block>
+  <block id="a88e04c5993ff7e8b685db2d115453a3" category="paragraph">Analise os seguintes requisitos antes de utilizar as tabelas:</block>
+  <block id="28b8efa498ff52a7274720a8171ce1d8" category="list-text">Você deve atender aos limites do MetroCluster quanto ao número máximo de unidades suportadas e outras diretrizes. Consulte o<block ref="ed4326c3351d8ac0e334b8b4d9b37c82" category="inline-link-rx"></block> .</block>
+  <block id="d13c49a2255fa0364f3eb44e91f11a98" category="inline-link-macro">Remover a propriedade do ONTAP de um disco</block>
+  <block id="207c7128f49aebfb0e6e2a985d7331f7" category="list-text">Se você estiver reutilizando uma gaveta de discos externa, verifique se a propriedade dos discos na gaveta externa foi removida antes de conectá-la ao controlador. Consulte<block ref="472eb82215883a6679f6be68392349e7" category="inline-link-macro-rx"></block> .</block>
+  <block id="2c3b5a5bcad371b696f81fddf09453f4" category="section-title">Atribuição de disco em sistemas FAS50 com Flash Cache</block>
+  <block id="10d1ab0c8cf052d4ea0d37de04e41090" category="paragraph">A partir do ONTAP 9.18.1, o Flash Cache é suportado em sistemas FAS50 para configurações IP MetroCluster .</block>
+  <block id="6b3168d94d2d3e334f52748aea390dba" category="list-text">Não é possível ter simultaneamente agregados de dados e o agregado raiz com unidades Flash Cache no compartimento interno.</block>
+  <block id="653607d5d7d3af18614ca6042833ed8a" category="list-text">Os slots 0 e 23 são usados para unidades de cache flash.</block>
+  <block id="8e61d02677cd63addf1b7c325e4f7ac0" category="list-text">Se você estiver reutilizando uma gaveta de discos externa, verifique se a propriedade dos discos na gaveta externa foi removida antes de conectá-la ao controlador. Consulte<block ref="a28575c3c82c68e34920359e77fd18f4" category="inline-link-macro-rx"></block> .</block>
+  <block id="da0670d9828b0c4a39fd70e8176cd286" category="paragraph">36 unidades (12 unidades internas e 24 unidades externas – com os agregados de dados no compartimento externo e o agregado raiz no compartimento interno)</block>
+  <block id="13825b1621d2d8ab9420fd458a556917" category="paragraph">Os discos rígidos internos são divididos em quatro grupos iguais (quartos).  Cada trimestre é automaticamente atribuído a um grupo separado.  Os discos rígidos nas prateleiras externas estão divididos em quatro grupos iguais (quartos).  Cada prateleira de um quarto é automaticamente atribuída a um conjunto separado.</block>
+  <block id="fcbd19b726fdd6160dfe2ab43f285a55" category="paragraph">*Notas:*</block>
+  <block id="db7a2b68018b688d638484b17a61fde8" category="list-text">Se você estiver usando unidades internas e externas, primeiro precisará instalar o ONTAP e configurar o cluster local apenas com as unidades internas.  Em seguida, você conecta manualmente a prateleira externa após concluir a instalação ou configuração.</block>
+  <block id="f1839293460380c463f11487c07a0a03" category="list-text">É necessário um mínimo de 12 discos rígidos internos para o agregado raiz.  Você deve inserir os discos rígidos internos raiz a partir do slot 1.  Por exemplo, para 12 unidades internas, use os slots 1-3, 6-8, 12-14 e 18-20.</block>
+  <block id="ebe553e3b0c5ac8c6b06cd6914cd1875" category="paragraph">24 unidades externas</block>
+  <block id="8fe5d17841821de914d5209eef34ab37" category="list-text">A partir do ONTAP 9.18.1 e do ONTAP Mediator 1.11, uma única instância do ONTAP Mediator pode gerenciar até dez configurações do MetroCluster simultaneamente.  Em versões anteriores, o ONTAP Mediator podia suportar até cinco configurações de MetroCluster simultaneamente.</block>
+  <block id="ed0eda41e396ef5ea6f36bac23db4825" category="list-text">A partir do ONTAP 9.18.1, o IPv6 é suportado para o ONTAP Mediator 1.11 ou posterior em uma configuração IP MetroCluster .</block>
+  <block id="760ee33a4b5ef0f8b6e53de05243e44d" category="paragraph">Você deve configurar o ONTAP Mediator no nó ONTAP para usá-lo em uma configuração IP do MetroCluster .</block>
+  <block id="f0fe71516e304fd8465b87447ccb2410" category="list-text">Adicionar o ONTAP Mediator ao ONTAP.  Os passos dependem se você deseja usar um endereço IPv4 ou IPv6.</block>
+  <block id="2123705c6998ca910a5e950a54dcbe12" category="list-text">Para usar IPv6, você precisa estar executando o ONTAP 9.18.1 ou posterior e o ONTAP Mediator 1.11 ou posterior.</block>
+  <block id="fa66e734e4c55bd261d853e5039fbe1f" category="list-text">Se você habilitar o IPv6 em um cluster, não poderá desabilitá-lo posteriormente.</block>
+  <block id="3b84df93f9af27f6e1ffc9a619bab72d" category="open-title">Usar IPv4</block>
+  <block id="a1c25aeecadb66052deb23e0403a5921" category="list-text">Execute o seguinte comando para adicionar o ONTAP Mediator:</block>
+  <block id="43af59b9fd4e41413d9a6f0348be897c" category="paragraph"><block ref="d795c90e620cf7aa453d5e920147531a" prefix="" category="inline-code"></block></block>
+  <block id="6abf1e89985863ce5f318d51791232d7" category="admonition">Você será solicitado a inserir o nome de usuário e a senha da conta de administrador do Mediator.</block>
+  <block id="5be30efa94af9b795d71ee2d7b145d2b" category="open-title">Use IPv6</block>
+  <block id="612061c2bc2a413707af3751bd332876" category="list-text">Execute o seguinte comando em ambos os clusters:</block>
+  <block id="d957a10f1dd8c769f317478657c276ae" category="paragraph"><block ref="a9f92466cd774c45f91bfd0c0a18c08e" prefix="" category="inline-code"></block></block>
+  <block id="36aef5098db9d54c0f3f8908f76cf3f9" category="list-text">Configure o endereço IP de gerenciamento do nó com endereços IPv6 em todos os quatro nós.</block>
+  <block id="a5ae27866152c64d13caa7491b407c4f" category="list-text">Adicionar o mediador ONTAP :</block>
+  <block id="3bd8e4fdfb5d625cdaa4c9ff27e8ce16" category="paragraph"><block ref="26623cc20cef21441276d0bbf177cf0e" prefix="" category="inline-code"></block></block>
+  <block id="6ed3fcc536a033a1e0dbf1249734de16" category="paragraph">Descubra as novidades da plataforma MetroCluster FC e o suporte a switches.</block>
+  <block id="29a236ce865da06e20bbbd8ea0ab52a7" category="doc">O que há de novo no suporte do ONTAP Mediator para MetroCluster?</block>
+  <block id="5bf7798853f8a5c7ca4569ca703439aa" category="paragraph">Saiba mais sobre os novos recursos e melhorias do MetroCluster para suporte ao ONTAP Mediator.</block>
+  <block id="7f29812fdda9b63b5432343e48888f3e" category="inline-link-macro">O que há de novo no ONTAP Mediator?</block>
+  <block id="ddb6a6aeab3697bf98a9f8ec6246d66d" category="paragraph">Para obter detalhes sobre os recursos e melhorias de cada versão do ONTAP Mediator, consulte<block ref="e9f46c418b00d5917fe7eb2e94490962" category="inline-link-macro-rx"></block> .</block>
+  <block id="0812efe70fdb78c8000d6ba26954775e" category="paragraph">O IPv6 é compatível com o ONTAP Mediator 1.11 ou posterior em configurações IP do MetroCluster .</block>
+  <block id="f2048d473088527114dc19a006677413" category="paragraph"><block ref="f2048d473088527114dc19a006677413" category="inline-link-macro-rx"></block></block>
+  <block id="e48e73e576f724fd4213ab1eca7edb4a" category="paragraph">ONTAP 9.18.1</block>
+  <block id="9e56101ef16e61af6d774b1081c9574f" category="paragraph">O ONTAP Mediator 1.11 adiciona suporte para o gerenciamento de até dez configurações de IP do MetroCluster usando uma única instância do ONTAP Mediator.</block>
+  <block id="6cd038268950ad67448da19d251b8b00" category="inline-link-macro">Prepare-se para instalar o ONTAP Mediator em uma configuração IP MetroCluster.</block>
+  <block id="1089521b875f07ae57f1135eb98b2377" category="paragraph"><block ref="1089521b875f07ae57f1135eb98b2377" category="inline-link-macro-rx"></block></block>
+  <block id="112400235efe61457dd84a5025980501" category="paragraph">Suporte a Flash Cache para sistemas FAS50 em configurações IP MetroCluster.</block>
+  <block id="d29d70f24544dd96e722beaa46df1aab" category="paragraph">O Flash Cache é suportado em sistemas FAS50 em configurações IP MetroCluster .</block>
+  <block id="05d0c37c094748aa6cfa52ca49f7fc2a" category="paragraph"><block ref="05d0c37c094748aa6cfa52ca49f7fc2a" category="inline-link-macro-rx"></block></block>
+  <block id="cef6c5c1ddb810d5c9674f38a9521196" category="sidebar">Prepare-se para a instalação do MetroCluster FC.</block>
+  <block id="163074dbb0b4f8b495d1b19b615e87eb" category="sidebar">Prepare-se para a instalação do IP MetroCluster.</block>
+  <block id="42f362146dbe8748970967efe562f3c8" category="sidebar">Configure o ONTAP Mediator para uma configuração IP do MetroCluster.</block>
+  <block id="9ac9cffddfe08e79e2955f5af452fef4" category="sidebar">Prepare-se para a instalação do trecho MetroCluster</block>
 </blocks>

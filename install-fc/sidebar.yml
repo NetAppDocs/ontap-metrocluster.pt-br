@@ -5,6 +5,7 @@ entries:
 - title: Visão geral
   url: "/install-fc/index.html"
 - title: Prepare-se para a instalação do MetroCluster
+  pdf-filename: Prepare-se para a instalação do MetroCluster FC.
   entries:
   - title: Diferenças entre as configurações do ONTAP MetroCluster
     url: "/install-fc/concept_considerations_differences.html"

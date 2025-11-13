@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: drive auto-assignment, drive, adp, advanced disk partitioning, root disk, unmirrored root, data partition, root partition, shelf-by-shelf, AFF A320, AFF A220, AFF A250, C250, AFF A300, AFF A400, C400, AFF A700, AFF A800, FAS2750, FAS8200, FAS500f, FAS9000 
 summary: 'A partir do ONTAP 9.4, as configurações IP do MetroCluster suportam novas instalações com sistemas AFF usando ADP (particionamento avançado de unidade).' 
 ---
-= Considerações de IP do MetroCluster para atribuição automática de unidades e sistemas ADP
+= Requisitos de IP do MetroCluster para atribuição automática de unidades e sistemas ADP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,7 +13,7 @@ summary: 'A partir do ONTAP 9.4, as configurações IP do MetroCluster suportam 
 [role="lead"]
 A partir do ONTAP 9.4, as configurações IP do MetroCluster suportam novas instalações usando atribuição automática de disco e ADP (particionamento avançado de unidade).
 
-Você deve estar ciente das seguintes considerações ao usar ADP com configurações IP do MetroCluster:
+Ao usar o ADP com configurações de IP do MetroCluster , você deve estar ciente do seguinte:
 
 * O ONTAP 9.4 e posterior são necessários para usar o ADP com configurações MetroCluster IP em sistemas AFF e ASA.
 * O ADPv2 é compatível com configurações IP do MetroCluster.
@@ -238,9 +238,11 @@ A operação de Advanced Drive Partitioning (ADP) e atribuição automática de 
 
 NOTE: Em sistemas que usam ADP, agregados são criados usando partições nas quais cada unidade é particionada em partições P1, P2 e P3. O agregado raiz é criado usando partições P3.
 
-Você deve atender aos limites do MetroCluster para o número máximo de unidades compatíveis e outras diretrizes.
+Analise os seguintes requisitos antes de utilizar as tabelas:
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+* Você deve atender aos limites do MetroCluster quanto ao número máximo de unidades suportadas e outras diretrizes. Consulte o https://hwu.netapp.com["NetApp Hardware Universe"] .
+* Se você estiver reutilizando uma gaveta de discos externa, verifique se a propriedade dos discos na gaveta externa foi removida antes de conectá-la ao controlador. Consultelink:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["Remover a propriedade do ONTAP de um disco"^] .
+
 
 
 
@@ -839,6 +841,60 @@ Não aplicável
 Mínimo de unidades compatíveis (por local)
  a| 
 24 unidades
+ a| 
+As unidades são divididas em quatro grupos iguais. Cada compartimento é atribuído automaticamente a um pool separado.
+ a| 
+Não aplicável
+
+|===
+
+
+=== Atribuição de disco em sistemas FAS50 com Flash Cache
+
+A partir do ONTAP 9.18.1, o Flash Cache é suportado em sistemas FAS50 para configurações IP MetroCluster .
+
+[CAUTION]
+====
+* Não é possível ter simultaneamente agregados de dados e o agregado raiz com unidades Flash Cache no compartimento interno.
+* Os slots 0 e 23 são usados para unidades de cache flash.
+* Se você estiver reutilizando uma gaveta de discos externa, verifique se a propriedade dos discos na gaveta externa foi removida antes de conectá-la ao controlador. Consultelink:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["Remover a propriedade do ONTAP de um disco"] .
+
+
+====
+|===
+
+
+| Diretriz | Unidades por local | Regras de atribuição de unidades | Layout ADP para partição raiz 
+
+
+.2+| Mínimo de unidades recomendadas (por local)  a| 
+unidades de 48 tb (somente unidades externas, sem unidades internas)
+ a| 
+As unidades em cada compartimento externo são divididas em dois grupos iguais (metades). Cada meia prateleira é atribuída automaticamente a um pool separado.
+ a| 
+Não aplicável
+
+
+
+ a| 
+36 unidades (12 unidades internas e 24 unidades externas – com os agregados de dados no compartimento externo e o agregado raiz no compartimento interno)
+ a| 
+Os discos rígidos internos são divididos em quatro grupos iguais (quartos).  Cada trimestre é automaticamente atribuído a um grupo separado.  Os discos rígidos nas prateleiras externas estão divididos em quatro grupos iguais (quartos).  Cada prateleira de um quarto é automaticamente atribuída a um conjunto separado.
+
+*Notas:*
+
+* Se você estiver usando unidades internas e externas, primeiro precisará instalar o ONTAP e configurar o cluster local apenas com as unidades internas.  Em seguida, você conecta manualmente a prateleira externa após concluir a instalação ou configuração.
+* É necessário um mínimo de 12 discos rígidos internos para o agregado raiz.  Você deve inserir os discos rígidos internos raiz a partir do slot 1.  Por exemplo, para 12 unidades internas, use os slots 1-3, 6-8, 12-14 e 18-20.
+
+ a| 
+Não aplicável
+
+
+
+ a| 
+Mínimo de unidades compatíveis (por local)
+ a| 
+24 unidades externas
  a| 
 As unidades são divididas em quatro grupos iguais. Cada compartimento é atribuído automaticamente a um pool separado.
  a| 
