@@ -8,7 +8,7 @@ entries:
   url: "/releasenotes/mcc-ip-config-platform-support.html"
 - title: Novidades no suporte à plataforma MetroCluster FC e switch
   url: "/releasenotes/mcc-fc-config-platform-support.html"
-- title: O que há de novo no suporte do ONTAP Mediator
+- title: Novidades no suporte do ONTAP Mediator para MetroCluster IP
   url: "/releasenotes/mcc-mediator-whats-new.html"
 - title: Novidades no suporte ao tiebreaker do MetroCluster
   url: "/releasenotes/mcc-tiebreaker-whats-new.html"

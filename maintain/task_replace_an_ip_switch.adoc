@@ -240,6 +240,10 @@ NOTE: Se você atualizar ou baixar as redes, repita todas as etapas da segunda r
 ----
 network interface modify -vserver <vserver_name> -lif <lif_name> -auto-revert true
 ----
+. Reverter todas as LIFs do cluster que não estão atualmente em suas portas de origem para suas portas de origem:
++
+`network interface revert -vserver * -lif *`
+
 . Opcionalmente, mova as NS224 gavetas.
 +
 Se você estiver reconfigurando uma configuração IP do MetroCluster que não conete as gavetas NS224 aos switches IP do MetroCluster, use o procedimento apropriado para adicionar ou mover as gavetas NS224:

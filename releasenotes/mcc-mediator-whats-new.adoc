@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: metrocluster, mediator, new, release, update, install, 
 summary: Novos recursos do Mediador ONTAP são fornecidos com cada versão. Eis as novidades. 
 ---
-= O que há de novo no suporte do ONTAP Mediator para MetroCluster?
+= Novidades no suporte do ONTAP Mediator para MetroCluster IP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Saiba mais sobre os novos recursos e melhorias do MetroCluster para suporte ao ONTAP Mediator.
+Saiba mais sobre os novos recursos e melhorias do MetroCluster IP para suporte ao ONTAP Mediator.
 
 Para obter detalhes sobre os recursos e melhorias de cada versão do ONTAP Mediator, consultelink:https://docs.netapp.com/us-en/ontap/mediator/whats-new-concept.html["O que há de novo no ONTAP Mediator?"^] .
 

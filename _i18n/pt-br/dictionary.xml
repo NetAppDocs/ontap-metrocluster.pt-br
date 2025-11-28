@@ -12452,7 +12452,6 @@
   <block id="ea02090c2efd7c808bf4fb7c6b7bb365" category="sidebar">Monitore e proteja a consistência do sistema de arquivos usando NVFAIL</block>
   <block id="3cc716dba68d44285ae03d4a0e650afb" category="sidebar">Novidades nas funcionalidades do MetroCluster</block>
   <block id="89753eb00eabd16383d2c616cc908230" category="sidebar">O que há de novo no suporte a switch e plataforma IP MetroCluster</block>
-  <block id="986acab97d190ab2df45c246e97ca539" category="sidebar">O que há de novo no suporte do ONTAP Mediator</block>
   <block id="72b08fce3cdf931f9f180e97f8508090" category="sidebar">Novidades no suporte ao tiebreaker do MetroCluster</block>
   <block id="04615ba020125ab8e6efd72006cee7b6" category="sidebar">Instale e configure o tiebreaker do MetroCluster</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">O que há de novo</block>
@@ -14452,8 +14451,6 @@
   <block id="a5ae27866152c64d13caa7491b407c4f" category="list-text">Adicionar o mediador ONTAP :</block>
   <block id="3bd8e4fdfb5d625cdaa4c9ff27e8ce16" category="paragraph"><block ref="26623cc20cef21441276d0bbf177cf0e" prefix="" category="inline-code"></block></block>
   <block id="6ed3fcc536a033a1e0dbf1249734de16" category="paragraph">Descubra as novidades da plataforma MetroCluster FC e o suporte a switches.</block>
-  <block id="29a236ce865da06e20bbbd8ea0ab52a7" category="doc">O que há de novo no suporte do ONTAP Mediator para MetroCluster?</block>
-  <block id="5bf7798853f8a5c7ca4569ca703439aa" category="paragraph">Saiba mais sobre os novos recursos e melhorias do MetroCluster para suporte ao ONTAP Mediator.</block>
   <block id="7f29812fdda9b63b5432343e48888f3e" category="inline-link-macro">O que há de novo no ONTAP Mediator?</block>
   <block id="ddb6a6aeab3697bf98a9f8ec6246d66d" category="paragraph">Para obter detalhes sobre os recursos e melhorias de cada versão do ONTAP Mediator, consulte<block ref="e9f46c418b00d5917fe7eb2e94490962" category="inline-link-macro-rx"></block> .</block>
   <block id="0812efe70fdb78c8000d6ba26954775e" category="paragraph">O IPv6 é compatível com o ONTAP Mediator 1.11 ou posterior em configurações IP do MetroCluster .</block>
@@ -14469,4 +14466,9 @@
   <block id="163074dbb0b4f8b495d1b19b615e87eb" category="sidebar">Prepare-se para a instalação do IP MetroCluster.</block>
   <block id="42f362146dbe8748970967efe562f3c8" category="sidebar">Configure o ONTAP Mediator para uma configuração IP do MetroCluster.</block>
   <block id="9ac9cffddfe08e79e2955f5af452fef4" category="sidebar">Prepare-se para a instalação do trecho MetroCluster</block>
+  <block id="b023032dbbcf1a80203228bb95af2a1d" category="list-text">Reverter todas as LIFs do cluster que não estão atualmente em suas portas de origem para suas portas de origem:</block>
+  <block id="b4ebcf376ab05c920671af65b7daaf8c" category="paragraph"><block ref="985591930e85610706940dd82967bd61" prefix="" category="inline-code"></block></block>
+  <block id="4154034eef64dfe94bce158c1c207659" category="doc">Novidades no suporte do ONTAP Mediator para MetroCluster IP</block>
+  <block id="f0dceba3fe3c3556e6c20da7fc8c7520" category="paragraph">Saiba mais sobre os novos recursos e melhorias do MetroCluster IP para suporte ao ONTAP Mediator.</block>
+  <block id="25deb3b52bcb888e53232afb4a495c12" category="sidebar">Novidades no suporte do ONTAP Mediator para MetroCluster IP</block>
 </blocks>
