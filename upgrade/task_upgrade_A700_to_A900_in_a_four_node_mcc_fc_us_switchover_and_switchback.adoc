@@ -795,12 +795,22 @@ NOTE: Ignore a seguinte mensagem: `This procedure is not supported for Non-Disru
 
 . Conclua as seguintes subetapas para reinicializar o módulo do controlador:
 +
-.. Introduza `n` para ignorar a recuperação da cópia de segurança quando vir o seguinte aviso:
-`Do you want to restore the backup configuration now? {y|n}`
-.. Digite `y` para reiniciar quando você vir o seguinte prompt:
-`The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}`
+.. Digitar `n` Para ignorar a recuperação do backup quando vir a seguinte mensagem:
++
+[listing]
+----
+Do you want to restore the backup configuration now? {y|n} n
+----
+.. Digitar `y` Reinicie o computador quando vir a seguinte mensagem:
++
+`The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n} y`
+
 +
 O módulo do controlador reinicializa, mas pára no menu de inicialização porque o dispositivo de inicialização foi reformatado e os dados de configuração precisam ser restaurados.
+
++
+
+NOTE: Você precisa reiniciar o nó para usar o software recém-instalado.
 
 
 

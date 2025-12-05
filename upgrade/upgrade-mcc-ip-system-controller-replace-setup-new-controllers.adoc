@@ -151,16 +151,20 @@ Você não precisa extrair o `ontap-version_image.tgz` arquivo.
 ....
 Enter username/password if applicable, or press Enter to continue.
 ....
-. Certifique-se de entrar `n` para ignorar a recuperação de backup quando você vir um prompt semelhante ao seguinte:
+. Digitar `n` Para ignorar a recuperação do backup quando vir uma mensagem semelhante à seguinte:
 +
 ....
-Do you want to restore the backup configuration now? {y|n}
+Do you want to restore the backup configuration now? {y|n} n
 ....
 . Reinicie entrando `y` quando você vir um prompt semelhante ao seguinte:
 +
 ....
-The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n} y
 ....
++
+
+NOTE: Você precisa reiniciar o nó para usar o software recém-instalado.
+
 
 
 
