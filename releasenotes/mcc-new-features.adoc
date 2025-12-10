@@ -119,7 +119,7 @@ ONTAP 9.16,1
  a| 
 Suporte IP MetroCluster para criptografia de ponta a ponta
  a| 
-A criptografia de ponta a ponta é compatível com sistemas AFF A400, FAS8300 e FAS8700 para criptografar o tráfego de back-end, como NVlog e dados de replicação de storage, entre os locais em uma configuração IP do MetroCluster.
+A criptografia de ponta a ponta é suportada nos sistemas AFF A400, AFF C400, FAS8300 e FAS8700 para criptografar o tráfego de back-end, como NVlog e dados de replicação de armazenamento, entre os sites em uma configuração IP MetroCluster .
 
 link:../maintain/task-configure-encryption.html["Configurar criptografia de ponta a ponta em uma configuração IP do MetroCluster"]
  a| 

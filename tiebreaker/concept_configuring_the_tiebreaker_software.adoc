@@ -32,8 +32,16 @@ Depois de instalar o software tiebreaker, você deve iniciar sua CLI para config
 
 Depois de instalar o software tiebreaker do NetApp MetroCluster, você pode adicionar mais configurações do MetroCluster, uma de cada vez.
 
-Você deve ter instalado a configuração do MetroCluster em um ambiente ONTAP e ativado as configurações no software.
+.Sobre esta tarefa
+* Você deve ter instalado a configuração do MetroCluster em um ambiente ONTAP e ativado as configurações no software.
+* Os passos e o resultado esperado do comando dependem da versão do Tiebreaker que você está executando.
 
+
+[role="tabbed-block"]
+====
+.Tiebreaker 1.5 ou anterior
+--
+.Passos
 . Use o comando add do monitor da interface de linha de comando (CLI) tiebreaker para adicionar configurações do MetroCluster.
 +
 Se você estiver usando o nome do host, ele deve ser o nome de domínio totalmente qualificado (FQDN).
@@ -42,19 +50,23 @@ Se você estiver usando o nome do host, ele deve ser o nome de domínio totalmen
 O exemplo a seguir mostra a configuração de cluster_A:
 
 +
+.Exemplo
+[%collapsible]
+=====
 [listing]
 ----
 
 NetApp MetroCluster Tiebreaker :> monitor add wizard
-Enter monitor Name: cluster_A
-Enter Cluster IP Address: 10.222.196.130
+Enter monitor Name: <monitor_name>
+Enter Cluster IP Address: <cluster_ip_value>
 Enter Cluster Username: admin
 Enter Cluster Password:
-Enter Peer Cluster IP Address: 10.222.196.40
+Enter Cluster IP Address: <peer_cluster_ip_value>
 Enter Peer Cluster Username: admin
 Enter Peer Cluster Password:
 Successfully added monitor to NetApp MetroCluster Tiebreaker software.
 ----
+=====
 . Confirme se a configuração do MetroCluster foi adicionada corretamente usando o comando tiebreaker CLI `monitor show -status`.
 +
 [listing]
@@ -64,7 +76,7 @@ NetApp MetroCluster Tiebreaker :> monitor show -status
 ----
 . Desative o modo observador para que o software tiebreaker inicie automaticamente um switchover após detetar uma falha no local:
 +
-`monitor modify -monitor-name monitor_name -observer-mode false`
+`monitor modify -monitor-name <monitor_name> -observer-mode false`
 
 +
 [listing]
@@ -76,6 +88,82 @@ Are you sure you want to enable automatic switchover capability for monitor "8pa
 ----
 
 
+--
+.Tiebreaker 1,6 ou posterior
+--
+.Passos
+. Use o comando add do monitor da interface de linha de comando (CLI) tiebreaker para adicionar configurações do MetroCluster.
++
+Se você estiver usando o nome do host, ele deve ser o nome de domínio totalmente qualificado (FQDN).
+
++
+O exemplo a seguir mostra a configuração de cluster_A:
+
++
+.Exemplo
+[%collapsible]
+=====
+[listing]
+----
+NetApp MetroCluster Tiebreaker :> monitor add wizard
+Enter Monitor Name: cluster_A
+Enter Cluster IP Address: <cluster_ip_value>
+Enter Cluster Username: admin
+Enter Cluster Password:
+Enter Peer Cluster IP Address: <peer_cluster_ip_value>
+Enter Peer Cluster Username: admin
+Enter Peer Cluster Password:
+
+ NOTE: Before enabling automatic switchover capability, make sure to review the 'risks and limitations' as described in the MetroCluster Tiebreaker Installation and Configuration Guide.
+
+Do you want to enable automatic switchover capability for monitor(Y/N): y
+Successfully added monitor to NetApp MetroCluster Tiebreaker software.
+Verifying SSL certificate chain from cluster_A...
+
+===============================================
+Warning missing SSL certificates
+===============================================
+
+Cluster: cluster_A
+
+IP Address: <cluster_ip_value>
+
+Result:
+
+The MetroCluster Tiebreaker is unable to verify the SSL certificate chain.
+
+Recommended Actions:
+
+Run the following command to identify missing certificates:
+
+monitor switchover-simulate
+
+Import any missing certificates as indicated by the command output.
+
+For detailed instructions, please refer to the MetroCluster Tiebreaker documentation, or contact NetApp Support for assistance.
+
+Note:
+
+Missing certificates will prevent the MetroCluster Tiebreaker from issuing a switchover request in the event of a site failure.
+
+================================================================================================================================
+Verifying SSL certificate chain from cluster_B...
+
+SSL certificate chain is valid
+----
+=====
+. Confirme se a configuração do MetroCluster foi adicionada corretamente usando o comando tiebreaker CLI `monitor show -status`.
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker :> monitor show -status
+----
+. Importe os certificados ausentes seguindo os passos correspondentes à sua versão do Tiebreaker em<<import-certificates-tb17,Certificados de importação>> .
+
+
+--
+====
 .Informações relacionadas
 link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["Riscos e limitações do uso do MetroCluster Tiebreaker no modo ativo"]
 
@@ -88,10 +176,151 @@ Para habilitar o monitoramento contínuo no Tiebreaker 1.6 ou posterior, você p
 .Sobre esta tarefa
 * Esta tarefa é necessária no Tiebreaker 1.6 ou posterior.
 * Você executa essa tarefa depois de adicionar com sucesso uma configuração do MetroCluster ao Tiebreaker ou se seus certificados expirarem.
+* No Tiebreaker 1.7 ou posterior, você pode realizar uma simulação de transição para verificar se precisa importar um certificado.  Se a simulação de troca de servidor falhar, você precisará importar os certificados do ONTAP para o armazenamento de chaves na Máquina Virtual Java (JVM).
 
 
+[role="tabbed-block"]
+====
+.Tiebreaker 1.7 ou posterior
+--
 .Passos
+. Execute uma simulação de transição para verificar se é necessário importar certificados.
++
+.. Verifique o status de monitoramento do Tiebreaker:
+`monitor show -status`
++
+.Exemplo
+[%collapsible]
+=====
+[listing]
+----
+NetApp MetroCluster Tiebreaker :> monitor show -status
+MetroCluster: A700
+    Disaster: false
+    Monitor State: Normal
+    Observer Mode: false
+    Silent Period: 5
+    Override Vetoes: false
+    Cluster: ClusterA_siteA(UUID:713e5ab2-b4e8-11f0-91aa-00a098ef36a2)
+        Reachable: true
+        Intersite Connectivity Available: true
+            Node: node_A1(UUID:9f6cecbf-b4e4-11f0-9d0f-00a098ef36a2)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+            Node: node_A2(UUID:2719bb56-b4e7-11f0-996c-00a09897caa3)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+    Cluster: ClusterB_siteB(UUID:72839591-b4e8-11f0-b688-00a09897cb73)
+        Reachable: true
+        Intersite Connectivity Available: true
+            Node: node_B1(UUID:abfeab89-b4e4-11f0-a077-00a09897cb73)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+            Node: node_B2(UUID:31e395bf-b4e7-11f0-bf99-00a09897cb2f)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+----
+=====
+.. Acione uma simulação de transição:
++
+`monitor switchover-simulate -monitor-name <monitor_name> -cluster <cluster_name>`
+
++
+O comando retorna a seguinte saída caso seja necessário importar certificados para a JVM:
+
++
+[listing]
+----
+Failed to trigger Switchover Simulation. Please check Metrocluster Tiebreaker logs for further information or contact NetApp support.
+----
+
+
 . Execute o seguinte comando para cada certificado que você precisa importar (servidor SSL, intermediário ou raiz).
++
+`/opt/netapp/java/bin/keytool -import -trustcacerts -file <certificate_file_name> -keystore "/opt/netapp/java/lib/security/cacerts" -alias <certificate>`
+
++
+** O `<certificate_file_name>` O valor especifica o nome do arquivo do certificado que você deseja importar.
+** O `-alias <certificate>` O valor especifica o nome que você deseja usar para armazenar o certificado depois que ele for importado para a JVM.
++
+O exemplo a seguir mostra como importar um certificado raiz com o nome do arquivo. `root.crt` e um certificado de servidor SSL com o nome do arquivo `ssl_cert.crt`:
+
++
+[listing]
+----
+/opt/netapp/java/bin/keytool -import -trustcacerts -file root.crt -keystore "/opt/netapp/java/lib/security/cacerts" -alias root
+
+/opt/netapp/java/bin/keytool -import -trustcacerts -file ssl_cert.crt -keystore "/opt/netapp/java/lib/security/cacerts" -alias ssl_cert
+----
+
+
+. Reinicie o software Tiebreaker:
++
+`systemctl restart netapp-metrocluster-tiebreaker-software`
+
+. Execute novamente as verificações de simulação de comutação:
++
+.. Verifique o status de monitoramento do Tiebreaker:
+`monitor show -status`
++
+.Exemplo
+[%collapsible]
+=====
+[listing]
+----
+NetApp MetroCluster Tiebreaker :> monitor show -status
+MetroCluster: A700
+    Disaster: false
+    Monitor State: Normal
+    Observer Mode: false
+    Silent Period: 5
+    Override Vetoes: false
+    Cluster: ClusterA_siteA(UUID:713e5ab2-b4e8-11f0-91aa-00a098ef36a2)
+        Reachable: true
+        Intersite Connectivity Available: true
+            Node: node_A1(UUID:9f6cecbf-b4e4-11f0-9d0f-00a098ef36a2)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+            Node: node_A2(UUID:2719bb56-b4e7-11f0-996c-00a09897caa3)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+    Cluster: ClusterB_siteB(UUID:72839591-b4e8-11f0-b688-00a09897cb73)
+        Reachable: true
+        Intersite Connectivity Available: true
+            Node: node_B1(UUID:abfeab89-b4e4-11f0-a077-00a09897cb73)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+            Node: node_B2(UUID:31e395bf-b4e7-11f0-bf99-00a09897cb2f)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+----
+=====
+.. Acione uma simulação de transição:
++
+`monitor switchover-simulate -monitor-name <monitor_name> -cluster <cluster_name>`
+
++
+[listing]
+----
+Successfully triggered Switchover Simulation. Please check the status of the Switchover Simulation on the ONTAP cluster using command "metrocluster operation history show"
+----
+
+
+
+
+--
+.Desempate 1.6 ou 1.6P1
+--
+.Passos
+. Importe todos os certificados do ONTAP. Execute o seguinte comando para cada certificado que você precisa importar (servidor SSL, intermediário ou raiz).
 +
 `/opt/netapp/java/bin/keytool -import -trustcacerts -file <certificate_file_name> -keystore "/opt/netapp/java/lib/security/cacerts" -alias <certificate>`
 
@@ -116,6 +345,8 @@ O exemplo a seguir mostra como importar um certificado raiz com o nome do arquiv
 
 
 
+--
+====
 
 
 == Comandos para modificar configurações do MetroCluster tiebreaker

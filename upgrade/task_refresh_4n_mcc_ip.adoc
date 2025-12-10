@@ -403,7 +403,7 @@ image::../media/mcc_dr_group_c5.png[Configuração final do MetroCluster de oito
  a| 
 Desempate
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["Adição de configurações do MetroCluster"] na _Instalação e Configuração do Desempate do MetroCluster_.
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-mcc-config-tb["Adição de configurações do MetroCluster"] na _Instalação e Configuração do Desempate do MetroCluster_.
 
 
 

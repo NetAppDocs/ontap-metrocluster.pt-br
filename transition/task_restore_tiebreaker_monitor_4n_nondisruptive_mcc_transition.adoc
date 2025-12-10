@@ -25,7 +25,7 @@ Depois de concluir a transição da configuração do MetroCluster, você pode r
  a| 
 Desempate
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["Adição de configurações do MetroCluster"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-mcc-config-tb["Adição de configurações do MetroCluster"]
 
 
 

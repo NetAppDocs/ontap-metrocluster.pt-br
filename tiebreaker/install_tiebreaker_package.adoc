@@ -121,6 +121,9 @@ O sistema exibe a seguinte saída para uma instalação bem-sucedida:
 NOTE: Quando solicitado durante a instalação, forneça o usuário não-root que você criou e atribuiu anteriormente ao `mcctbgrp` grupo.
 
 +
+.Exemplo
+[%collapsible]
+=====
 [listing]
 ----
 Verifying...                          ################################# [100%]
@@ -158,6 +161,7 @@ Started NetApp MetroCluster Tiebreaker software services
 Successfully installed NetApp MetroCluster Tiebreaker software version 1.5.
 
 ----
+=====
 
 
 --
@@ -203,6 +207,9 @@ HA Enabled      false
 O sistema exibe a seguinte saída para uma atualização bem-sucedida:
 
 +
+.Exemplo
+[%collapsible]
+=====
 [listing]
 ----
 
@@ -242,6 +249,7 @@ Successfully upgraded NetApp MetroCluster Tiebreaker software to version 1.5.
 Cleaning up / removing...
    2:NetApp-MetroCluster-Tiebreaker-So################################# [100%]
 ----
+=====
 
 
 --

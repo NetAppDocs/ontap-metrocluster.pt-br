@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
 summary: Execute uma nova instalação ou atualização para o tiebreaker 1,6 no sistema operacional Linux host para monitorar as configurações do MetroCluster. 
 ---
-= Instale o tiebreaker 1,6 ou posterior
+= Instale o Tiebreaker 1.6 ou 1.6P1.
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -62,7 +62,7 @@ O sistema exibe a seguinte saída para uma instalação bem-sucedida:
 
 +
 .Exemplo
-[%collapsible%open]
+[%collapsible]
 =====
 [listing]
 ----
@@ -262,7 +262,7 @@ O sistema exibe a seguinte saída para uma atualização bem-sucedida:
 
 +
 .Exemplo
-[%collapsible%open]
+[%collapsible]
 =====
 [listing]
 ----
@@ -379,7 +379,7 @@ O sistema exibe a seguinte saída para uma atualização bem-sucedida:
 
 +
 .Exemplo
-[%collapsible%open]
+[%collapsible]
 =====
 [listing]
 ----
@@ -578,7 +578,7 @@ O sistema exibe a seguinte saída para uma atualização bem-sucedida:
 
 +
 .Exemplo
-[%collapsible%open]
+[%collapsible]
 =====
 [listing]
 ----
@@ -810,7 +810,7 @@ O sistema exibe a seguinte saída para uma instalação bem-sucedida:
 
 +
 .Exemplo
-[%collapsible%open]
+[%collapsible]
 =====
 [listing]
 ----
@@ -1007,7 +1007,7 @@ O sistema exibe a seguinte saída para uma atualização bem-sucedida:
 
 +
 .Exemplo
-[%collapsible%open]
+[%collapsible]
 =====
 [listing]
 ----
@@ -1206,7 +1206,7 @@ O sistema exibe a seguinte saída para uma atualização bem-sucedida:
 
 +
 .Exemplo
-[%collapsible%open]
+[%collapsible]
 =====
 [listing]
 ----

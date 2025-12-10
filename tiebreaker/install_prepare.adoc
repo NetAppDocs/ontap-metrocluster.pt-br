@@ -27,6 +27,17 @@ Você precisa atender aos seguintes requisitos de software, dependendo da versã
 
 
  a| 
+1,7
+ a| 
+ONTAP 9.12,1 e posterior
+ a| 
+Consulte link:whats_new.html#os-support-matrix["Matriz de suporte DO SO"]para obter mais informações.
+ a| 
+Nenhum. As dependências são empacotadas com a instalação.
+
+
+
+ a| 
 1.6P1
  a| 
 ONTAP 9.12,1 e posterior

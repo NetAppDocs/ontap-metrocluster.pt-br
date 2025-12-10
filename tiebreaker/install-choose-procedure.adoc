@@ -21,9 +21,16 @@ O procedimento de instalação do tiebreaker que você segue depende da versão 
 
 
  a| 
-Tiebreaker 1,6 ou posterior
+Desempate 1.7
  a| 
-link:tb-16-install.html["Instale o tiebreaker 1,6 ou posterior"]
+link:tb-17-install.html["Instale o Tiebreaker 1.7"]
+
+
+
+ a| 
+Desempate 1.6 ou 1.6P1
+ a| 
+link:tb-16-install.html["Instale o Tiebreaker 1.6 ou 1.6P1."]
 
 
 

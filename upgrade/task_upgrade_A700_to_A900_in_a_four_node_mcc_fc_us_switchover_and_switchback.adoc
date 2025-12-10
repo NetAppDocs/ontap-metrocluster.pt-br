@@ -1438,5 +1438,5 @@ Depois de concluir a atualização, você deve enviar uma mensagem AutoSupport i
 
 Se a configuração do MetroCluster tiver sido configurada anteriormente para monitoramento pelo software tiebreaker, você poderá restaurar a conexão tiebreaker.
 
-. Siga os passos em: link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["Adição de configurações do MetroCluster"] na seção _Instalação e Configuração do Desempate do MetroCluster_.
+. Siga os passos em: link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-mcc-config-tb["Adição de configurações do MetroCluster"] na seção _Instalação e Configuração do Desempate do MetroCluster_.
 
