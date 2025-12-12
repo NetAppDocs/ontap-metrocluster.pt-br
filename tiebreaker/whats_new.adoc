@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
 summary: O software tiebreaker fornece recursos de monitoramento para um ambiente de storage em cluster. Ele também envia notificações SNMP em caso de problemas de conetividade de nó e desastres de site. 
 ---
-= O que há de novo
+= Novidades no suporte ao tiebreaker do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

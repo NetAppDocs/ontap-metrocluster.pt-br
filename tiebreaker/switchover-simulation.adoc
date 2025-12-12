@@ -11,7 +11,7 @@ summary: A partir da versão 1.7 do Tiebreaker, você pode simular uma troca de 
 
 
 [role="lead"]
-A partir da versão 1.7 do Tiebreaker, você pode simular uma troca de controle para testar a funcionalidade de troca de controle do MetroCluster .
+A partir da versão 1.7 do MetroCluster Tiebreaker, é possível simular uma troca de controle para testar a funcionalidade de troca de controle do Tiebreaker.
 
 .Sobre esta tarefa
 * O `monitor switchover-simulate` O comando só é compatível com o Tiebreaker 1.7 ou posterior.

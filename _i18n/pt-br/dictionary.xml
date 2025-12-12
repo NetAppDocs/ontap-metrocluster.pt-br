@@ -9367,7 +9367,6 @@
   <block id="cb75dafe5098e84554cfafc5f3f7cb18" category="list-text">Reinstale o software tiebreaker.</block>
   <block id="38484792ce18e1ac90df07df1cbe4040" category="inline-link-macro">Instale o software tiebreaker</block>
   <block id="aa27f1e0fd685e0f4cde8697742ae6ac" category="paragraph">Execute uma nova instalação do tiebreaker seguindo as etapas em <block ref="34a05079494730e6ed0177e3b3032a6d" category="inline-link-macro-rx"></block>.</block>
-  <block id="490414e0366b091220802d406e52c076" category="doc">O que há de novo</block>
   <block id="b6d1ddb6b8631d474ee650e1dd150c29" category="summary">Você deve selecionar um procedimento de transição dependendo da configuração existente do MetroCluster FC.</block>
   <block id="7d99024812c834245ed49bdb48ef6233" category="doc">Escolha o procedimento de transição</block>
   <block id="7e78f2c6ef0bb1c644bf13957f799b3e" category="paragraph">Ao fazer a transição para uma configuração IP do MetroCluster, você deve ter uma combinação de modelos de plataforma compatíveis.</block>
@@ -14497,7 +14496,6 @@
   <block id="87ad7c1746b46707f06848b1618643ce" category="paragraph"><block ref="87ad7c1746b46707f06848b1618643ce" category="inline-link-macro-rx"></block></block>
   <block id="800d94b1914e36803b31fcf9895abae5" category="summary">A partir da versão 1.7 do Tiebreaker, você pode simular uma troca de função para verificar o funcionamento do Tiebreaker.</block>
   <block id="e4ed18ab6d3d5544045db1a3e751e965" category="doc">Simule uma transição usando o desempate do MetroCluster.</block>
-  <block id="7093ecc93a73f513ca55a9e8f3afdde6" category="paragraph">A partir da versão 1.7 do Tiebreaker, você pode simular uma troca de controle para testar a funcionalidade de troca de controle do MetroCluster .</block>
   <block id="79eb78d821b3ee6435ad7e4923386085" category="list-text">O<block ref="2182cff8b3f98462b1b1b9f67a9e98d6" prefix=" " category="inline-code"></block> O comando só é compatível com o Tiebreaker 1.7 ou posterior.</block>
   <block id="efd72f1f13c88a25047ed85c76b50038" category="list-text">Realizar uma simulação de transição:</block>
   <block id="028ce40e56d402dfb0df4f094a41fde6" category="paragraph">O comando retorna a seguinte saída para uma operação bem-sucedida:</block>
@@ -14515,4 +14513,5 @@
   <block id="cd12f62ca79514b05b68e5de4836ba52" category="paragraph"><block ref="c1e5bf8480750ae5cad48df028e9ef8f" category="inline-link-macro-rx"></block> na _Instalação e Configuração do Desempate do MetroCluster_.</block>
   <block id="a72abbb5319ccc5e06e530d32ebda9a2" category="list-text">Siga os passos em: <block ref="c1e5bf8480750ae5cad48df028e9ef8f" category="inline-link-macro-rx"></block> na seção _Instalação e Configuração do Desempate do MetroCluster_.</block>
   <block id="cbefd3f7361c94b64426b0cea58a0328" category="paragraph"><block ref="fea9123e6c4e9558906e90d28dff7dce" category="inline-link-macro-rx"></block>.</block>
+  <block id="7c6d58b5ff7d328112a439ee0ef9df40" category="paragraph">A partir da versão 1.7 do MetroCluster Tiebreaker, é possível simular uma troca de controle para testar a funcionalidade de troca de controle do Tiebreaker.</block>
 </blocks>
