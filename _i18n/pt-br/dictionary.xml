@@ -14367,8 +14367,6 @@
   <block id="8fe05c00237e990eab631a7b042cf93c" category="sidebar">Downloads de firmware ATTO FibreBridge</block>
   <block id="4500ea599da00d6db7bf0ffa4e13554f" category="section-title">Requisitos do MetroCluster ISL</block>
   <block id="1e2cb5bcdb8947c91d9b70a1c5ee21c0" category="list-text">A velocidade ISL mínima necessária depende do modelo da plataforma:</block>
-  <block id="fe25d0e834bbf213fee0bc910f4a7054" category="list-text">Nos sistemas AFF A1K e AFF A90 , a velocidade ISL deve ser de pelo menos 100 Gbps. Usar uma velocidade ISL diferente requer uma Solicitação de Variação de Produto de Recurso (FPVR). Para registrar um FPVR, entre em contato com sua equipe de vendas.</block>
-  <block id="9260215cd28aa0daaf49857a4307ca43" category="list-text">Em todas as outras plataformas, a velocidade ISL deve ser de pelo menos 10 Gbps.</block>
   <block id="e91d78e049c73a532e8c4014365c7f0d" category="doc">Configure o software MetroCluster Tiebreaker.</block>
   <block id="2369e844c90397a4181ffafd2f64be4a" category="section-title">Inicie a linha de comando do software Tiebreaker</block>
   <block id="157265493f45de2399bb80a595184137" category="section-title">Certificados de importação</block>
@@ -14514,4 +14512,6 @@
   <block id="a72abbb5319ccc5e06e530d32ebda9a2" category="list-text">Siga os passos em: <block ref="c1e5bf8480750ae5cad48df028e9ef8f" category="inline-link-macro-rx"></block> na seção _Instalação e Configuração do Desempate do MetroCluster_.</block>
   <block id="cbefd3f7361c94b64426b0cea58a0328" category="paragraph"><block ref="fea9123e6c4e9558906e90d28dff7dce" category="inline-link-macro-rx"></block>.</block>
   <block id="7c6d58b5ff7d328112a439ee0ef9df40" category="paragraph">A partir da versão 1.7 do MetroCluster Tiebreaker, é possível simular uma troca de controle para testar a funcionalidade de troca de controle do Tiebreaker.</block>
+  <block id="e4e3590eb665c0a0f5d5b3467636e5a7" category="list-text">A partir do ONTAP 9.18.1, as plataformas com velocidade de porta IP de backend MetroCluster de 100G exigem uma velocidade mínima de link ISL de 100Gbps. Utilizar uma velocidade ISL diferente requer uma Solicitação de Variação de Recurso (FPVR). Para registrar uma solicitação FPVR, entre em contato com sua equipe de vendas da NetApp .</block>
+  <block id="deaa86cf36be952b15db4ccf35d9a39d" category="list-text">Em todas as outras plataformas, a velocidade mínima de conexão ISL suportada é de 10 Gbps.</block>
 </blocks>

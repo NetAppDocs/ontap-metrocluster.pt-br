@@ -26,8 +26,8 @@ O seguinte aplica-se a ISLs em todas as configurações IP do MetroCluster:
 * Os ISLs devem ter a mesma topologia. Por exemplo, todos devem ser links diretos, ou se a configuração usa WDM, então todos devem usar WDM.
 * A velocidade ISL mínima necessária depende do modelo da plataforma:
 +
-** Nos sistemas AFF A1K e AFF A90 , a velocidade ISL deve ser de pelo menos 100 Gbps. Usar uma velocidade ISL diferente requer uma Solicitação de Variação de Produto de Recurso (FPVR). Para registrar um FPVR, entre em contato com sua equipe de vendas.
-** Em todas as outras plataformas, a velocidade ISL deve ser de pelo menos 10 Gbps.
+** A partir do ONTAP 9.18.1, as plataformas com velocidade de porta IP de backend MetroCluster de 100G exigem uma velocidade mínima de link ISL de 100Gbps. Utilizar uma velocidade ISL diferente requer uma Solicitação de Variação de Recurso (FPVR). Para registrar uma solicitação FPVR, entre em contato com sua equipe de vendas da NetApp .
+** Em todas as outras plataformas, a velocidade mínima de conexão ISL suportada é de 10 Gbps.
 
 
 * Deve haver pelo menos um porto de 10Gbps ISL por tecido.
