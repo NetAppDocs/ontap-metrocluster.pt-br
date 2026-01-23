@@ -13690,7 +13690,6 @@
   <block id="ba17277e87e849f2a38d0126b17905d8" category="list-text">Verifique se o armazenamento está visível no modo de manutenção.</block>
   <block id="ef1806576a0dffd58481510c7525ed90" category="list-text">Inicialize no modo de manutenção:</block>
   <block id="41af2ca5f1002ab08c75f010d70581a4" category="list-text">Verifique se o armazenamento está visível a partir do local sobrevivente.</block>
-  <block id="b496741d8a784412385f91b26ad4e4f1" category="list-text">Verifique se o armazenamento local está visível no nó no modo de manutenção:</block>
   <block id="93ba613931cbee0caca0df20b5380feb" category="doc">Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 12 portas</block>
   <block id="a696f18cbd32872428df323dcf124b0f" category="list-text">As tabelas nesta seção são para switches Cisco 9336C-FX2 de 12 portas.</block>
   <block id="9e1541acccf8eedc84b54f8f9ba9022a" category="inline-link-macro">Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C-FX2 de 36 portas</block>
@@ -14514,4 +14513,6 @@
   <block id="7c6d58b5ff7d328112a439ee0ef9df40" category="paragraph">A partir da versão 1.7 do MetroCluster Tiebreaker, é possível simular uma troca de controle para testar a funcionalidade de troca de controle do Tiebreaker.</block>
   <block id="e4e3590eb665c0a0f5d5b3467636e5a7" category="list-text">A partir do ONTAP 9.18.1, as plataformas com velocidade de porta IP de backend MetroCluster de 100G exigem uma velocidade mínima de link ISL de 100Gbps. Utilizar uma velocidade ISL diferente requer uma Solicitação de Variação de Recurso (FPVR). Para registrar uma solicitação FPVR, entre em contato com sua equipe de vendas da NetApp .</block>
   <block id="deaa86cf36be952b15db4ccf35d9a39d" category="list-text">Em todas as outras plataformas, a velocidade mínima de conexão ISL suportada é de 10 Gbps.</block>
+  <block id="e8c32d7ccca6662808649d7c3e536c38" category="list-text">Verifique se o armazenamento local e remoto está visível a partir do nó em modo de manutenção:</block>
+  <block id="613654d6d797f748d730bca666bd5f45" category="list-text">Verifique se a nova versão do firmware é compatível com a sua solução. Veja o <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> para mais informações.</block>
 </blocks>

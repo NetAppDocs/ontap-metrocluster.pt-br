@@ -16,6 +16,7 @@ Para atualizar ou fazer downgrade do firmware em um switch Brocade FC, você dev
 .Sobre esta tarefa
 Confirme se você verificou e executou as seguintes tarefas para sua configuração:
 
+* Verifique se a nova versão do firmware é compatível com a sua solução. Veja o link:https://hwu.netapp.com/["Hardware Universe"^] para mais informações.
 * Você tem os arquivos de firmware.
 * O sistema está devidamente cabeado.
 * Todos os caminhos para as gavetas de storage estão disponíveis.

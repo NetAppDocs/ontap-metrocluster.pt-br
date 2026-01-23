@@ -332,7 +332,7 @@ CAUTION: Não ligue as gavetas antes de ligar os controladores. Isso impede que 
 `boot_ontap maint`
 
 .. Verifique se o armazenamento está visível a partir do local sobrevivente.
-.. Verifique se o armazenamento local está visível no nó no modo de manutenção:
+.. Verifique se o armazenamento local e remoto está visível a partir do nó em modo de manutenção:
 +
 `disk show -v`
 
