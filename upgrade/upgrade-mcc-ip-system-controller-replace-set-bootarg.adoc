@@ -11,29 +11,43 @@ summary: As atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posteri
 
 
 [role="lead"]
-As atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior exigem que você defina um bootarg nas controladoras antigas antes de iniciar a atualização.
+Se você estiver atualizando para um sistema introduzido no ONTAP 9.15.1 ou posterior, normalmente será necessário definir um bootarg nos controladores antigos antes de iniciar a atualização.
 
 
-NOTE: Você deve definir o bootarg necessário em todos os nós antigos em ambos os sites antes de iniciar a atualização.
-
-
-
-== Passo 1: Determine o bootarg que você precisa definir nos controladores antigos
-
-Todas as atualizações com suporte para os sistemas a seguir exigem que você defina um bootarg nas controladoras antigas antes de executar a atualização da controladora:
-
-* AFF A70, AFF A90, AFF A1K
-* FAS70, FAS90
-* AFF C80
-* AFF A50, AFF A20, AFF A30
-* AFF C30, AFF C60
-* FAS50
+NOTE: Se sua combinação de atualização for afetada, será necessário definir um bootarg em todos os controladores antigos para uma atualização bem-sucedida.  Revise as informações nesta seção cuidadosamente para verificar se sua combinação de atualização exige que você defina um bootarg e como definir o bootarg correto para sua combinação.
 
 
 
-CAUTION: Se você estiver atualizando para qualquer um dos sistemas listados, você *deve* definir um bootarg necessário no sistema existente antes de executar a atualização. Para todas as outras atualizações, você pode pular esta tarefa e ir diretamente para link:upgrade-mcc-ip-system-controller-replace-prechecks.html["Prepare o sistema para a atualização"].
+== Etapa 1: determine se você precisa definir um bootarg nos controladores antigos
 
-A maioria das atualizações para sistemas introduzidos no ONTAP 9.15.1 ou posterior requer que você defina o `hw.cxgbe.toe_keepalive_disable` bootarg nas controladoras antigas. No entanto, certos caminhos de atualização exigem que você defina o `bootarg.siw.interop_enabled` bootarg em vez disso.
+Antes de iniciar a atualização, determine se você precisa definir um bootarg nos controladores antigos usando as seguintes informações:
+
+* Você *deve* definir um bootarg nos controladores antigos para atualizações suportadas nos seguintes sistemas, a menos que seja indicado o contrário:
++
+** AFF A70, AFF A90, AFF A1K
+** FAS70, FAS90
+** AFF C80
+** AFF A50, AFF A20, AFF A30
+** AFF C30, AFF C60
+** FAS50
+
+
+* Você *não* precisa definir nenhum bootarg nos controladores antigos se sua atualização for uma das seguintes combinações:
++
+** De um sistema AFF A70 para um sistema AFF A90
+** De um sistema FAS70 para um sistema FAS90
+
+
+
+
+
+CAUTION: Se a sua atualização não exigir que você defina nenhum bootarg, você pode ignorar esta tarefa e ir diretamente para link:upgrade-mcc-ip-system-controller-replace-prechecks.html["Prepare o sistema para a atualização"].
+
+
+
+== Etapa 2: determine o bootarg que você precisa definir nos controladores antigos
+
+As atualizações mais afetadas exigem que você defina o `hw.cxgbe.toe_keepalive_disable` bootarg nos controladores antigos.  No entanto, certos caminhos de atualização exigem que você defina o `bootarg.siw.interop_enabled` bootarg em vez disso.
 
 Use a tabela a seguir para determinar qual bootarg você precisa definir para sua combinação de atualização específica.
 
@@ -54,13 +68,20 @@ Use a tabela a seguir para determinar qual bootarg você precisa definir para su
 | De AFF A220 a AFF A20 | `bootarg.siw.interop_enabled` 
 
 
-| Todas as outras atualizações suportadas para os sistemas AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A30, AFF C30, AFF C60 ou FAS50 | `hw.cxgbe.toe_keepalive_disable` 
+ a| 
+Todas as outras atualizações para os sistemas AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A30, AFF C30, AFF C60 ou FAS50
+
+*Observação:* você não precisa definir nenhum bootarg se sua atualização for de um sistema AFF A70 para um AFF A90 ou de um sistema FAS70 para um FAS90.
+| `hw.cxgbe.toe_keepalive_disable` 
 |===
 
 
-== Passo 2: Defina o bootarg necessário nos controladores antigos
+== Etapa 3: defina o bootarg necessário nos controladores antigos
 
-Esta tarefa é *somente* necessária quando você atualiza para um sistema AFF A70, AFF A90, AFF A1K, FAS70, FAS90, AFF C80, AFF A50, AFF A20, AFF A30, AFF C30, AFF C60 ou FAS50.
+Depois de determinar o bootarg necessário para sua combinação de atualização, siga os passos para definir o bootarg nos controladores antigos.
+
+
+NOTE: Você deve definir o bootarg em todos os nós antigos em ambos os sites antes de iniciar a atualização.
 
 .Passos
 . Parar um nó em ambos os locais e permitir que seu parceiro de HA faça um takeover do nó:

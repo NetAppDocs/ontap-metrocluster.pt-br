@@ -46,6 +46,9 @@ As etapas de instalação a seguir dependem se a atualização requer a substitu
  a| 
 ** Um AFF A800 para um sistema AFF A90
 ** Um AFF C800 para um sistema AFF C80
+** Um AFF A250 para um sistema AFF A30
+** Um AFF C250 para um sistema AFF C30
+** Um sistema AFF A70 para um sistema AFF A90
 
 | Substituição do módulo do controlador 
 

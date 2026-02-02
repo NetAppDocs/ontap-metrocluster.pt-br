@@ -20,7 +20,7 @@ NOTE: Se sua combinação de atualização for afetada, será necessário defini
 
 == Etapa 1: determine se você precisa definir um bootarg nos controladores antigos
 
-Use as seguintes informações para verificar se você precisa definir um bootarg obrigatório antes de iniciar a atualização:
+Antes de iniciar a atualização, determine se você precisa definir um bootarg nos controladores antigos usando as seguintes informações:
 
 * Você *deve* definir um bootarg nos controladores antigos para atualizações suportadas nos seguintes sistemas, a menos que seja indicado o contrário:
 +
@@ -78,7 +78,7 @@ Todas as outras atualizações para os sistemas AFF A70, AFF A90, AFF A1K, FAS70
 
 == Etapa 3: defina o bootarg necessário nos controladores antigos
 
-Depois de determinar o bootarg necessário para sua combinação de atualização, siga as etapas para definir o bootarg nos controladores antigos.  Esta tarefa é *somente* necessária para atualizações afetadas.
+Depois de determinar o bootarg necessário para sua combinação de atualização, siga os passos para definir o bootarg nos controladores antigos.
 
 
 NOTE: Você deve definir o bootarg em todos os nós antigos em ambos os sites antes de iniciar a atualização.
