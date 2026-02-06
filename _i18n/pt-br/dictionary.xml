@@ -1691,7 +1691,6 @@
   <block id="66231f606270c78979b74f7dafd00360" category="cell">Tipo de informação</block>
   <block id="f8d0e53dace25d0c35a6408f7cc4b99f" category="cell">Seus valores</block>
   <block id="0dbae4d42c7a0db53e2eb32adee12892" category="paragraph">Nome do cluster</block>
-  <block id="a67eabd25a14e4d0c90e1d8b28411988" category="paragraph">Exemplo usado neste guia: Site_A</block>
   <block id="7cedb7d06868d413eb213570c0f1602d" category="paragraph">Domínio DNS</block>
   <block id="355740384e2ef657024921082276e16b" category="paragraph">Servidores de nomes DNS</block>
   <block id="ce5bf551379459c1c61d2a204061c455" category="paragraph">Localização</block>
@@ -1699,10 +1698,8 @@
   <block id="e551203e288e2980a529e7b79dac7f20" category="section-title">Informações do nó do site A.</block>
   <block id="af0e7b523338f1f736bf918304b175fe" category="paragraph">Para cada nó no cluster, é necessário um endereço IP de gerenciamento, uma máscara de rede e um gateway padrão.</block>
   <block id="e0d209079211a955c9f9cd95ec22f54d" category="paragraph">Nó 1</block>
-  <block id="b4d7baf41cc0c5cafe8cdf28d3c7d4a9" category="paragraph">Exemplo usado neste guia: Controller_A_1</block>
   <block id="253cbf6337d0d7ac43c9c1b1eac5790a" category="paragraph">Nó 2</block>
   <block id="30cb34cdda07b18f5f18a14a97f5b6c6" category="paragraph">Não é necessário se estiver usando a configuração MetroCluster de dois nós (um nó em cada local).</block>
-  <block id="1ccec885efe14190b68ea60168729b15" category="paragraph">Exemplo usado neste guia: Controller_A_2</block>
   <block id="457b5e1bf03afbd29fcfeafe25b17b46" category="section-title">Crie um site LIFs e portas para peering de cluster</block>
   <block id="b83f62c1b8d28ab60dfdf3f2be00e6bd" category="paragraph">Para cada nó no cluster, você precisa dos endereços IP de duas LIFs entre clusters, incluindo uma máscara de rede e um gateway padrão. Os LIFs entre clusters são usados para fazer o peer dos clusters.</block>
   <block id="2e00b3f890ab085173dcb5fc224c2328" category="cell">Endereço IP do LIF entre clusters</block>
@@ -1734,10 +1731,7 @@
   <block id="7943526b8cee7f099dbecfda7ab6075b" category="section-title">Informações do switch local B (clusters comutados)</block>
   <block id="f8d79c79841817997fa985a802f8fe91" category="paragraph">Quando você faz o cabo do sistema, você precisa de um nome de host e endereço IP de gerenciamento para cada switch de cluster. Essas informações não são necessárias se você estiver usando um cluster sem switch de dois nós ou se você tiver uma configuração de MetroCluster de dois nós (um nó em cada local).</block>
   <block id="a5902c9bf3ac2ea1b8435d858c7d3a94" category="section-title">Informações sobre a criação do cluster do local B.</block>
-  <block id="9de6a3d21baa3d2477fcc28e8859e959" category="paragraph">Exemplo usado neste guia: Site_B</block>
   <block id="8072672014690af266505818a59ad49a" category="section-title">Informações do nó do local B.</block>
-  <block id="f841368b0e6e89de1f7f957dad84a039" category="paragraph">Exemplo usado neste guia: Controller_B_1</block>
-  <block id="7f92c2e38c8b2f1d9d424f284d8b974e" category="paragraph">Exemplo usado neste guia: Controller_B_2</block>
   <block id="6f126fa7932b6b060d8301f099d74d18" category="section-title">LIFs do local B e portas para peering de cluster</block>
   <block id="5b3864552eeb932b0d36514ae2ad1a25" category="section-title">Informações do servidor de hora local B.</block>
   <block id="ac3e6c4174906200ce86dcb34e0c1feb" category="section-title">Local B &amp;nbsp;Informação AutoSupport</block>
@@ -2157,7 +2151,6 @@
   <block id="48b362592ae748a2b4676d1e63b57fca" category="paragraph">Essas tarefas se aplicam somente a sistemas com pontes FC para SAS.</block>
   <block id="acb3a81879787c0ac3484855a93f5ff6" category="paragraph">A partir do Fabric os 9,0.1, o SNMPv2 não é suportado para monitoramento de integridade em switches Brocade, você deve usar o SNMPv3 em vez disso. Se você estiver usando SNMPv3, você deve configurar o SNMPv3 no ONTAP antes de prosseguir para a seção a seguir. Para obter mais detalhes, <block ref="84b6bc8814c8fff8860aaf6e2164af86" category="inline-xref-macro-rx"></block>consulte .</block>
   <block id="ea7f8a0fa7f1d7f464025ba86a6284cd" category="list-text">Você deve colocar bridges e um LIF de gerenciamento de nós em uma rede dedicada para evitar interferência de outras fontes.</block>
-  <block id="7271fe2deb2377f6fe3e360239e1a3ff" category="list-text">Se você usar uma rede dedicada para monitoramento de integridade, cada nó deve ter um LIF de gerenciamento de nós nessa rede dedicada.</block>
   <block id="9245afe84f46306a811d61036f2f5698" category="section-title">Configuração dos switches MetroCluster FC para monitoramento de integridade</block>
   <block id="6d8346a61b76a8b57a9dd1d8b8188d3f" category="paragraph">Em uma configuração do MetroCluster conectado à malha, você precisa executar algumas etapas adicionais de configuração para monitorar os switches FC.</block>
   <block id="2699745f7ba3417d015d2b62691bd3b8" category="list-text">Adicione um switch com um endereço IP a cada nó do MetroCluster:</block>
@@ -2659,8 +2652,6 @@
   <block id="451b5d4c2d5802e44712338ecaa02e69" category="list-text">bridge_A_1b</block>
   <block id="5ada5386f6c1e2c608081e2b5f025cff" category="list-text">bridge_B_1a</block>
   <block id="2e1cd1bf07ae59002e6f5025cdd43bb3" category="list-text">bridge_B_1b</block>
-  <block id="1a9dbc3089b2c22ecdefe28bf423258a" category="inline-link">Configuração do software</block>
-  <block id="49fd6eac557fd3205a3431ae072641b8" category="paragraph"><block ref="49fd6eac557fd3205a3431ae072641b8" category="inline-link-rx"></block></block>
   <block id="1dde0a938f669adb0ba03f105ef1eb58" category="cell">Brocade G620</block>
   <block id="aa7f77e663b832d5b0e544c5511e680c" category="cell">Não suportado</block>
   <block id="d4826be7d298f36261991629d290d30d" category="doc">Considerações sobre o uso de equipamentos TDM/WDM com configurações MetroCluster conetadas à malha</block>
@@ -4181,102 +4172,40 @@
   <block id="e2090ebbf2ac14963bfb6c9602cbc750" category="paragraph">Exemplo usado neste procedimento: Site_A</block>
   <block id="49ed603bb0e65ebf6cbe5de7d5a6e0c6" category="paragraph">Exemplo usado neste procedimento: Controller_A_1</block>
   <block id="4e0ca507efddc63c28aeb3319df00d5d" category="paragraph">Exemplo usado neste procedimento: Controller_A_2</block>
-  <block id="2dbf0641a33d566e3e841975208de0ae" category="paragraph">O nó 2 IC LIF 2Not é necessário para configurações de MetroCluster de dois nós (um nó em cada local).</block>
-  <block id="4b18b6ffcae5c35c0fd047b621fdb59e" category="section-title">Local A &amp;nbsp;informações do AutoSupport</block>
-  <block id="ed68524d33cb83b7bc35eb3921cd5e50" category="section-title">Local A &amp;nbsp;informações do SP</block>
   <block id="fe0ce0f4562b3c2e4f9b59eb8ead708f" category="section-title">Folha de cálculo de informações de rede IP para o local B.</block>
-  <block id="2eef5c9469dc2ce9cbe3c71dabc6f13e" category="paragraph">Exemplo usado: Site_B</block>
-  <block id="b72239aa6dab42301b66b43e2f099b73" category="paragraph">Exemplo usado: Controller_B_1</block>
-  <block id="5a824bb09d91d3c1fd4e6c54c0023c1b" category="paragraph">Exemplo usado: Controller_B_2</block>
-  <block id="75cb9d2c8e6c492546bef17abe8e5a69" category="section-title">Local B &amp;nbsp;Informação AutoSupport</block>
-  <block id="336d72b5902fa5007c0f1b27db5d4cb7" category="section-title">Local B &amp;nbsp;Informação SP</block>
-  <block id="0d02db028459671974f0cd5ab64607ed" category="list-text">Se necessário, atribua explicitamente discos nas gavetas de disco conetadas ao pool apropriado usando o<block ref="c178c5200490874139035e8139da7b82" prefix=" " category="inline-code"></block> comando.</block>
-  <block id="8768bb4842d961c867a1ac749cb45725" category="paragraph">O uso de curingas no comando permite atribuir todos os discos em um compartimento de disco com um único comando. É possível identificar as IDs e os compartimentos do compartimento de disco para cada disco com o<block ref="a60cd4318256da44fc281f689decee48" prefix=" " category="inline-code"></block> comando.</block>
-  <block id="a03c39da2d1b1ed17db1d6007949ef4e" category="paragraph"><block ref="04c2d9c4de549eb4a3e68547866b7a4c" prefix="" category="inline-code"></block></block>
-  <block id="72f3c55c79c5c3713292f0ab302f417d" category="paragraph"><block ref="5dfcd9fe6af96569327df5a2de91148c" prefix="" category="inline-code"></block></block>
-  <block id="42ec1151bc3506b679e500df023c1328" category="paragraph"><block ref="4fad108bc23cf791f515ef08922cb4d1" prefix="" category="inline-code"></block></block>
   <block id="70bdd11c5346b6ba914f6bae0a345c27" category="admonition">O pool 0 sempre contém os discos que são encontrados no mesmo local do sistema de armazenamento que os possui, enquanto o Pool 1 sempre contém os discos que são remotos para o sistema de armazenamento que os possui.</block>
-  <block id="de5e78d1adbb2b4fcd10925ec03863f6" category="paragraph"><block ref="3429f098b42c31023f5d2d0c7f2eebb6" prefix="" category="inline-code"></block></block>
-  <block id="e45fb1f6a3be35cf34e0645a5dba1b2b" category="list-text">Sair do modo de manutenção<block ref="4a1bde0ea8bcda2a591f42646813c477" prefix=" " category="inline-code"></block></block>
-  <block id="d85cfd1622f01917e3e145291df3c635" category="paragraph"><block ref="ca26e34af7cdce6c9ac62a0d25010155" prefix="" category="inline-code"></block></block>
-  <block id="1d256cd4005056aea7773d889c3d6827" category="paragraph">Ao configurar um sistema de storage em uma configuração MetroCluster, você deve garantir que o estado de alta disponibilidade (HA) dos componentes do chassi e do módulo do controlador seja mcc ou mcc-2n para que esses componentes sejam inicializados corretamente.</block>
-  <block id="5c6c610b9df037c3c93893e9123552e5" category="paragraph">Esta tarefa não é necessária em sistemas recebidos de fábrica.</block>
-  <block id="52d6900f00a9806f77cb3a2c8f52cd66" category="paragraph">ha-config modificar controlador mcc</block>
-  <block id="35b229745aacd4fd8cb650c9ec363a36" category="paragraph">ha-config modificar controlador mcc-2n</block>
-  <block id="d68e680c0ad920bf3b70363718aa8c5b" category="paragraph">ha-config modificar controlador mccip</block>
-  <block id="529252ae610752213411fe31905fb1bd" category="paragraph">ha-config modificar chassis mcc</block>
-  <block id="6f949e06526d6c6a8f1c9ab8bb85fcea" category="paragraph">ha-config modificar chassis mcc-2n</block>
-  <block id="e2f29383f427c1bb29ab03d5c0b0ea17" category="paragraph">ha-config modificar chassis mccip</block>
   <block id="49eb5704f61afb2484b6cc1439fa40de" category="list-text">Repita estas etapas em cada nó na configuração do MetroCluster.</block>
-  <block id="1b8e8c7488b5a9cb01bbce47b4cbfd12" category="paragraph">Para obter mais informações gerais sobre a configuração do ONTAP, consulte _Guia de configuração de software_</block>
-  <block id="aca85a1555dedfa21c22fb9087fd8fbb" category="list-text">Siga as instruções para concluir o assistente Configuração de cluster, pressione Enter para aceitar os valores padrão ou digitar seus próprios valores e pressione Enter.</block>
-  <block id="08f652038f1a179808212e2f8e4590e3" category="list-text">Depois de concluir o assistente de configuração do cluster e ele sair, verifique se o cluster está ativo e se o primeiro nó está em bom estado:</block>
-  <block id="54ae43b8b32e733a05527e814b7d8de1" category="list-text">Ativar o modo sem switch-cluster:<block ref="8ee7c46e024e2fbfff7364b3fa906826" prefix=" " category="inline-code"></block></block>
   <block id="b13199f709e74272c57e556731e1d9d1" category="list-text">Voltar ao nível de privilégio de administrador:<block ref="0a654c13d63710f829bc02c4cbec79ee" prefix=" " category="inline-code"></block></block>
   <block id="ae9570444f7281706174b8d5e38ee0a2" category="paragraph">O exemplo a seguir mostra que os portos "'e0e'" e "'e0f'" não foram atribuídos LIFs:</block>
-  <block id="e06bf301ea32fa4d6464e6e0c1c31818" category="paragraph"><block ref="1fb4766ac4a43be81cfabe6da6af4959" prefix="" category="inline-code"></block></block>
-  <block id="240381aac72e018a5c9749db4ada23d1" category="paragraph">O exemplo a seguir atribui as portas "'e0e"" e "'e0f" ao grupo de failover intercluster01 no sistema SVMcluster01:</block>
   <block id="66ae80227e2bb4254c031f8dff1a2aa1" category="paragraph">9,6 e mais tarde</block>
   <block id="2edaa2cdda524841d6d6081e49292d26" category="paragraph"><block ref="b82f91d6f40db69d907762ef0547a98b" prefix="" category="inline-code"></block></block>
   <block id="415eea33dacbefbf4c2e5acffb73798b" category="paragraph">9,5 e anteriores</block>
   <block id="58dd89a9fc4f2484510b0081e39ba581" category="paragraph"><block ref="2409e65fa03275eed80bd8d1a8ad7304" prefix="" category="inline-code"></block></block>
-  <block id="45affadac35f4e36d8abb4cc94eb9e6e" category="paragraph">O exemplo a seguir cria LIFs entre clusters "'cluster01_icl01" e "'cluster01_icl02" no grupo de failover intercluster01:</block>
   <block id="db791edb316fea3142afb2ef2d340209" category="cell">*Em ONTAP 9.6 e posteriores:*</block>
   <block id="be6fb1f3891d4bfa27bebe3d1f6e533d" category="paragraph"><block ref="adc0f0943e919c37894a966fa46c4084" prefix="" category="inline-code"></block></block>
   <block id="b323cd4828d87797e97ad72bd35b6b79" category="cell">*Em ONTAP 9.5 e anteriores:*</block>
   <block id="e32e02e229abe8f6d37ea0b72c24d309" category="paragraph"><block ref="b7394405b5c746164dce6dfd2501d986" prefix="" category="inline-code"></block></block>
   <block id="3f03d09659bbfe5952ff31a77d57eca7" category="paragraph"><block ref="fdb848f6761ac46e0ea7678b5269bd3c" prefix="" category="inline-code"></block></block>
   <block id="a79109432485cb634f66654d4bce4833" category="paragraph"><block ref="4686e63f75ecbb5593b9aac27ab89dd7" prefix="" category="inline-code"></block></block>
-  <block id="91ea7a38a1266389c4424c356e68d0f1" category="paragraph">O exemplo a seguir mostra que os LIFs entre clusters "'cluster01_icl01" e "'cluster01_icl02" na porta SVM "'e0e" falharão para a porta "'e0f".</block>
-  <block id="ce2034e3e322f8406cf6ca46f905c9fb" category="paragraph"><block ref="94d1ac93d142b30595dea7c7ce67c996" prefix="" category="inline-code"></block></block>
-  <block id="5234664df25823d24e2779ea23a2aea1" category="paragraph"><block ref="a95e2d29f4907b8b27d7a8683d428c09" prefix="" category="inline-code"></block></block>
   <block id="ca23d6084c8b41ae8c251726a213d92a" category="paragraph">O exemplo a seguir cria LIFs entre clusters "'cluster01_icl01" e "'cluster01_icl02":</block>
   <block id="af38ecaa21f292a282a9ff2da5fa8c28" category="paragraph"><block ref="08fd4296d1145ee217b3ba481add0899" prefix="" category="inline-code"></block></block>
-  <block id="29c7a215dd6ee71543010039c946511e" category="paragraph">O exemplo a seguir mostra que os LIFs entre clusters "'cluster01_icl01" e "'cluster01_icl02" no porto "'e0c" falharão para o porto "'e0d".</block>
   <block id="1d8f4251a8e86e2424aff140993d62ef" category="paragraph">Você pode usar o comando cluster peer create para criar uma relação de peer entre um cluster local e remoto. Após a criação do relacionamento de pares, você pode executar o cluster peer create no cluster remoto para autenticá-lo no cluster local.</block>
-  <block id="a2a790f1b66195c582363f3ddaad4198" category="paragraph"><block ref="245a3c65ddc096693c6b91334e142c6c" prefix="" category="inline-code"></block></block>
   <block id="58f6e08c96a99398ddfbc5fa56d957dc" category="list-text">No cluster de origem, autentique o cluster de origem no cluster de destino:</block>
   <block id="bcdaeafa0f75b830572a5c8a4537c3a1" category="paragraph">O exemplo a seguir autentica o cluster local para o cluster remoto nos endereços IP 192.140.112.101 e 192.140.112.102 do LIF:</block>
-  <block id="a159211d3c11db71dc6ba0af4f65258e" category="list-text">Verifique se o relacionamento de pares de cluster foi criado:<block ref="5cdd2540d44c1775d98bc8cede68e64f" prefix=" " category="inline-code"></block></block>
-  <block id="38ec41a2df2c968e5e4f7d0369bd7ff3" category="paragraph">Você pode usar o comando cluster peer create para iniciar uma solicitação de um relacionamento de peering entre um cluster local e remoto. Depois que o relacionamento de pares tiver sido solicitado pelo cluster local, você pode executar o cluster peer create no cluster remoto para aceitar o relacionamento.</block>
   <block id="4e02786929a5f5611ccc65c33cc94713" category="list-text">Os administradores de cluster devem ter concordado com a frase-passe que cada cluster usará para se autenticar com o outro.</block>
   <block id="3efa0b52c6d7c08eec14f64cc84a7a1a" category="paragraph">O exemplo a seguir cria uma relação de peer de cluster com o cluster remoto nos endereços IP de LIF 192.168.2.201 e 192.168.2.202:</block>
   <block id="d186d7e6f485bde78646481eaab1a111" category="paragraph">O exemplo a seguir autentica o cluster local para o cluster remoto nos endereços IP 192.140.112.203 e 192.140.112.204 do LIF:</block>
-  <block id="f351a65c74a8a4f1061627e2b4aa5026" category="paragraph"><block ref="4094501b2bf534cd60d3b8caee424688" prefix="" category="inline-code"></block></block>
   <block id="da5ca6ae1de018f91fb173975dfb47fa" category="inline-link">Gerenciamento de storage lógico</block>
   <block id="a3d215bb3f9760ff7a4cb7905f1b8906" category="paragraph"><block ref="a3d215bb3f9760ff7a4cb7905f1b8906" category="inline-link-rx"></block></block>
-  <block id="be99b27fc7d6edf127381655525e4155" category="list-text">Os nomes agregados devem estar em conformidade com o esquema de nomenclatura que você determinou quando você planejou sua configuração do MetroCluster. <block ref="46a180d322a34c1f2719942dadd3e4fb" category="inline-link-rx"></block>Consulte .</block>
-  <block id="184f9da9dc438e19cd9cecb2175ad4c5" category="paragraph">Se você estiver conetado ao cluster na interface de gerenciamento de cluster, poderá criar um agregado em qualquer nó do cluster. Para garantir que o agregado seja criado em um nó específico, use o parâmetro -node ou especifique as unidades que são de propriedade desse nó.</block>
-  <block id="d9bd86ef926208fe90e170b165fc17ad" category="admonition">Na configuração com suporte mínimo, na qual um número limitado de unidades está disponível, você deve usar a opção forçar um agregado pequeno para permitir a criação de um agregado RAID-DP de três discos.</block>
-  <block id="33f2ae7558982e7313c9f99b4a9180d8" category="paragraph"><block ref="9c053cebe334c71435d946460ea3c35c" prefix="" category="inline-code"></block></block>
   <block id="aae922509d585e09b8265f6641b4acf2" category="list-text">Se unidades com RPM diferentes são permitidas para obter mais informações sobre essas opções, consulte a<block ref="1b40ef6e34df7d2fb54b5d639e14412d" prefix=" " category="inline-code"></block> página de manual.</block>
   <block id="d0ed0d8f16085a6601b051dbf42f09e4" category="paragraph"><block ref="d0ed0d8f16085a6601b051dbf42f09e4" category="inline-link-rx"></block></block>
-  <block id="a09517d85950406142abe0b5f1a98a2e" category="paragraph">Você pode verificar isso com o comando storage Aggregate show.</block>
   <block id="b25308b36735da11e4a37c52a93d5b81" category="inline-link-macro">Configure o software MetroCluster no ONTAP</block>
-  <block id="0a2884dde8bcccd27a62adc735d32316" category="admonition">Se você quiser usar um único agregado de dados espelhados, consulte a Etapa 1 em <block ref="38d510a4fa3d22240b8943da6055e4df" category="inline-link-macro-rx"></block> para obter instruções.</block>
-  <block id="8c5e3ad1d44826cc667d071df3606d74" category="paragraph">O estado ha-config dos controladores e chassis deve ser "mcc".</block>
   <block id="64e689059c4305b4895291911b1041c7" category="list-text">Configure o MetroCluster no seguinte formato:</block>
-  <block id="87a0372b66bbde5d80a11c1c7ebc30db" category="list-text">Configure o MetroCluster com o parâmetro -allow-with-one-Aggregate true:</block>
-  <block id="794714ece855897a8f048ab85dcccd86" category="paragraph"><block ref="deafeea0aa4f8d9d4f616ec96accc787" prefix="" category="inline-code"></block></block>
   <block id="52973309c9943640c8f3c4005afc0a1c" category="paragraph">A prática recomendada é ter vários agregados de dados. Se o primeiro grupo de DR tiver apenas um agregado e quiser adicionar um grupo de DR com um agregado, mova o volume de metadados do agregado de dados único. Para obter mais informações sobre este procedimento,<block ref="2eaa0ca511dd4de94634e58820ea7180" category="inline-link-rx"></block>consulte .</block>
-  <block id="2a89c3d80528b6491c00ce0f75c43860" category="paragraph">Você deve configurar a entrega em ordem (IOD) ou entrega fora de ordem (OOD) de quadros de acordo com a configuração do switch Fibre Channel (FC). Se o switch FC estiver configurado para IOD, o software ONTAP deverá ser configurado para IOD. Da mesma forma, se o switch FC estiver configurado para ODE, o ONTAP deverá ser configurado para ODE.</block>
-  <block id="00d8a967aae192561db3b04fc12aaf7a" category="paragraph"><block ref="2323d8d011949e186c2fd751b30245e1" prefix="" category="inline-code"></block></block>
-  <block id="b2ac2c4a8a523e04a6c0ddb23069d5cf" category="paragraph">O ONTAP atualmente suporta criptografia AES-128 e AES-256.</block>
-  <block id="721af9da2b28dbf4cf6b943cba7d482c" category="paragraph">Se você precisar de acesso ao RO, depois de "'User (ro):'" especifique o "nmpv3user" como mostrado no exemplo:</block>
-  <block id="766c26974a4c90ad9b490830ebb9d74a" category="paragraph">O exemplo mostra como configurar um usuário somente leitura. Você pode ajustar os usuários RW, se necessário. Você também deve definir senhas em contas não utilizadas para protegê-las e usar a melhor criptografia disponível em sua versão do ONTAP.</block>
   <block id="760481252d481e55778f320967eca451" category="paragraph"><block ref="760481252d481e55778f320967eca451" category="inline-link-rx"></block></block>
-  <block id="2e520a1b682a16f2dd769ccc659bb91f" category="paragraph"><block ref="53ae82a453a1adee430b8838b89cb425" prefix="" category="inline-code"></block></block>
-  <block id="619f93caa0c27ba9b6068c4c105a7868" category="paragraph"><block ref="2be4b3634c9ab11403140c237e614aa1" prefix="" category="inline-code"></block></block>
   <block id="eab11a9537b1f041fab270b4e4138028" category="paragraph">Você pode verificar se os componentes e as relações na configuração do MetroCluster estão funcionando corretamente. Você deve fazer uma verificação após a configuração inicial e depois de fazer quaisquer alterações na configuração do MetroCluster. Você também deve fazer uma verificação antes de um switchover negociado (planejado) ou de uma operação de switchback.</block>
   <block id="c75e7ba52d1389df12f5453579e454bd" category="paragraph">Se o<block ref="c2966f2f3bfc7e81dae5df7c44ce66ea" prefix=" " category="inline-code"></block> comando for emitido duas vezes dentro de um curto espaço de tempo em um ou em ambos os clusters, um conflito pode ocorrer e o comando pode não coletar todos os dados. Os comandos subsequentes<block ref="da68e7539bf844a8366ded5d17b246d7" prefix=" " category="inline-code"></block> não mostram a saída esperada.</block>
-  <block id="664f9c52f93e2fbf6e801148b0f573ad" category="inline-link-macro">Gerenciamento de par HA</block>
-  <block id="fc0b22bb38f11521c03de86c56643d5d" category="paragraph"><block ref="fc0b22bb38f11521c03de86c56643d5d" category="inline-link-macro-rx"></block></block>
-  <block id="d483490d3082f02c6057abcd983c34e6" category="list-text">Use os procedimentos para comutação negociada, recuperação e retorno<block ref="218502de673c582fbc556024d0b3de54" category="inline-link-rx"></block></block>
   <block id="f507f320d40c8a1840acd2dba0476fce" category="paragraph"><block ref="161ad5ffaf4d17088fc1f2b0402305a5" prefix="" category="inline-code"></block></block>
-  <block id="14a8fc6fe6b58444388acfef6a176529" category="inline-link">Gerenciamento de backups de configuração</block>
-  <block id="f1573b913aebef18602249e23e196f67" category="paragraph"><block ref="09965663397032e7c8c3dcc98b9deca2" category="inline-link-rx"></block> contém informações adicionais.</block>
-  <block id="6c0e4fd4b7e2ef11d891ac59729c5f3e" category="inline-link">Administração do cluster</block>
-  <block id="3d324eced25a10d4e6f55d473d59805b" category="paragraph"><block ref="3d324eced25a10d4e6f55d473d59805b" category="inline-link-rx"></block></block>
   <block id="40d4b0790c7c1d827412f3a79c31612b" category="list-text">Você não pode modificar as configurações de fuso horário para um nó com falha ou para o nó do parceiro após uma tomada de controle ocorrer.</block>
   <block id="26e412e124f0e9c78b247288bfd03abd" category="list-text">Cada cluster na configuração MetroCluster FC deve ter seu próprio servidor NTP separado ou servidores usados pelos nós, switches FC e pontes FC para SAS nesse local do MetroCluster.</block>
   <block id="51f9f77f4b6f08d6cef95e89d987dcd7" category="paragraph">Se você estiver usando o software tiebreaker do MetroCluster, ele também deve ter seu próprio servidor NTP separado.</block>
@@ -14217,7 +14146,6 @@
   <block id="6a322d79cc829cae0de4701dc672ffca" category="image-alt">Diagrama mostrando portas FCIP com configuração ISL dupla em cada switch</block>
   <block id="d0c92c7c34253959ed1ec5127a53af0a" category="image-alt">Instalação e configuração da ponte Workflow FC para SAS</block>
   <block id="74a4dfe29ccc8cc96b410e9b0a5d1c1b" category="image-alt">Cabeamento MetroCluster para FibreBridge com múltiplas pilhas SAS3</block>
-  <block id="91808658b22ba7487b8c09753a426fbe" category="image-alt">Configuração de cluster e nó de alto nível de fluxo de trabalho no ONTAP</block>
   <block id="42ceaa81d7a1ae07decd6672f9c77b45" category="image-alt">Configuração de rede da camada 2 do MetroCluster</block>
   <block id="9abaaa939f8a0df07de4dc260378e835" category="image-alt">Configuração de rede de backend da camada 3 do MetroCluster</block>
   <block id="623fd1b20a7dbd0dcbc1a35f2641d584" category="image-alt">Configurações necessárias ao usar switches Cisco validados pela NetApp para tráfego MetroCluster</block>
@@ -14519,4 +14447,14 @@
   <block id="3e72f6e14914c8788932c9e928d6b32b" category="list-text">Nota 4: Requer módulos IOM para converter os controladores antigos em um shelf SAS externo. Consulte a <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> para obter informações sobre os módulos IOM compatíveis.</block>
   <block id="ba0ea850ad143cf2644fe04fa6c67417" category="list-text">Nota 5: requer ONTAP 9.18.1GA ou posterior.</block>
   <block id="c57a703687b0f21729f368950b7a5618" category="paragraph"><block ref="c57a703687b0f21729f368950b7a5618" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ae5ea867d279a95654ecca471767e6af" category="list-text">Se o seu sistema tiver vários tipos de unidades (storage heterogêneo), você deve entender como garantir que o tipo de unidade correto seja selecionado.</block>
+  <block id="5ff5ba1e734a1c6acf560244a4167653" category="list-text">Os nomes dos agregados devem ser únicos em todos os sites MetroCluster. Isso significa que você não pode ter dois agregados diferentes com o mesmo nome no site A e no site B.</block>
+  <block id="c4feaf0c81d09c76b61f0eca4a4fda38" category="admonition">Recomenda-se manter pelo menos 20% de espaço livre em agregados espelhados para desempenho e disponibilidade ideais do armazenamento. Embora a recomendação seja de 10% para agregados não espelhados, os 10% adicionais de espaço podem ser usados pelo sistema de arquivos para absorver alterações incrementais. Alterações incrementais aumentam a utilização de espaço em agregados espelhados devido à arquitetura baseada em copy-on-write de Snapshot do ONTAP. O não cumprimento dessas melhores práticas pode ter um impacto negativo no desempenho.</block>
+  <block id="ca62b4409e0debbfd43445111440710d" category="paragraph">Se você estiver conectado ao cluster na interface de gerenciamento do cluster, poderá criar um agregado em qualquer nó do cluster. Para verificar se o agregado foi criado em um nó específico, use o <block ref="13f7dbdfe17d26284f31a4eac8e056e8" prefix=" " category="inline-code"></block> parâmetro ou especifique as unidades que pertencem a esse nó.</block>
+  <block id="0c9650faa23cd2f874557f75db0b04f3" category="doc">Configure o software FC do MetroCluster no ONTAP</block>
+  <block id="4f967023ad75f6a54cb36abaf26a7048" category="paragraph">Você deve configurar cada nó na configuração FC do MetroCluster no ONTAP, incluindo as configurações em nível de nó e a configuração dos nós em dois sites. Você também deve implementar o relacionamento MetroCluster entre os dois sites.</block>
+  <block id="445fc242bee9ea016b8ec73c9a312fcb" category="paragraph">Exemplo utilizado neste procedimento: site_B</block>
+  <block id="55417ec59fd4af1a5afffacb42333c5a" category="paragraph">Exemplo usado neste procedimento: controller_B_1</block>
+  <block id="1acb751c22e164e9d61c762caf509e82" category="paragraph">Exemplo usado neste procedimento: controller_B_2</block>
+  <block id="eccb3ce2fe6ad5d172a57438aae17dae" category="doc">Crie um agregado de dados espelhado em cada nó FC do MetroCluster</block>
 </blocks>

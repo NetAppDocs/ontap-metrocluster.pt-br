@@ -1800,6 +1800,7 @@ Em sistemas que usam ADP, agregados são criados usando partições nas quais ca
 +
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de disco e agregado"]
 
+* Os nomes dos agregados devem ser únicos em todos os sites MetroCluster. Isso significa que você não pode ter dois agregados diferentes com o mesmo nome no site A e no site B.
 
 
 .Passos

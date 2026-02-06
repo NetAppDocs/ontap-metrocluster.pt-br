@@ -1,16 +1,7 @@
----
-permalink: upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html 
-sidebar: sidebar 
-keywords: metrocluster, upgrade, create, mirrored, data, aggregate, node 
-summary: Você precisa criar um agregado de dados espelhados em cada nó no grupo de DR. 
----
-= Crie um agregado de dados espelhado em cada nó FC do MetroCluster
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
-[role="lead"]
 Você precisa criar um agregado de dados espelhados em cada nó no grupo de DR.
 
 .Sobre esta tarefa

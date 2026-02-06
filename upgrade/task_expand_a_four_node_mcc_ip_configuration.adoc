@@ -1187,9 +1187,13 @@ NOTE: Você não precisa reiniciar os nós em uma ordem específica, mas você d
 `storage aggregate create -aggregate <aggregate-name> -node <node-name> -diskcount <no-of-disks> -mirror true`
 
 +
+[NOTE]
+====
+** Você deve criar pelo menos um agregado de dados espelhados por local. Recomenda-se ter dois agregados de dados espelhados por local em nós IP do MetroCluster para hospedar os volumes MDV. No entanto, um único agregado por local é suportado (mas não recomendado). É aceitável que um site do MetroCluster tenha um único agregado de dados espelhados e o outro site tenha mais de um agregado de dados espelhados.
+** Os nomes dos agregados devem ser únicos em todos os sites MetroCluster. Isso significa que você não pode ter dois agregados diferentes com o mesmo nome no site A e no site B.
 
-NOTE: Você deve criar pelo menos um agregado de dados espelhados por local. Recomenda-se ter dois agregados de dados espelhados por local em nós IP do MetroCluster para hospedar os volumes MDV. No entanto, um único agregado por local é suportado (mas não recomendado). É aceitável que um site do MetroCluster tenha um único agregado de dados espelhados e o outro site tenha mais de um agregado de dados espelhados.
 
+====
 +
 O exemplo a seguir mostra a criação de um agregado em node_A_1-novo.
 

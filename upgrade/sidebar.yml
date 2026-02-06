@@ -219,7 +219,7 @@ entries:
       - title: Implementar a configuração do MetroCluster
         url: "/upgrade/task_implement_the_mcc_configuration_mcc_refresh_mcc_expansion.html"
       - title: Crie um agregado de dados espelhados em cada nó
-        url: "/upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html"
+        url: "/upgrade/task-expand-four-to-eight-mcc-fc.html"
       - title: Configurar pontes FC para SAS para monitoramento de integridade
         url: "/upgrade/task_configure_the_fc_to_sas_bridges_for_health_monitor.html"
       - title: Mover um volume de metadados nas configurações do MetroCluster

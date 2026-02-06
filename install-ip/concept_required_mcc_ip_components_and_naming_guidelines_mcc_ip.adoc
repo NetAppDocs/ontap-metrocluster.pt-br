@@ -281,6 +281,10 @@ Uma configuração IP MetroCluster de quatro nós requer a configuração mínim
 +
 Em uma configuração de MetroCluster de quatro nós com um único agregado de dados espelhados por nó, a configuração mínima requer 24 discos no local.
 
++
+
+NOTE: Os nomes dos agregados devem ser únicos em todos os sites MetroCluster. Isso significa que você não pode ter dois agregados diferentes com o mesmo nome no site A e no site B.
+
 
 
 Em uma configuração mínima suportada, cada pool tem o seguinte layout de unidade:
