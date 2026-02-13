@@ -34,7 +34,7 @@ ONTAP 9.18.1GA
  a| 
 Novas combinações de atualização suportadas para MetroCluster atualizações de controladores IP usando  `system controller replace` comandos
  a| 
-Adiciona suporte para atualização de um AFF A70 para um AFF A90 ou de um FAS70 para um FAS90 usando  `system controller replace` comandos em uma configuração IP MetroCluster.
+Suporte para atualizações de sistema de AFF A70 para AFF A90 e de FAS70 para FAS90 usando  `system controller replace` comandos em uma configuração IP MetroCluster.
 
 link:../upgrade/upgrade-mcc-ip-system-controller-replace.html["Atualizar controladores em IP MetroCluster de quatro nós usando switchover e switchback com comandos "System controller replace" (ONTAP 9.13,1 e posterior)"]
  a| 
