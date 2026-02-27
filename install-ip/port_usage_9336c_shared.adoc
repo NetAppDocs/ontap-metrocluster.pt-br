@@ -26,11 +26,24 @@ Se você tiver um switch Cisco 9336C-FX2 de 12 portas, use as tabelas em link:po
 
 NOTE: O switch Cisco 9336C-FX2 de 12 portas não suporta a conexão de prateleiras NS224 ao switch MetroCluster.
 
-* Ao cabear um switch Cisco 9336C-FX2 conectando o armazenamento NS224, você pode ter no máximo duas configurações ou grupos de DR MetroCluster. Pelo menos uma configuração ou grupo de DR MetroCluster deve estar conectando os shelves NS224 ao switch MetroCluster. Se uma das suas configurações ou grupos de DR MetroCluster for um sistema que não suporta shelves NS224, ela só poderá ser conectada como a segunda configuração ou grupo de DR MetroCluster.
+* Ao cabear um switch Cisco 9336C-FX2 conectando o armazenamento NS224, você pode ter no máximo duas configurações ou grupos de DR MetroCluster. Pelo menos uma configuração ou grupo de DR MetroCluster deve estar conectando os shelves NS224 ao switch MetroCluster.
 +
-Se o seu segundo grupo MetroCluster ou DR não conectar as prateleiras NS224 ao switch MetroCluster, siga as instruções <<tables_not_connecting_ns224,tabelas de cabeamento para controladores que não conectam prateleiras NS224 conectadas a switches>> .
+Se uma de suas MetroCluster configurações ou grupos de DR não conectar os gabinetes NS224 ao MetroCluster switch, siga o <<tables_not_connecting_ns224,tabelas de cabeamento para controladores que não conectam prateleiras NS224 conectadas a switches>>.
 
 * O RcfFileGenerator só mostra as plataformas elegíveis quando a primeira plataforma é selecionada.
+* Se você estiver expandindo uma configuração MetroCluster padrão que não oferece suporte ao armazenamento NS224 conectado a um switch e quiser adicionar uma configuração MetroCluster que tenha armazenamento NS224 conectado a um switch, revise as seguintes informações:
++
+** Na link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"^] ferramenta, primeiro você deve selecionar a plataforma que suporta armazenamento NS224 conectado a switch e, em seguida, selecionar a plataforma que não suporta armazenamento NS224 conectado a switch.
++
+Isso significa que, ao gerar o RCF para sua nova configuração, você pode precisar selecionar as plataformas na ferramenta RcfFileGenerator na seguinte ordem:
+
++
+... Selecione a plataforma que suporta o armazenamento NS224 conectado ao switch no *segundo campo suspenso*.
+... Selecione a plataforma que não suporta armazenamento NS224 conectado por switch no *primeiro campo suspenso*.
+
+
+
+
 * A conexão de configurações de um MetroCluster de oito ou dois de quatro nós requer o ONTAP 9.14,1 ou posterior.
 
 

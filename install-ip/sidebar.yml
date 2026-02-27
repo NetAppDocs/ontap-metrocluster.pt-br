@@ -156,6 +156,8 @@ entries:
     url: "/install-ip/task_connecting_mcc_to_different_mediator_instance.html"
   - title: Como o ONTAP Mediator oferece suporte à troca automática não planejada
     url: "/install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html"
+  - title: Aumente o tempo limite padrão da caixa de correio do ONTAP Mediator
+    url: "/install-ip/update-mediator-timeout.html"
   - title: Gerencie o ONTAP Mediator com o System Manager
     url: "/install-ip/task-sm-mediator.html"
 - title: Testando a configuração do MetroCluster

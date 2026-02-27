@@ -1,0 +1,42 @@
+---
+permalink: install-ip/update-mediator-timeout.html 
+sidebar: sidebar 
+keywords: ontap, metrocluster, mediator, timeout, settings, change, update, default, value 
+summary:  
+---
+= Aumente o tempo limite padrão da caixa de correio do ONTAP Mediator em configurações IP do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+MetroCluster os nós IP podem acessar os discos de mailbox do ONTAP Mediator usando sessões iSCSI, que têm um tempo limite de conexão padrão de 10 segundos, incluindo uma única tentativa após 5 segundos. Dependendo da sua versão do ONTAP e do seu ambiente, você pode aumentar o tempo limite da mailbox para um máximo de 60 segundos para evitar interrupção no switchover assistido por Mediator não planejado (MAUSO).
+
+NetApp recomenda que você aumente o tempo limite padrão de conexão da caixa de correio se estiver usando protocolos de redundância de rede (como HSRP ou VRRP), protocolos de prevenção de loops (como STP) ou se a latência de rede em seu ambiente exceder o tempo limite padrão de 10 segundos.
+
+.Antes de começar
+Você deve avaliar a janela de interrupção, ou seja, o tempo necessário para reconectar os nós IP do MetroCluster ao ONTAP Mediator. Se esse tempo for superior a 10 segundos, você deve definir o valor de tempo limite para alguns segundos a mais do que o tempo necessário para reconectar os nós IP do MetroCluster.
+
+Se a conectividade for mantida de forma independente em cada site e a interrupção em um site não afetar a conectividade com o ONTAP Mediator a partir do site em funcionamento, o valor padrão de 10 segundos é suficiente e você não deve alterar o mailbox timeout.
+
+.Sobre esta tarefa
+* As seguintes versões do ONTAP suportam o aumento do tempo limite da caixa de correio do ONTAP Mediator:
++
+** ONTAP 9.18.1GA ou posterior
+** ONTAP 9.17.1P3 ou patches posteriores do ONTAP 9.17.1
+** ONTAP 9.16.1P10 ou patch releases posteriores do ONTAP 9.16.1
+** ONTAP 9.15.1P16 ou versões de patch posteriores do ONTAP 9.15.1
+
+
+* Aumentar o tempo limite da caixa de correio é compatível com todas as versões do ONTAP Mediator.
+* O intervalo suportado para o valor de tempo limite é de 10 a 60 segundos. Se você especificar um valor fora do intervalo, ONTAP o altera automaticamente de volta para o valor padrão de 10 segundos.
+* Se levar mais de 10 segundos para os nós do MetroCluster se reconectarem ao ONTAP Mediator, você deve definir o valor de tempo limite para alguns segundos a mais do que o tempo que os nós levam para se conectar.
+
+
+.Passo
+. Para aumentar o tempo limite padrão da caixa de correio do ONTAP Mediator, consulte o link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/How_to_Increase_Mediator_Mailbox_Timeout_for_environments_where_network_latency_exceeds_10_seconds["NetApp artigo da Knowledge Base: como aumentar o tempo limite da caixa de correio do Mediador em ambientes onde a latência de rede excede 10 segundos"^]
+
+
+.Informações relacionadas
+link:concept-ontap-mediator-supports-automatic-unplanned-switchover.html["Saiba mais sobre como o ONTAP Mediator oferece suporte ao switchover não planejado automático em MetroCluster configurações IP."]

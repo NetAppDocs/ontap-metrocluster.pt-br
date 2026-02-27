@@ -46,7 +46,7 @@ As tabelas a seguir mostram as combinações de plataforma com suporte para conf
 ====
 * Todos os nós na configuração do MetroCluster devem estar executando a mesma versão do ONTAP. Por exemplo, se você tiver uma configuração de oito nós, todos os oito nós devem estar executando a mesma versão do ONTAP.
 * As combinações nesta tabela aplicam-se apenas a configurações de oito nós regulares ou permanentes.
-* As combinações de plataforma nesta tabela *não* se aplicam se você estiver usando os procedimentos de transição ou atualização.
+* As combinações de plataforma nesta tabela *não* se aplicam se você estiver usando os procedimentos de transição ou refresh.
 * Todos os nós em um grupo de DR devem ter o mesmo tipo e configuração.
 
 
