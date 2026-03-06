@@ -4338,7 +4338,6 @@
   <block id="f530740ac9e609fc21d073ac7a1005eb" category="list-text">Defina COS 5</block>
   <block id="905698c568b08ffae010badfede2c3d9" category="list-text">Opcional : modelagem de taxa para 20Gbps</block>
   <block id="6f9086eed365c3a2db1521fa98bb7fad" category="list-text">Classificação para tráfego iSCSI:</block>
-  <block id="bfee253ff06448698780744ab1762cba" category="list-text">Correspondência : porta TCP 62500, origem, destino ou ambos</block>
   <block id="b6b4cd52ee0814cd111c7646f3ec71cf" category="list-text">Correspondência opcional: COS 4</block>
   <block id="bc0161255c709f2bfdb09ade9fbc1364" category="list-text">Correspondência opcional: DSCP 32</block>
   <block id="18b58e1c9302e2acb18218c02c62dab7" category="list-text">Defina DSCP 32</block>
@@ -14463,7 +14462,6 @@
   <block id="6671def4e7da861590fb38e5fc66314e" category="list-text">Selecione a plataforma que não suporta armazenamento NS224 conectado por switch no *primeiro campo suspenso*.</block>
   <block id="ddbce4d78273fadb6714307de4be2067" category="doc">Aumente o tempo limite padrão da caixa de correio do ONTAP Mediator em configurações IP do MetroCluster</block>
   <block id="2782611b81a323af0ab55dcdc0bed9b0" category="paragraph">MetroCluster os nós IP podem acessar os discos de mailbox do ONTAP Mediator usando sessões iSCSI, que têm um tempo limite de conexão padrão de 10 segundos, incluindo uma única tentativa após 5 segundos. Dependendo da sua versão do ONTAP e do seu ambiente, você pode aumentar o tempo limite da mailbox para um máximo de 60 segundos para evitar interrupção no switchover assistido por Mediator não planejado (MAUSO).</block>
-  <block id="dc2661dcef8886857b7dbbc6bea4baa5" category="paragraph">NetApp recomenda que você aumente o tempo limite padrão de conexão da caixa de correio se estiver usando protocolos de redundância de rede (como HSRP ou VRRP), protocolos de prevenção de loops (como STP) ou se a latência de rede em seu ambiente exceder o tempo limite padrão de 10 segundos.</block>
   <block id="5989de7ef1290d3b1851ce9197407a9a" category="paragraph">Você deve avaliar a janela de interrupção, ou seja, o tempo necessário para reconectar os nós IP do MetroCluster ao ONTAP Mediator. Se esse tempo for superior a 10 segundos, você deve definir o valor de tempo limite para alguns segundos a mais do que o tempo necessário para reconectar os nós IP do MetroCluster.</block>
   <block id="96da1e735aedafb1dcf6dc852a630b69" category="paragraph">Se a conectividade for mantida de forma independente em cada site e a interrupção em um site não afetar a conectividade com o ONTAP Mediator a partir do site em funcionamento, o valor padrão de 10 segundos é suficiente e você não deve alterar o mailbox timeout.</block>
   <block id="d7960d10ef798af16bf54c0dcc02e80b" category="list-text">As seguintes versões do ONTAP suportam o aumento do tempo limite da caixa de correio do ONTAP Mediator:</block>
@@ -14484,4 +14482,8 @@
   <block id="33e1bc7f8120f8d7e792eda1953f5c0d" category="list-text">Verifique se o partner-sysid está correto:</block>
   <block id="d9e511ce59427a6a6f5e2d82b3caa85c" category="list-text">Após as LIFs intercluster estarem ativas, verifique o status do peer de cluster e restabeleça o peering do cluster conforme necessário.</block>
   <block id="9aadb95a414b8c0423f92f9ec9df69d8" category="sidebar">Aumente o tempo limite padrão da caixa de correio do ONTAP Mediator</block>
+  <block id="27a4277d57a9c4676312c7a5013a9b75" category="list-text">Correspondência: porta TCP 65200, origem, destino ou ambos</block>
+  <block id="e2bba64dd4e20eb5cd27b969fbf8dbce" category="paragraph">NetApp recomenda que você aumente o tempo limite de conexão da caixa de correio padrão se alguma das seguintes situações se aplicar ao seu ambiente:</block>
+  <block id="d57bb94baa67d066f16fc9fc5b6def7e" category="list-text">Você está usando protocolos de redundância de rede (como HSRP ou VRRP) ou protocolos de prevenção de loops (como STP).</block>
+  <block id="29c1e5df7e26dbc34a0230732d8e3a0c" category="list-text">O tempo de reconvergência da rede (por exemplo, protocolos de roteamento estabilizando ou HSRP/VRRP tornando-se ativos após uma nova eleição) pode exceder o tempo limite padrão de 10 segundos.</block>
 </blocks>

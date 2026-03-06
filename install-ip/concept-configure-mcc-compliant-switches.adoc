@@ -78,7 +78,7 @@ CS5
 
 * Classificação para tráfego iSCSI:
 +
-** Correspondência : porta TCP 62500, origem, destino ou ambos
+** Correspondência: porta TCP 65200, origem, destino ou ambos
 ** Correspondência opcional: COS 4
 ** Correspondência opcional: DSCP 32
 ** Defina DSCP 32

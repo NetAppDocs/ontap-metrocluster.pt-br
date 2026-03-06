@@ -13,7 +13,11 @@ summary:
 [role="lead"]
 MetroCluster os nós IP podem acessar os discos de mailbox do ONTAP Mediator usando sessões iSCSI, que têm um tempo limite de conexão padrão de 10 segundos, incluindo uma única tentativa após 5 segundos. Dependendo da sua versão do ONTAP e do seu ambiente, você pode aumentar o tempo limite da mailbox para um máximo de 60 segundos para evitar interrupção no switchover assistido por Mediator não planejado (MAUSO).
 
-NetApp recomenda que você aumente o tempo limite padrão de conexão da caixa de correio se estiver usando protocolos de redundância de rede (como HSRP ou VRRP), protocolos de prevenção de loops (como STP) ou se a latência de rede em seu ambiente exceder o tempo limite padrão de 10 segundos.
+NetApp recomenda que você aumente o tempo limite de conexão da caixa de correio padrão se alguma das seguintes situações se aplicar ao seu ambiente:
+
+* Você está usando protocolos de redundância de rede (como HSRP ou VRRP) ou protocolos de prevenção de loops (como STP).
+* O tempo de reconvergência da rede (por exemplo, protocolos de roteamento estabilizando ou HSRP/VRRP tornando-se ativos após uma nova eleição) pode exceder o tempo limite padrão de 10 segundos.
+
 
 .Antes de começar
 Você deve avaliar a janela de interrupção, ou seja, o tempo necessário para reconectar os nós IP do MetroCluster ao ONTAP Mediator. Se esse tempo for superior a 10 segundos, você deve definir o valor de tempo limite para alguns segundos a mais do que o tempo necessário para reconectar os nós IP do MetroCluster.
