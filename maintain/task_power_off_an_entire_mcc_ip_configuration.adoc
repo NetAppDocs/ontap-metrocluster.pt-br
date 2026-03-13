@@ -4,19 +4,19 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, power, off, entire, metrocluster, ip, configuration 
 summary: Você deve desligar toda a configuração IP do MetroCluster e todo o equipamento antes que a manutenção ou realocação possa começar. 
 ---
-= Desligar toda uma configuração IP do MetroCluster
+= Desligue toda uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Você deve desligar toda a configuração IP do MetroCluster e todo o equipamento antes que a manutenção ou realocação possa começar.
+Desligue completamente toda a configuração IP da MetroCluster e todos os equipamentos antes de iniciar a manutenção ou a mudança de local.
 
 
 NOTE: A partir de ONTAP 9.8, o `*storage switch*` comando é substituído por `*system switch*`. As etapas a seguir mostram o `*storage switch*` comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o `*system switch*` comando é preferido.
 
-. Verifique a configuração do MetroCluster de ambos os sites na configuração do MetroCluster.
+. Verifique a configuração do MetroCluster em ambos os sites.
 +
 .. Confirme se a configuração do MetroCluster e o modo operacional estão normais. E
 `*metrocluster show*`
@@ -53,7 +53,7 @@ cluster_A_site_A::*>metrocluster modify -auto-switchover-failure-domain auso-dis
 ----
 +
 
-NOTE: Em uma configuração IP do MetroCluster, o domínio de falha do AUSO já está definido como 'AUSO-Disabled', a menos que a configuração seja configurada com o Mediador do ONTAP.
+NOTE: Em uma configuração IP do MetroCluster, o Domínio de Falha AUSO já está definido como 'auso-disabled' a menos que a configuração utilize ONTAP Mediator.
 
 . Verifique a alteração usando o comando
 +
@@ -70,14 +70,12 @@ NOTE: Em uma configuração IP do MetroCluster, o domínio de falha do AUSO já 
         End Time: 4/25/2020 20:20:36
           Errors: -
 ----
-. Parar os nós:
-+
-`*halt*`
-
+. Interrompa os nós em ambos os locais:
 +
 [listing]
 ----
-system node halt -node node1_SiteA -inhibit-takeover true -ignore-quorum-warnings true
+cluster_A::*>system node halt -node * -inhibit-takeover true -ignore-quorum-warnings true
+cluster_B::*>system node halt -node * -inhibit-takeover true -ignore-quorum-warnings true
 ----
 . Desligue o seguinte equipamento no local:
 +

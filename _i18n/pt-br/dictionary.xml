@@ -4564,7 +4564,6 @@
   <block id="09c51db2a0d87cd77a2ca402ad79db18" category="list-text">Plataformas que compartilham uma interface física para cluster local e tráfego MetroCluster. <block ref="286286065c1258176357731fa5aef554" category="inline-link-macro-rx"></block>Consulte para obter informações sobre as velocidades suportadas.</block>
   <block id="8c425f952493015588fb91113b5b2dd8" category="summary">Esta seção contém os requisitos para links interswitches (ISLs) que transportam tráfego MetroCluster em todas as configurações IP do MetroCluster e topologias de rede.</block>
   <block id="422a6c8c8d23cb29ed822adac0da8cd9" category="paragraph">Links interswitches (ISLs) que transportam tráfego MetroCluster em todas as configurações IP do MetroCluster e topologias de rede têm certos requisitos. Esses requisitos se aplicam a todos os ISLs que transportam tráfego MetroCluster, independentemente de os ISLs serem diretos ou compartilhados entre os switches do cliente.</block>
-  <block id="a5c426f5b72cbfd96a6dec4a6e3046d2" category="paragraph">O seguinte aplica-se a ISLs em todas as configurações IP do MetroCluster:</block>
   <block id="f2fe3be43c081827bf52c1013416d414" category="list-text">Ambos os tecidos devem ter o mesmo número de ISLs.</block>
   <block id="baf55d93093b54950152b6be3f9bfec2" category="list-text">ISLs em um tecido devem ter a mesma velocidade e comprimento.</block>
   <block id="4b00dc01ca120693f1539bf736f11069" category="list-text">Os ISLs em ambos os tecidos devem ter a mesma velocidade e comprimento.</block>
@@ -4579,7 +4578,6 @@
   <block id="22380478e64b8062eb70d91ccdd67ce7" category="list-text">A perda de pacotes deve ser inferior ou igual a 0,01%. A perda máxima de pacotes é a soma de todas as perdas em todos os links no caminho entre os nós MetroCluster e a perda nas interfaces IP MetroCluster locais.</block>
   <block id="0b2575167b6e71da84f0682066aa5c0d" category="list-text">O valor de jitter suportado é 3ms para ida e volta (ou 1,5ms para ida e volta).</block>
   <block id="b1bbb8c0e7431a301e05959762cb6be0" category="list-text">A rede deve alocar e manter a quantidade de largura de banda SLA necessária para o tráfego MetroCluster, independentemente de microexplosões e picos no tráfego.</block>
-  <block id="db5dfb006abd3b92e48ae138fe185ffb" category="list-text">Se você estiver usando o ONTAP 9.7 ou posterior, a rede intermediária entre os dois locais deve fornecer uma largura de banda mínima de 4,5Gbps Gbps para a configuração IP do MetroCluster.</block>
   <block id="8feeeb8c24b7a524af9a025841262932" category="section-title">Considerações sobre transcetor e cabo</block>
   <block id="667735c31f9e3d4e69adccaa68e87206" category="paragraph">Todos os SFPs ou QSFPs suportados pelo fornecedor de equipamentos são suportados para os ISLs da MetroCluster. Os SFPs e QSFPs fornecidos pela NetApp ou pelo fornecedor do equipamento devem ser suportados pelo firmware do switch e do switch.</block>
   <block id="887966b0ad45d1598b4a9517835a9477" category="paragraph">Ao conetar os controladores aos switches e aos ISLs de cluster locais, você deve usar os transcetores e cabos fornecidos pela NetApp com o MetroCluster.</block>
@@ -7285,16 +7283,13 @@
   <block id="e52b8d056eb8caf437f1120e5d314a30" category="list-text">Verifique se todas as SVMs de origem sincronizada estão online<block ref="c8f87ef9cba43239082a0f2328d296b1" prefix=" " category="inline-code"></block></block>
   <block id="2069e27bc5a7ecc4db870a703c66de8f" category="list-text">Inicie qualquer SVMs de origem sincronizada que não estejam online<block ref="1d28a2bf8ea989628079967bbf9293c7" prefix=" " category="inline-code"></block></block>
   <block id="f323ad60392fa7c75997f3419493d6c3" category="summary">Você deve desligar toda a configuração IP do MetroCluster e todo o equipamento antes que a manutenção ou realocação possa começar.</block>
-  <block id="5c79413a4833df0080080fe8fe2e7c15" category="doc">Desligar toda uma configuração IP do MetroCluster</block>
   <block id="5a862a97aa2605f3cbb2987eba34c9a9" category="list-text">Confirme se a configuração do MetroCluster e o modo operacional estão normais. E<block ref="0a45ea7da7722e7946b8d5a55f1dac66" prefix=" " category="inline-code"></block></block>
   <block id="33e5d783a7a408bca6f492d5b41c67ce" category="list-text">Execute o seguinte comando<block ref="b84a5fec2688d0634a56b55e47a6ad4b" prefix=" " category="inline-code"></block></block>
   <block id="7795bdbe14dd71c83b1053288d7744df" category="list-text">Execute o seguinte comando<block ref="5b8b73ca3a484d300dd27e2f843a7323" prefix=" " category="inline-code"></block></block>
   <block id="5127f26b0a13d7da193f0d35dc16f4a0" category="list-text">Execute o seguinte comando<block ref="7bccb11cdf8fc2cfd2ea874e05d2b01a" prefix=" " category="inline-code"></block></block>
   <block id="32f7947faaa0b39c98413d31ab51eae6" category="list-text">Execute o seguinte comando<block ref="2a8af784445d0eb51c8bc5c978de39f6" prefix=" " category="inline-code"></block></block>
   <block id="37458c869049da196f1df7bf07fb1855" category="list-text">Se necessário, desative o AUSO modificando o domínio de falha do AUSO para</block>
-  <block id="b31a46a4ba6004f2ed3fd6632565a448" category="admonition">Em uma configuração IP do MetroCluster, o domínio de falha do AUSO já está definido como 'AUSO-Disabled', a menos que a configuração seja configurada com o Mediador do ONTAP.</block>
   <block id="baf620aab7b9758c307a3f0ac247ab7f" category="list-text">Parar os nós:</block>
-  <block id="f30bf82bc8eafa66c54fa40dcf42ea44" category="paragraph"><block ref="64741aee0c87a08ef7b37e6ec6fee1b9" prefix="" category="inline-code"></block></block>
   <block id="c74361f8919e393c4955920ffabda5b7" category="list-text">Switches IP MetroCluster</block>
   <block id="347bde5f3be96b6c3eab8b4a360b9028" category="list-text">Aguarde trinta minutos e ligue todos os compartimentos de storage, switches IP MetroCluster e controladores de storage.</block>
   <block id="24ea961e35f1e60e606fd840735a7b80" category="summary">Se você precisar executar a manutenção do local ou realocar um único local em uma configuração IP do MetroCluster, você deve saber como desligar e ligar o local.</block>
@@ -14450,7 +14445,6 @@
   <block id="b5fd13a9bac03ffc7e9ccde70adc8242" category="doc">Requisitos de instalação do ONTAP Mediator para configurações IP do MetroCluster</block>
   <block id="e5287e41bb7b528f560b85847eb683be" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 36 portas e não planeja conectar o armazenamento NS224 ao switch, use as tabelas em <block ref="5e1610ecd3627713f0895c655a667651" category="inline-link-macro-rx"></block>.</block>
   <block id="b68398936049bd282794c33831e2aea9" category="paragraph">Suporte para atualizações de sistema de AFF A70 para AFF A90 e de FAS70 para FAS90 usando <block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos em uma configuração IP MetroCluster.</block>
-  <block id="2cc15add30dea4377769b3b77d052707" category="list-text">A partir do ONTAP 9.18.1, plataformas com uma velocidade de porta IP de MetroCluster de 100Gbps exigem uma velocidade mínima de link ISL de 100Gbps. Usar uma velocidade ISL diferente requer uma Feature Product Variance Request (FPVR). Para registrar uma FPVR, entre em contato com sua equipe de vendas da NetApp.</block>
   <block id="2691309e1710cb6a0083f4722ac33e8d" category="admonition">As atualizações para ONTAP 9.18.1 e versões posteriores em plataformas que atualmente não atendem ao requisito de ISL de 100 Gbps não estão bloqueadas e podem prosseguir. No entanto, a NetApp recomenda fortemente que os clientes migrem para a conectividade ISL de 100 Gbps para manter os níveis esperados de desempenho e disponibilidade.</block>
   <block id="2424b4c07e55bece1d1a95007a6782a8" category="list-text">Deve haver pelo menos uma porta ISL de 10Gbps por malha.</block>
   <block id="925adb23a78386992d24bff6e6e1b4e2" category="list-text">Ao cabear um switch Cisco 9336C-FX2 conectando o armazenamento NS224, você pode ter no máximo duas configurações ou grupos de DR MetroCluster. Pelo menos uma configuração ou grupo de DR MetroCluster deve estar conectando os shelves NS224 ao switch MetroCluster.</block>
@@ -14486,4 +14480,10 @@
   <block id="e2bba64dd4e20eb5cd27b969fbf8dbce" category="paragraph">NetApp recomenda que você aumente o tempo limite de conexão da caixa de correio padrão se alguma das seguintes situações se aplicar ao seu ambiente:</block>
   <block id="d57bb94baa67d066f16fc9fc5b6def7e" category="list-text">Você está usando protocolos de redundância de rede (como HSRP ou VRRP) ou protocolos de prevenção de loops (como STP).</block>
   <block id="29c1e5df7e26dbc34a0230732d8e3a0c" category="list-text">O tempo de reconvergência da rede (por exemplo, protocolos de roteamento estabilizando ou HSRP/VRRP tornando-se ativos após uma nova eleição) pode exceder o tempo limite padrão de 10 segundos.</block>
+  <block id="fdee122f655bcc29473b91ef1ae580b7" category="paragraph">Esses requisitos se aplicam a ISLs em todas as configurações de MetroCluster IP:</block>
+  <block id="c3dce11df95ca3b74ddf51996b7b87e2" category="list-text">A partir do ONTAP 9.18.1, plataformas com uma velocidade de porta IP de MetroCluster de 100Gbps exigem uma velocidade mínima de link ISL de 100Gbps. O uso de uma velocidade ISL diferente requer uma Feature Policy Variance Request (FPVR). Para registrar uma FPVR, entre em contato com sua equipe de vendas da NetApp.</block>
+  <block id="3f6fd3cf871a70252cd684eb0d12b602" category="paragraph">Desligue completamente toda a configuração IP da MetroCluster e todos os equipamentos antes de iniciar a manutenção ou a mudança de local.</block>
+  <block id="a79e1c21f0beaf2ed51b7aec418f4f70" category="list-text">Verifique a configuração do MetroCluster em ambos os sites.</block>
+  <block id="108a4ad72df5c318a77dad90928d8770" category="admonition">Em uma configuração IP do MetroCluster, o Domínio de Falha AUSO já está definido como 'auso-disabled' a menos que a configuração utilize ONTAP Mediator.</block>
+  <block id="6ba9661e38afca32fe30fec08ca5c4ab" category="list-text">Interrompa os nós em ambos os locais:</block>
 </blocks>
