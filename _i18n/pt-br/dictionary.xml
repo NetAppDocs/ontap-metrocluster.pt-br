@@ -14486,4 +14486,5 @@
   <block id="a79e1c21f0beaf2ed51b7aec418f4f70" category="list-text">Verifique a configuração do MetroCluster em ambos os sites.</block>
   <block id="108a4ad72df5c318a77dad90928d8770" category="admonition">Em uma configuração IP do MetroCluster, o Domínio de Falha AUSO já está definido como 'auso-disabled' a menos que a configuração utilize ONTAP Mediator.</block>
   <block id="6ba9661e38afca32fe30fec08ca5c4ab" category="list-text">Interrompa os nós em ambos os locais:</block>
+  <block id="f759ce596ef74c921d7bddaf277a11c8" category="paragraph">*Nota:* A velocidade de 25 GbE requer o adaptador transceptor MAM1Q00A-QSA28.</block>
 </blocks>

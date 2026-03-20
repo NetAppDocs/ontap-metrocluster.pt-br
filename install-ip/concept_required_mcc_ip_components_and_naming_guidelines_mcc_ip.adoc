@@ -256,6 +256,8 @@ Ranhura 2
  a| 
 e2a, e2b
 
+*Nota:* A velocidade de 25 GbE requer o adaptador transceptor MAM1Q00A-QSA28.
+
 
 
  a| 
