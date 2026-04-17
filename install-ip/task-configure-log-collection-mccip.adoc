@@ -15,7 +15,7 @@ Em uma configuração de IP do MetroCluster, você pode configurar a coleta de l
 CAUTION: Em switches Broadcom e Cisco, um novo usuário é necessário para cada cluster com coleta de logs. Por exemplo, MetroCluster 1, MetroCluster 2, MetroCluster 3 e MetroCluster 4 exigem a configuração de um usuário separado nos switches. Não há suporte para várias chaves SSH para o mesmo usuário.
 
 .Sobre esta tarefa
-O monitor de integridade do switch Ethernet (CSHM) é responsável por garantir a integridade operacional dos switches de rede Cluster e Storage e coletar logs de switch para fins de depuração. Este procedimento orienta você pelo processo de configuração da coleta, solicitando Registros detalhados de *suporte* e permitindo uma coleta por hora de dados *Periódicos* coletados pela AutoSupport.
+O monitor de integridade do switch Ethernet (CSHM) é responsável por garantir o funcionamento operacional dos switches de rede e coletar os registros do switch para fins de depuração. Este procedimento orienta você no processo de configuração da coleta, solicitação de logs de *Suporte* detalhados e ativação da coleta horária de dados *Periódicos* que são coletados pelo AutoSupport.
 
 *NOTA:* se você ativar o modo FIPS, você deve concluir o seguinte:
 

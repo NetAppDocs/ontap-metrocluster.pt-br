@@ -10939,7 +10939,6 @@
   <block id="14cbcb11bb60726b28bad9deb474ecca" category="list-text">Se ambos os grupos de DR não puderem ser configurados usando a mesma VLAN, você deverá atualizar o grupo de DR que não suporta o<block ref="883efb435dfcdbab29a2ff69d0287888" prefix=" " category="inline-code"></block> parâmetro para usar uma VLAN suportada pelo outro grupo de DR.</block>
   <block id="ff265cea659d94d2bb616f30f406a802" category="paragraph">Você deve verificar a integridade e a conectividade da configuração do MetroCluster antes de executar a expansão.</block>
   <block id="9ff1de752473d0e8f9618f724dd22ff9" category="paragraph"><block ref="e0c8c2b46ec80ac4a0d764213e3acc22" prefix="" category="inline-code"></block></block>
-  <block id="0bc247e1fb33acc5636986c990aa1e9a" category="section-title">Removendo a configuração dos aplicativos de monitoramento</block>
   <block id="ae81bff40f90f640ae14eb37aaf345ea" category="paragraph">Se a configuração existente for monitorada com o software tiebreaker do MetroCluster, o Mediador do ONTAP ou outros aplicativos de terceiros (por exemplo, o ClusterLion) que possam iniciar um switchover, você deverá remover a configuração do MetroCluster do software de monitoramento antes da atualização.</block>
   <block id="a4aa69385ab0a1b92a7a5635cdb2f2b2" category="paragraph"><block ref="903819e2154a41f8227f7c0192db71f6" category="inline-link-macro-rx"></block>.</block>
   <block id="20a404f6395aff4a82f8b5763259c362" category="paragraph">Você deve preparar os quatro novos nós do MetroCluster e instalar a versão correta do ONTAP.</block>
@@ -10975,7 +10974,6 @@
   <block id="5dc920411c59b1b9f32058239fb24330" category="list-text">Verifique se as conexões estão corretamente estabelecidas:<block ref="e7acb1ae14be0e5233d619851263fdae" prefix=" " category="inline-code"></block></block>
   <block id="2dccf53d6ed326f889d8e764529b9794" category="list-text">Verifique a atribuição automática e o particionamento do disco:</block>
   <block id="3f95b2ea711d433e26a8b5eb63bbd17a" category="paragraph"><block ref="02b924a96c72679822883a70dfe48211" prefix="" category="inline-code"></block></block>
-  <block id="6c46e592d5f16891d3a16e5f364e031b" category="section-title">Finalizando a adição dos novos nós</block>
   <block id="4ad402ea3fb0bcfdc921fd3083047f45" category="paragraph">A partir do prompt de qualquer nó, execute:</block>
   <block id="28d0a71b806dfc9c57cc495498c72954" category="paragraph">Um único agregado de dados espelhados em um ou ambos os locais</block>
   <block id="d419812c67afb77388be54f4cb41eb86" category="paragraph">A partir do prompt de qualquer nó, configure o MetroCluster com o<block ref="d972f8bbe9b04d39b8b96b699cf921e9" prefix=" " category="inline-code"></block> parâmetro:</block>
@@ -12532,10 +12530,6 @@
   <block id="be4fd0012ddc006ea303591c9df6f76d" category="paragraph"><block ref="39b06b9a26b49c3db6d9409a6abaa9d8" prefix="" category="inline-code"></block></block>
   <block id="9e1d9b9e8b88355df08194559af6865a" category="summary">Durante uma mudança, certas operações não devem ser executadas.</block>
   <block id="fa33dcb38c0cd6e15dd757f1ef3072ee" category="doc">Limitações quando a configuração do MetroCluster está em switchover</block>
-  <block id="5722cde27dfa05f795a5466b6d0859c9" category="paragraph">Quando o sistema está em mudança, certas operações não devem ser executadas. Saiba mais sobre operações restritas quando o sistema está em switchover.</block>
-  <block id="b72a4837907e7fef0771c42da901c811" category="section-title">Operações restritas em switchover</block>
-  <block id="1b5f91752d52b3bac4319cf07ea0efb8" category="paragraph">As seguintes operações não são suportadas quando o sistema está em switchover:</block>
-  <block id="272c8dfc8e0821088d85ed5d0fe037a8" category="list-text">Criar ou excluir agregados e volumes</block>
   <block id="d825dd35fde2fe33a56ef95c52f545a0" category="list-text">Criando ou excluindo SVMs</block>
   <block id="8c120d60e412429a6f43b748c02dc233" category="list-text">Criando ou excluindo LIFs</block>
   <block id="9cc6607cba1650bc799439425f9b085e" category="list-text">Adicionar ou remover discos (somente se você estiver substituindo-os como parte de um procedimento de recuperação)</block>
@@ -13423,7 +13417,6 @@
   <block id="4e4facc560c88d40d47ce2b1369d5552" category="doc">Configurar coleta de logs em um switch IP do MetroCluster</block>
   <block id="d5a5c9619599da12d87af6daeab1ece6" category="paragraph">Em uma configuração de IP do MetroCluster, você pode configurar a coleta de logs para coletar logs de switches para fins de depuração.</block>
   <block id="7c51c84110459cf460a444094be133c4" category="admonition">Em switches Broadcom e Cisco, um novo usuário é necessário para cada cluster com coleta de logs. Por exemplo, MetroCluster 1, MetroCluster 2, MetroCluster 3 e MetroCluster 4 exigem a configuração de um usuário separado nos switches. Não há suporte para várias chaves SSH para o mesmo usuário.</block>
-  <block id="8ac20e3719b6b58e94e5a4385e87b52e" category="paragraph">O monitor de integridade do switch Ethernet (CSHM) é responsável por garantir a integridade operacional dos switches de rede Cluster e Storage e coletar logs de switch para fins de depuração. Este procedimento orienta você pelo processo de configuração da coleta, solicitando Registros detalhados de *suporte* e permitindo uma coleta por hora de dados *Periódicos* coletados pela AutoSupport.</block>
   <block id="2ded3ff3862adfc6f54d2a2f3ebf1147" category="paragraph">*NOTA:* se você ativar o modo FIPS, você deve concluir o seguinte:</block>
   <block id="81f0d5b127adfd87f50ce10bc85e1e65" category="list-text">Regenerar chaves SSH no switch usando as instruções do fornecedor.</block>
   <block id="a60a00967db7342947b326a8f7618f52" category="list-text">Regenerar chaves SSH no ONTAP usando<block ref="c079360670e0f4f9441a54ac1d262788" prefix=" " category="inline-code"></block></block>
@@ -14487,4 +14480,15 @@
   <block id="108a4ad72df5c318a77dad90928d8770" category="admonition">Em uma configuração IP do MetroCluster, o Domínio de Falha AUSO já está definido como 'auso-disabled' a menos que a configuração utilize ONTAP Mediator.</block>
   <block id="6ba9661e38afca32fe30fec08ca5c4ab" category="list-text">Interrompa os nós em ambos os locais:</block>
   <block id="f759ce596ef74c921d7bddaf277a11c8" category="paragraph">*Nota:* A velocidade de 25 GbE requer o adaptador transceptor MAM1Q00A-QSA28.</block>
+  <block id="316fa55db721e45107647fc0de79704f" category="paragraph">O monitor de integridade do switch Ethernet (CSHM) é responsável por garantir o funcionamento operacional dos switches de rede e coletar os registros do switch para fins de depuração. Este procedimento orienta você no processo de configuração da coleta, solicitação de logs de *Suporte* detalhados e ativação da coleta horária de dados *Periódicos* que são coletados pelo AutoSupport.</block>
+  <block id="4526d2820ba573572df0eafdc557014c" category="paragraph">Quando o sistema estiver em switchover, NetApp recomenda que você evite executar certas operações.</block>
+  <block id="6efa43350457e5d9dbe5d6c555eb32f9" category="paragraph">As seguintes operações não são recomendadas quando o sistema está em switchover e devem ser executadas somente sob orientação do suporte da NetApp:</block>
+  <block id="9ea78d85c08becd89d5d23daef8687fa" category="list-text">Criando ou excluindo agregados</block>
+  <block id="56f10876ae2bed5f3da63c125772429f" category="list-text">Criando ou excluindo volumes (incluindo volumes criptografados)</block>
+  <block id="6e05136dba32fad75bd64f601602c77e" category="section-title">Remova a configuração dos aplicativos de monitoramento</block>
+  <block id="a8b426026583d79d39676c969bdc3456" category="section-title">Prepare os novos módulos do controlador</block>
+  <block id="af8fde2f19f4ba506d9bb950533f5776" category="list-text">No modo de manutenção, emita o comando halt para sair do modo de manutenção:</block>
+  <block id="b8bbebbdaa85ea395d4339565372cafe" category="list-text">Inicialize o sistema e acesse a configuração do cluster:</block>
+  <block id="e219586e70791b35867f7d4dc343163f" category="section-title">Configure as LIFs intercluster, crie as interfaces MetroCluster e espelhe os agregados raiz</block>
+  <block id="8780af330d271744603135da4ae91fd9" category="section-title">Finalize a adição dos novos nós</block>
 </blocks>

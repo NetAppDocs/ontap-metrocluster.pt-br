@@ -11,15 +11,12 @@ summary: Durante uma mudança, certas operações não devem ser executadas.
 
 
 [role="lead"]
-Quando o sistema está em mudança, certas operações não devem ser executadas. Saiba mais sobre operações restritas quando o sistema está em switchover.
+Quando o sistema estiver em switchover, NetApp recomenda que você evite executar certas operações.
 
+As seguintes operações não são recomendadas quando o sistema está em switchover e devem ser executadas somente sob orientação do suporte da NetApp:
 
-
-== Operações restritas em switchover
-
-As seguintes operações não são suportadas quando o sistema está em switchover:
-
-* Criar ou excluir agregados e volumes
+* Criando ou excluindo agregados
+* Criando ou excluindo volumes (incluindo volumes criptografados)
 * Criando ou excluindo SVMs
 * Criando ou excluindo LIFs
 * Adicionar ou remover discos (somente se você estiver substituindo-os como parte de um procedimento de recuperação)
