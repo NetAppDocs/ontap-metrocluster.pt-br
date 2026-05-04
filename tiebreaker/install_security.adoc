@@ -124,7 +124,7 @@ NOTE: A conta de usuário especificada durante a instalação do tiebreaker deve
 
 * Use a criptografia do banco de dados
 +
-** A criptografia de dados em repouso é suportada.link:https://mariadb.com/docs/server/security/securing-mariadb/securing-mariadb-encryption/encryption-data-at-rest-encryption/data-at-rest-encryption-overview["Saiba mais sobre criptografia de dados em repouso"^]
+** A criptografia de dados em repouso é suportada. link:https://mariadb.com/docs/server/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals["Saiba mais sobre criptografia de dados em repouso"^]
 ** Os dados em trânsito não são criptografados. Os dados em voo usam uma conexão de arquivo local "socks".
 ** Conformidade FIPS para MariaDB -- você não precisa ativar a conformidade FIPS no banco de dados. A instalação do host no modo compatível com FIPS é suficiente.
 +
@@ -155,3 +155,6 @@ link:https://mariadb.com/docs/server/security/securing-mariadb["Protegendo o Mar
 link:https://developer.hashicorp.com/vault/tutorials/operations/production-hardening/["Endurecimento da produção"^]
 
 
+
+.O que se segue?
+link:install-choose-procedure.html["Escolha o procedimento de instalação"] para instalar ou atualizar o Tiebreaker.

@@ -9228,7 +9228,6 @@
   <block id="ddce32ff2776818dc471c3bd4712c1ac" category="list-text">Expansão de uma configuração de MetroCluster alongada ou conectada à malha de quatro nós para uma configuração de MetroCluster de oito nós.</block>
   <block id="7abce9dabe03b4e216be9445267a37a1" category="paragraph"><block ref="7abce9dabe03b4e216be9445267a37a1" category="inline-link-rx"></block></block>
   <block id="9fb038c9fc985f95a364fbc284e66009" category="summary">Para utilizar o SNMP com o software tiebreaker, tem de configurar as definições SNMP.</block>
-  <block id="42c78bfa01522453fc42980157ef4a55" category="doc">Configurando as configurações SNMP para o software tiebreaker</block>
   <block id="92d17a99a2247a42900b1a4c61e8e7d0" category="paragraph">Para utilizar o SNMP com o software tiebreaker, tem de configurar as definições SNMP.</block>
   <block id="740c0d0f6d37afa212fad2bd272a4212" category="list-text">O tiebreaker 1,6 só suporta SNMPv3.</block>
   <block id="a98720fe58fe46f2a22c59d172b69fbf" category="list-text">Embora o tiebreaker 1,5 e 1,4 suportem SNMPv1 e SNMPv3, a NetApp recomenda fortemente que você configure o SNMPv3 para uma segurança ideal.</block>
@@ -10354,7 +10353,6 @@
   <block id="c833c589f902c8c0ddc3bdb645a85fe9" category="list-text">No novo nó, verifique o login e a conexão com o host:</block>
   <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">Resultado</block>
   <block id="4e7233ab8e56169d5783c1e27cf80e62" category="paragraph">No final desta tarefa, o host pode ver todas as interfaces iSCSI (nos nós antigos e novos) e é conetado a todas essas interfaces.</block>
-  <block id="1ea11cf2a7632efb274bdc8804c13cc8" category="paragraph">LUNs e volumes ainda estão fisicamente hospedados nos nós antigos. Como os LUNs são relatados apenas nas interfaces de nó antigas, o host mostrará apenas caminhos sobre os nós antigos. Para ver isso, execute os<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> comandos e<block ref="2fbf63deae0938cf669e6ca451f1eb2c" prefix=" " category="inline-code"></block> no host e examine as saídas de comando.</block>
   <block id="85ef9de042295f197ffebdafe8989eba" category="section-title">Etapa 2: Adicione os novos nós como nós de relatório</block>
   <block id="63caeb58f676a0ef9b76df2d7cb19636" category="paragraph">Depois de configurar as conexões com os novos nós, você adiciona os novos nós como os nós de relatório.</block>
   <block id="491bf790c89cc65e6e44bc71af9a4016" category="list-text">No novo nó, liste nós de geração de relatórios de LUNs na SVM:</block>
@@ -10732,7 +10730,6 @@
   <block id="e18600ad5da962c033022e8657b0fab3" category="list-text">Exclua as interfaces MetroCluster nos nós do antigo grupo DR:</block>
   <block id="eb5c2cb295b7a9fd5ee2ed559f176f9e" category="paragraph"><block ref="f6dcf8fef0b40f9ec60771b2c98849ae" prefix="" category="inline-code"></block></block>
   <block id="deba5df0dea3cbba9463f219100e5ba4" category="list-text">Exclua a configuração do antigo grupo DR. E<block ref="cd90838db53304393981e5da6c9b9f7e" prefix=" " category="inline-code"></block></block>
-  <block id="8d3c998ce16ecd4cdc06e3ddd8c757e6" category="list-text">Desmarque os nós no grupo DR antigo.</block>
   <block id="ff6434ad658fa9ed7826817a3f9f0dff" category="paragraph">Repita esta etapa para o outro nó local no grupo DR antigo.</block>
   <block id="c1f192f6d626bc5f27fc74b0848a1250" category="paragraph"><block ref="acc3b99f812f210de5147296e269009d" prefix="" category="inline-code"></block></block>
   <block id="8917e80351843363583600f118c2fa84" category="list-text">Pare, desligue e remova os antigos módulos de controladora e compartimentos de storage.</block>
@@ -10962,9 +10959,6 @@
   <block id="d4d9b588eea04166e68f8f0449b9a7e0" category="list-text">Repita estas etapas para unir node_B_1-novo e node_B_2-novo ao cluster_B.</block>
   <block id="07d3f381efeb375a8fe18cc6f11404e7" category="list-text">A porta inicial usada nos exemplos é específica da plataforma. Você deve usar a porta inicial específica para sua plataforma de nó IP do MetroCluster.</block>
   <block id="78697dcb303aaaf46c68a191d70983f2" category="list-text">Reveja as informações em <block ref="f8cbfe9b9b2f8ea45f944b8dcf8bd730" category="inline-xref-macro-rx"></block> antes de executar esta tarefa.</block>
-  <block id="1cab2231671234cf1e23b1ca0a52ef3e" category="list-text">Nos novos nós IP do MetroCluster, configure as LIFs entre clusters usando os seguintes procedimentos:</block>
-  <block id="44b54e3f59f7ff51b8cfe9cee771a6cb" category="paragraph"><block ref="44b54e3f59f7ff51b8cfe9cee771a6cb" category="inline-link-macro-rx"></block></block>
-  <block id="1df5a38c69ea48ecae85e79f89802ccf" category="paragraph"><block ref="1df5a38c69ea48ecae85e79f89802ccf" category="inline-link-macro-rx"></block></block>
   <block id="5a50268a88f8781b5c76e9800fc246d8" category="list-text">Crie o grupo de DR para os nós IP do MetroCluster:</block>
   <block id="bc13f269b8fcdbac7ef84f083e616363" category="paragraph">Para obter mais informações sobre as configurações e conexões do MetroCluster, consulte o seguinte:</block>
   <block id="01fd5a7c3bb1009fa8251ff0e9f26de3" category="paragraph"><block ref="01fd5a7c3bb1009fa8251ff0e9f26de3" category="inline-link-macro-rx"></block></block>
@@ -14017,7 +14011,6 @@
   <block id="9edb945b46e8338b6c604c62787c3031" category="doc">Configurar criptografia MACsec em switches Cisco 9336C em um site IP MetroCluster</block>
   <block id="e0e912999bb427a16c869c97ad908030" category="doc">Configurar o switch NVIDIA IP SN2100 para interconexão de cluster e conectividade IP MetroCluster de backend</block>
   <block id="25849b8ea5119a6ccbe0ef06d8e35773" category="doc">Teste a alternância do nó ONTAP para sua configuração de IP do MetroCluster</block>
-  <block id="7282d891d20cd1520e021b2ba6c78e20" category="list-text">A criptografia de dados em repouso é suportada.<block ref="6774dcdb02085dead82047685ca775f1" category="inline-link-macro-rx"></block></block>
   <block id="f42ec02236cb8b0134435967892ad733" category="paragraph"><block ref="f42ec02236cb8b0134435967892ad733" category="inline-link-macro-rx"></block></block>
   <block id="929f699475d2ee16cffb5df619460281" category="list-text">Nenhuma falha de hardware (por exemplo, uma falha de energia)</block>
   <block id="8e7bac68088266dc4f6ea54160a86aa8" category="open-title">Interruptores Brocade (FOS 9.0 e posterior)</block>
@@ -14050,7 +14043,6 @@
   <block id="5c60cc2ba2a9eb0236f0d3ba52d42179" category="admonition">Você deve definir o bootarg em todos os nós antigos em ambos os sites antes de iniciar a atualização.</block>
   <block id="9f0a4554064856ae78dbf1c08bc876ce" category="doc">Remover um grupo DR de uma configuração do MetroCluster</block>
   <block id="2f5075fd2401e26a07990d72f3087874" category="paragraph">A partir do ONTAP 9.8, você pode remover um grupo de recuperação de desastres (DR) de uma configuração MetroCluster de oito nós para criar uma configuração MetroCluster de quatro nós.</block>
-  <block id="73ac4183b96cb40ebb14a9dc72a13298" category="admonition">Use essas etapas durante os fluxos de trabalho de transição e atualização do sistema.</block>
   <block id="a17f6afa75b317e25d154b29624badd3" category="section-title">Remova os nós do grupo DR de cada cluster</block>
   <block id="b928a73ca232c9fc08d935ad673557de" category="paragraph">Este procedimento é suportado a partir do ONTAP 9.8.  Para sistemas executando o ONTAP 9.7 ou anterior, consulte o artigo da Base de Conhecimento:<block ref="806d9b447def65eba3e3e2e790c033b4" category="inline-link-macro-rx"></block> .</block>
   <block id="622b8cea53ef096337834121912a63f3" category="paragraph">Quando você remove um grupo de DR, quatro nós permanecem na configuração.</block>
@@ -14082,21 +14074,15 @@
   <block id="0d1726dab779821975a9ad578a9f0677" category="paragraph"><block ref="6e0d34e5eb1c8ece221755c754743354" prefix="" category="inline-code"></block></block>
   <block id="3e9c37ca50692bcf4d950da60ba31dd1" category="list-text">Desabilitar atribuição automática de disco:</block>
   <block id="b2bd91ffa581589b010f7b0cee5b040a" category="paragraph"><block ref="c24efecdd42a886db73de2bcc158cbdc" prefix="" category="inline-code"></block></block>
-  <block id="b06a58f7c6886b9c75c2b66e25e3b03c" category="list-text">Remova a propriedade dos discos do pool1 em cada nó do grupo DR a ser excluído.  Execute estas etapas em cada nó a ser removido.</block>
   <block id="e352d5e820576fb81acd295d2fa6b382" category="list-text">Vá para o nodeshell:</block>
   <block id="48b6c5e6c91f5afdf4db95fdce26e45f" category="paragraph"><block ref="1bdb752f72609d817a6beb669061c8b6" prefix="" category="inline-code"></block></block>
   <block id="0d5dee87e76c9a9f9127dd55f7b1e2eb" category="list-text">Identifique os discos do pool1:</block>
-  <block id="7cb1b8282d7b16c1d998b3403dc7a91f" category="paragraph"><block ref="978a127cc866f54e1830776b846eb9b8" prefix="" category="inline-code"></block></block>
-  <block id="c0b861216beaceb3d375fd9c6df6e6c3" category="paragraph">Todos os discos sobressalentes são exibidos, incluindo os discos sobressalentes pool0 e pool1 de propriedade do nó.</block>
-  <block id="6e07f225393b79b609cb8fc3d86279bf" category="list-text">Remova a propriedade do disco para cada disco sobressalente do pool1:</block>
   <block id="8d0b8b84becd485c7891597b01240458" category="paragraph"><block ref="a2548e43cec4e94df11e259aa9a83a68" prefix="" category="inline-code"></block></block>
-  <block id="c218a756cd011fd52e8951a24e6900e7" category="paragraph">Para discos particionados, remova a propriedade da partição e, em seguida, remova a propriedade do disco do contêiner.</block>
   <block id="096ee0b68ed0c4989612306aa1e3fbb5" category="list-text">Se você estiver em uma configuração de IP do MetroCluster , remova as conexões do MetroCluster nos nós do antigo grupo de DR.</block>
   <block id="bac7003f0be2f7c1ffe91ec5e8146e9e" category="paragraph">Esses comandos podem ser emitidos de qualquer cluster e se aplicam a todo o grupo de DR abrangendo ambos os clusters.</block>
   <block id="d30c3b2671a8fe1038b0b3608133c703" category="paragraph"><block ref="6864950bb23886bbe435bbce576bc0d6" prefix="" category="inline-code"></block></block>
   <block id="b1bd9ffb7ba04ba41a6ed8fd479dceb1" category="admonition">Esta etapa deve ser repetida em cada nó do grupo DR.</block>
   <block id="d321eb0a25003ddc996afe17a7149d6f" category="paragraph">Execute esta etapa em cada cluster.</block>
-  <block id="5dd0fc60033d456ae0a90e5edc267878" category="list-text">Desvincular o nó: +<block ref="1f9e5247574dddf29bedc560cf209d11" prefix=" " category="inline-code"></block></block>
   <block id="e1bde148bbf0582fd279d9a3c915b31a" category="list-text">Defina o nível de privilégio do administrador:</block>
   <block id="5465fc7f055cf03040fda6f777f9a2da" category="list-text">Verifique se o cluster HA está habilitado no novo grupo DR.  Se necessário, reative o cluster HA:</block>
   <block id="4e7f0491b8337902ce9619e04977796b" category="sidebar">Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 36 portas conectando armazenamento NS224</block>
@@ -14489,6 +14475,59 @@
   <block id="a8b426026583d79d39676c969bdc3456" category="section-title">Prepare os novos módulos do controlador</block>
   <block id="af8fde2f19f4ba506d9bb950533f5776" category="list-text">No modo de manutenção, emita o comando halt para sair do modo de manutenção:</block>
   <block id="b8bbebbdaa85ea395d4339565372cafe" category="list-text">Inicialize o sistema e acesse a configuração do cluster:</block>
-  <block id="e219586e70791b35867f7d4dc343163f" category="section-title">Configure as LIFs intercluster, crie as interfaces MetroCluster e espelhe os agregados raiz</block>
   <block id="8780af330d271744603135da4ae91fd9" category="section-title">Finalize a adição dos novos nós</block>
+  <block id="6b8f0c36cfacfde9cb8a41e51e4c81aa" category="inline-link-macro">Configurar as configurações SNMP para o software MetroCluster Tiebreaker</block>
+  <block id="7bf55c5fb72bee187d6fbd1aa1b52790" category="paragraph"><block ref="7bf55c5fb72bee187d6fbd1aa1b52790" category="inline-link-macro-rx"></block></block>
+  <block id="071e512a3f8baeb67c6344599c7eb921" category="summary">Após instalar o software Tiebreaker, você pode adicionar configurações do MetroCluster, configurar as definições de SNMP e começar a monitorar seu ambiente MetroCluster.</block>
+  <block id="ccb1f1ef7412b7b92081ada14f0f9db5" category="doc">MetroCluster fluxo de trabalho de configuração de desempate</block>
+  <block id="7d0a98150fc3a74e40b6948115b0cb2f" category="paragraph">Você pode usar este fluxo de trabalho para configurar o software Tiebreaker após a instalação.</block>
+  <block id="e36aed9ded69ff87b19d6bb819cce039" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="eb6675758f8fdd2ff1cefe24d56fcfaa" category="inline-link-macro-rx"></block></block>
+  <block id="356be90438cd5eb2724b8988a8659fc1" category="paragraph">Adicione configurações do MetroCluster ao software Tiebreaker, importe certificados e configure as configurações de monitoramento.</block>
+  <block id="3180fdb1327897c4b572cfd63ad3287f" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="7bf55c5fb72bee187d6fbd1aa1b52790" category="inline-link-macro-rx"></block></block>
+  <block id="d71cf09eabd542ab0900df15ddfed77d" category="paragraph">Configure as definições de SNMP para que o software Tiebreaker possa enviar notificações SNMP para eventos do MetroCluster.</block>
+  <block id="5ec21259b0f96f7761ff6f6c6a0f3a21" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="8a1df91cee28227d892ff9dbf426d562" category="inline-link-macro-rx"></block></block>
+  <block id="e0b80638817e39eec16542c32d7be7f3" category="paragraph">Utilize o software Tiebreaker para monitorar o status da configuração do MetroCluster, visualizar eventos SNMP e gerenciar as configurações do AutoSupport.</block>
+  <block id="d148f1ad635aa8bba1d560a19f39e9c0" category="paragraph"><block ref="d148f1ad635aa8bba1d560a19f39e9c0" category="inline-link-macro-rx"></block></block>
+  <block id="6d304da29d5362806ed14a9478ee710f" category="doc">MetroCluster fluxo de trabalho de instalação do Tiebreaker</block>
+  <block id="cc5fe7dfbf76f9b49127063316fe1a3e" category="paragraph"><block ref="cc5fe7dfbf76f9b49127063316fe1a3e" category="inline-link-macro-rx"></block></block>
+  <block id="cc996a6e668ea1b5bbb2717ede5321fa" category="paragraph"><block ref="cc996a6e668ea1b5bbb2717ede5321fa" category="inline-link-macro-rx"></block></block>
+  <block id="3ffaf6ce899559f482f4bb420ea443ef" category="list-text">Se você estiver instalando ou atualizando para o Tiebreaker 1.5 ou posterior, <block ref="01db536e3338a6daa44368053b8b78a4" category="inline-link-macro-rx"></block>.</block>
+  <block id="31b54abaff4839e37a34d702915846b9" category="list-text">Se você estiver instalando ou atualizando para o Tiebreaker 1.4, <block ref="9dcf67482ee019fdc9b8d7c3a46fafac" category="inline-link-macro-rx"></block>.</block>
+  <block id="49a7406e081bdf74959aab879c657d6c" category="list-text">A criptografia de dados em repouso é suportada. <block ref="a6804cfe939b096e631ab157a40f3379" category="inline-link-macro-rx"></block></block>
+  <block id="68bdfb46514e0728dbff34acccbb2662" category="paragraph"><block ref="f36d28ac2ac51e4db0586db797c4bd01" category="inline-link-macro-rx"></block> para instalar ou atualizar o Tiebreaker.</block>
+  <block id="8a1df91cee28227d892ff9dbf426d562" category="paragraph"><block ref="8a1df91cee28227d892ff9dbf426d562" category="inline-link-macro-rx"></block></block>
+  <block id="35860767e06b0ad32b8ba4267eeaf1b9" category="paragraph"><block ref="cb84c2ef67b9bc01f68cbcfb918d693b" category="inline-link-macro-rx"></block>.</block>
+  <block id="aebaf14d8b9d9e9427ab47eeb2e1e295" category="inline-link-macro">importar certificados</block>
+  <block id="d126dbe84a959f82881ba6731ce2bec3" category="admonition">Após instalar o Tiebreaker 1.6 ou posterior, você precisa <block ref="02577fcac3f49d205cfa1eec1ab9843c" category="inline-link-macro-rx"></block> para ativar o monitoramento contínuo.</block>
+  <block id="392c82005848837c4cc355e9f1b13bfb" category="inline-link-macro">configurar o software MetroCluster Tiebreaker</block>
+  <block id="97bb590be95e1f1db541f920acbb994a" category="paragraph">Após instalar ou atualizar o Tiebreaker com sucesso, <block ref="658332fcfd4694e5d76e386a8de8de38" category="inline-link-macro-rx"></block> para adicionar as configurações do MetroCluster e importar os certificados necessários.</block>
+  <block id="edd800061dc2e789e3e179a21cbcf379" category="admonition">Após instalar o Tiebreaker 1.7, você precisa <block ref="02577fcac3f49d205cfa1eec1ab9843c" category="inline-link-macro-rx"></block> para ativar o monitoramento contínuo.</block>
+  <block id="411dfa6bc53c22308a41a3f1849b5c3a" category="paragraph">Os LUNs e volumes ainda estão fisicamente hospedados nos nós antigos. Como os LUNs são relatados apenas nas interfaces dos nós antigos, o host mostra apenas os caminhos sobre os nós antigos. Para verificar isso, execute os comandos <block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> e <block ref="2fbf63deae0938cf669e6ca451f1eb2c" prefix=" " category="inline-code"></block> no host e examine as saídas dos comandos.</block>
+  <block id="4c6905218c60e9aba240b57185a6f46b" category="admonition">Você utiliza essas etapas durante os fluxos de trabalho de transição e atualização do sistema. É possível que você já tenha concluído algumas etapas deste procedimento como parte desses fluxos de trabalho.</block>
+  <block id="492957bdbf0cd7894f5858e41044c478" category="inline-xref">removendo os nós antigos do grupo DR</block>
+  <block id="b7af971647e68ad51fd5a20bad1e6458" category="paragraph">Em uma configuração FC MetroCluster, vá para a etapa para <block ref="b02d7688693fa9d994c3ae281001ab71" category="inline-xref-macro-rx"></block>.</block>
+  <block id="0bad080da4800b87d224c4b5e3f84547" category="paragraph"><block ref="50467096167ff97fd9486951e1e9979c" prefix="" category="inline-code"></block></block>
+  <block id="c1a4fc9238eb637c34dca8db88b9fe37" category="list-text">Remova a propriedade dos discos do pool1 em cada nó do grupo DR a ser excluído. Execute estas etapas em cada nó a ser removido. Nos exemplos usados nesta etapa, o nó node_A_1 está sendo removido.</block>
+  <block id="05537b68d0389b1f6ccc2e32a5418922" category="paragraph">Todos os discos são exibidos, incluindo os discos do Pool1 pertencentes ao nó. O exemplo a seguir mostra uma saída truncada onde o disco 0n.4 e suas partições estão atribuídos ao Pool1. A saída pode variar dependendo da sua configuração.</block>
+  <block id="2a2a9b43676bdea631d12ed38f7e6c6e" category="paragraph"><block ref="42b1180257ad3e7be7a63d69d6b6d877" prefix="" category="inline-code"></block></block>
+  <block id="91db9162e74bb79491dc2e196929e7dd" category="list-text">Remova a propriedade do disco para cada disco do pool1:</block>
+  <block id="1475defb8bf95f4738845a11de25c3bb" category="paragraph">Se sua configuração contiver discos particionados, primeiro remova a propriedade de cada disco particionado e, em seguida, remova a propriedade do disco contêiner:</block>
+  <block id="02009efab927bd190d6bd3722cfa6a91" category="paragraph">No exemplo a seguir, a propriedade dos discos particionados é removida antes da propriedade do disco contêiner<block ref="1ae065558b31a1b0b795087dc4d41043" prefix=" " category="inline-code"></block> ser removida:</block>
+  <block id="abe9c75c8aa9d46e2336de54158fd10c" category="list-text">[[fc_step_7_remove_nodes]]Remova os nós do antigo grupo DR.</block>
+  <block id="70f599b650c36e21a80cab61cd9ecf45" category="list-text">Remova o nó: +<block ref="21f6d71d6277ab0be8efedef46f43c07" prefix=" " category="inline-code"></block></block>
+  <block id="f3497351aae46692e603fedb2f2cd146" category="inline-link-macro">Referência de comandos ONTAP</block>
+  <block id="9491dc48713e5872479d1b7bf34a84fa" category="paragraph">Saiba mais sobre os comandos usados neste procedimento em <block ref="bc2602c5a66493ba7d85e8bd5d0e7f9b" category="inline-link-macro-rx"></block>.</block>
+  <block id="14b060b1c467e443d4c5b658b3150160" category="section-title">Configurar LIFs entre clusters para o emparelhamento de clusters</block>
+  <block id="2242b077fb2b5a060d17c9679aaef769" category="paragraph">Para obter a sintaxe completa do comando, consulte o <block ref="8495ebe9433e51f4aaa13c1ac17aa802" category="inline-link-macro-rx"></block>.</block>
+  <block id="85b4f850daa6b7fa27cc663d6eecac9e" category="paragraph">O exemplo a seguir atribui as portas "e0e" e "e0f" ao grupo de failover "intercluster01" na SVM "cluster01":</block>
+  <block id="a2579751113db8b9e2ce7d7b2bd214ef" category="paragraph">O exemplo a seguir mostra que as LIFs intercluster "cluster01_icl01" e "cluster01_icl02" na porta "e0e" farão failover para a porta "e0f".</block>
+  <block id="a4780c06a89c299119583f29f32ac093" category="paragraph">Você deverá ver uma saída semelhante ao exemplo a seguir:</block>
+  <block id="f7427954f1195031f90353c13d3b432b" category="section-title">Crie as interfaces MetroCluster e espelhe os agregados raiz</block>
+  <block id="0055afe3ada5efef7c05be5feef45afb" category="paragraph">Você deve criar as interfaces MetroCluster nos novos nós IP MetroCluster e espelhar os agregados raiz.</block>
+  <block id="10425d754fad724e278bdbf3629399eb" category="list-text">Em cada site, adicione os novos LIFs intercluster ao relacionamento entre pares.</block>
+  <block id="46702793a1903475dfe4870360e4c44e" category="paragraph">A partir do cluster_A, execute o seguinte comando:</block>
+  <block id="197b76ace6dacb5968f922ce0200427b" category="paragraph"><block ref="d129eb59b8b7f8a39ae3ed6833c64f51" prefix="" category="inline-code"></block></block>
+  <block id="c42f4f6a3afab85eadf7182136f86159" category="paragraph">A partir do cluster_B, execute o seguinte comando:</block>
+  <block id="29bf21eb413a03bb7bc5f794a7cf8c1a" category="paragraph"><block ref="cffe1374633319381a16ddd247851dc5" prefix="" category="inline-code"></block></block>
+  <block id="aa9e0907bac12bc372803051430c32c6" category="sidebar">Fluxo de trabalho de configuração de desempate</block>
 </blocks>

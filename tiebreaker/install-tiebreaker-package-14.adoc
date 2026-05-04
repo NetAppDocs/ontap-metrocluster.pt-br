@@ -111,3 +111,6 @@ NOTE: Se você digitar a senha raiz errada do MySQL, o software tiebreaker indic
 
 .Informações relacionadas
 https://mysupport.netapp.com/site/["Suporte à NetApp"^]
+
+.O que se segue?
+link:configure-tb-workflow.html["Configure o software MetroCluster Tiebreaker."]

@@ -119,3 +119,8 @@ Você deve estar ciente dos seguintes requisitos adicionais:
 
 
 
+
+.O que se segue?
+* Se você estiver instalando ou atualizando para o Tiebreaker 1.5 ou posterior, link:install_security.html["Proteja a instalação do banco de dados e do host tiebreaker"].
+* Se você estiver instalando ou atualizando para o Tiebreaker 1.4, link:install-dependencies-14.html["Instale dependências do MetroCluster tiebreaker 1,4"].
+

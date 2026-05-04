@@ -14,7 +14,7 @@ summary: A partir do ONTAP 9.8, é possível remover um grupo de DR de uma confi
 A partir do ONTAP 9.8, você pode remover um grupo de recuperação de desastres (DR) de uma configuração MetroCluster de oito nós para criar uma configuração MetroCluster de quatro nós.
 
 
-NOTE: Use essas etapas durante os fluxos de trabalho de transição e atualização do sistema.
+NOTE: Você utiliza essas etapas durante os fluxos de trabalho de transição e atualização do sistema. É possível que você já tenha concluído algumas etapas deste procedimento como parte desses fluxos de trabalho.
 
 
 
@@ -37,17 +37,17 @@ Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Su
 Este procedimento é suportado a partir do ONTAP 9.8.  Para sistemas executando o ONTAP 9.7 ou anterior, consulte o artigo da Base de Conhecimento:link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_a_DR-Group_from_a_MetroCluster["Como remover um grupo de DR de uma configuração do MetroCluster"^] .
 
 .Sobre esta tarefa
-Uma configuração de oito nós inclui oito nós organizados como dois grupos de RD de quatro nós.
-
+* Você deve executar essa tarefa em ambos os clusters.
+* Uma configuração de oito nós inclui oito nós organizados como dois grupos de RD de quatro nós.
++
 image::../media/mcc_dr_groups_8_node.gif[Configuração do MetroCluster com oito nós em dois grupos de DR]
 
++
 Quando você remove um grupo de DR, quatro nós permanecem na configuração.
 
++
 image::../media/mcc_dr_groups_4_node.gif[Configuração do MetroCluster com quatro nós após a remoção do grupo DR]
 
-.Antes de começar
-* É necessário executar esta etapa em ambos os clusters.
-* O `metrocluster remove-dr-group` comando é suportado apenas no ONTAP 9.8 e posterior.
 
 
 .Passos
@@ -97,13 +97,13 @@ NOTE: Agregados raiz não são excluídos.
 +
 [listing]
 ----
-ClusterA::> set advanced
+ClusterA::> set advanced -prompt-timestamp above
 ClusterA::*> cluster show
 Move epsilon if needed
 ClusterA::*> cluster modify -node nodename -epsilon false
 ClusterA::*> cluster modify -node nodename -epsilon true
 
-ClusterB::> set advanced
+ClusterB::> set advanced -prompt-timestamp above
 ClusterB::*> cluster show
 ClusterB::*> cluster modify -node nodename -epsilon false
 ClusterB::*> cluster modify -node nodename -epsilon true
@@ -119,6 +119,10 @@ ClusterB::*> set admin
 
 .. Remova os nós do grupo de DR
 `metrocluster remove-dr-group -dr-group-id 1`
++
+
+NOTE: O `metrocluster remove-dr-group` comando é suportado apenas no ONTAP 9.8 e posterior.
+
 +
 O exemplo a seguir mostra a remoção da configuração do grupo DR no cluster_A.
 
@@ -169,6 +173,9 @@ cluster_A::*>
 
 . Se você estiver em uma configuração de IP do MetroCluster , execute as seguintes etapas para excluir os plexos remotos dos agregados raiz e remover a propriedade do disco nos nós do antigo grupo de DR.
 +
+Em uma configuração FC MetroCluster, vá para a etapa para <<fc_step_7_remove_nodes,removendo os nós antigos do grupo DR>>.
+
++
 Essas etapas precisam ser executadas para ambos os nós no par HA em cada site.
 
 +
@@ -195,7 +202,7 @@ NOTE: Use uma lista separada por vírgulas no `-owner <node_names>` campo para e
 --
 ... Defina o nível de privilégio como avançado:
 +
-`set advanced`
+`set advanced -prompt-timestamp above`
 
 ... Exibir os discos remotos:
 +
@@ -208,7 +215,7 @@ NOTE: Use uma lista separada por vírgulas no `-owner <node_names>` campo para e
 --
 ... Defina o nível de privilégio como avançado:
 +
-`set advanced`
+`set advanced -prompt-timestamp above`
 
 ... Exibir os discos remotos:
 +
@@ -222,7 +229,7 @@ NOTE: Use uma lista separada por vírgulas no `-owner <node_names>` campo para e
 +
 `disk option modify -node <node_names_in_the_DR_group_to_be_deleted>  -autoassign off`
 
-.. Remova a propriedade dos discos do pool1 em cada nó do grupo DR a ser excluído.  Execute estas etapas em cada nó a ser removido.
+.. Remova a propriedade dos discos do pool1 em cada nó do grupo DR a ser excluído. Execute estas etapas em cada nó a ser removido. Nos exemplos usados nesta etapa, o nó node_A_1 está sendo removido.
 +
 ... Vá para o nodeshell:
 +
@@ -230,23 +237,62 @@ NOTE: Use uma lista separada por vírgulas no `-owner <node_names>` campo para e
 
 ... Identifique os discos do pool1:
 +
-`aggr status -s`
+`disk show`
 
 +
-Todos os discos sobressalentes são exibidos, incluindo os discos sobressalentes pool0 e pool1 de propriedade do nó.
+Todos os discos são exibidos, incluindo os discos do Pool1 pertencentes ao nó. O exemplo a seguir mostra uma saída truncada onde o disco 0n.4 e suas partições estão atribuídos ao Pool1. A saída pode variar dependendo da sua configuração.
 
-... Remova a propriedade do disco para cada disco sobressalente do pool1:
++
+[listing]
+----
+  DISK       OWNER                 POOL   SERIAL NUMBER         HOME                    DR HOME
+------------ -------------         -----  -------------         -------------           -------------
+0n.4         node_A1(537102267)    Pool1  S3N9NX0J500267        node_A1(537102267)
+0n.4P1       node_A1(537102267)    Pool1  S3N9NX0J500267NP001   node_A1(537102267)
+0n.4P2       node_A1(537102267)    Pool1  S3N9NX0J500267NP002   node_A1(537102267)
+0n.4P3       node_A1(537102267)    Pool1  S3N9NX0J500267NP003   node_A1(537102267)
+----
+... Defina o nível de privilégio como avançado:
++
+`set -privilege advanced -prompt-timestamp above`
+
+... Remova a propriedade do disco para cada disco do pool1:
++
+Se sua configuração contiver discos particionados, primeiro remova a propriedade de cada disco particionado e, em seguida, remova a propriedade do disco contêiner:
+
 +
 `disk remove_ownership <disk_name>`
 
 +
-Para discos particionados, remova a propriedade da partição e, em seguida, remova a propriedade do disco do contêiner.
+No exemplo a seguir, a propriedade dos discos particionados é removida antes da propriedade do disco contêiner `0n.4` ser removida:
 
++
+[listing]
+----
+*> disk remove_ownership 0n.4P1
+Volumes must be taken offline. Are all impacted volumes offline(y/n)?? y
+Removing the ownership of aggregate disks may lead to partition of aggregates between high-availability pair.
+Do you want to continue(y/n)? y
+*> disk remove_ownership 0n.4P2
+Volumes must be taken offline. Are all impacted volumes offline(y/n)?? y
+Removing the ownership of aggregate disks may lead to partition of aggregates between high-availability pair.
+Do you want to continue(y/n)? y
+*> disk remove_ownership 0n.4P3
+Volumes must be taken offline. Are all impacted volumes offline(y/n)?? y
+Removing the ownership of aggregate disks may lead to partition of aggregates between high-availability pair.
+Do you want to continue(y/n)? y
+*> disk remove_ownership 0n.4
+Volumes must be taken offline. Are all impacted volumes offline(y/n)?? y
+*>
+----
 
 
 
 
 . Se você estiver em uma configuração de IP do MetroCluster , remova as conexões do MetroCluster nos nós do antigo grupo de DR.
++
+Em uma configuração FC MetroCluster, vá para a etapa para <<fc_step_7_remove_nodes,removendo os nós antigos do grupo DR>>.
+
 +
 Esses comandos podem ser emitidos de qualquer cluster e se aplicam a todo o grupo de DR abrangendo ambos os clusters.
 
@@ -287,17 +333,17 @@ NOTE: Esta etapa deve ser repetida em cada nó do grupo DR.
 `metrocluster configuration-settings dr-group delete`
 
 
-. Desmarque os nós no grupo DR antigo.
+. [[fc_step_7_remove_nodes]]Remova os nós do antigo grupo DR.
 +
 Execute esta etapa em cada cluster.
 
 +
 .. Defina o nível de privilégio avançado:
 +
-`set -privilege advanced`
+`set -privilege advanced -prompt-timestamp above`
 
-.. Desvincular o nó: +
-`cluster unjoin -node <node-name>`
+.. Remova o nó: +
+`cluster remove-node -node <node-name>`
 +
 Repita esta etapa para o outro nó local no grupo DR antigo.
 
@@ -316,3 +362,6 @@ Execute esta etapa em cada cluster.
 
 . Pare, desligue e remova os antigos módulos de controladora e compartimentos de storage.
 
+
+.Informações relacionadas
+Saiba mais sobre os comandos usados neste procedimento em link:https://docs.netapp.com/us-en/ontap-cli/["Referência de comandos ONTAP"^].

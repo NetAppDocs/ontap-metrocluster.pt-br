@@ -4,7 +4,7 @@ permalink: tiebreaker/install-tb-workflow.html
 keywords: install, upgrade, tiebreaker, workflow, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, upgrade 
 summary: O software tiebreaker fornece recursos de monitoramento para um ambiente de storage em cluster. Ele também envia notificações SNMP em caso de problemas de conetividade de nó e desastres de site. 
 ---
-= Fluxo de trabalho de instalação do tiebreaker
+= MetroCluster fluxo de trabalho de instalação do Tiebreaker
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

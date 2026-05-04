@@ -36,14 +36,18 @@ entries:
         url: "/tiebreaker/install-dependencies-14.html"
       - title: Instale o pacote de software
         url: "/tiebreaker/install-tiebreaker-package-14.html"
+- title: Configure o software tiebreaker
+  entries:
+  - title: Fluxo de trabalho de configuração de desempate
+    url: "/tiebreaker/configure-tb-workflow.html"
+  - title: Configure o software tiebreaker
+    url: "/tiebreaker/concept_configuring_the_tiebreaker_software.html"
+  - title: Configure as configurações SNMP para o software tiebreaker
+    url: "/tiebreaker/task_configure_snmp_setts_for_tiebreaker_software.html"
+  - title: Monitore a configuração do MetroCluster
+    url: "/tiebreaker/concept_monitoring_the_mcc_configuration.html"
 - title: Atualize o host
   url: "/tiebreaker/upgrade_host.html"
-- title: Configure o software tiebreaker
-  url: "/tiebreaker/concept_configuring_the_tiebreaker_software.html"
-- title: Configure as configurações SNMP para o software tiebreaker
-  url: "/tiebreaker/task_configure_snmp_setts_for_tiebreaker_software.html"
-- title: Monitore a configuração do MetroCluster
-  url: "/tiebreaker/concept_monitoring_the_mcc_configuration.html"
 - title: Riscos e limitações do uso do MetroCluster Tiebreaker no modo ativo
   url: "/tiebreaker/concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html"
 - title: Requisitos de firewall para desempate do MetroCluster
