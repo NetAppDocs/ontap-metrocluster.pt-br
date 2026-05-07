@@ -21,15 +21,6 @@ Para obter detalhes sobre os recursos e melhorias de cada versão do ONTAP Media
 
 
  a| 
-ONTAP Mediator 1.12 suporta configurar um ONTAP Mediator que utiliza HTTPS para comunicação em configurações IP do MetroCluster. HTTPS proporciona maior segurança ao criptografar sessões inteiras usando SSL/TLS. Você pode optar por instalar um ONTAP Mediator que utilize apenas o protocolo HTTPS. O pacote SCST não é instalado se este método de instalação for utilizado. Para mais informações sobre como instalar um ONTAP Mediator que utilize apenas o protocolo HTTPS, consulte link:https://docs.netapp.com/us-en/ontap/mediator/index.html#https-iscsi-installation["Opções de instalação HTTPS e iSCSI para ONTAP Mediator"^].
-
-link:../install-ip/concept_mediator_requirements.html#select-a-communication-protocol-for-ontap-mediator["Saiba mais sobre os protocolos iSCSI e HTTPS no ONTAP Mediator"].
- a| 
-ONTAP 9.19.1
-
-
-
- a| 
 O IPv6 é compatível com o ONTAP Mediator 1.11 ou posterior em configurações IP do MetroCluster .
 
 link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["Configurar o ONTAP Mediator para uma configuração de IP do MetroCluster"]

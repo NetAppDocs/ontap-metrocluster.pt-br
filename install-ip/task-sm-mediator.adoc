@@ -13,9 +13,6 @@ summary: Usando o Gerenciador de Sistema, você pode executar tarefas para geren
 [role="lead"]
 Usando o System Manager, você pode executar tarefas para gerenciar o ONTAP Mediator.
 
-
-NOTE: Você só pode configurar um ONTAP Mediator que usa HTTPS por meio da CLI. System Manager não é compatível. Para mais informações, consulte link:concept_mediator_requirements.html#select-a-communication-protocol-for-ontap-mediator["Selecione um protocolo de comunicação para ONTAP Mediator"].
-
 .Sobre estas tarefas
 A partir do ONTAP 9.8, você pode usar o Gerenciador de sistema como uma interface simplificada para gerenciar uma configuração IP MetroCluster de quatro nós, que pode incluir um Mediador ONTAP instalado em um terceiro local.
 
