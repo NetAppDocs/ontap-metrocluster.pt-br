@@ -625,7 +625,7 @@ NOTE: O slot 7 em todos os nós do cluster deve estar vazio como mencionado na <
 Depois de trocar o módulo de controladora AFF A900 ou FAS9500 e o NVS, você precisa netboot dos nós AFF A900 ou FAS9500 e instalar a mesma versão do ONTAP e o nível de patch que está sendo executado no cluster. O termo netboot significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você deve adicionar uma cópia da imagem de inicialização do ONTAP 9 a um servidor da Web que o sistema possa acessar. Não é possível verificar a versão do ONTAP instalada no suporte de arranque de um módulo controlador AFF A900 ou FAS9500, a menos que esteja instalado num chassis e LIGADO. A versão do ONTAP na Mídia de inicialização do AFF A900 ou do FAS9500 deve ser a mesma que a versão do ONTAP em execução no sistema AFF A700 ou FAS9000 que está sendo atualizada e as imagens de inicialização principal e de backup devem corresponder. Você pode configurar as imagens executando um netboot seguido do `wipeconfig` comando no menu de inicialização. Se o módulo do controlador foi usado anteriormente em outro cluster, o `wipeconfig` comando limpa qualquer configuração residual na Mídia de inicialização.
 
 .Antes de começar
-* Verifique se você pode acessar um servidor HTTP com o sistema.
+* Verifique se você consegue acessar um servidor HTTP com o sistema.
 * Você precisa baixar os arquivos de sistema necessários para o seu sistema e a versão correta do ONTAP a partir do site de suporte da NetApp.
 
 

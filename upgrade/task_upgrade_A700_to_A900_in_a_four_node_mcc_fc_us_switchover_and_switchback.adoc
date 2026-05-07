@@ -731,7 +731,7 @@ Depois de trocar o módulo de controladora AFF A900 ou FAS9500 e o NVS, você pr
 Não é possível verificar a versão do ONTAP instalada no suporte de arranque de um módulo controlador AFF A900 ou FAS9500, a menos que esteja instalado num chassis e ligado. A versão do ONTAP na Mídia de inicialização do AFF A900 ou do FAS9500 deve ser igual à versão do ONTAP executada no sistema AFF A700 ou FAS9000 que está sendo atualizada e as imagens de inicialização principal e de backup devem corresponder. Pode configurar as imagens executando um `netboot` comando seguido do `wipeconfig` menu de arranque. Se o módulo do controlador foi usado anteriormente em outro cluster, o `wipeconfig` comando limpa qualquer configuração residual na Mídia de inicialização.
 
 .Antes de começar
-* Verifique se você pode acessar um servidor HTTP com o sistema.
+* Verifique se você consegue acessar um servidor HTTP com o sistema.
 * Você precisa baixar os arquivos de sistema necessários para o seu sistema e a versão correta do ONTAP a partir link:https://mysupport.netapp.com/site/["Suporte à NetApp"^]do site. Sobre esta tarefa, você deve `netboot` os novos controladores se a versão do ONTAP instalada não for a mesma que a versão instalada nos controladores originais. Depois de instalar cada novo controlador, inicialize o sistema a partir da imagem ONTAP 9 armazenada no servidor Web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema.
 
 
