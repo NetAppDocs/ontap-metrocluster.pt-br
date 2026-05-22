@@ -18,8 +18,236 @@ A tabela a seguir fornece velocidades de rede específicas da plataforma e modos
 [NOTE]
 ====
 * Valores ausentes indicam que a plataforma não pode ser usada com um switch compatível com MetroCluster.
-* Os sistemas AFF A30, AFF C30, AFF C60 e FAS50 exigem um adaptador QSFP-para-SFP na placa do controlador para suportar uma velocidade de rede de 25GbpsGbE.
+* Os sistemas AFF A30, AFF C30, AFF C60 e FAS50 requerem um adaptador QSFP para SFP na placa do controlador para suportar uma velocidade de rede de 25 Gbps.
 
 
 ====
-image:../media/mccip-compliant-network-speed-switchport-mode-fas50.png["Mostra as velocidades de rede específicas da plataforma e os modos de porta do switch para switches compatíveis com MetroCluster."]
+[cols="1,2,2"]
+|===
+| Plataforma | Velocidade da rede (Gbps) | Modo de porta de comutação 
+
+
+ a| 
+FAS9500
+
+AFF A900
+
+ASA A900
+ a| 
+100Gbps
+
+40Gbps ao atualizar o PCM do FAS9000 ou AFF A700
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF C800
+
+ASA C800
+
+AFF A800
+
+ASA A800
+ a| 
+40Gbps ou 100Gbps
+ a| 
+Modo de acesso
+
+
+
+ a| 
+FAS9000
+
+AFF A700
+ a| 
+40Gbps
+ a| 
+Modo de acesso
+
+
+
+ a| 
+FAS8300
+
+AFF C400
+
+ASA C400
+
+AFF A400
+
+ASA A400
+ a| 
+40Gbps ou 100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF A320
+ a| 
+40Gbps ou 100Gbps
+ a| 
+Modo de acesso
+
+
+
+ a| 
+FAS8200
+
+AFF A300
+ a| 
+25Gbps
+ a| 
+Modo de acesso
+
+
+
+ a| 
+FAS500f
+
+AFF C250
+
+ASA C250
+
+AFF A250
+
+ASA A250
+ a| 
+-
+ a| 
+-
+
+
+
+ a| 
+FAS2750
+
+AFF A220
+ a| 
+-
+ a| 
+-
+
+
+
+ a| 
+AFF A150
+
+ASA A150
+ a| 
+-
+ a| 
+-
+
+
+
+ a| 
+AFF A20
+ a| 
+25Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF A30
+ a| 
+25Gbps ou 100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF C30
+ a| 
+25Gbps ou 100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF C60
+ a| 
+25Gbps ou 100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+FAS50
+ a| 
+25Gbps ou 100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF A50
+ a| 
+100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF A70
+ a| 
+100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF A90
+ a| 
+100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF A1K
+ a| 
+100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+AFF C80
+ a| 
+100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+FAS70
+ a| 
+100Gbps
+ a| 
+Modo tronco
+
+
+
+ a| 
+FAS90
+ a| 
+100Gbps
+ a| 
+Modo tronco
+
+|===
