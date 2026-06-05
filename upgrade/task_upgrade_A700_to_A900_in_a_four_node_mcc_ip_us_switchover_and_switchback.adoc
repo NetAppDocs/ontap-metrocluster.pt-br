@@ -333,19 +333,99 @@ Você deve reunir a saída dos seguintes comandos:
 ** `ucadmin show`
 
 
-. Se o volume raiz estiver criptografado, colete e salve a senha usada para o gerenciador de chaves:
-`security key-manager backup show`
-. Se os nós do MetroCluster estiverem usando criptografia para volumes ou agregados, copie informações sobre as chaves e senhas. Para obter informações adicionais, https://docs.netapp.com/us-en/ontap/encryption-at-rest/backup-key-management-information-manual-task.html["Fazer backup manual de informações de gerenciamento de chaves integradas"^]consulte .
+. Se os nós MetroCluster estiverem configurados com um gerenciador de chaves externo para o SVM de administração (cluster), copie as informações do servidor de chaves para um local seguro. Se o Onboard Key Manager estiver configurado, copie as informações de backup e a senha para um local seguro.
 +
-.. Se o Gerenciador de chaves integrado estiver configurado:  `security key-manager onboard show-backup`Você precisará da senha mais tarde no procedimento de atualização.
-.. Se o gerenciamento de chaves empresariais (KMIP) estiver configurado, emita os seguintes comandos:
+[role="tabbed-block"]
+====
+.Gerenciador de Chaves Integrado
+--
+.. Execute o seguinte comando para exibir o backup do Onboard Key Manager:
 +
-....
-security key-manager external show -instance
-security key-manager key query
-....
+`security key-manager onboard show-backup`
+
++
+Você também precisará da senha mais recente do Onboard Key Manager posteriormente no procedimento de upgrade.
+
++
+Para obter informações adicionais, https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-1677AE0A-FEF7-45FA-8616-885AA3283BCF.html["Faça backup manual das informações de gerenciamento de chaves integradas"]consulte .
 
 
+
+--
+.Gerenciador de chaves externo
+--
+Reúna as informações de gerenciamento de chaves externas que você precisará para restaurar a configuração do gerenciador de chaves posteriormente no procedimento.
+
+.. Exibir o nome da SVM de administração (cluster).
++
+`vserver show -type admin`
+
++
+Neste exemplo, o nome da SVM administrativa é cluster_B:
+
++
+[listing]
+----
+cluster_B::*> vserver show -type admin
+                               Admin      Operational Root
+Vserver     Type    Subtype    State      State       Volume     Aggregate
+----------- ------- ---------- ---------- ----------- ---------- ----------
+cluster_B
+            admin   -          -          -           -          -
+----
+.. Obtenha o endereço e o número da porta de um servidor de chave primária associado ao gerenciador de chaves externo configurado no SVM de administração (cluster):
++
+[NOTE]
+====
+*** O SVM de administração pode ter até quatro servidores de chave primária, mas você precisará apenas do número da porta e do endereço de um dos servidores de chave primária para restaurar a configuração de gerenciamento de chaves posteriormente no procedimento.
+*** Se houver um nome de usuário e senha associados ao servidor de chave primária escolhido, você também precisará dessas informações para o processo de recuperação.
+
+
+====
++
+`security key-manager external show -instance -vserver <admin_svm_name>`
+
++
+[listing]
+----
+cluster_B::> security key-manager external show -instance -vserver cluster_B
+
+                  Vserver: cluster_B
+       Client Certificate: NTAPKM_C
+   Server CA Certificates: NTAPKM_I, NTAPKM_R
+       Primary Key Server: 172.18.27.34:12014
+                  Timeout: 25
+                 Username:
+              Policy name: -
+    Secondary Key Servers: -
+    Create/Remove Timeout: 10
+
+----
+.. Se você estiver executando ONTAP 9.16.1 ou posterior, obtenha o UUID do keystore para a SVM de administração.
++
+`security key-manager show-key-store -vserver <admin_svm_name> -fields uuid`
+
++
+[listing]
+----
+cluster_B::*>  security key-manager show-key-store -vserver cluster_B -fields uuid
+vserver         uuid
+--------------- ------------------------------------
+cluster_B        f281aa55-d635-11f0-93bc-005056bb68f2
+
+cluster_B::*
+----
+.. Guarde as informações que você coletou em um local seguro para uso posterior no procedimento. Você deverá ter coletado as seguintes informações:
++
+*** O número da porta e o endereço de um dos servidores de chave primária para a SVM de administração
+*** O nome de usuário e a senha se houver associados ao servidor de chave primária escolhido
+*** O UUID do keystore para a SVM de administração (necessário no ONTAP 9.16.1 ou posterior)
+
+
+
+
+--
+====
 . Reúna as IDs do sistema dos nós existentes:
 `metrocluster node show -fields node-systemid,ha-partner-systemid,dr-partner-systemid,dr-auxiliary-systemid`
 +
@@ -1176,7 +1256,7 @@ Se o parceiro-sysid não estiver correto, defina-o:
 +
 `boot_ontap menu`
 
-. Se a criptografia raiz for usada, selecione a opção do menu de inicialização para a configuração de gerenciamento de chaves.
+. Se a SVM administrativa do MetroCluster sistema estiver configurada com um gerenciador de chaves, selecione a opção correta do menu de inicialização para a sua configuração de gerenciamento de chaves.
 +
 |===
 
@@ -1187,14 +1267,28 @@ Se o parceiro-sysid não estiver correto, defina-o:
  a| 
 Gerenciamento de chaves integrado
  a| 
-Opção 10 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves
+Opção `10`
+
+Siga as instruções para fornecer as seguintes informações para recuperar e restaurar a configuração do gerenciador de chaves:
+
+** Backup e senha do Onboard Key Manager
+
 
 
 
  a| 
 Gerenciamento de chaves externas
  a| 
-Opção 11 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves
+Opção `11`
+
+Siga as instruções para fornecer as seguintes informações para recuperar e restaurar a configuração do gerenciador de chaves:
+
+** O número da porta e o endereço de um dos servidores de chave primária para a SVM de administração
+** O nome de usuário e a senha se um estiver associado ao servidor de chave primária escolhido
+** O UUID do keystore para a SVM de administração (necessário no ONTAP 9.16.1 ou posterior)
+
+
+*Nota:* Embora a SVM administrativa possa ter até quatro servidores de chave primária, apenas as informações de um servidor de chave primária podem ser especificadas durante o processo de recuperação.
 
 |===
 . No menu de inicialização, `(6) Update flash from backup config` selecione .
@@ -1227,7 +1321,7 @@ Se o parceiro-sysid não estiver correto, defina-o:
 +
 `setenv partner-sysid _partner-sysID_`
 
-. Se a criptografia raiz for usada, selecione a opção do menu de inicialização para a configuração de gerenciamento de chaves.
+. Se a criptografia do volume raiz estiver sendo usada, selecione novamente a opção do menu de inicialização para a configuração de gerenciamento de chaves.
 +
 |===
 
@@ -1238,14 +1332,28 @@ Se o parceiro-sysid não estiver correto, defina-o:
  a| 
 Gerenciamento de chaves integrado
  a| 
-Opção 10 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves
+Opção `10`
+
+Siga as instruções para fornecer as seguintes informações para recuperar e restaurar a configuração do gerenciador de chaves:
+
+** Backup e senha do Onboard Key Manager
+
 
 
 
  a| 
 Gerenciamento de chaves externas
  a| 
-Opção 11 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves
+Opção `11`
+
+Siga as instruções para fornecer as seguintes informações para recuperar e restaurar a configuração do gerenciador de chaves:
+
+** O número da porta e o endereço de um dos servidores de chave primária para a SVM de administração
+** O nome de usuário e a senha se um estiver associado ao servidor de chave primária escolhido
+** O UUID do keystore para a SVM de administração (necessário no ONTAP 9.16.1 ou posterior)
+
+
+*Nota:* Embora a SVM administrativa possa ter até quatro servidores de chave primária, apenas as informações de um servidor de chave primária podem ser especificadas durante o processo de recuperação.
 
 |===
 +
@@ -1275,7 +1383,7 @@ Para obter mais informações, https://docs.netapp.com/us-en/ontap/encryption-at
  a| 
 Gerenciamento de chaves externas
  a| 
-`security key-manager external restore -vserver _SVM_ -node _node_ -key-server _host_name|IP_address:port_ -key-id key_id -key-tag key_tag _node-name_`
+`security key-manager external restore -vserver <admin-svm> -key-server <host_name|IP_address:port>`
 
 Para obter mais informações, https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-external-encryption-keys-93-later-task.html["Restaurar chaves de criptografia de gerenciamento de chaves externas"^]consulte .
 

@@ -51,7 +51,7 @@ Se o parceiro-sysid não estiver correto, defina-o:
 +
 `boot_ontap menu`
 
-. Se a criptografia raiz for usada, selecione a opção do menu de inicialização para a configuração de gerenciamento de chaves.
+. Se a SVM administrativa do MetroCluster sistema estiver configurada com um gerenciador de chaves, selecione a opção correta do menu de inicialização para a sua configuração de gerenciamento de chaves.
 +
 |===
 
@@ -64,7 +64,10 @@ Gerenciamento de chaves integrado
  a| 
 Opção `10`
 
-Siga as instruções para fornecer as entradas necessárias para recuperar e restaurar a configuração do gerenciador de chaves.
+Siga as instruções para fornecer as seguintes informações para recuperar e restaurar a configuração do gerenciador de chaves:
+
+** Backup e senha do Onboard Key Manager
+
 
 
 
@@ -73,7 +76,14 @@ Gerenciamento de chaves externas
  a| 
 Opção `11`
 
-Siga as instruções para fornecer as entradas necessárias para recuperar e restaurar a configuração do gerenciador de chaves.
+Siga as instruções para fornecer as seguintes informações para recuperar e restaurar a configuração do gerenciador de chaves:
+
+** O número da porta e o endereço de um dos servidores de chave primária para a SVM de administração
+** O nome de usuário e a senha se um estiver associado ao servidor de chave primária escolhido
+** O UUID do keystore para a SVM de administração (necessário no ONTAP 9.16.1 ou posterior)
+
+
+*Nota:* Embora a SVM administrativa possa ter até quatro servidores de chave primária, apenas as informações de um servidor de chave primária podem ser especificadas durante o processo de recuperação.
 
 |===
 . No menu de inicialização, selecione "'(6) Atualizar flash a partir da configuração de backup".
@@ -105,7 +115,7 @@ Se o parceiro-sysid não estiver correto, defina-o:
 +
 `setenv partner-sysid <partner-sysID>`
 
-. Se a criptografia raiz for usada, selecione a opção do menu de inicialização novamente para a configuração de gerenciamento de chaves.
+. Se a criptografia do volume raiz estiver sendo usada, selecione novamente a opção do menu de inicialização para a configuração de gerenciamento de chaves.
 +
 |===
 
@@ -118,26 +128,36 @@ Gerenciamento de chaves integrado
  a| 
 Opção `10`
 
-Siga as instruções para fornecer as entradas necessárias para recuperar e restaurar a configuração do gerenciador de chaves.
+Siga as instruções para fornecer as seguintes informações para recuperar e restaurar a configuração do gerenciador de chaves:
+
+** Backup e senha do Onboard Key Manager
+
 
 
 
  a| 
 Gerenciamento de chaves externas
  a| 
-Opção "'11"
+Opção `11`
 
-Siga as instruções para fornecer as entradas necessárias para recuperar e restaurar a configuração do gerenciador de chaves.
+Siga as instruções para fornecer as seguintes informações para recuperar e restaurar a configuração do gerenciador de chaves:
+
+** O número da porta e o endereço de um dos servidores de chave primária para a SVM de administração
+** O nome de usuário e a senha se um estiver associado ao servidor de chave primária escolhido
+** O UUID do keystore para a SVM de administração (necessário no ONTAP 9.16.1 ou posterior)
+
+
+*Nota:* Embora a SVM administrativa possa ter até quatro servidores de chave primária, apenas as informações de um servidor de chave primária podem ser especificadas durante o processo de recuperação.
 
 |===
 +
-Dependendo da configuração do gerenciador de chaves, execute o procedimento de recuperação selecionando a opção ""10"" ou a opção ""11"", seguida da opção `6` no primeiro prompt do menu de inicialização. Para inicializar os nós completamente, você pode precisar repetir o procedimento de recuperação continuado pela opção "'1'" (inicialização normal).
+Dependendo do tipo de gerenciador de chaves, execute o procedimento de recuperação selecionando a opção "10" ou a opção "11", seguida da opção  `6` no primeiro prompt do menu de inicialização. Para inicializar os nós completamente, talvez seja necessário repetir o procedimento de recuperação, continuando pela opção "1" (inicialização normal).
 
 . Aguarde até que os nós substituídos iniciem.
 +
 Se um dos nós estiver no modo de aquisição, execute um giveback usando o `storage failover giveback` comando.
 
-. Se a criptografia for usada, restaure as chaves usando o comando correto para sua configuração de gerenciamento de chaves.
+. Se a criptografia estiver habilitada na SVM administrativa, restaure as chaves usando o comando correto para sua configuração de gerenciamento de chaves.
 +
 |===
 
@@ -157,7 +177,7 @@ Para obter mais informações, https://docs.netapp.com/ontap-9/topic/com.netapp.
  a| 
 Gerenciamento de chaves externas
  a| 
-`security key-manager external restore -vserver <SVM> -node <node> -key-server <host_name|IP_address:port> -key-id key_id -key-tag key_tag <node_name>`
+`security key-manager external restore -vserver <admin-svm> -key-server <host_name|IP_address:port>`
 
 Para obter mais informações, https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["Restaurar chaves de criptografia de gerenciamento de chaves externas"^]consulte .
 

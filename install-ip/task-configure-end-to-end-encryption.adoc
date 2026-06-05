@@ -112,7 +112,7 @@ system health alert show
 +
 [source, cli]
 ----
-security key-manager external show-status
+security key-manager external show
 ----
 . Habilite a criptografia de ponta a ponta para cada grupo de DR:
 +
@@ -226,7 +226,7 @@ system health alert show
 +
 [source, cli]
 ----
-security key-manager external show-status
+security key-manager external show
 ----
 . Desative a criptografia de ponta a ponta em cada grupo de DR:
 +

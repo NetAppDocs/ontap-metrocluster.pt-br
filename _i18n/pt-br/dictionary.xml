@@ -11381,17 +11381,7 @@
   <block id="6af582a39d4733435647dad509101747" category="list-text"><block ref="b4866fd80fcc5bdaa9a2e9ae31a6340d" prefix="" category="inline-code"></block></block>
   <block id="5d71f5f1513a5a67bb10323070ec1983" category="list-text"><block ref="20e97917818c281325f295fdb9983364" prefix="" category="inline-code"></block></block>
   <block id="2fdab4f50b91e9173d8fd09c9243b0c3" category="list-text"><block ref="e2263eb94ecd0e6a5ecb3a2540156ca9" prefix="" category="inline-code"></block></block>
-  <block id="8b1a6434b118fdab6cffd5eef984796d" category="list-text">Se o volume raiz estiver criptografado, colete e salve a senha usada para o gerenciador de chaves:</block>
-  <block id="934c2fba3eda4a063dd4bc3693527e81" category="paragraph"><block ref="6b6f6c1a8bc1fede794cda92ed140953" prefix="" category="inline-code"></block></block>
-  <block id="0c41288b073bc8667b15931457adf7c0" category="list-text">Se os nós do MetroCluster estiverem usando criptografia para volumes ou agregados, copie informações sobre as chaves e senhas.</block>
-  <block id="db8057baa0e3040863709dc299c0a2b6" category="inline-link">Fazer backup manual de informações de gerenciamento de chaves integradas</block>
-  <block id="50d704bfae735cf9f8824da705413abc" category="paragraph">Para obter informações adicionais,<block ref="0abbdd13a8c045ec09bd7c54eb2d0bef" category="inline-link-rx"></block>consulte .</block>
-  <block id="696b64bc323bdd13e4a324fd384d294c" category="list-text">Se o Gerenciador de chaves integrado estiver configurado:</block>
   <block id="c497a6b930105164567b744840c21e94" category="paragraph"><block ref="32ba7af89b7557f6e3e6d80a922080ce" prefix="" category="inline-code"></block></block>
-  <block id="b9284138ad08224a8431291e2a54805d" category="paragraph">Você precisará da senha mais tarde no procedimento de atualização.</block>
-  <block id="6127871d3f874c72ca0ba6835dd78bce" category="list-text">Se o gerenciamento de chaves empresariais (KMIP) estiver configurado, emita os seguintes comandos:</block>
-  <block id="1b8b021695a2698fadae5c009b0b6295" category="paragraph"><block ref="566ae4de3748e9ef87e905f8461c5c78" prefix="" category="inline-code"></block></block>
-  <block id="2a4a9d693caa859153f77cf2204d30cc" category="paragraph"><block ref="c9b37f9017fc101cecef415e707e7b5f" prefix="" category="inline-code"></block></block>
   <block id="c455927c47d829e25595da49b62049ba" category="section-title">Remova a configuração existente do tiebreaker ou de outro software de monitoramento</block>
   <block id="2c8c38da3af9290bc8367a776b867b51" category="section-title">Envie uma mensagem AutoSupport personalizada antes da manutenção</block>
   <block id="22a619e2119eac132eeee61c7997aae7" category="paragraph"><block ref="32cc4140f0787c4ae499ce159c205e21" prefix="" category="inline-code"></block> especifica a duração da janela de manutenção, com um máximo de 72 horas. Se a manutenção for concluída antes do tempo decorrido, você poderá invocar uma mensagem AutoSupport indicando o fim do período de manutenção:</block>
@@ -11542,12 +11532,9 @@
   <block id="a0ce225decd1d6b56d1365eafe5e3405" category="paragraph"><block ref="ac06f11562c227d4b49779138f49f9dc" prefix="" category="inline-code"></block></block>
   <block id="6f91ede377088bfc770bbb6d429ef783" category="paragraph"><block ref="8da7918c379300236e946dc0506c4102" prefix="" category="inline-code"></block></block>
   <block id="2a41f20b518b74ceb3498e8c0dd4643e" category="paragraph"><block ref="8d8945090e22e58225ede3120a8a9c10" prefix="" category="inline-code"></block></block>
-  <block id="a0a7d863d75d1083974d54de25a20b2b" category="list-text">Se a criptografia raiz for usada, emita o comando boot menu para a configuração de gerenciamento de chaves.</block>
   <block id="15f46bcb6931f7562d903b4ad6dd6724" category="cell">Selecione esta opção do menu de arranque...</block>
   <block id="8511ad7edbea5a7c2d6e9c359b2a1fcb" category="paragraph">Gerenciamento de chaves integrado</block>
-  <block id="77eb63f0ebfdd7e3f0339c99d94d75d8" category="paragraph">Opção 10 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves</block>
   <block id="370c6dde461cc5827c330619a80ca24b" category="paragraph">Gerenciamento de chaves externas</block>
-  <block id="efe5387363cb0a162d3144e7be598e40" category="paragraph">Opção 11 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves</block>
   <block id="05dabbb60a366bf9343eccdf7f33e3d8" category="list-text">Se a função autoboot estiver ativada, interrompa a operação pressionando Control-C..</block>
   <block id="9caedf166198ce0f30b4afaef9a9b698" category="list-text">No menu de arranque, execute a opção (6).</block>
   <block id="54e8ddb7f828b5837090d07ce05e08c3" category="admonition">A opção 6 reiniciará o nó duas vezes antes de concluir.</block>
@@ -11555,7 +11542,6 @@
   <block id="f4874a68e6d7f49851ee24731ec354c8" category="list-text">Verifique se o parceiro-sysid está correto:<block ref="a8d187fea32f6357d47411ea40ddebab" prefix=" " category="inline-code"></block></block>
   <block id="a011695a667d4d881a8eb17cebc6796a" category="paragraph">Se o parceiro-sysid não estiver correto, defina-o:<block ref="f3bfb1fb1ed90adf596ffa1be40bd889" prefix=" " category="inline-code"></block></block>
   <block id="ecb784a0d718480cf2373a1c93d92d6b" category="list-text">Se a criptografia raiz for usada, emita o comando boot menu novamente para a configuração de gerenciamento de chaves.</block>
-  <block id="2a6e010933dcb7b2124653ec9e7aa06f" category="paragraph">Opção 11 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves</block>
   <block id="e6e35a3f4ac372a4d2b484e43408358d" category="paragraph">Talvez seja necessário emitir o<block ref="70d44082cd4172de72eaf2a9466ffd5c" prefix=" " category="inline-code"></block> comando no prompt do menu de inicialização várias vezes até que os nós iniciem completamente.</block>
   <block id="4dbc5bd19b9fd833f99647d4bbc60473" category="list-text">Inicialize os nós:<block ref="ce54ef17bebf280339d340bd40dff593" prefix=" " category="inline-code"></block></block>
   <block id="0076499bf0665482ee0c069821eab630" category="list-text">Aguarde que os nós substituídos iniciem.</block>
@@ -11572,7 +11558,6 @@
   <block id="8fb90751b9a48ba5073931ac3bac5410" category="paragraph"><block ref="8fb90751b9a48ba5073931ac3bac5410" category="inline-link-macro-rx"></block></block>
   <block id="ea64d30bf3d60844483af51e734bc28e" category="paragraph"><block ref="ea64d30bf3d60844483af51e734bc28e" category="inline-link-macro-rx"></block></block>
   <block id="a14a5326761ef5ebc9bc3bd554af43ff" category="paragraph">Para obter mais informações, <block ref="996e91201fdbed2f3fcc47314993c82a" category="inline-link-macro-rx"></block>consulte .</block>
-  <block id="d477a37d10aff8dfb1c93b1fa5e33de8" category="paragraph"><block ref="172ec138ee32ebe515e60a8384f8e504" prefix="" category="inline-code"></block></block>
   <block id="8d920002e556bf4a836edf5fed4a24a4" category="paragraph">Para obter mais informações, <block ref="5524ccce14094b08a96767751c72e575" category="inline-link-macro-rx"></block>consulte .</block>
   <block id="7b3f395dfaa27c58576d75c624d2acd9" category="section-title">Verifique a configuração do LIF</block>
   <block id="34e041fe9ecda3607a3bb424cba8d99b" category="paragraph">Verifique se os LIFs estão hospedados em nós/portas apropriados antes do switchback. As etapas a seguir precisam ser executadas</block>
@@ -11647,9 +11632,6 @@
   <block id="fd86e8b040cc38b3481aa4ca1a66fdc3" category="paragraph">Esses valores devem ser configurados com precisão nos novos módulos do controlador site_B para garantir uma atualização bem-sucedida. Copie os valores para um arquivo para que você possa copiá-los para os comandos apropriados posteriormente no processo de atualização. O exemplo a seguir mostra a saída do comando com os UUIDs:</block>
   <block id="30a9da9e23c7723d344ea077332337a0" category="paragraph">É recomendável que você grave os UUIDs em uma tabela semelhante à seguinte.</block>
   <block id="dd16201801d5e3f7069602a499327a3b" category="cell">Cluster ou nó</block>
-  <block id="17d958aeb34005de78d5f16c3fb8d4d0" category="list-text">Se o volume raiz estiver criptografado, colete e salve a senha usada para o gerenciador de chaves:<block ref="6b6f6c1a8bc1fede794cda92ed140953" prefix=" " category="inline-code"></block></block>
-  <block id="4e6bb29fad09442b6758473a381112e2" category="list-text">Se os nós do MetroCluster estiverem usando criptografia para volumes ou agregados, copie informações sobre as chaves e senhas. Para obter informações adicionais,<block ref="0abbdd13a8c045ec09bd7c54eb2d0bef" category="inline-link-rx"></block>consulte .</block>
-  <block id="bebcf28331e2ef1173754b217ce3b9d4" category="list-text">Se o Gerenciador de chaves integrado estiver configurado: <block ref="32ba7af89b7557f6e3e6d80a922080ce" prefix=" " category="inline-code"></block>Você precisará da senha mais tarde no procedimento de atualização.</block>
   <block id="10a7f52b07c24ded6796ce7b186bcafe" category="list-text">Reúna as IDs do sistema dos nós existentes:<block ref="4d3b009b80c640171a18324e0d1bf109" prefix=" " category="inline-code"></block></block>
   <block id="6f439aaac5a6f2528f54f717e0c55a39" category="paragraph">A saída a seguir mostra as unidades reatribuídas.</block>
   <block id="1cefe6fb0bd3a21a29c31cc3652723ce" category="section-title">Remova a monitorização do Mediator ou do tiebreaker</block>
@@ -11760,8 +11742,6 @@
   <block id="9d4b30ae7318acd33ae33208c5ab8460" category="paragraph">Se o parceiro-sysid não estiver correto, defina-o:</block>
   <block id="b53f9d89fc5d7fb55fb66f404350a657" category="paragraph"><block ref="f3bfb1fb1ed90adf596ffa1be40bd889" prefix="" category="inline-code"></block></block>
   <block id="67c2d501fbc195df8d8653087a675318" category="list-text">Exiba o menu de inicialização do ONTAP:</block>
-  <block id="045153dd32979a83552dc18f97eb10d7" category="list-text">Se a criptografia raiz for usada, selecione a opção do menu de inicialização para a configuração de gerenciamento de chaves.</block>
-  <block id="f1c846bcc7483d91b8753952833cfe0b" category="paragraph">Opção 11 e siga as instruções para fornecer as entradas necessárias para recuperar ou restaurar a configuração do gerenciador de chaves</block>
   <block id="4164f680d252cb689f614cf976bcc203" category="list-text">No menu de inicialização,<block ref="c134ff64a382143669dacaf548a64ba7" prefix=" " category="inline-code"></block> selecione .</block>
   <block id="a90679f6ecce7659e21997990155707f" category="list-text">Interrompa o AUTOBOOT para parar os controladores NO Loader.</block>
   <block id="7e658f7d65797e8810c06b822120b6e2" category="inline-link-macro">Configurando as variáveis de inicialização IP do MetroCluster</block>
@@ -11844,7 +11824,6 @@
   <block id="5239ea0712b70f8449264a817c925b60" category="paragraph">Neste exemplo para uma configuração de FC MetroCluster de dois nós, os seguintes IDs de sistema antigos são recuperados:</block>
   <block id="0c5898a1da561b8bab86de214fb4bdc3" category="list-text">Node_A_1: 4068741258</block>
   <block id="a935a365a62e9c51ec22e6740bc18910" category="list-text">Nó_B_1: 4068741254</block>
-  <block id="353024e475a7604e40871e8aa07253b1" category="paragraph">Para obter informações adicionais,<block ref="17c328b6561af0ba38f0debcfa14ec48" category="inline-link-rx"></block>consulte .</block>
   <block id="11f455c88de297768de186a1110cfdf6" category="paragraph">Depois de concluir esta tarefa, o cluster_A está ativo e fornecendo dados para ambos os sites. O cluster_B está inativo e pronto para iniciar o processo de atualização, como mostrado na ilustração a seguir.</block>
   <block id="385f02022cf6cb2f3cfc0aa026b7c3d7" category="list-text">Selecione a opção que corresponde à sua configuração e emita o comando correto no cluster_A:</block>
   <block id="ee300e8560b29f936da49959eebf76e9" category="open-title">Opção 1: Configuração FC de quatro ou oito nós executando o ONTAP 9.8 ou posterior</block>
@@ -11892,12 +11871,8 @@
   <block id="13d299a335ec1c1e871a639aa098008a" category="paragraph">A saída do comando mostra a ID do sistema do novo módulo do controlador (1574774970). No entanto, os discos agregados de raiz ainda são propriedade do ID do sistema antigo (4068741254). Este exemplo não mostra unidades de propriedade de outros nós na configuração do MetroCluster.</block>
   <block id="591e50b47782b75bd730ace525401a46" category="list-text">Verifique se todos os discos estão reatribuídos conforme esperado:</block>
   <block id="a45adb2cc03a7b6b2f8aad0f0a988893" category="list-text">Repita as etapas acima no nó do parceiro (node_B_2-novo).</block>
-  <block id="9cf18883abd310f0e24341194095b229" category="list-text">Se a criptografia raiz for usada, dependendo da versão do ONTAP que você estiver usando, selecione a opção do menu de inicialização ou emita o comando do menu de inicialização para a configuração de gerenciamento de chaves.</block>
   <block id="9e25219bfef39dc2d94805b599244f8d" category="open-title">ONTAP 9 F.8 e mais tarde</block>
   <block id="716a92112769d0f62895dc8c3a9fe47f" category="paragraph">Começando com ONTAP 9.8, selecione a opção do menu de inicialização.</block>
-  <block id="cc5eb1ddd782b52c5fabe965793bc6f4" category="paragraph">Opção "'10"</block>
-  <block id="1ba2ae150e1cee5c2dbe25aa1a0e18b0" category="paragraph">Siga as instruções para fornecer as entradas necessárias para recuperar e restaurar a configuração do gerenciador de chaves.</block>
-  <block id="f1318dc614d34488bcb6f8bef3e32bff" category="paragraph">Opção "'11"</block>
   <block id="5a830b76ff5a71db59759b13f383410c" category="open-title">ONTAP 9 F.7 e anteriores</block>
   <block id="5227f75c6a1f77d9623c7a089f1e3ea7" category="paragraph">Para o ONTAP 9.7 e versões anteriores, execute o comando boot menu.</block>
   <block id="8cb7388f916ea57692be4e2442a4bb6e" category="cell">Emita este comando no prompt do menu de inicialização...</block>
@@ -11908,7 +11883,6 @@
   <block id="4c3c853efc0864d6f85e88e17a282dba" category="admonition">A opção "'6" reiniciará o nó duas vezes antes de concluir.</block>
   <block id="c09c91c40853cc803259a2c27d8fa946" category="paragraph">Responda "y" aos prompts de alteração de ID do sistema. Aguarde a segunda mensagem de reinicialização:</block>
   <block id="662d33ac7104caf3274f5065dd2768ba" category="list-text">Verifique se o parceiro-sysid está correto:</block>
-  <block id="2d9e786c47fe4bbb5d2cec20e0f373eb" category="list-text">Se a criptografia raiz for usada, dependendo da versão do ONTAP que você estiver usando, selecione a opção do menu de inicialização ou emita o comando do menu de inicialização novamente para a configuração de gerenciamento de chaves.</block>
   <block id="2a4c3faed5b4f37080aceb516872d752" category="paragraph">Dependendo da configuração do gerenciador de chaves, execute o procedimento de recuperação selecionando a opção ""10"" ou a opção ""11"", seguida da opção ""6"" no primeiro prompt do menu de inicialização. Para inicializar os nós completamente, você pode precisar repetir o procedimento de recuperação continuado pela opção "'1'" (inicialização normal).</block>
   <block id="ff5d57d1c306e7fe421eefff36f821cd" category="list-text">Inicialize os nós:</block>
   <block id="806422c50772a82e317db68491ffe3e4" category="paragraph">Se um dos nós estiver no modo de aquisição, execute um procedimento para giveback:</block>
@@ -11972,8 +11946,6 @@
   <block id="21abd3e611a550d5b10a01fcf5ca52e4" category="list-text"><block ref="d0e63dc99f0f9ab0cd3804cc52f2f14d" prefix="" category="inline-code"></block></block>
   <block id="88f8061f6e1681a4b263515885a900e3" category="list-text">Reúna os UUIDs para o site_B (o site cujas plataformas estão sendo atualizadas):</block>
   <block id="9bc90fe013f61635e9dbb97bc6c05864" category="paragraph">O exemplo a seguir mostra a saída do comando com os UUIDs:</block>
-  <block id="5dd8e2bcd1fdeaf6207d2362484a454c" category="list-text">Se o Gerenciador de chaves integrado estiver configurado<block ref="32ba7af89b7557f6e3e6d80a922080ce" prefix=" " category="inline-code"></block></block>
-  <block id="009130140f2855cf19e7630eb5284573" category="paragraph"><block ref="566ae4de3748e9ef87e905f8461c5c78" prefix="" category="inline-code"></block><block ref="c9b37f9017fc101cecef415e707e7b5f" prefix=" " category="inline-code"></block></block>
   <block id="fb46345d4cd3f7e829969de1d6aa05e7" category="list-text">Reúna as IDs do sistema dos nós existentes:</block>
   <block id="84662b9fedef1d258fb8d10005e76090" category="list-text">Execute o seguinte comando no cluster_A:</block>
   <block id="d9014ee527061be66eca52c07922ed61" category="section-title">Remova as configurações de interface e desinstale os controladores antigos</block>
@@ -12065,9 +12037,6 @@
   <block id="178098baf7cc420884cc556dea26c7ca" category="paragraph">Opção<block ref="d3d9446802a44259755d38e6d163e820" prefix=" " category="inline-code"></block></block>
   <block id="6f5ca753326737c7593f401e5c5d7859" category="paragraph">Opção<block ref="6512bd43d9caa6e02c990b0a82652dca" prefix=" " category="inline-code"></block></block>
   <block id="814a61c853e0924925006646c354415b" category="list-text">No menu de inicialização, selecione "'(6) Atualizar flash a partir da configuração de backup".</block>
-  <block id="628ec0782add3a1eca1d1b88c88303f8" category="list-text">Se a criptografia raiz for usada, selecione a opção do menu de inicialização novamente para a configuração de gerenciamento de chaves.</block>
-  <block id="37ef00a03e6b4bacbc26b2ee369f838f" category="paragraph">Dependendo da configuração do gerenciador de chaves, execute o procedimento de recuperação selecionando a opção ""10"" ou a opção ""11"", seguida da opção<block ref="1679091c5a880faf6fb5e6087eb1b2dc" prefix=" " category="inline-code"></block> no primeiro prompt do menu de inicialização. Para inicializar os nós completamente, você pode precisar repetir o procedimento de recuperação continuado pela opção "'1'" (inicialização normal).</block>
-  <block id="fdf8e4fe9b3e05181cd8befb0c17897f" category="paragraph"><block ref="a8dfa60f338d6757ce57f0b05c861249" prefix="" category="inline-code"></block></block>
   <block id="fb0d5feb3def76f90b6408f32f99f4b7" category="list-text">Se um novo domínio de broadcast for criado para as portas de dados nos controladores recém-atualizados, exclua o domínio de broadcast:</block>
   <block id="8cb8d05546274856c8c2cb56b7cd62ac" category="paragraph"><block ref="7bbb7f17a19e67be5ebaaa8410749ad2" prefix="" category="inline-code"></block></block>
   <block id="a51de836d51a26774e16aa7066519185" category="paragraph"><block ref="6a6db1083e2f8c53b07cc196dec3cafb" prefix="" category="inline-code"></block></block>
@@ -12094,7 +12063,6 @@
   <block id="01fcad9722b76bf721bf3e62d6025311" category="list-text">Exiba os comandos para capturar a chave de backup e outras informações:</block>
   <block id="8005ab9a73c38cc367636a0ec9e8fa35" category="paragraph"><block ref="340b1e35bd4793c9ac3c4d55ddd84539" prefix="" category="inline-code"></block></block>
   <block id="a0e8bd8a19cc4080f31b71bf720b5cea" category="paragraph">Execute os comandos listados sob o<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> comando do cluster de parceiros.</block>
-  <block id="f6ab51154cdfc097564bafa164ac20be" category="paragraph">Para obter informações adicionais,<block ref="9c5418b86e38fd117e0f48c25b2c7372" category="inline-link-rx"></block>consulte .</block>
   <block id="e62705f78105356bbf7fa312e78e684a" category="list-text">Depois de concluir a recolha das informações de configuração, retome a operação:</block>
   <block id="d6fd449bc639f92f27b747fd5b40361d" category="paragraph"><block ref="73226fabfade9b9a2472baed8321894c" prefix="" category="inline-code"></block></block>
   <block id="7080e7642990f343422154f3680f5f54" category="paragraph">Se a configuração existente for monitorada com a configuração tiebreaker do MetroCluster ou outros aplicativos de terceiros (por exemplo, o ClusterLion) que possam iniciar um switchover, você deverá remover a configuração do MetroCluster do tiebreaker ou de outro software antes de substituir a controladora antiga.</block>
@@ -12158,7 +12126,6 @@
   <block id="7c9dbc13c4af0588948dc0974ad07931" category="paragraph">Depois de executar o comando, aguarde até que o nó pare no<block ref="82b8350d28f0a14e36de1958b3be9205" prefix=" " category="inline-code"></block> prompt.</block>
   <block id="c200b51f243e6499b1e4aff027683496" category="paragraph"><block ref="4ce4e1d2d83eceacd4a0a0cf1bad8e14" prefix="" category="inline-code"></block></block>
   <block id="3d76ebef670d0f7bd3eab697fb186812" category="paragraph">Durante uma das reinicializações após a opção "'6", o prompt de confirmação<block ref="adeeb123a02ab1bcf79fc4bdffdd3b9f" prefix=" " category="inline-code"></block> aparece. Introduza<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>.</block>
-  <block id="c848af1101f629db69baafb2b08b9915" category="paragraph"><block ref="ce889b95687da5aee0c3d9ec48e819b4" prefix="" category="inline-code"></block></block>
   <block id="2d425665af37b9989f89179649650990" category="section-title">Conclua a atualização</block>
   <block id="9d278f0716d4f0b8bdeaa91150592096" category="list-text">A operação de automação executa<block ref="f62e58c376725d0e22a9e8040934124c" prefix=" " category="inline-code"></block> operações de switchback ,<block ref="f71080a9d0eed0afac5e99d0ac5f5781" prefix=" " category="inline-code"></block> e no local A e as verificações pós-atualização. Quando a operação for interrompida, verifique manualmente o status do SAN LIF e verifique a configuração da rede seguindo a mensagem do console.</block>
   <block id="7058a4e91dbbbe7dcf2fde3987421db0" category="section-title">Reconfigure o Mediador ONTAP</block>
@@ -12817,10 +12784,8 @@
   <block id="2bd6f53f70717822994364eab0bf6cbb" category="paragraph">Esses valores devem ser configurados com precisão nos novos módulos do controlador site_B para garantir uma atualização bem-sucedida. Copie os valores para um arquivo para que você possa copiá-los para os comandos mais tarde no processo de atualização.</block>
   <block id="ed2b77aa370645814dafbf5dd8aef15f" category="paragraph">O NetApp recomenda que você grave os UUIDs em uma tabela semelhante à seguinte:</block>
   <block id="6bfdd861df764d52de7823dd5958fab3" category="paragraph">Reúna a saída dos seguintes comandos:</block>
-  <block id="f3f4fd8fb847fe1a5ad11aacd71b5fad" category="list-text">Se o volume raiz estiver criptografado, colete e salve a senha usada para o gerenciador de chaves:</block>
   <block id="3c3a3838848890665c5d4969e896b405" category="inline-link">Faça backup manual das informações de gerenciamento de chaves integradas</block>
   <block id="a99b2b056456bd0991317c897eb6b8b6" category="paragraph">Para obter informações adicionais,<block ref="3c8480dc65ec7d91021d4d612b6bf420" category="inline-link-rx"></block>consulte .</block>
-  <block id="a1f17dd5bd9c97697b58a9f90f8bfe7d" category="paragraph">Você precisa da senha mais tarde no procedimento de atualização.</block>
   <block id="e6790e163decf815ae94c9137d60eb13" category="paragraph"><block ref="766cba2090a16f1ed1bcf4bf4dada91b" category="inline-link-macro-rx"></block>.</block>
   <block id="b52a41eb513dc979f4cf2a4a13686ecd" category="summary">Atualize os RCFs de switch para as novas plataformas e defina os valores de bootarg IP MetroCluster nos módulos do controlador.</block>
   <block id="bad868fbc306571d732100a7612b6381" category="list-text">Você precisa dos UUIDs e IDs de sistema identificados anteriormente no procedimento de atualização no <block ref="aacd1fc1f619acd6603cbd45ee223ad9" category="inline-link-macro-rx"></block>.</block>
@@ -12846,7 +12811,6 @@
   <block id="cb990f25bc5eb8215bf8eb74c16807f3" category="summary">Para se preparar para a atualização da controladora, você executa pré-verificações do sistema e coleta as informações de configuração.</block>
   <block id="c458b5225672f84c61d5b9931863ae60" category="paragraph">Para se preparar para a atualização da controladora, talvez seja necessário atualizar os arquivos de configuração de referência de switch (RCFs), dependendo dos modelos de plataforma antigos e novos. Em seguida, efetue pré-verificações do sistema, recolha as informações de configuração e remova o software de monitorização existente.</block>
   <block id="0c21b75966b293902f32e19c44cfee40" category="list-text">A configuração do RCF do switch não está na versão mínima.</block>
-  <block id="2592dc8685229c73a77e91741c837a63" category="paragraph">Para obter informações adicionais,<block ref="8d2708bcc3f1eaf7281ec3a4227ab734" category="inline-link-rx"></block>consulte .</block>
   <block id="0db7751284ee845ba2b1c67a8d8704db" category="section-title">Remova a configuração existente do tiebreaker ou de outro software de monitoramento</block>
   <block id="0cd4dc9ba4eb47708afdb2049d98c13a" category="paragraph">Antes de iniciar a atualização, remova a configuração existente do tiebreaker ou outro software de monitoramento.</block>
   <block id="63176d27bda1b994565a28492ed02e97" category="paragraph"><block ref="209008f8360496ff2e8d9d6e8b8625cb" category="inline-link-macro-rx"></block>.</block>
@@ -14549,7 +14513,6 @@
   <block id="ab84d029506bbf94968a8439506e5c7f" category="paragraph"><block ref="386c9422b8a78bb2663b14ec5cff7d1e" category="inline-link-macro-rx"></block>.</block>
   <block id="ea7f38fbe84ac28be0f7c90cca730a69" category="paragraph">ONTAP 9.19.1</block>
   <block id="65e78b09746a9ca4025a1c248d42a1bb" category="list-text">Verifique se você consegue acessar um servidor HTTP com o sistema.</block>
-  <block id="b91a26ac8a9beeea2dbb082ebcc79563" category="list-text">Os sistemas AFF A30, AFF C30, AFF C60 e FAS50 requerem um adaptador QSFP para SFP na placa do controlador para suportar uma velocidade de rede de 25 Gbps.</block>
   <block id="68ce146fd9ae3ad96c5895b1c1869059" category="cell">Velocidade da rede (Gbps)</block>
   <block id="0ec1914fce58a6a4d1748f3ace018fa1" category="cell">Modo de porta de comutação</block>
   <block id="9903737bdb8c33503d4677b804a93bb3" category="paragraph">100Gbps</block>
@@ -14574,4 +14537,34 @@
   <block id="3b1fc3e7f78026e75788d28bc49ca81d" category="list-text">A criptografia MACsec só pode ser aplicada às portas WAN ISL que interligam os sites.</block>
   <block id="68bddd16e24ef3e862d1cb8ff822ad2a" category="list-text">Configurar a criptografia MACsec é opcional ao configurar switches Cisco 9336C.</block>
   <block id="95c3b415a470d1839fa2fedd54783abb" category="sidebar">Configurar criptografia MACsec em switches Cisco 9336C (opcional)</block>
+  <block id="4b0a97a6b0bdcb156b3f67e9848a9112" category="list-text">Os sistemas AFF A30, AFF C30, AFF C60 e FAS50 requerem um adaptador QSFP para SFP+ na placa do controlador para suportar uma velocidade de rede de 25 Gbps.</block>
+  <block id="c6281cb9e12957678935280493ecbf9b" category="list-text">Se os nós MetroCluster estiverem configurados com um gerenciador de chaves externo para o SVM de administração (cluster), copie as informações do servidor de chaves para um local seguro. Se o Onboard Key Manager estiver configurado, copie as informações de backup e a senha para um local seguro.</block>
+  <block id="a32dd2ca79d8d8a0056821cb37fed7f4" category="open-title">Gerenciador de Chaves Integrado</block>
+  <block id="02d53c29cf140abcd193b9c1723fdf54" category="list-text">Execute o seguinte comando para exibir o backup do Onboard Key Manager:</block>
+  <block id="f230e34fbade37cb7e2748f14b011a55" category="paragraph">Você também precisará da senha mais recente do Onboard Key Manager posteriormente no procedimento de upgrade.</block>
+  <block id="e147253c0010bdd5968cb9b4b9ddf7dc" category="open-title">Gerenciador de chaves externo</block>
+  <block id="27c1c525fcac8be97773845c4153016f" category="paragraph">Reúna as informações de gerenciamento de chaves externas que você precisará para restaurar a configuração do gerenciador de chaves posteriormente no procedimento.</block>
+  <block id="27fd7163d866930d288c0f5e2344ad6f" category="list-text">Exibir o nome da SVM de administração (cluster).</block>
+  <block id="04e9e74e2055e2de638ade039733bad9" category="paragraph"><block ref="2f710df81fb8b58c1792ebb010c82902" prefix="" category="inline-code"></block></block>
+  <block id="c8bc490435fa03382fb48cab3f4fb2ef" category="paragraph">Neste exemplo, o nome da SVM administrativa é cluster_B:</block>
+  <block id="5a9ce7a88c085f9363a2b74570d95da4" category="list-text">Obtenha o endereço e o número da porta de um servidor de chave primária associado ao gerenciador de chaves externo configurado no SVM de administração (cluster):</block>
+  <block id="fc545d3a1dcf807591f5390fe6c19c38" category="list-text">O SVM de administração pode ter até quatro servidores de chave primária, mas você precisará apenas do número da porta e do endereço de um dos servidores de chave primária para restaurar a configuração de gerenciamento de chaves posteriormente no procedimento.</block>
+  <block id="99a70d62e06533053186703c4fa1612a" category="list-text">Se houver um nome de usuário e senha associados ao servidor de chave primária escolhido, você também precisará dessas informações para o processo de recuperação.</block>
+  <block id="710b0b4bdec68210bf595836065945d1" category="paragraph"><block ref="e25e9ed12a510a32b3dd7ba5e30c99bd" prefix="" category="inline-code"></block></block>
+  <block id="950c88730c61d3aaba629ef95167a4d0" category="list-text">Se você estiver executando ONTAP 9.16.1 ou posterior, obtenha o UUID do keystore para a SVM de administração.</block>
+  <block id="8fa8e4c1d8f1eddf4b3ed33d3f762581" category="paragraph"><block ref="aca7cb102916cf251ebebf80d39fb590" prefix="" category="inline-code"></block></block>
+  <block id="fbb82e5f47d565d7d6f73034eaf2db90" category="list-text">Guarde as informações que você coletou em um local seguro para uso posterior no procedimento. Você deverá ter coletado as seguintes informações:</block>
+  <block id="84613aa0a239d9f90644829a81e8a1c1" category="list-text">O número da porta e o endereço de um dos servidores de chave primária para a SVM de administração</block>
+  <block id="75d00576e854524567e7012ae7dba6d1" category="list-text">O nome de usuário e a senha se houver associados ao servidor de chave primária escolhido</block>
+  <block id="53fc62bfc038a4e8f537285cac249b99" category="list-text">O UUID do keystore para a SVM de administração (necessário no ONTAP 9.16.1 ou posterior)</block>
+  <block id="fc96c3a221edb7e2daa363e45683eee9" category="list-text">Se a SVM administrativa do MetroCluster sistema estiver configurada com um gerenciador de chaves, selecione a opção correta do menu de inicialização para a sua configuração de gerenciamento de chaves.</block>
+  <block id="8cfe2cd4decf0bb731981d68dc28786e" category="paragraph">Siga as instruções para fornecer as seguintes informações para recuperar e restaurar a configuração do gerenciador de chaves:</block>
+  <block id="1037f0f4833f6675008fa17acab37754" category="list-text">Backup e senha do Onboard Key Manager</block>
+  <block id="a1689d086474886da6e670c56be9b271" category="list-text">O nome de usuário e a senha se um estiver associado ao servidor de chave primária escolhido</block>
+  <block id="e50b141f57c3a9e77277ff3473436277" category="paragraph">*Nota:* Embora a SVM administrativa possa ter até quatro servidores de chave primária, apenas as informações de um servidor de chave primária podem ser especificadas durante o processo de recuperação.</block>
+  <block id="13c770359b6f10114b42ba39fdc8a43a" category="paragraph"><block ref="9a1bb06317d9933868db18de7bf4db37" prefix="" category="inline-code"></block></block>
+  <block id="b46ce2316c689c599dffa14540ae053b" category="list-text">Se a criptografia do volume raiz estiver sendo usada, selecione novamente a opção do menu de inicialização para a configuração de gerenciamento de chaves.</block>
+  <block id="caf6332dea07cf4b950c8d71d7e45e42" category="list-text">Se a criptografia do volume raiz estiver sendo usada, dependendo da versão do ONTAP que você estiver utilizando, selecione a opção do menu de inicialização ou execute novamente o comando do menu de inicialização para a configuração de gerenciamento de chaves.</block>
+  <block id="b0fbf352a8f099c3b53b0641730683b8" category="paragraph">Dependendo do tipo de gerenciador de chaves, execute o procedimento de recuperação selecionando a opção "10" ou a opção "11", seguida da opção <block ref="1679091c5a880faf6fb5e6087eb1b2dc" prefix=" " category="inline-code"></block> no primeiro prompt do menu de inicialização. Para inicializar os nós completamente, talvez seja necessário repetir o procedimento de recuperação, continuando pela opção "1" (inicialização normal).</block>
+  <block id="ded8f2620d58acfd69775bc49e48b168" category="list-text">Se a criptografia estiver habilitada na SVM administrativa, restaure as chaves usando o comando correto para sua configuração de gerenciamento de chaves.</block>
 </blocks>
