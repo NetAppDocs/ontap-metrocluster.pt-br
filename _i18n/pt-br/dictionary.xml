@@ -2131,7 +2131,6 @@
   <block id="57d89ae0fa9051439d76f5f61398fa16" category="list-text">Reinicie o controlador executando um takeover de alta disponibilidade (HA) em ambas as direções.</block>
   <block id="7ded485b7ebcebc3bd6f05399892bc0d" category="section-title">Configurando o SNMPv3 em uma configuração MetroCluster</block>
   <block id="aad314edd91dd520fd86444157d56f66" category="paragraph">Os protocolos de autenticação e privacidade nos switches e no sistema ONTAP devem ser os mesmos.</block>
-  <block id="b88127542a36dbd88f1d9b0eb0e66dc0" category="paragraph">O ONTAP atualmente suporta criptografia AES-128.</block>
   <block id="e96826849500e7c6adab84f1693eb72c" category="list-text">Crie um usuário SNMP para cada switch a partir do prompt do controlador:</block>
   <block id="df5566493ce43130608af35ff9c2f4d8" category="paragraph"><block ref="5d6b067bb8a979d6b47c787077dfae6f" prefix="" category="inline-code"></block></block>
   <block id="eaddf5b42a6f6933693578764fd14443" category="list-text">Responda às seguintes instruções, conforme necessário, no seu site:</block>
@@ -2149,7 +2148,6 @@
   <block id="b8faea2432f5d49678ba72e9e265fe05" category="section-title">Configuração de componentes do MetroCluster para monitoramento de integridade</block>
   <block id="19db8c18601831a8ea2a7591d6f878f0" category="paragraph">Você deve executar algumas etapas especiais de configuração antes de monitorar os componentes em uma configuração do MetroCluster.</block>
   <block id="48b362592ae748a2b4676d1e63b57fca" category="paragraph">Essas tarefas se aplicam somente a sistemas com pontes FC para SAS.</block>
-  <block id="acb3a81879787c0ac3484855a93f5ff6" category="paragraph">A partir do Fabric os 9,0.1, o SNMPv2 não é suportado para monitoramento de integridade em switches Brocade, você deve usar o SNMPv3 em vez disso. Se você estiver usando SNMPv3, você deve configurar o SNMPv3 no ONTAP antes de prosseguir para a seção a seguir. Para obter mais detalhes, <block ref="84b6bc8814c8fff8860aaf6e2164af86" category="inline-xref-macro-rx"></block>consulte .</block>
   <block id="ea7f8a0fa7f1d7f464025ba86a6284cd" category="list-text">Você deve colocar bridges e um LIF de gerenciamento de nós em uma rede dedicada para evitar interferência de outras fontes.</block>
   <block id="9245afe84f46306a811d61036f2f5698" category="section-title">Configuração dos switches MetroCluster FC para monitoramento de integridade</block>
   <block id="6d8346a61b76a8b57a9dd1d8b8188d3f" category="paragraph">Em uma configuração do MetroCluster conectado à malha, você precisa executar algumas etapas adicionais de configuração para monitorar os switches FC.</block>
@@ -7820,7 +7818,6 @@
   <block id="229c127d4cd1b67df183593436247200" category="list-text">O registo da consola está ativado.</block>
   <block id="88e4990ce21c0256eb827c7e19fa0648" category="paragraph"><block ref="88e4990ce21c0256eb827c7e19fa0648" category="inline-link-macro-rx"></block></block>
   <block id="db6e0c8057b108f77da141b83e047b8d" category="paragraph">A malha do switch é desativada durante uma atualização ou downgrade de firmware, e a configuração do MetroCluster depende da segunda malha para continuar a operação.</block>
-  <block id="207e61ae33ef5e6ef918554d51d81114" category="paragraph">A partir do Fabric os 9,0.1, o SNMPv2 não é suportado nos switches Brocade. Se você atualizar para o Fabric os 9.0.1 ou posterior, use o SNMPv3 para monitoramento de integridade. Para obter mais informações, <block ref="f40dae5fcb87cbbfe058698fbd8d3759" category="inline-link-macro-rx"></block>consulte .</block>
   <block id="6751765455c440079966f9a59475b0bc" category="paragraph">Essa tarefa deve ser executada em cada uma das malhas de switch sucessivamente para que todos os switches estejam executando a mesma versão de firmware.</block>
   <block id="da01ecb08b133106887a13853c00c37a" category="admonition">Esse procedimento não causa interrupções e leva aproximadamente uma hora para ser concluído.</block>
   <block id="c2e3f1033f71925e4f874c95cc748a56" category="list-text">Faça login em cada um dos switches da malha.</block>
@@ -13017,7 +13014,6 @@
   <block id="de60962ea114e8e20b41343aa7431cbf" category="inline-link-macro">Saiba mais sobre a mobilidade de dados do SVM</block>
   <block id="cb692d9778a8fa1464d6b442ab90722f" category="paragraph"><block ref="53c488ccbc80272b509e45a126fd033b" category="inline-link-macro-rx"></block>.</block>
   <block id="7df18ff4393ac59f9af7b68478828591" category="inline-link-macro">Guia de atualização de software do Brocade Fabric os, 9,2.x</block>
-  <block id="81095da37e6499e1af51ce2d0316b8c1" category="paragraph">Se você estiver atualizando para o Fabric os V 9,2.x ou posterior, você deve ter um certificado Brocade TruFOS instalado, consulte <block ref="0c25af31b20d46ca79e55fb8f6beb4c9" category="inline-link-macro-rx"></block>para obter mais informações.</block>
   <block id="b2fe7ec3c609e490e177268be9c6a2c7" category="open-title">Remover pontes FC-para-SAS</block>
   <block id="1c5eaf0274c09872a2287c430ed75a60" category="list-text">Identifique as pontes:</block>
   <block id="4d100b8e119ce2e8a98e720e612260d2" category="paragraph"><block ref="5c2aa4362fb9d40ad679411e69f26e74" prefix="" category="inline-code"></block></block>
@@ -13943,7 +13939,6 @@
   <block id="25849b8ea5119a6ccbe0ef06d8e35773" category="doc">Teste a alternância do nó ONTAP para sua configuração de IP do MetroCluster</block>
   <block id="f42ec02236cb8b0134435967892ad733" category="paragraph"><block ref="f42ec02236cb8b0134435967892ad733" category="inline-link-macro-rx"></block></block>
   <block id="929f699475d2ee16cffb5df619460281" category="list-text">Nenhuma falha de hardware (por exemplo, uma falha de energia)</block>
-  <block id="8e7bac68088266dc4f6ea54160a86aa8" category="open-title">Interruptores Brocade (FOS 9.0 e posterior)</block>
   <block id="bbf1d4b45eed310475529b62acce8abc" category="paragraph"><block ref="5c14098cbb5e352eab3dbedad51645c3" prefix="" category="inline-code"></block></block>
   <block id="fb9a60f6eec8993cd6b4f12e486c000c" category="open-title">Interruptores Brocade (FOS 8.x e anteriores)</block>
   <block id="c713289c1b13431b23b477490f615275" category="paragraph">O exemplo mostra como configurar um usuário somente leitura.  Você pode ajustar os usuários RW, se necessário.  Se você precisar de acesso RO, após "Usuário (ro):" especifique "snmpv3user".</block>
@@ -14568,4 +14563,38 @@
   <block id="b0fbf352a8f099c3b53b0641730683b8" category="paragraph">Dependendo do tipo de gerenciador de chaves, execute o procedimento de recuperação selecionando a opção "10" ou a opção "11", seguida da opção <block ref="1679091c5a880faf6fb5e6087eb1b2dc" prefix=" " category="inline-code"></block> no primeiro prompt do menu de inicialização. Para inicializar os nós completamente, talvez seja necessário repetir o procedimento de recuperação, continuando pela opção "1" (inicialização normal).</block>
   <block id="ded8f2620d58acfd69775bc49e48b168" category="list-text">Se a criptografia estiver habilitada na SVM administrativa, restaure as chaves usando o comando correto para sua configuração de gerenciamento de chaves.</block>
   <block id="594c07221c5565837dffd5ce4580e7bb" category="admonition">O resultado do <block ref="e7acb1ae14be0e5233d619851263fdae" prefix=" " category="inline-code"></block> comando pode variar dependendo do modelo da sua plataforma. Por exemplo, em algumas plataformas, as linhas referentes ao HA Partner não são exibidas na saída.</block>
+  <block id="2348f32e5e421ab4ef22af7e7810041e" category="section-title">Configurando o SNMPv3 em uma configuração FC MetroCluster</block>
+  <block id="f72f4581559ba331ae5b793ab29d815a" category="paragraph">ONTAP atualmente suporta AES-128 para privacidade (criptografia) e SHA-256 para autenticação.</block>
+  <block id="44a800928beee85aed0fba3a92f2408a" category="list-text">No Fabric OS 10.x e versões posteriores, Brocade suporta apenas SHA-512 para autenticação SNMP. ONTAP atualmente não suporta SHA-512, com suporte limitado a SHA-256.</block>
+  <block id="f02ccf6c395105226a61800f93771185" category="list-text">Se seus switches FC MetroCluster estiverem executando o Fabric OS 10.x ou posterior, você não poderá configurar SNMP nem adicionar esses switches ao monitoramento de integridade do ONTAP. Se você quiser fazer downgrade do firmware do switch, pode seguir as etapas em <block ref="ceeb82cfdbafdefa3498267033925b4d" category="inline-link-macro-rx"></block>.</block>
+  <block id="0555d71723e207adf1d26aacd23fca99" category="open-title">Switches Brocade (FOS 9.x)</block>
+  <block id="52f25e0e1d7123b8e60a485a2591101f" category="paragraph">A partir do Fabric OS 9.0.1, o SNMPv2 não é suportado para monitoramento de integridade em switches Brocade, você deve usar o SNMPv3 em vez disso. Se você estiver usando o SNMPv3, deve configurar o SNMPv3 no ONTAP antes de prosseguir para a seção a seguir. Para mais detalhes, consulte <block ref="bccdc4729d6354379109b6753bfdc947" category="inline-xref-macro-rx"></block>.</block>
+  <block id="6a9b31d52b85b35e7f1cd8ec96cb6989" category="doc">Atualize ou faça o downgrade do firmware em um switch Brocade FC MetroCluster</block>
+  <block id="eede7d7d2eb026eb4a46711feb940141" category="paragraph">Analise cuidadosamente as seguintes informações antes de utilizar este procedimento:</block>
+  <block id="8e0da5650cc19161382006e7a36b91eb" category="list-text">A partir do Fabric OS 10.x, Brocade oferece suporte apenas ao SHA-512 para autenticação SNMP. ONTAP atualmente não oferece suporte ao SHA-512, sendo o suporte limitado ao SHA-256.</block>
+  <block id="f56c2e751b109490bad7e0eaedf3c300" category="paragraph">Se você atualizar o firmware do switch FC do MetroCluster para o Fabric OS 10.x, a visibilidade do monitoramento SNMP a partir do ONTAP será perdida. Isso aumenta o risco durante a solução de problemas e leva à perda de alertas proativos.</block>
+  <block id="fded9116e1c7860c9efc9c570fc2b5fb" category="inline-link-macro">Brocade Fabric OS Software Upgrade Guide, 10.0.x - Pré-requisitos para atualização ou downgrade</block>
+  <block id="e28259c7fcba5a4f4ea8558015e892ff" category="paragraph">Se você atualizar ou fizer downgrade do Fabric OS 10.x, deverá executar as tarefas obrigatórias descritas em <block ref="4c794930872c13dd5a27bee89c2df646" category="inline-link-macro-rx"></block>.</block>
+  <block id="51730b95b3cfe613db659073f7d3e446" category="admonition">Você deve considerar cuidadosamente essas limitações antes de prosseguir com a atualização ou o downgrade para ou a partir do Fabric OS 10.x ou posterior.</block>
+  <block id="cdc0848d59d5387fcb1237af02c4c5a1" category="list-text">A partir do Fabric OS 9.0.1, o SNMPv2 não é compatível em switches Brocade. Se você atualizar para o Fabric OS 9.0.1 ou posterior, você deve usar o SNMPv3 para monitoramento de integridade. Para mais informações, consulte <block ref="a870a36121ea1bde9d4fd0d18636602e" category="inline-link-macro-rx"></block>.</block>
+  <block id="00a29c96b5b875e4a7129fdceae0b685" category="list-text">Se você estiver atualizando para o Fabric OS 9.2.x ou posterior, é necessário ter um certificado Brocade TruFOS instalado. Consulte <block ref="0c25af31b20d46ca79e55fb8f6beb4c9" category="inline-link-macro-rx"></block> para obter mais informações.</block>
+  <block id="ac6b73edb23230b28c5dabf7e6520c9f" category="section-title">Cenários de transição suportados por este procedimento</block>
+  <block id="02394dbd3e3e6fe87c261ba2d07828bf" category="paragraph">Consulte a tabela a seguir para saber mais sobre os cenários de transição suportados por este procedimento.</block>
+  <block id="585267d8d640f8c9c7ee4bc4ffe689a8" category="admonition">Em todos os cenários de transição, você só pode adicionar ou remover um único grupo de DR por vez. Após a adição ou remoção bem-sucedida do grupo de DR, você precisa verificar se o MetroCluster está íntegro e operando normalmente antes de prosseguir.</block>
+  <block id="67413720ded39820d540bc2f547137f9" category="cell">Para este cenário de transição...</block>
+  <block id="592a3b45c9297fe905b909e9ac714fad" category="cell">Execute o seguinte...</block>
+  <block id="9b0a7751ce574a877af7e43b11daa34f" category="paragraph">Configuração de quatro nós FC para quatro nós IP</block>
+  <block id="a5a86b6a15ae4a243d39727ec40d97f9" category="paragraph">Siga este procedimento conforme descrito.</block>
+  <block id="548b095c08a8422afef5c9775659d3bc" category="paragraph">Configuração de FC de quatro nós para IP de oito nós</block>
+  <block id="06640d5e2b927539ce008e93a978317b" category="paragraph">É necessário adicionar um grupo IP DR MetroCluster. Após adicionar o primeiro grupo IP DR MetroCluster, verifique a integridade geral do cluster e repita os passos para o segundo grupo IP DR MetroCluster.</block>
+  <block id="fb4130f6b62db04e22f6d7cf8ac5a4a9" category="paragraph">Configuração de oito nós FC para quatro nós IP</block>
+  <block id="ad401f4570525afcee075cf6d99e3147" category="paragraph">Siga este procedimento conforme descrito. Durante a transição, a configuração MetroCluster será expandida de oito para doze nós. Após a conclusão da transição e a saída de todos os nós FC MetroCluster, a configuração final será uma configuração MetroCluster IP de quatro nós.</block>
+  <block id="43036e302b39d08afb26efba664df1f8" category="paragraph">Configuração de oito nós FC para oito nós IP</block>
+  <block id="4fc6cf17ea8cb889a57fc97a5135f6c4" category="paragraph">Essa transição requer a adição de um grupo IP DR MetroCluster ao cluster.</block>
+  <block id="3dd2824a380698bf490fa1df074afc63" category="paragraph">Após você confirmar a integridade da configuração de doze nós, mova os dados e as LIFs (conforme necessário) de um dos grupos de DR FC do MetroCluster para o grupo de DR IP do MetroCluster. Quando um dos grupos de DR FC do MetroCluster estiver vazio, remova esse grupo de DR e desvincule esses nós. A configuração resultante é um cluster de oito nós composto por um MetroCluster FC e um grupo de DR IP do MetroCluster.</block>
+  <block id="4ef99421ecdca25d01fb93e6cb108c8f" category="paragraph">Em seguida, adicione o segundo grupo IP DR MetroCluster ao cluster e transfira os dados e LIFs (conforme necessário). Quando o último grupo FC DR MetroCluster restante estiver vazio, remova-o e desvincule esses nós.</block>
+  <block id="75337e999bb0e04a56d425725d943a86" category="paragraph">Em nenhum momento durante a transição, o número de nós na configuração MetroCluster não excede doze nós.</block>
+  <block id="8d540b15dac9bee2f802b66dc16a6a0b" category="paragraph">Para obter mais informações, consulte o <block ref="36bbe754bd1c078bf3bb1818fc549f54" category="inline-link-macro-rx"></block>.</block>
+  <block id="f5092147d9fdb4405ffa0ded1187160b" category="section-title">Informações importantes ao adicionar um modelo de plataforma mais antigo</block>
+  <block id="de340c0f1f6d36d5e5b0117bb6d6e359" category="admonition">Se você estiver realizando uma transição de FC de quatro nós para IP de oito nós, poderá aplicar o RCF de FC de quatro nós para IP de oito nós antes de adicionar o segundo grupo de DR. Você não precisa aplicar o RCF de FC de quatro nós para IP de quatro nós primeiro.</block>
 </blocks>

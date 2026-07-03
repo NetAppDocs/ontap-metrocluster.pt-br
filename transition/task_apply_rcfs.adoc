@@ -15,6 +15,9 @@ Se você estiver usando novos switches IP para a configuração IP do MetroClust
 
 Esta tarefa é necessária se você estiver usando novos switches.
 
+
+NOTE: Se você estiver realizando uma transição de FC de quatro nós para IP de oito nós, poderá aplicar o RCF de FC de quatro nós para IP de oito nós antes de adicionar o segundo grupo de DR. Você não precisa aplicar o RCF de FC de quatro nós para IP de quatro nós primeiro.
+
 Se estiver a utilizar comutadores existentes, avance para link:task_move_cluster_connections.html["Mover as conexões do cluster local"].
 
 . Instale e coloque em rack os novos switches IP.

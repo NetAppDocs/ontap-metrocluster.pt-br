@@ -35,7 +35,59 @@ NOTE: Ao adicionar ou remover um grupo de recuperação de desastres (DR) como p
 * Você deve atender a todos os requisitos e seguir todas as etapas do procedimento.
 
 
-.Informações importantes se você estiver adicionando um modelo de plataforma mais antigo
+
+
+== Cenários de transição suportados por este procedimento
+
+Consulte a tabela a seguir para saber mais sobre os cenários de transição suportados por este procedimento.
+
+
+NOTE: Em todos os cenários de transição, você só pode adicionar ou remover um único grupo de DR por vez. Após a adição ou remoção bem-sucedida do grupo de DR, você precisa verificar se o MetroCluster está íntegro e operando normalmente antes de prosseguir.
+
+[cols="2*"]
+|===
+| Para este cenário de transição... | Execute o seguinte... 
+
+
+ a| 
+Configuração de quatro nós FC para quatro nós IP
+ a| 
+Siga este procedimento conforme descrito.
+
+
+
+ a| 
+Configuração de FC de quatro nós para IP de oito nós
+ a| 
+É necessário adicionar um grupo IP DR MetroCluster. Após adicionar o primeiro grupo IP DR MetroCluster, verifique a integridade geral do cluster e repita os passos para o segundo grupo IP DR MetroCluster.
+
+
+
+ a| 
+Configuração de oito nós FC para quatro nós IP
+ a| 
+Siga este procedimento conforme descrito. Durante a transição, a configuração MetroCluster será expandida de oito para doze nós. Após a conclusão da transição e a saída de todos os nós FC MetroCluster, a configuração final será uma configuração MetroCluster IP de quatro nós.
+
+
+
+ a| 
+Configuração de oito nós FC para oito nós IP
+ a| 
+Essa transição requer a adição de um grupo IP DR MetroCluster ao cluster.
+
+Após você confirmar a integridade da configuração de doze nós, mova os dados e as LIFs (conforme necessário) de um dos grupos de DR FC do MetroCluster para o grupo de DR IP do MetroCluster. Quando um dos grupos de DR FC do MetroCluster estiver vazio, remova esse grupo de DR e desvincule esses nós. A configuração resultante é um cluster de oito nós composto por um MetroCluster FC e um grupo de DR IP do MetroCluster.
+
+Em seguida, adicione o segundo grupo IP DR MetroCluster ao cluster e transfira os dados e LIFs (conforme necessário). Quando o último grupo FC DR MetroCluster restante estiver vazio, remova-o e desvincule esses nós.
+
+Em nenhum momento durante a transição, o número de nós na configuração MetroCluster não excede doze nós.
+
+|===
+Para obter mais informações, consulte o link:concept_transition_workflow_fc_to_ip_transition.html["Fluxo de trabalho para transição sem interrupções de MetroCluster"].
+
+
+
+== Informações importantes ao adicionar um modelo de plataforma mais antigo
+
 A orientação a seguir é para um cenário incomum em que você precisa adicionar um modelo de plataforma mais antigo (plataformas lançadas antes do ONTAP 9.15.1) a uma configuração existente do MetroCluster que contém um modelo de plataforma mais recente (plataformas lançadas no ONTAP 9.15.1 ou posterior).  Para uma transição de FC para IP de oito nós, esta orientação se aplica se você tiver feito a transição do seu primeiro grupo de DR de FC para um modelo de plataforma introduzido no ONTAP 9.15.1 ou posterior e planeja fazer a transição do segundo grupo de DR para uma plataforma introduzida antes do ONTAP 9.15.1.
 
 Se a sua configuração existente do MetroCluster contiver uma plataforma que usa *portas de cluster/HA compartilhadas* (plataformas lançadas no ONTAP 9.15.1 ou posterior), você não poderá adicionar uma plataforma que usa *portas de MetroCluster/HA compartilhadas* (plataformas lançadas antes do ONTAP 9.15.1) sem atualizar todos os nós na configuração para o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.
