@@ -59,6 +59,7 @@ https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade 
 
 
 
+[[cisco-switch-license-requirements]]
 == Requisitos de licença de switch Cisco
 
 Certas licenças baseadas em recursos podem ser necessárias para os switches Cisco em uma configuração MetroCluster conetada à malha. Essas licenças permitem que você use recursos como QoS ou créditos de modo de longa distância nos switches. Você deve instalar as licenças baseadas em recursos necessárias em todos os quatro switches em uma configuração do MetroCluster.
@@ -89,6 +90,7 @@ NOTE: Os switches Cisco MDS 9250i têm duas portas fixas de serviços de storage
 
 
 
+[[setting-the-cisco-fc-switch-to-factory-defaults]]
 == Definir o switch Cisco FC para os padrões de fábrica
 
 Para garantir uma configuração bem-sucedida, você deve definir o switch para seus padrões de fábrica. Isso garante que o switch esteja começando a partir de uma configuração limpa.
@@ -137,6 +139,7 @@ FC_Switch_B_1# write erase
 ----
 
 
+[[configure-the-cisco-fc-switch-basic-settings-and-community-string]]
 == Configure as configurações básicas do switch Cisco FC e a cadeia de carateres da comunidade
 
 Você deve especificar as configurações básicas com o `setup` comando ou depois de emitir o `reload` comando.
@@ -185,6 +188,7 @@ FC_switch_B_1# setup
 
 
 
+[[acquiring-licenses-for-ports]]
 == Adquirir licenças para portas
 
 Você não precisa usar licenças de switch Cisco em um intervalo contínuo de portas; em vez disso, você pode adquirir licenças para portas específicas que são usadas e remover licenças de portas não utilizadas.
@@ -249,6 +253,7 @@ Determine quais portas exigem licenças. Se algumas dessas portas não forem lic
 
 
 
+[[removing-and-acquiring-a-license-on-a-port]]
 === Removendo e adquirindo uma licença em uma porta
 
 Este exemplo mostra uma licença que está sendo removida da porta FC1/2, a porta FC1/1 que está sendo elegível para adquirir uma licença e a licença que está sendo adquirida na porta FC1/1:
@@ -288,6 +293,7 @@ Switch_A_1# show port-resources module 1
 ----
 
 
+[[enabling-ports-in-a-cisco-mds-9148-or-9148s-switch]]
 == Habilitando portas em um switch Cisco MDS 9148 ou 9148S
 
 Nos switches Cisco MDS 9148 ou 9148S, é necessário habilitar manualmente as portas necessárias em uma configuração do MetroCluster.
@@ -342,6 +348,7 @@ switch(config-if)# end
 
 
 
+[[configuring-the-f-ports-on-a-cisco-fc-switch]]
 == Configurando as portas F em um switch Cisco FC
 
 Você deve configurar as portas F no switch FC.
@@ -422,6 +429,7 @@ FC_switch_B_1# copy running-config startup-config
 ----
 
 
+[[assigning-buffer-to-buffer-credits-to-f-ports-in-the-same-port-group-as-the-isl]]
 == Atribuição de créditos de buffer a buffer a portas F no mesmo grupo de portas que o ISL
 
 Você deve atribuir os créditos buffer a buffer às portas F se estiverem no mesmo grupo de portas que o ISL. Se as portas não tiverem os créditos buffer-to-buffer necessários, o ISL pode estar inoperacional.
@@ -540,6 +548,7 @@ fc1/39                                      1        8.0 dedicated
 ----
 
 
+[[creating-and-configuring-vsans-on-cisco-fc-switches]]
 == Criando e configurando VSANs em switches Cisco FC
 
 É necessário criar um VSAN para as portas FC-VI e um VSAN para as portas de storage em cada switch FC na configuração MetroCluster.
@@ -935,6 +944,7 @@ FC_switch_B_1# copy running-config startup-config
 
 
 
+[[configuring-e-ports]]
 == Configurando portas e
 
 Você deve configurar as portas do switch que conetam o ISL (estas são as portas e).
@@ -949,6 +959,8 @@ O procedimento utilizado depende do interrutor que está a utilizar:
 
 
 
+[[configuring-the-e-ports-on-the-cisco-fc-switch]]
+[[config-e-ports-cisco-fc]]
 === Configuração das portas e no switch Cisco FC
 
 Você deve configurar as portas do switch FC que conetam o link inter-switch (ISL).
@@ -1188,6 +1200,8 @@ Você precisa verificar se está usando as atribuições de porta especificadas 
 
 
 
+[[configuring-fcip-ports-for-a-single-isl-on-cisco-9250i-fc-switches]]
+[[config-fcip-ports-single-isl-cisco-9250i]]
 === Configuração de portas FCIP para um único ISL em switches FC Cisco 9250i
 
 Você deve configurar as portas do switch FCIP que conetam o ISL (e-ports) criando perfis e interfaces FCIP e atribuindo-os à interface IPStorage1/1 GbE.
@@ -1597,6 +1611,8 @@ FC_switch_B_1# copy running-config startup-config
 
 
 
+[[configuring-fcip-ports-for-a-dual-isl-on-cisco-9250i-fc-switches]]
+[[config-fcip-ports-dual-isl-cisco-9250i]]
 === Configuração de portas FCIP para um ISL duplo em switches FC Cisco 9250i
 
 Você deve configurar as portas do switch FCIP que conetam o ISL (e-ports) criando perfis e interfaces FCIP e atribuindo-os às interfaces IPStorage1/1 e IPStorage1/2 GbE.
@@ -1614,6 +1630,7 @@ A tarefa e os exemplos usam as seguintes tabelas de configuração de perfil:
 * <<fabric2_table>>
 
 
+[[fabric1_table]]
 * Tabela de configuração de perfil de tecido 1 *
 
 |===
@@ -1761,6 +1778,7 @@ b.b.b.b/3223
 20
 
 |===
+[[fabric2_table]]
 * Tabela de configuração de perfil de tecido 2 *
 
 |===
@@ -2411,6 +2429,7 @@ exit
 ----
 
 
+[[configuring-zoning-on-a-cisco-fc-switch]]
 == Configurando o zoneamento em um switch Cisco FC
 
 É necessário atribuir as portas do switch a zonas separadas para isolar o tráfego de storage (HBA) e controlador (FC-VI).
@@ -2689,6 +2708,7 @@ FC_switch_A_1# copy running-config startup-config
 
 
 
+[[ensuring-the-fc-switch-configuration-is-saved]]
 == Garantir que a configuração do switch FC seja salva
 
 Você deve garantir que a configuração do switch FC esteja salva na configuração de inicialização em todos os switches.

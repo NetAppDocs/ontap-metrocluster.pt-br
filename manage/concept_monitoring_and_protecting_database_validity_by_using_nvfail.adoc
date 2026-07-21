@@ -19,6 +19,7 @@ Após a perda de dados do NVRAM durante a recuperação de failover ou inicializ
 
 
 
+[[how-nvfail-impacts-access-to-nfs-volumes-or-luns]]
 == Como o NVFAIL afeta o acesso a volumes NFS ou LUNs
 
 O estado NVFAIL é definido quando o ONTAP deteta erros NVRAM durante a inicialização, quando ocorre uma operação de comutação MetroCluster ou durante uma operação de aquisição de HA se a opção NVFAIL estiver definida no volume. Se nenhum erro for detetado na inicialização, o serviço de arquivos é iniciado normalmente. No entanto, se erros do NVRAM forem detetados ou o processamento NVFAIL for aplicado em um switchover de desastre, o ONTAP interrompe as instâncias do banco de dados de responder.
@@ -75,6 +76,7 @@ Os LUNs nesse volume são colocados offline. A `in-nvfailed-state` opção no vo
 |===
 
 
+[[commands-for-monitoring-data-loss-events]]
 == Comandos para monitorar eventos de perda de dados
 
 Se você ativar a opção NVFAIL, receberá uma notificação quando ocorrer uma falha do sistema causada por inconsistências do NVRAM ou um switchover do MetroCluster.
@@ -117,6 +119,7 @@ Consulte a página de manual de cada comando para obter mais informações.
 
 
 
+[[accessing-volumes-in-nvfail-state-after-a-switchover]]
 == Acessar volumes no estado NVFAIL após um switchover
 
 Após um switchover, você deve limpar o estado NVFAIL redefinindo o `-in-nvfailed-state` parâmetro `volume modify` do comando para remover a restrição de clientes para acessar dados.
@@ -141,6 +144,7 @@ link:../manage/concept_monitoring_and_protecting_database_validity_by_using_nvfa
 
 
 
+[[recovering-luns-in-nvfail-states-after-switchover]]
 == Recuperação de LUNs nos estados NVFAIL após o switchover
 
 Após um switchover, o host não tem mais acesso aos dados nos LUNs nos estados NVFAIL. Você deve executar várias ações antes que o banco de dados tenha acesso aos LUNs.

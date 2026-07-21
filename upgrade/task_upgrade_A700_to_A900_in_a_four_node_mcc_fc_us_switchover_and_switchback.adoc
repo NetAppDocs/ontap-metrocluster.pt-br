@@ -102,6 +102,7 @@ Os nomes de exemplo a seguir são usados em exemplos e gráficos neste procedime
 
 
 
+[[enable-console-logging]]
 == Ativar o registo da consola
 
 O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
@@ -116,18 +117,21 @@ Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Su
 
 
 
+[[prepare-for-the-upgrade]]
 == Prepare-se para a atualização
 
 Antes de fazer alterações na configuração existente do MetroCluster, você deve verificar a integridade da configuração, alterar os arquivos RCF e o cabeamento para corresponder à nova topologia de conectividade de porta necessária para a configuração do AFF A900 ou FAS9000 Fabric MetroCluster e executar outras tarefas diversas.
 
 
 
+[[clear-slot-7-on-the-aff-a700-controller]]
 == Limpe a ranhura 7 no controlador AFF A700
 
 A configuração MetroCluster em um AFF A900 ou FAS9500 requer 8 portas FC-VI em placas FC-VI nos slots 5 e 7. Antes de iniciar a atualização, se houver placas no slot 7 no AFF A700 ou no FAS9000, você deve movê-las para outros slots para todos os nós do cluster.
 
 
 
+[[verify-the-health-of-the-metrocluster-configuration]]
 === Verifique a integridade da configuração do MetroCluster
 
 Antes de atualizar os arquivos RCF e o cabeamento da configuração AFF A900 ou FAS9500 Fabric MetroCluster, verifique a integridade e a conectividade da configuração.
@@ -220,6 +224,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+[[update-the-fabric-switch-rcf-files]]
 === Atualize os arquivos RCF do switch de malha
 
 O AFF A900 ou FAS9500 Fabric MetroCluster requer dois adaptadores FC-VI de quatro portas por nó em comparação com um único adaptador FC-VI de quatro portas exigido por um AFF A700. Antes de iniciar a atualização da controladora para a controladora AFF A900 ou FAS9500, é necessário modificar os arquivos RCF do switch de malha para dar suporte à topologia de conexão AFF A900 ou FAS9500.
@@ -253,6 +258,7 @@ NOTE: A atualização do arquivo RCF para dar suporte à configuração AFF A900
 
 
 
+[[verify-the-health-of-the-metrocluster-configuration-after-the-rcf-file-update]]
 === Verifique a integridade da configuração do MetroCluster após a atualização do arquivo RCF
 
 Você deve verificar a integridade e a conectividade da configuração do MetroCluster antes de executar a atualização.
@@ -342,6 +348,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+[[map-ports-from-the-aff-a700-or-fas9000-nodes-to-the-aff-a900-or-fas9500-nodes]]
 === Mapeie portas dos nós AFF A700 ou FAS9000 para os nós AFF A900 ou FAS9500
 
 Durante o processo de atualização da controladora, você só deve alterar as conexões mencionadas neste procedimento.
@@ -350,6 +357,7 @@ Se os controladores AFF A700 ou FAS9000 tiverem uma placa no slot 7, você dever
 
 
 
+[[gather-information-before-the-upgrade]]
 === Reúna informações antes da atualização
 
 Antes de atualizar, você deve reunir informações para cada um dos nós antigos e, se necessário, ajustar os domínios de broadcast de rede, remover quaisquer VLANs e grupos de interfaces e reunir informações de criptografia.
@@ -513,6 +521,7 @@ cluster_B::*
 
 
 
+[[remove-the-existing-configuration-from-the-tiebreaker-or-other-monitoring-software]]
 === Remova a configuração existente do tiebreaker ou de outro software de monitoramento
 
 Se a configuração existente for monitorada com a configuração tiebreaker do MetroCluster ou outros aplicativos de terceiros (por exemplo, ClusterLion) que possam iniciar um switchover, você deverá remover a configuração do MetroCluster do tiebreaker ou de outro software antes da transição.
@@ -530,6 +539,7 @@ Consulte a documentação da aplicação.
 
 
 
+[[send-a-custom-autosupport-message-prior-to-maintenance]]
 === Envie uma mensagem AutoSupport personalizada antes da manutenção
 
 Antes de executar a manutenção, você deve emitir uma mensagem AutoSupport para notificar o suporte técnico da NetApp de que a manutenção está em andamento. Informar o suporte técnico de que a manutenção está em andamento impede que ele abra um caso partindo do pressuposto de que ocorreu uma interrupção.
@@ -557,6 +567,7 @@ Esta tarefa deve ser executada em cada site do MetroCluster.
 
 
 
+[[switch-over-the-metrocluster-configuration]]
 == Alterne a configuração do MetroCluster
 
 Você deve alternar a configuração para site_A para que as plataformas no site_B possam ser atualizadas.
@@ -636,6 +647,7 @@ cluster_A::> metrocluster operation show
 
 
 
+[[remove-the-aff-a700-or-fas9000-controller-module-and-nvs-at-siteb]]
 == Remova o módulo do controlador AFF A700 ou FAS9000 e o NVS no local_B
 
 Você deve remover os controladores antigos da configuração.
@@ -653,10 +665,12 @@ Se você ainda não está aterrado, aterre-se adequadamente.
 
 
 
+[[remove-the-controller-module-and-nvs-from-both-nodes-at-siteb]]
 == Remova o módulo da controladora e o NVS de ambos os nós no local_B
 
 
 
+[[remove-the-aff-a700-or-fas9000-controller-module]]
 === Retire o módulo do controlador AFF A700 ou FAS9000
 
 Use o procedimento a seguir para remover o módulo do controlador AFF A700 ou FAS9000.
@@ -685,6 +699,7 @@ image:../media/drw_9500_remove_PCM.png["controlador"]
 
 
 
+[[remove-the-aff-a700-or-fas9000-nvs-module]]
 === Retire o módulo de ruído, vibração e aspereza (NVS) do AFF A700 ou FAS9000
 
 Use o procedimento a seguir para remover o módulo de ruído, vibração e aspereza (NVS) do AFF A700 ou do FAS9000.
@@ -722,6 +737,7 @@ image:../media/drw_a900_move-remove_NVRAM_module.png["Módulo NVS"]
 ====
 
 
+[[install-the-aff-a900-or-fas9500-nvs-and-controller-module]]
 == Instale o AFF A900 ou o módulo do controlador NVS e o NVS do FAS9500
 
 Você deve instalar o AFF A900 ou o FAS9500 NVS e o módulo da controladora a partir do kit de atualização em ambos os nós no local_B. Não mova o dispositivo de coredump do módulo NVS AFF A700 ou FAS9000 para o módulo NVS AFF A900 ou FAS9500.
@@ -731,6 +747,7 @@ Se você ainda não está aterrado, aterre-se adequadamente.
 
 
 
+[[install-the-aff-a900-or-fas9500-nvs]]
 === Instale o AFF A900 ou o FAS9500 NVS
 
 Use o procedimento a seguir para instalar o AFF A900 ou o FAS9500 NVS no slot 6 de ambos os nós no local_B
@@ -754,6 +771,7 @@ image:../media/drw_a900_move-remove_NVRAM_module.png["Módulo NVS"]
 
 
 
+[[install-the-aff-a900-or-fas9500-controller-module]]
 === Instale o módulo do controlador AFF A900 ou FAS9500
 
 Use o procedimento a seguir para instalar o módulo do controlador AFF A900 ou FAS9500.
@@ -792,6 +810,7 @@ image:../media/drw_9500_remove_PCM.png["controlador"]
 
 
 
+[[netboot-the-nodes-at-siteb]]
 === Netboot os nós no site_B
 
 Depois de trocar o módulo de controladora AFF A900 ou FAS9500 e o NVS, você precisa netboot dos nós AFF A900 ou FAS9500 e instalar a mesma versão do ONTAP e o nível de patch que está sendo executado no cluster. O termo `netboot` significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para `netboot`, você deve adicionar uma cópia da imagem de inicialização do ONTAP 9 a um servidor da Web que o sistema possa acessar.
@@ -896,6 +915,7 @@ Are you sure you want to continue?:`
 
 
 
+[[restore-the-hba-configuration]]
 === Restaure a configuração do HBA
 
 Dependendo da presença e configuração das placas HBA no módulo controlador, você precisa configurá-las corretamente para uso do seu site.
@@ -945,6 +965,7 @@ Iniciador FC
 
 
 
+[[set-the-ha-state-on-the-new-controllers-and-chassis]]
 === Defina o estado de HA nos novos controladores e chassi
 
 É necessário verificar o estado de HA dos controladores e do chassi e, se necessário, atualizar o estado para corresponder à configuração do sistema.
@@ -1010,6 +1031,7 @@ Controller HA configuration: mcc
 
 
 
+[[set-the-ha-state-on-the-new-controllers-and-chassis]]
 === Defina o estado de HA nos novos controladores e chassi
 
 É necessário verificar o estado de HA dos controladores e do chassi e, se necessário, atualizar o estado para corresponder à configuração do sistema.
@@ -1071,6 +1093,7 @@ mcc
 
 
 
+[[reassign-root-aggregate-disks]]
 === Reatribuir discos agregados de raiz
 
 Reatribua os discos agregados de raiz ao novo módulo de controladora, usando os sysids reunidos anteriormente
@@ -1180,6 +1203,7 @@ aggr0_node_b_1-root    online      raid_dp, aggr    root, nosnap=on,
 
 
 
+[[boot-up-the-new-controllers]]
 === Inicialize os novos controladores
 
 Você deve reiniciar os controladores a partir do menu de inicialização para atualizar a imagem flash do controlador. Etapas adicionais são necessárias se a criptografia estiver configurada.
@@ -1361,6 +1385,7 @@ Para obter mais informações, link:https://docs.netapp.com/us-en/ontap/encrypti
 
 
 
+[[verify-lif-configuration]]
 === Verifique a configuração do LIF
 
 Verifique se os LIFs estão hospedados em nós/portas apropriados antes do switchback. As etapas a seguir precisam ser executadas
@@ -1397,6 +1422,7 @@ Execute esta etapa em todas as SVMs, conforme necessário.
 
 
 
+[[switch-back-the-metrocluster-configuration]]
 == Volte a ativar a configuração do MetroCluster
 
 Depois que os novos controladores tiverem sido configurados, a configuração do MetroCluster será reativada para retornar a configuração à operação normal.
@@ -1460,6 +1486,7 @@ Se um switchback levar muito tempo para terminar, você pode verificar o status 
 
 
 
+[[check-the-health-of-the-metrocluster-configuration]]
 == Verifique a integridade da configuração do MetroCluster
 
 Depois de atualizar os módulos do controlador, você deve verificar a integridade da configuração do MetroCluster.
@@ -1499,6 +1526,7 @@ Este erro ocorre devido a uma incompatibilidade de controlador durante o process
 
 
 
+[[upgrade-the-nodes-on-sitea]]
 == Atualize os nós no site_A
 
 Você deve repetir as tarefas de atualização no site_A.
@@ -1512,6 +1540,7 @@ Você deve repetir as tarefas de atualização no site_A.
 
 
 
+[[send-a-custom-autosupport-message-after-maintenance]]
 == Envie uma mensagem AutoSupport personalizada após a manutenção
 
 Depois de concluir a atualização, você deve enviar uma mensagem AutoSupport indicando o fim da manutenção, para que a criação automática de casos possa ser retomada.
@@ -1530,6 +1559,7 @@ Depois de concluir a atualização, você deve enviar uma mensagem AutoSupport i
 
 
 
+[[restore-tiebreaker-monitoring]]
 == Restaure o monitoramento do tiebreaker
 
 Se a configuração do MetroCluster tiver sido configurada anteriormente para monitoramento pelo software tiebreaker, você poderá restaurar a conexão tiebreaker.

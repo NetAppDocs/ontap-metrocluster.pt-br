@@ -20,6 +20,7 @@ NOTE: Para configurações de oito nós, você deve executar o zoneamento manual
 
 
 
+[[metrocluster-1-or-dr-group-1]]
 == MetroCluster 1 ou grupo de RD 1
 
 A tabela a seguir mostra as configurações de controlador suportadas para o MetroCluster 1 ou grupo 1 de DR em switches Cisco 9132T. Ao usar esta tabela de configuração, você deve estar ciente do seguinte:
@@ -349,6 +350,7 @@ LEM1-8
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 == MetroCluster 2 ou grupo de RD 2
 
 A tabela a seguir mostra as configurações do controlador Cisco 9132T suportadas para MetroCluster 2 ou grupo DR 2 em switches Cisco 9132T. Ao usar esta tabela de configuração, você deve estar ciente do seguinte:

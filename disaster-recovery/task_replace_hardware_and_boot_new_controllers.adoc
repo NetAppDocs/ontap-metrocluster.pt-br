@@ -15,6 +15,7 @@ Se os componentes de hardware tiverem de ser substituídos, tem de os substituir
 
 
 
+[[replace-hardware-at-the-disaster-site]]
 == Substitua o hardware no local de desastre
 
 .Antes de começar
@@ -134,6 +135,7 @@ link:http://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de h
 
 
 
+[[determine-the-system-ids-and-vlan-ids-of-the-old-controller-modules]]
 == Determine as IDs do sistema e as IDs de VLAN dos módulos antigos do controlador
 
 Depois de substituir todo o hardware no local de desastre, você deve determinar as IDs do sistema dos módulos do controlador substituídos. Você precisa dos IDs de sistema antigos quando reatribuir discos aos novos módulos do controlador. Se os sistemas forem modelos AFF A220, AFF A250, AFF A400, AFF A800, FAS2750, FAS500f, FAS8300 ou FAS8700, você também deverá determinar as IDs de VLAN usadas pelas interfaces IP do MetroCluster.
@@ -328,6 +330,7 @@ Node_A_2 Node_A_1 HA      enabled  online
 
 
 
+[[isolate-replacement-drives-from-the-surviving-site-metrocluster-ip-configurations]]
 == Isolar unidades de substituição do local sobrevivente (configurações IP do MetroCluster)
 
 Você deve isolar quaisquer unidades de substituição retirando as conexões do iniciador iSCSI da MetroCluster dos nós sobreviventes.
@@ -367,6 +370,7 @@ site_B::*> storage iscsi-initiator disconnect -node node_B_2 -label *
 
 
 
+[[clear-the-configuration-on-a-controller-module]]
 == Limpe a configuração de um módulo do controlador
 
 Antes de usar um novo módulo de controlador na configuração do MetroCluster, você deve limpar a configuração existente.
@@ -406,6 +410,7 @@ Responda `yes` ao prompt de confirmação.
 
 
 
+[[netboot-the-new-controller-modules]]
 == Netboot os novos módulos do controlador
 
 Se os novos módulos do controlador tiverem uma versão diferente do ONTAP da versão nos módulos do controlador sobreviventes, você deverá inicializar os novos módulos do controlador.
@@ -486,6 +491,7 @@ NOTE: Você precisa reiniciar o nó para usar o software recém-instalado.
 
 
 
+[[determine-the-system-ids-of-the-replacement-controller-modules]]
 == Determine as IDs do sistema dos módulos do controlador de substituição
 
 Depois de substituir todo o hardware no local de desastre, você deve determinar a ID do sistema do módulo ou módulos do controlador de armazenamento recém-instalados.
@@ -626,6 +632,7 @@ No exemplo a seguir, o novo ID do sistema local é 1574774991:
 
 
 
+[[verify-the-ha-config-state-of-components]]
 == Verifique o estado ha-config dos componentes
 
 Em uma configuração MetroCluster, o estado ha-config do módulo do controlador e dos componentes do chassi deve ser definido como "mcc" ou "MCC-2n" para que eles iniciem corretamente.
@@ -732,6 +739,7 @@ Configuração IP do MetroCluster
 
 
 
+[[determine-if-end-to-end-encryption-was-enabled-on-the-original-systems]]
 == Determine se a criptografia de ponta a ponta foi ativada nos sistemas originais
 
 Você deve verificar se os sistemas originais foram configurados para criptografia de ponta a ponta.

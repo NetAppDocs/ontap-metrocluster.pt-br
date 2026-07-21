@@ -15,6 +15,7 @@ Se você estiver usando um firewall em um site da MetroCluster, você deverá ga
 
 
 
+[[considerations-for-firewall-usage-at-metrocluster-sites]]
 == Considerações sobre o uso de firewall em sites da MetroCluster
 
 Se você estiver usando um firewall em um site da MetroCluster, você deverá garantir o acesso às portas necessárias.

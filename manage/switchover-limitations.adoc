@@ -27,6 +27,7 @@ As seguintes operações não são recomendadas quando o sistema está em switch
 
 
 
+[[hardware-replacement-in-switchover]]
 == Substituição de hardware em switchover
 
 Use os seguintes procedimentos para substituir o hardware do controlador quando o sistema estiver em switchover:

@@ -15,6 +15,7 @@ summary: É útil entender o que é o software tiebreaker da NetApp MetroCluster
 
 
 
+[[detecting-failures-with-netapp-metrocluster-tiebreaker-software]]
 == Detecção de falhas com o software tiebreaker NetApp MetroCluster
 
 Você só precisa do software tiebreaker se quiser monitorar dois clusters e o status de conectividade entre eles em um terceiro local. O software tiebreaker reside em um host Linux no terceiro local e permite que cada parceiro em um cluster faça a distinção entre uma falha ISL, quando os links entre sites estão inativos, de uma falha do local.
@@ -25,12 +26,14 @@ O software tiebreaker pode monitorar até 15 configurações de MetroCluster sim
 
 
 
+[[how-the-tiebreaker-software-detects-site-failures]]
 == Como o software tiebreaker deteta falhas no local
 
 O software tiebreaker do NetApp MetroCluster verifica a acessibilidade dos nós em uma configuração do MetroCluster e do cluster para determinar se ocorreu uma falha no local. O software tiebreaker também aciona um alerta sob certas condições.
 
 
 
+[[components-monitored-by-the-tiebreaker-software]]
 === Componentes monitorados pelo software tiebreaker
 
 O software tiebreaker monitora cada controladora na configuração do MetroCluster estabelecendo conexões redundantes por meio de vários caminhos para um LIF de gerenciamento de nós e para o LIF de gerenciamento de cluster, ambos hospedados na rede IP.
@@ -49,6 +52,7 @@ NOTE: Todos os links são cortados se o cluster sobrevivente não puder mais se 
 
 
 
+[[failure-scenarios-during-which-tiebreaker-software-triggers-an-alert]]
 === Cenários de falha durante os quais o software tiebreaker aciona um alerta
 
 O software tiebreaker aciona um alerta quando o cluster (todos os nós) no local de desastre está inativo ou inacessível e o cluster no local sobrevivente indica o status "'AllLinksSevered'".
@@ -68,12 +72,14 @@ link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["R
 
 
 
+[[how-the-tiebreaker-software-detects-intersite-connectivity-failures]]
 == Como o software tiebreaker deteta falhas de conetividade entre sites
 
 O software tiebreaker do MetroCluster alerta você se toda a conetividade entre os sites for perdida.
 
 
 
+[[types-of-network-paths]]
 === Tipos de caminhos de rede
 
 Dependendo da configuração, existem três tipos de caminhos de rede entre os dois clusters em uma configuração MetroCluster:
@@ -94,12 +100,14 @@ Este tipo de rede é composto por duas redes de switch IP redundantes. Cada rede
 
 
 
+[[monitoring-intersite-connectivity]]
 === Monitoramento da conetividade entre sites
 
 O software tiebreaker recupera regularmente o status da conetividade entre sites dos nós. Se a conetividade de interconexão NV for perdida e o peering entre clusters não responder a pings, os clusters assumem que os sites estão isolados e o software tiebreaker aciona um alerta como ""AllLinksSevered"". Se um cluster identificar o status ""AllLinksSevered"" e o outro cluster não estiver acessível através da rede, o software tiebreaker aciona um alerta como "disaster".
 
 
 
+[[how-different-disaster-types-affect-tiebreaker-software-detection-time]]
 == Como diferentes tipos de desastre afetam o tempo de deteção do software tiebreaker
 
 Para um melhor Planejamento de recuperação de desastres, o software tiebreaker da MetroCluster leva algum tempo para detetar um desastre. Este tempo gasto é o "tempo de deteção do "usuário". O software tiebreaker do MetroCluster deteta o desastre no local em 30 segundos a partir do momento da ocorrência do desastre e aciona a operação de recuperação de desastres para notificá-lo sobre o desastre.
@@ -114,12 +122,14 @@ O tempo de deteção também depende do tipo de desastre e pode exceder 30 segun
 
 
 
+[[power-loss]]
 === Perda de energia
 
 O software tiebreaker aciona imediatamente um alerta quando o nó deixa de funcionar. Quando há uma perda de energia, todas as conexões e atualizações, como peering entre clusters, interconexão NV e disco de caixa de correio, param. O tempo decorrido entre o cluster se tornar inacessível, a deteção do desastre e o gatilho, incluindo o tempo de silêncio padrão de 5 segundos, não deve exceder 30 segundos.
 
 
 
+[[panic]]
 === Pânico
 
 Nas configurações do MetroCluster FC, o software tiebreaker aciona um alerta quando a conexão de interconexão NV entre os sites está inativa e o site sobrevivente indica o status ""AllLinksSevered"". Isso só acontece depois que o processo de coredump estiver concluído. Nesse cenário, o tempo decorrido entre o cluster e a deteção de um desastre pode ser maior ou aproximadamente igual ao tempo necessário para o processo de coredump. Em muitos casos, o tempo de deteção é superior a 30 segundos.
@@ -128,18 +138,21 @@ Se um nó parar de funcionar, mas não gerar um arquivo para o processo de cored
 
 
 
+[[halt-or-reboot]]
 === Parar ou reiniciar
 
 O software tiebreaker aciona um alerta apenas quando o nó está inativo e o site sobrevivente indica o status "'AllLinksSevered". O tempo necessário entre o cluster se tornar inacessível e a deteção de um desastre pode ser superior a 30 segundos. Nesse cenário, o tempo necessário para detectar um desastre depende de quanto tempo leva para que os nós no local do desastre sejam desligados.
 
 
 
+[[loss-of-fc-switches-at-the-disaster-site-fabric-attached-metrocluster-configuration]]
 === Perda de switches FC no local de desastre (configuração de MetroCluster conectada à malha)
 
 O software tiebreaker aciona um alerta quando um nó deixa de funcionar. Se os switches FC forem perdidos, o nó tentará recuperar o caminho para um disco por cerca de 30 segundos. Durante esse tempo, o nó está ativo e respondendo na rede de peering. Quando ambos os switches FC estão inativos e o caminho para um disco não pode ser recuperado, o nó produz um erro MultiDiskFailure e pára. O tempo decorrido entre a falha do switch FC e o número de vezes que os nós produziram erros MultiDiskFailure é cerca de 30 segundos mais longo. Esses 30 segundos adicionais devem ser adicionados ao tempo de deteção de desastres.
 
 
 
+[[about-the-tiebreaker-cli-and-man-pages]]
 == Sobre a CLI e as páginas man do tiebreaker
 
 A CLI do tiebreaker fornece comandos que permitem configurar remotamente o software tiebreaker e monitorar as configurações do MetroCluster.

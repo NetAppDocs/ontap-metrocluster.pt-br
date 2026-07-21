@@ -18,6 +18,7 @@ NOTE: Este procedimento é apenas para uso em uma configuração MetroCluster co
 
 
 
+[[disabling-access-to-the-shelf]]
 == Desativando o acesso ao compartimento
 
 Você deve desativar o acesso ao compartimento antes de substituir os módulos do compartimento.
@@ -161,6 +162,7 @@ FC_switch_A_2# show interface fc1/6
 
 
 
+[[replacing-the-shelf]]
 == Substituição da prateleira
 
 Você precisa remover fisicamente todos os cabos e a gaveta antes de inserir e fazer o cabeamento dos novos módulos de gaveta e gaveta.
@@ -177,6 +179,7 @@ Você precisa remover fisicamente todos os cabos e a gaveta antes de inserir e f
 
 
 
+[[reenabling-access-and-verifying-the-operation]]
 == Reativando o acesso e verificando a operação
 
 Após a substituição do compartimento, você precisa reativar o acesso e verificar se o novo compartimento está funcionando corretamente.

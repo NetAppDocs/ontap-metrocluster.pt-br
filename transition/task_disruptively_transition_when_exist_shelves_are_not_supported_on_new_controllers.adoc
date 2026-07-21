@@ -25,6 +25,7 @@ Se você tiver uma configuração de FC MetroCluster de quatro nós, link:concep
 
 
 
+[[enable-console-logging]]
 == Ativar o registo da consola
 
 O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
@@ -39,6 +40,7 @@ Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Su
 
 
 
+[[requirements-for-transition-when-shelves-are-not-supported-on-the-new-nodes]]
 == Requisitos de transição quando as gavetas não são compatíveis com os novos nós
 
 Antes de iniciar o processo de transição, você deve garantir que a configuração atenda aos requisitos.
@@ -87,6 +89,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[workflow-for-disruptive-transition-when-shelves-are-not-supported-by-new-controllers]]
 == Fluxo de trabalho para transição disruptiva quando as gavetas não são suportadas por novas controladoras
 
 Se os modelos de gaveta existentes não forem compatíveis com os novos modelos de plataforma, você precisará anexar as novas gavetas à configuração antiga, mover dados para as novas gavetas e depois fazer a transição para a nova configuração.
@@ -97,6 +100,7 @@ image::../media/workflow_2n_transition_old_shelves_not_supported.png[Fluxo de tr
 
 
 
+[[preparing-the-new-controller-modules]]
 == Preparar os novos módulos do controlador
 
 Você precisa limpar a configuração e a propriedade de disco nos novos módulos de controladora e nos novos compartimentos de storage.
@@ -108,6 +112,7 @@ Você precisa limpar a configuração e a propriedade de disco nos novos módulo
 
 
 
+[[attaching-the-new-disk-shelves-to-the-existing-metrocluster-fc-controllers]]
 == Anexando os novos compartimentos de disco às controladoras MetroCluster FC existentes
 
 É necessário anexar os novos compartimentos de unidades aos módulos de controladora existentes antes de fazer a transição para uma configuração IP do MetroCluster.
@@ -136,6 +141,7 @@ Consulte os requisitos e procedimentos em link:../maintain/task_hot_add_a_sas_di
 
 
 
+[[migrate-root-aggregates-and-move-data-to-the-new-disk-shelves]]
 == Migre agregados de raiz e migre dados para as novas gavetas de disco
 
 É necessário mover os agregados raiz das gavetas de unidade antigas para as novas gavetas de unidade que serão usadas pelos nós IP do MetroCluster.
@@ -490,6 +496,7 @@ Consulte http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-control
 
 
 
+[[transitioning-the-configuration]]
 == Fazendo a transição da configuração
 
 Você deve seguir o procedimento detalhado de transição.

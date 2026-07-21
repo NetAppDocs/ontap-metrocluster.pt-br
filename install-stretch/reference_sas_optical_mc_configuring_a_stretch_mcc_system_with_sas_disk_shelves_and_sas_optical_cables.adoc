@@ -15,6 +15,7 @@ Os controladores de storage devem ser cabeados para a Mídia de storage e entre 
 
 
 
+[[before-you-begin-any-procedure-in-this-document]]
 == Antes de iniciar qualquer procedimento neste documento
 
 Os seguintes requisitos gerais devem ser atendidos antes de concluir esta tarefa:
@@ -31,6 +32,7 @@ No IMT, você pode usar o campo solução de armazenamento para selecionar sua s
 
 
 
+[[about-this-task]]
 == Sobre esta tarefa
 
 * Os termos nó e controlador são usados de forma intercambiável.

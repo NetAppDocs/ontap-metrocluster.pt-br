@@ -25,6 +25,7 @@ Revise as seguintes informações antes de usar estas tabelas:
 
 
 
+[[metrocluster-1-or-dr-group-1]]
 == MetroCluster 1 ou grupo de RD 1
 
 A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 1 ou no grupo DR 1 em switches Brocade .
@@ -543,6 +544,7 @@ Porta d. HBA
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 == MetroCluster 2 ou grupo de RD 2
 
 A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 2 ou grupo DR 2 em switches Brocade .
@@ -1061,6 +1063,7 @@ n / D
 |===
 
 
+[[metrocluster-3-or-dr-group-3]]
 == MetroCluster 3 ou grupo DR 3
 
 A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 3 ou no grupo DR 3 em switches Brocade .
@@ -1339,6 +1342,7 @@ Porta d. HBA
 |===
 
 
+[[metrocluster-4-or-dr-group-4]]
 == MetroCluster 4 ou grupo DR 4
 
 A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 4 ou grupo DR 4 em switches Brocade .

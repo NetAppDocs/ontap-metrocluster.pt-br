@@ -109,6 +109,7 @@ NOTE: Se você atualizar ambos os grupos de DR, a combinação de plataforma pod
 
 
 
+[[enable-console-logging]]
 == Ativar o registo da consola
 
 O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
@@ -123,6 +124,7 @@ Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Su
 
 
 
+[[perform-the-refresh-procedure]]
 == Execute o procedimento de atualização
 
 Siga as etapas a seguir para atualizar a configuração IP do MetroCluster.

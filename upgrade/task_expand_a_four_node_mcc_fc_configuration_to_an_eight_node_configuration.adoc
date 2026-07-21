@@ -38,6 +38,7 @@ Ambos os locais devem ser igualmente expandidos. Uma configuração MetroCluster
 
 
 
+[[supported-platform-combinations-when-adding-a-second-dr-group]]
 == Combinações de plataforma compatíveis ao adicionar um segundo grupo de DR
 
 As tabelas a seguir mostram as combinações de plataforma com suporte para configurações de FC MetroCluster de oito nós.

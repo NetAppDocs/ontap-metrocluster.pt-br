@@ -39,6 +39,7 @@ ONTAP 9.15,1
 
 
 
+[[enable-end-to-end-encryption]]
 == Ative a criptografia de ponta a ponta
 
 Execute as etapas a seguir para habilitar a criptografia de ponta a ponta.
@@ -152,6 +153,7 @@ dr-group-id cluster    node      configuration-state is-encryption-enabled
 
 
 
+[[disable-end-to-end-encryption]]
 == Desative a criptografia de ponta a ponta
 
 Execute as etapas a seguir para desativar a criptografia de ponta a ponta.

@@ -15,6 +15,7 @@ Ao Planejar sua configuração do MetroCluster, você deve entender os component
 
 
 
+[[supported-software-and-hardware]]
 == Software e hardware suportados
 
 O hardware e o software devem ser compatíveis com a configuração MetroCluster FC.
@@ -25,12 +26,14 @@ Ao usar sistemas AFF, todos os módulos do controlador na configuração do Metr
 
 
 
+[[hardware-redundancy-in-the-metrocluster-configuration]]
 == Redundância de hardware na configuração MetroCluster
 
 Devido à redundância de hardware na configuração do MetroCluster, há dois de cada componente em cada local. Os sites são arbitrariamente atribuídos às letras A e B e os componentes individuais são arbitrariamente atribuídos aos números 1 e 2.
 
 
 
+[[requirement-for-two-single-node-ontap-clusters]]
 == Requisito para dois clusters ONTAP de nó único
 
 A configuração Stretch MetroCluster conectada a ponte requer dois clusters ONTAP de nó único.
@@ -45,6 +48,7 @@ Nomes de exemplo:
 
 
 
+[[requirement-for-two-storage-controller-modules]]
 == Requisito para dois módulos de controlador de armazenamento
 
 A configuração Stretch MetroCluster conetada em ponte requer dois módulos de controlador de armazenamento.
@@ -76,6 +80,7 @@ Nomes de exemplo:
 
 
 
+[[requirement-for-fc-to-sas-bridges]]
 == Requisito para pontes FC para SAS
 
 A configuração Stretch MetroCluster conectada em ponte requer duas ou mais pontes FC para SAS em cada local.
@@ -113,6 +118,7 @@ Nomes de exemplo:
 
 
 
+[[requirement-for-at-least-four-sas-shelves-recommended]]
 == Requisito para pelo menos quatro gavetas SAS (recomendado)
 
 A configuração Stretch MetroCluster conetada em ponte requer pelo menos duas gavetas SAS. No entanto, duas gavetas são recomendadas em cada local para permitir a propriedade de disco por compartimento, totalizando quatro gavetas SAS.

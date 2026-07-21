@@ -19,6 +19,7 @@ image::../media/workflow_mcc_ip_high_level_node_and_cluster_configuration_softwa
 
 
 
+[[configure-eight-node-metrocluster-ip-configurations]]
 == Configurar configurações de IP do MetroCluster de oito nós
 
 Uma configuração do MetroCluster de oito nós consiste em dois grupos de DR. Para configurar o primeiro grupo de DR, conclua as tarefas desta seção. Após configurar o primeiro grupo de DR, você pode seguir as etapas para link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["expandir uma configuração de IP MetroCluster de quatro nós para uma configuração de oito nós"] .

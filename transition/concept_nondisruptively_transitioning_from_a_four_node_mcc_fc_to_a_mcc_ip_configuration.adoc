@@ -37,6 +37,7 @@ NOTE: Ao adicionar ou remover um grupo de recuperação de desastres (DR) como p
 
 
 
+[[transition-scenarios-supported-by-this-procedure]]
 == Cenários de transição suportados por este procedimento
 
 Consulte a tabela a seguir para saber mais sobre os cenários de transição suportados por este procedimento.
@@ -86,6 +87,7 @@ Para obter mais informações, consulte o link:concept_transition_workflow_fc_to
 
 
 
+[[important-information-when-adding-an-older-platform-model]]
 == Informações importantes ao adicionar um modelo de plataforma mais antigo
 
 A orientação a seguir é para um cenário incomum em que você precisa adicionar um modelo de plataforma mais antigo (plataformas lançadas antes do ONTAP 9.15.1) a uma configuração existente do MetroCluster que contém um modelo de plataforma mais recente (plataformas lançadas no ONTAP 9.15.1 ou posterior).  Para uma transição de FC para IP de oito nós, esta orientação se aplica se você tiver feito a transição do seu primeiro grupo de DR de FC para um modelo de plataforma introduzido no ONTAP 9.15.1 ou posterior e planeja fazer a transição do segundo grupo de DR para uma plataforma introduzida antes do ONTAP 9.15.1.

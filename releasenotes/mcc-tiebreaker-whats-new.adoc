@@ -15,6 +15,7 @@ As melhorias no software tiebreaker MetroCluster são fornecidas em cada versão
 
 
 
+[[enhancements]]
 == Melhorias
 
 [cols="25,75"]
@@ -70,6 +71,7 @@ As melhorias no software tiebreaker MetroCluster são fornecidas em cada versão
 |===
 
 
+[[os-support-matrix]]
 == Matriz de suporte de SO
 
 A tabela a seguir indica os sistemas operacionais suportados para cada versão do tiebreaker.

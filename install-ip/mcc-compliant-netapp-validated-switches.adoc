@@ -15,6 +15,7 @@ Todos os switches usados na configuração, incluindo os switches de back-end, p
 
 
 
+[[netapp-validated-switches]]
 == Switches validados pela NetApp
 
 Um switch é validado pela NetApp se atender aos seguintes requisitos:
@@ -29,6 +30,7 @@ Qualquer switch que não atenda a esses requisitos é *não* um switch validado 
 
 
 
+[[metrocluster-compliant-switches]]
 == Switches compatíveis com MetroCluster
 
 Um switch compatível com MetroCluster não é validado pela NetApp, mas pode ser usado em uma configuração IP do MetroCluster se ele atender a certos requisitos e diretrizes de configuração.

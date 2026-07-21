@@ -24,6 +24,7 @@ A partir do ONTAP 9.10,1, você pode adicionar NS224 prateleiras de um MetroClus
 
 
 
+[[sending-a-custom-autosupport-message-prior-to-maintenance]]
 == Enviar uma mensagem AutoSupport personalizada antes da manutenção
 
 Antes de executar a manutenção, você deve emitir uma mensagem AutoSupport para notificar o suporte técnico da NetApp de que a manutenção está em andamento. Informar o suporte técnico de que a manutenção está em andamento impede que ele abra um caso partindo do pressuposto de que ocorreu uma interrupção.
@@ -54,6 +55,7 @@ Se a manutenção for concluída antes do tempo decorrido, você poderá invocar
 
 
 
+[[verifying-the-health-of-the-metrocluster-configuration]]
 == Verificando a integridade da configuração do MetroCluster
 
 Você deve verificar a integridade e a conectividade da configuração do MetroCluster antes de executar a transição.
@@ -191,6 +193,7 @@ cluster_A::>
 
 
 
+[[applying-the-new-rcf-file-to-the-switches]]
 == Aplicando o novo arquivo RCF aos switches
 
 
@@ -203,6 +206,7 @@ NOTE: Se o switch já estiver configurado corretamente, você poderá pular essa
 
 
 
+[[upgrading-rcf-files-on-metrocluster-ip-switches]]
 === Atualizando arquivos RCF em switches IP MetroCluster
 
 Se você estiver instalando o novo firmware do switch, você deve instalar o firmware do switch antes de atualizar o arquivo RCF.
@@ -260,6 +264,7 @@ volumes             ok
 
 
 
+[[resetting-the-cisco-ip-switch-to-factory-defaults]]
 === Repor as predefinições de fábrica do interrutor IP do Cisco
 
 Antes de instalar uma nova versão de software e RCFs, você deve apagar a configuração do switch Cisco e executar a configuração básica.
@@ -386,6 +391,7 @@ IP_switch-A-1# reload
 
 
 
+[[downloading-and-installing-the-cisco-switch-nx-os-software]]
 === Transferir e instalar o software Cisco switch NX-os
 
 Você deve baixar o arquivo do sistema operacional switch e o arquivo RCF para cada switch na configuração IP do MetroCluster.
@@ -581,6 +587,7 @@ IP_switch_A_1#
 
 
 
+[[configuring-macsec-encryption-on-cisco-9336c-switches]]
 == Configurando a criptografia MACsec em switches Cisco 9336C
 
 Se desejar, você pode configurar a criptografia MACsec nas portas ISL da WAN que são executadas entre os sites. Você deve configurar o MACsec depois de aplicar o arquivo RCF correto.
@@ -590,12 +597,14 @@ NOTE: A criptografia MACsec só pode ser aplicada às portas ISL WAN.
 
 
 
+[[licensing-requirements-for-macsec]]
 === Requisitos de licenciamento para MACsec
 
 MACsec requer uma licença de segurança. Para obter uma explicação completa do esquema de licenciamento do Cisco NX-os e como obter e solicitar licenças, consulte a. https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-os/licensing/guide/b_Cisco_NX-OS_Licensing_Guide/b_Cisco_NX-OS_Licensing_Guide_chapter_01.html["Guia de licenciamento do Cisco NX-os"]
 
 
 
+[[enabling-cisco-macsec-encryption-wan-isls-in-metrocluster-ip-configurations]]
 === Habilitando ISLs de WAN de criptografia MACsec Cisco em configurações IP MetroCluster
 
 Você pode ativar a criptografia MACsec para switches Cisco 9336C nos ISLs de WAN em uma configuração IP MetroCluster.
@@ -623,6 +632,7 @@ IP_switch_A_1(config)# copy running-config startup-config
 
 
 
+[[disabling-cisco-macsec-encryption]]
 === Desativar encriptação Cisco MACsec
 
 Talvez seja necessário desativar a criptografia MACsec para switches Cisco 9336C nos ISLs de WAN em uma configuração IP MetroCluster.
@@ -674,12 +684,14 @@ IP_switch_A_1(config)# copy running-config startup-config
 
 
 
+[[configuring-a-macsec-key-chain-and-keys]]
 === Configurando uma cadeia de chaves e chaves MACsec
 
 Para obter detalhes sobre como configurar uma cadeia de chaves MACsec, consulte a documentação do Cisco para o seu switch.
 
 
 
+[[connecting-the-new-ns224-shelf]]
 == Ligar a nova prateleira NS224
 
 .Passos

@@ -15,6 +15,7 @@ Mova as interfaces de cluster da configuração do MetroCluster FC para os switc
 
 
 
+[[step-1-move-the-cluster-connections-on-the-metrocluster-fc-nodes]]
 == Etapa 1: mover as conexões do cluster nos nós do MetroCluster FC
 
 Mova as conexões do cluster nos nós FC do MetroCluster para os switches IP. As etapas a seguir dependem se você está usando switches IP existentes ou novos.
@@ -25,6 +26,7 @@ Mova as conexões do cluster nos nós FC do MetroCluster para os switches IP. As
 
 
 
+[[which-connections-to-move]]
 === Quais conexões mover
 
 A tarefa a seguir pressupõe que um módulo controlador esteja usando duas portas para as conexões do cluster. Alguns modelos de módulo de controlador usam quatro ou mais portas para a conexão de cluster. Neste exemplo, as portas são divididas em dois grupos, alternando portas entre os dois grupos.
@@ -155,6 +157,7 @@ Interface de cluster local no nó FC
 |===
 
 
+[[move-the-local-cluster-connections-when-using-new-ip-switches]]
 === Mover as conexões do cluster local ao usar novos switches IP
 
 Se estiver usando novos switches IP, mova fisicamente as conexões de cluster dos nós FC do MetroCluster existentes para os novos switches.
@@ -278,6 +281,7 @@ cluster_A::*>
 
 
 
+[[move-the-local-cluster-connections-when-reusing-existing-ip-switches]]
 === Mover as conexões do cluster local ao reutilizar os switches IP existentes
 
 Se você estiver reutilizando switches IP existentes, atualize o firmware, reconfigure os switches com os arquivos de configuração de referência (RCFs) corretos e mova as conexões para as portas corretas, um switch por vez.
@@ -409,6 +413,7 @@ Cluster-A::*>
 
 
 
+[[step-2-verify-that-the-cluster-connections-are-moved-and-the-cluster-is-healthy]]
 == Etapa 2: verifique se as conexões do cluster foram movidas e se o cluster está íntegro
 
 Para garantir que haja conectividade adequada e que a configuração esteja pronta para prosseguir com o processo de transição, verifique se as conexões do cluster foram movidas corretamente, os switches do cluster foram reconhecidos e o cluster está íntegro.

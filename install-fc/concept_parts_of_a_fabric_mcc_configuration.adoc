@@ -15,6 +15,7 @@ Ao Planejar sua configuração do MetroCluster, você deve entender os component
 
 
 
+[[disaster-recovery-dr-groups]]
 == Grupos de recuperação de desastres (DR)
 
 Uma configuração do Fabric MetroCluster consiste em um ou dois grupos de DR, dependendo do número de nós na configuração do MetroCluster. Cada grupo de DR consiste em quatro nós.
@@ -33,6 +34,7 @@ image::../media/mcc_dr_groups_4_node.gif[MetroCluster DR agrupa quatro nós]
 
 
 
+[[key-hardware-elements]]
 == Principais elementos de hardware
 
 Uma configuração do MetroCluster inclui os seguintes elementos-chave de hardware:
@@ -57,6 +59,7 @@ A rede de peering de cluster fornece conetividade para espelhamento da configura
 
 
 
+[[eight-node-fabric-metrocluster-configuration]]
 == Configuração de MetroCluster de malha de oito nós
 
 Uma configuração de oito nós consiste em dois clusters, um em cada local geograficamente separado. O cluster_A está localizado no primeiro site do MetroCluster. O cluster_B está localizado no segundo site do MetroCluster. Cada local tem uma pilha de storage SAS. São suportadas stacks de armazenamento adicionais, mas apenas uma é mostrada em cada local. Os pares de HA são configurados como clusters sem switch, sem switches de interconexão de cluster. É suportada uma configuração comutada, mas não é apresentada.
@@ -79,6 +82,7 @@ A configuração da SVM é replicada na rede de peering de cluster.
 
 
 
+[[four-node-fabric-metrocluster-configuration]]
 == Configuração de MetroCluster de malha de quatro nós
 
 A ilustração a seguir mostra uma visualização simplificada de uma configuração de MetroCluster de malha de quatro nós. Para algumas conexões, uma única linha representa várias conexões redundantes entre os componentes. As conexões de rede de gerenciamento e dados não são mostradas.
@@ -91,6 +95,7 @@ image::../media/mcc_hardware_architecture_cluster_a_with_7500n.gif[Conectividade
 
 
 
+[[two-node-fabric-metrocluster-configuration]]
 == Configuração de MetroCluster de malha de dois nós
 
 A ilustração a seguir mostra uma visualização simplificada de uma configuração de MetroCluster de malha de dois nós. Para algumas conexões, uma única linha representa várias conexões redundantes entre os componentes. As conexões de rede de gerenciamento e dados não são mostradas.

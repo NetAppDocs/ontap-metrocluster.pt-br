@@ -25,6 +25,7 @@ Você pode adicionar sem interrupções (adicionar sem interrupções) uma stack
 
 
 
+[[preparing-to-hot-add-a-stack-of-sas-disk-shelves-and-bridges]]
 == Preparando-se para adicionar uma stack de compartimentos e bridges de disco SAS
 
 A preparação para adicionar uma stack de gavetas de disco SAS e um par de bridges envolve o download de documentos, bem como o firmware da unidade de disco e do compartimento de disco.
@@ -124,6 +125,7 @@ Se você estiver usando os arquivos de Configuração de Referência fornecidos 
 
 
 
+[[hot-adding-a-stack-of-sas-disk-shelves-and-bridges]]
 == Adição rápida de uma stack de compartimentos e bridges de disco SAS
 
 É possível adicionar uma stack de shelves e bridges de disco SAS para aumentar a capacidade das pontes.

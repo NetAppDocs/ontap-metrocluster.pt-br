@@ -81,6 +81,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["Recuperan
 |===
 
 
+[[controller-module-failure-scenarios-during-metrocluster-installation]]
 == Cenários de falha do módulo do controlador durante a instalação do MetroCluster
 
 Responder a uma falha do módulo do controlador durante o procedimento de configuração do MetroCluster depende se o `metrocluster configure` comando foi concluído com êxito.
@@ -95,6 +96,7 @@ NOTE: Você deve ter certeza de executar as etapas em em link:https://docs.netap
 
 
 
+[[controller-module-failure-scenarios-during-metrocluster-fc-to-ip-transition]]
 == Cenários de falha do módulo do controlador durante a transição MetroCluster FC para IP
 
 O procedimento de recuperação pode ser usado se ocorrer uma falha no local durante a transição. No entanto, ela só pode ser usada se a configuração for uma configuração mista estável, com o grupo de DR FC e o grupo de DR IP totalmente configurados. A saída `metrocluster node show` do comando deve mostrar ambos os grupos de DR com todos os oito nós.
@@ -104,6 +106,7 @@ IMPORTANT: Se a falha ocorreu durante a transição quando os nós estão em pro
 
 
 
+[[controller-module-failure-scenarios-in-eight-node-metrocluster-configurations]]
 == Cenários de falha do módulo do controlador em configurações de MetroCluster de oito nós
 
 Cenários de falha:
@@ -116,6 +119,7 @@ Cenários de falha:
 
 
 
+[[single-controller-module-failures-in-a-single-dr-group]]
 === Falhas de módulo único de controladora em um único grupo de DR
 
 Nesse caso, a falha é limitada a um par de HA.
@@ -138,6 +142,7 @@ image::../media/mcc_dr_groups_8_node_with_a_single_controller_failure.gif[Oito g
 
 
 
+[[two-controller-module-failures-in-a-single-dr-group]]
 === Duas falhas no módulo de controladora em um único grupo de DR
 
 Neste caso, a falha requer uma mudança. Pode utilizar o procedimento de recuperação de falhas do módulo multi-controlador.
@@ -150,6 +155,7 @@ image::../media/mcc_dr_groups_8_node_with_a_multi_controller_failure.gif[Oito gr
 
 
 
+[[single-controller-module-failures-in-separate-dr-groups]]
 === Falhas de módulo único de controladora em grupos de DR separados
 
 Nesse caso, a falha é limitada a pares de HA separados.
@@ -171,6 +177,7 @@ image::../media/mcc_dr_groups_8_node_with_two_single_controller_failures.gif[Oit
 
 
 
+[[three-controller-module-failures-spread-across-the-dr-groups]]
 === Três falhas no módulo do controlador distribuídas pelos grupos de DR
 
 Neste caso, a falha requer uma mudança. Você pode usar o procedimento de recuperação de falha do módulo de vários controladores para o Grupo de RD 1.
@@ -185,6 +192,7 @@ image::../media/mcc_dr_groups_8_node_with_a_3_controller_failure.gif[Oito grupos
 
 
 
+[[controller-module-failure-scenarios-in-two-node-metrocluster-configurations]]
 == Cenários de falha do módulo do controlador em configurações de MetroCluster de dois nós
 
 O procedimento utilizado depende da extensão da falha.

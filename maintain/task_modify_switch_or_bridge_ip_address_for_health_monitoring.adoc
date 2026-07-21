@@ -19,6 +19,7 @@ Depois de modificar os endereços IP dos switches back-end MetroCluster FC e das
 
 
 
+[[modify-a-switch-ip-address]]
 == Modifique um endereço IP do switch
 
 Substitua o antigo endereço IP de monitoramento de integridade de um switch back-end MetroCluster FC.
@@ -54,6 +55,7 @@ Consulte a documentação do fornecedor do switch para o modelo do switch para a
 
 
 
+[[modify-an-atto-bridge-ip-address]]
 == Modifique um endereço IP de ponte ATTO
 
 Substitua o antigo endereço IP de monitoramento de integridade de uma ponte ATTO.

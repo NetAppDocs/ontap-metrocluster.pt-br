@@ -21,6 +21,7 @@ Se você configurou seus switches usando as atribuições de porta do ONTAP 9, p
 
 
 
+[[overall-cabling-guidelines]]
 == Diretrizes gerais de cabeamento
 
 Você deve estar ciente das seguintes diretrizes ao usar as tabelas de cabeamento:
@@ -56,6 +57,7 @@ link:concept_considerations_isls_mcfc.html["Considerações para ISLs"]
 
 
 
+[[aff-a900-and-fas9500-cabling-guidelines]]
 == Diretrizes de cabeamento AFF A900 e FAS9500
 
 * Os sistemas de storage AFF A900 ou FAS9500 exigem oito portas FC-VI. Se você estiver usando um AFF A900 ou FAS9500, será necessário usar a configuração de oito portas. Se a configuração incluir outros modelos de sistema de storage, use o cabeamento mostrado nas tabelas, mas ignore o cabeamento para portas FC-VI desnecessárias.

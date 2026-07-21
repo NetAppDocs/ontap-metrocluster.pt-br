@@ -18,6 +18,7 @@ Antes de executar `metrocluster configure`o , o modo HA e o espelhamento de DR n
 
 
 
+[[disabling-automatic-drive-assignment-if-doing-manual-assignment-in-ontap-9-4]]
 == Desativar a atribuição automática de condução (se estiver a efetuar a atribuição manual no ONTAP 9.4)
 
 No ONTAP 9.4, se a configuração IP do MetroCluster tiver menos de quatro compartimentos de storage externos por local, desative a atribuição automática de unidade em todos os nós e atribua unidades manualmente.
@@ -39,6 +40,7 @@ link:concept_considerations_drive_assignment.html["Considerações para atribui�
 
 
 
+[[verifying-drive-assignment-of-pool-0-drives]]
 == Verificando a atribuição de unidades do pool 0
 
 Você deve verificar se as unidades remotas estão visíveis para os nós e foram atribuídas corretamente.
@@ -153,6 +155,7 @@ cluster_B::>
 
 
 
+[[peering-the-clusters]]
 == Peering dos clusters
 
 Os clusters na configuração do MetroCluster precisam estar em um relacionamento de mesmo nível para que possam se comunicar uns com os outros e executar o espelhamento de dados essencial para a recuperação de desastres do MetroCluster.
@@ -166,12 +169,14 @@ link:concept_considerations_peering.html#considerations-when-sharing-data-ports[
 
 
 
+[[configuring-intercluster-lifs-for-cluster-peering]]
 == Configurando LIFs entre clusters para peering de cluster
 
 É necessário criar LIFs entre clusters nas portas usadas para comunicação entre os clusters de parceiros da MetroCluster. Você pode usar portas dedicadas ou portas que também têm tráfego de dados.
 
 
 
+[[configuring-intercluster-lifs-on-dedicated-ports]]
 === Configurando LIFs entre clusters em portas dedicadas
 
 Você pode configurar LIFs entre clusters em portas dedicadas. Isso normalmente aumenta a largura de banda disponível para o tráfego de replicação.
@@ -386,6 +391,7 @@ link:concept_considerations_peering.html#considerations-when-using-dedicated-por
 
 
 
+[[configuring-intercluster-lifs-on-shared-data-ports]]
 === Configurando LIFs entre clusters em portas de dados compartilhados
 
 Você pode configurar LIFs entre clusters em portas compartilhadas com a rede de dados. Isso reduz o número de portas de que você precisa para redes entre clusters.
@@ -527,6 +533,7 @@ link:concept_considerations_peering.html#considerations-when-sharing-data-ports[
 
 
 
+[[creating-a-cluster-peer-relationship]]
 == Criando um relacionamento de cluster peer
 
 Você pode usar o comando cluster peer create para criar uma relação de peer entre um cluster local e remoto. Após a criação do relacionamento de pares, você pode executar o cluster peer create no cluster remoto para autenticá-lo no cluster local.
@@ -650,6 +657,7 @@ cluster01-02
 
 
 
+[[creating-the-dr-group]]
 == Criando o grupo DR
 
 É necessário criar relações de grupo de recuperação de desastres (DR) entre os clusters.
@@ -718,6 +726,7 @@ Cluster_A::> metrocluster configuration-settings dr-group create -partner-cluste
 
 
 
+[[configuring-and-connecting-the-metrocluster-ip-interfaces]]
 == Configuração e conexão das interfaces IP do MetroCluster
 
 É necessário configurar as interfaces IP do MetroCluster usadas para replicação do storage de cada nó e do cache não volátil. Em seguida, você estabelece as conexões usando as interfaces IP do MetroCluster. Isso cria conexões iSCSI para replicação de armazenamento.
@@ -1283,6 +1292,7 @@ cluster_B::>
 
 
 
+[[verifying-or-manually-performing-pool-1-drives-assignment]]
 == Verificando ou executando manualmente a atribuição de unidades do pool 1
 
 Dependendo da configuração de armazenamento, você deve verificar a atribuição da unidade do pool 1 ou atribuir manualmente unidades ao pool 1 para cada nó na configuração IP do MetroCluster. O procedimento utilizado depende da versão do ONTAP que está a utilizar.
@@ -1322,6 +1332,7 @@ Os sistemas não foram recebidos de fábrica e estão executando o ONTAP 9.3Syst
 |===
 
 
+[[verifying-disk-assignment-for-pool-1-disks]]
 === Verificando a atribuição de discos para discos do pool 1
 
 Você deve verificar se os discos remotos estão visíveis para os nós e foram atribuídos corretamente.
@@ -1524,6 +1535,7 @@ cluster_A::>
 
 
 
+[[manually-assigning-drives-for-pool-1-ontap-9-4-or-later]]
 === Atribuição manual de unidades para o pool 1 (ONTAP 9.4 ou posterior)
 
 Se o sistema não tiver sido pré-configurado de fábrica e não atender aos requisitos de atribuição automática de unidades, você deverá atribuir manualmente as unidades 1 do pool remoto.
@@ -1612,6 +1624,7 @@ cluster_A::>
 
 
 
+[[manually-assigning-disks-for-pool-1-ontap-9-3]]
 === Atribuição manual de discos para o pool 1 (ONTAP 9.3)
 
 Se você tiver pelo menos duas gavetas de disco para cada nó, use a funcionalidade de atribuição automática do ONTAP para atribuir automaticamente os discos remotos (pool1).
@@ -1730,6 +1743,7 @@ cluster_A::>
 
 
 
+[[enabling-automatic-drive-assignment-in-ontap-9-4]]
 == Habilitando a atribuição automática de acionamento no ONTAP 9.4
 
 .Sobre esta tarefa
@@ -1749,6 +1763,7 @@ Você deve emitir este comando em todos os nós na configuração IP do MetroClu
 
 
 
+[[mirroring-the-root-aggregates]]
 == Espelhamento dos agregados de raiz
 
 É necessário espelhar os agregados raiz para fornecer proteção de dados.
@@ -1785,6 +1800,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["Gere
 
 
 
+[[creating-a-mirrored-data-aggregate-on-each-node]]
 == Criando um agregado de dados espelhados em cada nó
 
 Você precisa criar um agregado de dados espelhados em cada nó no grupo de DR.
@@ -1854,6 +1870,7 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 
 
 
+[[implementing-the-metrocluster-configuration]]
 == Implementando a configuração do MetroCluster
 
 Você deve executar o `metrocluster configure` comando para iniciar a proteção de dados em uma configuração do MetroCluster.
@@ -2013,12 +2030,14 @@ Remote: cluster_A         Configuration state configured
 
 
 
+[[configuring-the-second-dr-group-in-an-eight-node-configuration]]
 == Configurando o segundo grupo de DR em uma configuração de oito nós
 
 Repita as tarefas anteriores para configurar os nós no segundo grupo de DR.
 
 
 
+[[creating-unmirrored-data-aggregates]]
 == Criação de agregados de dados sem espelhamento
 
 Você pode, opcionalmente, criar agregados de dados sem espelhamento para dados que não exigem o espelhamento redundante fornecido pelas configurações do MetroCluster.
@@ -2119,6 +2138,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gere
 
 
 
+[[checking-the-metrocluster-configuration]]
 == Verificar a configuração do MetroCluster
 
 Você pode verificar se os componentes e as relações na configuração do MetroCluster estão funcionando corretamente.
@@ -2259,6 +2279,7 @@ link:https://docs.netapp.com/us-en/ontap/network-management/index.html["Gerencia
 
 
 
+[[completing-ontap-configuration]]
 == A concluir a configuração do ONTAP
 
 Após configurar, ativar e verificar a configuração do MetroCluster, você pode concluir a configuração do cluster adicionando SVMs adicionais, interfaces de rede e outras funcionalidades do ONTAP, conforme necessário.

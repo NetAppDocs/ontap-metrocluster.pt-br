@@ -29,6 +29,7 @@ O monitor de integridade do switch Ethernet (CSHM) é responsável por garantir 
 ====
 
 
+[[before-you-begin]]
 == Antes de começar
 
 * O usuário deve ter acesso aos comandos do switch `show`. Se não estiverem disponíveis, crie um novo usuário e conceda as permissões necessárias ao usuário.
@@ -47,6 +48,7 @@ O monitor de integridade do switch Ethernet (CSHM) é responsável por garantir 
 
 
 
+[[steps]]
 == Passos
 
 [role="tabbed-block"]

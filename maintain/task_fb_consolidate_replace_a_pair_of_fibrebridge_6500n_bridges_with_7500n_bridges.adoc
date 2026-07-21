@@ -34,6 +34,7 @@ link:task_replace_a_sle_fc_to_sas_bridge.html["Substituição de uma única pont
 
 
 
+[[verifying-storage-connectivity]]
 == Verificando a conetividade de armazenamento
 
 Antes de substituir bridges, você deve verificar a conetividade de bridge e armazenamento. Familiarizar-se com a saída do comando permite confirmar a conetividade depois de fazer alterações na configuração.
@@ -99,6 +100,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 
 
 
+[[hot-swapping-fibrebridge-6500n-bridges-to-create-a-pair-of-fibrebridge-7600n-or-7500n-bridges]]
 == Ponte FibreBridge 6500N pontes para criar um par de pontes FibreBridge 7600N ou 7500N
 
 Para trocar a quente uma ou duas pontes FibreBridge 6500N para criar uma configuração com um par de pontes FibreBridge 7600N ou 7500N, você deve substituir as pontes uma de cada vez e seguir o procedimento de cabeamento correto. O novo cabeamento é diferente do cabeamento original.
@@ -248,6 +250,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 
 
 
+[[cabling-the-bridge-sas-ports-when-consolidating-storage-behind-fibrebridge-7600n-or-7500n-bridges]]
 == Cabeamento das portas SAS da ponte ao consolidar o armazenamento por trás das pontes FibreBridge 7600N ou 7500N
 
 Ao consolidar várias stacks de storage SAS atrás de um único par de pontes FibreBridge 7600N ou 7500N com portas SAS disponíveis, você precisa mover os cabos SAS superior e inferior para as novas pontes.
@@ -357,12 +360,14 @@ image::../media/consolidation_sas_bottom_connection_4_stacks.gif[Cabeamento infe
 
 
 
+[[updating-zoning-when-adding-fibrebridge-7600n-or-7500n-bridges-to-a-configuration]]
 == Atualizando zoneamento ao adicionar bridgeBridge 7600N ou 7500N bridges a uma configuração
 
 O zoneamento deve ser alterado quando você estiver substituindo as pontes FibreBridge 6500N por pontes FibreBridge 7600N ou 7500N e usando ambas as portas FC nas pontes FibreBridge 7600N ou 7500N. As alterações necessárias dependem se você está executando uma versão do ONTAP anterior a 9,1 ou 9,1 e posterior.
 
 
 
+[[updating-zoning-when-adding-fibrebridge-7500n-bridges-to-a-configuration-prior-to-ontap-9-1]]
 === Atualizando o zoneamento ao adicionar bridgeBridge 7500N a uma configuração (antes do ONTAP 9.1)
 
 O zoneamento deve ser alterado quando você estiver substituindo as pontes FibreBridge 6500N por pontes FibreBridge 7500N e usando ambas as portas FC nas pontes FibreBridge 7500N. Cada zona não pode ter mais de quatro portas de iniciador. O zoneamento que você usa depende se você está executando o ONTAP antes da versão 9,1 ou 9,1 e posterior
@@ -483,6 +488,7 @@ image::../media/zoning_consolidation_site_a_after.gif[Consolidação de zoneamen
 
 
 
+[[updating-zoning-when-adding-fibrebridge-7600n-or-7500n-bridges-to-a-configuration-ontap-9-1-and-later]]
 === Atualizando zoneamento ao adicionar bridgeBridge 7600N ou 7500N bridges a uma configuração (ONTAP 9.1 e posterior)
 
 O zoneamento deve ser alterado quando você estiver substituindo as pontes FibreBridge 6500N por pontes FibreBridge 7600N ou 7500N e usando ambas as portas FC nas pontes FibreBridge 7600N ou 7500N. Cada zona não pode ter mais de quatro portas de iniciador.
@@ -509,6 +515,7 @@ Consulte a seção de switch FC de link:../install-fc/index.html["Instalação e
 
 
 
+[[cabling-the-second-bridge-fc-port-when-adding-fibrebridge-7600n-or-7500n-bridges-to-a-configuration]]
 == Fazer o cabeamento da segunda porta FC de ponte ao adicionar pontes FibreBridge 7600N ou 7500N a uma configuração
 
 Para fornecer vários caminhos para as stacks de storage, você pode fazer o cabeamento da segunda porta FC em cada bridge do FibreBridge 7600N ou 7500N quando tiver adicionado a ponte FibreBridge 7600N ou 7500N à sua configuração.
@@ -582,6 +589,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 
 
 
+[[disabling-unused-sas-ports-on-the-fc-to-sas-bridges]]
 == Desativação de portas SAS não usadas nas pontes FC para SAS
 
 Depois de fazer alterações de cabeamento na ponte, você deve desativar todas as portas SAS não utilizadas em pontes FC para SAS para evitar alertas de monitor de integridade relacionados às portas não utilizadas.

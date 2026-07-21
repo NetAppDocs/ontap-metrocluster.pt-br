@@ -18,10 +18,12 @@ NOTE: Para Cisco 9132T, consulte link:cisco-9132t-fc-port-config-bridges.html["U
 
 
 
+[[shelf-configurations-using-fibrebridge-7500n-or-7600n-using-both-fc-ports-fc1-and-fc2]]
 == Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 GbE e FC2)
 
 
 
+[[metrocluster-1-or-dr-group-1]]
 === MetroCluster 1 ou grupo de RD 1
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 1 ou grupo 1 de DR usando bridges FibreBridge 7500N ou 7600N e ambas as portas FC (FC1 e FC2) em switches Cisco (exceto 9132T). Ao usar esta tabela de configuração, você deve estar ciente do seguinte:
@@ -332,6 +334,7 @@ FC2
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 === MetroCluster 2 ou grupo de RD 2
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 2 ou grupo 2 de DR usando FibreBridge 7500N ou 7600N e ambas as portas FC (FC1 e FC2) em switches Cisco (exceto 9132T). Ao usar as tabelas de cabeamento, você deve estar ciente do seguinte:
@@ -642,10 +645,12 @@ n / D
 |===
 
 
+[[shelf-configurations-using-fibrebridge-7500n-or-7600n-using-one-fc-port-fc1-or-fc2-only]]
 == Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2)
 
 
 
+[[metrocluster-1-or-dr-group-1]]
 === MetroCluster 1 ou grupo de RD 1
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 1 ou no grupo 1 de DR para bridges FibreBridge 7500N ou 7600N usando uma porta FC (FC1 ou FC2) em switches Cisco (exceto 9132T). O arquivo de configuração de referência (RCF) não suporta uma porta FC em bridges FibreBridge, portanto, você deve configurar os switches Fibre Channel de back-end manualmente.
@@ -952,6 +957,7 @@ bridge_x_8b
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 === MetroCluster 2 ou grupo de RD 2
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 2 ou grupo 2 de DR para bridges FibreBridge 7500N ou 7600N usando uma porta FC (FC1 ou FC2) em switches Cisco (exceto 9132T). Ao usar esta tabela de configuração, você deve estar ciente do seguinte:

@@ -15,12 +15,14 @@ Se a sua configuração incluir agregados sem espelhamento, você precisa estar 
 
 
 
+[[unmirrored-aggregates-and-hierarchical-namespaces]]
 == Agregados não espelhados e namespaces hierárquicos
 
 Se você estiver usando namespaces hierárquicos, você deve configurar o caminho de junção para que todos os volumes nesse caminho estejam apenas em agregados espelhados ou apenas em agregados sem espelhamento. Configurar uma combinação de agregados sem espelhamento e espelhados no caminho de junção pode impedir o acesso aos agregados sem espelhamento após a operação de comutação.
 
 
 
+[[unmirrored-aggregates-and-maintenance-that-requires-power-shutdown]]
 == Agregados não espelhados e manutenção que requer desligamento de energia
 
 Se você executar uma troca negociada para manutenção que exija um desligamento de energia em todo o local, primeiro você deverá desconectar manualmente todos os agregados não espelhados de propriedade do local do desastre.
@@ -29,24 +31,28 @@ Se você não desconectar os agregados não espelhados pertencentes ao local do 
 
 
 
+[[unmirrored-aggregates-crs-metadata-volumes-and-data-svm-root-volumes]]
 == Agregados não espelhados, volumes de metadados CRS e volumes raiz SVM de dados
 
 O volume de metadados do serviço de replicação de configuração (CRS) e os volumes raiz de dados do SVM devem estar em um agregado espelhado. Não é possível mover esses volumes para um agregado sem espelhamento. Se estiverem num agregado não espelhado, as operações de comutação e de retorno negociadas são vetadas e a  `metrocluster check` comando retorna um aviso.
 
 
 
+[[unmirrored-aggregates-and-svms]]
 == Agregados não espelhados e SVMs
 
 Você deve configurar SVMs somente em agregados espelhados ou somente em agregados não espelhados. Configurar SVMs em uma combinação de agregados espelhados e não espelhados pode resultar em uma operação de comutação que exceda 120 segundos. Isso pode levar a uma interrupção de dados se os agregados não espelhados não ficarem online.
 
 
 
+[[unmirrored-aggregates-and-san]]
 == Agregados não espelhados e SAN
 
 Antes do ONTAP 9.9.1, um LUN não deveria estar localizado em um agregado não espelhado. Configurar um LUN em um agregado sem espelhamento pode resultar em uma operação de switchover que excede 120 segundos e uma interrupção de dados.
 
 
 
+[[add-storage-shelves-for-unmirrored-aggregates]]
 == Adicione prateleiras de armazenamento para agregados não espelhados
 
 Se você adicionar prateleiras e quiser usá-las para agregados não espelhados em uma configuração de IP do MetroCluster , faça o seguinte:

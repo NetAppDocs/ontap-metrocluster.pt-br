@@ -60,6 +60,7 @@ Não aplicável
 |===
 
 
+[[when-to-use-iod]]
 == Quando usar IOD
 
 É melhor usar IOD se for suportado pelos links. As configurações a seguir suportam IOD:
@@ -71,6 +72,7 @@ Não aplicável
 
 
 
+[[when-to-use-ood]]
 == Quando usar OOD
 
 * Você pode usar O ODE para todas as configurações que não oferecem suporte para IOD.
@@ -79,6 +81,7 @@ Não aplicável
 
 
 
+[[using-encryption-devices]]
 == Usando dispositivos de criptografia
 
 Ao usar dispositivos de criptografia dedicados no ISL ou criptografia em dispositivos WDM na configuração do MetroCluster, você deve atender aos seguintes requisitos:

@@ -18,6 +18,7 @@ NOTE: Os procedimentos de comutação e switchback são suportados apenas para c
 
 
 
+[[overview-of-switchover-and-switchback]]
 == Visão geral do switchover e do switchback
 
 Um switchover pode ocorrer em duas instâncias:
@@ -45,6 +46,8 @@ O processo de comutação e switchback que você segue depende da sua versão do
 
 
 
+[[use-system-manager-in-ontap-9-6-or-9-7-for-switchover-and-switchback]]
+[[sm97-sosb]]
 == Use o Gerenciador de sistemas no ONTAP 9,6 ou 9,7 para comutação e switchback
 
 .Passos
@@ -71,10 +74,13 @@ O System Manager verifica se um switchover negociado é possível.
 
 
 
+[[use-system-manager-in-ontap-9-8-or-later-for-switchover-and-switchback]]
+[[sm98-sosb]]
 == Use o Gerenciador do sistema no ONTAP 9,8 ou posterior para switchover e switchback
 
 
 
+[[perform-a-planned-switchover-ontap-9-8-or-later]]
 === Executar um switchover planejado (ONTAP 9,8 ou posterior)
 
 .Passos
@@ -94,6 +100,7 @@ NOTE: O cluster remoto não deve ser usado para manutenção de dados até que v
 
 
 
+[[perform-an-unplanned-switchover-ontap-9-8-or-later]]
 === Executar um switchover não planejado (ONTAP 9,8 ou posterior)
 
 Um switchover não planejado pode ser iniciado automaticamente pelo ONTAP. Se o ONTAP não puder determinar se um switchback é necessário, o administrador do sistema do local do MetroCluster que ainda está em execução iniciará o switchover com as seguintes etapas:
@@ -121,6 +128,7 @@ NOTE: Depois que o cluster remoto for colocado on-line, ele não deve ser usado 
 
 
 
+[[perform-a-switchback-ontap-9-8-or-later]]
 === Executar um switchback (ONTAP 9,8 ou posterior)
 
 .Antes de começar

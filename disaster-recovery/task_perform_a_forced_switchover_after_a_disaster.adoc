@@ -22,6 +22,7 @@ Determinar se ocorreu um desastre é feito por:
 
 
 
+[[fencing-off-the-disaster-site]]
 == Esgrima fora do local do desastre
 
 Após o desastre, se os nós do local de desastre precisarem ser substituídos, é preciso impedi-los de retomar o serviço. Caso contrário, você arrisca a possibilidade de corrupção de dados se os clientes começarem a acessar os nós antes que o procedimento de substituição seja concluído.
@@ -38,6 +39,7 @@ Se os nós do local de desastre tiverem sido destruídos ou não puderem ser int
 
 
 
+[[performing-a-forced-switchover]]
 == Realizar uma comutação forçada
 
 O processo de switchover, além de fornecer operações ininterruptas durante o teste e a manutenção, permite que você se recupere de uma falha no local com um único comando.
@@ -93,12 +95,14 @@ Os relacionamentos do SnapMirror precisam ser restabelecidos após o switchover.
 
 
 
+[[output-for-the-storage-aggregate-plex-show-command-is-indeterminate-after-a-metrocluster-switchover]]
 == A saída para o comando storage Aggregate plex show é indeterminada após um switchover do MetroCluster
 
 Quando você executa o `storage aggregate plex show` comando após um switchover MetroCluster, o status de plex0 do agregado raiz comutada é indeterminado e é exibido como falhou. Durante este tempo, a raiz comutada não é atualizada. O estado real deste Plex só pode ser determinado após a fase de cicatrização do MetroCluster.
 
 
 
+[[accessing-volumes-in-nvfail-state-after-a-switchover]]
 == Acessar volumes no estado NVFAIL após um switchover
 
 Após um switchover, você deve limpar o estado NVFAIL redefinindo o `-in-nvfailed-state` parâmetro `volume modify` do comando para remover a restrição de clientes para acessar dados.

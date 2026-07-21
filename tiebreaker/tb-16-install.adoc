@@ -23,6 +23,7 @@ NOTE: Após instalar o Tiebreaker 1.6 ou posterior, você precisa link:concept_c
 
 
 
+[[install-or-upgrade-to-tiebreaker-1-6p1]]
 == Instale ou atualize para o tiebreaker 1.6P1
 
 Você pode instalar o tiebreaker 1.6P1 ou atualizar para o tiebreaker 1.6P1 a partir do tiebreaker 1,6, 1,5 ou 1,4.
@@ -771,6 +772,7 @@ Cleaning up / removing...
 
 
 
+[[install-or-upgrade-to-tiebreaker-1-6]]
 == Instale ou atualize para o tiebreaker 1,6
 
 Você pode instalar o tiebreaker 1,6 ou atualizar para o tiebreaker 1,6 a partir do tiebreaker 1,5 ou 1,4.

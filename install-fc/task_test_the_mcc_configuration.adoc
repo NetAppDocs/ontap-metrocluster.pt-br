@@ -15,6 +15,7 @@ Você pode testar cenários de falha para confirmar o funcionamento correto da c
 
 
 
+[[verifying-negotiated-switchover]]
 == Verificando o switchover negociado
 
 Você pode testar a operação switchover negociado (planejada) para confirmar a disponibilidade de dados ininterrupta.
@@ -112,6 +113,7 @@ cluster_A::> metrocluster operation show
 
 
 
+[[verifying-healing-and-manual-switchback]]
 == Verificando a cura e a troca manual
 
 Você pode testar as operações de reparo e switchback manual para verificar se a disponibilidade de dados não é afetada (exceto para configurações SMB e Solaris FC), alternando o cluster para o data center original após um switchover negociado.
@@ -241,6 +243,7 @@ cluster_A::> metrocluster operation show
 
 
 
+[[loss-of-a-single-fc-to-sas-bridge]]
 == Perda de uma única ponte FC para SAS
 
 Você pode testar a falha de uma única ponte FC para SAS para garantir que não haja um ponto único de falha.
@@ -296,6 +299,7 @@ Disk             Error Type        Error Text
 
 
 
+[[verifying-operation-after-power-line-disruption]]
 == Verificação da operação após interrupção da linha elétrica
 
 Você pode testar a resposta da configuração do MetroCluster à falha de uma PDU.
@@ -357,6 +361,7 @@ Power               Critical condition is detected in storage shelf power supply
 
 
 
+[[verifying-operation-after-a-switch-fabric-failure]]
 == Verificação da operação após uma falha na malha do switch
 
 Você pode desativar uma malha de switch para mostrar que a disponibilidade de dados não é afetada pela perda.
@@ -434,6 +439,7 @@ FC_switch_B_1::> switchenable
 
 
 
+[[verifying-operation-after-loss-of-a-single-storage-shelf]]
 == Verificação da operação após a perda de uma única prateleira de armazenamento
 
 Você pode testar a falha de um único compartimento de storage para verificar se não há um ponto único de falha.

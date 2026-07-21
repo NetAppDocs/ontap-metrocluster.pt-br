@@ -15,6 +15,7 @@ O software tiebreaker do MetroCluster automatiza o processo de recuperação, pe
 
 
 
+[[configuring-autosupport]]
 == Configurando o AutoSupport
 
 Por padrão, as mensagens AutoSupport são enviadas para o NetApp uma semana após a instalação do software tiebreaker. Os eventos que acionam a notificação do AutoSupport incluem panics do software tiebreaker, detecção de condições de desastre em configurações do MetroCluster ou um status de configuração desconhecido do MetroCluster.
@@ -130,6 +131,7 @@ Autosupport configuration deleted successfully.
 
 
 
+[[snmp-events-and-traps]]
 === Eventos e traps SNMP
 
 O software tiebreaker NetApp MetroCluster usa traps SNMP para notificá-lo de eventos significativos. Esses traps fazem parte do arquivo MIB do NetApp. Cada armadilha contém as seguintes informações: Nome da armadilha, gravidade, nível de impactos, carimbo de data/hora e mensagem.
@@ -187,6 +189,7 @@ A configuração SNMP agora pode ser testada executando o comando snmp config te
 |===
 
 
+[[displaying-the-status-of-monitoring-operations]]
 == Apresentar o estado das operações de monitorização
 
 Você pode exibir o status geral das operações de monitoramento para uma configuração do MetroCluster.
@@ -286,6 +289,7 @@ MetroCluster: cluster_B
 
 
 
+[[displaying-metrocluster-configuration-information]]
 == Exibindo informações de configuração do MetroCluster
 
 Você pode exibir o nome do monitor e o endereço IP de todas as instâncias de configurações do MetroCluster no software tiebreaker.
@@ -309,6 +313,7 @@ MetroCluster: North America
 
 
 
+[[creating-dump-files]]
 == Criando arquivos de despejo
 
 Você salva o status geral do software tiebreaker em um arquivo de despejo para fins de depuração.
@@ -329,6 +334,7 @@ MetroCluster Tiebreaker status successfully dumped in file /var/log/netapp/mcctb
 
 
 
+[[disable-tiebreaker-observer-mode]]
 == Desativar o modo observador de desempate
 
 Você pode desativar o modo observador do software Tiebreaker para que ele inicie automaticamente uma comutação após detectar uma falha no site.

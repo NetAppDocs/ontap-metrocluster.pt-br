@@ -48,6 +48,7 @@ Por exemplo, se você tiver uma configuração MetroCluster IP normal usando con
 ====
 
 
+[[port_usage_worksheet]]
 .Folha de cálculo de utilização de portas
 A seguir está uma Planilha de exemplo para converter uma configuração IP do MetroCluster para uma configuração de armazenamento compartilhado conetando duas prateleiras NS224 usando os switches existentes.
 

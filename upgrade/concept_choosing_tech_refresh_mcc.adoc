@@ -15,6 +15,7 @@ O procedimento de atualização do sistema que você usa depende do modelo da pl
 
 
 
+[[supported-metrocluster-ip-tech-refresh-combinations]]
 == Combinações de atualização técnica IP MetroCluster suportadas
 
 * Você deve concluir o procedimento de atualização técnica antes de adicionar uma nova carga.
@@ -26,6 +27,7 @@ O procedimento de atualização do sistema que você usa depende do modelo da pl
 
 
 
+[[supported-aff-and-fas-metrocluster-ip-tech-refresh-combinations]]
 === Combinações de atualização técnica AFF e FAS MetroCluster IP suportadas
 
 A tabela a seguir mostra as combinações de plataforma suportadas para atualizar um sistema AFF ou FAS em uma configuração IP MetroCluster. As tabelas são divididas em dois grupos:
@@ -58,6 +60,7 @@ image:../media/tech-refresh-ip-group-2-updated.png["Combinações de atualizaç�
 ====
 
 
+[[supported-asa-metrocluster-ip-tech-refresh-combinations]]
 === Combinações de atualização técnica IP ASA MetroCluster suportadas
 
 A tabela a seguir mostra as combinações de plataforma suportadas para atualizar um sistema ASA em uma configuração IP do MetroCluster:
@@ -66,6 +69,7 @@ image::../media/mcc-ip-techrefresh-asa-9161.png[Combinações de atualização t
 
 
 
+[[supported-metrocluster-fc-tech-refresh-combinations]]
 == Combinações de atualização técnica do MetroCluster FC compatíveis
 
 * Você deve concluir o procedimento de atualização técnica antes de adicionar uma nova carga.
@@ -77,6 +81,7 @@ image::../media/mcc-ip-techrefresh-asa-9161.png[Combinações de atualização t
 
 
 
+[[supported-aff-and-fas-metrocluster-fc-tech-refresh-combinations]]
 === Combinações de atualização técnica compatíveis com AFF e FAS MetroCluster FC
 
 A tabela a seguir mostra as combinações de plataforma compatíveis para atualizar um sistema AFF ou FAS em uma configuração MetroCluster FC:
@@ -85,6 +90,7 @@ image::../media/metrocluster_fc_tech_refresh.png[Combinações de plataformas su
 
 
 
+[[supported-asa-metrocluster-fc-tech-refresh-combinations]]
 === Combinações de atualização técnica do ASA MetroCluster FC compatíveis
 
 A tabela a seguir mostra as combinações de plataforma compatíveis para atualizar um sistema ASA em uma configuração MetroCluster FC:
@@ -107,6 +113,7 @@ A tabela a seguir mostra as combinações de plataforma compatíveis para atuali
 |===
 
 
+[[choose-a-refresh-procedure]]
 == Escolha um procedimento de atualização
 
 Escolha o procedimento de atualização para sua configuração na tabela a seguir:

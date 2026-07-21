@@ -15,6 +15,7 @@ Com os novos nós adicionados, você deve concluir as etapas de transição e co
 
 
 
+[[configuring-the-metrocluster-ip-nodes-and-disabling-transition]]
 == Configurando os nós IP do MetroCluster e desativando a transição
 
 Você deve implementar as conexões IP do MetroCluster, atualizar a configuração do MetroCluster e desativar o modo de transição.
@@ -208,6 +209,7 @@ Mais de um único agregado em cada cluster
 
 
 
+[[setting-up-data-lifs-on-the-new-nodes]]
 == Configuração de LIFs de dados nos novos nós
 
 Você deve configurar LIFs de dados nos novos nós, node_A_2-IP e node_B_2-IP.
@@ -271,6 +273,7 @@ Consulte as informações reunidas em link:task_connect_the_mcc_ip_controller_mo
 
 
 
+[[bringing-up-the-svms]]
 == Trazendo os SVMs
 
 Devido às alterações na configuração de LIF, você deve reiniciar os SVMs nos novos nós.
@@ -297,6 +300,7 @@ Devido às alterações na configuração de LIF, você deve reiniciar os SVMs n
 
 
 
+[[moving-a-system-volume-to-the-new-nodes]]
 == Mover um volume de sistema para os novos nós
 
 Para melhorar a resiliência, um volume do sistema deve ser movido do nó do controlador_A_1-IP para o nó do controlador_A_2-IP e também do nó_B_1-IP para o nó_B_2-IP. Você deve criar um agregado espelhado no nó de destino para o volume do sistema.

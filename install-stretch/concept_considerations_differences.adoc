@@ -214,6 +214,7 @@ Sim
 
 
 
+[[support-for-all-san-array-systems-in-metrocluster-configurations]]
 == Suporte para todos os sistemas de storage SAN nas configurações do MetroCluster
 
 Alguns dos All SAN Arrays (ASAs) são suportados nas configurações do MetroCluster. Na documentação do MetroCluster, as informações dos modelos AFF aplicam-se ao sistema ASA correspondente. Por exemplo, todo o cabeamento e outras informações do sistema AFF A400 também se aplicam ao sistema ASA AFF A400.

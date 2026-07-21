@@ -32,6 +32,7 @@ Por exemplo, se a plataforma que você deseja atualizar for um FAS8200, você po
 
 
 
+[[supported-aff-and-fas-metrocluster-ip-controller-upgrades]]
 == Atualizações suportadas do controlador IP AFF e FAS MetroCluster
 
 A tabela a seguir mostra as combinações de plataforma suportadas para atualizar um sistema AFF ou FAS em uma configuração IP MetroCluster usando comandos "System controller replace", divididos em dois grupos.
@@ -68,6 +69,7 @@ image:../media/assisted-group-2-a70-a90-updated.png["Mostra combinações de atu
 ====
 
 
+[[supported-asa-metrocluster-ip-controller-upgrades]]
 == Atualizações suportadas do controlador IP ASA MetroCluster
 
 A atualização de controladores usando `system controller replace` comandos em sistemas ASA não é suportada.

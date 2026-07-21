@@ -18,6 +18,7 @@ link:enable-console-logging-before-maintenance.html["Ativar o registo da consola
 
 
 
+[[updating-firmware-on-fibrebridge-7600n-or-7500n-bridges-on-configurations-running-ontap-9-4-and-later]]
 == Atualização de firmware em bridgeBridge 7600N ou 7500N bridges em configurações executando o ONTAP 9.4 e posterior
 
 Talvez seja necessário atualizar o firmware em suas bridges do FibreBridge para garantir que você tenha os recursos mais recentes ou para resolver possíveis problemas. Esse procedimento deve ser usado para pontes FibreBridge 7600N ou 7500N em configurações executando o ONTAP 9.4 e posterior.

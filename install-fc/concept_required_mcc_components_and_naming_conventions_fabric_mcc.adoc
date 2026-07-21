@@ -15,6 +15,7 @@ Ao Planejar a configuração do MetroCluster FC, você precisa entender os compo
 
 
 
+[[supported-software-and-hardware]]
 == Software e hardware suportados
 
 O hardware e o software devem ser compatíveis com a configuração MetroCluster FC.
@@ -28,12 +29,14 @@ NOTE: SFPs de onda longa não são suportados nos switches de armazenamento Metr
 
 
 
+[[hardware-redundancy-in-the-metrocluster-fc-configuration]]
 == Redundância de hardware na configuração MetroCluster FC
 
 Devido à redundância de hardware na configuração MetroCluster FC, há dois de cada componente em cada local. Os sites são arbitrariamente atribuídos às letras A e B e os componentes individuais são arbitrariamente atribuídos aos números 1 e 2.
 
 
 
+[[requirement-for-two-ontap-clusters]]
 == Requisito para dois clusters ONTAP
 
 A configuração de MetroCluster FC conectada à malha requer dois clusters ONTAP, um em cada local da MetroCluster.
@@ -48,6 +51,7 @@ Nomes de exemplo:
 
 
 
+[[requirement-for-four-fc-switches]]
 == Requisito para quatro switches FC
 
 A configuração MetroCluster FC conectada à malha requer quatro switches FC (modelos Brocade ou Cisco compatíveis).
@@ -58,6 +62,7 @@ A nomeação deve ser única dentro da configuração do MetroCluster.
 
 
 
+[[requirement-for-two-four-or-eight-controller-modules]]
 == Requisito para dois, quatro ou oito módulos de controlador
 
 A configuração MetroCluster FC conectada à malha requer dois, quatro ou oito módulos de controladora.
@@ -91,6 +96,7 @@ Nomes de exemplo:
 
 
 
+[[requirement-for-four-cluster-interconnect-switches]]
 == Requisito para quatro switches de interconexão de cluster
 
 A configuração de FC MetroCluster conectado à malha requer quatro switches de interconexão de cluster (se você não estiver usando clusters sem switch de dois nós)
@@ -99,6 +105,7 @@ Esses switches fornecem comunicação de cluster entre os módulos do controlado
 
 
 
+[[requirement-for-fc-to-sas-bridges]]
 == Requisito para pontes FC para SAS
 
 A configuração de FC MetroCluster conectado à malha requer um par de pontes FC para SAS para cada grupo de stack de gavetas SAS.
@@ -115,6 +122,7 @@ Os nomes sugeridos usados como exemplos nesta documentação identificam o módu
 
 
 
+[[pool-and-drive-requirements-minimum-supported]]
 == Requisitos de pool e unidade (mínimo suportado)
 
 São recomendadas oito gavetas de disco SAS (quatro gavetas em cada local) para permitir a propriedade de disco por compartimento.
@@ -144,6 +152,7 @@ As configurações do MetroCluster são compatíveis com RAID-DP e RAID4.
 
 
 
+[[drive-location-considerations-for-partially-populated-shelves]]
 == Considerações sobre o local da unidade para compartimentos parcialmente preenchidos
 
 Para a atribuição automática correta de unidades ao usar compartimentos com metade população (12 unidades em um compartimento de 24 unidades), as unidades devem estar localizadas nos slots 0-5 e 18-23.
@@ -152,6 +161,7 @@ Em uma configuração com um compartimento parcialmente preenchido, as unidades 
 
 
 
+[[bridge-naming-conventions]]
 == Convenções de nomenclatura de ponte
 
 As pontes usam o seguinte exemplo de nomenclatura:

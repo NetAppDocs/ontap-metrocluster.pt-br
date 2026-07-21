@@ -15,6 +15,7 @@ Conclua o processo de atualização do controlador automatizado verificando a ac
 
 
 
+[[verify-network-reachability]]
 == Verifique a acessibilidade da rede
 
 A operação de automação executa verificações do sistema e, em seguida, pausa para que você possa verificar a acessibilidade da rede. Após a verificação, a fase de recuperação de recursos é iniciada e a operação de automação executa switchback no local A e pausa nas verificações pós-atualização. Depois de retomar a operação de automação, ele executa as verificações de pós-atualização e, se nenhum erro for detetado, marca a atualização como concluída.
@@ -42,6 +43,7 @@ Se as verificações de pós-atualização não reportaram erros, a atualizaçã
 
 
 
+[[upgrade-the-nodes-on-clustera]]
 == Atualize os nós no cluster_A
 
 Você deve repetir as tarefas de atualização para atualizar os nós no cluster_A no local A.
@@ -55,6 +57,7 @@ Quando você repete o procedimento, todas as referências de exemplo aos cluster
 
 
 
+[[re-add-internal-drives-to-the-new-controller]]
 == Adicione novamente as unidades internas ao novo controlador
 
 Se você atualizou de um sistema que possui apenas unidades externas para um sistema que possui unidades externas e internas (discos e controladores no mesmo chassi), você pode adicionar ou recolocar os discos que removeu ou desinstalou dos slots internos do novo sistema. Você pode fazer isso a qualquer momento após a conclusão da atualização em ambos os sites e após o cluster estar em bom estado.
@@ -66,6 +69,7 @@ NOTE: Esta tarefa só se aplica a certas combinações de atualizações. link:u
 
 
 
+[[reconfigure-ontap-mediator]]
 == Reconfigure o Mediador ONTAP
 
 Configure manualmente o ONTAP Mediator que foi removido automaticamente antes de iniciar a atualização.
@@ -75,6 +79,7 @@ Configure manualmente o ONTAP Mediator que foi removido automaticamente antes de
 
 
 
+[[restore-tiebreaker-monitoring]]
 == Restaure o monitoramento do tiebreaker
 
 Se a configuração do MetroCluster tiver sido configurada anteriormente para monitoramento pelo software tiebreaker, você poderá restaurar a conexão tiebreaker.
@@ -84,6 +89,7 @@ Se a configuração do MetroCluster tiver sido configurada anteriormente para mo
 
 
 
+[[configure-end-to-end-encryption]]
 == Configurar criptografia de ponta a ponta
 
 Se for compatível com o sistema, você poderá criptografar o tráfego de back-end, como NVlog e dados de replicação de armazenamento, entre os sites IP do MetroCluster. link:../maintain/task-configure-encryption.html["Configurar criptografia de ponta a ponta"]Consulte para obter mais informações.

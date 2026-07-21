@@ -18,6 +18,7 @@ link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1
 
 
 
+[[configuring-a-brocade-fc-switch-after-site-disaster]]
 == Configuração de um switch Brocade FC após um desastre no local
 
 Deve utilizar este procedimento específico do Brocade para configurar o comutador de substituição e ativar as portas ISL.
@@ -142,6 +143,7 @@ Index Port Address Media Speed State  Proto
 
 
 
+[[configuring-a-cisco-fc-switch-after-site-disaster]]
 == Configuração de um switch Cisco FC após um desastre no local
 
 Você deve usar o procedimento específico do Cisco para configurar o switch de substituição e ativar as portas ISL.

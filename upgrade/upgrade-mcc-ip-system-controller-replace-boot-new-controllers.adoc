@@ -15,6 +15,7 @@ Inicialize os novos controladores e verifique se LIFs estão hospedados em nós 
 
 
 
+[[boot-the-new-controllers]]
 == Inicialize os novos controladores
 
 Inicialize os novos controladores,verifique se as variáveis bootarg estão corretas e, se necessário, execute as etapas de recuperação de criptografia.
@@ -246,6 +247,7 @@ Verifique se os novos nós (site_B) estão em *aguardando o estado switchback* d
 
 
 
+[[verify-and-restore-lif-configuration]]
 == Verifique e restaure a configuração do LIF
 
 Verifique se os LIFs estão hospedados em nós apropriados antes de prosseguir com a operação de switchback automatizado.

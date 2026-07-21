@@ -25,6 +25,7 @@ Determinadas etapas deste processo são executadas por diferentes administradore
 
 
 
+[[perform-the-peering-process-from-site-a]]
 == Execute o processo de peering do Site A.
 
 Este processo é executado por um administrador de sistema no local A..
@@ -45,6 +46,7 @@ O painel mostra os detalhes deste cluster (Site A). Na seção *MetroCluster*, S
 
 
 
+[[perform-the-peering-process-from-site-b]]
 == Execute o processo de peering do local B.
 
 Este processo é realizado por um administrador de sistema no local B..

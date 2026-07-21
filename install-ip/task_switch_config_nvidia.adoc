@@ -15,6 +15,7 @@ Você deve configurar os switches IP NVIDIA SN2100 para uso como interconexão d
 
 
 
+[[reset-the-switch-reset-the-nvidia-ip-sn2100-switch-to-factory-defaults]]
 == [[Reset-the-switch]] Reponha o switch NVIDIA IP SN2100 para os padrões de fábrica
 
 Você pode escolher entre os seguintes métodos para redefinir um switch para as configurações padrão de fábrica.
@@ -25,6 +26,7 @@ Você pode escolher entre os seguintes métodos para redefinir um switch para as
 
 
 
+[[rcf-file-optionreset-the-switch-using-the-rcf-file-option]]
 === [[RCF-file-option]]Reponha o switch usando a opção de arquivo RCF
 
 Antes de instalar uma nova configuração RCF, você deve reverter as configurações do switch NVIDIA.
@@ -112,6 +114,7 @@ O switch é redefinido e mantém a configuração inicial, como configuração d
 
 
 
+[[cumulus-install-option-download-and-install-the-cumulus-software]]
 === [[Cumulus-install-Option]] Baixe e instale o software Cumulus
 
 .Sobre esta tarefa
@@ -297,6 +300,7 @@ Quando o switch for reinicializado, você poderá aplicar uma nova configuraçã
 
 
 
+[[download-and-installdownload-and-install-the-nvidia-rcf-files]]
 == [[Download-and-install]]Baixe e instale os arquivos RCF do NVIDIA
 
 Você deve gerar e instalar o arquivo RCF do switch em cada switch na configuração IP do MetroCluster.
@@ -405,6 +409,7 @@ NOTE: Ao definir a opção DAC para várias portas de switch, você só precisa 
 
 
 
+[[set-forward-error-correction-for-systems-using-25-gbps-connectivity]]
 == Defina a correção de erro de avanço para sistemas que utilizam conetividade de 25 Gbps
 
 Se o sistema estiver configurado usando conetividade de 25 Gbps, defina manualmente o parâmetro Correção de erros de Avanço (fec) para Desativado após aplicar o RCF. O RCF não aplica esta definição.
@@ -425,6 +430,7 @@ Se o sistema estiver configurado usando conetividade de 25 Gbps, defina manualme
 
 
 
+[[set-the-switch-port-speed-for-the-metrocluster-ip-interfaces]]
 == Defina a velocidade da porta do switch para as interfaces IP do MetroCluster
 
 .Sobre esta tarefa
@@ -474,6 +480,7 @@ cumulus@Switch-A-1:mgmt:~$
 
 
 
+[[disable-unused-isl-ports-and-port-channels]]
 == Desative portas ISL e canais de portas não utilizados
 
 A NetApp recomenda a desativação de portas e canais de portas ISL não utilizados para evitar alertas de integridade desnecessários. Você deve desativar cada canal de porta ou porta individualmente, não é possível especificar várias portas ou intervalos de portas no comando.

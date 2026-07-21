@@ -26,6 +26,7 @@ Se você tiver uma configuração de FC MetroCluster de quatro nós, link:concep
 
 
 
+[[enable-console-logging]]
 == Ativar o registo da consola
 
 O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
@@ -40,6 +41,7 @@ Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Su
 
 
 
+[[requirements-for-transition-when-retiring-old-shelves]]
 == Requisitos para a transição ao retirar prateleiras antigas
 
 Antes de iniciar o processo de transição, certifique-se de que a configuração MetroCluster FC existente atenda aos requisitos.
@@ -88,6 +90,7 @@ Você precisa ter acesso remoto ao console para todos os seis nós do site Metro
 
 
 
+[[workflow-for-disruptive-transition-when-moving-data-and-retiring-old-storage-shelves]]
 == Fluxo de trabalho para transição disruptiva ao mover dados e desativar compartimentos de storage antigos
 
 Você deve seguir o fluxo de trabalho específico para garantir uma transição bem-sucedida.
@@ -98,6 +101,7 @@ image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[Fluxo de t
 
 
 
+[[transitioning-the-configuration]]
 == Fazendo a transição da configuração
 
 Você deve seguir o procedimento detalhado de transição.
@@ -136,6 +140,7 @@ Execute as etapas em link:task_configure_the_new_nodes_and_complete_transition.h
 
 
 
+[[migrating-the-root-aggregates]]
 == Migrando os agregados raiz
 
 Após a conclusão da transição, migre os agregados de raiz existentes que sobraram da configuração MetroCluster FC para novas gavetas na configuração MetroCluster IP.
@@ -183,6 +188,7 @@ Você pode usar o comando storage Aggregate show para verificar o status de sinc
 
 
 
+[[migrating-the-data-aggregates]]
 == Migração dos agregados de dados
 
 Criar agregados de dados nas novas gavetas e usar a movimentação de volume para transferir os volumes de dados das prateleiras antigas para os agregados nas novas gavetas.
@@ -195,6 +201,7 @@ http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-
 
 
 
+[[retiring-shelves-moved-from-nodea1-fc-and-nodea2-fc]]
 == A remoção de compartimentos foi movida de node_A_1-FC e node_A_2-FC
 
 Remova as gavetas de storage antigas da configuração original do MetroCluster FC. Essas gavetas eram originalmente propriedade de node_A_1-FC e node_A_2-FC.
@@ -274,6 +281,7 @@ cluster_B::>
 
 
 
+[[completing-transition]]
 == Concluir a transição
 
 Com os módulos de controlador antigos removidos, você pode concluir o processo de transição.

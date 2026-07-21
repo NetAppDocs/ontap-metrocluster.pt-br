@@ -15,6 +15,7 @@ Se você precisar substituir um módulo de unidade ou compartimento, primeiro se
 
 
 
+[[identification-of-local-and-remote-shelves]]
 == Identificação de prateleiras locais e remotas
 
 Quando você visualiza as informações do compartimento de um site do MetroCluster, todas as unidades remotas estão no 0m, o adaptador de host iSCSI virtual. Isto significa que as unidades são acedidas através das interfaces IP MetroCluster. Todas as outras unidades são locais.
@@ -32,6 +33,7 @@ https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.ht
 
 
 
+[[example-of-sysconfig-a-output]]
 == Exemplo de saída sysconfig -a
 
 O exemplo a seguir usa o `sysconfig -a` comando para mostrar os dispositivos em um nó na configuração IP do MetroCluster. Esse nó tem as seguintes gavetas e dispositivos anexados:

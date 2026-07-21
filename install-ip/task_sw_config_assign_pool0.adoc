@@ -15,6 +15,7 @@ Se você não recebeu os sistemas pré-configurados de fábrica, talvez seja nec
 
 
 
+[[manually-assigning-drives-for-pool-0-ontap-9-4-and-later]]
 == Atribuição manual de unidades para o pool 0 (ONTAP 9.4 e posterior)
 
 Se o sistema não tiver sido pré-configurado de fábrica e não atender aos requisitos de atribuição automática de unidades, você deverá atribuir manualmente as unidades 0 do pool.
@@ -118,6 +119,7 @@ As unidades devem ser atribuídas simetricamente, de modo que cada nó tenha um 
 
 
 
+[[manually-assigning-drives-for-pool-0-ontap-9-3]]
 == Atribuição manual de unidades para o pool 0 (ONTAP 9.3)
 
 Se você tiver pelo menos duas gavetas de disco para cada nó, use a funcionalidade de atribuição automática do ONTAP para atribuir automaticamente os discos locais (pool 0).

@@ -15,6 +15,7 @@ Configure os novos controladores antes de iniciar a rede dos controladores para 
 
 
 
+[[set-up-the-new-controllers]]
 == Configure os novos controladores
 
 É necessário colocar em rack e cabo as novas controladoras.
@@ -114,6 +115,7 @@ https://docs.netapp.com/us-en/ontap-systems/index.html["Documentação dos siste
 
 
 
+[[netboot-the-new-controllers]]
 == Netboot os novos controladores
 
 Depois de instalar os novos nós, você precisa netboot para garantir que os novos nós estejam executando a mesma versão do ONTAP que os nós originais. O termo netboot significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você deve colocar uma cópia da imagem de inicialização do ONTAP 9 em um servidor da Web que o sistema possa acessar.
@@ -172,6 +174,7 @@ NOTE: Você precisa reiniciar o nó para usar o software recém-instalado.
 
 
 
+[[clear-the-configuration-on-a-controller-module]]
 == Limpe a configuração de um módulo do controlador
 
 Antes de usar um novo módulo de controlador na configuração do MetroCluster, você deve limpar a configuração existente.

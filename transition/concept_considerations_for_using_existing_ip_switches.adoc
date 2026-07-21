@@ -15,6 +15,7 @@ Você deve garantir que os switches IP são suportados. Se o modelo de switch ex
 
 
 
+[[supported-switches]]
 == Interrutores suportados
 
 Você deve usar switches fornecidos pelo NetApp.

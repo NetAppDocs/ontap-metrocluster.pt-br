@@ -15,6 +15,7 @@ Saiba o que há de novo na plataforma MetroCluster IP e no suporte ao switch.
 
 
 
+[[platform-support]]
 == Suporte de plataforma
 
 [cols="2*"]
@@ -129,6 +130,7 @@ ONTAP 9,5
 |===
 
 
+[[switch-support]]
 == Suporte do interrutor
 
 [cols="2*"]

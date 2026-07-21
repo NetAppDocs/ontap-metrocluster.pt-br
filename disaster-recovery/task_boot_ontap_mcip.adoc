@@ -195,6 +195,7 @@ cluster_B::*>
 
 
 
+[[reset-the-boot-recoveryreset-the-bootrecovery-and-rdbcorrupt-bootargs]]
 === [[Reset-the-boot-recovery]]Reponha os bootargs boot_recovery e rdb_corrupt
 
 [role="lead"]

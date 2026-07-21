@@ -15,6 +15,7 @@ Você pode usar a operação switchover do MetroCluster para fornecer serviços 
 
 
 
+[[supported-platform-combinations]]
 == Combinações de plataformas suportadas
 
 Você pode atualizar certas plataformas usando a operação de comutação e switchback em uma configuração MetroCluster FC.
@@ -25,6 +26,7 @@ Para obter informações sobre quais combinações de atualização de plataform
 
 
 
+[[about-this-task]]
 == Sobre esta tarefa
 
 * Você pode usar este procedimento apenas para atualização do controlador.
@@ -99,6 +101,7 @@ Os seguintes nomes de exemplo são usados neste procedimento:
 
 
 
+[[enable-console-logging]]
 == Ativar o registo da consola
 
 O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
@@ -113,12 +116,14 @@ Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Su
 
 
 
+[[prepare-for-the-upgrade]]
 == Prepare-se para a atualização
 
 Antes de fazer quaisquer alterações na configuração do MetroCluster existente, você deve verificar a integridade da configuração, preparar as novas plataformas e executar outras tarefas diversas.
 
 
 
+[[verify-the-health-of-the-metrocluster-configuration]]
 === Verifique a integridade da configuração do MetroCluster
 
 Verifique a integridade e a conectividade da configuração do MetroCluster antes de executar a atualização.
@@ -211,6 +216,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+[[map-ports-from-the-old-nodes-to-the-new-nodes]]
 === Mapear portas dos nós antigos para os novos nós
 
 É necessário Planejar o mapeamento das LIFs em portas físicas nos nós antigos para as portas físicas nos novos nós.
@@ -404,6 +410,7 @@ Porta entre clusters
 
 
 
+[[gather-information-before-the-upgrade]]
 === Reúna informações antes da atualização
 
 Antes de atualizar, você deve reunir informações para cada um dos nós antigos e, se necessário, ajustar os domínios de broadcast de rede, remover quaisquer VLANs e grupos de interfaces e reunir informações de criptografia.
@@ -583,6 +590,7 @@ cluster_B::*
 
 
 
+[[remove-the-existing-configuration-from-the-tiebreaker-or-other-monitoring-software]]
 === Remova a configuração existente do tiebreaker ou de outro software de monitoramento
 
 Se a configuração existente for monitorada com a configuração tiebreaker do MetroCluster ou outros aplicativos de terceiros (por exemplo, ClusterLion) que possam iniciar um switchover, você deverá remover a configuração do MetroCluster do tiebreaker ou de outro software antes da transição.
@@ -600,6 +608,7 @@ Consulte a documentação da aplicação.
 
 
 
+[[send-a-custom-autosupport-message-prior-to-maintenance]]
 === Envie uma mensagem AutoSupport personalizada antes da manutenção
 
 Antes de executar a manutenção, você deve emitir uma mensagem AutoSupport para notificar o suporte técnico da NetApp de que a manutenção está em andamento. Informar o suporte técnico de que a manutenção está em andamento impede que ele abra um caso partindo do pressuposto de que ocorreu uma interrupção.
@@ -627,6 +636,7 @@ Esta tarefa deve ser executada em cada site do MetroCluster.
 
 
 
+[[switch-over-the-metrocluster-configuration]]
 == Alterne a configuração do MetroCluster
 
 Você deve alternar a configuração para site_A para que as plataformas no site_B possam ser atualizadas.
@@ -717,6 +727,7 @@ cluster_A::> metrocluster operation show
 
 
 
+[[prepare-the-network-configuration-of-the-old-controllers]]
 == Prepare a configuração de rede dos controladores antigos
 
 Para garantir que a rede seja retomada de forma limpa nos novos controladores, você deve mover LIFs para uma porta comum e remover a configuração de rede dos controladores antigos.
@@ -818,6 +829,7 @@ Esta etapa deve ser executada em ambos os nós.
 
 
 
+[[remove-the-old-platforms]]
 == Remova as plataformas antigas
 
 Os controladores antigos devem ser removidos da configuração.
@@ -834,12 +846,14 @@ Esta tarefa é executada no site_B.
 
 
 
+[[configure-the-new-controllers]]
 == Configure os novos controladores
 
 Você deve montar e instalar os controladores, executar a configuração necessária no modo de manutenção e, em seguida, inicializar os controladores e verificar a configuração de LIF nos controladores.
 
 
 
+[[set-up-the-new-controllers]]
 === Configure os novos controladores
 
 É necessário colocar em rack e cabo as novas controladoras.
@@ -870,6 +884,7 @@ https://docs.netapp.com/platstor/index.jsp["Documentação dos sistemas de hardw
 
 
 
+[[netboot-the-new-controllers]]
 === Netboot os novos controladores
 
 Depois de instalar os novos nós, você precisa netboot para garantir que os novos nós estejam executando a mesma versão do ONTAP que os nós originais. O termo netboot significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você deve colocar uma cópia da imagem de inicialização do ONTAP 9 em um servidor da Web que o sistema possa acessar.
@@ -942,6 +957,7 @@ NOTE: Você precisa reiniciar o nó para usar o software recém-instalado.
 
 
 
+[[clear-the-configuration-on-a-controller-module]]
 === Limpe a configuração de um módulo do controlador
 
 Antes de usar um novo módulo de controlador na configuração do MetroCluster, você deve limpar a configuração existente.
@@ -981,6 +997,7 @@ Responda `yes` ao prompt de confirmação.
 
 
 
+[[restore-the-hba-configuration]]
 === Restaure a configuração do HBA
 
 Dependendo da presença e configuração das placas HBA no módulo controlador, você precisa configurá-las corretamente para uso do seu site.
@@ -1063,6 +1080,7 @@ FC
 
 
 
+[[set-the-ha-state-on-the-new-controllers-and-chassis]]
 === Defina o estado de HA nos novos controladores e chassi
 
 É necessário verificar o estado de HA dos controladores e do chassi e, se necessário, atualizar o estado para corresponder à configuração do sistema.
@@ -1124,6 +1142,7 @@ mcc
 
 
 
+[[reassign-root-aggregate-disks]]
 === Reatribuir discos agregados de raiz
 
 Reatribua os discos agregados de raiz ao novo módulo de controladora, usando os sysids reunidos anteriormente
@@ -1239,6 +1258,7 @@ aggr0_node_b_1-root    online      raid_dp, aggr    root, nosnap=on,
 
 
 
+[[boot-up-the-new-controllers]]
 === Inicialize os novos controladores
 
 Você deve reiniciar os controladores a partir do menu de inicialização para atualizar a imagem flash do controlador. Etapas adicionais são necessárias se a criptografia estiver configurada.
@@ -1501,6 +1521,7 @@ Para obter mais informações, https://docs.netapp.com/ontap-9/topic/com.netapp.
 
 
 
+[[verify-lif-configuration]]
 === Verifique a configuração do LIF
 
 Verifique se os LIFs estão hospedados em nós/portas apropriados antes do switchback. As etapas a seguir precisam ser executadas
@@ -1537,6 +1558,7 @@ Execute esta etapa em todas as SVMs, conforme necessário.
 
 
 
+[[install-the-new-licenses]]
 === Instale as novas licenças
 
 Antes da operação de switchback, você deve instalar licenças para os novos controladores.
@@ -1547,6 +1569,7 @@ Antes da operação de switchback, você deve instalar licenças para os novos c
 
 
 
+[[switch-back-the-metrocluster-configuration]]
 == Volte a ativar a configuração do MetroCluster
 
 Depois que os novos controladores tiverem sido configurados, a configuração do MetroCluster será reativada para retornar a configuração à operação normal.
@@ -1610,6 +1633,7 @@ Se um switchback levar muito tempo para terminar, você pode verificar o status 
 
 
 
+[[check-the-health-of-the-metrocluster-configuration]]
 == Verifique a integridade da configuração do MetroCluster
 
 Depois de atualizar os módulos do controlador, você deve verificar a integridade da configuração do MetroCluster.
@@ -1652,6 +1676,7 @@ Este comportamento é esperado devido a uma incompatibilidade de controlador dur
 
 
 
+[[upgrade-the-nodes-on-clustera]]
 == Atualize os nós no cluster_A
 
 Você deve repetir as tarefas de atualização no cluster_A.
@@ -1665,6 +1690,7 @@ Quando você repete o procedimento, todas as referências de exemplo aos cluster
 
 
 
+[[send-a-custom-autosupport-message-after-maintenance]]
 == Envie uma mensagem AutoSupport personalizada após a manutenção
 
 Depois de concluir a atualização, você deve enviar uma mensagem AutoSupport indicando o fim da manutenção, para que a criação automática de casos possa ser retomada.
@@ -1683,6 +1709,7 @@ Depois de concluir a atualização, você deve enviar uma mensagem AutoSupport i
 
 
 
+[[restore-tiebreaker-monitoring]]
 == Restaure o monitoramento do tiebreaker
 
 Se a configuração do MetroCluster tiver sido configurada anteriormente para monitoramento pelo software tiebreaker, você poderá restaurar a conexão tiebreaker.

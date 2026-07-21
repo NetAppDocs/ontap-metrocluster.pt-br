@@ -95,6 +95,7 @@ Prossiga para link:../disaster-recovery/task_complete_recovery.html["Conclua o p
 
 
 
+[[reset-the-boot-recoveryreset-the-bootrecovery-and-rdbcorrupt-bootargs]]
 === [[Reset-the-boot-recovery]]Reponha os bootargs boot_recovery e rdb_corrupt
 
 [role="lead"]

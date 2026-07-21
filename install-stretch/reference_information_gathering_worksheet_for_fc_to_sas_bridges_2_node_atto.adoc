@@ -15,6 +15,7 @@ Antes de começar a configurar os sites do MetroCluster, você deve coletar as i
 
 
 
+[[site-a-fc-to-sas-bridge-1-fcbridgea1a]]
 == Local A, ponte FC-para-SAS 1 (FC_bridge_A_1a)
 
 Cada stack SAS requer pelo menos duas pontes FC para SAS.
@@ -46,6 +47,7 @@ Senha Bridge_A_1a
 |===
 
 
+[[site-a-fc-to-sas-bridge-2-fcbridgea1b]]
 == Local A, ponte FC-para-SAS 2 (FC_bridge_A_1b)
 
 Cada stack SAS requer pelo menos duas pontes FC para SAS.
@@ -77,6 +79,7 @@ Senha Bridge_A_1b
 |===
 
 
+[[site-b-fc-to-sas-bridge-1-fcbridgeb1a]]
 == Local B, ponte FC-para-SAS 1 (FC_bridge_B_1a)
 
 Cada stack SAS requer pelo menos duas pontes FC para SAS.
@@ -108,6 +111,7 @@ Bridge_B_1a Palavra-passe
 |===
 
 
+[[site-b-fc-to-sas-bridge-2-fcbridgeb1b]]
 == Local B, ponte FC-para-SAS 2 (FC_bridge_B_1b)
 
 Cada stack SAS requer pelo menos duas pontes FC para SAS.

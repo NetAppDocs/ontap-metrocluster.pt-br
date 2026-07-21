@@ -15,6 +15,7 @@ Execute as tarefas necessárias para concluir a recuperação de uma falha de v�
 
 
 
+[[reestablishing-object-stores-for-fabricpool-configurations]]
 == Restabelecimento de armazenamentos de objetos para configurações do FabricPool
 
 Se um dos armazenamentos de objetos em um espelho do FabricPool foi co-localizado com o local de desastre do MetroCluster e foi destruído, você deve restabelecer o armazenamento de objetos e o espelho do FabricPool.
@@ -30,6 +31,7 @@ Se um dos armazenamentos de objetos em um espelho do FabricPool foi co-localizad
 
 
 
+[[verifying-licenses-on-the-replaced-nodes]]
 == Verificando licenças nos nós substituídos
 
 Você deve instalar novas licenças para os nós de substituição se os nós deficientes estiverem usando recursos do ONTAP que exigem uma licença padrão (node-locked). Para recursos com licenças padrão, cada nó no cluster deve ter sua própria chave para o recurso.
@@ -116,6 +118,7 @@ NOTE: As novas chaves de licença que você precisa são geradas automaticamente
 
 
 
+[[restoring-key-management]]
 == Restaurar o gerenciamento de chaves
 
 Se os volumes de dados estiverem criptografados, você precisará restaurar o gerenciamento de chaves. Se o volume raiz estiver criptografado, você deverá recuperar o gerenciamento de chaves.
@@ -152,6 +155,7 @@ Para obter mais informações, https://docs.netapp.com/ontap-9/topic/com.netapp.
 
 
 
+[[performing-a-switchback]]
 == Executando um switchback
 
 Depois de curar a configuração do MetroCluster, você pode executar a operação MetroCluster switchback. A operação de switchback do MetroCluster retorna a configuração ao seu estado operacional normal, com as máquinas virtuais de armazenamento de origem sincronizada (SVMs) no local de desastre ativas e fornecendo dados dos pools de discos locais.
@@ -249,6 +253,7 @@ No ONTAP 8,3, você precisa restabelecer manualmente uma configuração de SnapM
 
 
 
+[[verifying-a-successful-switchback]]
 == Verificando um switchback bem-sucedido
 
 Depois de executar o switchback, você deseja confirmar que todos os agregados e máquinas virtuais de storage (SVMs) são trocados de volta e on-line.
@@ -344,6 +349,7 @@ Você deve repetir as seções anteriores para executar o switchback na direçã
 
 
 
+[[mirroring-the-root-aggregates-of-the-replacement-nodes]]
 == Espelhando os agregados de raiz dos nós de substituição
 
 Se os discos tiverem sido substituídos, você precisará espelhar os agregados raiz dos novos nós no local de desastre.
@@ -448,6 +454,7 @@ Qualquer agregado de raiz que não tenha o status espelhado deve ser espelhado.
 
 
 
+[[reconfiguring-ontap-mediator-metrocluster-ip-configurations]]
 == Reconfigurando o ONTAP Mediator (configurações de IP do MetroCluster)
 
 Se você tiver uma configuração de IP do MetroCluster que foi configurada com o ONTAP Mediator, será necessário remover e reconfigurar a associação com o ONTAP Mediator.
@@ -470,6 +477,7 @@ Se você tiver uma configuração de IP do MetroCluster que foi configurada com 
 
 
 
+[[verifying-the-health-of-the-metrocluster-configuration]]
 == Verificando a integridade da configuração do MetroCluster
 
 Você deve verificar a integridade da configuração do MetroCluster para verificar o funcionamento correto.

@@ -25,6 +25,7 @@ Referências a "nós antigos" significam os nós que você pretende substituir.
 
 
 
+[[enable-console-logging]]
 == Ativar o registo da consola
 
 O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
@@ -39,6 +40,7 @@ Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Su
 
 
 
+[[perform-the-refresh-procedure]]
 == Execute o procedimento de atualização
 
 Siga as etapas a seguir para atualizar a configuração do MetroCluster FC.

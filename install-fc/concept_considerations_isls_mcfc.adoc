@@ -15,6 +15,7 @@ Você precisa determinar quantos ISLs você precisa para cada malha de switch FC
 
 
 
+[[isl-sharing-considerations-ontap-9-2]]
 == Considerações sobre compartilhamento de ISL (ONTAP 9.2)
 
 A partir do ONTAP 9.2, você pode usar o compartilhamento ISL nos seguintes casos:
@@ -47,6 +48,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[platform-specific-isl-considerations]]
 == Considerações ISL específicas da plataforma
 
 O número de ISLs recomendados é específico do modelo de plataforma. A tabela a seguir mostra os requisitos ISL para cada modelo de tecido por plataforma. Assume que cada ISL tem uma capacidade de 16 Gbps.

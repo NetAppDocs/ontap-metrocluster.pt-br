@@ -15,6 +15,7 @@ Antes de instalar e configurar o software tiebreaker, você deve verificar se o 
 
 
 
+[[software-requirements]]
 == Requisitos de software
 
 Você precisa atender aos seguintes requisitos de software, dependendo da versão do tiebreaker que você está instalando.
@@ -101,6 +102,7 @@ Com o Red Hat Enterprise Linux 8,1 a 8,7:
 |===
 
 
+[[additional-requirements]]
 == Requisitos adicionais
 
 Você deve estar ciente dos seguintes requisitos adicionais:

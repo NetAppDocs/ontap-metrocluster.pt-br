@@ -10,6 +10,7 @@ summary: Você pode executar o switchover e as operações de switchback do Metr
 
 
 
+[[perform-switchover-healing-and-switchback]]
 == Execute switchover, cura e switchback
 
 [role="lead"]

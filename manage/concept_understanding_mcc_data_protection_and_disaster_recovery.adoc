@@ -17,6 +17,7 @@ O MetroCluster usa o espelhamento para proteger os dados em um cluster. Ele forn
 
 
 
+[[how-eight-and-four-node-metrocluster-configurations-provide-local-failover-and-switchover]]
 == Como as configurações do MetroCluster de oito e quatro nós fornecem failover e switchover locais
 
 As configurações de MetroCluster de oito e quatro nós protegem os dados em nível local e no nível do cluster. Se você estiver configurando uma configuração do MetroCluster, precisará saber como as configurações do MetroCluster protegem seus dados.
@@ -25,6 +26,7 @@ As configurações do MetroCluster protegem os dados usando dois clusters espelh
 
 
 
+[[how-local-ha-data-protection-works-in-a-metrocluster-configuration]]
 === Como a proteção de dados de HA local funciona em uma configuração do MetroCluster
 
 Você precisa entender como os pares de HA funcionam na configuração do MetroCluster.
@@ -40,12 +42,14 @@ link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Configura
 
 
 
+[[how-metrocluster-configurations-provide-data-and-configuration-replication]]
 == Como as configurações do MetroCluster fornecem replicação de dados e configuração
 
 As configurações do MetroCluster usam vários recursos do ONTAP para fornecer replicação síncrona de dados e configuração entre os dois locais do MetroCluster.
 
 
 
+[[configuration-protection-with-the-configuration-replication-service]]
 === Proteção de configuração com o serviço de replicação de configuração
 
 O CRS (serviço de replicação de configuração) do ONTAP protege a configuração do MetroCluster replicando automaticamente as informações para o parceiro DR.
@@ -56,6 +60,7 @@ As informações replicadas incluem a configuração de cluster e a configuraç�
 
 
 
+[[replication-of-svms-during-metrocluster-operations]]
 === Replicação de SVMs durante as operações do MetroCluster
 
 O CRS (serviço de replicação de configuração) do ONTAP fornece configuração redundante de servidor de dados e espelhamento de volumes de dados pertencentes ao SVM. Se ocorrer um switchover, a SVM de origem será reduzida e o SVM de destino, localizado no cluster sobrevivente, ficará ativo.
@@ -111,6 +116,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["Admin
 
 
 
+[[how-metrocluster-configurations-use-syncmirror-to-provide-data-redundancy]]
 === Como as configurações do MetroCluster usam o SyncMirror para fornecer redundância de dados
 
 Agregados espelhados que usam a funcionalidade SyncMirror fornecem redundância de dados e contêm os volumes de propriedade da máquina virtual de storage de origem e destino (SVM). Os dados são replicados em pools de discos no cluster de parceiros. Agregados não espelhados também são suportados.
@@ -167,6 +173,7 @@ image::../media/mcc_mirroring_of_pools.gif[Espelhamento de pools de armazenament
 
 
 
+[[how-nvram-or-nvmem-cache-mirroring-and-dynamic-mirroring-work-in-metrocluster-configurations]]
 === Como o espelhamento de cache NVRAM ou NVMEM e o espelhamento dinâmico funcionam nas configurações do MetroCluster
 
 A memória não volátil (NVRAM ou NVMEM, dependendo do modelo da plataforma) nos controladores de storage é espelhada localmente para um parceiro de HA local e remotamente para um parceiro de recuperação de desastres (DR) remoto no local do parceiro. No caso de um failover local ou switchover, essa configuração permite que os dados no cache não volátil sejam preservados.
@@ -226,6 +233,7 @@ image::../media/mcc_nvram_mirroring_example_dynamic_dr_aux.gif[Espelhamento NVRA
 
 
 
+[[types-of-disasters-and-recovery-methods]]
 == Tipos de desastres e métodos de recuperação
 
 Você precisa estar familiarizado com diferentes tipos de falhas e desastres para usar a configuração do MetroCluster para responder adequadamente.
@@ -287,6 +295,7 @@ NOTE: O AUSO (switchover não planejado automático) não é suportado em config
 |===
 
 
+[[how-an-eight-node-or-four-node-metrocluster-configuration-provides-nondisruptive-operations]]
 == Como uma configuração de MetroCluster de oito ou quatro nós fornece operações ininterruptas
 
 No caso de um problema limitado a um único nó, um failover e giveback no par de HA local fornecem operações ininterruptas contínuas. Nesse caso, a configuração do MetroCluster não requer um switchover para o local remoto.
@@ -301,6 +310,7 @@ Se uma segunda falha ocorrer após um failover local, o evento de switchover do 
 
 
 
+[[switchover-and-switchback-during-metrocluster-transition]]
 === Comutação e switchback durante a transição do MetroCluster
 
 A transição de FC para IP do MetroCluster envolve a adição de nós IP e switches IP do MetroCluster a uma configuração de FC do MetroCluster existente e a desativação dos nós FC do MetroCluster. Dependendo da etapa do processo de transição, as operações de comutação, recuperação e switchback do MetroCluster usam fluxos de trabalho diferentes.
@@ -309,6 +319,7 @@ A transição de FC para IP do MetroCluster envolve a adição de nós IP e swit
 
 
 
+[[consequences-of-local-failover-after-switchover]]
 === Consequências do failover local após o switchover
 
 Se ocorrer um switchover do MetroCluster e surgir um problema no local que sobreviveu, um failover local pode fornecer operações contínuas e sem interrupções. No entanto, o sistema está em risco porque não está mais em uma configuração redundante.
@@ -317,6 +328,7 @@ Se um failover local ocorrer após a ocorrência de um switchover, uma única co
 
 
 
+[[how-a-two-node-metrocluster-configuration-provides-nondisruptive-operations]]
 == Como uma configuração de MetroCluster de dois nós fornece operações ininterruptas
 
 Se um dos dois locais apresentar algum problema devido a pânico, o switchover do MetroCluster fornece uma operação contínua sem interrupções. Se a perda de energia afetar o nó e o storage, o switchover não será automático e haverá interrupção até que o `metrocluster switchover` comando seja emitido.
@@ -330,6 +342,7 @@ link:concept_understanding_mcc_data_protection_and_disaster_recovery.html["Switc
 
 
 
+[[overview-of-the-switchover-process]]
 == Visão geral do processo de transição
 
 A operação de switchover do MetroCluster permite a retomada imediata dos serviços após um desastre, movendo o storage e o acesso do cliente do cluster de origem para o local remoto. Você precisa estar ciente das mudanças a esperar e quais ações você precisa executar se um switchover ocorrer.
@@ -360,6 +373,7 @@ NOTE: Este procedimento só deve ser usado se o outro site for estável e não s
 
 
 
+[[availability-of-commands-during-switchover]]
 === Disponibilidade de comandos durante o switchover
 
 A tabela a seguir mostra a disponibilidade de comandos durante o switchover:
@@ -480,6 +494,7 @@ Você pode quebrar uma relação do SnapMirror entre um ponto de extremidade de 
 |===
 
 
+[[differences-in-switchover-between-metrocluster-fc-and-ip-configurations]]
 === Diferenças no switchover entre as configurações MetroCluster FC e IP
 
 Nas configurações IP do MetroCluster, como os discos remotos são acessados por meio dos nós de parceiros de DR remotos que atuam como destinos iSCSI, os discos remotos não são acessíveis quando os nós remotos são derrubados em uma operação de switchover. Isso resulta em diferenças com as configurações do MetroCluster FC:
@@ -493,6 +508,7 @@ NOTE: Quando agregados sem espelhamento são suportados em uma configuração Me
 
 
 
+[[disk-ownership-changes-during-ha-takeover-and-metrocluster-switchover-in-a-four-node-metrocluster-configuration]]
 === Alterações na propriedade do disco durante o takeover de HA e o switchover do MetroCluster em uma configuração de MetroCluster de quatro nós
 
 A propriedade dos discos muda temporariamente automaticamente durante as operações de alta disponibilidade e MetroCluster. É útil saber como o sistema rastreia qual nó possui quais discos.
@@ -628,6 +644,7 @@ não aplicável
 |===
 
 
+[[considerations-when-using-unmirrored-aggregates]]
 === Considerações ao usar agregados sem espelhamento
 
 Se a sua configuração incluir agregados sem espelhamento, você precisa estar ciente de possíveis problemas de acesso após as operações de switchover.
@@ -666,6 +683,7 @@ Um LUN não deve estar localizado em um agregado sem espelhamento. Configurar um
 
 
 
+[[automatic-unplanned-switchover-in-metrocluster-fc-configurations]]
 === Switchover automático não planejado em configurações de MetroCluster FC
 
 Em configurações de FC do MetroCluster, certos cenários podem acionar um switchover não planejado automático (AUSO) no caso de uma falha do controlador em todo o local para fornecer operações ininterruptas. O AUSO pode ser desativado se desejado.
@@ -734,18 +752,21 @@ link:task_perform_switchover_for_tests_or_maintenance.html["Realização de comu
 
 
 
+[[mediator-assisted-automatic-unplanned-switchover-in-metrocluster-ip-configurations]]
 === Switchover não planejado e automático assistido por mediador em configurações de IP do MetroCluster
 
 link:../install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["Saiba mais sobre como o Mediador ONTAP suporta o switchover não planejado automático em configurações IP do MetroCluster"].
 
 
 
+[[what-happens-during-healing-metrocluster-fc-configurations]]
 == O que acontece durante a recuperação (configurações de MetroCluster FC)
 
 Durante a recuperação em configurações de MetroCluster FC, a ressincronização de agregados espelhados ocorre em um processo faseado que prepara os nós no local de desastre reparado para switchback. É um evento planejado, proporcionando controle total de cada etapa para minimizar o tempo de inatividade. A recuperação é um processo de duas etapas que ocorre nos componentes do storage e do controlador.
 
 
 
+[[data-aggregate-healing]]
 === Recuperação de agregado de dados
 
 Depois que o problema no local de desastre for resolvido, você inicia a fase de recuperação de storage:
@@ -764,6 +785,7 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["Rec
 
 
 
+[[root-aggregate-healing]]
 === Recuperação de agregado de raiz
 
 Depois que os agregados são sincronizados, você inicia a fase de recuperação da controladora devolvendo os agregados CFO e os agregados raiz aos respetivos parceiros de DR.
@@ -772,12 +794,14 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["Rec
 
 
 
+[[what-happens-during-healing-metrocluster-ip-configurations]]
 == O que acontece durante a recuperação (configurações MetroCluster IP)
 
 Durante a recuperação em configurações MetroCluster IP, a ressincronização de agregados espelhados ocorre em um processo faseado que prepara os nós no local de desastre reparado para switchback. É um evento planejado, proporcionando controle total de cada etapa para minimizar o tempo de inatividade. A recuperação é um processo de duas etapas que ocorre nos componentes do storage e do controlador.
 
 
 
+[[differences-with-metrocluster-fc-configurations]]
 === Diferenças nas configurações do MetroCluster FC
 
 Nas configurações IP do MetroCluster, você deve inicializar os nós no cluster do local de desastre antes que a operação de recuperação seja executada.
@@ -788,6 +812,7 @@ Se os nós do local de desastre não estiverem em execução, a operação de re
 
 
 
+[[data-aggregate-healing]]
 === Recuperação de agregado de dados
 
 Depois que o problema no local de desastre for resolvido, você inicia a fase de recuperação de storage:
@@ -806,6 +831,7 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["Rec
 
 
 
+[[root-aggregate-healing]]
 === Recuperação de agregado de raiz
 
 Depois que os agregados são sincronizados, você executa a fase de recuperação de agregados de raiz. Nas configurações IP do MetroCluster, essa fase confirma que os agregados foram curados.
@@ -814,12 +840,14 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["Rec
 
 
 
+[[automatic-healing-of-aggregates-on-metrocluster-ip-configurations-after-switchover]]
 == Recuperação automática de agregados em configurações MetroCluster IP após o switchover
 
 A partir do ONTAP 9.5, a recuperação é automatizada durante operações de switchover negociado em configurações de IP do MetroCluster. A partir do ONTAP 9.6, a recuperação automatizada após o switchover não programado é suportada. Isso remove o requisito de emitir os `metrocluster heal` comandos.
 
 
 
+[[automatic-healing-after-negotiated-switchover-beginning-with-ontap-9-5]]
 === Recuperação automática após comutação negociada (começando com ONTAP 9.5)
 
 Depois de executar um switchover negociado (um comando de switchover emitido sem a opção -forced-on-disaster true), a funcionalidade de recuperação automática simplifica as etapas necessárias para retornar o sistema à operação normal. Em sistemas com recuperação automática, o seguinte ocorre após o switchover:
@@ -843,6 +871,7 @@ image::../media/mcc_so_sb_with_autoheal.gif[Comutação e retorno do MetroCluste
 
 
 
+[[automatic-healing-after-unscheduled-switchover-beginning-with-ontap-9-6]]
 === Recuperação automática após comutação não programada (começando com ONTAP 9.6)
 
 A recuperação automática após um switchover não programado é suportada em configurações IP do MetroCluster a partir de ONTAP 9.6. Um switchover não programado é aquele em que em você emite o `switchover` comando com a `-forced-on-disaster true` opção.
@@ -869,12 +898,14 @@ image::../media/mcc_uso_with_autoheal.gif[Troca não programada do MetroCluster 
 
 
 
+[[if-automatic-healing-fails]]
 === Se a recuperação automática falhar
 
 Se a operação de recuperação automática falhar por qualquer motivo, você deve emitir os `metrocluster heal` comandos manualmente, como feito nas versões do ONTAP anteriores ao ONTAP 9.6. Você pode usar os `metrocluster operation show` comandos e `metrocluster operation history show -instance` para monitorar o status da recuperação e determinar a causa de uma falha.
 
 
 
+[[creating-svms-for-a-metrocluster-configuration]]
 == Criação de SVMs para uma configuração do MetroCluster
 
 Você pode criar SVMs para uma configuração do MetroCluster para fornecer recuperação de desastres síncrona e alta disponibilidade de dados nos clusters configurados para uma configuração do MetroCluster.
@@ -959,6 +990,7 @@ Os SVMs para a configuração MetroCluster são criados com um volume raiz de 1 
 
 
 
+[[what-happens-during-a-switchback]]
 == O que acontece durante um switchback
 
 Após a recuperação do local de desastre e a recuperação dos agregados, o processo de switchback do MetroCluster retorna o storage e o acesso do cliente do local de recuperação de desastres para o cluster doméstico.

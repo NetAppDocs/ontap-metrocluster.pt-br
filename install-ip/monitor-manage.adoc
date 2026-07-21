@@ -13,6 +13,7 @@ Na maioria dos casos, os switches Ethernet são automaticamente descobertos pelo
 
 
 
+[[create-a-switch-entry-so-that-ontap-can-monitor-it]]
 == Crie uma entrada de switch para que o ONTAP possa monitorá-la
 
 .Sobre esta tarefa
@@ -26,6 +27,7 @@ Um exemplo típico é adicionar um switch chamado [deviceName], com endereço IP
 
 
 
+[[disable-monitoring-without-deleting-the-switch]]
 == Desative a monitorização sem eliminar o interrutor
 
 Se você quiser pausar ou parar o monitoramento de um determinado switch, mas ainda mantê-lo para monitoramento futuro, modifique seu `is-monitoring-enabled-admim` parâmetro em vez de excluí-lo.
@@ -40,6 +42,7 @@ Isso permite que você preserve os detalhes e a configuração do switch sem ger
 
 
 
+[[remove-a-switch-you-no-longer-need]]
 == Remova um switch que você não precisa mais
 
 Utilize `system switch ethernet delete` para eliminar um interrutor que tenha sido desligado ou que já não seja necessário:

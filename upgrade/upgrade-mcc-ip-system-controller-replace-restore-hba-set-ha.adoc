@@ -15,6 +15,7 @@ Configure as placas HBA no módulo do controlador e verifique e defina o estado 
 
 
 
+[[restore-the-hba-configuration]]
 == Restaure a configuração do HBA
 
 Dependendo da presença e configuração das placas HBA no módulo controlador, você precisa configurá-las corretamente para o seu site.
@@ -96,6 +97,7 @@ FC
 
 
 
+[[set-the-ha-state-on-the-new-controllers-and-chassis]]
 == Defina o estado de HA nos novos controladores e chassi
 
 É necessário verificar o estado de HA dos controladores e do chassi e, se necessário, atualizar o estado para corresponder à configuração do sistema.
@@ -164,6 +166,7 @@ O nó deve parar no `LOADER>` prompt.
 
 
 
+[[remove-internal-drives-from-the-chassis-on-the-new-controller]]
 == Remova as unidades internas do chassi no novo controlador
 
 Ao atualizar de um sistema que possui apenas unidades externas para um sistema que possui unidades externas e internas (discos e controladores no mesmo chassi), você precisa remover ou desencaixar todas as unidades internas do novo sistema até concluir a atualização.

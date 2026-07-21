@@ -16,6 +16,7 @@ O ONTAP Mediator fornece LUNs de caixa de correio para armazenar informações d
 
 NOTE: O MAUSO não é compatível com configurações MetroCluster FC.
 
+[[default_scenarios]]
 Quando um nó deteta uma falha do local que exige um switchover, ele toma medidas para confirmar que o switchover é apropriado e, em caso afirmativo, realiza o switchover. Por padrão, um MAUSO é iniciado para os seguintes cenários:
 
 * O espelhamento do SyncMirror e o espelhamento de DR do cache não volátil de cada nó estão operando e os caches e espelhos são sincronizados no momento da falha.

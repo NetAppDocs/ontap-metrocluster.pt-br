@@ -18,6 +18,7 @@ NOTE: Se sua combinação de atualização for afetada, será necessário defini
 
 
 
+[[step-1-determine-whether-you-need-to-set-a-bootarg-on-the-old-controllers]]
 == Etapa 1: determine se você precisa definir um bootarg nos controladores antigos
 
 Antes de iniciar a atualização, determine se você precisa definir um bootarg nos controladores antigos usando as seguintes informações:
@@ -45,12 +46,14 @@ CAUTION: Se a sua atualização não exigir que você defina nenhum bootarg, voc
 
 
 
+[[step-2-determine-the-bootarg-you-need-to-set-on-the-old-controllers]]
 == Etapa 2: determine o bootarg que você precisa definir nos controladores antigos
 
 As atualizações mais afetadas exigem que você defina o `hw.cxgbe.toe_keepalive_disable` bootarg nos controladores antigos.  No entanto, certos caminhos de atualização exigem que você defina o `bootarg.siw.interop_enabled` bootarg em vez disso.
 
 Use a tabela a seguir para determinar qual bootarg você precisa definir para sua combinação de atualização específica.
 
+[[upgrade_paths_bootarg_manual]]
 [cols="2*"]
 |===
 | Para esta atualização... | Jogos de Bicicleta de monta... 
@@ -76,6 +79,7 @@ Todas as outras atualizações para os sistemas AFF A70, AFF A90, AFF A1K, FAS70
 |===
 
 
+[[step-3-set-the-required-bootarg-on-the-old-controllers]]
 == Etapa 3: defina o bootarg necessário nos controladores antigos
 
 Depois de determinar o bootarg necessário para sua combinação de atualização, siga os passos para definir o bootarg nos controladores antigos.

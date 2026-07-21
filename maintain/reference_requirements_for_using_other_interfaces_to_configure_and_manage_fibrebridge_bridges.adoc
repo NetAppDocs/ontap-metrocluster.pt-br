@@ -22,6 +22,7 @@ Você pode acessar este documento no site da ATTO usando o link fornecido na pá
 
 
 
+[[serial-port]]
 == Porta serial
 
 Ao usar a porta serial para configurar e gerenciar uma ponte e configurar a porta 1 de gerenciamento Ethernet, o sistema deve atender aos seguintes requisitos:
@@ -38,6 +39,7 @@ O programa de terminal deve ser capaz de Registrar a saída de tela para um arqu
 
 
 
+[[telnet]]
 == Telnet
 
 Ao usar o Telnet para configurar e gerenciar uma bridge, o sistema deve atender aos seguintes requisitos:
@@ -56,6 +58,7 @@ O programa de terminal deve ser capaz de Registrar a saída de tela para um arqu
 
 
 
+[[ftp]]
 == FTP
 
 Ao usar o FTP para atualizar o firmware da ponte, o sistema deve atender aos seguintes requisitos:

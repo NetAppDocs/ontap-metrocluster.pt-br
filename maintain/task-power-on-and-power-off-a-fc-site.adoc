@@ -21,6 +21,7 @@ image::power-on-off-data-center.gif[MetroCluster com cluster desligado para manu
 
 
 
+[[power-off-a-metrocluster-site]]
 == Desligue um site da MetroCluster
 
 Você deve desligar um local e todo o equipamento antes que a manutenção ou realocação do local possa começar.
@@ -342,6 +343,7 @@ O seguinte equipamento deve ser desligado pela ordem indicada:
 
 
 
+[[relocating-the-powered-off-site-of-the-metrocluster]]
 == Mudar o local desligado do MetroCluster
 
 Depois de o site ser desligado, você pode começar o trabalho de manutenção. O procedimento é o mesmo se os componentes do MetroCluster forem relocados no mesmo data center ou relocados para um data center diferente.
@@ -549,6 +551,7 @@ switch_A_1# copy running-config startup-config
 
 
 
+[[powering-on-the-metrocluster-configuration-and-returning-to-normal-operation]]
 == Ligar a configuração do MetroCluster e regressar ao funcionamento normal
 
 Após a manutenção ter sido concluída ou o site ter sido movido, você deve ligar o site e restabelecer a configuração do MetroCluster.

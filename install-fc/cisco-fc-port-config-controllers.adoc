@@ -24,6 +24,7 @@ As tabelas mostram o máximo de configurações suportadas, com oito módulos de
 ====
 
 
+[[metrocluster-1-or-dr-group-1]]
 == MetroCluster 1 ou grupo de RD 1
 
 A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 1 ou grupo DR 1 em switches Cisco (excluindo 9132T).
@@ -446,6 +447,7 @@ Porta d. HBA
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 == MetroCluster 2 ou grupo de RD 2
 
 A tabela a seguir mostra as configurações de controlador suportadas no MetroCluster 2 ou grupo DR 2 em switches Cisco (excluindo 9132T).

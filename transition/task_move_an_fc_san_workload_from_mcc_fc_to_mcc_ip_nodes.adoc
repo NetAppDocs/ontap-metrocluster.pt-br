@@ -15,6 +15,7 @@ Ao fazer a transição do MetroCluster FC para nós IP sem interrupções, você
 
 
 
+[[move-an-fc-san-workload-from-metrocluster-fc-to-metrocluster-ip-nodes]]
 == Mover um workload de FC SAN do MetroCluster FC para os nós IP do MetroCluster
 
 .Passos

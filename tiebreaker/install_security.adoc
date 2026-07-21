@@ -15,12 +15,14 @@ Para configurações que executam o MetroCluster tiebreaker 1,5 e posterior, voc
 
 
 
+[[secure-the-host]]
 == Proteja o host
 
 As diretrizes a seguir mostram como proteger o host onde o software tiebreaker está instalado.
 
 
 
+[[user-management-recommendations]]
 === Recomendações de gerenciamento de usuários
 
 * Limite o acesso do usuário "root".
@@ -52,6 +54,7 @@ NOTE: Os usuários que não são membros deste grupo não podem acessar o softwa
 
 
 
+[[baseline-host-security-recommendations]]
 === Recomendações de segurança de host de linha de base
 
 * Use criptografia de disco
@@ -101,6 +104,7 @@ NOTE: O OpenJDK 19 verifica na inicialização se o host está instalado no modo
 
 
 
+[[secure-the-database-installation]]
 == Proteja a instalação do banco de dados
 
 As diretrizes a seguir mostram como proteger e proteger a instalação do banco de dados MariaDB 10.x.

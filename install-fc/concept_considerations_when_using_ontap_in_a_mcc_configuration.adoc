@@ -24,12 +24,14 @@ Ao usar o ONTAP em uma configuração do MetroCluster, você deve estar ciente d
 
 
 
+[[flexcache-support-in-a-metrocluster-configuration]]
 == Suporte FlexCache em uma configuração MetroCluster
 
 A partir do ONTAP 9.7, os volumes FlexCache são compatíveis com configurações do MetroCluster. Você deve estar ciente dos requisitos para a repetibilidade manual após operações de comutação ou switchback.
 
 
 
+[[svm-repeering-after-switchover-when-flexcache-origin-and-cache-are-within-the-same-metrocluster-site]]
 === Repetibilidade da SVM após o switchover quando a origem e o cache do FlexCache estão no mesmo local do MetroCluster
 
 Após um switchover negociado ou não planejado, qualquer relacionamento de peering SVM FlexCache no cluster deve ser configurado manualmente.
@@ -40,6 +42,7 @@ Após o switchover, os SVMs "VS1-mc" e "VS2-mc" são ativados no local do parcei
 
 
 
+[[svm-repeering-after-switchover-or-switchback-when-a-flexcache-destination-is-on-a-third-cluster-and-in-disconnected-mode]]
 === Repetibilidade da SVM após switchover ou switchback quando um destino FlexCache está em um terceiro cluster e no modo desconetado
 
 Para relacionamentos do FlexCache com um cluster fora da configuração do MetroCluster, o peering deve ser sempre reconfigurado manualmente após um switchover, se os clusters envolvidos estiverem no modo desconetado durante o switchover.
@@ -59,6 +62,7 @@ link:https://docs.netapp.com/us-en/ontap/flexcache/index.html["Gerenciamento de 
 
 
 
+[[fabricpool-support-in-metrocluster-configurations]]
 == Suporte FabricPool em configurações MetroCluster
 
 A partir do ONTAP 9.7, as configurações do MetroCluster são compatíveis com camadas de storage FabricPool.
@@ -67,6 +71,7 @@ Para obter informações gerais sobre como usar o FabricPools, link:https://docs
 
 
 
+[[considerations-when-using-fabricpools]]
 === Considerações ao usar FabricPools
 
 * Os clusters precisam ter licenças FabricPool com limites de capacidade correspondentes.
@@ -83,6 +88,7 @@ link:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html["Saiba mais sobr
 
 
 
+[[configuring-an-aggregate-for-use-in-a-mirrored-fabricpool]]
 === Configurando um agregado para uso em um FabricPool espelhado
 
 
@@ -112,18 +118,21 @@ NOTE: É recomendável manter pelo menos 20% de espaço livre para agregados esp
 
 
 
+[[flexgroup-support-in-metrocluster-configurations]]
 == Suporte FlexGroup em configurações MetroCluster
 
 A partir do ONTAP 9.6, as configurações do MetroCluster são compatíveis com volumes FlexGroup.
 
 
 
+[[consistency-group-support-in-metrocluster-configurations]]
 == Suporte a grupos de consistência nas configurações do MetroCluster
 
 A partir do ONTAP 9.11,1, link:https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["grupos de consistência"^] são suportados nas configurações do MetroCluster.
 
 
 
+[[job-schedules-in-a-metrocluster-configuration]]
 == Programações de trabalhos em uma configuração MetroCluster
 
 No ONTAP 9.3 e posterior, as programações de tarefas criadas pelo usuário são replicadas automaticamente entre clusters em uma configuração do MetroCluster. Se você criar, modificar ou excluir um agendamento de trabalho em um cluster, o mesmo agendamento será criado automaticamente no cluster de parceiros, usando o CRS (Configuration Replication Service).
@@ -133,6 +142,7 @@ NOTE: As programações criadas pelo sistema não são replicadas e você deve e
 
 
 
+[[cluster-peering-from-the-metrocluster-site-to-a-third-cluster]]
 == Peering de cluster do site MetroCluster para um terceiro cluster
 
 Como a configuração de peering não é replicada, se você identificar um dos clusters na configuração do MetroCluster para um terceiro cluster fora dessa configuração, você também deverá configurar o peering no cluster do MetroCluster parceiro. Isso é para que o peering possa ser mantido se ocorrer um switchover.
@@ -141,12 +151,14 @@ O cluster que não é MetroCluster deve estar executando o ONTAP 8,3 ou posterio
 
 
 
+[[ldap-client-configuration-replication-in-a-metrocluster-configuration]]
 == Replicação de configuração de cliente LDAP em uma configuração MetroCluster
 
 Uma configuração de cliente LDAP criada em uma máquina virtual de storage (SVM) em um cluster local é replicada para os dados de parceiros SVM no cluster remoto. Por exemplo, se a configuração do cliente LDAP for criada no SVM admin no cluster local, ela será replicada para todos os SVMs de dados administrativos no cluster remoto. Esse recurso do MetroCluster é intencional para que a configuração do cliente LDAP esteja ativa em todos os SVMs de parceiros no cluster remoto.
 
 
 
+[[networking-and-lif-creation-guidelines-for-metrocluster-configurations]]
 == Diretrizes de criação de LIF e rede para configurações do MetroCluster
 
 Você deve estar ciente de como LIFs são criados e replicados em uma configuração do MetroCluster. Você também deve saber sobre o requisito de consistência para que você possa tomar as decisões adequadas ao configurar sua rede.
@@ -169,6 +181,8 @@ Você deve estar ciente de como LIFs são criados e replicados em uma configura�
 
 
 
+[[ipspace-object-replication-and-subnet-configuration-requirements]]
+[[ipspace_obj_rep]]
 === Requisitos de replicação de objeto IPspace e configuração de sub-rede
 
 Você deve estar ciente dos requisitos para replicar objetos IPspace no cluster de parceiros e para configurar sub-redes e IPv6 em uma configuração do MetroCluster.
@@ -236,6 +250,8 @@ Se o IPv6 estiver configurado em um site, o IPv6 também deve ser configurado no
 
 
 
+[[requirements-for-lif-creation-in-a-metrocluster-configuration]]
+[[reqs_lif_create]]
 === Requisitos para criação de LIF em uma configuração MetroCluster
 
 Você deve estar ciente dos requisitos para criar LIFs ao configurar sua rede em uma configuração do MetroCluster.
@@ -269,6 +285,8 @@ Você pode confirmar a criação bem-sucedida de um LIF em uma configuração do
 
 
 
+[[lif-replication-and-placement-requirements-and-issues]]
+[[lif_rep_place]]
 === Requisitos e problemas de replicação e posicionamento de LIF
 
 Você deve estar ciente dos requisitos de replicação do LIF em uma configuração do MetroCluster. Você também deve saber como um LIF replicado é colocado em um cluster de parceiros e estar ciente dos problemas que ocorrem quando a replicação LIF ou o posicionamento de LIF falha.
@@ -395,6 +413,7 @@ Você deve executar o `metrocluster check lif repair-placement` comando na orige
 
 
 
+[[volume-creation-on-a-root-aggregate]]
 === Criação de volume em um agregado raiz
 
 O sistema não permite a criação de novos volumes no agregado raiz (um agregado com uma política de HA do CFO) de um nó em uma configuração do MetroCluster.
@@ -403,6 +422,7 @@ Devido a essa restrição, os agregados de raiz não podem ser adicionados a um 
 
 
 
+[[svm-disaster-recovery-in-a-metrocluster-configuration]]
 == Recuperação de desastres do SVM em uma configuração de MetroCluster
 
 A partir do ONTAP 9.5, as máquinas virtuais de storage ativo (SVMs) em uma configuração do MetroCluster podem ser usadas como fontes com o recurso de recuperação de desastres do SnapMirror SVM. O SVM de destino deve estar no terceiro cluster fora da configuração do MetroCluster.
@@ -441,6 +461,7 @@ Consulte a seção ""replicando a configuração do SVM"" no link:http://docs.ne
 
 
 
+[[svm-resynchronization-at-a-disaster-recovery-site]]
 === Ressincronização da SVM em um local de recuperação de desastre
 
 Durante a ressincronização, a fonte de recuperação de desastres (DR) de máquinas virtuais de storage (SVMs) na configuração MetroCluster é restaurada a partir do SVM de destino no local que não é MetroCluster.
@@ -468,12 +489,14 @@ Para executar com sucesso o processo de switchback, a relação de ressincroniza
 
 
 
+[[output-for-the-storage-aggregate-plex-show-command-is-indeterminate-after-a-metrocluster-switchover]]
 == A saída para o comando "storage Aggregate plex show" é indeterminada após um switchover do MetroCluster
 
 Quando você executa o `storage aggregate plex show` comando após um switchover MetroCluster, o status de plex0 do agregado raiz comutada é indeterminado e é exibido como "failed". Durante este tempo, a raiz comutada não é atualizada. O estado real deste Plex só pode ser determinado após a fase de cicatrização do MetroCluster.
 
 
 
+[[modifying-volumes-to-set-the-nvfail-flag-in-case-of-switchover]]
 == Modificação de volumes para definir o sinalizador NVFAIL em caso de comutação
 
 Você pode modificar um volume para que o sinalizador NVFAIL seja definido no volume em caso de um switchover MetroCluster. O sinalizador NVFAIL faz com que o volume seja vedado de qualquer modificação. Isso é necessário para volumes que precisam ser tratados como se as gravações confirmadas no volume fossem perdidas após o switchover.

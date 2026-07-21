@@ -21,6 +21,7 @@ Depois que o equipamento no local de desastre tiver sido submetido a qualquer ma
 
 
 
+[[enable-console-logging]]
 == Ativar o registo da consola
 
 O NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações ao executar este procedimento:
@@ -35,6 +36,7 @@ Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Su
 
 
 
+[[healing-the-configuration-in-a-metrocluster-configuration]]
 == Recuperação da configuração em uma configuração do MetroCluster
 
 Nas configurações do MetroCluster FC, você realiza as operações de recuperação em uma ordem específica para restaurar o recurso MetroCluster após um switchover.
@@ -57,6 +59,7 @@ A operação de recuperação deve primeiro ser realizada nos agregados de dados
 
 
 
+[[healing-the-data-aggregates]]
 === Recuperação dos agregados de dados
 
 Você deve curar os agregados de dados após reparar e substituir qualquer hardware no local de desastre. Esse processo ressincroniza os agregados de dados e prepara o local de desastre (agora reparado) para operação normal. Você precisa curar os agregados de dados antes de curar os agregados de raiz.
@@ -124,6 +127,7 @@ aggr_b2   227.1GB  227.1GB   0%    online  0      mcc1-a2      raid_dp, mirrored
 
 
 
+[[healing-the-root-aggregates-after-a-disaster]]
 === Cura dos agregados de raiz após um desastre
 
 Depois que os agregados de dados tiverem sido curados, você deve curar os agregados de raiz em preparação para a operação de switchback.
@@ -164,6 +168,7 @@ mcc1A::> metrocluster operation show
 
 
 
+[[verifying-that-your-system-is-ready-for-a-switchback]]
 == Verificando se o sistema está pronto para um switchback
 
 Se o seu sistema já estiver no estado de comutação, você pode usar a `-simulate` opção para visualizar os resultados de uma operação de switchback.
@@ -241,6 +246,7 @@ A saída mostra se a operação de switchback seria executada em erros.
 
 
 
+[[example-of-verification-results]]
 === Exemplo de resultados de verificação
 
 O exemplo a seguir mostra a verificação bem-sucedida de uma operação de switchback:
@@ -272,6 +278,7 @@ Job ID Name                 Vserver    Node           State
 ----
 
 
+[[performing-a-switchback]]
 == Executando um switchback
 
 Depois de curar a configuração do MetroCluster, você pode executar a operação MetroCluster switchback. A operação de switchback do MetroCluster retorna a configuração ao seu estado operacional normal, com as máquinas virtuais de armazenamento de origem sincronizada (SVMs) no local de desastre ativas e fornecendo dados dos pools de discos locais.
@@ -372,6 +379,7 @@ No ONTAP 8,3, você precisa restabelecer manualmente uma configuração de SnapM
 
 
 
+[[verifying-a-successful-switchback]]
 == Verificando um switchback bem-sucedido
 
 Depois de executar o switchback, você deseja confirmar que todos os agregados e máquinas virtuais de storage (SVMs) são trocados de volta e on-line.
@@ -469,6 +477,7 @@ Você deve repetir as seções anteriores para executar o switchback na direçã
 
 
 
+[[deleting-stale-aggregate-listings-after-switchback]]
 == Excluindo listagens agregadas obsoletas após o switchback
 
 Em algumas circunstâncias após o switchback, você pode notar a presença de agregados _stale_. Agregados obsoletos são agregados que foram removidos do ONTAP, mas cujas informações permanecem registradas no disco. Agregados obsoletos são exibidos com o `nodeshell aggr status -r` comando, mas não com o `storage aggregate show` comando. Você pode excluir esses Registros para que eles não apareçam mais.

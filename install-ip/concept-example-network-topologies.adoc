@@ -20,6 +20,7 @@ NOTE: Se você estiver compartilhando um ISL com tráfego não MetroCluster, ver
 
 
 
+[[shared-network-configuration-with-direct-links]]
 == Configuração de rede compartilhada com links diretos
 
 Nesta topologia, dois locais distintos são conetados por links diretos. Esses links podem ser entre dispositivos ou switches xWDM e TDM. A capacidade dos ISLs não é dedicada ao tráfego MetroCluster, mas é compartilhada com outro tráfego que não seja MetroCluster.
@@ -28,6 +29,7 @@ image::../media/mcc_ip_networking_with_shared_isls.gif[Exemplo de rede IP do Met
 
 
 
+[[shared-infrastructure-with-intermediate-networks]]
 == Infraestrutura compartilhada com redes intermediárias
 
 Nessa topologia, os sites do MetroCluster não são conetados diretamente, mas o MetroCluster e o tráfego do host viajam por uma rede. A rede pode consistir em uma série de xWDM e TDM e switches, mas ao contrário da configuração compartilhada com ISLs diretas, os links não são diretos entre os sites. Dependendo da infraestrutura entre os sites, qualquer combinação de configurações de rede é possível.
@@ -36,6 +38,7 @@ image::../media/mcc_ip_networking_with_intermediate_private_networks.gif[Exemplo
 
 
 
+[[multiple-metrocluster-configurations-sharing-an-intermediate-network]]
 == Várias configurações do MetroCluster compartilhando uma rede intermediária
 
 Nesta topologia, duas configurações MetroCluster separadas estão compartilhando a mesma rede intermediária. No exemplo, MetroCluster One switch_A_1 e MetroCluster two switch_A_1, ambos se conetam ao mesmo interrutor intermediário.
@@ -47,6 +50,7 @@ image::../media/mcc_ip_two_mccs_sharing_the_same_shared_network_sx.gif[Cabeament
 
 
 
+[[combination-of-a-metrocluster-configuration-using-netapp-validated-switches-and-a-configuration-using-metrocluster-compliant-switches]]
 == Combinação de uma configuração MetroCluster usando switches validados pela NetApp e uma configuração usando switches compatíveis com MetroCluster
 
 Duas configurações MetroCluster separadas compartilham o mesmo switch intermediário, onde um MetroCluster é configurado usando switches validados NetApp em uma configuração de camada compartilhada 2 (MetroCluster One), e o outro MetroCluster é configurado usando switches compatíveis com MetroCluster conetando diretamente aos switches intermediários (MetroCluster Two).

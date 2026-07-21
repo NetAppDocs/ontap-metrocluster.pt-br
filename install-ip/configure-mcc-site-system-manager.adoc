@@ -27,6 +27,7 @@ Execute os seguintes procedimentos:
 
 
 
+[[configure-the-connection-between-clusters]]
 == Configurar a conexão entre clusters
 
 .Passos

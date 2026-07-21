@@ -15,6 +15,7 @@ Ao Planejar sua configuração IP do MetroCluster, você deve entender os compon
 
 
 
+[[key-hardware-elements]]
 == Principais elementos de hardware
 
 Uma configuração IP do MetroCluster inclui os seguintes elementos-chave de hardware:
@@ -45,6 +46,7 @@ image::../media/mcc_ip_hardware_architecture_mcc_ip.gif[Arquitetura de hardware 
 
 
 
+[[disaster-recovery-dr-groups]]
 == Grupos de recuperação de desastres (DR)
 
 Uma configuração IP do MetroCluster consiste em um grupo de DR de quatro nós.
@@ -55,6 +57,7 @@ image::../media/mcc_dr_groups_4_node.gif[Grupos de DR do MetroCluster em uma con
 
 
 
+[[illustration-of-the-local-ha-pairs-in-a-metrocluster-configuration]]
 == Ilustração dos pares de HA locais em uma configuração do MetroCluster
 
 Cada local do MetroCluster consiste em controladores de storage configurados como um par de HA. Isso permite redundância local para que, se um controlador de storage falhar, seu parceiro de HA local possa assumir o controle. Essas falhas podem ser tratadas sem uma operação de switchover do MetroCluster.
@@ -68,6 +71,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["
 
 
 
+[[illustration-of-the-metrocluster-ip-and-cluster-interconnect-network]]
 == Ilustração da rede de interligação de cluster e IP MetroCluster
 
 Os clusters do ONTAP geralmente incluem uma rede de interconexão de cluster para tráfego entre os nós no cluster. Nas configurações IP do MetroCluster, essa rede também é usada para transportar tráfego de replicação de dados entre os sites do MetroCluster.
@@ -89,6 +93,7 @@ link:concept_considerations_mcip.html["Considerações para configurações IP d
 
 
 
+[[illustration-of-the-cluster-peering-network]]
 == Ilustração da rede de peering de cluster
 
 Os dois clusters na configuração do MetroCluster são direcionados por meio de uma rede de peering de cluster fornecida pelo cliente. O peering de cluster suporta o espelhamento síncrono de máquinas virtuais de armazenamento (SVMs, anteriormente conhecido como VServers) entre os sites.

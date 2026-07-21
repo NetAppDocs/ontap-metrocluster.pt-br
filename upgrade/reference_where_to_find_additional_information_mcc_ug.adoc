@@ -15,6 +15,7 @@ Você pode saber mais sobre a configuração e operação do MetroCluster.
 
 
 
+[[metrocluster-and-miscellaneous-information]]
 == MetroCluster e informações diversas
 
 |===

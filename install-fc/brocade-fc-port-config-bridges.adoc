@@ -18,10 +18,12 @@ NOTE: Os switches Brocade 7810 suportam apenas um grupo DR.
 
 
 
+[[shelf-configurations-using-fibrebridge-7500n-or-7600n-bridges-using-both-fc-ports-fc1-and-fc2]]
 == Configurações de prateleira usando pontes FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2)
 
 
 
+[[metrocluster-1-or-dr-group-1]]
 === MetroCluster 1 ou grupo de RD 1
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 1 ou grupo 1 de DR para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) em switches Brocade . Ao usar esta tabela de configuração, você deve estar ciente do seguinte:
@@ -219,6 +221,7 @@ FC2
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 === MetroCluster 2 ou grupo de RD 2
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 2 ou grupo 2 de DR para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) em switches Brocade . Ao usar esta tabela de configuração, você deve estar ciente do seguinte:
@@ -416,6 +419,7 @@ n / D
 |===
 
 
+[[metrocluster-3-or-dr-group-3]]
 === MetroCluster 3 ou grupo DR 3
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 3 ou grupo 3 de DR para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) em switches Brocade . Ao usar esta tabela de configuração, você deve estar ciente do seguinte:
@@ -530,6 +534,7 @@ FC2
 |===
 
 
+[[metrocluster-4-or-dr-group-4]]
 === MetroCluster 4 ou grupo DR 4
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 4 ou grupo 4 de DR para bridges FibreBridge 7500N ou 7600N usando ambas as portas FC (FC1 e FC2) em switches Brocade . Ao usar esta tabela de configuração, você deve estar ciente do seguinte:
@@ -644,10 +649,12 @@ FC2
 |===
 
 
+[[shelf-configurations-using-fibrebridge-7500n-or-7600n-using-one-fc-port-fc1-or-fc2-only]]
 == Configurações de gaveta usando o FibreBridge 7500N ou 7600N usando apenas uma porta FC (FC1 ou FC2)
 
 
 
+[[metrocluster-1-or-dr-group-1]]
 === MetroCluster 1 ou grupo de RD 1
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 1 ou grupo 1 de DR usando FibreBridge 7500N ou 7600N e apenas uma porta FC (FC1 ou FC2) em switches Brocade . Ao usar esta tabela de configuração, você deve estar ciente do seguinte:
@@ -840,6 +847,7 @@ bridge_x_4b
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 === MetroCluster 2 ou grupo de RD 2
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 2 ou grupo 2 de DR para bridges FibreBridge 7500N ou 7600N usando uma porta FC (FC1 ou FC2) em switches Brocade . Ao usar esta tabela de configuração, você deve estar ciente do seguinte:
@@ -1032,6 +1040,7 @@ n / D
 |===
 
 
+[[metrocluster-3-or-dr-group-3]]
 === MetroCluster 3 ou grupo DR 3
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 3 ou grupo 3 de DR para bridges FibreBridge 7500N ou 7600N usando uma porta FC (FC1 ou FC2) em switches Brocade . Ao usar esta tabela de configuração, você deve estar ciente do seguinte:
@@ -1142,6 +1151,7 @@ bridge_x_4b
 |===
 
 
+[[metrocluster-4-or-dr-group-4]]
 === MetroCluster 4 ou grupo DR 4
 
 A tabela a seguir mostra as configurações de prateleira suportadas no MetroCluster 4 ou grupo 4 de DR para bridges FibreBridge 7500N ou 7600N usando uma porta FC (FC1 ou FC2) em switches Brocade . Ao usar esta tabela de configuração, você deve estar ciente do seguinte:

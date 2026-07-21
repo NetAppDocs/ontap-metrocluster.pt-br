@@ -27,6 +27,7 @@ IMPORTANT: É melhor não substituir nenhum veto.
 
 
 
+[[example-verification-results]]
 == Exemplo: Resultados da verificação
 
 O exemplo a seguir mostra os erros encontrados em uma simulação de uma operação de comutação:
