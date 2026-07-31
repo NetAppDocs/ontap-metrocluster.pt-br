@@ -978,7 +978,7 @@ Essa tarefa é para configurações de MetroCluster de dois nós que usam storag
 
 Essa tarefa deve ser executada em ambos os clusters na configuração do MetroCluster.
 
-Para obter mais informações gerais sobre a configuração do ONTAP, consulte a. link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["Configuração do ONTAP"]
+Para obter informações mais gerais sobre a configuração do ONTAP, consulte o link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["Configuração do ONTAP"^]
 
 .Passos
 . Ligue o primeiro nó.
@@ -1836,7 +1836,7 @@ NOTE: Os agregados sem espelhamento devem ser locais para o nó que os possui.
 
 * As unidades são de propriedade de um nó específico; quando você cria um agregado, todas as unidades nesse agregado precisam ser de propriedade do mesmo nó, que se torna o nó inicial desse agregado.
 * Os nomes agregados devem estar em conformidade com o esquema de nomenclatura que você determinou quando você planejou sua configuração do MetroCluster.
-* O link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de discos e agregados"] contém mais informações sobre o espelhamento de agregados.
+* O link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["Gerenciamento de discos e agregados"^] contém mais informações sobre espelhamento de agregados.
 
 
 .Passos
@@ -2271,6 +2271,6 @@ Você pode fornecer proteção adicional para os arquivos de backup de configura
 `system configuration backup settings modify URL-of-destination`
 
 +
-O link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["Gerenciamento de clusters com a CLI"] contém informações adicionais na seção _Gerenciando backups de configuração_.
+O link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["Gerenciamento de clusters com a CLI"^] contém informações adicionais na seção _Gerenciamento de backups de configuração_.
 
 

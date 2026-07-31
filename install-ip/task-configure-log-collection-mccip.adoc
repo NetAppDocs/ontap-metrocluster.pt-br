@@ -14,42 +14,30 @@ Em uma configuração de IP do MetroCluster, você pode configurar a coleta de l
 
 CAUTION: Em switches Broadcom e Cisco, um novo usuário é necessário para cada cluster com coleta de logs. Por exemplo, MetroCluster 1, MetroCluster 2, MetroCluster 3 e MetroCluster 4 exigem a configuração de um usuário separado nos switches. Não há suporte para várias chaves SSH para o mesmo usuário.
 
-.Sobre esta tarefa
-O monitor de integridade do switch Ethernet (CSHM) é responsável por garantir o funcionamento operacional dos switches de rede e coletar os registros do switch para fins de depuração. Este procedimento orienta você no processo de configuração da coleta, solicitação de logs de *Suporte* detalhados e ativação da coleta horária de dados *Periódicos* que são coletados pelo AutoSupport.
-
-*NOTA:* se você ativar o modo FIPS, você deve concluir o seguinte:
-
-[NOTE]
-====
-. Regenerar chaves SSH no switch usando as instruções do fornecedor.
-. Regenerar chaves SSH no ONTAP usando `debug system regenerate-systemshell-key-pair`
-. Execute novamente a rotina de configuração da coleção de logs usando o `system switch ethernet log setup-password` comando
+.Antes de começar
+* Se você utiliza o modo FIPS, conclua o seguinte antes de configurar a coleta de logs:
++
+.. Regenerar chaves SSH no switch usando as instruções do fornecedor.
+.. Regenerar chaves SSH no ONTAP usando  `debug system regenerate-systemshell-key-pair`.
+.. Execute novamente a configuração de coleta de logs usando o comando  `system switch ethernet log setup-password`.
 
 
-====
-
-
-[[before-you-begin]]
-== Antes de começar
-
-* O usuário deve ter acesso aos comandos do switch `show`. Se não estiverem disponíveis, crie um novo usuário e conceda as permissões necessárias ao usuário.
-* A monitorização do estado do interrutor tem de estar ativada para o interrutor. Verifique isso garantindo que o `Is Monitored:` campo esteja definido como *true* na saída do `system switch ethernet show` comando.
+* Você precisa ter acesso aos comandos do switch `show`. Se não tiver, crie um novo usuário de switch e conceda as permissões necessárias.
+* O monitoramento de integridade do switch deve estar ativado. Verifique se o campo  `Is Monitored:` está definido como *true* na saída de  `system switch ethernet show`.
 * Para coleta de logs com switches Broadcom e Cisco:
 +
 ** O usuário local deve ter privilégios de administrador de rede.
-** Um novo usuário deve ser criado no switch para cada configuração de cluster com a coleção de logs ativada. Esses switches não suportam várias chaves SSH para o mesmo usuário. Qualquer configuração adicional de coleção de logs executada substitui quaisquer chaves SSH pré-existentes para o usuário.
+** Crie um novo usuário de switch para cada cluster com a coleta de logs habilitada. Esses switches não suportam múltiplas chaves SSH para o mesmo usuário, executar a configuração novamente sobrescreve a chave SSH existente.
 
 
-* Para a coleta de logs de suporte com switches NVIDIA, o _user_ para coleta de logs deve ter permissão para executar o `cl-support` comando sem ter que fornecer uma senha. Para permitir esse uso, execute o comando:
+* Para suporte à coleta de logs com switches NVIDIA, o usuário responsável pela coleta de logs deve poder executar o comando  `cl-support` sem senha. Para permitir isso, execute:
 +
 `echo '_<user>_ ALL = NOPASSWD: /usr/cumulus/bin/cl-support' | sudo EDITOR='tee -a' visudo -f /etc/sudoers.d/cumulus`
 
 
 
-
-
-[[steps]]
-== Passos
+.Passos
+Siga os passos para sua versão do ONTAP para configurar a coleta de logs, habilitar a coleta periódica de dados e, opcionalmente, solicitar logs de suporte sob demanda.
 
 [role="tabbed-block"]
 ====

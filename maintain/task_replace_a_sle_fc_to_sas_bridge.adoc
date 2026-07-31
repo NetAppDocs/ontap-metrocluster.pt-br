@@ -1462,7 +1462,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 .. Depois de executar o Config Advisor, revise a saída da ferramenta e siga as recomendações na saída para resolver quaisquer problemas descobertos.
 
 
-. Após a substituição da peça, devolva a peça com falha à NetApp, conforme descrito nas instruções de RMA fornecidas com o kit. Consulte a link:https://mysupport.netapp.com/site/info/rma["Substituição  Devolução artigo"] página para obter mais informações.
+. Após substituir a peça, devolva a peça defeituosa à NetApp, conforme descrito nas instruções de RMA que acompanham o kit. Consulte a página link:https://mysupport.netapp.com/site/info/rma["Substituição  Devolução artigo"^] para obter mais informações.
 
 
 .Informações relacionadas

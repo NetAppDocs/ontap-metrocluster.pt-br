@@ -457,7 +457,7 @@ No entanto, após a conclusão do processo de comutação ou switchback, as pró
 
 
 
-Consulte a seção ""replicando a configuração do SVM"" no link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-dap/home.html["Proteção de dados com a CLI"] para obter detalhes sobre como configurar um relacionamento de DR do SVM.
+Consulte a seção "`Replicando a configuração do SVM`" no link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-dap/home.html["Proteção de dados com a CLI"^] para obter detalhes sobre como configurar um relacionamento de DR do SVM.
 
 
 

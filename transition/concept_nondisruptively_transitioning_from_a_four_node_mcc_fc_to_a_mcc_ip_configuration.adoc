@@ -94,13 +94,15 @@ A orientação a seguir é para um cenário incomum em que você precisa adicion
 
 Se a sua configuração existente do MetroCluster contiver uma plataforma que usa *portas de cluster/HA compartilhadas* (plataformas lançadas no ONTAP 9.15.1 ou posterior), você não poderá adicionar uma plataforma que usa *portas de MetroCluster/HA compartilhadas* (plataformas lançadas antes do ONTAP 9.15.1) sem atualizar todos os nós na configuração para o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior.
 
+Use a tabela a seguir para verificar se sua combinação é afetada. Se sua plataforma atual estiver listada na primeira coluna e a plataforma que você deseja adicionar à configuração estiver listada na segunda coluna, todos os nós da configuração devem estar executando ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior (dependendo da versão do ONTAP compatível com a plataforma) para adicionar o novo grupo de DR.
+
 [CAUTION]
 ====
-Adicionar um modelo de plataforma mais antigo que usa *portas HA compartilhadas/ do MetroCluster * a um MetroCluster que contém um modelo de plataforma mais novo que usa *portas HA/do cluster compartilhadas* é um cenário incomum e a maioria das combinações não é afetada.
+* Adicionar um modelo de plataforma mais antigo que usa *portas compartilhadas de MetroCluster/HA* a um MetroCluster que contém um modelo de plataforma mais recente que usa *portas compartilhadas de cluster/HA* é um cenário incomum e a maioria das combinações não é afetada.
+* A tabela mostra todos os modelos de plataforma que usam *portas compartilhadas de MetroCluster/HA* e *portas compartilhadas de cluster/HA*. Nem todas as combinações são suportadas por este procedimento. Consulte a link:concept_choosing_your_transition_procedure_mcc_transition.html#supported-platform-combinations["combinações de plataforma suportadas"] para verificar se a sua combinação de transição é suportada.
+
 
 ====
-Use a tabela a seguir para verificar se sua combinação é afetada.  Se sua plataforma existente estiver listada na primeira coluna e a plataforma que você deseja adicionar à configuração estiver listada na segunda coluna, todos os nós na configuração deverão estar executando o ONTAP 9.15.1P11 ou ONTAP 9.16.1P4 ou posterior para adicionar o novo grupo de DR.
-
 [cols="20,20,20,20,20"]
 |===
 2+| Se o seu MetroCluster existente contiver... 2+| E a plataforma que você está adicionando é... | Então... 

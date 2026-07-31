@@ -22,6 +22,7 @@ Execute os passos no modo Manutenção.
 NOTE: Os discos agregados de raiz são os únicos discos que devem ser reatribuídos durante o processo de atualização da controladora. A propriedade de disco de agregados de dados é tratada como parte da operação de comutação/switchback.
 
 .Passos
+. Conecte todas as outras conexões que foram desconectadas dos controladores antigos aos novos módulos de controlador.
 . Inicialize o sistema no modo de manutenção:
 +
 `boot_ontap maint`

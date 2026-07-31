@@ -882,7 +882,7 @@ A partir do ONTAP 9.18.1, o Flash Cache é suportado em sistemas FAS50 para conf
 ====
 * Não é possível ter simultaneamente agregados de dados e o agregado raiz com unidades Flash Cache no compartimento interno.
 * Os slots 0 e 23 são usados para unidades de cache flash.
-* Se você estiver reutilizando uma gaveta de discos externa, verifique se a propriedade dos discos na gaveta externa foi removida antes de conectá-la ao controlador. Consultelink:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["Remover a propriedade do ONTAP de um disco"] .
+* Se você estiver reutilizando uma gaveta de discos externa, verifique se a propriedade dos discos na gaveta externa foi removida antes de conectá-la ao controlador. Consultelink:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["Remover a propriedade do ONTAP de um disco"^] .
 
 
 ====

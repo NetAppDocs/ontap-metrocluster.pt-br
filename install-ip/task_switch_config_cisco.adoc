@@ -175,7 +175,7 @@ IP_switch_A_1#
 Você deve baixar o arquivo do sistema operacional switch e o arquivo RCF para cada switch na configuração IP do MetroCluster.
 
 .Sobre esta tarefa
-Esta tarefa requer software de transferência de arquivos, como FTP, TFTP, SFTP ou SCP, para copiar os arquivos para os switches.
+Essa tarefa requer um software de transferência de arquivos, como FTP, TFTP, SFTP, HTTP ou SCP, para copiar os arquivos para os switches.
 
 Estas etapas devem ser repetidas em cada um dos switches IP na configuração IP do MetroCluster.
 
@@ -436,7 +436,7 @@ Module 1 EPLD upgrade is successful.
 Você deve gerar e instalar o arquivo RCF em cada switch na configuração IP do MetroCluster.
 
 .Sobre esta tarefa
-Esta tarefa requer software de transferência de arquivos, como FTP, TFTP, SFTP ou SCP, para copiar os arquivos para os switches.
+Essa tarefa requer um software de transferência de arquivos, como FTP, TFTP, SFTP, HTTP ou SCP, para copiar os arquivos para os switches.
 
 Estas etapas devem ser repetidas em cada um dos switches IP na configuração IP do MetroCluster.
 
