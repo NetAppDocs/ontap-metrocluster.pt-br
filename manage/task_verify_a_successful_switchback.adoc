@@ -87,6 +87,55 @@ Que a operação de switchback ou switchback-continuation-Agent é parcialmente 
 Execute a correção sugerida fornecida na saída do `metrocluster operation show` comando.
 
 |===
+. Realize as seguintes verificações para confirmar se o switchover entre os dois clusters está operacional:
++
+.. A partir do cluster de DR, verifique se um switchover do cluster em funcionamento para o cluster de DR é possível:
++
+`metrocluster switchover -simulate`
+
+.. A partir do cluster sobrevivente, verifique se um switchover do cluster de recuperação de desastres para o cluster sobrevivente é possível:
++
+`metrocluster switchover -simulate`
+
+.. Verifique se os componentes do MetroCluster estão em bom estado:
++
+`metrocluster check run`
+
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+----
++
+A operação é executada em segundo plano.
+
+.. Após `metrocluster check run` a conclusão da operação, execute:
++
+`metrocluster check show`
+
++
+Após cerca de cinco minutos, são apresentados os seguintes resultados:
+
++
+[listing]
+----
+cluster_A:::*> metrocluster check show
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         ok
+volumes             ok
+7 entries were displayed.
+----
++
+
+NOTE: Em um ambiente FC do MetroCluster, "conexões" devem aparecer como "não aplicável" na saída do comando.
 
 
-Você deve repetir as seções anteriores para executar o switchback na direção oposta. Se o site_A fez um switchover do site_B, faça um switchover do site_A.
+
+
