@@ -11,7 +11,7 @@ summary: É necessário fazer o download do arquivo RCF para cada switch na conf
 
 
 [role="lead"]
-É necessário fazer o download do arquivo RCF para cada switch na configuração do MetroCluster Fabric.
+Você deve baixar o arquivo de configuração (RCF) para cada switch na configuração de MetroCluster fabric.
 
 .Antes de começar
 Esta tarefa requer software de transferência de arquivos, como FTP, Trivial File Transfer Protocol (TFTP), SFTP ou Secure Copy Protocol (SCP), para copiar os arquivos para os switches.
@@ -23,12 +23,12 @@ Tem de utilizar a versão do software de comutação suportada.
 
 https://hwu.netapp.com["NetApp Hardware Universe"]
 
-Há quatro arquivos RCF, um para cada um dos quatro switches na configuração da estrutura do MetroCluster. Você deve usar os arquivos RCF corretos para o modelo de switch que você está usando.
+Existem quatro RCFs, um para cada um dos quatro switches na configuração de fabric do MetroCluster. Você deve usar os RCFs corretos para o modelo de switch que está utilizando.
 
 |===
 
 
-| Interrutor | Ficheiro RCF 
+| Interrutor | RCF 
 
 
  a| 
@@ -62,15 +62,15 @@ FC_switch_B_2
 NOTE: As saídas mostradas são para switches IP Cisco; no entanto, estas etapas também são aplicáveis para switches FC Cisco.
 
 .Passos
-. Transfira os ficheiros RCF do Cisco FC a partir do https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["Página de download do MetroCluster RCF"].
-. Copie os arquivos RCF para os switches.
+. Faça o download dos arquivos RCF do Cisco FC a partir do  https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["Página de download do MetroCluster RCF"].
+. Copie os RCFs para os switches.
 +
-.. Copie os arquivos RCF para o primeiro switch:
+.. Copie o RCF para o primeiro switch:
 +
 `copy sftp://__root@FTP-server-IP-address/tftpboot/switch-specific-RCF__ bootflash: vrf management`
 
 +
-Neste exemplo, o `NX3232_v1.80_Switch-A1.txt` arquivo RCF é copiado do servidor SFTP em `10.10.99.99` para o flash de inicialização local. Você deve usar o endereço IP do servidor TFTP/SFTP e o nome do arquivo RCF que você precisa instalar.
+Neste exemplo, o  `NX3232_v1.80_Switch-A1.txt`RCF é copiado do servidor SFTP em  `10.10.99.99` para a memória flash de inicialização local. Você deve usar o endereço IP do seu servidor TFTP/SFTP e o nome do arquivo RCF que você precisa instalar.
 
 +
 [listing]
@@ -86,10 +86,10 @@ sftp> exit
 Copy complete, now saving to disk (please wait)...
 IP_switch_A_1#
 ----
-.. Repita a subetapa anterior para cada uma das outras três centrais, certificando-se de copiar o arquivo RCF correspondente para a central correspondente.
+.. Repita a subetapa anterior para cada um dos outros três switches, certificando-se de copiar o RCF correspondente para o switch correspondente.
 
 
-. Verifique em cada switch se o arquivo RCF está presente no diretório de cada switch `bootflash`:
+. Verifique em cada switch se o RCF está presente no diretório  `bootflash`de cada switch:
 +
 `dir bootflash:`
 
@@ -114,7 +114,7 @@ Usage for bootflash://sup-local
 15018205184 bytes total
 IP_switch_A_1#
 ----
-. Copie o arquivo RCF correspondente do flash de inicialização local para a configuração em execução em cada switch:
+. Copie o RCF correspondente da bootflash local para a configuração em execução em cada switch:
 +
 `copy bootflash:__switch-specific-RCF__.txt running-config`
 

@@ -52,9 +52,6 @@ Isto destina-se a evitar a concorrência com a operação de comutação negocia
 
 
 
-
-NOTE: As configurações do SnapMirror e do SnapVault são excluídas automaticamente.
-
 .Sobre esta tarefa
 O `metrocluster switchover` comando alterna entre os nós em todos os grupos de DR na configuração MetroCluster. Por exemplo, em uma configuração de MetroCluster de oito nós, ele alterna entre os nós em ambos os grupos de DR.
 
@@ -89,9 +86,6 @@ mcc1A::> metrocluster operation show
 Se o switchover for vetado, você tem a opção de reemitir o `metrocluster switchover-forced-on-disaster true` comando com `--override-vetoes` a opção. Se você usar esse parâmetro opcional, o sistema substituirá quaisquer vetos virtuais que impediram o switchover.
 
 
-
-.Depois de terminar
-Os relacionamentos do SnapMirror precisam ser restabelecidos após o switchover.
 
 
 

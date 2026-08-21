@@ -11,16 +11,16 @@ summary: Talvez seja necessário atualizar um arquivo RCF em um switch IP MetroC
 
 
 [role="lead"]
-Talvez seja necessário atualizar um arquivo de configuração de referência (RCF) em um switch IP MetroCluster. Por exemplo, se a versão RCF que você está executando nos switches não for suportada pela versão ONTAP, pela versão do firmware do switch ou por ambos.
+Pode ser necessário atualizar um arquivo de configuração de referência (RCF) em um switch IP do MetroCluster. Por exemplo, se a versão do RCF que você está executando nos switches não for compatível com a versão do ONTAP, com a versão do firmware do switch ou com ambas.
 
 .Antes de começar
-* Se você estiver instalando o novo firmware do switch, você deve instalar o firmware do switch antes de atualizar o arquivo RCF.
+* Se você estiver instalando um novo firmware do switch, deverá instalar o firmware do switch antes de atualizar o RCF.
 * Antes de atualizar o RCF, link:task_upgrade_firmware_on_mcc_ip_switches.html["Verifique se o RCF é suportado"].
 * link:enable-console-logging-before-maintenance.html["Ativar o registo da consola"] antes de executar esta tarefa.
 
 
 .Sobre esta tarefa
-* Este procedimento interrompe o tráfego no switch onde o arquivo RCF é atualizado. O tráfego é retomado quando o novo ficheiro RCF é aplicado.
+* Este procedimento interrompe o tráfego no switch onde o RCF é atualizado. O tráfego é retomado quando o novo RCF é aplicado.
 * Execute os passos em um interrutor de cada vez, na seguinte ordem: Switch_A_1, Switch_B_1, Switch_A_2, Switch_B_2.
 
 
@@ -74,7 +74,8 @@ volumes             ok
 
 
 
-. Preparar os comutadores IP para a aplicação dos novos ficheiros RCF.
+. link:../install-ip/switch-move-cluster-lifs.html["Mova os LIFs do cluster"]antes de você iniciar a atualização.
+. Prepare os switches IP para a aplicação dos novos RCFs.
 +
 Siga as etapas para o fornecedor do switch:
 
@@ -84,15 +85,20 @@ Siga as etapas para o fornecedor do switch:
 ** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["Redefina o switch NVIDIA IP SN2100 para os padrões de fábrica"]
 
 
-. Baixe e instale o arquivo RCF IP, dependendo do fornecedor do switch.
+. Faça o download e instale os arquivos IP RCF, dependendo do fabricante do seu switch.
 +
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["Baixe e instale os arquivos Broadcom IP RCF"]
-** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["Transfira e instale os ficheiros Cisco IP RCF"]
-** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["Transfira e instale os ficheiros NVIDIA IP RCF"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["Baixe e instale os RCFs IP da Broadcom"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["Faça o download e instale os RCFs IP do Cisco"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["Faça o download e instale os RCFs IP do NVIDIA"]
 +
 
 NOTE: Se você tiver uma configuração de rede L2 compartilhada ou L3, talvez seja necessário ajustar as portas ISL nos switches intermediários/clientes. O modo switchport pode mudar do modo 'Access' para o modo 'trunk'. Apenas prossiga para atualizar o segundo par de switches (A_2, B_2) se a conetividade de rede entre os switches A_1 e B_1 estiver totalmente operacional e a rede estiver em bom estado.
 
 
+
+. Repita os passos anteriores para cada um dos switches.
++
+
+NOTE: Após configurar os switches na primeira malha (Switch_A_1, Switch_B_1), você deve repetir os passos para mover os LIFs do cluster na segunda malha (Switch_A_2, Switch_B_2). Consulte link:../install-ip/task_install_and_cable_the_mcc_components.html["Saiba como configurar os switches IP do MetroCluster"].
 
 

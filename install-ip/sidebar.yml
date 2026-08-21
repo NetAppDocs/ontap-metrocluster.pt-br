@@ -80,8 +80,10 @@ entries:
     url: "/install-ip/task_cable_other_connections.html"
   - title: Configure os switches IP MetroCluster
     entries:
-    - title: Escolha o procedimento correto de configuração do switch IP do MetroCluster
+    - title: Saiba mais sobre como configurar os switches IP do MetroCluster
       url: "/install-ip/task_install_and_cable_the_mcc_components.html"
+    - title: Mover LIFs de cluster
+      url: "/install-ip/switch-move-cluster-lifs.html"
     - title: Configurar switches IP Broadcom
       url: "/install-ip/task_switch_config_broadcom.html"
     - title: Configurar switches IP Cisco

@@ -160,6 +160,10 @@ Siga as instruções para fornecer as seguintes informações para recuperar e r
 +
 Dependendo da configuração do gerenciador de chaves, execute o procedimento de recuperação selecionando a opção ""10"" ou a opção ""11"", seguida da opção ""6"" no primeiro prompt do menu de inicialização. Para inicializar os nós completamente, você pode precisar repetir o procedimento de recuperação continuado pela opção "'1'" (inicialização normal).
 
++
+
+NOTE: Quando você executa a opção do menu de inicialização  `6`, os valores de bootarg do MetroCluster podem precisar ser redefinidos. Consulte link:upgrade-mcc-ip-system-controller-replace-apply-rcf-set-bootarg.html#set-the-metrocluster-ip-bootarg-variables["Defina as variáveis MetroCluster IP bootarg"].
+
 . Inicialize os nós:
 +
 `boot_ontap`

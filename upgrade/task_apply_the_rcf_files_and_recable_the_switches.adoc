@@ -11,25 +11,25 @@ summary: Você deve aplicar os arquivos RCF para reconfigurar seu zoneamento par
 
 
 [role="lead"]
-Você deve aplicar os arquivos RCF para reconfigurar seu zoneamento para acomodar os novos nós.
+Você deve aplicar os arquivos de configuração de referência (RCFs) para reconfigurar seu zoneamento para acomodar os novos nós.
 
-Se você não puder usar os arquivos RCF para configurar os switches, você deverá configurar os switches manualmente. Consulte:
+Se não for possível usar os RCFs para configurar os switches, você deve configurá-los manualmente. Consulte:
 
 * link:../install-fc/task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["Configure os switches Brocade FC manualmente"]
 * link:../install-fc/task_fcsw_cisco_configure_a_cisco_switch_supertask.html["Configure os switches Cisco FC manualmente"]
 
 
 .Passos
-. Localize os arquivos RCF para sua configuração.
+. Localize os RCFs para sua configuração.
 +
-Você deve usar os arquivos RCF para uma configuração de oito nós e que corresponda ao modelo de switch.
+Você deve usar os RCFs para uma configuração de oito nós que corresponda ao modelo do seu switch.
 
-. Aplique os arquivos RCF, seguindo as instruções na página de download, ajustando as configurações ISL conforme necessário.
+. Aplique os RCFs, seguindo as instruções na página de download, ajustando as configurações do ISL conforme necessário.
 . Certifique-se de que a configuração do interrutor é guardada.
 . Reinicie os switches FC.
 . Faça o cabeamento das pontes FC para SAS e pré-existentes, usando o layout de cabeamento criado anteriormente.
 +
-O uso da porta do switch FC deve corresponder ao uso de oito nós do MetroCluster descrito em link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"] para que os arquivos de configuração de referência (RCFs) possam ser usados.
+O uso da porta do switch FC deve corresponder ao uso de oito nós do MetroCluster descrito em link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"] para que os RCFs possam ser utilizados.
 
 . Verifique se as portas estão online usando o comando correto para o switch.
 +
@@ -54,7 +54,7 @@ mostrar resumo da interface
 |===
 . Use o procedimento descrito no link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"] para fazer o cabeamento das portas FC-VI das controladoras novas e existentes, usando o layout de cabeamento criado anteriormente.
 +
-O uso da porta do switch FC deve corresponder ao uso de oito nós do MetroCluster descrito em link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"] para que os arquivos de configuração de referência (RCFs) possam ser usados.
+O uso da porta do switch FC deve corresponder ao uso de oito nós do MetroCluster descrito em link:../install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"] para que os RCFs possam ser utilizados.
 
 . Nos nós existentes, verifique se as portas FC-VI estão online:
 +

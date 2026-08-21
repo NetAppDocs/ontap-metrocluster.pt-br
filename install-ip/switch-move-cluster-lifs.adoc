@@ -1,0 +1,329 @@
+---
+permalink: install-ip/switch-move-cluster-lifs.html 
+sidebar: sidebar 
+keywords: ip, switch, configuring, configure, factory defaults, cisco, MACsec encryption, 9336C, 9336, forward error correction, fec 
+summary: 'Ao atualizar o firmware do switch ou o arquivo de configuração de referência (RCF), você move os LIFs do cluster para o switch parceiro para permitir operações de cluster não disruptivas durante a atualização.' 
+---
+= Mova as LIFs do cluster antes de uma substituição de switch IP do MetroCluster, alteração do RCF ou atualização de firmware
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao substituir um switch IP do MetroCluster ou alterar o firmware ou o arquivo de configuração (RCF) do switch, você precisa mover as LIFs do cluster para o switch parceiro para permitir operações de cluster sem interrupções.
+
+.Sobre esta tarefa
+* Você deve executar esta tarefa antes de atualizar ou fazer downgrade do firmware, substituir o RCF do switch ou substituir um switch IP.
++
+
+NOTE: Se você estiver configurando os switches pela primeira vez, pode ignorar esta tarefa, a menos que esteja realizando a substituição de um switch.
+
+* A tarefa exige que você utilize tanto comandos do ONTAP quanto comandos do switch; os comandos do ONTAP são utilizados, a menos que seja indicado o contrário.
+* Nos exemplos usados neste procedimento, você está atualizando o IP_switch_A_1, então precisa migrar as LIFs do cluster para o IP_switch_A_2.
+* Os exemplos de saída de comando neste procedimento mostram os detalhes para um switch Cisco. A saída pode variar dependendo do modelo e do fabricante do seu switch.
+
+
+.Passos
+. Exibir as portas do cluster que estão conectadas aos switches do cluster em cada nó:
++
+`network device-discovery show`
+
++
+.Mostrar exemplo
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster_A::*> network device-discovery show
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node_A_2/cdp
+            e10b   IP_switch_A_2
+                                             Ethernet1/18      N9K-C9336C-FX2
+            e2a    IP_switch_A_1
+                                             Ethernet1/18      N9K-C9336C-FX2
+            e4a    IP_switch_A_1
+                                             Ethernet1/2       N9K-C9336C-FX2
+            e4b    IP_switch_A_2
+                                             Ethernet1/2       N9K-C9336C-FX2
+            e5b    IP_switch_A_1
+                                             Ethernet1/10      N9K-C9336C-FX2
+            e7b    IP_switch_A_2
+                                             Ethernet1/10      N9K-C9336C-FX2
+            e9a    local_network_switch
+                                             Ethernet1/5       N9K-C9372PX
+            e9b    local_network_switch
+                                             Ethernet1/6       N9K-C9372PX
+node_A_2/lldp
+            e0M    mgmt_switch (00:08:2f:16:8e:02)
+                                             Eth121/1/1        -
+            e10b   IP_switch_A_2 (cc:90:70:e8:73:a0)
+                                             Ethernet1/18      -
+            e2a    IP_switch_A_1 (cc:90:70:e8:50:48)
+                                             Ethernet1/18      -
+            e5b    IP_switch_A_1 (cc:90:70:e8:50:28)
+                                             Ethernet1/10      -
+            e7b    IP_switch_A_2 (cc:90:70:e8:73:80)
+                                             Ethernet1/10      -
+            e9a    local_network_switch (88:f0:31:86:fe:a8)
+                                             Ethernet1/5       -
+            e9b    local_network_switch (88:f0:31:86:fe:a9)
+                                             Ethernet1/6       -
+node_A_1/cdp
+            e10b   IP_switch_A_2
+                                             Ethernet1/17      N9K-C9336C-FX2
+            e2a    IP_switch_A_1
+                                             Ethernet1/17      N9K-C9336C-FX2
+            e4a    IP_switch_A_1
+                                             Ethernet1/1       N9K-C9336C-FX2
+            e4b    IP_switch_A_2
+                                             Ethernet1/1       N9K-C9336C-FX2
+            e5b    IP_switch_A_1
+                                             Ethernet1/9       N9K-C9336C-FX2
+            e7b    IP_switch_A_2
+                                             Ethernet1/9       N9K-C9336C-FX2
+            e9a    local_network_switch
+                                             Ethernet1/3       N9K-C9372PX
+            e9b    local_network_switch
+                                             Ethernet1/4       N9K-C9372PX
+node_A_1/lldp
+            e0M    mgmt_switch (00:08:2f:16:8e:03)
+                                             Eth121/1/2        -
+            e10b   IP_switch_A_2 (cc:90:70:e8:73:9c)
+                                             Ethernet1/17      -
+            e2a    IP_switch_A_1 (cc:90:70:e8:50:44)
+                                             Ethernet1/17      -
+            e5b    IP_switch_A_1 (cc:90:70:e8:50:24)
+                                             Ethernet1/9       -
+            e7b    IP_switch_A_2 (cc:90:70:e8:73:7c)
+                                             Ethernet1/9       -
+            e9a    local_network_switch (88:f0:31:86:fe:a6)
+                                             Ethernet1/3       -
+            e9b    local_network_switch (88:f0:31:86:fe:a7)
+                                             Ethernet1/4       -
+30 entries were displayed.
+----
+====
+. Verifique o status administrativo e operacional de cada porta do cluster.
++
+.. Verifique se todas as portas do cluster estão ativas e com status íntegro:
++
+`network port show -role cluster`
+
++
+.Mostrar exemplo
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster_A::*> network port show -role cluster
+
+Node: node_A_1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e4a       Cluster      Cluster          up   9000  auto/40000 healthy  false
+e4b       Cluster      Cluster          up   9000  auto/40000 healthy  false
+
+Node: node_A_2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e4a       Cluster      Cluster          up   9000  auto/40000 healthy  false
+e4b       Cluster      Cluster          up   9000  auto/40000 healthy  false
+4 entries were displayed.
+----
+====
+.. Verifique se todas as interfaces de cluster (LIFs) estão na porta inicial:
++
+`network interface show -role cluster`
+
++
+.Mostrar exemplo
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster_A::*> network interface show -role cluster
+            Logical        Status     Network            Current       Current Is
+Vserver     Interface      Admin/Oper Address/Mask       Node          Port    Home
+----------- -------------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node_A_1_clus1 up/up      101.101.101.88/18  node_A_1      e4a     true
+            node_A_1_clus2 up/up      101.101.101.93/18  node_A_1      e4b     true
+            node_A_2_clus1 up/up      101.101.101.96/18  node_A_2      e4a     true
+            node_A_2_clus2 up/up      101.101.101.97/18  node_A_2      e4b     true
+4 entries were displayed.
+
+cluster_A::*>
+----
+====
+.. Verifique se o cluster exibe informações para ambos os switches do cluster:
++
+`system switch ethernet show -is-monitoring-enabled-operational true`
+
++
+.Mostrar exemplo
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster_A::*> system switch ethernet show -is-monitoring-enabled-operational true
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- ---------------
+IP_switch_A_1               cluster-network    10.231.7.251     N9K-C9336C-FX2
+     Serial Number: FDO26020KLJ
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    10.5(4)
+    Version Source: CDP/ISDP
+
+IP_switch_A_2               cluster-network    10.231.7.252     N9K-C9336C-FX2
+     Serial Number: FDO26020KGL
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    10.5(4)
+    Version Source: CDP/ISDP
+
+2 entries were displayed.
+
+cluster_A::*>
+----
+====
+
+
+. Desative a reversão automática nas LIFs do cluster. As LIFs do cluster fazem failover para o switch do cluster parceiro e permanecem lá enquanto você executa o procedimento de atualização no switch de destino:
++
+
+NOTE: Se você estiver atualizando o segundo fabric, pode pular esta etapa e ir para <<shut-down-ports,Passo 4>>.
+
++
+`network interface modify -vserver Cluster -lif * -auto-revert false`
+
++
+.Mostrar exemplo
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster_A::*> network interface modify -vserver Cluster -lif * -auto-revert false
+
+Warning: Disabling the auto-revert feature of the cluster logical interface may
+         effect the availability of your cluster network. Are you sure you want
+         to continue? {y|n}: y
+
+Warning: Changes to a cluster LIF can affect the health of the Cluster. Are you
+         sure you want to continue? {y|n}: y
+4 entries were modified.
+----
+====
+. [[shut-down-ports]]No switch de cluster IP_switch_A1, desligue as portas conectadas às portas de cluster dos nós.
++
+[role="tabbed-block"]
+====
+.Cisco
+--
+[listing]
+----
+IP_switch_A_1(config)# sh int eth1/1,eth1/2 brief
+
+--------------------------------------------------------------------------------
+Ethernet        VLAN    Type Mode   Status  Reason                 Speed     Port
+Interface                                                                    Ch
+#
+--------------------------------------------------------------------------------
+Eth1/1          101     eth  access up      none                      40G(D) --
+Eth1/2          101     eth  access up      none                      40G(D) --
+IP_switch_A_1(config)#
+IP_switch_A_1(config)# int eth1/1,eth1/2
+IP_switch_A_1(config-if-range)# shut
+IP_switch_A_1(config-if-range)#
+----
+--
+.Broadcom
+--
+[listing]
+----
+IP_switch_A1(config)# interface eth1/1/1-2,eth1/7-8
+IP_switch_A1(config-if-range)# shutdown
+----
+--
+.NVIDIA
+--
+.. Exiba as interfaces do cluster:
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ nv show interface
+Interface    Admin Status  Oper Status  Speed  MTU    Type      Remote Host     Remote Port  Summary
+-----------  ------------  -----------  -----  -----  --------  --------------  -----------  ---------
+swp1         up            up           100G   9216   swp       cluster1         e1a
+----
+.. Desative a porta da interface do cluster:
++
+[listing]
+----
+sudo python3 <RCF_name> runCmd swp1 state down
+----
+
+
+--
+====
+. [[verify_cluster_lif_migration]] Verifique se as LIFs do cluster foram migradas para as portas hospedadas no switch do cluster IP_switch_A2. Isso pode levar alguns segundos.
++
+`network interface show -role cluster`
+
++
+.Mostrar exemplo
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster_A::*> network interface show -role cluster
+            Logical        Status     Network            Current       Current Is
+Vserver     Interface      Admin/Oper Address/Mask       Node          Port    Home
+----------- -------------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node_A_1_clus1 up/up      101.101.101.88/18  node_A_1      e4b     false
+            node_A_1_clus2 up/up      101.101.101.93/18  node_A_1      e4b     true
+            node_A_2_clus1 up/up      101.101.101.96/18  node_A_2      e4b     false
+            node_A_2_clus2 up/up      101.101.101.97/18  node_A_2      e4b     true
+4 entries were displayed.
+----
+====
+. Verifique se o cluster está em bom estado:
++
+`cluster show`
+
++
+.Mostrar exemplo
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster_A::*> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node_A_1             true    true          false
+node_A_2             true    true          false
+2 entries were displayed.
+----
+====
+
+
+.Depois de terminar
+Após a migração das LIFs do cluster para o switch parceiro, você pode seguir os procedimentos de configuração padrão do fornecedor do seu switch para concluir a atualização para a versão de firmware ou RCF desejada:
+
+* link:../install-ip/task_switch_config_broadcom.html["Configurar switches IP Broadcom"]
+* link:../install-ip/task_switch_config_cisco.html["Configurar switches IP Cisco"]
+* link:../install-ip/task_switch_config_nvidia.html["Configurar switches IP NVIDIA"]
+
+
+
+NOTE: Após configurar os switches na primeira malha, você deve repetir os passos para mover os LIFs do cluster na segunda malha.

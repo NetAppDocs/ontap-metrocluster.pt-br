@@ -154,6 +154,10 @@ Siga as instruções para fornecer as seguintes informações para recuperar e r
 +
 Dependendo do tipo de gerenciador de chaves, execute o procedimento de recuperação selecionando a opção "10" ou a opção "11", seguida da opção  `6` no primeiro prompt do menu de inicialização. Para inicializar os nós completamente, talvez seja necessário repetir o procedimento de recuperação, continuando pela opção "1" (inicialização normal).
 
++
+
+NOTE: Quando você executa a opção do menu de inicialização  `6`, os valores de bootarg do MetroCluster podem precisar ser redefinidos. Consulte link:upgrade-mcc-ip-manual-apply-rcf-set-bootarg.html#set-the-metrocluster-ip-bootarg-variables["Defina as variáveis MetroCluster IP bootarg"].
+
 . Aguarde até que os nós substituídos iniciem.
 +
 Se um dos nós estiver no modo de aquisição, execute um giveback usando o `storage failover giveback` comando.

@@ -11,7 +11,7 @@ summary: Você deve entender como usar as informações nas tabelas de portas pa
 
 
 [role="lead"]
-Você deve entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos RCF.
+Você precisa entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos de configuração de referência (RCFs).
 
 .Antes de começar
 Reveja estas considerações antes de utilizar as tabelas:

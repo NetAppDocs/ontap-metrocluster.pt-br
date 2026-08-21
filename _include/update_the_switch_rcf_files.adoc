@@ -10,7 +10,7 @@ Você executa essa tarefa no site que contém os controladores que estão sendo 
 Os switches no site_A serão atualizados quando os controladores no site_A forem atualizados.
 
 .Passos
-. Prepare os switches IP para a aplicação dos novos RCFs.
+. Prepare os switches IP para a aplicação dos novos arquivos de configuração de referência (RCFs).
 +
 Siga as etapas na seção para o fornecedor do switch:
 
