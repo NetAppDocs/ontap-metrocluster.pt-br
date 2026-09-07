@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:  
 summary: Cada switch Cisco na configuração do MetroCluster deve ser configurado adequadamente para as conexões ISL e de armazenamento. 
 ---
-= Configuração manual dos switches Cisco FC
+= Configure os switches Cisco manualmente em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

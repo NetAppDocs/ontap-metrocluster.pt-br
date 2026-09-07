@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, configuration, worksheets, fc, switches, sas, bridges 
 summary: Antes de começar a configurar os sites do MetroCluster, você deve coletar as informações de configuração necessárias. 
 ---
-= Planilhas de configuração para switches FC e bridges FC para SAS
+= Planilhas de configuração para o MetroCluster switches FC e pontes FC-para-SAS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, reset, brocade, fc, switch, factory, defaults 
 summary: Antes de instalar uma nova versão de software e arquivos RCF, você deve apagar a configuração atual do switch e executar a configuração básica. 
 ---
-= Redefinindo o switch Brocade FC para os padrões de fábrica
+= Redefina o switch Brocade FC para os padrões de fábrica em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

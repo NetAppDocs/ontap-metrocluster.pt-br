@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, management, data, connections 
 summary: Você deve encaminhar as portas de gerenciamento e dados em cada controlador de storage para as redes do local. 
 ---
-= Cabeamento das conexões de dados e gerenciamento
+= Conecte os cabos de gerenciamento e de dados em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

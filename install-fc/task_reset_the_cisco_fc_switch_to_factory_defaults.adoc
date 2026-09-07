@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, reset, cisco, fc, switch, factory, defaults 
 summary: Antes de instalar uma nova versão de software e RCFs, você deve apagar a configuração do switch Cisco e executar a configuração básica. 
 ---
-= Redefinindo o switch Cisco FC para os padrões de fábrica
+= Redefina o switch Cisco FC para os padrões de fábrica em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

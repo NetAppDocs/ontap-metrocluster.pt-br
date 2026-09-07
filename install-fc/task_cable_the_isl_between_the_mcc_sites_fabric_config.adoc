@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, isl, sites 
 summary: 'Você deve conetar os switches FC em cada local por meio dos links interswitches de fibra ótica (ISLs) para formar as malhas de switch que conetam os componentes do MetroCluster.' 
 ---
-= Fazer o cabeamento das ISLs entre os locais do MetroCluster
+= Conecte os ISLs entre os sites FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

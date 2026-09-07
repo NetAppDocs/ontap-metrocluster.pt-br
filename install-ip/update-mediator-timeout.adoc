@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, metrocluster, mediator, timeout, settings, change, update, default, value 
 summary:  
 ---
-= Aumente o tempo limite padrão da caixa de correio do ONTAP Mediator em configurações IP do MetroCluster
+= Aumente o tempo limite da caixa de correio do ONTAP Mediator em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

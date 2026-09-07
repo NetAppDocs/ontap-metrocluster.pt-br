@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, download, cisco, fc, switch, nx, software 
 summary: É necessário fazer download do arquivo do sistema operacional do switch e do arquivo RCF para cada switch na configuração do MetroCluster Fabric. 
 ---
-= Transferir e instalar o software Cisco FC switch NX-os
+= Baixe e instale o software Cisco FC switch NX-OS em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, download, install, cisco, fc, rcf, files 
 summary: É necessário fazer o download do arquivo RCF para cada switch na configuração do MetroCluster Fabric. 
 ---
-= Download e instalação dos arquivos RCF do Cisco FC
+= Baixe e instale os arquivos RCF do switch Cisco FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

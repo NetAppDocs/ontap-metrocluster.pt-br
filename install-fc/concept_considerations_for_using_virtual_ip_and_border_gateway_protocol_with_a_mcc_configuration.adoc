@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, virtual, ip, border, gateway, protocol, configuration 
 summary: 'A partir do ONTAP 9.5, o ONTAP suporta a conetividade da camada 3 usando IP virtual (VIP) e protocolo de gateway de borda (BGP). A combinação VIP e BGP para redundância na rede front-end com a redundância MetroCluster back-end fornece uma solução de recuperação de desastres de camada 3.' 
 ---
-= Considerações para usar IP virtual e protocolo de gateway de borda com uma configuração MetroCluster
+= IP virtual e BGP em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

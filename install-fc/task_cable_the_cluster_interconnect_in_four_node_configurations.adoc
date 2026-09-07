@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, cluster, interconnect, four, node 
 summary: Em configurações de MetroCluster de oito ou quatro nós, você deve fazer o cabeamento da interconexão de cluster entre os módulos de controladora local em cada local. 
 ---
-= Cabeamento da interconexão de cluster em configurações de oito ou quatro nós
+= Conecte a interconexão de cluster em configurações FC de oito ou quatro nós do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

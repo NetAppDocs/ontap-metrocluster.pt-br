@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, new, controller, module, fc, vi, hba, ports, fc, switches, mcc 
 summary: 'As portas FC-VI e HBAs (adaptadores de barramento de host) devem ser cabeadas para os switches FC do local em cada módulo de controladora na configuração MetroCluster.' 
 ---
-= Faça o cabeamento das portas FC-VI e HBA do novo módulo de controladora aos switches FC
+= Cabo o módulo do controlador FC-VI e as portas HBA aos switches FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

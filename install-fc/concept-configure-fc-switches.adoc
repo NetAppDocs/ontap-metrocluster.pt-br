@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, configure, brocade, switches, cisco 
 summary:  
 ---
-= Visão geral da configuração do switch FC
+= Configuração do switch FC no MetroCluster FC
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

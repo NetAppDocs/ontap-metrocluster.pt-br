@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ip, switch, configuring, configure, factory defaults, cisco, MACsec encryption, 9336C, 9336, forward error correction, fec 
 summary: 'Ao atualizar o firmware do switch ou o arquivo de configuração de referência (RCF), você move os LIFs do cluster para o switch parceiro para permitir operações de cluster não disruptivas durante a atualização.' 
 ---
-= Mova as LIFs do cluster antes de uma substituição de switch IP do MetroCluster, alteração do RCF ou atualização de firmware
+= Mova as LIFs do cluster antes de uma alteração de switch, RCF ou firmware em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

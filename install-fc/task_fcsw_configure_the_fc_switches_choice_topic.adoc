@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fc, switch, configuring 
 summary: Você precisa configurar os switches FC para fornecer conectividade de MetroCluster FC no back-end. 
 ---
-= Configure os switches
+= Configure os switches FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

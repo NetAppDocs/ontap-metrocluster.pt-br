@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cabling, cable, component, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure, rcf, file, generator, RcfFileGenerator 
 summary: Você deve entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos RCF. 
 ---
-= Como usar as tabelas de portas com várias configurações de IP do MetroCluster
+= Tabelas de portas para MetroCluster IP configurações
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

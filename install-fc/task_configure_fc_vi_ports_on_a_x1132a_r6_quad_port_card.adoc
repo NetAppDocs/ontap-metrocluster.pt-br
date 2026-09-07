@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, fc, vi, ports, quad, port, card 
 summary: Se você estiver usando a placa quad-port X1132A-R6 em um sistema FAS8020, você pode entrar no modo de manutenção para configurar as portas 1a e 1b para uso de FC-VI e iniciador. Isso não é necessário nos sistemas MetroCluster recebidos de fábrica, nos quais as portas são definidas adequadamente para sua configuração. 
 ---
-= Configurando portas FC-VI em uma placa quad-port X1132A-R6 em sistemas FAS8020
+= Configure as portas FC-VI para uma placa de quatro portas X1132A-R6 em sistemas FAS8020 em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

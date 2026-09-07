@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, brocade, fc, switch, rcf, file 
 summary: Ao configurar um switch Brocade FC, você pode instalar os arquivos de configuração do switch que fornecem as configurações completas do switch para determinadas configurações. 
 ---
-= Instalar o arquivo RCF do switch Brocade FC
+= Instale o arquivo RCF do switch Brocade FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

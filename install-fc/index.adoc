@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric-attached, FC, installation 
 summary: Para instalar a configuração do MetroCluster conectado à malha, você precisa executar vários procedimentos na ordem correta. 
 ---
-= Visão geral
+= MetroCluster fluxo de trabalho de instalação do FC
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

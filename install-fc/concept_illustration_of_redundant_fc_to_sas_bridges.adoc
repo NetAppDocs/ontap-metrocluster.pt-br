@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, illustration, redundant, fc, sas, bridges 
 summary: As pontes FC para SAS fornecem pontes de protocolo entre os discos conectados a SAS e a malha do switch FC. 
 ---
-= Ilustração de pontes FC para SAS redundantes
+= Ilustração de pontes FC-para-SAS redundantes em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

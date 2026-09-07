@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, fc, switches, run, configuration, file 
 summary: Se você quiser simplificar o processo de configuração de switches, você pode baixar e aplicar arquivos de configuração de referência que fornecem as configurações completas de switch para determinadas configurações. 
 ---
-= Configurando os switches FC executando um arquivo de configuração
+= Configure os switches FC do MetroCluster usando um RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

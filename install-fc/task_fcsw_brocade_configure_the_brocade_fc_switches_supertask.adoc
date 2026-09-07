@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: MetroCluster configurations 
 summary: Você deve configurar cada uma das malhas de switch Brocade na configuração do MetroCluster. 
 ---
-= Configure os switches Brocade FC manualmente
+= Configure manualmente os switches Brocade FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, reenable, switch, fabric, verify, operation 
 summary: Você deve habilitar a malha de switch FC e garantir que os switches e dispositivos estejam funcionando corretamente. 
 ---
-= Reativação da malha do switch e verificação da operação
+= Reative a matriz de comutação FC do MetroCluster e verifique o funcionamento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

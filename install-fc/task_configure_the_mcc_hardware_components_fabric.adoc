@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, configuration 
 summary: Os componentes do MetroCluster devem ser fisicamente instalados, cabeados e configurados em ambos os locais geográficos. 
 ---
-= Fazer o cabeamento de uma configuração MetroCluster conectada à malha
+= Cable uma configuração de MetroCluster conectada à malha
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
