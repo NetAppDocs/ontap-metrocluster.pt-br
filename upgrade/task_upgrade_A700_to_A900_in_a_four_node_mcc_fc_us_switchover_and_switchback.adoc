@@ -976,24 +976,50 @@ Iniciador FC
 `ha-config show`
 
 +
-O estado de HA para todos os componentes deve ser mcc.
+O estado HA para todos os componentes deve ser  `mcc`.
 
-. Se o estado do sistema apresentado do controlador ou do chassis não estiver correto, defina o estado HA:
+. Se o estado do sistema apresentado do controlador não estiver correto, defina o estado HA para o módulo do controlador e para o chassis:
 +
 `ha-config modify controller mcc`
 
 +
 `ha-config modify chassis mcc`
 
-. Parar o nó: `halt` O nó deve parar no `LOADER>` prompt.
-. Em cada nó, verifique a data, a hora e o fuso horário do sistema: `Show date`
-. Se necessário, defina a data em UTC ou Greenwich Mean Time (GMT): `set date <mm/dd/yyyy>`
-. Verifique a hora usando o seguinte comando no prompt do ambiente de inicialização: `show time`
-. Se necessário, defina a hora em UTC ou GMT: `set time <hh:mm:ss>`
-. Guarde as definições: `saveenv`
-. Reunir variáveis de ambiente: `printenv`
-. Inicialize o nó novamente no modo Manutenção para permitir que as alterações de configuração entrem em vigor:
+. Parar o nó:
++
+`halt`
+
++
+O nó deve parar no `LOADER>` prompt.
+
+. Em cada nó, verifique a data, a hora e o fuso horário do sistema:
++
+`show date`
+
+. Se necessário, defina a data em UTC ou Horário Médio de Greenwich (GMT):
++
+`set date <mm/dd/yyyy>`
+
+. Verifique a hora usando o seguinte comando no prompt do ambiente de inicialização:
++
+`show time`
+
+. Se necessário, defina a hora em UTC ou GMT:
++
+`set time <hh:mm:ss>`
+
+. Salve as configurações:
++
+`saveenv`
+
+. Reúna variáveis de ambiente:
++
+`printenv`
+
+. Inicialize o nó novamente no modo Manutenção para aplicar as alterações de configuração:
++
 `boot_ontap maint`
+
 . Verifique se as alterações feitas estão efetivas e o ucadmin mostra as portas do iniciador de FC on-line.
 +
 |===
@@ -1015,9 +1041,13 @@ FC
 `fcadmin show`
 
 |===
-. Verifique o modo ha-config: `ha-config show`
+. Verifique o modo ha-config:
 +
-.. Verifique se você tem a seguinte saída:
+`ha-config show`
+
++
+O resultado deve ser semelhante ao seguinte exemplo:
+
 +
 [listing]
 ----
@@ -1025,70 +1055,6 @@ FC
 Chassis HA configuration: mcc
 Controller HA configuration: mcc
 ----
-
-
-
-
-
-
-[[set-the-ha-state-on-the-new-controllers-and-chassis]]
-=== Defina o estado de HA nos novos controladores e chassi
-
-É necessário verificar o estado de HA dos controladores e do chassi e, se necessário, atualizar o estado para corresponder à configuração do sistema.
-
-.Passos
-. No modo de manutenção, apresentar o estado HA do módulo do controlador e do chassis:
-+
-`ha-config show`
-
-+
-O estado de HA para todos os componentes deve ser mcc.
-
-+
-|===
-
-
-| Se a configuração do MetroCluster tiver... | O estado HA deve ser... 
-
-
- a| 
-Dois nós
- a| 
-mcc-2n
-
-
-
- a| 
-Quatro ou oito nós
- a| 
-mcc
-
-|===
-. Se o estado do sistema apresentado do controlador não estiver correto, defina o estado HA para o módulo do controlador e para o chassis:
-+
-|===
-
-
-| Se a configuração do MetroCluster tiver... | Emitir estes comandos... 
-
-
- a| 
-*Dois nós*
- a| 
-`ha-config modify controller mcc-2n`
-
-`ha-config modify chassis mcc-2n`
-
-
-
- a| 
-*Quatro ou oito nós*
- a| 
-`ha-config modify controller mcc`
-
-`ha-config modify chassis mcc`
-
-|===
 
 
 

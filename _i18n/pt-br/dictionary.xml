@@ -8985,7 +8985,6 @@
   <block id="16d9a40603d44eea561b00730eec3d91" category="paragraph">ONTAP 9.12,1 e posterior</block>
   <block id="4951fe611f97b799b2abaf7474848aa1" category="inline-link-macro">Matriz de suporte DO SO</block>
   <block id="30177b72c8d5a1bab13142ff42dfc513" category="paragraph">Consulte <block ref="9f4435e7cf286b329f02bc934ba0dd4b" category="inline-link-macro-rx"></block>para obter mais informações.</block>
-  <block id="e27eee16ff4c1ce2072fea31052ce7d5" category="paragraph">Nenhum. As dependências são empacotadas com a instalação.</block>
   <block id="9cd256a82b5d6fd3425bcd9646641d4b" category="paragraph">ONTAP 9 F.8 a ONTAP 9.14,1</block>
   <block id="b54b2f8d3b7da844c5372449a2f2e34b" category="list-text">Red Hat Enterprise Linux 8,1 a 8,7</block>
   <block id="64b48b15797ae9ce8dde94af89070b3d" category="paragraph">Com o Red Hat Enterprise Linux 8,1 a 8,7:</block>
@@ -11410,15 +11409,9 @@
   <block id="dab2c0f4d4e624133deb1fb1f48d6dfa" category="paragraph"><block ref="07e2b2ad7b93f25df7a6a4f5d0838996" prefix="" category="inline-code"></block></block>
   <block id="63db75147bb8e9b621622657ecea58d6" category="section-title">Defina o estado de HA nos novos controladores e chassi</block>
   <block id="9c1c5be053b28ba5edd13b92cac80497" category="paragraph">O estado de HA para todos os componentes deve ser mcc.</block>
-  <block id="9c70e72e74a5beec346c7fba9e09ac77" category="list-text">Parar o nó:<block ref="4a1bde0ea8bcda2a591f42646813c477" prefix=" " category="inline-code"></block> O nó deve parar no<block ref="b4e58ddfd75fec23180551a08c0e87c6" prefix=" " category="inline-code"></block> prompt.</block>
-  <block id="a9c684b6388493b28c8bae9224fcb530" category="list-text">Em cada nó, verifique a data, a hora e o fuso horário do sistema:<block ref="8b3eefb87c2c3f87f2074f49e91acf4b" prefix=" " category="inline-code"></block></block>
-  <block id="19940e0e663b8b77ef5ae9bed0adc639" category="list-text">Se necessário, defina a data em UTC ou Greenwich Mean Time (GMT):<block ref="ce2b665b5815a9c7e13cdb6fc96a5a98" prefix=" " category="inline-code"></block></block>
-  <block id="17cd34e04880fa15bf7da7bdee12d187" category="list-text">Inicialize o nó novamente no modo Manutenção para permitir que as alterações de configuração entrem em vigor:<block ref="cce56b203b8705f3487342813b7117be" prefix=" " category="inline-code"></block></block>
   <block id="92864f4a1e3e8b31f329dde898c399e7" category="list-text">Verifique se as alterações feitas estão efetivas e o ucadmin mostra as portas do iniciador de FC on-line.</block>
   <block id="9be73b3dd95d39ff15e33b30275709d3" category="cell">Se você tem este tipo de HBA...</block>
   <block id="8ad2992d6c032a4514706c63ee5d4d1b" category="cell">Use este comando...</block>
-  <block id="6f991264f748ca5e72084279b6293fcc" category="list-text">Verifique o modo ha-config:<block ref="fb4e6c2e33b945c3ff4d042cb66d2ed4" prefix=" " category="inline-code"></block></block>
-  <block id="351a906b91969bd3f60ac4f7ef2b51fe" category="list-text">Verifique se você tem a seguinte saída:</block>
   <block id="fe8b2cbe27aeee8cf3fd12fd4f19075c" category="cell">Se a configuração do MetroCluster tiver...</block>
   <block id="7a0cb0e9d6bfae35a7d862f122269833" category="cell">O estado HA deve ser...</block>
   <block id="2f49b4fc6ba0e45f4fa1687271900aa7" category="paragraph">Dois nós</block>
@@ -14731,4 +14724,23 @@
   <block id="edb9b445f13c3e9e05b61cc6e0b3efdc" category="doc">Configure os switches NVIDIA IP SN2100 para uma configuração IP do MetroCluster</block>
   <block id="20e757ff864b6acd14ec41e7165a63f9" category="doc">Aumente o tempo limite da caixa de correio do ONTAP Mediator em uma configuração IP do MetroCluster</block>
   <block id="f081a35160d006cd5323e0740d06220e" category="doc">Tabelas de portas para MetroCluster IP configurações</block>
+  <block id="e0ff38f1490ce2495524f7429045ad81" category="inline-link-macro">o artigo da Knowledge Base "Cluster and HA communication issues during back-end switch replacement"</block>
+  <block id="93c539486532bcd2c15f294efff69106" category="admonition">Se você precisar realizar a substituição de um switch nas plataformas AFF A220, AFF A250 ou FAS2750, consulte <block ref="3468e696d0ad9ec4d429e1b845c952a7" category="inline-link-macro-rx"></block>.</block>
+  <block id="fe4617c4a015a1feba78882255c11625" category="paragraph">Velocidades de link mistas não são suportadas em plataformas que usam uma placa de interface de rede X60134A. Para verificar se sua plataforma é afetada, consulte o <block ref="a9613e1dbacf145285c45df4264fe797" category="inline-link-rx"></block>.</block>
+  <block id="5f0a2538bca6fe75656437edc2b047c7" category="inline-link-macro">o artigo da Knowledge Base "100G link not coming online during MetroCluster back-end switch replacement"</block>
+  <block id="657f971f966b2ce2da53f2f9bf9abb4b" category="paragraph">Se você estiver substituindo um switch que usa portas de 25G por um novo switch que usa portas de 100G em uma plataforma afetada (por exemplo, substituindo um switch BES-53248 por um switch Cisco 9336C em uma plataforma AFF A50), consulte <block ref="6b31e2facf5f0ecbaec230ff30732341" category="inline-link-macro-rx"></block>.</block>
+  <block id="2c949cfd6a2e8390ab22577d8fcb8862" category="paragraph">Nenhuma. O OpenJDK 19.0.2 está incluído na instalação.</block>
+  <block id="cbf667b7a6abb8a525741cdc92045f34" category="paragraph">O estado HA para todos os componentes deve ser <block ref="f46f944e351f8b92e40c3308318738a3" prefix=" " category="inline-code"></block>.</block>
+  <block id="de63ff438cd7316a835d354fccfe0c46" category="list-text">Em cada nó, verifique a data, a hora e o fuso horário do sistema:</block>
+  <block id="3e72511c09e554faf49052f79d627689" category="paragraph"><block ref="7e17e2b336dbdd66c2f45405573b53de" prefix="" category="inline-code"></block></block>
+  <block id="1bf5eb31de796d79cb8b6dfd332d4bb6" category="list-text">Se necessário, defina a data em UTC ou Horário Médio de Greenwich (GMT):</block>
+  <block id="833ce90830a0406f310191c0da1f76da" category="paragraph"><block ref="ce2b665b5815a9c7e13cdb6fc96a5a98" prefix="" category="inline-code"></block></block>
+  <block id="b6d433a7d610fd177455bd83030adfbf" category="list-text">Verifique a hora usando o seguinte comando no prompt do ambiente de inicialização:</block>
+  <block id="667f3a6a11750e110d0c1442d2aa20e7" category="paragraph"><block ref="33f065aac47385ce7b7c4bc5d49f430b" prefix="" category="inline-code"></block></block>
+  <block id="3cc2598fed5ed84edf9cf18c5a8293c6" category="list-text">Se necessário, defina a hora em UTC ou GMT:</block>
+  <block id="25a249a3cdba620e6eba67639be13589" category="paragraph"><block ref="aa979bf34f52b205295408bd829f28b6" prefix="" category="inline-code"></block></block>
+  <block id="e02ed2f754f906507b04045b6d64c6a8" category="list-text">Salve as configurações:</block>
+  <block id="be169689a01b80888d8e5aa7db10c6e9" category="list-text">Reúna variáveis de ambiente:</block>
+  <block id="c464415fe9040cd42442afd5413727d2" category="list-text">Verifique o modo ha-config:</block>
+  <block id="bb903f8039d8d74f0348f46c24a33392" category="paragraph">O resultado deve ser semelhante ao seguinte exemplo:</block>
 </blocks>
