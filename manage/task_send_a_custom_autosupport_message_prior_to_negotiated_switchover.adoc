@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: perform, negotiate, switchover, autosupport, message, netapp, technical, support, maintenance, underway, failure, trigger, support, prevent, disruption, custom, prior 
 summary: Antes de executar um switchover negociado, você deve emitir uma mensagem AutoSupport para notificar o suporte técnico da NetApp de que a manutenção está em andamento. O switchover negociado pode resultar em falhas de operação Plex ou MetroCluster que acionam mensagens AutoSupport. Informar o suporte técnico de que a manutenção está em andamento impede que ele abra um caso partindo do pressuposto de que ocorreu uma interrupção. 
 ---
-= Envio de uma mensagem AutoSupport personalizada antes do switchover negociado
+= Envie uma mensagem personalizada do AutoSupport antes do switchover do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

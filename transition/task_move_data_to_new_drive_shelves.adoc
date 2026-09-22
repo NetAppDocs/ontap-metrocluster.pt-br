@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: Generating and applying RCFs to the new IP switches, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
 summary: Durante a transição, você migra dados dos compartimentos de unidades na configuração MetroCluster FC para a nova configuração MetroCluster IP. 
 ---
-= Mover os dados para as novas gavetas de unidades
+= Mover dados para novos compartimentos de unidades em uma transição de FC para IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

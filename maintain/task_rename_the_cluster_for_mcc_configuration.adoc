@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, rename, cluster, configuration 
 summary: Renomear um cluster em uma configuração do MetroCluster envolve fazer as alterações e, em seguida, verificar nos clusters locais e remotos se a alteração entrou em vigor corretamente. 
 ---
-= Renomeando um cluster nas configurações do MetroCluster
+= Renomear um cluster em uma configuração do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

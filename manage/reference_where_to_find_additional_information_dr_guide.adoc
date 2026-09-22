@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: learn, metrocluster, configuration, operation, netapp, extensive, documentation, additional, information, miscellaneous, guide 
 summary: Você pode saber mais sobre a configuração e operação do MetroCluster na extensa documentação do NetApp. 
 ---
-= Onde encontrar informações adicionais
+= Saiba mais sobre a configuração e operação do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, update, firmware, fibrebridge, bridge, update, configuration 
 summary: O procedimento para atualizar o firmware da ponte depende do modelo da ponte e da versão do ONTAP. 
 ---
-= Atualizando o firmware em uma ponte FibreBridge
+= Atualizar o firmware em uma ponte FibreBridge em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

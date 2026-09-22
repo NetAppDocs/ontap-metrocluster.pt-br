@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: equipment, disaster, site, undergone, require, maintenance, replacement, controller, replace, process, metrocluster, configuration, data, aggregate, switchback, operation, recover, non-controller, failure, heal, configuration, metrocluster, fc, data, aggregate, root, disaster, verify, system, switchback, verification, result, perform, successful, delete, deleting, stale, listing 
 summary: 'Depois que o equipamento no local de desastre tiver sido submetido a qualquer manutenção ou substituição necessária, mas nenhum controlador tiver sido substituído, você poderá iniciar o processo de devolução da configuração do MetroCluster para um estado totalmente redundante. Isso inclui a recuperação da configuração (primeiro os agregados de dados e depois os agregados raiz) e a execução da operação de switchback.' 
 ---
-= Recuperando-se de uma falha não controladora
+= Recuperar de uma falha que não seja do controlador em uma configuração do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

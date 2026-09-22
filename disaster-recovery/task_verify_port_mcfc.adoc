@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: verify, port, environmental, metrocluster, configuration 
 summary: Você deve definir as variáveis ambientais no nó e desligá-lo para prepará-lo para a configuração do MetroCluster. 
 ---
-= Verificação da configuração da porta (somente configurações MetroCluster FC)
+= Verifique a configuração da porta em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, cluster, new, brocade, fc, switches 
 summary: Se estiver atualizando para novos switches Brocade FC, substitua os switches na primeira malha, verifique se a configuração MetroCluster está totalmente operacional e substitua os switches na segunda malha. 
 ---
-= Atualização para novos switches Brocade FC
+= Atualize para novos switches Brocade FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, replacement, controller, module, disaster, site, boot 
 summary: Você precisa inicializar os nós de substituição no local de desastre para o sistema operacional ONTAP. 
 ---
-= Inicializando no ONTAP em módulos de controlador de substituição em configurações IP do MetroCluster
+= Inicialize nós de substituição no ONTAP em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: start, ontap, disruptive, transition, two-node, metrocluster, fc, configuration, data, exist, drive, shelves, shelf, ip, node, requirement, support, workflow, preparing, prepare, controller, module, controller, migrate 
 summary: A partir do ONTAP 9.8, você pode fazer a transição de uma configuração de FC MetroCluster de dois nós e mover dados das gavetas de unidades existentes, mesmo que as gavetas de storage existentes não sejam suportadas pelos novos nós IP do MetroCluster. 
 ---
-= Transição sem interrupções quando as gavetas atuais não são compatíveis com novos controladores (ONTAP 9.8 e posterior)
+= Transição disruptiva quando as prateleiras do MetroCluster não são suportadas em novos controladores
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

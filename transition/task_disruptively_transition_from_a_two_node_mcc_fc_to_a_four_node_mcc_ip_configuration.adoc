@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: start, ontap, transition, workload, data, exist, two-node, metrocluster, fc, configuration, four-node, ip, disk, shelves, shelf, disruptive, fc 
 summary: A partir do ONTAP 9.8, você pode migrar workloads e dados de uma configuração MetroCluster FC de dois nós existente para uma nova configuração MetroCluster IP de quatro nós. As gavetas de disco dos nós FC do MetroCluster são movidas para os nós IP. 
 ---
-= Transição de um MetroCluster FC de dois nós para uma configuração IP MetroCluster de quatro nós (ONTAP 9.8 e posterior) sem interrupções.
+= Transicione uma configuração FC de dois nós do MetroCluster para uma configuração IP de quatro nós do MetroCluster de forma disruptiva
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

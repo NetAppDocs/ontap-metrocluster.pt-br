@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: stage, transition, process, metrocluster, switchover, heal, switchback, operation, fc, ip, workflow 
 summary: Dependendo da etapa do processo de transição, as operações de switchover, recuperação e switchback do MetroCluster usam o fluxo de trabalho MetroCluster FC ou MetroCluster IP. 
 ---
-= Operações de switchover, recuperação e switchback durante a transição sem interrupções
+= Switchover, recuperação e switchback durante a transição do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

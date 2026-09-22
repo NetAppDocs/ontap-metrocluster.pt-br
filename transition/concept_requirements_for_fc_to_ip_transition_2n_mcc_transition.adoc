@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: start, transition, process, configuration, requirement, meet, preparing, prepare, disruptive, fc-to-ip, transition, general, workflow, disruptive, map, port, fc, node, ip 
 summary: Antes de iniciar o processo de transição, você deve garantir que a configuração atenda aos requisitos. 
 ---
-= Preparação para uma transição disruptiva de FC para IP
+= Prepare-se para uma transição disruptiva de FC para IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: failure, metrocluster, configuration, correct, recovery, procedure, choosing, choose, controller, module, scenarios, two-node 
 summary: Após uma falha em uma configuração do MetroCluster, você deve selecionar o procedimento de recuperação correto, dependendo da extensão da falha. 
 ---
-= Escolher o procedimento de recuperação correto
+= Escolha o procedimento de recuperação correto do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

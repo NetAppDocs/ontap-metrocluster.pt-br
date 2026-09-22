@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, identifying, storage, ip, configuration 
 summary: Se você precisar substituir um módulo de unidade ou compartimento, primeiro será necessário identificar o local. 
 ---
-= Identificação do armazenamento em uma configuração IP do MetroCluster
+= Identifique o local de armazenamento em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

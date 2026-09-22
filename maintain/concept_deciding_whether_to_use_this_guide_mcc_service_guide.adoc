@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, decide, service, guide, firmware, upgrade, hardware replacement, drive, shelf, ip switch, fc switch, bridge, sas cable 
 summary: Você pode manter os componentes de hardware específicos do MetroCluster na configuração do MetroCluster. 
 ---
-= Mantenha os componentes do MetroCluster
+= MetroCluster procedimentos de manutenção de hardware
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

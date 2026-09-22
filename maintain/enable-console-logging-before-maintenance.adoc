@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, enable, autosupport, logging, maintenance, service,ip, switch, replacement, rename 
 summary: Ative o registo da consola nos seus dispositivos antes de executar tarefas de manutenção. 
 ---
-= Ative o registo da consola antes de executar tarefas de manutenção
+= Ative o registro de logs no console antes da manutenção do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

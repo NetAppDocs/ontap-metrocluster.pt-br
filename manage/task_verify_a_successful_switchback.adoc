@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: perform, switchback, aggregate, storage, virtual, machine, svm, switch, back, online, verify, successful 
 summary: 'Depois de executar o switchback, você deseja confirmar que todos os agregados e máquinas virtuais de armazenamento (SVMs) são comutados de volta e on-line.' 
 ---
-= Verificando um switchback bem-sucedido
+= Verifique se o switchback do MetroCluster foi bem-sucedido
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

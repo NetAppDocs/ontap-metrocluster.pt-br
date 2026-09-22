@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: aggregate, heal, mirror, restore 
 summary: Depois de substituir o hardware e atribuir discos, você pode executar as operações de recuperação do MetroCluster. 
 ---
-= Executar a recuperação de agregados e restaurar espelhos (configurações IP do MetroCluster)
+= Realize a recuperação de agregados e restaure espelhos em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

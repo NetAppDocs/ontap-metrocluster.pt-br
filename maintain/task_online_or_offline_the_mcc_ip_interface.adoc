@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, online, offline, ip, interface port 
 summary: Ao executar a manutenção, você pode precisar derrubar a porta de interface IP do MetroCluster. 
 ---
-= Portas de interface IP MetroCluster online ou offline
+= Coloque uma porta de interface online ou offline em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

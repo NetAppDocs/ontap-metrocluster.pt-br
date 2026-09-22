@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: heal, aggregate, preparation, switchback, operation, configuration, metrocluster, ip, ontap 
 summary: Você deve curar os agregados em preparação para a operação de switchback. 
 ---
-= Recuperação da configuração em uma configuração IP do MetroCluster (ONTAP 9 .4 e anterior)
+= Recupere a configuração de IP do MetroCluster para versões antigas do ONTAP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

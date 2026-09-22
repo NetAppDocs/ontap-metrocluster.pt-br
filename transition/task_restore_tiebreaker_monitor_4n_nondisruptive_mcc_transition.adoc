@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: completing, complete, transition, metrocluster, configuration, resume, monitor, tiebreaker, mediator, utility, restoring, restore 
 summary: Depois de concluir a transição da configuração do MetroCluster, você pode retomar o monitoramento com o utilitário tiebreaker ou Mediator. 
 ---
-= Restaurar a monitorização do tiebreaker ou do Mediator
+= Restaurar o monitoramento de desempate ou mediação para o MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

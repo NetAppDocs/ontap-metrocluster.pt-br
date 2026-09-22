@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: helpful, metrocluster, protect, data, transparent, recovery, failure, manage, switchover, switchback, understand, disaster, eight-node, four-node, local, failover, configuration, configuration, disaster, recovery, method, nondisruptive, operation, two-node, node, configuration, overview, fc, ip, automatic, heal, aggregate, svm 
 summary: É útil entender como o MetroCluster protege os dados e fornece recuperação transparente contra falhas para que você possa gerenciar suas atividades de switchover e comutação de forma fácil e eficiente. 
 ---
-= Compreender a proteção de dados e a recuperação de desastres da MetroCluster
+= Saiba mais sobre o MetroCluster para proteção de dados e recuperação de desastres
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, test, configuration, verify, switchover, power, line, storage, shelf 
 summary: Você pode testar cenários de falha para confirmar o funcionamento correto da configuração do MetroCluster. 
 ---
-= Testando a configuração do MetroCluster
+= Teste a configuração stretch do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

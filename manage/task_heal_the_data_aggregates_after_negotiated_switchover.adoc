@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: heal, data, aggregate, completing, complete, maintenance, test, process, resynchronize, prepare, disaster, operation, root, negotiate, switchover 
 summary: Você precisa curar os agregados de dados após concluir qualquer manutenção ou teste. Esse processo ressincroniza os agregados de dados e prepara o local de desastre para operação normal. Você precisa curar os agregados de dados antes de curar os agregados de raiz. 
 ---
-= Recuperação dos agregados de dados após o switchover negociado
+= Recupere os agregados de dados do MetroCluster após o switchover
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

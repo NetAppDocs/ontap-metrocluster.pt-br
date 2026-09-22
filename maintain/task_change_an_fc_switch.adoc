@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, change, fc, switch 
 summary: 'Talvez seja necessário alterar o fornecedor de um switch FC (Cisco para Brocade ou vice-versa), alterar o modelo do switch ou ambos.' 
 ---
-= Alterar o fornecedor ou o modelo dos switches FC
+= Altere o fornecedor ou modelo de um switch FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 
 

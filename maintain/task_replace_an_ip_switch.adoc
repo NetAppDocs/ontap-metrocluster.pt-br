@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, replace, ip, switch 
 summary: 'Talvez seja necessário substituir um switch com falha ou atualizar ou fazer downgrade de um switch. O novo switch pode ser o mesmo que o antigo switch quando um switch falhou, ou você pode alterar o tipo de switch (atualizar ou baixar o switch).' 
 ---
-= Substitua um switch IP ou altere o uso de switches IP MetroCluster existentes
+= Substitua ou reutilize um switch em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

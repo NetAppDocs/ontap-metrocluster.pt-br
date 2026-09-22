@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, replace, brocade, fc, switch 
 summary: Você deve usar este procedimento específico do Brocade para substituir um switch com falha. 
 ---
-= Substituição de um switch Brocade FC
+= Substitua um switch Brocade FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

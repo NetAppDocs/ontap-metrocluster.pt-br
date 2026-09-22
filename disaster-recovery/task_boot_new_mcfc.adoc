@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: boot, controller, modules, fc 
 summary: Após a conclusão da recuperação de agregado para os agregados de dados e raiz, você precisa inicializar o nó ou nós no local de desastre. 
 ---
-= Iniciar os novos módulos de controladores (configurações MetroCluster FC)
+= Inicialize os novos módulos do controlador em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

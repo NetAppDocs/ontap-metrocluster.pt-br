@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: non-disruptively, transition, metrocluster, fc, ip, node, san, host, moving, move 
 summary: Ao fazer a transição do MetroCluster FC para nós IP sem interrupções, você precisa mover objetos de host FC SAN do MetroCluster FC para nós IP sem interrupções. 
 ---
-= Movimentação de um workload de FC SAN do MetroCluster FC para os nós IP do MetroCluster
+= Mover um workload de FC SAN do MetroCluster FC para os nós IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

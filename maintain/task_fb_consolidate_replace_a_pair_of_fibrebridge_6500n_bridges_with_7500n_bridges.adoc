@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: replace, metrocluster, maintain, service, pair, fibrebridge, bridges 
 summary: Para aproveitar a porta FC2 adicional nas pontes FibreBridge 7600N ou 7500N e reduzir a utilização de rack, você pode substituir 6500N pontes sem interrupções e consolidar até quatro stacks de storage atrás de um único par de pontes FibreBridge 7600N ou 7500N. 
 ---
-= Substituição de um par de pontes FibreBridge 6500N por pontes 7600N ou 7500N
+= Substitua as pontes FibreBridge 6500N por pontes 7600N ou 7500N em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

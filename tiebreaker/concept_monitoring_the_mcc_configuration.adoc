@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, tiebreaker, software, automate, recovery, process, enabling, enable, monitor, configuration, status, evaluate, snmp, event, trap, netapp, customer, support, operation, configuring, configure, autosupport, display, status, monitor, operation, information, creating, create, dump, file 
 summary: O software tiebreaker do MetroCluster automatiza o processo de recuperação, permitindo que você monitore o status da configuração do MetroCluster, avalie os eventos e traps SNMP enviados ao suporte ao cliente do NetApp e visualize o status das operações de monitoramento. 
 ---
-= Monitorização da configuração do MetroCluster
+= Monitore a configuração do MetroCluster com o MetroCluster Tiebreaker
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

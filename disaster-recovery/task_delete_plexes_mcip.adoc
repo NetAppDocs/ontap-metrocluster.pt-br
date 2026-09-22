@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: deleting, delete, fail, plex, own 
 summary: É necessário ligar os componentes dos compartimentos de disco e dos switches IP MetroCluster no local de desastre. 
 ---
-= Exclusão de plexes com falha de propriedade do site sobrevivente (configurações IP do MetroCluster)
+= Exclua os plexes com falha pertencentes ao site sobrevivente em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

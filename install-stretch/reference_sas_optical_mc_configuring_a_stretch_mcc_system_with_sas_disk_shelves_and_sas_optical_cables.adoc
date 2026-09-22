@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, install, cable, components, two, node, sas, stretch, attached, configuration 
 summary: Os controladores de storage devem ser cabeados para a Mídia de storage e entre si. Os controladores de storage também devem ser cabeados para a rede de dados e gerenciamento. 
 ---
-= Instalação e cabeamento de componentes MetroCluster para configurações de alongamento de dois nós conetadas a SAS
+= Componentes de cabos do MetroCluster para uma configuração stretch SAS de dois nós
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

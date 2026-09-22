@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switchover, dr, partner, ownership, disk, svm, online, confirm 
 summary: Após a conclusão do switchover, você deve verificar se os parceiros de DR se apropriaram dos discos e se os SVMs do parceiro se tornaram online. 
 ---
-= Verifique se os SVMs estão em execução e se os agregados estão online
+= Verifique se as SVMs em uma configuração do MetroCluster estão em execução e se os agregados estão online
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

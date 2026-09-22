@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, verify, storage, connectivity, remote 
 summary: Você precisa confirmar se os nós substituídos têm conectividade com as gavetas de disco no local que sobreviveu. 
 ---
-= Verificar a conetividade do armazenamento ao local remoto (configurações IP do MetroCluster)
+= Verifique a conectividade de storage com o local remoto em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: helpful, understand, netapp, metrocluster, tiebreaker, software, distinguish, failure, monitor, configuration, cli, setting, operation, overview, software, detect, site, intersite, connectivity, disaster, type, detection, time, man, page 
 summary: É útil entender o que é o software tiebreaker da NetApp MetroCluster e como ele distingue entre os tipos de falhas para que você possa monitorar suas configurações do MetroCluster com eficiência. Use a CLI do tiebreaker para gerenciar configurações e monitorar o status e as operações das configurações do MetroCluster. 
 ---
-= Visão geral do software tiebreaker
+= Saiba mais sobre o MetroCluster Tiebreaker
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: Transitioning from MetroCluster FC to MetroCluster IP configurations, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
 summary: Você deve preparar os quatro novos nós IP do MetroCluster e instalar a versão correta do ONTAP. 
 ---
-= Preparação dos controladores IP MetroCluster
+= Prepare os controladores IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

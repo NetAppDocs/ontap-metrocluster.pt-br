@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: data, aggregate, heal, root, preparation, switchback, operation, negotiate, switchover 
 summary: Depois que os agregados de dados tiverem sido curados, você deve curar os agregados de raiz em preparação para a operação de switchback. 
 ---
-= Recuperação dos agregados raiz após o switchover negociado
+= Recuperar os agregados root do MetroCluster após o switchover
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: select, transition, procedure, depend, exist, metrocluster, fc, configuration, choosing, choose 
 summary: Você deve selecionar um procedimento de transição dependendo da configuração existente do MetroCluster FC. 
 ---
-= Escolha o procedimento de transição
+= MetroCluster opções de procedimento de transição FC-para-IP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

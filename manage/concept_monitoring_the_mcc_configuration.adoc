@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, metrocluster, command, active, iq, unified, manager, oncommand, unified, monitor, health, software, state, component, operation, check, configuration, configuration, detect, failure, netapp, tiebreaker, software 
 summary: 'Você pode usar os comandos do ONTAP MetroCluster e o Active IQ Unified Manager (anteriormente Gerenciador Unificado do OnCommand) para monitorar a integridade de vários componentes de software e o estado das operações do MetroCluster.' 
 ---
-= Monitorização da configuração do MetroCluster
+= Monitorar a configuração do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

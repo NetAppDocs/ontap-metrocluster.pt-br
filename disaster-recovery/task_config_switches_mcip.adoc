@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, switchback, operation 
 summary: Você deve configurar todos os switches IP que foram substituídos. 
 ---
-= Configurar os switches IP (configurações IP do MetroCluster)
+= Configure os switches IP em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

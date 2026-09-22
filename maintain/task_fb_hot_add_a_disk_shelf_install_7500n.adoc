@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, add, disk, shelf 
 summary: É possível adicionar um compartimento de disco a quente quando quiser aumentar o storage sem reduzir a performance. 
 ---
-= Adicionar um compartimento de disco SAS a uma stack de gavetas de disco SAS
+= Adicione dinamicamente uma prateleira de discos SAS a uma pilha de prateleiras em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

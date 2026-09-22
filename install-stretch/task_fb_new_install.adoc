@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, fc, sas, bridge, disk, shelf 
 summary: Você instala e faz o cabeamento de pontes ATTO FibreBridge e gavetas de disco SAS ao adicionar novo armazenamento à configuração. 
 ---
-= Instalar pontes FC a SAS e gavetas de disco SAS
+= Instale pontes FC-para-SAS e prateleiras de discos SAS para uma configuração stretch do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

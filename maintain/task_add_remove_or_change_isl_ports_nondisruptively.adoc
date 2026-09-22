@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, add, remove, change, isl, ports, nondisruptively 
 summary: Talvez seja necessário adicionar, remover ou alterar portas ISL. Você pode converter portas ISL dedicadas para portas ISL compartilhadas ou alterar a velocidade das portas ISL em um switch. ISLs que viajam distâncias maiores podem exigir velocidades mais baixas para melhorar a qualidade. Você também pode precisar aumentar a velocidade das portas ISL para aproveitar as atualizações do sistema e adicionar ISLs a um switch IP Cisco se estiver adicionando ou atualizando hardware. 
 ---
-= Adicione, remova ou altere portas ISL sem interrupções nos switches IP Cisco
+= Adicione, remova ou altere portas ISL sem interrupção em switches Cisco em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, configuration, unmirrored, aggregates, crs, svm, san 
 summary: Se a sua configuração incluir agregados sem espelhamento, você precisa estar ciente de possíveis problemas de acesso após as operações de switchover. 
 ---
-= Considerações ao usar agregados sem espelhamento
+= Agregados não espelhados em uma configuração stretch do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

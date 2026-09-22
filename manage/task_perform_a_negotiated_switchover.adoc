@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: negotiate, switchover, clean, shut, down, partner, site, operation, metrocluster, perform 
 summary: Um switchover negociado desliga os processos no local do parceiro de forma limpa e, em seguida, alterna as operações do local do parceiro. Você pode usar um switchover negociado para executar a manutenção em um local de MetroCluster ou para testar a funcionalidade de switchover. 
 ---
-= Realização de um switchover negociado
+= Realize um switchover negociado do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

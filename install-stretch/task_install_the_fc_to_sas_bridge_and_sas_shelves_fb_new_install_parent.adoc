@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, install, fc, sas, bridge, shelves 
 summary: 'Depois de garantir que o sistema atenda a todos os requisitos na seção "preparação para a instalação", você pode instalar o novo sistema.' 
 ---
-= Instalar a ponte FC para SAS e as gavetas SAS
+= Instale a ponte FC-para-SAS e os shelves SAS para uma configuração stretch do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

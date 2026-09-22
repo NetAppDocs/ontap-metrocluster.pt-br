@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, configure, metrocluster, tiebreaker, software, deciding, decide, configuration 
 summary: Estas informações descrevem como instalar e configurar o software tiebreaker do MetroCluster. 
 ---
-= Instalação e configuração do software MetroCluster Tiebreaker
+= Saiba mais sobre a instalação e configuração do MetroCluster Tiebreaker
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

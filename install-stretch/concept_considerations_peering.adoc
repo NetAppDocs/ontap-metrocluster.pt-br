@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, peer, peering, ports, cluster, connectivity 
 summary: Você deve estar familiarizado com os pré-requisitos e diretrizes para a configuração de relacionamentos de peering MetroCluster. 
 ---
-= Peering de clusters
+= Interconexão de clusters em uma configuração estendida do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

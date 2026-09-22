@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: perform, final, configuration, return, metrocluster, normal, operation, system, verify, assign, drive, transition, install, license, module, complete, completing, node, send, custom, autosupport, message, maintenance 
 summary: Você deve executar as etapas finais de configuração e retornar a configuração do MetroCluster à operação normal. 
 ---
-= Voltar a colocar o sistema em funcionamento normal
+= Restaure o MetroCluster sistema ao funcionamento normal
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

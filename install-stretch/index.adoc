@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation 
 summary: Para instalar sua configuração Stretch MetroCluster, você deve executar vários procedimentos na ordem correta. 
 ---
-= Visão geral
+= Fluxo de trabalho de instalação do MetroCluster Stretch
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

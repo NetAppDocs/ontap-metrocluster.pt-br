@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: complete, completing, transition, autosupport, message, indicating, indicate, maintenance, automatic, case, creation, resume, send 
 summary: Depois de concluir a transição, você deve enviar uma mensagem AutoSupport indicando o fim da manutenção, para que a criação automática de casos possa ser retomada. 
 ---
-= Enviar uma mensagem AutoSupport personalizada após a manutenção
+= Envie uma mensagem personalizada do AutoSupport após a manutenção do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

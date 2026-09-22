@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, iscsi, connections, disaster, site, surviving, connectivity, restore 
 summary: Você deve restaurar as conexões do iniciador iSCSI MetroCluster dos nós sobreviventes. 
 ---
-= Restaurar a conetividade dos nós sobreviventes para o local de desastre (configurações IP do MetroCluster)
+= Restaure a conectividade com o local afetado pelo desastre em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

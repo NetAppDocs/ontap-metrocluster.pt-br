@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, in, band, management, fc, sas, bridges 
 summary: Começando com o ONTAP 9.5 com o FibreBridge 7500N ou 7600N bridges, o gerenciamento em banda das pontes é suportado como uma alternativa ao gerenciamento IP das pontes. A partir do ONTAP 9.8, o gerenciamento fora da banda está obsoleto. 
 ---
-= Gerenciamento na banda das pontes FC para SAS
+= Gerenciamento em banda de pontes FC-para-SAS em uma configuração estendida do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

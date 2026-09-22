@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: disaster, occur, perform, surviving, cluster, survive, switchover, ensure, safe, data, service, force, fence, fencing, off, site, access, volume, nvfail, state, output, storage, aggregate, plex, show, command, indeterminate, metroxluster 
 summary: Se ocorrer um desastre, há etapas que você deve executar no cluster de desastre e no cluster sobrevivente após o switchover para garantir um serviço de dados seguro e contínuo. 
 ---
-= Realizar um switchover forçado após um desastre
+= Realize um switchover forçado do MetroCluster após um desastre
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

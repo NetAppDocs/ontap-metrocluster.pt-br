@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: test, metrocluster, functionality, plan, maintenance, negotiate, switchover, cluster, partner, configuration, perform 
 summary: Se quiser testar a funcionalidade do MetroCluster ou executar a manutenção planejada, você pode executar um switchover negociado no qual um cluster é colocado de forma limpa para o cluster de parceiros. Você pode então curar e voltar a configuração. 
 ---
-= Realização de comutação para testes ou manutenção
+= Realize um switchover do MetroCluster para testes ou manutenção
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, atto, fc, switches, bridges, modify, IP, address 
 summary: Substitua os endereços IP antigos de monitoramento de integridade depois de modificar os endereços IP de switches back-end MetroCluster FC ou pontes ATTO. 
 ---
-= Modifique um endereço IP de switch ou ponte ATTO para monitoramento de integridade
+= Modificar o endereço IP de um switch ou ATTO bridge para monitoramento de integridade em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

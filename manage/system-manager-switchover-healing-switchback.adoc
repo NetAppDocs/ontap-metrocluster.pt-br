@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switchover, perform, switchback, system, manager, operation, restore, metrocluster, functionality, ip, configuration 
 summary: Após um switchover, você deve executar as operações de recuperação de modo específico para restaurar o recurso de MetroCluster. 
 ---
-= Use o Gerenciador do sistema para executar o switchover e o switchback (somente configurações MetroCluster IP)
+= Use o System Manager para switchover e switchback em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

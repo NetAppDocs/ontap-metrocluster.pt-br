@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: workflow, perform, disaster, recovery 
 summary: Use o fluxo de trabalho para executar a recuperação de desastres. 
 ---
-= Fluxo de trabalho para recuperação de desastres
+= MetroCluster fluxo de trabalho de recuperação de desastres
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

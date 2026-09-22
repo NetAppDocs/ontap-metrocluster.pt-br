@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
 summary: O procedimento de instalação do tiebreaker que você segue depende da versão do tiebreaker que você está instalando. 
 ---
-= Escolha o procedimento de instalação
+= Escolha o procedimento de instalação do MetroCluster Tiebreaker
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -30,7 +30,7 @@ link:tb-17-install.html["Instale o Tiebreaker 1.7"]
  a| 
 Desempate 1.6 ou 1.6P1
  a| 
-link:tb-16-install.html["Instale o Tiebreaker 1.6 ou 1.6P1."]
+link:tb-16-install.html["Instale o MetroCluster Tiebreaker 1.6 ou 1.6P1"]
 
 
 

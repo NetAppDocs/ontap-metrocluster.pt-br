@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, power, off, entire, metrocluster, fc, configuration 
 summary: Você precisa desligar toda a configuração do MetroCluster FC e todos os equipamentos antes que a manutenção ou realocação do local possa começar. 
 ---
-= Desativar toda uma configuração do MetroCluster FC
+= Desligue toda uma configuração do MetroCluster FC
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

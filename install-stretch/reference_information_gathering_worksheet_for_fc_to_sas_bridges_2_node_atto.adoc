@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, worksheet, fc, sas, bridges, information 
 summary: Antes de começar a configurar os sites do MetroCluster, você deve coletar as informações de configuração necessárias. 
 ---
-= Planilha de coleta de informações para bridges FC-para-SAS
+= Planilha de coleta de informações para pontes stretch MetroCluster FC-para-SAS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

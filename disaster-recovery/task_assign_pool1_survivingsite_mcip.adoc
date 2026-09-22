@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: adp, system, assign, surviving, site 
 summary: No local sobrevivente, você precisa atribuir manualmente unidades remotas localizadas no local do desastre ao pool 1 dos nós sobreviventes. 
 ---
-= Atribuição de unidades de pool 1 no local sobrevivente (configurações IP do MetroCluster)
+= Atribua as unidades do pool 1 no site remanescente em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

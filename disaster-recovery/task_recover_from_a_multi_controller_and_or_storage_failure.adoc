@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: controller, failure, extend, module, side, dr, group, metrocluster, configuration, single, controller, two-node, replace, equipment, reassign, equipment, ownership, drive, disaster, recover, multi-controller, storage 
 summary: 'Se a falha do controlador se estender a todos os módulos do controlador em um lado de um grupo de DR em uma configuração MetroCluster (incluindo um único controlador em uma configuração MetroCluster de dois nós) ou o armazenamento tiver sido substituído, você deve substituir o equipamento e reatribuir a propriedade das unidades para recuperar do desastre.' 
 ---
-= Recuperando-se de uma falha de vários controladores ou de armazenamento
+= Recupere de uma falha em múltiplos controladores ou storage no MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

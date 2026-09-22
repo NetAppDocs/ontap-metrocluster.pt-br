@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: power, ip, disaster, site, configuration 
 summary: É necessário ligar os componentes dos compartimentos de disco e dos switches IP MetroCluster no local de desastre. 
 ---
-= Ligar o equipamento no local de desastre (configurações IP do MetroCluster)
+= Ligue os equipamentos no local do desastre em uma configuração IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

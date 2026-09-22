@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, transition, stretch, fabric, attacjed, configuration 
 summary: Em uma configuração MetroCluster conectada à malha, os nós estão em diferentes locais. Essa diferença geográfica aumenta a proteção contra desastres. Para fazer a transição de uma configuração Stretch para uma MetroCluster conectada à malha, é necessário adicionar switches FC e, se necessário, pontes FC para SAS à configuração. 
 ---
-= Transição de uma configuração MetroCluster elástica para uma configuração de malha
+= Atualize uma configuração stretch do MetroCluster para fabric-attached
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

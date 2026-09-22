@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, rack, hardware, components 
 summary: Se você não recebeu o equipamento já instalado em armários, você deve colocar os componentes em rack. 
 ---
-= Colocar em pilha os componentes de hardware
+= Instale os componentes de hardware para uma configuração SAS estendida do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

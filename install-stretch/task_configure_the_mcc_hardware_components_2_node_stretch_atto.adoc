@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, cable, two, nose, bridge, attached, stretch, configuration 
 summary: Os componentes do MetroCluster devem ser fisicamente instalados, cabeados e configurados em ambos os locais geográficos. 
 ---
-= Cabeamento de uma configuração Stretch MetroCluster de dois nós conetada em ponte
+= Cable uma configuração Stretch MetroCluster com conexão em ponte de dois nós
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

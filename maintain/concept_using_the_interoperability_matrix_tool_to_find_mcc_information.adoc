@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, interoperability, matrix, tool, information 
 summary: Ao configurar a configuração do MetroCluster, você pode usar a ferramenta de interoperabilidade para garantir que está usando versões de software e hardware suportadas. 
 ---
-= Usando a ferramenta Matriz de interoperabilidade para encontrar informações do MetroCluster
+= Ferramenta de Matriz de Interoperabilidade para uma configuração MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

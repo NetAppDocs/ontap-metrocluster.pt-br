@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switchover, perform, heal, operation, restore, metrocluster, functionality, fc, configuration 
 summary: Após um switchover, você deve executar as operações de recuperação de modo específico para restaurar o recurso de MetroCluster. 
 ---
-= Cura da configuração em uma configuração de MetroCluster FC
+= Fluxo de trabalho de recuperação de configuração para uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

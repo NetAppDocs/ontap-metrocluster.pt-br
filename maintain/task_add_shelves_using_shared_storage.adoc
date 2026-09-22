@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, shelf, shelves, add, ns224, 
 summary: Talvez seja necessário adicionar NS224 gavetas a um MetroCluster usando os switches MetroCluster de armazenamento compartilhado. 
 ---
-= Adição de gavetas a um IP MetroCluster usando switches MetroCluster de armazenamento compartilhado
+= Adicione racks NS224 a uma configuração IP do MetroCluster usando switches compartilhados
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

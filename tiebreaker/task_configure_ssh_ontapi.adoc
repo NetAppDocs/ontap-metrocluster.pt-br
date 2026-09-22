@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: admin, access, ontapi, ssh, configure 
 summary: Você pode configurar o acesso de administrador à API ONTAP e SSH. 
 ---
-= Configure o acesso de administrador à API ONTAP e SSH
+= Configure o acesso à API ONTAP e SSH para o MetroCluster Tiebreaker
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, migrate, root, volumes, new, destination 
 summary: Talvez seja necessário mover volumes raiz para outro agregado de raiz em uma configuração de MetroCluster de dois nós ou quatro nós. 
 ---
-= Quando migrar volumes raiz para um novo destino
+= Migrar um volume raiz em uma configuração do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

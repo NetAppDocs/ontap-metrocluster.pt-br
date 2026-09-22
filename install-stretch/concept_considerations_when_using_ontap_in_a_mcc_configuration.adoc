@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, ontap, considerations, configuration 
 summary: Ao usar o ONTAP em uma configuração do MetroCluster, você deve estar ciente de certas considerações sobre licenciamento, peering para clusters fora da configuração do MetroCluster, execução de operações de volume, operações NVFAIL e outras operações do ONTAP. 
 ---
-= Considerações ao usar o ONTAP em uma configuração do MetroCluster
+= Utilizando o ONTAP em uma configuração MetroCluster stretch
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

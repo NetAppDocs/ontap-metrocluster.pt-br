@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, replace, cisco, fc, switch 
 summary: Você deve usar as etapas específicas do Cisco para substituir um switch Cisco FC com falha. 
 ---
-= Substituição de um switch Cisco FC
+= Substitua um switch Cisco FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

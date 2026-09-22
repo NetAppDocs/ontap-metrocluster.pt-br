@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: node, complete, transition, configure, metrocluster, ip, node, configuring, disabling, disable, data, set, up, lif, bring, svm, moving, move, system, volume 
 summary: Com os novos nós adicionados, você deve concluir as etapas de transição e configurar os nós IP do MetroCluster. 
 ---
-= Configurar os novos nós e concluir a transição
+= Configure os novos nós IP do MetroCluster e conclua a transição
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

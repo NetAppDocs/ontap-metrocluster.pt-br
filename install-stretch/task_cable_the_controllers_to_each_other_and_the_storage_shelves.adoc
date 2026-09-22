@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, cable, controllers, storage, shelves 
 summary: Os adaptadores FC-VI da controladora devem ser cabeados diretamente entre si. As portas SAS da controladora devem ser cabeadas para as stacks de storage remoto e local. 
 ---
-= Fazer o cabeamento das controladoras umas para as outras e das gavetas de storage
+= Estique os cabos dos controladores MetroCluster e das prateleiras de armazenamento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

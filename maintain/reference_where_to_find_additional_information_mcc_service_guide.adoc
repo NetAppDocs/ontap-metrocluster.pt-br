@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, additional, information 
 summary: Você pode saber mais sobre como configurar, operar e monitorar uma configuração do MetroCluster na extensa documentação do NetApp. 
 ---
-= Onde encontrar informações adicionais
+= Saiba mais sobre como manter uma configuração do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

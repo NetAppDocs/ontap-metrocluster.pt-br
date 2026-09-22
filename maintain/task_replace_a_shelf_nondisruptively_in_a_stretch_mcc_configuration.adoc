@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, replace, shelf, nondisruptively, stretch, configuration 
 summary: Você pode substituir os compartimentos de disco sem interrupção em uma configuração Stretch MetroCluster por um compartimento de disco totalmente preenchido ou um chassi de compartimento de disco e transferir componentes da gaveta que você está removendo. 
 ---
-= Substituição de uma gaveta sem interrupções em uma configuração Stretch MetroCluster
+= Substitua uma gaveta sem interrupções em uma configuração Stretch MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, cable, custer, peering, connections 
 summary: Você deve enviar por cabo as portas do módulo do controlador usadas para peering de cluster para que elas tenham conetividade com o cluster no site do parceiro. 
 ---
-= Cabeamento das conexões de peering de cluster
+= Conecte os cabos de peering do cluster para uma configuração stretch do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

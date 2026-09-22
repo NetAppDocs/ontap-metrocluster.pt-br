@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, cable, controllers 
 summary: Os adaptadores FC-VI de cada controladora precisam ser cabeados diretamente ao parceiro. 
 ---
-= Fazer o cabeamento das controladoras umas para as outras
+= Conecte os controladores entre si em uma configuração stretch do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

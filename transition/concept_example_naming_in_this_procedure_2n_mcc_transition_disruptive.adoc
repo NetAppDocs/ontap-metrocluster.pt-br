@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: procedure, example, name, identify, dr, group, node, switch, involve, naming 
 summary: Este procedimento usa nomes de exemplo em todo o para identificar os grupos de DR, nós e switches envolvidos. 
 ---
-= Exemplo de nomeação neste procedimento
+= Exemplo de nomenclatura para uma transição FC-para-IP de dois nós do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

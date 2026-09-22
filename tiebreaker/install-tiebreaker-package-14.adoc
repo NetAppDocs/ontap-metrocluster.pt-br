@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
 summary: Execute uma nova instalação ou atualização para o tiebreaker 1,4 no sistema operacional Linux host para monitorar as configurações do MetroCluster. 
 ---
-= Instale ou atualize para o tiebreaker 1,4
+= Instale ou atualize para o MetroCluster Tiebreaker 1.4
 :allow-uri-read: 
 
 

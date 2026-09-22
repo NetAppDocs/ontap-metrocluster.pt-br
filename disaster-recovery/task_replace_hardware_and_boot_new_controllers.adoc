@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: hardware, component, replace, individual, replacement, installation, guide, replacing, controller, booting, new 
 summary: Se os componentes de hardware tiverem de ser substituídos, tem de os substituir utilizando os respetivos guias de instalação e substituição de hardware individuais. 
 ---
-= Substitua o hardware e inicialize novos controladores
+= Substitua o hardware e inicialize os novos controladores em uma configuração do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

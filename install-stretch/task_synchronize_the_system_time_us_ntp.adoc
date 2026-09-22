@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, synchronize, system, time, ntp 
 summary: 'Cada cluster precisa de seu próprio servidor NTP (Network Time Protocol) para sincronizar o tempo entre os nós e seus clientes.' 
 ---
-= Sincronize a hora do sistema usando NTP
+= Sincronize a hora do sistema usando NTP em uma configuração stretch do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

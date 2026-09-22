@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, replace, shelf, nondisruptively, fabric, attached, configuration 
 summary: Talvez seja necessário saber como substituir uma gaveta sem interrupções em uma configuração MetroCluster conectada à malha. 
 ---
-= Substituição de uma gaveta sem interrupções em uma configuração MetroCluster conectada à malha
+= Substitua uma prateleira sem interrupções em uma configuração FC conectada por fabric do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

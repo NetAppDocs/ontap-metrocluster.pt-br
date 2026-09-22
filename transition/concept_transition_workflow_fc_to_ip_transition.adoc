@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: follow, workflow, ensure, successful, nondisruptive, transition, metrocluster 
 summary: Siga o fluxo de trabalho específico para garantir uma transição sem interrupções bem-sucedida. 
 ---
-= Fluxo de trabalho para transição sem interrupções de MetroCluster
+= Fluxo de trabalho de transição não disruptiva do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

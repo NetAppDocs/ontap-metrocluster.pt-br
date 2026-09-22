@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, requirements, interfaces, fibrebridge, bridges, manage, configures 
 summary: Você pode usar a combinação de uma porta serial, Telnet e FTP para gerenciar as bridges do FibreBridge em vez das interfaces de gerenciamento recomendadas. O sistema deve atender aos requisitos da interface aplicável antes de instalar as pontes. 
 ---
-= Requisitos para usar outras interfaces para configurar e gerenciar bridges do FibreBridge
+= Requisitos da interface de gerenciamento de ponte FibreBridge em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

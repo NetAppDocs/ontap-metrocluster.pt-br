@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: notice, alert, message, transition, alert, safe, ignore, tool, transition 
 summary: Você pode notar mensagens de alerta durante a transição. Esses alertas podem ser ignorados com segurança. Além disso, algumas ferramentas não estão disponíveis durante a transição. 
 ---
-= Mensagens de alerta e suporte de ferramentas durante a transição
+= Mensagens de alerta e suporte de ferramentas durante a transição do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

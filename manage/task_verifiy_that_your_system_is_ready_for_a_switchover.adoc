@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: simulate, option, preview, result, switchover, operation, verification, check, precondition, succesful, verify, ready, example 
 summary: Você pode usar a opção -simular para visualizar os resultados de uma operação de comutação. Uma verificação fornece uma maneira de verificar se a maioria das pré-condições para uma execução bem-sucedida são atendidas antes de iniciar a operação. 
 ---
-= Verificar se o seu sistema está pronto para um switchover
+= Verifique se um sistema MetroCluster está pronto para switchover
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

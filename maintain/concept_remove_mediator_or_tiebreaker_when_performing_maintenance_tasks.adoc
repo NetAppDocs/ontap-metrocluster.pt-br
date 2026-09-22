@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, maintenance, service, tiebreaker, mediator, ontap mediator 
 summary: As configurações que usam o software de monitoramento tiebreaker ou Mediator devem ter o software desconfigurado antes da manutenção 
 ---
-= Remova a monitorização do Mediador ONTAP ou do tiebreaker antes de executar tarefas de manutenção
+= Remova o ONTAP Mediator ou o Tiebreaker antes da manutenção do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, change, isl, properties, isl, ports, iod, ood,configuration, cisco, switch 
 summary: 'Você pode adicionar links interswitches (ISLs), alterar a velocidade ISL e reconfigurar as configurações de entrega em ordem (IOD) ou entrega fora de ordem (OOD) em um switch Cisco FC.' 
 ---
-= Altere as propriedades ISL e a configuração IOD/OOD em um switch Cisco FC
+= Altere as propriedades ISL e a configuração IOD/OOD em um switch Cisco FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

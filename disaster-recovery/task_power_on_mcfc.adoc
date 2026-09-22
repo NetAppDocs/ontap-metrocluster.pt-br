@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: power, sas, storage, direct, attached, configuration, fabric 
 summary: Você precisa ligar os componentes do MetroCluster no local de desastre quando estiver pronto para se preparar para o switchback. 
 ---
-= Ligar o equipamento no local de desastre
+= Ligue os equipamentos no local do desastre em uma configuração MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

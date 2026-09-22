@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, add, stack, sas, disk, shelves, existing, pair, fibrebridge, bridge 
 summary: É possível adicionar uma stack de gavetas de disco SAS a um par existente de bridgeBridge 7600N ou 7500N que tenha portas disponíveis. 
 ---
-= Adição rápida de uma stack de gavetas de disco SAS a um par existente de bridgeBridge 7600N ou 7500N
+= Adicione dinamicamente uma pilha de prateleiras de discos SAS a um par FibreBridge 7500N ou 7600N existente em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

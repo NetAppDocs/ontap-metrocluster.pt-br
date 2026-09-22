@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, add, sas, disk, shelf, direct, attached, fc, configuration, optical, cables 
 summary: Você pode usar cabos óticos SAS para adicionar um compartimento de disco SAS a uma stack existente de gavetas de disco SAS em uma configuração de MetroCluster FC com conexão direta ou como uma nova stack de um HBA SAS ou uma porta SAS integrada na controladora. 
 ---
-= Adição automática de um compartimento de disco SAS em uma configuração de MetroCluster FC com conexão direta usando cabos óticos SAS
+= Adicione a quente uma prateleira de discos SAS em uma configuração FC de MetroCluster de conexão direta usando cabos ópticos SAS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

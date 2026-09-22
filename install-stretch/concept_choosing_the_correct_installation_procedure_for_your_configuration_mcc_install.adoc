@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, correct, procedure, configuration 
 summary: Você deve escolher o procedimento de instalação correto com base em como os controladores de armazenamento se conectam às prateleiras de armazenamento. 
 ---
-= Escolhendo o procedimento de instalação correto para sua configuração
+= Procedimentos de instalação para configurações stretch do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

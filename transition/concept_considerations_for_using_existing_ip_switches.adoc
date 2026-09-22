@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ensure, ip, switch, support, exist, model, metrocluster, fc, configuration, ip, consideration, support 
 summary: Você deve garantir que os switches IP são suportados. Se o modelo de switch existente for suportado pela configuração original do MetroCluster FC e pela nova configuração IP do MetroCluster, você poderá reutilizar os switches existentes. 
 ---
-= Considerações para switches IP
+= Requisitos de switch IP em uma transição do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

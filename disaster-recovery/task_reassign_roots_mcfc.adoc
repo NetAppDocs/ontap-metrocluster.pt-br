@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: reassign, ownership, nvram, system, id, replaced 
 summary: Se um ou ambos os módulos da controladora ou placas NVRAM tiverem sido substituídos no local de desastre, você deverá reatribuir discos pertencentes aos agregados raiz aos módulos da controladora de substituição. 
 ---
-= Reatribuir a propriedade do disco para agregados raiz a módulos de controladora de substituição (configurações MetroCluster FC)
+= Reatribuir a propriedade do disco para agregados raiz em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

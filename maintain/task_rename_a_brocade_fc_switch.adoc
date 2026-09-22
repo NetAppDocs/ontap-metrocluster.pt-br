@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: rename, metrocluster, maintain, service, brocade, fc, switch 
 summary: Talvez seja necessário renomear um switch Brocade FC para garantir uma nomenclatura consistente em toda a configuração. 
 ---
-= Renomeando um switch Brocade FC
+= Renomeie um switch Brocade FC em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

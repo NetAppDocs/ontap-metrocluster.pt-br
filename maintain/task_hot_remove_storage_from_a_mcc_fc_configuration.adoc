@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, remove, storage, fc, configuration 
 summary: Você pode remover dinamicamente as gavetas de unidades, removendo fisicamente as gavetas que tiveram os agregados removidos das unidades, de uma configuração de MetroCluster FC que está em funcionamento e fornecendo dados. É possível remover uma ou mais gavetas de qualquer lugar dentro de uma stack de gavetas ou remover uma stack de gavetas. 
 ---
-= Storage com remoção automática de uma configuração MetroCluster FC
+= Storage de remoção automática de uma configuração MetroCluster FC
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

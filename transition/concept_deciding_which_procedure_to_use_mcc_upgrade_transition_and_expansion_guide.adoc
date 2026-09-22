@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: difference, metrocluster, upgrade, expansion, transition, procedure, match, goal, deciding, decide 
 summary: Você deve entender as diferenças entre uma atualização, expansão ou transição do MetroCluster e escolher o procedimento que corresponde à sua meta. 
 ---
-= Decidir qual procedimento usar
+= Decidindo qual procedimento do MetroCluster usar
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
