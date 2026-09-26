@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: enable, console, logging, devices, maintenance, autosupport, cli, 
 summary: Ative o registo da consola nos seus dispositivos. 
 ---
-= Ativar o registo da consola
+= Habilite o registro em log do console antes de uma expansão FC de quatro nós do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

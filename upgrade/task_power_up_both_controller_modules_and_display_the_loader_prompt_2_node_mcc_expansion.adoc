@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, power, up, controller. modules, display, loader, prompt 
 summary: Você liga o módulo do controlador existente e o novo módulo do controlador para exibir o prompt Loader. 
 ---
-= Ligar ambos os módulos do controlador e apresentar o aviso Loader
+= Ligue os módulos controladores em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

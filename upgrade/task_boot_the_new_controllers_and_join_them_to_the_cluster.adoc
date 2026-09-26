@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, boot, new, controller, join, cluster 
 summary: Para unir os novos controladores ao cluster, você deve inicializar cada novo módulo de controladora e usar o assistente de configuração do cluster do ONTAP para identificar o cluster que será associado. 
 ---
-= Inicializando os novos controladores e juntando-os ao cluster
+= Inicialize os novos controladores e associe-os ao cluster FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

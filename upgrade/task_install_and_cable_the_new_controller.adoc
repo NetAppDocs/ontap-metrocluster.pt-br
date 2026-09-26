@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, install, cable, new, controller, module 
 summary: Você deve instalar fisicamente o novo módulo do controlador no chassi e, em seguida, fazer o cabo. 
 ---
-= Instalação e cabeamento do novo módulo de controladora
+= Instalar e conectar um novo módulo do controlador em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, enable, storage, failover, both, controller, module, cluster, ha 
 summary: Depois de adicionar novos módulos de controladora à configuração do MetroCluster, você deve habilitar o failover de storage nos dois módulos de controladora e ativar separadamente a HA do cluster. 
 ---
-= Ativação do failover de storage nos módulos da controladora e ativação da HA do cluster
+= Habilite o failover de armazenamento e a alta disponibilidade do cluster nos módulos do controlador FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

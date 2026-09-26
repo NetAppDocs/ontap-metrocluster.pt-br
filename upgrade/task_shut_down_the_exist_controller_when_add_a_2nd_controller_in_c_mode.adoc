@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, shut, down, existing, controller, module 
 summary: Você deve executar um desligamento normal do módulo do controlador existente para verificar se todos os dados foram gravados no disco. Também tem de desligar as fontes de alimentação. 
 ---
-= Encerrar o módulo de controladora existente
+= Desligue o módulo do controlador existente durante uma expansão FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

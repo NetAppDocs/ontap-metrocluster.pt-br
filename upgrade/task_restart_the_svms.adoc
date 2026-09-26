@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, restart, svm 
 summary: Depois de expandir a configuração do MetroCluster, você deve reiniciar os SVMs. 
 ---
-= Reiniciando os SVMs
+= Reinicie as SVMs após a expansão FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

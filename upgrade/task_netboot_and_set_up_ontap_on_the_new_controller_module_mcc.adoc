@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, netboot, set, up, ontap, new, controller, module 
 summary: Você deve executar uma sequência específica de etapas para netboot e instalar o sistema operacional ONTAP no novo módulo do controlador ao adicionar módulos do controlador a uma configuração existente do MetroCluster. 
 ---
-= Netbooting e configuração de ONTAP no novo módulo de controlador
+= Inicialize a rede e configure o ONTAP no novo módulo de controladora em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

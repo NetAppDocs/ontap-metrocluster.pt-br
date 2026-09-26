@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, verify, state, configuration 
 summary: 'Você deve identificar os controladores existentes e confirmar as relações de recuperação de desastres (DR) entre eles, se os controladores estão no modo normal e se os agregados estão espelhados.' 
 ---
-= Verificando o estado da configuração do MetroCluster
+= Verifique o estado da configuração FC de dois nós do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, install, license, new, controller, module 
 summary: Você deve adicionar licenças para o novo módulo de controlador para quaisquer serviços ONTAP que exijam licenças padrão. Para recursos com licenças padrão, cada nó no cluster deve ter sua própria chave para o recurso. 
 ---
-= Instalar licenças para o novo módulo de controlador
+= Instalar licenças para um novo módulo controlador em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

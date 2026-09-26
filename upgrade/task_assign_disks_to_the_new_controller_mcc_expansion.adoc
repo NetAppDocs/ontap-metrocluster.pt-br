@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, assign, disks, new, controller, module 
 summary: Antes de concluir a configuração do novo módulo de controladora através do netboot, você deve atribuir discos a ele. 
 ---
-= Atribuindo discos ao novo módulo do controlador
+= Atribua os discos ao novo módulo do controlador FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

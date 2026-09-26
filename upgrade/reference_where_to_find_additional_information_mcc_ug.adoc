@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, additional, information 
 summary: Você pode saber mais sobre a configuração e operação do MetroCluster. 
 ---
-= Onde encontrar informações adicionais
+= Recursos adicionais de documentação do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

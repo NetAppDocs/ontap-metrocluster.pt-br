@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, prepare, upgrade 
 summary: Antes de atualizar para um par de HA, verifique se o sistema atende a todos os requisitos e se tem todas as informações necessárias. 
 ---
-= Preparando-se para a atualização
+= Prepare-se para adicionar um novo módulo de controlador ao cluster FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -1,10 +1,10 @@
 ---
-permalink: upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html 
+permalink: upgrade/task-clear-configuration-controller-four-node.html 
 sidebar: sidebar 
 keywords: metrocluster, upgrade, clear, configuration, controller, module 
 summary: Antes de usar um novo módulo de controlador na configuração do MetroCluster, você deve limpar a configuração. 
 ---
-= Limpar a configuração em um módulo do controlador durante uma expansão FC de dois nós do MetroCluster
+= Limpar a configuração em um módulo do controlador durante uma expansão FC de quatro nós do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

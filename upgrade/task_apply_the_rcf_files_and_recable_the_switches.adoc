@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, apply, rcf, files, recable, switches 
 summary: Você deve aplicar os arquivos RCF para reconfigurar seu zoneamento para acomodar os novos nós. 
 ---
-= Recable e reconfigure os interrutores
+= Recable e reconfigure os switches FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

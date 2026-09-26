@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
 summary: Configure as placas HBA no módulo do controlador e verifique e defina o estado HA do controlador e do chassis. 
 ---
-= Restaure a configuração do HBA e defina o estado de HA do controlador IP e do chassi do MetroCluster
+= Restaurar a configuração do HBA e definir o estado de HA para os controladores IP do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

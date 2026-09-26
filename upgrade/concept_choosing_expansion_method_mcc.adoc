@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, expansion, method 
 summary: O procedimento de expansão usado depende do tipo de configuração do MetroCluster e da versão do ONTAP. 
 ---
-= Escolha um procedimento de expansão
+= Escolha um procedimento de expansão do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

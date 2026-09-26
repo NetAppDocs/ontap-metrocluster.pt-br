@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, choose, upgrade, refresh, method 
 summary: O procedimento de atualização que você usa depende do modelo da plataforma, do escopo da atualização e do tipo de configuração do MetroCluster. 
 ---
-= Escolher um método de atualização do sistema
+= Escolha um procedimento de atualização do sistema MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

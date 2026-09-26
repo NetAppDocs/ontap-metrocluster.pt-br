@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, fc, configuration, net, boot, root, aggregate, system, commands, mcc 
 summary: Você pode usar essa operação de switchover automatizado guiado por MetroCluster para executar uma atualização sem interrupções do controlador para uma configuração de FC MetroCluster de quatro nós. 
 ---
-= Atualizar controladores em uma configuração FC MetroCluster de quatro nós usando switchover e switchback com comandos "System controller replace" (ONTAP 9.10,1 e posterior)
+= Atualize os controladores usando a substituição do controlador do sistema em uma configuração FC de quatro nós do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Você pode usar essa operação de switchover automatizado guiado por MetroCluster para executar uma atualização sem interrupções do controlador em uma configuração de FC MetroCluster de quatro nós. Outros componentes (como prateleiras de armazenamento ou switches) não podem ser atualizados como parte deste procedimento.
+A partir do ONTAP 9.10.1, você pode usar este procedimento guiado e automatizado de switchover do MetroCluster para realizar uma atualização de controlador sem interrupções em uma configuração FC de quatro nós do MetroCluster usando  `system controller replace`comandos. Outros componentes (como gabinetes de armazenamento ou switches) não podem ser atualizados como parte deste procedimento.
 
 
 

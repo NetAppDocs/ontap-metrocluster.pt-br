@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, assign, disk, ownership, aff, systems 
 summary: Se os nós do MetroCluster não tiverem os discos corretamente atribuídos ou se você estiver usando DS460C compartimentos de disco na sua configuração, será necessário atribuir discos a cada um dos nós na configuração do MetroCluster de acordo com compartimento a compartimento. Você criará uma configuração na qual cada nó tem o mesmo número de discos em seus pools de discos locais e remotos. 
 ---
-= Atribuição de propriedade de disco em sistemas que não sejam AFF
+= Atribua a propriedade do disco para sistemas não AFF em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

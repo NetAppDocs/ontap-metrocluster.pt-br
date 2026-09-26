@@ -256,15 +256,23 @@ Se você estiver atualizando ou fazendo downgrade dos switches na primeira malha
 
 NOTE: Se você fizer um upgrade ou downgrade do fabric, repita todas as etapas para o segundo fabric.
 
-. Modifique todas as LIFs do cluster para reativar a reversão automática:
+. Reverta todas as LIFs do cluster para sua porta inicial.
++
+
+CAUTION: Não reverta as LIFs do cluster para suas portas iniciais até que você tenha concluído as etapas anteriores para todos os switches que precisam de uma atualização.
+
++
+.. Modifique todas as LIFs do cluster para reativar a reversão automática:
 +
 [source, cli]
 ----
 network interface modify -vserver <vserver_name> -lif <lif_name> -auto-revert true
 ----
-. Reverter todas as LIFs do cluster que não estão atualmente em suas portas de origem para suas portas de origem:
+.. Reverta manualmente todas as LIFs do cluster que não estão atualmente em suas portas iniciais para suas portas iniciais:
 +
-`network interface revert -vserver * -lif *`
+`network interface revert -vserver Cluster -lif *`
+
+
 
 . Opcionalmente, mova as NS224 gavetas.
 +

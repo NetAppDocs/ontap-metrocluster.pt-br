@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, create, unmirrored, data, aggregates 
 summary: Você pode, opcionalmente, criar agregados de dados sem espelhamento para dados que não exigem o espelhamento redundante fornecido pelas configurações do MetroCluster. 
 ---
-= Criação de agregados de dados sem espelhamento
+= Criar agregados de dados não espelhados em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

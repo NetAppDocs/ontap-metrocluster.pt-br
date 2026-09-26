@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, expand, two, node, fc, configuration, four 
 summary: A expansão de uma configuração de FC MetroCluster de dois nós para uma configuração de FC MetroCluster de quatro nós envolve a adição de uma controladora a cada cluster para formar um par de HA em cada local do MetroCluster e, em seguida, a atualização da configuração de FC MetroCluster. 
 ---
-= Expansão de uma configuração de FC MetroCluster de dois nós para uma configuração de quatro nós
+= Expanda uma configuração de FC MetroCluster de dois nós para uma configuração de quatro nós
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, determine, new, cabling, layout 
 summary: É necessário determinar o cabeamento dos novos módulos de controladora e de quaisquer novas gavetas de disco para os switches FC existentes. 
 ---
-= Determinando o novo layout de cabeamento
+= Determine o novo layout de cabeamento para uma expansão FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

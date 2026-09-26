@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, refresh, four, node, ip, configuration, add, autosupport 
 summary: 'A partir do ONTAP 9.8, é possível atualizar os controladores e o armazenamento em uma configuração IP MetroCluster de quatro nós expandindo a configuração para se tornar uma configuração temporária de oito nós e, em seguida, remover o grupo de recuperação de desastres (DR) antigo.' 
 ---
-= Atualizar uma configuração IP MetroCluster de quatro ou oito nós (ONTAP 9.8 e posterior)
+= Atualizar uma configuração IP de quatro ou oito nós do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

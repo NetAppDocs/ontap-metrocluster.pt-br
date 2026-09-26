@@ -188,7 +188,7 @@ entries:
   - title: Verifique a integridade da configuração do MetroCluster
     url: "/upgrade/task_verify_the_health_of_the_mcc_configuration.html"
   - title: Verifique se há erros de configuração do MetroCluster com o Config Advisor
-    url: "/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor.html"
+    url: "/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor_before.html"
   - title: Envie uma mensagem AutoSupport personalizada antes de adicionar nós à configuração
       do MetroCluster
     url: "/upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration.html"
@@ -201,7 +201,7 @@ entries:
   - title: Configure o ONTAP nos novos controladores
     entries:
     - title: Limpe a configuração de um módulo do controlador
-      url: "/upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html"
+      url: "/upgrade/task-clear-configuration-controller-four-node.html"
     - title: Atribua a propriedade do disco em sistemas AFF
       url: "/upgrade/task_assign_disk_ownership_in_aff_systems_mcc.html"
     - title: Atribua a propriedade do disco em sistemas que não sejam AFF

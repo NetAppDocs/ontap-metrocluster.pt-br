@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, zone, controller, fabric, attached, ports, add 
 summary: 'O zoneamento do switch FC deve acomodar as novas conexões do controlador. Se você usou os arquivos de configuração de referência fornecidos pelo NetApp (RCFs) para configurar seus switches, o zoneamento é pré-configurado e você não precisa fazer alterações.' 
 ---
-= Zoneamento para as novas portas do controlador ao adicionar um módulo de controlador em uma configuração MetroCluster conetada à malha
+= Zoneie as novas portas do controlador em uma configuração do MetroCluster conectada à malha
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

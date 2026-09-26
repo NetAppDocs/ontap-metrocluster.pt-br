@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, configure, intercluster, lif, dedicated, ports, shared 
 summary: Você pode configurar LIFs entre clusters em portas dedicadas ou compartilhadas. 
 ---
-= Configurar LIFs entre clusters
+= Configure LIFs entre clusters durante uma expansão FC de dois para quatro nós do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Saiba como configurar LIFs entre clusters em portas dedicadas e compartilhadas.
+Aprenda a configurar LIFs entre clusters em portas dedicadas e compartilhadas durante uma expansão FC do MetroCluster de dois para quatro nós.
 
 [role="tabbed-block"]
 ====

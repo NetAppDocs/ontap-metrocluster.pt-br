@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, rack, new, equipment 
 summary: Você precisa extrair o equipamento para os novos nós. 
 ---
-= Empilhar o novo equipamento
+= Instale os novos equipamentos para a expansão FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

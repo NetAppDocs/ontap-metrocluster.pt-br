@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, mirror, root, aggregate 
 summary: É necessário espelhar os agregados raiz para fornecer proteção de dados. 
 ---
-= Espelhamento dos agregados de raiz
+= Espelhe os agregados de raiz em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

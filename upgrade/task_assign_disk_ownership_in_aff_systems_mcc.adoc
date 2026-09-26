@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, assign, disk, ownership, aff, systems 
 summary: 'Se você estiver usando sistemas AFF em uma configuração com agregados espelhados e os nós não tiverem os discos (SSDs) corretamente atribuídos, atribua metade dos discos em cada compartimento a um nó local e a outra metade dos discos a seu nó de parceiro de HA. Você deve criar uma configuração na qual cada nó tenha o mesmo número de discos em seus pools de discos locais e remotos.' 
 ---
-= Atribuição de propriedade de disco em sistemas AFF
+= Atribua a propriedade do disco para os sistemas AFF em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

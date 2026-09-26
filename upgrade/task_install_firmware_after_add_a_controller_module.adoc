@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, install, firmware, add, controller, module 
 summary: Depois de adicionar o módulo do controlador, tem de instalar o firmware mais recente no novo módulo do controlador para que o módulo do controlador funcione corretamente com o ONTAP. 
 ---
-= Instalar o firmware depois de adicionar um módulo de controlador
+= Instale o firmware após adicionar um módulo de controladora em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

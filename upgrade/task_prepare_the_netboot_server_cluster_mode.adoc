@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, prepare, netboot, server, download, image 
 summary: Quando estiver pronto para preparar o servidor netboot, você deve baixar a imagem correta do ONTAP netboot do site de suporte da NetApp para o servidor netboot e anotar o endereço IP. 
 ---
-= Preparando o servidor netboot para baixar a imagem
+= Prepare o servidor netboot em uma configuração FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, add, new, controller, module, cluster 
 summary: É necessário adicionar um novo módulo de controladora a cada local, criando um par de HA em cada local. Este é um processo de várias etapas envolvendo alterações de hardware e software que devem ser realizadas na ordem correta em cada local. 
 ---
-= Adicionar um novo módulo de controlador a cada cluster
+= Adicione um novo módulo do controlador a cada cluster FC do MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
