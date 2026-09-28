@@ -2,7 +2,7 @@
 permalink: install-fc/task_download_the_brocade_fc_rcf_switch_software.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, download, brocade, fc, switch, rcf, file 
-summary: Você deve baixar o arquivo de configuração de referência para cada switch na configuração da estrutura do MetroCluster. 
+summary: 'Você deve baixar o arquivo de configuração de referência (RCF) para cada switch na configuração de malha do MetroCluster.' 
 ---
 = Baixe o arquivo RCF do switch Brocade FC em uma configuração FC do MetroCluster
 :allow-uri-read: 

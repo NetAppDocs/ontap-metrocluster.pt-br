@@ -2,7 +2,7 @@
 permalink: install-fc/task_cable_the_isl_between_the_mcc_sites_fabric_config.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, cable, isl, sites 
-summary: 'Você deve conetar os switches FC em cada local por meio dos links interswitches de fibra ótica (ISLs) para formar as malhas de switch que conetam os componentes do MetroCluster.' 
+summary: 'É necessário conetar os switches FC em cada local por meio dos links interswitches (ISLs) de fibra ótica para formar as malhas de switch que conetam os componentes do MetroCluster.' 
 ---
 = Conecte os ISLs entre os sites FC do MetroCluster
 :allow-uri-read: 

@@ -2,7 +2,7 @@
 permalink: manage/task_perform_a_switchback.html 
 sidebar: sidebar 
 keywords: metrocluster, configuration, switchback, operation, return, operating, operate, state, sync-source, storage, virtual, machine, svm, disaster, site, active, serving, local, disk, pool, perform 
-summary: 'Depois de curar a configuração do MetroCluster, você pode executar a operação MetroCluster switchback. A operação de switchback do MetroCluster retorna a configuração ao seu estado operacional normal, com as máquinas virtuais de armazenamento de fonte sincronizada (SVMs) no local de desastre ativas e fornecendo dados dos pools de discos locais.' 
+summary: Após corrigir a configuração do MetroCluster, execute a operação de switchback para retornar à operação normal, com as SVMs de origem da sincronização no local de desastre ativas e fornecendo dados. 
 ---
 = Execute um switchback do MetroCluster
 :allow-uri-read: 

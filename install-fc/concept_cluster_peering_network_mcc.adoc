@@ -2,7 +2,7 @@
 permalink: install-fc/concept_cluster_peering_network_mcc.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, illustration, cluster, peering, network 
-summary: 'Os dois clusters na configuração do MetroCluster são direcionados por meio de uma rede de peering de cluster fornecida pelo cliente. O peering de cluster suporta o espelhamento síncrono de máquinas virtuais de armazenamento (SVMs, anteriormente conhecido como VServers) entre os sites.' 
+summary: Os dois clusters na configuração do MetroCluster são interligados por meio de uma rede de peering de cluster fornecida pelo cliente, que suporta espelhamento síncrono de SVMs entre os sites. 
 ---
 = Ilustração da rede de peering de cluster em uma configuração FC do MetroCluster
 :allow-uri-read: 

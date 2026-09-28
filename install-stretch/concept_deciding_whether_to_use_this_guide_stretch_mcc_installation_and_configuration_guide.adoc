@@ -2,7 +2,7 @@
 permalink: install-stretch/concept_deciding_whether_to_use_this_guide_stretch_mcc_installation_and_configuration_guide.html 
 sidebar: sidebar 
 keywords: metrocluster, stretch, installation, stretch, configuration, decide 
-summary: 'Esta informação descreve como instalar e configurar os componentes de hardware e software do MetroCluster numa configuração stretch (por vezes referida como uma configuração ótica MetroCluster SAS).' 
+summary: Estas informações descrevem como instalar e configurar os componentes de hardware e software do MetroCluster em uma configuração estendida, ou SAS óptica. 
 ---
 = Instalação e configuração do Stretch MetroCluster
 :allow-uri-read: 

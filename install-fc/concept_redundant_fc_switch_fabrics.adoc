@@ -2,7 +2,7 @@
 permalink: install-fc/concept_redundant_fc_switch_fabrics.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, redundant, fc, switch, fabrics 
-summary: 'Cada malha de switch inclui links inter-switch (ISLs) que conetam os sites. Os dados são replicados de um site para outro através do ISL. Cada malha de switch deve estar em caminhos físicos diferentes para redundância.' 
+summary: 'Cada matriz de comutação inclui links entre switches (ISLs) que conectam os sites e replicam os dados entre eles. Cada matriz de comutação deve usar caminhos físicos diferentes para redundância.' 
 ---
 = Matrizes de comutação redundantes em uma configuração FC do MetroCluster
 :allow-uri-read: 

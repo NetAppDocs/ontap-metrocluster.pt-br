@@ -2,7 +2,7 @@
 permalink: upgrade/task_check_the_mcc_configuration.html 
 sidebar: sidebar 
 keywords: metrocluster, upgrade, check, configuration 
-summary: 'Você pode verificar se os componentes e as relações na configuração do MetroCluster estão funcionando corretamente. Você deve fazer uma verificação após a configuração inicial e depois de fazer quaisquer alterações na configuração do MetroCluster. Você também deve fazer uma verificação antes de uma mudança negociada (planejada) ou de uma operação de switchback.' 
+summary: Verifique se os componentes e os relacionamentos na configuração do MetroCluster estão funcionando corretamente após a configuração inicial, após alterações e antes de um switchover ou switchback negociado. 
 ---
 = Verifique a configuração FC do MetroCluster
 :allow-uri-read: 

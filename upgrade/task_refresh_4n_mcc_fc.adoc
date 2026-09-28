@@ -2,7 +2,7 @@
 permalink: upgrade/task_refresh_4n_mcc_fc.html 
 sidebar: sidebar 
 keywords: metrocluster, upgrade, refresh, four, node, fc, configuration 
-summary: 'Você pode atualizar os controladores e o armazenamento em uma configuração de MetroCluster de quatro nós expandindo a configuração para se tornar uma configuração de oito nós e, em seguida, remover o antigo grupo de recuperação de desastres (DR).' 
+summary: 'É possível atualizar os controladores e o armazenamento em uma configuração do MetroCluster de quatro nós, expandindo-a para oito nós e removendo o antigo grupo de recuperação de desastres (DR).' 
 ---
 = Atualizar uma configuração de MetroCluster FC de quatro nós
 :allow-uri-read: 

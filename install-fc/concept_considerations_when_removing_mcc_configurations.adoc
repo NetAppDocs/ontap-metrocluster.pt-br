@@ -2,7 +2,7 @@
 permalink: install-fc/concept_considerations_when_removing_mcc_configurations.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, remove, configuration, disk connectivity, interconnects, adjust 
-summary: Você pode remover a configuração do MetroCluster de todos os nós na configuração do MetroCluster ou todos os nós em um grupo de recuperação de desastres. 
+summary: 'Você pode remover a configuração do MetroCluster de todos os nós na configuração do MetroCluster ou de todos os nós em um grupo de recuperação de desastres (DR).' 
 ---
 = Remover configurações do MetroCluster
 :allow-uri-read: 

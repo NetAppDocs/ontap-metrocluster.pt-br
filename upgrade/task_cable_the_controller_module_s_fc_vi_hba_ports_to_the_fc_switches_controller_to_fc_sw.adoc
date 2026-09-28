@@ -2,7 +2,7 @@
 permalink: upgrade/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html 
 sidebar: sidebar 
 keywords: metrocluster, upgrade, cable, new, controller, module, fc, vi, hba, ports, switches, mcc 
-summary: 'As portas FC-VI e HBAs (adaptadores de barramento de host) do novo módulo de controladora devem ser cabeadas para os switches FC do local.' 
+summary: 'As portas FC-VI e os HBAs (adaptadores de barramento do host) do novo módulo de controladora devem ser conectados por cabo aos switches FC do local.' 
 ---
 = Conecte as portas FC-VI e HBA aos switches FC do MetroCluster
 :allow-uri-read: 
