@@ -250,7 +250,16 @@ NOTE: Execute esta etapa para todos os plexos que têm discos remotos para Clust
 
 
 
-. Persistentemente offline as portas do switch ISL de acordo com o tipo de switch.
+. Desative as portas do switch ISL. Selecione o procedimento correto para o seu tipo de switch.
++
+Os procedimentos a seguir mostram como desativar portas ISL não utilizadas, você pode usar os mesmos comandos para desativar todas as portas ISL ativas como parte deste procedimento.
+
++
+** link:../install-ip/task_switch_config_cisco.html#disable-unused-isl-ports-and-port-channels["Desative as portas ISL nos switches IP da Cisco"]
+** link:../install-ip/task_switch_config_broadcom.html#disable-unused-isl-ports-and-port-channels["Desative as portas ISL nos switches IP da Broadcom"]
+** link:../install-ip/task_switch_config_nvidia.html#disable-unused-isl-ports-and-port-channels["Desative as portas ISL nos switches IP da NVIDIA"]
+
+
 . Interrompa os nós executando o seguinte comando em cada nó:
 +
 `node halt -inhibit-takeover true -skip-lif-migration true -node <node-name>`

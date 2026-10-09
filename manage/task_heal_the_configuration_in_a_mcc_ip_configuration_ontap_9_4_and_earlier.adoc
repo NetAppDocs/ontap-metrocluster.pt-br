@@ -33,17 +33,10 @@ Esse procedimento difere do procedimento de recuperação para configurações d
 +
 Se o sistema exibir o prompt Loader, execute o `boot_ontap` comando.
 
-. Execute a fase de recuperação de agregado de raiz: `metrocluster heal root-aggregates`
+. Curar os agregados de dados:
 +
-[listing]
-----
-cluster_A::> metrocluster heal root-aggregates
-[Job 137] Job succeeded: Heal Root-Aggregates is successful
-----
-+
-Se a recuperação for vetada, você terá a opção de reemitir o comando MetroCluster heal root-agreements com o parâmetro --override-vetos. Se você usar esse parâmetro opcional, o sistema substituirá quaisquer vetos de software que impeçam a operação de recuperação.
+`metrocluster heal aggregates`
 
-. Ressincronizar os agregados: `metrocluster heal aggregates`
 +
 [listing]
 ----
@@ -51,9 +44,22 @@ cluster_A::> metrocluster heal aggregates
 [Job 137] Job succeeded: Heal Aggregates is successful
 ----
 +
-Se a cura for vetada, você terá a opção de reemitir o comando MetroCluster heal com o parâmetro --override-vetos. Se você usar esse parâmetro opcional, o sistema substituirá quaisquer vetos de software que impeçam a operação de recuperação.
+Se a cura for vetada, você tem a opção de reemitir o `metrocluster heal` comando com o `--override-vetoes` parâmetro. Se você usar esse parâmetro opcional, o sistema substituirá quaisquer vetos de software que impeçam a operação de recuperação.
 
-. Confirme se a operação de cura está concluída executando o comando MetroCluster operation show no cluster saudável:
+. Curar os agregados de raiz:
++
+`metrocluster heal root-aggregates`
+
++
+[listing]
+----
+cluster_A::> metrocluster heal root-aggregates
+[Job 137] Job succeeded: Heal Root-Aggregates is successful
+----
++
+Se a correção for vetada, você tem a opção de reenviar o `metrocluster heal root-aggregates` comando com o `--override-vetoes` parâmetro. Se você usar esse parâmetro opcional, o sistema anula quaisquer vetos temporários que impeçam a operação de correção.
+
+. Confirme se a operação de cura está concluída executando o `metrocluster operation show` comando no cluster de integridade:
 +
 [listing]
 ----
