@@ -6657,7 +6657,6 @@
   <block id="52fe3712857160698c1b014e83579ba9" category="paragraph">Talvez seja necessário alterar o fornecedor de switches FC de Cisco para Brocade ou vice-versa, alterar o modelo do switch ou alterar ambos.</block>
   <block id="34b3750efa9ad33069e758e1d20702b2" category="list-text">Este procedimento aplica-se quando você estiver usando switches validados pela NetApp.</block>
   <block id="038dcdf6b816f0dea514171c0fbec340" category="list-text">Siga as etapas deste procedimento em uma malha de cada vez, para ambas as malhas na configuração.</block>
-  <block id="12e792350f2f2a26f26efec238939f8c" category="list-text">[[step_1,Step 1]]Verifique a integridade da configuração.</block>
   <block id="439912781979c2137b20f407615e78f8" category="list-text">Verifique se o MetroCluster está configurado e no modo normal em cada cluster:<block ref="0a45ea7da7722e7946b8d5a55f1dac66" prefix=" " category="inline-code"></block></block>
   <block id="7cb5b2f0dc5754654737d8fa60eef89c" category="list-text">Verifique se o espelhamento está ativado em cada nó:<block ref="8cbe49ab06bb17f69b419eefd56bf605" prefix=" " category="inline-code"></block></block>
   <block id="00652f80af0605cfeb69c7eae69f32c6" category="list-text">Verifique se os componentes do MetroCluster estão em bom estado:<block ref="7c72a22cec95fb7132380c25fbab87e9" prefix=" " category="inline-code"></block></block>
@@ -6676,7 +6675,6 @@
   <block id="0695aadd5e22ca576036ee74e37a609e" category="list-text">Faça o cabo das pontes ATTO FibreBridge.</block>
   <block id="bc1e1a74eeb5d30d0aec52f0e7d3fc2c" category="list-text">Faça o cabeamento das interfaces MetroCluster FC e FCVI.</block>
   <block id="0498d59ca3d1dcff64193b28d0aad43b" category="list-text">Ligue os interrutores.</block>
-  <block id="4c49ac5fd96c13efa7ddbce7575dd9e4" category="list-text">Verifique se a configuração do MetroCluster está saudável repetindo <block ref="70a312d559ac5bac88a63c5c7c2e52d3" category="inline-xref-macro-rx"></block>.</block>
   <block id="b81576b1956a4793e86cfb62d8774b3f" category="list-text">Repita os passos 1 a 7 para a segunda estrutura na configuração.</block>
   <block id="69f9c4eafc141c6e8f88cca6eafe90b6" category="summary">Talvez seja necessário adicionar ISLs a um switch se você estiver adicionando ou atualizando hardware, como controladores ou switches adicionais ou mais rápidos.</block>
   <block id="36f6b87ea2124f694dc64f15934fcf53" category="doc">Alterar propriedades ISL, portas ISL ou a configuração IOD/OOD em um switch Brocade</block>
@@ -14594,7 +14592,6 @@
   <block id="c464415fe9040cd42442afd5413727d2" category="list-text">Verifique o modo ha-config:</block>
   <block id="bb903f8039d8d74f0348f46c24a33392" category="paragraph">O resultado deve ser semelhante ao seguinte exemplo:</block>
   <block id="82aa61ae9e51df62f98090f4f904d7c6" category="list-text"><block ref="82aa61ae9e51df62f98090f4f904d7c6" category="inline-link-macro-rx"></block></block>
-  <block id="cdb2cb2d1f6128576533f653419f09c5" category="list-text"><block ref="cdb2cb2d1f6128576533f653419f09c5" category="inline-link-macro-rx"></block></block>
   <block id="91584e9f93d8a244006822e2c2f5345a" category="doc">Escolha o procedimento de recuperação correto do MetroCluster</block>
   <block id="f24397da4f9715a9f11e47c9635eea3a" category="doc">MetroCluster fluxo de trabalho de recuperação de desastres</block>
   <block id="1a346af97abe0920fa20de0c7db4a224" category="doc">Ative o registro de logs no console antes da substituição de hardware do MetroCluster</block>
@@ -14861,4 +14858,10 @@
   <block id="dbf8c386b8c209a8a104209f4811beb1" category="paragraph">Se a correção for vetada, você tem a opção de reenviar o<block ref="4fc02dad333b99cda95cb4d63f746057" prefix=" " category="inline-code"></block> comando com o<block ref="5b8353fafaa1c451a58b0b87dede3fc0" prefix=" " category="inline-code"></block> parâmetro. Se você usar esse parâmetro opcional, o sistema anula quaisquer vetos temporários que impeçam a operação de correção.</block>
   <block id="2501b01a945a3eabd573e54654793648" category="paragraph">Se você tiver um único agregado de dados espelhado por site, mova ambos os volumes MDV para esse agregado. Se você tiver dois ou mais agregados de dados espelhados, mova cada volume MDV para um agregado diferente. Após uma expansão bem-sucedida (para uma configuração de quatro ou oito nós), cada site IP do MetroCluster contém dois volumes MDV.</block>
   <block id="6bd55190cc0a65555cf13d5cf60edc77" category="paragraph">Se você estiver expandindo uma configuração de quatro nós do MetroCluster para uma configuração permanente de oito nós, você deve mover um dos volumes MDV para qualquer agregado espelhado no novo grupo de DR. Não faz diferença se o volume MDV que você mover tiver o sufixo<block ref="3254fb5b504a92168380bac219fc29ca" prefix=" " category="inline-code"></block> ou<block ref="b0ba49340c52b617d8bb5e0f66b8e6dc" prefix=" " category="inline-code"></block>.</block>
+  <block id="512c3bde31153c80a98e9b5ec347b11a" category="list-text">[[step_1]]Verifique a integridade da configuração.</block>
+  <block id="2ff6716e43264896ea2ac1acc2b979d2" category="list-text">Verifique se a configuração do MetroCluster está íntegra repetindo <block ref="601df3435e384193565099a414178c21" category="inline-xref-macro-rx"></block>.</block>
+  <block id="5f444797ead217a29f43800dfabacfbf" category="list-text">Ao realizar uma atualização do sistema, o tipo de plataforma antigo e o novo *devem* corresponder:</block>
+  <block id="ede59518e087cd94a05f8667d5654efc" category="list-text">Você pode adicionar um sistema FAS a outro sistema FAS, ou uma AFF A-Series a outra AFF A-Series.</block>
+  <block id="91b0e1726a138b2c425045cdba0bdc83" category="list-text">Não é possível adicionar um sistema FAS a um AFF A-Series, nem um AFF A-Series a um AFF C-Series.</block>
+  <block id="274e643167d886697821940a9eae3ef3" category="list-text">Ao realizar uma expansão do sistema, o tipo de plataforma antigo e o novo *devem* corresponder:</block>
 </blocks>

@@ -49,6 +49,12 @@ As tabelas a seguir mostram as combinações de plataforma com suporte para conf
 * As combinações nesta tabela aplicam-se apenas a configurações de oito nós regulares ou permanentes.
 * As combinações de plataforma nesta tabela *não* se aplicam se você estiver usando os procedimentos de transição ou refresh.
 * Todos os nós em um grupo de DR devem ter o mesmo tipo e configuração.
+* Ao realizar uma expansão do sistema, o tipo de plataforma antigo e o novo *devem* corresponder:
++
+** Você pode adicionar um sistema FAS a outro sistema FAS, ou uma AFF A-Series a outra AFF A-Series.
+** Não é possível adicionar um sistema FAS a um AFF A-Series, nem um AFF A-Series a um AFF C-Series.
+
+
 
 
 ====

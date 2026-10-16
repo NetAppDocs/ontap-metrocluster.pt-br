@@ -18,7 +18,7 @@ Talvez seja necessário alterar o fornecedor de switches FC de Cisco para Brocad
 
 
 .Passos
-. [[step_1,Step 1]]Verifique a integridade da configuração.
+. [[step_1]]Verifique a integridade da configuração.
 +
 .. Verifique se o MetroCluster está configurado e no modo normal em cada cluster: `*metrocluster show*`
 +
@@ -91,6 +91,6 @@ Tem de seguir os passos em link:../install-fc/task_configure_the_mcc_hardware_co
 
 
 . Ligue os interrutores.
-. Verifique se a configuração do MetroCluster está saudável repetindo <<Passo 1>>.
+. Verifique se a configuração do MetroCluster está íntegra repetindo <<step_1,Passo 1>>.
 . Repita os passos 1 a 7 para a segunda estrutura na configuração.
 

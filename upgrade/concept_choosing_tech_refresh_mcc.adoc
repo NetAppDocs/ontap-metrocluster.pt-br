@@ -22,7 +22,15 @@ O procedimento de atualização do sistema que você usa depende do modelo da pl
 * Todos os nós na configuração do MetroCluster devem estar executando a mesma versão do ONTAP. Por exemplo, se você tiver uma configuração de oito nós, todos os oito nós devem estar executando a mesma versão do ONTAP. Consulte link:https://hwu.netapp.com["Hardware Universe"^]a para obter a versão mínima suportada do ONTAP para a sua combinação.
 * Não exceda quaisquer limites de objeto do "inferior" das plataformas na combinação. Aplique o limite inferior de objetos das duas plataformas.
 * Se os limites da plataforma de destino forem inferiores aos limites do MetroCluster, você deverá reconfigurar o MetroCluster para estar nos limites da plataforma de destino ou abaixo antes de adicionar os novos nós.
-* Consulte a link:https://hwu.netapp.com["Hardware Universe"^]para obter os limites da plataforma.
++
+Consulte a link:https://hwu.netapp.com["Hardware Universe"^]para obter os limites da plataforma.
+
+* Ao realizar uma atualização do sistema, o tipo de plataforma antigo e o novo *devem* corresponder:
++
+** Você pode adicionar um sistema FAS a outro sistema FAS, ou uma AFF A-Series a outra AFF A-Series.
+** Não é possível adicionar um sistema FAS a um AFF A-Series, nem um AFF A-Series a um AFF C-Series.
+
+
 
 
 
@@ -77,6 +85,12 @@ image::../media/mcc-ip-techrefresh-asa-9161.png[Combinações de atualização t
 * Não exceda quaisquer limites de objeto do "inferior" das plataformas na combinação. Aplique o limite inferior de objetos das duas plataformas.
 * Se os limites da plataforma de destino forem inferiores aos limites do MetroCluster, você deverá reconfigurar o MetroCluster para estar nos limites da plataforma de destino ou inferiores antes de adicionar os novos nós.
 * Consulte a link:https://hwu.netapp.com["Hardware Universe"^]para obter os limites da plataforma.
+* Ao realizar uma atualização do sistema, o tipo de plataforma antigo e o novo *devem* corresponder:
++
+** Você pode adicionar um sistema FAS a outro sistema FAS, ou uma AFF A-Series a outra AFF A-Series.
+** Não é possível adicionar um sistema FAS a um AFF A-Series, nem um AFF A-Series a um AFF C-Series.
+
+
 
 
 
