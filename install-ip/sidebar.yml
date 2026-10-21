@@ -2,7 +2,7 @@
 section: install-ip
 title: Instale uma configuração IP do MetroCluster
 entries:
-- title: Visão geral
+- title: Fluxo de trabalho de instalação
   url: "/install-ip/index.html"
 - title: Prepare-se para a instalação do MetroCluster
   pdf-filename: Prepare-se para a instalação do IP MetroCluster.
@@ -115,7 +115,7 @@ entries:
   entries:
   - title: Configure o software MetroCluster usando a CLI
     entries:
-    - title: Visão geral
+    - title: Saiba mais sobre como configurar o software MetroCluster no ONTAP
       url: "/install-ip/concept_configure_the_mcc_software_in_ontap.html"
     - title: Reúna as informações necessárias
       url: "/install-ip/task_sw_config_gather_info.html"
@@ -147,7 +147,7 @@ entries:
       url: "/install-ip/configure-mcc-site-system-manager.html"
 - title: Configurar o ONTAP Mediator para comutação automática não planejada
   entries:
-  - title: Preparar para instalar o ONTAP Mediator
+  - title: Prepare-se para configurar o ONTAP Mediator
     url: "/install-ip/concept_mediator_requirements.html"
   - title: Configure o ONTAP Mediator para uma configuração IP do MetroCluster.
     url: "/install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html"

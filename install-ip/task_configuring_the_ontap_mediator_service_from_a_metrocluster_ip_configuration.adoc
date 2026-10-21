@@ -16,7 +16,7 @@ Você deve configurar o ONTAP Mediator no nó ONTAP para usá-lo em uma configur
 .Antes de começar
 * O ONTAP Mediator deve ter sido instalado com sucesso em um local de rede que possa ser acessado por ambos os sites do MetroCluster.
 +
-link:https://docs.netapp.com/us-en/ontap/mediator/index.html["Instalar ou atualizar o ONTAP Mediator"^]
+link:https://docs.netapp.com/us-en/ontap-mediator/index.html["Instalar ou atualizar o ONTAP Mediator"^]
 
 * Você deve ter o endereço IP do host executando o ONTAP Mediator.
 * Você deve ter o nome de usuário e a senha do ONTAP Mediator.
