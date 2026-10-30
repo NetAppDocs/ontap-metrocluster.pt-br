@@ -775,7 +775,7 @@ Se o sistema estiver configurado usando conetividade de 25 Gbps, você precisar�
 .Sobre esta tarefa
 As portas de 25 Gbps devem ser cabeadas antes de executar este procedimento.
 
-link:port_usage_3232c_9336c.html["Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C"]
+link:using_rcf_generator.html["Saiba mais sobre o cabeamento dos switches IP MetroCluster"]
 
 Esta tarefa aplica-se apenas a plataformas que utilizam conetividade de 25 Gbps:
 

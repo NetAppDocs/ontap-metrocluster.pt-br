@@ -200,7 +200,7 @@ cluster_A::>
 NOTE: Se o switch já estiver configurado corretamente, você poderá pular essas próximas seções e ir diretamente para <<Configurando a criptografia MACsec em switches Cisco 9336C>>, se aplicável ou para <<Ligar a nova prateleira NS224>>.
 
 * É necessário alterar a configuração do switch para adicionar gavetas.
-* Você deve rever os detalhes do cabeamento em link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/port_usage_3232c_9336c.html#cabling-a-aff-a800-to-a-cisco-3232c-or-cisco-9336c-switch["Atribuições de porta da plataforma"^].
+* Você deve revisar os detalhes do cabeamento em link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/using_rcf_generator.html["Saiba mais sobre o cabeamento dos switches IP MetroCluster"^].
 * Você deve usar a ferramenta **RcfFileGenerator** para criar o arquivo RCF para sua configuração. O link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"^]também fornece uma visão geral do cabeamento por porta para cada switch. Certifique-se de escolher o número correto de prateleiras. Existem arquivos adicionais criados juntamente com o arquivo RCF que fornecem um layout de cabeamento detalhado que corresponde às suas opções específicas. Use esta visão geral do cabeamento para verificar o cabeamento ao fazer o cabeamento das novas gavetas.
 
 

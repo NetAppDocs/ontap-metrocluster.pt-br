@@ -2,52 +2,115 @@
 permalink: install-ip/using_rcf_generator.html 
 sidebar: sidebar 
 keywords: cabling, cable, component, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure, rcf, file, generator, RcfFileGenerator 
-summary: Você deve entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos RCF. 
+summary: Você precisa entender como usar as informações nas tabelas de portas para gerar corretamente seus RCFs. 
 ---
-= Tabelas de portas para MetroCluster IP configurações
+= Saiba mais sobre o cabeamento dos switches IP MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Você precisa entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos de configuração de referência (RCFs).
+Antes de começar o cabeamento dos switches IP do MetroCluster, verifique os requisitos.
 
 .Antes de começar
-Reveja estas considerações antes de utilizar as tabelas:
+Analise estes pontos antes de conectar os cabos dos switches:
 
-* As tabelas a seguir mostram o uso da porta para o local A. o mesmo cabeamento é usado para o local B.
+* O mesmo cabeamento é usado no local A e no local B.
 * Não é possível configurar os switches com portas de velocidades diferentes (por exemplo, uma mistura de portas de 100 Gbps e portas de 40 Gbps).
 * Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, etc.). Você precisará dessas informações ao usar a ferramenta RcfFileGenerator, conforme descrito posteriormente neste procedimento de configuração.
 * Você deve fazer o cabeamento de todos os nós da mesma maneira. Se houver diferentes opções de combinação de portas disponíveis para fazer o cabeamento dos nós, todos os nós devem usar as mesmas combinações de portas. Por exemplo, e1a em node1 e e1a em node2 devem ser conetados a um interrutor. Da mesma forma, a segunda porta de ambos os nós deve ser conetada ao segundo switch.
-* O https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"^] também fornece uma visão geral do cabeamento por porta para cada switch. Use esta visão geral do cabeamento para verificar o cabeamento.
+
+
+
+NOTE: A versão do arquivo de configuração de referência (RCF) é diferente da versão da ferramenta RCFfilegenerator usada para gerar o arquivo. Por exemplo, você pode gerar uma versão 2.00 do RCF usando o RCFfilegenerator v1.6c.
+
+
+
+[[cabling-requirements-based-on-the-switch-type]]
+== Requisitos de cabeamento com base no tipo de switch
+
+A seguir, apresentamos uma lista dos requisitos de cabeamento com base no tipo específico de switch.
+
+
+
+[[cisco-3132q-v]]
+=== Cisco 3132Q-V
+
+Se você configurar o switch para a transição de FC para IP do MetroCluster, a porta 5 ou a porta 6 poderão ser usadas para conectar as interfaces de cluster locais do nó FC do MetroCluster. Consulte o link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"^] e os arquivos de cabeamento gerados para obter mais detalhes sobre o cabeamento dessa configuração.
+
+
+
+[[cisco-3232c-or-36-port-cisco-9336c]]
+=== Cisco 3232C ou Cisco 9336C de 36 portas
+
+* Se você configurar o switch para a transição de FC para IP do MetroCluster, as portas 5, 6, 13 ou 14 podem ser usadas para conectar as interfaces de cluster locais do nó FC do MetroCluster. Consulte o link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"^] e os arquivos de cabeamento gerados para obter mais detalhes sobre o cabeamento dessa configuração.
+* A versão RCF v2.10 ou posterior é necessária para o modo breakout de 25G para as ISLs do MetroCluster em plataformas compatíveis.
+* O ONTAP 9.13.1 ou posterior e a versão 2.00 do RCF são necessários para usar uma plataforma diferente de FAS8200 ou AFF A300 no grupo "MetroCluster 4".
 
 
 
 
-[[cabling-two-metrocluster-configurations-to-the-switches]]
-== Cabeamento de duas configurações MetroCluster para os switches
+[[12-port-cisco-9336c-fx2]]
+=== Cisco 9336C-FX2 de 12 portas
 
-Ao conectar mais de uma configuração do MetroCluster a um switch, conecte cada MetroCluster de acordo com a tabela apropriada. Por exemplo, se você estiver conectando um FAS2750 e um AFF A700 ao mesmo switch, conecte o FAS2750 conforme "MetroCluster 1" na Tabela 1 e o AFF A700 conforme "MetroCluster 2" ou "MetroCluster 3" na Tabela 2. Não é possível ligar fisicamente o FAS2750 e o AFF A700 como "MetroCluster 1".
-
-
-
-[[cabling-eight-node-metrocluster-configurations]]
-== Cabeamento de configurações de MetroCluster de oito nós
-
-Para a configuração do MetroCluster executando o ONTAP 9.8 e anterior, alguns procedimentos que são executados para fazer a transição de uma atualização exigem a adição de um segundo grupo de DR de quatro nós à configuração para criar uma configuração temporária de oito nós. A partir do ONTAP 9.9,1, são suportadas configurações permanentes de MetroCluster de oito nós.
-
-.Sobre esta tarefa
-Para configurações de oito nós, use o mesmo método descrito acima. Em vez de um segundo MetroCluster, você está fazendo o cabeamento de um grupo adicional de DR de quatro nós.
-
-Por exemplo, sua configuração inclui o seguinte:
-
-* Interrutores Cisco 3132Q-V.
-* MetroCluster 1: Plataformas FAS2750
-* MetroCluster 2: Plataformas AFF A700 (essas plataformas estão sendo adicionadas como um segundo grupo de DR de quatro nós)
+O switch Cisco 9336C-FX2 de 12 portas não suporta a conexão de prateleiras NS224 ao switch MetroCluster.
 
 
-.Passos
-. Para o MetroCluster 1, faça o cabeamento dos switches Cisco 3132Q-V usando a tabela para a plataforma FAS2750 e as linhas para interfaces MetroCluster 1.
-. Para o MetroCluster 2 (o segundo grupo DR), faça o cabeamento dos switches Cisco 3132Q-V usando a tabela para a plataforma AFF A700 e as linhas para interfaces MetroCluster 2.
 
+[[36-port-cisco-9336c-fx2-switch-connecting-ns224-storage]]
+=== switch Cisco 9336C-FX2 de 36 portas conectando o armazenamento NS224
+
+* A conexão de configurações de um MetroCluster de oito ou dois de quatro nós requer o ONTAP 9.14,1 ou posterior.
+* Ao cabear um switch Cisco 9336C-FX2 conectando o armazenamento NS224, você pode ter no máximo duas configurações ou grupos de DR MetroCluster. Pelo menos uma configuração ou grupo de DR MetroCluster deve estar conectando os shelves NS224 ao switch MetroCluster.
+* O RcfFileGenerator só mostra as plataformas elegíveis quando a primeira plataforma é selecionada.
+* Se você estiver expandindo uma configuração MetroCluster padrão que não oferece suporte ao armazenamento NS224 conectado a um switch e quiser adicionar uma configuração MetroCluster que tenha armazenamento NS224 conectado a um switch, revise as seguintes informações:
++
+Na ferramenta RcfFileGenerator, primeiro você deve selecionar a plataforma que oferece suporte ao armazenamento NS224 conectado ao switch e, em seguida, selecionar a plataforma que não oferece suporte ao armazenamento NS224 conectado ao switch.
+
++
+Isso significa que, ao gerar o RCF para sua nova configuração, você pode precisar selecionar as plataformas na ferramenta RcfFileGenerator na seguinte ordem:
+
++
+.. Selecione a plataforma que oferece suporte ao armazenamento NS224 conectado ao switch na segunda lista suspensa.
+.. Selecione a plataforma que não suporta armazenamento NS224 conectado a switch no primeiro campo suspenso.
+
+
+
+
+
+
+[[broadcom-bes-53248]]
+=== Broadcom BES-53248
+
+* Não é possível usar os switches com portas ISL remotas de diferentes velocidades (por exemplo, uma porta de 25 Gbps conetada a uma porta ISL de 10 Gbps).
+* Se você configurar o switch para a transição MetroCluster FC para IP, as seguintes portas serão usadas dependendo da plataforma de destino escolhida:
++
+[cols="75,25"]
+|===
+| Plataforma-alvo | Porta 
+
+
+| Plataformas FAS500f, AFF C250, ASA C250, AFF A250, ASA A250, FAS8300, AFF C400, ASA C400, AFF A400, ASA A400 ou FAS8700 | Portas 1 - 6, 10Gbps 
+
+
+| Plataformas FAS8200 ou AFF A300 | Portas 3 - 4 e 9 - 12, 10Gbps 
+|===
+* Os sistemas AFF A320 configurados com switches BES-53248 Broadcom podem não suportar todos os recursos.
++
+Qualquer configuração ou recurso que exija que as conexões do cluster local estejam conetadas a um switch não é suportado. Por exemplo, as seguintes configurações e procedimentos não são suportados:
+
++
+** Configurações de MetroCluster de oito nós
+** Transição das configurações MetroCluster FC para MetroCluster IP
+** Atualizando uma configuração de IP MetroCluster de quatro nós (ONTAP 9.8 e posterior)
+
+
+
+
+
+
+[[nvidia-sn2100]]
+=== NVIDIA SN2100
+
+A conexão de uma configuração de oito nós ou de duas configurações de quatro nós do MetroCluster requer o ONTAP 9.14.1 ou posterior e a versão 2.00 do RCF ou posterior.

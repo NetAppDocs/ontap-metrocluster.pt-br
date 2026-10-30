@@ -66,7 +66,7 @@ link:../disaster-recovery/concept_dr_workflow.html["Gerenciamento de MetroCluste
 
 
  a| 
-link:../maintain/index.html["Mantenha os componentes do MetroCluster"]
+link:../maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Manutenção MetroCluster"]
  a| 
 * Diretrizes para manutenção em uma configuração MetroCluster FC
 * Procedimentos de substituição ou atualização de hardware e atualização de firmware para bridges FC para SAS e switches FC

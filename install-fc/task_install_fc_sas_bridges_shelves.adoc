@@ -488,7 +488,7 @@ Você é solicitado a reiniciar a ponte.
 |===
 . Depois de concluir a configuração do MetroCluster, use o `flashimages` comando para verificar sua versão do firmware do FibreBridge e, se as bridges não estiverem usando a versão mais recente suportada, atualize o firmware em todas as bridges na configuração.
 +
-link:../maintain/index.html["Mantenha os componentes do MetroCluster"]
+link:../maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Manutenção MetroCluster"]
 
 
 

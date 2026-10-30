@@ -75,7 +75,7 @@ https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_consideratio
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-metrocluster/maintain/index.html["Mantenha os componentes do MetroCluster"]
+https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Manutenção MetroCluster"]
  a| 
 * Diretrizes para manutenção em uma configuração MetroCluster
 * Procedimentos de substituição ou atualização de hardware e atualização de firmware para bridges FC para SAS e switches FC

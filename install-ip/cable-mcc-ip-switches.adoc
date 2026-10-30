@@ -1,0 +1,38 @@
+---
+permalink: install-ip/cable-mcc-ip-switches.html 
+sidebar: sidebar 
+keywords: cabling, cable, component, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure, rcf, file, generator, RcfFileGenerator 
+summary: Você deve entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos RCF. 
+---
+= Conecte seus switches IP do MetroCluster usando a ferramenta RCFfilegenerator e o Hardware Universe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa entender como usar a ferramenta RCFfilegenerator e as informações do NetApp Hardware Universe para conectar seus switches corretamente.
+
+.Antes de começar
+Analise as informações em link:using_rcf_generator.html["Saiba mais sobre o cabeamento dos switches IP MetroCluster"] antes de realizar esta tarefa.
+
+.Passos
+. Faça o download e instale a  https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator para MetroCluster IP"^]ferramenta no site de suporte da NetApp.
+. Siga as etapas em link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/How_to_use_the_RCF_Generator_for_MetroCluster_IP["Como usar o gerador de RCF para o MetroCluster IP"^] para preencher os campos da sua configuração.
++
+A ferramenta gera uma visão geral do cabeamento por porta para cada switch.
+
++
+
+NOTE: O RcfFileGenerator só mostra as plataformas elegíveis quando a primeira plataforma é selecionada.
+
+. Navegue até o link:https://hwu.netapp.com/DetailViews/Home.aspx["Hardware Universe"^]
+. Selecione o tipo de plataforma na aba *Produtos* e, em seguida, selecione a sua plataforma específica e se você está cabeando uma configuração IP do MetroCluster de quatro ou oito nós.
+. Selecione a versão do ONTAP na janela de exibição e, em seguida, selecione *Mostrar resultados*.
+. Selecione *Conexões compatíveis* e selecione a guia *Conexão de armazenamento*
+. Reúna as informações da porta do controlador para a sua configuração.
++
+
+NOTE: As informações da porta do controlador não estão incluídas na visão geral do cabeamento gerada pela ferramenta RcfFileGenerator, portanto você deve usar o Hardware Universe para coletar essas informações.
+
+

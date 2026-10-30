@@ -496,7 +496,7 @@ cluster_A::*>
 Se o sistema estiver configurado usando conetividade de 25 Gbps, defina manualmente o parâmetro Correção de erros de Avanço (fec) para Desativado após aplicar o RCF. O RCF não aplica esta definição.
 
 .Sobre esta tarefa
-* Esta tarefa aplica-se apenas a plataformas que utilizam conetividade de 25 Gbps. link:../install-ip/port_usage_sn2100.html["Atribuições de porta de plataforma para switches IP SN2100 compatíveis com NVIDIA"]Consulte a .
+* Esta tarefa se aplica apenas a plataformas que usam conectividade de 25 Gbps. Consulte link:../install-ip/using_rcf_generator.html["Saiba mais sobre o cabeamento dos switches IP MetroCluster"].
 * Esta tarefa deve ser executada em todos os quatro switches na configuração IP do MetroCluster.
 * É necessário atualizar cada porta do switch individualmente, não é possível especificar várias portas ou intervalos de portas no comando.
 

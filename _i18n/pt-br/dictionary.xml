@@ -537,8 +537,6 @@
   <block id="1b08617a7ef3c5fcc662a93b91e986f1" category="inline-link-macro">Instalação e configuração do Stretch MetroCluster</block>
   <block id="c4b7332c983d9f374f57570f90ffe107" category="paragraph"><block ref="c4b7332c983d9f374f57570f90ffe107" category="inline-link-macro-rx"></block></block>
   <block id="a64e9294fcf778d73f705bb4bec582c7" category="list-text">Arquitetura Stretch MetroCluster</block>
-  <block id="2a4236cf8b7e41561ac336d36bcbb970" category="inline-link-macro">Gerenciamento de MetroCluster</block>
-  <block id="13b07c992fe0293fccd52c0935d98849" category="paragraph"><block ref="13b07c992fe0293fccd52c0935d98849" category="inline-link-macro-rx"></block></block>
   <block id="ee3eb67d59a11b958b7071c3dadc57e6" category="list-text">Compreender a configuração do MetroCluster</block>
   <block id="d82e4b6cc46afb567474f7178afb5796" category="list-text">Switchover, cura e switchback</block>
   <block id="e413eba49b15917b0c9dbf2620f3e66e" category="inline-link-macro">Recuperação de desastres</block>
@@ -547,7 +545,6 @@
   <block id="70a6af377eaf4da39eb5c40bd123522b" category="list-text">Comutação forçada</block>
   <block id="0ece35432200ec94e379aeb1ce68db94" category="list-text">Recuperação de uma falha de vários controladores ou armazenamento</block>
   <block id="1fdc00427d8a28cfd858de71d68438ad" category="inline-link-macro">Manutenção MetroCluster</block>
-  <block id="9433101051cd4f7f52c941cccdc15be4" category="paragraph"><block ref="9433101051cd4f7f52c941cccdc15be4" category="inline-link-macro-rx"></block></block>
   <block id="bbd318b6a8d3de5c9149956517786609" category="list-text">Diretrizes para manutenção em uma configuração MetroCluster FC</block>
   <block id="3fa7cd9458fe751da1f219497e5f306f" category="list-text">Procedimentos de substituição ou atualização de hardware e atualização de firmware para bridges FC para SAS e switches FC</block>
   <block id="6cb5a32366b231abbc3577a5cc95f5ce" category="list-text">Adição automática de um compartimento de disco em uma configuração MetroCluster FC elástica ou conectada à malha</block>
@@ -1333,7 +1330,6 @@
   <block id="2950507bd7ce5097be484ff9515aac4d" category="list-text">Instale os novos interrutores.</block>
   <block id="4dbe61597cfb2337d737372dd212c44d" category="list-text">Faça o cabo das ligações ISL. Não ligue os switches FC no momento.</block>
   <block id="00d7868084f3d535de463e839c3a21ae" category="inline-link-macro">Mantenha os componentes do MetroCluster</block>
-  <block id="a3bbbdca13ceab20630c7cbfe91f7563" category="cell"><block ref="a3bbbdca13ceab20630c7cbfe91f7563" category="inline-link-macro-rx"></block></block>
   <block id="7ad8bcc4e492d70f3d6908a952cb2737" category="paragraph">Switches IP em uma configuração IP MetroCluster</block>
   <block id="a96cad4309c5edb2b7f704dc563f4777" category="list-text">Faça o cabo das ligações ISL. Não ligue os interrutores IP neste momento.</block>
   <block id="244e3fc26c43465b8d77ffc9aef56cb7" category="inline-link-macro">Instalação e configuração do IP MetroCluster: Diferenças entre as configurações do ONTAP MetroCluster</block>
@@ -2216,7 +2212,6 @@
   <block id="328809e93421c332a5773a41c7dbc7c5" category="section-title">Verificando switchover, cura e switchback</block>
   <block id="a1bf01274d938e19b1e43eb57fc3c557" category="paragraph">Você deve verificar as operações de switchover, recuperação e switchback da configuração do MetroCluster.</block>
   <block id="e36a6837628a0758c6b3c069f31a53c0" category="inline-link">Recuperar de um desastre</block>
-  <block id="06eff1ae70df860b6c817c9ab3858d3d" category="list-text">Use os procedimentos para comutação negociada, cura e switchback que são mencionados no<block ref="6d6ef49fcb406c2ba2bda06977913f53" category="inline-link-rx"></block> .</block>
   <block id="4978301a508dcc7f7e8778cdb2401e04" category="section-title">Protegendo arquivos de backup de configuração</block>
   <block id="afc362bb21237b3cf262e5bb73c2e7ce" category="paragraph">Você pode fornecer proteção adicional para os arquivos de backup de configuração de cluster especificando um URL remoto (HTTP ou FTP) onde os arquivos de backup de configuração serão carregados além dos locais padrão no cluster local.</block>
   <block id="d459dc1ddad8d856203ba30b84fd6675" category="list-text">Defina o URL do destino remoto para os arquivos de backup de configuração:</block>
@@ -2658,7 +2653,6 @@
   <block id="895acf4af7af3f77c54c0691f25e4108" category="list-text">Os dispositivos de criptografia externos ou o equipamento WDM foram auto-certificados pelo fornecedor com o switch FC em questão.</block>
   <block id="b002ba611394912797400c0ed08ba298" category="paragraph">A auto-certificação deve abranger o modo de funcionamento (como entroncamento e encriptação).</block>
   <block id="e17ca788f6c66549a66b7b032db9b795" category="list-text">A latência adicionada devido à criptografia não deve ser superior a 10 microssegundos.</block>
-  <block id="02043b3a3b802db01041709dec8e7509" category="paragraph">Para configurar um switch Cisco FC, você deve redefinir as configurações do switch para os padrões de fábrica, instalar o software do switch e baixar e aplicar os arquivos de configuração de referência (RCF) que fornecem as configurações completas do switch para determinadas configurações.</block>
   <block id="e30d5ec5eece78451cf9285cb678b934" category="summary">Para instalar a configuração do MetroCluster conectado à malha, você precisa executar vários procedimentos na ordem correta.</block>
   <block id="3b878279a04dc47d60932cb294d96259" category="doc">Visão geral</block>
   <block id="44c8f7e829aa8aa08ac1dd41d05668a8" category="inline-link-macro">Prepare-se para a instalação e entenda todos os requisitos</block>
@@ -2695,10 +2689,8 @@
   <block id="c0fe5b8c641b3e2d20403ec4aa244ff8" category="paragraph"><block ref="c0fe5b8c641b3e2d20403ec4aa244ff8" category="inline-link-rx"></block></block>
   <block id="a233f556c94b5c2e314c0ebb9d90ee21" category="list-text">Arquitetura IP do MetroCluster</block>
   <block id="cee14a47b638f8dc20d2b5241487a64a" category="inline-link">Gerenciamento de MetroCluster e recuperação de desastres</block>
-  <block id="d9487fb21c3cdb2e352b1aa4a5e30efd" category="paragraph"><block ref="d9487fb21c3cdb2e352b1aa4a5e30efd" category="inline-link-rx"></block></block>
   <block id="9b8ae1b2ea2900ace97f9bd5cc82d344" category="list-text">Switchover, cura e switchback</block>
   <block id="9117c89e6f250da2f36e47a459f0d84d" category="inline-link">Mantenha os componentes do MetroCluster</block>
-  <block id="9a0dfb0af7717632c4b3bc7de1ff2fff" category="paragraph"><block ref="9a0dfb0af7717632c4b3bc7de1ff2fff" category="inline-link-rx"></block></block>
   <block id="fe8f0af35a77ee3de429b839700538fb" category="inline-link">Transição do MetroCluster FC para o MetroCluster IP</block>
   <block id="bbc57dc413ffb6de03ae46282f2a7e7b" category="paragraph"><block ref="bbc57dc413ffb6de03ae46282f2a7e7b" category="inline-link-rx"></block></block>
   <block id="240d3868b181a0a12e2128654b07f892" category="inline-link">Guia de atualização e expansão do MetroCluster</block>
@@ -2742,7 +2734,6 @@
   <block id="c6d7a629c5e04881bf417a6aa090bdff" category="paragraph">Esta tarefa deve ser repetida para cada novo controlador em ambos os locais do MetroCluster.</block>
   <block id="8c9ca8086755018358ea4d5d0c638cf9" category="paragraph">Você pode conetar as portas de gerenciamento do controlador e do switch de cluster a switches existentes na rede ou a novos switches de rede dedicados, como os switches de gerenciamento de cluster NetApp CN1601.</block>
   <block id="258ba3377e43df3da3fbda0611fd8b0c" category="list-text">Faça o cabeamento das portas de gerenciamento e dados do controlador para as redes de gerenciamento e dados no local.</block>
-  <block id="e7b2ab89026c8038792876d17344e2a9" category="admonition">A conversão de uma porta FC para uma porta FC-VI com o<block ref="10785a4aa266b76ef276330b69c7da40" prefix=" " category="inline-code"></block> comando só é suportada nos sistemas FAS8020 e AFF 8020. A conversão de portas FC para portas FCVI não é compatível em nenhuma outra plataforma.</block>
   <block id="f6a27c7799db7275b366d6aa5824f156" category="inline-link-macro">Espelhar os agregados de raiz</block>
   <block id="2c406d90770788a5a37dd44ddf644295" category="inline-link-macro">Crie um agregado de dados espelhados em cada nó</block>
   <block id="cf2536b9d0ad43a511c5a32c1e924ea9" category="inline-link-macro">Implementar a configuração do MetroCluster</block>
@@ -3793,29 +3784,14 @@
   <block id="9b347cb6379286ba1cd7bac7435ed0cd" category="section-title">Garantir que a configuração do switch FC seja salva</block>
   <block id="15cca06ba2cf6c3ae3aa84e18984c915" category="paragraph">Você deve garantir que a configuração do switch FC esteja salva na configuração de inicialização em todos os switches.</block>
   <block id="aa3da2977894ededc70174629f42daa7" category="paragraph">Execute o seguinte comando em ambas as malhas de switch FC:</block>
-  <block id="aacdf7a1a9a3666db3b501d37a579c04" category="summary">Você precisa configurar os switches FC para fornecer conectividade de MetroCluster FC no back-end.</block>
   <block id="3c2e7a09f3e6838bdc9926952b8e998b" category="list-text"><block ref="3c2e7a09f3e6838bdc9926952b8e998b" category="inline-link-macro-rx"></block></block>
   <block id="1458da2ab801b96e60250f79dde170b1" category="inline-link-macro">Configure os switches Cisco FC com arquivos RCF</block>
-  <block id="8c67eafd90e097bf6228c8d6f91f15cb" category="list-text"><block ref="8c67eafd90e097bf6228c8d6f91f15cb" category="inline-link-macro-rx"></block></block>
-  <block id="02ca90cf930919983e9f269e2f296903" category="summary">Se você quiser simplificar o processo de configuração de switches, você pode baixar e aplicar arquivos de configuração de referência que fornecem as configurações completas de switch para determinadas configurações.</block>
-  <block id="fcb4142ffdb8bfcc1710889b0ed529d6" category="paragraph">Os arquivos de configuração de referência (RCFs) não suportam configurações usando oito ISLs. Se você estiver usando oito ISLs, você deve configurar os switches manualmente.</block>
-  <block id="3d1d2171594b743d57aea4950c25e08d" category="paragraph">Os RCFs se aplicam a configurações de MetroCluster de dois nós, quatro nós e oito nós. Esses arquivos configuram a malha para entrega na ordem (IOD) por padrão.</block>
-  <block id="ebac59afd8758611eb5f58946397378e" category="paragraph">A página de download do RCF indica o número de nós suportados pelos diferentes modelos de switch.</block>
   <block id="86358b89edd72e0dd870d6d017be4af1" category="paragraph"><block ref="86358b89edd72e0dd870d6d017be4af1" category="inline-link-rx"></block></block>
   <block id="703a3ecbe14b79f31798953db024b11a" category="list-text">Desative cada um dos switches na estrutura:</block>
   <block id="4028a8e16d4b841012a85c08963c7c51" category="paragraph"><block ref="623d551c0d177bd117ee216f82e5235b" prefix="" category="inline-code"></block></block>
-  <block id="3cf3eae7898bc6f0eec737e6a68a9cec" category="list-text">O exemplo a seguir mostra o comando emitido em FC_switch_A_1:</block>
-  <block id="fdf602b3f6a177da696cbba4294a693a" category="list-text">O exemplo a seguir mostra o comando emitido em FC_switch_B_1:</block>
   <block id="2d5ce426423eeeead4f35769cd8b1b27" category="inline-xref">Passo 3</block>
-  <block id="91e18356a7709afa40abb10b89a17636" category="summary">Você deve habilitar a malha de switch FC e garantir que os switches e dispositivos estejam funcionando corretamente.</block>
   <block id="e3d17c34e011c3623cc022040da3a8b8" category="list-text">Ativar os interrutores:</block>
-  <block id="c941b5c4cf46259dd41b222aa38a58f3" category="paragraph"><block ref="c57adbd597a5e409e88abfb2461bec0b" prefix="" category="inline-code"></block></block>
-  <block id="21f54be83889ba54c8cee60b4b4b417e" category="paragraph">Se este comando não estiver disponível, o switch deve estar no estado habilitado após o<block ref="40c3e9d40d7f5472056a085103ee278b" prefix=" " category="inline-code"></block> comando ser emitido.</block>
-  <block id="ed047f67ef60ac18f59b00defcbe2e63" category="list-text">Verifique se os switches estão on-line e todos os dispositivos estão conetados corretamente:</block>
   <block id="f22c92f3b10744efbd0e82db9d85f42a" category="paragraph"><block ref="0b2718104127a5486eda087932559182" prefix="" category="inline-code"></block></block>
-  <block id="bad3a2380613a08cffd8b317771de374" category="list-text">Execute o utilitário fmc_dc para garantir que o 7-Mode Fabric MetroCluster esteja funcionando corretamente.</block>
-  <block id="f2a62a2226a776063a92a12ed167e429" category="paragraph">Você pode ignorar erros relacionados ao zoneamento e entroncamento de isolamento de tráfego (TI).</block>
-  <block id="ee964d83d74573b3328048ead7b3c04e" category="list-text">Repita as tarefas para a segunda malha do switch.</block>
   <block id="a2d4b828805dc92004efb97c8e85045a" category="paragraph">Para sistemas recebidos de fábrica, as pontes FC para SAS são pré-configuradas e não exigem configuração adicional.</block>
   <block id="22352eb03ff7e6b8795e4f237f27d8d1" category="paragraph">Este procedimento é escrito com a suposição de que você está usando as interfaces de gerenciamento de bridge recomendadas: A GUI ATTO ExpressNAV e o utilitário ATTO Quicknav.</block>
   <block id="382796d45bd36c3702aa7fdd174e2a3f" category="paragraph">Você usa a GUI ATTO ExpressNAV para configurar e gerenciar uma bridge e atualizar o firmware da bridge. Você usa o utilitário ATTO Quicknav para configurar a porta 1 de gerenciamento Ethernet bridge.</block>
@@ -4990,54 +4966,11 @@
   <block id="b7cda7e4a23f216c9f7830dfa3e8bc23" category="cell">Descreve os requisitos para switches compatíveis com MetroCluster. Aplica-se a todas as configurações do MetroCluster que não estejam usando switches validados pela NetApp.</block>
   <block id="c8a876018fbb152e3e9beb9a87f3cd4e" category="cell"><block ref="c8a876018fbb152e3e9beb9a87f3cd4e" category="inline-link-macro-rx"></block></block>
   <block id="529fcc581410686227b4df2b0fb6b6c2" category="cell">Fornece exemplos de diferentes topologias de rede MetroCluster. Aplica-se a todas as configurações do MetroCluster.</block>
-  <block id="54744df94a6fdb7104348dee41697c48" category="summary">O uso da porta em uma configuração IP do MetroCluster depende do modelo do switch e do tipo de plataforma.</block>
-  <block id="14681192c7f80e2d7631c3a070df9619" category="doc">Atribuições de porta de plataforma para switches Cisco 3132Q-V.</block>
-  <block id="e896a08242f1b8600bd891680083c89c" category="paragraph">Reveja estas diretrizes antes de utilizar as tabelas:</block>
   <block id="0322de073946db807daed13f93e7bba6" category="inline-link-macro">RcfFileGenerator</block>
-  <block id="11b0a2bdfcd224ea773788cafe8f7027" category="list-text">Se você configurar o switch para a transição MetroCluster FC para IP, a porta 5, a porta 6, a porta 13 ou a porta 14 podem ser usadas para conetar as interfaces de cluster locais do nó MetroCluster FC. Consulte <block ref="46a459674905c476821f71bc8486a4ba" category="inline-link-macro-rx"></block>o e os arquivos de cabeamento gerados para obter mais detalhes sobre o cabeamento dessa configuração. Para todas as outras conexões, você pode usar as atribuições de uso de portas listadas nas tabelas.</block>
-  <block id="ab29addd4fe461fb9b64af6fddd54dad" category="section-title">Escolha a tabela de cabeamento correta para sua configuração</block>
-  <block id="ded30e9993ee1dec39c9a577af98ed86" category="paragraph">Use a tabela a seguir para determinar qual tabela de cabeamento você deve seguir.</block>
-  <block id="378f02db97047434844d749310da83f4" category="cell">Se o seu sistema é...</block>
-  <block id="797ace9b557574e9e0b101225be4602a" category="cell">Use esta tabela de cabeamento...</block>
-  <block id="3468d9323ffee76cf151228c3bc4bb50" category="paragraph">FAS2750, AFF A220</block>
-  <block id="c564e5e6ba6216ba72b8985cd713bec2" category="inline-xref">Atribuições de porta de plataforma Cisco 3132Q-V (grupo 1)</block>
-  <block id="29b68b735369de02347560fd1796cc0f" category="cell"><block ref="7ab899a6294ca709283b0b94918acac5" category="inline-xref-macro-rx"></block></block>
-  <block id="3a12696b33d539cb34844edab628e562" category="cell">FAS9000, AFF A700</block>
-  <block id="7f394da1dbe41aaa9340cf65d9afe258" category="inline-xref">Atribuições de porta de plataforma Cisco 3132Q-V (grupo 2)</block>
-  <block id="ea7e9a96ecbd1edc5a3811758d1f303d" category="cell"><block ref="ae942639e12f01d51947b7b009dd9fd2" category="inline-xref-macro-rx"></block></block>
   <block id="cd89e453925d1901395397754a492681" category="cell">AFF A800, ASA A800</block>
-  <block id="ed8fa34972ac300763a3b8c083ee5d1b" category="inline-xref">Atribuições de porta de plataforma Cisco 3132Q-V (grupo 3)</block>
-  <block id="d48221b8ea9bda63ed30c8f2e4d54546" category="cell"><block ref="dc218d9302b7ff7ec2652cf71967e577" category="inline-xref-macro-rx"></block></block>
-  <block id="2ef9155f2653dcb22ca9e8ea8eb3401d" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabo de um sistema FAS2750 ou AFF A220 para um switch Cisco 3132Q-V:</block>
-  <block id="8d0d4c4989ca3a66a7d2d68ea1014ba3" category="image-alt">Mostra as atribuições de porta da plataforma Cisco 3132Q-V.</block>
-  <block id="bc96235583bdab0e6796c3feabb688a2" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabo de um sistema FAS9000 ou AFF A700 para um switch Cisco 3132Q-V:</block>
-  <block id="f147a65f5cf3438e76a8b0e61ed4bc9a" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabo de um sistema AFF A800 ou ASA A800 para um switch Cisco 3132Q-V:</block>
-  <block id="de42a51018ae76cdec0d5104c4b44724" category="doc">Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C</block>
-  <block id="d74c7ca1ea000f4f70f344a02c2ae570" category="paragraph">Reveja estas considerações antes de utilizar as tabelas:</block>
-  <block id="bbea4b02ce438e1ae0146e4c5cabb671" category="list-text">As tabelas a seguir mostram o uso da porta para o local A. o mesmo cabeamento é usado para o local B.</block>
-  <block id="c57a7dcc596f78ac23d59a9297d99a56" category="list-text">Se você estiver configurando um único MetroCluster com os switches, use o grupo de portas *MetroCluster 1*.</block>
-  <block id="8232ac4b6380b290738aa1ce5cc7cff3" category="paragraph">Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, MetroCluster 3 ou MetroCluster 4). Você precisará dele ao usar a ferramenta RcfFileGenerator como descrito mais adiante neste procedimento de configuração.</block>
-  <block id="240c641ec7d44f443373981bb513fa5c" category="list-text">O RcfFileGenerator para MetroCluster IP também fornece uma visão geral de cabeamento por porta para cada switch.</block>
-  <block id="e13e5f806fc6cae09bcb9fed7eecf125" category="paragraph">Use esta visão geral do cabeamento para verificar o cabeamento.</block>
-  <block id="554d0ed2f8464fefa6da872d6dbcf5c5" category="list-text">O arquivo RCF versão v2,10 ou posterior é necessário para o modo breakout 25G para ISLs MetroCluster.</block>
-  <block id="5b43fcab432560bae73db4e0c9e34232" category="list-text">O ONTAP 9.13,1 ou posterior e o arquivo RCF versão 2,00 são necessários para usar uma plataforma diferente do FAS8200 ou do AFF A300 no grupo "MetroCluster 4".</block>
-  <block id="c189be7568f7fe77db4a889353024935" category="admonition">A versão do arquivo RCF é diferente da versão da ferramenta RCFfilegerator usada para gerar o arquivo. Por exemplo, você pode gerar um arquivo RCF versão 2,00 usando o RCFfilegerator v1,6c.</block>
-  <block id="9ae436c3a98ee403124b8482b69c2296" category="section-title">Cabeamento de duas configurações MetroCluster para os switches</block>
-  <block id="0b3e5d156cf864da2f269d95d3fcc8fa" category="cell">FAS8200, AFF A300</block>
-  <block id="393d2d284444ca547331678bf39eda23" category="cell">AFF A320 FAS8300, AFF C400, ASA C400, FAS8700 AFF A400, ASA A400</block>
-  <block id="054b22baf62d3195ebaf8ecfe2361739" category="cell">FAS9000, AFF A700 AFF C800, ASA C800, AFF A800, ASA A800 FAS9500, AFF A900, ASA A900</block>
-  <block id="959103b0e0798459de77e2b5d8985ab3" category="paragraph">Se você estiver atualizando a partir de arquivos RCF mais antigos, a configuração de cabeamento pode estar usando portas no grupo "MetroCluster 4" (portas 25/26 e 29/30).</block>
-  <block id="905eeaf0eb85efa82c94d09cf33bd250" category="admonition">O uso de portas no grupo "MetroCluster 4" requer o ONTAP 9.13,1 ou posterior.</block>
   <block id="dae9a493a0381746910b46f271097afc" category="list-text">O RcfFileGenerator só mostra as plataformas elegíveis quando a primeira plataforma é selecionada.</block>
   <block id="dfaaea754370da30cfd269ee856da3a9" category="list-text">A conexão de configurações de um MetroCluster de oito ou dois de quatro nós requer o ONTAP 9.14,1 ou posterior.</block>
-  <block id="bc72159143eff0b74341b77947b6f3ff" category="paragraph">Reveja a tabela de atribuições de portas correta para a sua configuração. Existem dois conjuntos de tabelas de cabeamento nesta seção:</block>
   <block id="419f3742e6de8e0ec4b22cce005e7630" category="cell">Plataforma</block>
-  <block id="be031e3e2925732e58a2cb37db830517" category="cell">AFF A320 AFF C400, ASA C400 AFF A400, ASA A400</block>
-  <block id="b6098cea8a2777e5c03f397eddba1384" category="cell">AFF A700 AFF C800, ASA C800, AFF A800 AFF A900, ASA A900</block>
-  <block id="f767a875f72b50f5b4ba095c00dd1361" category="cell">AFF A150, ASA A150 FAS2750, AFF A220</block>
-  <block id="c4a769675a2e89fcb65e84a2b2c8e6c1" category="cell">FAS500f AFF C250, ASA C250 AFF A250, ASA A250</block>
-  <block id="55a266c14b9f53227c9727ac67fc90d4" category="cell">FAS9000, AFF A700 AFF C800, ASA C800, AFF A800, ASA A800 FAS9500, AFF A900, ASA A900</block>
-  <block id="3e7d7088000e9b3208b36b1397763f5e" category="doc">Atribuições de portas de plataforma para switches IP BES-53248 com suporte da Broadcom</block>
   <block id="a5d0cab9bff9a930a5eb4ad5c7bce183" category="list-text">Se você configurar o switch para a transição MetroCluster FC para IP, as seguintes portas serão usadas dependendo da plataforma de destino escolhida:</block>
   <block id="f2a26c5fb823530f83a5b4d6bf512eb9" category="cell">Plataforma-alvo</block>
   <block id="c2a1880d9ec21424185dc32c708f7c2f" category="cell">Plataformas FAS500f, AFF C250, ASA C250, AFF A250, ASA A250, FAS8300, AFF C400, ASA C400, AFF A400, ASA A400 ou FAS8700</block>
@@ -5050,48 +4983,8 @@
   <block id="e3703245932789dbe7c10cc1431475fa" category="paragraph">AFF A150, ASA A150</block>
   <block id="3eab1bbd4a3f05ea0803f3bcf5fac9e5" category="paragraph">FAS2750</block>
   <block id="8fd3ca5f66dff5be16e79560dd28171e" category="paragraph">AFF A220</block>
-  <block id="d8e09f41a0140bcadce2023c9fc846c8" category="inline-xref">Atribuições de porta de plataforma Broadcom BES-53248 (grupo 1)</block>
-  <block id="76e892ed2593b2d95aee4f548fdf5623" category="cell"><block ref="7a1d34aae389c65629b6ff5d8aa067cc" category="inline-xref-macro-rx"></block></block>
-  <block id="e06b024281c7cdf3ebfd2b766f6f43c5" category="inline-xref">Atribuições de porta de plataforma Broadcom BES-53248 (grupo 2)</block>
-  <block id="90420831b8c7eb4b97a2ed9ca0a00b65" category="cell"><block ref="68bb8cc85fd20bf3f45bd9460be72e37" category="inline-xref-macro-rx"></block></block>
-  <block id="9577a62a7a4a3fcdd643b0c673764643" category="inline-xref">Atribuições de porta de plataforma Broadcom BES-53248 (grupo 3)</block>
-  <block id="8b639859245978443bd0190c4ff18f32" category="cell"><block ref="a09975192bdb70297f7244cbba6de184" category="inline-xref-macro-rx"></block></block>
-  <block id="c6916bfa8df5b4f385519fca765412ed" category="inline-xref">Atribuições de porta de plataforma Broadcom BES-53248 (grupo 4)</block>
-  <block id="2e332260fe5069855a7823f04b4b2e33" category="cell"><block ref="7ac25557ae91f7c67a94ffe517c00092" category="inline-xref-macro-rx"></block></block>
-  <block id="6dc837b2d92b555916641eb5178ac221" category="cell">FAS8300 AFF C400, ASA C400 AFF A400, ASA A400 FAS8700</block>
-  <block id="72aa90afbb81d6632cf26a27161a2306" category="inline-xref">Atribuições de porta de plataforma Broadcom BES-53248 (grupo 5)</block>
-  <block id="d84a2275237d2dfdf7470ae3bf75d519" category="cell"><block ref="c0fb5bc0e1afd91054b4474cd4d01adf" category="inline-xref-macro-rx"></block></block>
-  <block id="a8555df1d95c0e209452ad8fca7eb194" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A150, ASA A150, FAS2750 ou AFF A220 para um switch BES-53248 da Broadcom:</block>
-  <block id="d815cc46256555eeb86fa2dab3f52e4f" category="image-alt">Mostra atribuições de porta de plataforma Broadcom BES-53248</block>
-  <block id="afc53d7c7e597c30acb18fa3ed38cc86" category="list-text">*Nota 1*: O uso dessas portas requer uma licença adicional.</block>
-  <block id="f55f3df4f3171bcc7a7bfd50fb62fb31" category="list-text">Se ambas as configurações do MetroCluster estiverem usando a mesma plataforma, a NetApp recomenda selecionar o grupo "MetroCluster 3" para uma configuração e o grupo "MetroCluster 4" para a outra configuração. Se as plataformas forem diferentes, você deve selecionar "MetroCluster 3" ou "MetroCluster 4" para a primeira configuração e "MetroCluster 1" ou "MetroCluster 2" para a segunda configuração.</block>
-  <block id="b31708d50ebc601c86f3f8602ebf83c3" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema FAS500f, AFF C250, ASA C250, AFF A250 ou ASA A250 para um switch BES-53248 da Broadcom:</block>
-  <block id="3c788eb4704d0411c6e2ca4cafb1176a" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabo de um sistema FAS8200 ou AFF A300 para um switch BES-53248 da Broadcom:</block>
-  <block id="743ba1b47d944967c67af3d8630176fa" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabo de um sistema AFF A320 para um switch BES-53248 Broadcom:</block>
-  <block id="87b750ce6fbbe87d62cbc08d2dc73e1f" category="list-text">*Nota 2*: Apenas um único MetroCluster de quatro nós usando sistemas AFF A320 pode ser conetado ao switch.</block>
-  <block id="f9472a5c5416ee506e1b4d2e4b3c8e73" category="paragraph">Os recursos que exigem um cluster comutado não são suportados nesta configuração. Isso inclui os procedimentos de transição FC para IP do MetroCluster e atualização técnica.</block>
-  <block id="c29521e70ff45434a6957c2a6dafc62b" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema FAS8300, AFF C400, ASA C400, AFF A400, ASA A400 ou FAS8700 para um switch BES-53248 da Broadcom:</block>
-  <block id="91fda6ec6c364088ae4a9e6553b26f99" category="doc">Atribuições de porta de plataforma para switches IP SN2100 compatíveis com NVIDIA</block>
-  <block id="ffbf0166c7ab0c630d8081caba93b8ff" category="list-text">A conexão de configurações de MetroCluster de oito ou dois nós requer o ONTAP 9.14,1 ou posterior e o arquivo RCF versão 2,00 ou posterior.</block>
-  <block id="5aa692c4552b821f69bb151f7aa0f216" category="list-text">Se você fizer o cabo de várias configurações do MetroCluster, siga a respetiva tabela. Por exemplo:</block>
-  <block id="8e65b308ba381d7e7d885330e749b55d" category="list-text">Se você fizer o cabo de duas configurações MetroCluster de quatro nós do tipo AFF A700, conete o primeiro MetroCluster mostrado como "MetroCluster 1" e o segundo MetroCluster mostrado como "MetroCluster 2" na tabela AFF A700.</block>
-  <block id="e5c3d25338f9cf52b0644af8df5dd491" category="admonition">As portas 13 e 14 podem ser usadas no modo de velocidade nativo que suporta 40 Gbps e 100 Gbps, ou no modo de breakout para suportar 4 x 25 Gbps ou 4 x 10 Gbps. Se eles usam o modo de velocidade nativa, eles são representados como portas 13 e 14. Se eles usam o modo breakout, 4 x 25 Gbps ou 4 x 10 Gbps, então eles são representados como portas 13s0-3 e 14s0-3.</block>
-  <block id="10fe94c98083f4e751ef035d96910a62" category="paragraph">As seções a seguir descrevem o contorno físico do cabeamento. Você também pode consultar o<block ref="c52b4d12f68853a25c52576697c6b2b5" category="inline-link-rx"></block> para obter informações detalhadas sobre cabeamento.</block>
   <block id="9cce52969ddef317310e7d9d1c259895" category="paragraph">FAS500f</block>
   <block id="cb11078c5524bd0fbae837fd1a919c50" category="paragraph">AFF C250, ASA C250</block>
-  <block id="e4582c1646820728c642cb9c8d742e95" category="paragraph">AFF A250, ASA A250</block>
-  <block id="4961cf8f10192a5b4ad33671042c096d" category="inline-xref">Atribuições de portas da plataforma NVIDIA SN2100 (grupo 1)</block>
-  <block id="c8625985c8052ac6551e3c107f7f5866" category="cell"><block ref="1a5cebf616f7d490fdd4c196a20d55ae" category="inline-xref-macro-rx"></block></block>
-  <block id="9c2e8c459a4e1a4d1a809eac240a9c3c" category="cell">FAS8300 AFF C400, ASA C400 AFF A400, ASA A400 FAS8700 FAS9000, AFF A700</block>
-  <block id="4dc29e675f26e4b6e6499807939c9fe6" category="inline-xref">Atribuições de portas da plataforma NVIDIA SN2100 (grupo 2)</block>
-  <block id="f6b8e6b89e3c57d0ca377b29792960e1" category="cell"><block ref="53c3bba0fc4d571e7510994b846bb2c8" category="inline-xref-macro-rx"></block></block>
-  <block id="41ac1c2c88009e74b42da1aa691550ad" category="cell">AFF C800, ASA C800 AFF A800, ASA A800 FAS9500 AFF A900, ASA A900</block>
-  <block id="3fd729260e3da24bd6a804a69288d3a0" category="inline-xref">Atribuições de portas da plataforma NVIDIA SN2100 (grupo 4)</block>
-  <block id="9da9e77e27a298779dde7229f987f90e" category="cell"><block ref="e522fa81c7b717996bb7f3ed80dbae98" category="inline-xref-macro-rx"></block></block>
-  <block id="b99e4b4aab95a094663bf529c9a168e3" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A150, ASA A150, FAS500f, AFF C250, ASA C250, AFF A250 ou ASA A250 para um switch NVIDIA SN2100:</block>
-  <block id="5169dd4952c3ed61fc8c586565b6f671" category="image-alt">Mostra atribuições de porta da plataforma NVIDIA SN2100</block>
-  <block id="8c0dfd424cf2846a6c5d57af4d4c1c67" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema FAS8300, AFF C400, ASA C400, AFF A400, ASA A400, FAS8700, FAS9000 ou AFF A700 para um switch NVIDIA SN2100:</block>
-  <block id="359054a58638f835e3a1aabcead61be2" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF C800, ASA C800, AFF A800, ASA A800, FAS9500, AFF A900 ou ASA A900 para um switch NVIDIA SN2100:</block>
   <block id="ca06ae8121f1cc11363fc78862822c7c" category="summary">Você pode saber mais sobre a configuração e operação do MetroCluster IP na documentação do NetApp.</block>
   <block id="0a2cb077aceb828b74111b3c72d0875f" category="summary">A partir do ONTAP 9.8, você pode gerenciar as operações do site IP do MetroCluster com o Gerenciador do sistema. Isso envolve a configuração de dois clusters e a execução do peering de cluster.</block>
   <block id="2fecebbfac11150535911d877966c9e3" category="paragraph">A partir do ONTAP 9.8, você pode gerenciar as operações de configuração IP do MetroCluster com o Gerenciador de sistema. Depois de configurar dois clusters, configure o peering entre eles.</block>
@@ -5706,7 +5599,6 @@
   <block id="9907713d23e4a8ccaed056f63f830b76" category="paragraph"><block ref="e61fbe74fd6a784cc44f6dfa8008a8ad" prefix="" category="inline-code"></block></block>
   <block id="85b091192b5f7d8d84eccf6181fd6ae8" category="paragraph">Se o sistema estiver configurado usando conetividade de 25 Gbps, você precisará definir manualmente o parâmetro Correção de erros de Avanço (fec) para Desativado após a aplicação do arquivo RCF. O ficheiro RCF não aplica esta definição.</block>
   <block id="21b34813f1e8c3819fcd4c2d1a97dc87" category="paragraph">As portas de 25 Gbps devem ser cabeadas antes de executar este procedimento.</block>
-  <block id="0ef715bbddac71aad2d1af3b2ccf8056" category="paragraph"><block ref="0ef715bbddac71aad2d1af3b2ccf8056" category="inline-link-macro-rx"></block></block>
   <block id="250b5ed5389f4260b31c4ede97dea809" category="paragraph">Esta tarefa aplica-se apenas a plataformas que utilizam conetividade de 25 Gbps:</block>
   <block id="c78a423f3132ee2ac4f4f4c1fa5d4859" category="list-text">AFF A300</block>
   <block id="44ebc7deaba92b772a9bf569e1c8ca12" category="list-text">FAS 8200</block>
@@ -5901,14 +5793,6 @@
   <block id="7507e31e7c001014454813d7b49c44bb" category="paragraph">O agregado afetado deve ter um status RAID de "ressincronização", como mostrado no exemplo a seguir:</block>
   <block id="ec88ce5186c357a0bc7a0b6036c98881" category="paragraph">O agregado afetado deve ter um status RAID "normal", como mostrado no exemplo a seguir:</block>
   <block id="5b97f056c47eb55f7ac2ec585e184dd9" category="summary">Você deve entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos RCF.</block>
-  <block id="b12eae1983992a43e1aff6798c40b450" category="section-title">Cabeamento de configurações de MetroCluster de oito nós</block>
-  <block id="b8b5370c063dd2b4ce4021558a49ac07" category="paragraph">Para a configuração do MetroCluster executando o ONTAP 9.8 e anterior, alguns procedimentos que são executados para fazer a transição de uma atualização exigem a adição de um segundo grupo de DR de quatro nós à configuração para criar uma configuração temporária de oito nós. A partir do ONTAP 9.9,1, são suportadas configurações permanentes de MetroCluster de oito nós.</block>
-  <block id="d5e8fd3a5a09a2e20b7a2ae3865f7eef" category="paragraph">Por exemplo, sua configuração inclui o seguinte:</block>
-  <block id="d05e0033e800da35d05e3a88b52e765d" category="list-text">Interrutores Cisco 3132Q-V.</block>
-  <block id="87ede0cd4f69bd1090135509c97d39fc" category="list-text">MetroCluster 1: Plataformas FAS2750</block>
-  <block id="5eee8a123c93417db687e76b152f6ef0" category="list-text">MetroCluster 2: Plataformas AFF A700 (essas plataformas estão sendo adicionadas como um segundo grupo de DR de quatro nós)</block>
-  <block id="7169e1403b175332b81d333c6e2af6ab" category="list-text">Para o MetroCluster 1, faça o cabeamento dos switches Cisco 3132Q-V usando a tabela para a plataforma FAS2750 e as linhas para interfaces MetroCluster 1.</block>
-  <block id="0dc1c4c70bff26c7c3ae5646d99a32f7" category="list-text">Para o MetroCluster 2 (o segundo grupo DR), faça o cabeamento dos switches Cisco 3132Q-V usando a tabela para a plataforma AFF A700 e as linhas para interfaces MetroCluster 2.</block>
   <block id="4925c3e92cbc558459ac4884fe1553e3" category="paragraph">Configuração elástica de dois nós com pontes FC para SAS</block>
   <block id="90fc932ee050a39faa7916b30886ecf0" category="inline-link-macro">Cabeamento de uma configuração Stretch MetroCluster de dois nós conetada em ponte</block>
   <block id="4e1b527248877ce00ab35be64a482680" category="list-text"><block ref="4e1b527248877ce00ab35be64a482680" category="inline-link-macro-rx"></block></block>
@@ -6009,13 +5893,7 @@
   <block id="508ed89bbe1f50e3b7091c28866c9431" category="paragraph">Quando você executa o<block ref="cebf74479b2272b4850814937a5307b5" prefix=" " category="inline-code"></block> comando após um switchover do MetroCluster, o status de plex0 do agregado de raiz comutada é indeterminado e é exibido como<block ref="26934eb377001f66e37289a5c93fe284" prefix=" " category="inline-code"></block>. Durante este tempo, a raiz comutada não é atualizada. O estado real deste Plex só pode ser determinado após a fase de cicatrização do MetroCluster.</block>
   <block id="82c594e06e5cc102ed27a1c2939d9119" category="list-text">Ative a configuração do MetroCluster para acionar o NVFAIL no switchover definindo o<block ref="cb836b02ffb0910a6d31ddd09e1ce5b0" prefix=" " category="inline-code"></block> parâmetro como "'on'":</block>
   <block id="10dffe6406f9fe04b11a1061b6cb1b04" category="paragraph"><block ref="0fc7380827c747bb26c18de8f297628b" prefix="" category="inline-code"></block></block>
-  <block id="6146d4abcde8b1c5aae9b49637ff7f5f" category="paragraph">Esta informação descreve como instalar e configurar os componentes de hardware e software do MetroCluster numa configuração stretch (por vezes referida como uma configuração ótica MetroCluster SAS).</block>
-  <block id="4a5a62259294d97a965d111d8cc932d9" category="paragraph">Você deve usar essas informações para Planejar, instalar e configurar uma configuração do Stretch MetroCluster nas seguintes circunstâncias:</block>
-  <block id="d6c935649258a3194c6f76edd4e9e860" category="list-text">Você quer entender a arquitetura de uma configuração Stretch MetroCluster.</block>
-  <block id="006a6750e464737f9052137881e80f96" category="list-text">Você quer entender os requisitos e as práticas recomendadas para configurar uma configuração Stretch MetroCluster.</block>
-  <block id="62f7ef95a1a4f5a1e459930846582588" category="list-text">Você deseja usar a interface de linha de comando (CLI), não uma ferramenta de script automatizado.</block>
   <block id="f4e2ba9b259f06c1661bed9f349c22f3" category="summary">Começando com o ONTAP 9.5 com o FibreBridge 7500N ou 7600N bridges, o gerenciamento em banda das pontes é suportado como uma alternativa ao gerenciamento IP das pontes. A partir do ONTAP 9.8, o gerenciamento fora da banda está obsoleto.</block>
-  <block id="44b34304fe9dbc559df5c8eec0e37bb6" category="admonition">A partir de ONTAP 9.8, o<block ref="f81d99546dcaf16abad6ea08401251c3" prefix=" " category="inline-code"></block> comando é substituído pelo<block ref="2b29cf959e88719118c992f741474a4f" prefix=" " category="inline-code"></block> comando. As etapas a seguir mostram o<block ref="f81d99546dcaf16abad6ea08401251c3" prefix=" " category="inline-code"></block> comando, mas se você estiver executando o ONTAP 9.8 ou posterior, o<block ref="2b29cf959e88719118c992f741474a4f" prefix=" " category="inline-code"></block> comando é preferido.</block>
   <block id="386e28e9a82ab9437b9e5520ca030545" category="paragraph">Os comandos Bridge CLI podem ser emitidos a partir do comando ONTAP interface<block ref="34ec9fe8b86d5e63399daedde129d1b3" prefix=" " category="inline-code"></block> na interface ONTAP.</block>
   <block id="fad48872dab041db7fdab5ec4e1a734a" category="summary">Ao Planejar sua configuração do MetroCluster, você deve entender as partes da configuração e como elas funcionam juntas.</block>
   <block id="664e9681597d646a0ebac60090c7e1c9" category="doc">Partes de uma configuração Stretch MetroCluster de dois nós conetada em ponte</block>
@@ -6119,16 +5997,10 @@
   <block id="547ba73dc7a2f4ba675a33d38364c3f9" category="paragraph">Você pode saber mais sobre a configuração e operação do MetroCluster.</block>
   <block id="05d1b66800ffa31a913a6add4305e4e3" category="paragraph"><block ref="05d1b66800ffa31a913a6add4305e4e3" category="inline-link-rx"></block></block>
   <block id="a89d71cea914c12a8560cf535aa946c5" category="list-text">Todos os guias MetroCluster</block>
-  <block id="e79607baf0b4b92987f246d62a7fb12f" category="list-text">Recuperação de desastres (DR)</block>
   <block id="5b4f20357f5eb20eaa770c1503529295" category="list-text">Substituição ou atualização de hardware. Procedimentos de atualização de firmware para bridges FC para SAS e switches FC</block>
   <block id="f2d45f03c22fbeb03b74cbd880d693fe" category="list-text">Substituição do hardware em um local de recuperação de desastres em uma configuração MetroCluster FC estendida ou conectada à malha</block>
   <block id="601bd9ca04dd14b95c529c358a4d32e5" category="paragraph">Documentação do Active IQ Unified Manager</block>
   <block id="fc56e4fa678580b339facec8400a6301" category="paragraph"><block ref="fc56e4fa678580b339facec8400a6301" category="inline-link-rx"></block></block>
-  <block id="12e1a43f9bf6da32583b815f8c9f66e1" category="summary">Depois de configurar a ponte, você pode iniciar o cabeamento do sistema.</block>
-  <block id="6fd15be7f6a37829673663b10699e3a1" category="paragraph">Para prateleiras de disco, insira um conetor de cabo SAS com a aba de puxar orientada para baixo (na parte inferior do conetor).</block>
-  <block id="ffa7a5441f187dc7d843a978ea76034c" category="list-text">Começando pela primeira gaveta lógica na stack, conecte a Iom A porta 3 à porta 1 da IOM A da próxima gaveta. Repita o processo até que cada IOM A na pilha esteja conetada.</block>
-  <block id="b985672df4b1727f634f123abb9a9459" category="list-text">Ligue as gavetas de disco e, em seguida, defina as IDs das shelves.</block>
-  <block id="0a479816abce55af3acdeba610f5c4aa" category="list-text">Para a primeira stack de gavetas de disco, cable IOM A da primeira gaveta para a porta SAS a na FibreBridge A. cable IOM B da última gaveta para a porta SAS a na FibreBridge B.</block>
   <block id="8d53ecfd699255ffe464faea9e7525a9" category="paragraph">Você deve enviar por cabo as portas do módulo do controlador usadas para peering de cluster para que eles tenham conetividade com o cluster no local do parceiro.</block>
   <block id="fc484e6d94d323d750d5724ac9f98e2b" category="paragraph">O peering de cluster pode ser feito em portas dedicadas ou em portas de dados. O uso de portas dedicadas fornece uma taxa de transferência mais alta para o tráfego de peering de cluster.</block>
   <block id="5ad0b7be4f57f2d2a08be2ee7c0a41dc" category="summary">Os adaptadores FC-VI da controladora devem ser cabeados diretamente entre si. As portas SAS da controladora devem ser cabeadas para as stacks de storage remoto e local.</block>
@@ -6146,27 +6018,16 @@
   <block id="24ee0b1ca6a6bb24b7f88b8b0f675d6a" category="paragraph">A ilustração acima é uma representação típica do cabeamento necessário. As portas FC-VI específicas variam de acordo com o módulo do controlador.</block>
   <block id="a587e4f5b1fc4bdc10a14ae34d3ae14e" category="list-text">Os módulos de controladora AFF A300 e FAS8200 podem ser solicitados com uma das duas opções de conectividade FC-VI:</block>
   <block id="e3e199b7ae425cf085e49fc59cee2346" category="paragraph">Pode ligar as portas de gestão do controlador e do comutador de cluster a comutadores existentes na rede. Além disso, você pode conetar o controlador a novos switches de rede dedicados, como os switches de gerenciamento de cluster NetApp CN1601.</block>
-  <block id="49e8a4f68d0d39a5df4eff350e3763d9" category="admonition">A partir de ONTAP 9.8, o<block ref="c5c5939ad24a4bc4cca8c77f5105d463" prefix=" " category="inline-code"></block> comando é substituído por<block ref="81f0734b378bc1ed5fb99125faf1d47a" prefix=" " category="inline-code"></block>. As etapas a seguir mostram o<block ref="c5c5939ad24a4bc4cca8c77f5105d463" prefix=" " category="inline-code"></block> comando. No entanto, se você estiver executando o ONTAP 9.8 ou posterior, o<block ref="81f0734b378bc1ed5fb99125faf1d47a" prefix=" " category="inline-code"></block> comando será preferido.</block>
-  <block id="f42de1b08d2be30deb3f92505955941e" category="paragraph">Se você estiver usando o gerenciamento na banda da ponte em vez do gerenciamento IP, as etapas para configurar a porta Ethernet e as configurações IP podem ser ignoradas.</block>
-  <block id="f0b56d16950bab81d00cfeaf82d6183a" category="paragraph">A conexão serial será usada para configuração inicial. Em seguida, o gerenciamento na banda via ONTAP e as portas FC podem ser usados para monitorar e gerenciar a ponte.</block>
   <block id="6b3a54a584a439fce9ad84236bf02442" category="paragraph"><block ref="232da71a1ae108cabf3bd0e622596d0e" prefix="" category="inline-code"></block></block>
   <block id="f4940c501b49bfedc771d451a940dd86" category="paragraph"><block ref="7bfdabc47df8525fb02052d7f2732fa7" prefix="" category="inline-code"></block></block>
   <block id="2cbc411457cd0938b6905825bf77d757" category="paragraph"><block ref="25d1ce724f0e3fe30bbba053e7a14633" prefix="" category="inline-code"></block></block>
   <block id="234276bb6f759d1c730f503823b8b851" category="list-text">Se estiver executando o ONTAP 9.4 ou anterior, ative o SNMP na ponte<block ref="b5ac625737918fa90a557c49fcd2839a" prefix=" " category="inline-code"></block></block>
-  <block id="e59edea7eca66c59981a48c451207f15" category="paragraph"><block ref="56c9a9e2cd04a7bdfd3d50da887984d0" prefix="" category="inline-code"></block></block>
-  <block id="58f664821eaeae8db29ad0777b7c207e" category="list-text">Se você não estiver usando a segunda porta, então você deve desativar a porta<block ref="9b110bb52a19e20da07d06e46afdb2ee" prefix=" " category="inline-code"></block></block>
   <block id="7850ba79be704a27b5c5b68af5a2299f" category="list-text">Se você estiver configurando uma ponte FibreBridge 7600N ou 7500N, desative as portas SAS não utilizadas<block ref="8f137b3d6f98c0d92bc734abeaf601bd" prefix=" " category="inline-code"></block></block>
-  <block id="9903ebf5645f39363aa954b61ca67471" category="list-text">Veja o status das pontes:<block ref="5612ed7a515d4278d578c100f6f1a976" prefix=" " category="inline-code"></block></block>
-  <block id="8707b60af4835d505959781341c58dac" category="list-text">Fixe a ponte<block ref="0b02d3243d42e6632b22b713b73ab2d3" prefix=" " category="inline-code"></block></block>
   <block id="978b1759e6757920ebf49ea1f963a49b" category="paragraph"><block ref="978b1759e6757920ebf49ea1f963a49b" category="inline-link-macro-rx"></block></block>
-  <block id="ef402cf927be6e8ac7911e7437ce8e76" category="paragraph">Se você estiver usando uma versão do ONTAP anterior a 9,5, ou planeja usar o acesso fora da banda à ponte FibreBridge 7600N usando telnet ou outros protocolos e serviços de porta IP (FTP, ExpressNAV, ICMP ou Quicknav), você pode ativar os serviços de acesso através da porta do console.</block>
-  <block id="52812075c78ece551ae010bb2c3594ea" category="paragraph">A partir do ONTAP 9.5, _gerenciamento na banda_ das bridges é suportado. Isso significa que as pontes podem ser configuradas e monitoradas a partir da CLI do ONTAP por meio da conexão FC à ponte. O acesso físico à ponte através das portas Ethernet da ponte não é necessário e as interfaces do usuário da ponte não são necessárias.</block>
-  <block id="5366fe8e6a583070b8536329d2fb2c42" category="paragraph">A partir do ONTAP 9.8, _gerenciamento na banda_ das bridges é suportado por padrão e o gerenciamento SNMP fora da banda é obsoleto.</block>
   <block id="a97b8ba5c038673f572d9b1b5badbeaf" category="paragraph"><block ref="73c680089275b8dc89528d845fbc2fb6" prefix="" category="inline-code"></block></block>
   <block id="42943657bf0c70a6db86476a2d49ed57" category="paragraph"><block ref="26247dec9bdd319d8ed71eed8af2eb1d" prefix="" category="inline-code"></block></block>
   <block id="8810d0ab2225332a7555a35f6f5a7a0c" category="list-text">Desative um serviço, se desejado, emitindo<block ref="f0644776120bb06e0e293b1d88a9e8d6" prefix=" " category="inline-code"></block> e repetindo o comando conforme necessário até que todos os serviços desejados sejam desativados:</block>
   <block id="ee1b7c525e1ddb51497d2702f070ba4f" category="paragraph"><block ref="474d72a7aa9e9a02ba427d424318c0da" prefix="" category="inline-code"></block></block>
-  <block id="f4a6a04204d80f2884055d8da7f250ae" category="paragraph"><block ref="39ce37a4ba621b15824f25d3ead980cb" prefix="" category="inline-code"></block> pode especificar uma das seguintes opções:</block>
   <block id="9d05079a491a98497153e953bbaddaa4" category="list-text">Se estiver a ativar o SNMP, também tem de emitir o comando Set SNMP enabled (Definir SNMP ativado):</block>
   <block id="944957367bcbba5f885d8dc885354148" category="paragraph"><block ref="27009b25568d408f9f05d4ea68455493" prefix="" category="inline-code"></block></block>
   <block id="33c31ec720ddb611e48abaebec39e651" category="list-text">Clique em *Avançado* no menu.</block>
@@ -6176,9 +6037,6 @@
   <block id="1d1fa4befa7e2188095e2cc64c17fc9e" category="list-text">Verifique se há cabos SAS soltos ou corrija o cabeamento SAS reabilitando as gavetas de disco nas pontes.</block>
   <block id="fa5d02c46c643a9eedee519211b4d9d4" category="list-text">Repita <block ref="760439458840ee59fb7794af4bb5b199" category="inline-xref-macro-rx"></block> para cada ponte restante.</block>
   <block id="13044932159e150c28f3e3cabd33ea68" category="list-text">Repita <block ref="92a9f0aaafd1755c239f3740bca9b5f0" category="inline-xref-macro-rx"></block>nas outras pontes até que todas as pontes tenham sido cabeadas.</block>
-  <block id="ba47f416cbc346bd4f20db246cb5ea02" category="summary">Depois de garantir que o sistema atenda a todos os requisitos na seção "preparação para a instalação", você pode instalar o novo sistema.</block>
-  <block id="44cf292b45fcf91c7481e1ee996ccaec" category="paragraph">Depois de garantir que o sistema atenda a todos os requisitos da seção "preparando a instalação", você pode instalar seu novo sistema.</block>
-  <block id="45cf701b8697cab4c349ec98dae373d6" category="admonition">Todos os discos no grupo de recuperação de desastres (DR) devem usar o mesmo tipo de conexão e estar visíveis para todos os nós no grupo de recuperação de desastres, independentemente dos discos usados para agregado espelhado ou não espelhado.</block>
   <block id="ff3374bc6b913cd83c99bdca241ba935" category="paragraph">A quantidade de espaço em rack necessária depende do modelo de plataforma das controladoras de storage, dos tipos de switch e do número de stacks de compartimento de disco na configuração.</block>
   <block id="c0d749550ddde23cbac88b531b9ece57" category="list-text">Utilizando práticas de oficina padrão para trabalhar com equipamentos elétricos, certifique-se de que está devidamente ligado à terra.</block>
   <block id="ff11debab177e4fd3158af3d75f8753d" category="list-text">Instale as gavetas de disco, encadeie em série as gavetas de disco em cada pilha, ligue-as e defina as IDs de gaveta.</block>
@@ -6232,9 +6090,6 @@
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
   <block id="35c124f455f44a154eb3b514029ee58a" category="section-title">Informações de segurança e avisos regulamentares</block>
   <block id="a6518839a3ee2f900f136494094df3cf" category="paragraph"><block ref="a6518839a3ee2f900f136494094df3cf" category="inline-link-rx"></block></block>
-  <block id="b57004775c4d348fa434a0ee51cb3d83" category="summary">Você pode manter os componentes de hardware específicos do MetroCluster na configuração do MetroCluster.</block>
-  <block id="1b90568b607149e86214f36f7e1c89a5" category="paragraph">Você pode usar os procedimentos a seguir para manter os componentes de hardware específicos do MetroCluster na configuração do MetroCluster.</block>
-  <block id="a57ca36aaadd79a0f7796b97ef93ea4b" category="paragraph">Os procedimentos de serviço dos sistemas MetroCluster incluem procedimentos de atualização de firmware e substituição de hardware para compartimentos de unidades, switches IP, switches FC, pontes FC para SAS e cabos SAS.</block>
   <block id="2900e32ff2ffecd6085429c5a8cc642b" category="summary">Se você precisar substituir um módulo de unidade ou compartimento, primeiro será necessário identificar o local.</block>
   <block id="7e6435b1f7648286f102f643203d9fa8" category="section-title">Identificação de prateleiras locais e remotas</block>
   <block id="ffa95d46afa62fa6929e29e9ccb429ba" category="paragraph">Quando você visualiza as informações do compartimento de um site do MetroCluster, todas as unidades remotas estão no 0m, o adaptador de host iSCSI virtual. Isto significa que as unidades são acedidas através das interfaces IP MetroCluster. Todas as outras unidades são locais.</block>
@@ -6355,7 +6210,6 @@
   <block id="08b87b0df84f23bedc3bd35f30bfa073" category="paragraph">Se adicionar prateleiras para um agregado sem espelhamento, consulte<block ref="a4e92f124c7c2dcbe4223de70278d181" category="inline-link-rx"></block></block>
   <block id="221a3239afd85b15c0a082e006cc9d76" category="summary">Ative o registo da consola nos seus dispositivos antes de executar tarefas de manutenção.</block>
   <block id="60fda9f0d4f66fd0b517637868752be0" category="paragraph">A NetApp recomenda fortemente que você ative o log do console nos dispositivos que você está usando e execute as seguintes ações antes de executar os procedimentos de manutenção:</block>
-  <block id="b8ce668f7b81ebccc724b47a22aafe9f" category="paragraph">Os procedimentos de serviço para sistemas MetroCluster incluem procedimentos de atualização de firmware e substituição de hardware para compartimentos de unidades, switches IP, switches FC, pontes FC para SAS e cabos SAS.</block>
   <block id="030887e8b58ec755fe20ef7fbcdc9495" category="summary">Quando há uma alteração no status de um módulo de fonte de alimentação para a ponte, você pode remover e instalar o módulo de fonte de alimentação.</block>
   <block id="0ea60b406b044af50baf856e62b54dea" category="paragraph">Pode ver a alteração no estado de um módulo de fonte de alimentação através dos LEDs na ponte. Você também pode visualizar o status dos módulos de fonte de alimentação via ExpressNAV GUI e a ponte CLI, via porta serial ou via Telnet.</block>
   <block id="f9a006e76305c853a36326e90e0bbbd8" category="list-text">Este procedimento é NDO (sem interrupções) e leva aproximadamente 15 minutos para ser concluído.</block>
@@ -6604,8 +6458,6 @@
   <block id="eb92b55efcda4337f49fbb4f31430b86" category="section-title">Aplicando o novo arquivo RCF aos switches</block>
   <block id="53a921e4bbc54ce2d6afa96efdec5e0d" category="admonition">Se o switch já estiver configurado corretamente, você poderá pular essas próximas seções e ir diretamente para <block ref="de11d0e85c7bd9958e0baabb6935c39e" category="inline-xref-macro-rx"></block>, se aplicável ou para <block ref="38f1f1f937d8a6271f7a9d545fc64b92" category="inline-xref-macro-rx"></block>.</block>
   <block id="c254233c893b2067bcf1c2ed715e44ed" category="list-text">É necessário alterar a configuração do switch para adicionar gavetas.</block>
-  <block id="0d5080dfa06a3af14f97815b8709eabf" category="inline-link-macro">Atribuições de porta da plataforma</block>
-  <block id="992e77f25f7a13cc4a3f4c478343dc53" category="list-text">Você deve rever os detalhes do cabeamento em <block ref="43a709b6efbdfaf13af2493f4ad49bb0" category="inline-link-macro-rx"></block>.</block>
   <block id="0de69822e19543d652683accc3d43e70" category="list-text">Você deve usar a ferramenta **RcfFileGenerator** para criar o arquivo RCF para sua configuração. O <block ref="46a459674905c476821f71bc8486a4ba" category="inline-link-macro-rx"></block>também fornece uma visão geral do cabeamento por porta para cada switch. Certifique-se de escolher o número correto de prateleiras. Existem arquivos adicionais criados juntamente com o arquivo RCF que fornecem um layout de cabeamento detalhado que corresponde às suas opções específicas. Use esta visão geral do cabeamento para verificar o cabeamento ao fazer o cabeamento das novas gavetas.</block>
   <block id="24db347300915bafc6a8daff1848f45e" category="section-title">Atualizando arquivos RCF em switches IP MetroCluster</block>
   <block id="1ac88e41a3fe5cd70b12c660a33460a7" category="paragraph">Se você estiver instalando o novo firmware do switch, você deve instalar o firmware do switch antes de atualizar o arquivo RCF.</block>
@@ -7593,14 +7445,9 @@
   <block id="633cc15b1e59b48a46d3c777359a1055" category="list-text">[[All_step1]]Verifique a integridade da configuração.</block>
   <block id="180431da60034ff0cf49d352448c4cbe" category="list-text">Configure o novo switch antes da instalação.</block>
   <block id="7882a4b556b6996eaf604413a9e602d9" category="inline-xref">Passo 4</block>
-  <block id="081cd064d2071e8aa77edcf5d45444be" category="paragraph">Se estiver a reutilizar comutadores existentes, vá para <block ref="046a26a191748a2899dce4a2c37c0cb7" category="inline-xref-macro-rx"></block>.</block>
   <block id="3d498d8c3038973579898c766829437a" category="admonition">Se você estiver atualizando ou baixando os switches, deverá configurar todos os switches na rede.</block>
   <block id="e569faada464fba9f3dbbdbda211c148" category="paragraph">Certifique-se de aplicar o arquivo RCF correto para o switch _A_1, _A_2, _B_1 ou _B_2. Se o novo switch for o mesmo que o antigo, você precisará aplicar o mesmo arquivo RCF.</block>
   <block id="21d70434879bc17385bedbe3b2231480" category="paragraph">Se você atualizar ou baixar um switch, aplique o arquivo RCF mais recente suportado para o novo switch.</block>
-  <block id="140f85d0d849f4cdeb15f3576a478d27" category="list-text">Execute o comando port show para exibir informações sobre as portas de rede:</block>
-  <block id="664180a50093532dd9d44b1e80f40b72" category="paragraph"><block ref="4b422ce2b8a4cc1ef3a675dcef169c17" prefix="" category="inline-code"></block></block>
-  <block id="69f5f299da1076246b1de6b47387e82c" category="list-text">Modifique todas as LIFs do cluster para desativar a reversão automática:</block>
-  <block id="a20cd528d8bc7b61469ce5e3d4c9c554" category="list-text">[[existing_step4]]desligue as ligações do interrutor antigo.</block>
   <block id="7d776215704c45de3e834bbcadf79f9d" category="admonition">Você só desconeta conexões que não estejam usando a mesma porta nas configurações antigas e novas. Se estiver a utilizar novos comutadores, tem de desligar todas as ligações.</block>
   <block id="75e3c856358f89db923a1a35bcc7533c" category="paragraph">Extrair as ligações pela seguinte ordem:</block>
   <block id="2d92b42c0c2f47e6ac73af40f63add96" category="list-text">Desligue as interfaces do cluster local</block>
@@ -7609,10 +7456,7 @@
   <block id="67cc98572471f894a699ad039887fbf2" category="list-text">Desligue os ISLs da MetroCluster</block>
   <block id="afbde099dc8a26a6394d60f258d7b937" category="paragraph">No exemplo <block ref="6c63cd5b30d21cdd776aa75d41e55cc0" category="inline-xref-macro-rx"></block>, os interrutores não mudam. Os ISLs da MetroCluster são relocados e devem ser desconetados. Não é necessário desligar as ligações marcadas a verde na folha de trabalho.</block>
   <block id="a6d521ed969131c6ad881b1c930a769c" category="list-text">Se você estiver usando novos switches, desligue o interrutor antigo, remova os cabos e remova fisicamente o interrutor antigo.</block>
-  <block id="f5ce4d426c8852e0090ab32842d1cd09" category="inline-xref">Passo 6</block>
-  <block id="a5717edbc2c781c1beaa710a27186585" category="paragraph">Se estiver a reutilizar comutadores existentes, vá para <block ref="2e61491c69f93a4146be17b4939efb61" category="inline-xref-macro-rx"></block>.</block>
   <block id="333d2f9cc8c6ad8010d2882a39d82f4b" category="admonition">*Not* cable os novos switches, exceto para a interface de gerenciamento (se usado).</block>
-  <block id="1fd9c3285779f1beb3a2a86f3db536dd" category="list-text">[[existing_step6]]Configure os switches existentes.</block>
   <block id="00988a383d51754cc7748f6c1b1e0fea" category="paragraph">Se já tiver pré-configurado os parâmetros, pode ignorar este passo.</block>
   <block id="6009872da2f85ec2153eaa9c096839f1" category="paragraph">Para configurar os switches existentes, siga as etapas para instalar e atualizar os arquivos de firmware e RCF:</block>
   <block id="47471aa588b43c640e780e991822eda9" category="inline-link-macro">Atualizando o firmware em switches IP MetroCluster</block>
@@ -7624,7 +7468,6 @@
   <block id="c78a73a52795719f0a6c0e4e534be9ef" category="list-text">Faça o cabo das interfaces IP do MetroCluster.</block>
   <block id="01deefeeb71ff074c039158073f19265" category="list-text">Faça o cabeamento das interfaces do cluster local.</block>
   <block id="8b6ae3655a41f028d5060b1f3d5aebbf" category="list-text">As portas usadas podem ser diferentes daquelas no switch antigo se o tipo de switch for diferente. Se você estiver atualizando ou baixando os switches, *NÃO* faça o cabo dos ISLs locais. Somente faça o cabeamento dos ISLs locais se você estiver atualizando ou baixando os switches na segunda rede e ambos os switches em um local forem do mesmo tipo e cabeamento.</block>
-  <block id="eaa95352e43bdba50bdd8ae03821eb2f" category="list-text">Se você estiver atualizando o Switch-A1 e o Switch-B1, execute as etapas 1 a 6 para os switches Switch-A2 e Switch-B2.</block>
   <block id="ab95b1ec0ad168059ea7f20803fa1073" category="list-text">Finalizar o cabeamento do cluster local.</block>
   <block id="0cde1e9cab83159ca8c4c0066971bfaf" category="list-text">Se as interfaces de cluster locais estiverem conetadas a um switch:</block>
   <block id="4ceec7a3943b4f4acd458ca89a818798" category="list-text">Faça o cabo das ISLs do cluster local.</block>
@@ -8353,7 +8196,6 @@
   <block id="2e15d571de3911ed49d209c6cdba8b44" category="paragraph">Se os SVMs foram excluídos no local sobrevivente enquanto a configuração do MetroCluster estava no estado de comutação, o processo de switchback faz o seguinte:</block>
   <block id="083ae15759c6d64783e2acdb9d48b5b8" category="list-text">Exclui os SVMs correspondentes no local do parceiro (o antigo local de desastre).</block>
   <block id="afdbb4c25b5c48d9c164c9fcd2b5b211" category="list-text">Exclui quaisquer relações de peering dos SVMs excluídos.</block>
-  <block id="f6fe6f33a84912b05293bb29c427b220" category="summary">Você pode executar o switchover e as operações de switchback do MetroCluster, tanto em operações de manutenção planejada como em caso de um desastre.</block>
   <block id="af43e56e33ecd52eb98fb08d4dfa593c" category="summary">Existem comandos ONTAP específicos para executar os processos de recuperação de desastres do MetroCluster.</block>
   <block id="2f62ab65f62b1649dd3236c3681c9173" category="doc">Comandos para switchover, cura e switchback</block>
   <block id="46f622583da189c12c85b9a157543f85" category="paragraph">Verifique se o switchover pode ser executado sem erros ou vetos.</block>
@@ -8591,10 +8433,7 @@
   <block id="598ab8da90f7b08fb85eebf2cdb5b642" category="inline-link">Considerações para usar switches compatíveis com MetroCluster</block>
   <block id="d5e32abfbd3e5376cc7d90c1003b3516" category="summary">O software tiebreaker fornece recursos de monitoramento para um ambiente de storage em cluster. Ele também envia notificações SNMP em caso de problemas de conetividade de nó e desastres de site.</block>
   <block id="0cf4c92a4ea3edbf66b4866978237ff3" category="doc">Novidades no suporte ao tiebreaker do MetroCluster</block>
-  <block id="a3100bf3334206028c894a5568ddcf09" category="summary">Descreve novos recursos, notas de atualização, problemas corrigidos, limitações conhecidas e problemas conhecidos.</block>
   <block id="44f3e9b14f204b411afdea78f7b0391c" category="doc">Notas de versão do MetroCluster</block>
-  <block id="2a35142a0e6eda28748cdf00899dc98b" category="paragraph">A <block ref="0c7bf211a7cb9712977652add2e31f3e" category="inline-link-macro-rx"></block> descreve novos recursos, notas de atualização, problemas corrigidos, limitações conhecidas e problemas conhecidos.</block>
-  <block id="dbd469acdcbd52648cb242bcfda6add3" category="paragraph">É necessário iniciar sessão no site de suporte da NetApp para aceder às Notas de versão.</block>
   <block id="bad8ee5726316ec5f26bb0039cbf4bc6" category="summary">As atividades do MetroCluster Tiebreaker são registradas em arquivos de log de eventos.</block>
   <block id="08b9323d7a1af549de439f419bb3096a" category="doc">Arquivos de log de eventos para MetroCluster tiebreaker</block>
   <block id="bbeded76bf1f0922d3c3d140c95591b9" category="paragraph">O arquivo de log de eventos contém um log de todas as ações executadas pelo software tiebreaker do MetroCluster.</block>
@@ -8649,8 +8488,6 @@
   <block id="f4dbec4fba91fd76923a46fea72e1333" category="list-text">Use o comando tiebreaker CLI<block ref="161855cc256c10d662fda1f2b95f69a4" prefix=" " category="inline-code"></block> para remover a configuração do MetroCluster.</block>
   <block id="b14e3e8182091f0f3afcf57db19efbce" category="paragraph">No exemplo a seguir, "'cluster_A" é removido do software:</block>
   <block id="fb22c4a7b5c0395bdf46487a4665275e" category="list-text">Confirme se a configuração do MetroCluster foi removida corretamente usando o comando tiebreaker CLI<block ref="7f09554f3b428339c3f534ff2c033739" prefix=" " category="inline-code"></block>.</block>
-  <block id="e90535a051902416d901e147c4c59930" category="summary">Estas informações descrevem como instalar e configurar o software tiebreaker do MetroCluster.</block>
-  <block id="884324de7d536976016cc7e2b34b0da9" category="paragraph">Você deve usar essas informações para instalar o software tiebreaker do MetroCluster.</block>
   <block id="a386c9fa441b3fe3c6e80b9d41240b0a" category="summary">O software tiebreaker do MetroCluster automatiza o processo de recuperação, permitindo que você monitore o status da configuração do MetroCluster, avalie os eventos e traps SNMP enviados ao suporte ao cliente do NetApp e visualize o status das operações de monitoramento.</block>
   <block id="e549cde0735c7d730ee3af36acfff1f0" category="section-title">Configurando o AutoSupport</block>
   <block id="eb3099718ccffb82108b52c3065d030e" category="paragraph">Por padrão, as mensagens AutoSupport são enviadas para o NetApp uma semana após a instalação do software tiebreaker. Os eventos que acionam a notificação do AutoSupport incluem panics do software tiebreaker, detecção de condições de desastre em configurações do MetroCluster ou um status de configuração desconhecido do MetroCluster.</block>
@@ -9157,38 +8994,9 @@
   <block id="ee6ed7097775dc1dd54c183bab7fabca" category="list-text">O MetroCluster FC é um cluster sem switch, portanto, novos switches são necessários.</block>
   <block id="f6ee19cc42b9955140e50bd5845ab941" category="list-text">O MetroCluster FC é um cluster comutado, mas os switches IP existentes não são suportados na configuração IP do MetroCluster.</block>
   <block id="f2e4f8254f9371aba3bca00c7ae823a3" category="list-text">Você deseja usar diferentes switches para a configuração IP do MetroCluster.</block>
-  <block id="39128f9051c3d4355aead1a61c996c25" category="summary">Você deve entender as diferenças entre uma atualização, expansão ou transição do MetroCluster e escolher o procedimento que corresponde à sua meta.</block>
-  <block id="c708a2b6841470715a7b74102c0ae1aa" category="list-text">*Upgrade*</block>
-  <block id="36ae104ca0785caa188d80c4256a90ae" category="paragraph">Em um procedimento de atualização, você está substituindo os módulos do controlador por um novo modelo de módulo do controlador.</block>
-  <block id="6abb1f98ba87ecbea33aecbfdf4f6423" category="list-text">Os módulos antigos do controlador são desativados.</block>
-  <block id="8bd9c286fd92194184c92cd36a049275" category="list-text">O armazenamento não foi atualizado.</block>
-  <block id="205f7fc5d71e6b9d62229bef8e7c3cce" category="list-text">A tecnologia de infraestrutura de switch de storage não foi alterada.</block>
-  <block id="2f39bb1b2f249178e6b0532f61f17bac" category="paragraph">Ele permanece como uma configuração MetroCluster IP, Fabric-Attached MetroCluster ou Stretch MetroCluster.</block>
   <block id="301e2a674920a7bb1b220a6ccd88ce36" category="inline-link-macro">Escolher um método de atualização ou atualização</block>
-  <block id="8b292c7a7ab0a14dd768c3c69a3722fb" category="paragraph"><block ref="8b292c7a7ab0a14dd768c3c69a3722fb" category="inline-link-macro-rx"></block></block>
-  <block id="4b55da3a9dcfb66485b5329d255ce936" category="list-text">*Atualizar*</block>
-  <block id="2daab641467a4347141ea26895dc91ff" category="paragraph">Em um procedimento de atualização, você está substituindo os módulos do controlador por um novo modelo de módulo do controlador e também substituindo as prateleiras de armazenamento.</block>
-  <block id="66e871e7d1bd40219b9688700bb575b4" category="list-text">Aposentados os módulos antigos de controladora e compartimentos de storage.</block>
-  <block id="81b55eae6bb9c09065eb4baba5487ea1" category="list-text">A tecnologia de infraestrutura de switch de storage não é alterada, a menos que novos switches sejam necessários para acomodar os novos modelos de plataforma.</block>
-  <block id="5215767f69979683596b5ae744339259" category="paragraph">A configuração permanece como seu tipo original:</block>
   <block id="4767099b22895a8101a1cba45d8cf6e9" category="list-text">IP MetroCluster</block>
-  <block id="c18ed07764815317ed9c1ce97b14a6d5" category="list-text">MetroCluster conectado à malha</block>
-  <block id="4d2b446ffbd775314c26a9fc41dcbf56" category="list-text">Configuração Stretch MetroCluster <block ref="8b292c7a7ab0a14dd768c3c69a3722fb" category="inline-link-macro-rx"></block></block>
-  <block id="5c567d37c3d74dafe4729a7045a815aa" category="list-text">*Transição*</block>
-  <block id="1242a0b9b48429afac361a76e832cb1c" category="paragraph">Em um procedimento de transição, a infraestrutura do switch de back-end é alterada de switches FC ou conexões para switches IP, e os modelos de plataforma são substituídos.</block>
-  <block id="3a8eb837349e2e08fb92234fd12bc87d" category="list-text">Novos módulos do controlador são adicionados à configuração.</block>
-  <block id="0371e99af905032667b99cbbddd6d096" category="list-text">Os módulos originais do controlador são retirados após o procedimento.</block>
-  <block id="0a3e1f945142e09fa6593886b6a002b3" category="list-text">Se a configuração original usou switches de interconexão de cluster, eles podem ser reutilizados, dependendo dos modelos de switch e plataforma.</block>
-  <block id="e0dcf593ed1a78d78325480e6f4809c7" category="list-text">O armazenamento pode ser reutilizado ou substituído, dependendo dos modelos de plataforma.</block>
-  <block id="21c56fed6b471a3064e0868f7dba6f22" category="paragraph">Se as gavetas de storage não forem reutilizadas, os dados serão movidos das gavetas antigas para as novas.</block>
-  <block id="f352cbf1ebb01c90cd667f55932f9c18" category="paragraph">link:../transição/concept_choosing_your_transition_procedure_mcc_transition.html</block>
-  <block id="53d110971de2621360b2129857c5e80f" category="list-text">*Expansão*</block>
-  <block id="2f3e8286ad6f720e6977fdd75556af8e" category="paragraph">Em um procedimento de expansão, nós e storage adicionais são adicionados à configuração do MetroCluster FC.</block>
-  <block id="0bd1e8c4bc1e4fde8afb7065a6cf4b1e" category="inline-link-macro">Expansão de uma configuração de FC MetroCluster de dois nós para uma configuração de quatro nós</block>
-  <block id="6db24de2557f5e6eba98d707ff943e6a" category="list-text"><block ref="6db24de2557f5e6eba98d707ff943e6a" category="inline-link-macro-rx"></block></block>
   <block id="aad7003b864f3b9dee5c96516c4fa6ef" category="inline-link-macro">Expansão de uma configuração de FC MetroCluster de quatro nós para uma configuração de oito nós</block>
-  <block id="25f865cadfde18c116d9bcb19e8756d4" category="list-text"><block ref="25f865cadfde18c116d9bcb19e8756d4" category="inline-link-macro-rx"></block></block>
-  <block id="6a8cfc7e554fc5750d024bfbc8a85742" category="paragraph">LINK REMOVIDO PARA MIGRAÇÃO</block>
   <block id="a9b1d4be69539e9b95a2c6672035550c" category="summary">Este procedimento usa nomes de exemplo em todo o para identificar os grupos de DR, nós e switches envolvidos.</block>
   <block id="1ba701b5ad5528986d9e0eb838638aae" category="doc">Exemplo de nomeação neste procedimento</block>
   <block id="7b7a9334a27a1a54e96837d61b9dd49a" category="paragraph">Os nós na configuração original têm o sufixo -FC, indicando que eles estão em uma configuração de MetroCluster Stretch ou conectado à malha.</block>
@@ -11931,9 +11739,6 @@
   <block id="18bd3543357b4fa11f6a58101dfa61a5" category="sidebar">Instale o desempate</block>
   <block id="d2875782347edc6066d3025cecc9df38" category="sidebar">Instalar Mediador (somente IP MetroCluster)</block>
   <block id="ade01a5a398372194a42c36e9f5279ac" category="sidebar">Manutenção</block>
-  <block id="7f5d1cf6b92b5f6a9e5fe290c7d568fa" category="sidebar">Switches IP</block>
-  <block id="5360721f5d15a4a50d1c0ea177551d33" category="sidebar">Pontes ATTO</block>
-  <block id="c89a58741e7240ddf3c43ec7dbb21cd7" category="sidebar">Compartimentos de unidades</block>
   <block id="9deb979aa141eacec55a34ce9dfd4cc9" category="sidebar">Ficheiros RCF</block>
   <block id="277ccac115bb10401c3dbe796a5fd555" category="sidebar">Arquivos RCF do MetroCluster</block>
   <block id="3d5cf400e4fb829207d0ab81798b6587" category="sidebar">Atualize, expanda e converta</block>
@@ -12006,7 +11811,6 @@
   <block id="967e7fe5e26ac9c522059f0a938773bb" category="sidebar">Requisitos da ISL</block>
   <block id="20f7078fb96bd6060a10b9fed9306941" category="sidebar">Requisitos e limitações de switches compatíveis com MetroCluster</block>
   <block id="3c24829f69028dca3ac0aa982abad68d" category="sidebar">Velocidades de rede e modos de porta de switch para switches compatíveis com MetroCluster</block>
-  <block id="e42ae5049bd4441f35fc1a5c789393b6" category="sidebar">Como usar as tabelas de portas com a ferramenta RcfFileGenerator ou várias configurações do MetroCluster</block>
   <block id="833257310be655b5629aa019a7efd47c" category="sidebar">Faça o cabo das portas de dados e gerenciamento do controlador</block>
   <block id="d77c6a252362ebe43c04bbe7ff60ad24" category="sidebar">Configure os switches IP MetroCluster</block>
   <block id="84a335bc70808c0497de1c62a99aaf43" category="sidebar">Configure as definições básicas</block>
@@ -12331,25 +12135,8 @@
   <block id="764552ebb0f871bc4b68c98b31d746d0" category="paragraph">X60132A</block>
   <block id="6fa048cd3558a7c8e85c121dd6b53c9c" category="paragraph">Slot 4, slot 2</block>
   <block id="e3ff124e75bf3d8e6a3ed71982b4a775" category="paragraph">e2b, e4b</block>
-  <block id="3c1618b255b11d5961631276508d6713" category="paragraph">Revise as seguintes considerações antes de usar as tabelas de configuração:</block>
-  <block id="cef91d9ca2107b217772ee91bf4476b2" category="cell">FAS70, AFF A70 AFF C80 FAS90, AFF A90 AFF A1K</block>
-  <block id="ca69a76035ac5f2a63eff361c33eb7c2" category="paragraph">*Nota 1*: Utilize as portas e4a e e4e ou e4a e e8a se estiver a utilizar um adaptador X91440A (40Gbps). Utilize as portas e4a e e4b ou e4a e e8a se estiver a utilizar um adaptador X91153A (100Gbps).</block>
-  <block id="da0acefbf33111de9e67d3fee11be371" category="cell">AFF C30, AFF A30 AFF C60</block>
-  <block id="44d35f94e4a501d55fdfa6b53538e69c" category="cell">AFF A70 AFF C80 AFF A90 AFF A1K</block>
   <block id="d092f23abfbbe763c64b549b968de1d8" category="list-text">Não é possível usar os switches com portas ISL remotas de diferentes velocidades (por exemplo, uma porta de 25 Gbps conetada a uma porta ISL de 10 Gbps).</block>
-  <block id="42abd6d583788764c25c15490505431f" category="inline-xref">Atribuições de porta de plataforma Broadcom BES-53248 (grupo 6)</block>
-  <block id="0f0bfb73ae173d3403dfb828e3b70090" category="cell"><block ref="9b5811314abfca1bd43a24f4e0adf3bc" category="inline-xref-macro-rx"></block></block>
-  <block id="0249844e1f636ba2a87d5274987756b9" category="inline-xref">Atribuições de portas da plataforma NVIDIA SN2100 (grupo 5)</block>
-  <block id="d7ec8f712b0287990517bca50b922dd2" category="cell"><block ref="8a9b949124695689f864f9f14f50eeaa" category="inline-xref-macro-rx"></block></block>
-  <block id="efde678a43c998c7a8714fa732aeef5c" category="inline-xref">Atribuições de portas da plataforma NVIDIA SN2100 (grupo 6)</block>
-  <block id="0c842c8cfa0977316ec48eb73a6e8c65" category="cell"><block ref="c902f072c35742409c62fc6312fe330d" category="inline-xref-macro-rx"></block></block>
-  <block id="392dc7f33e7aa7683783fda67e23d99a" category="inline-xref">Atribuições de portas da plataforma NVIDIA SN2100 (grupo 7)</block>
-  <block id="1b9fa75426bc9ea5a3e240768f7a5026" category="cell"><block ref="061897057bd63bf85fce438fefe1968e" category="inline-xref-macro-rx"></block></block>
-  <block id="b8daabd197dd8e2bc7a41f393d355429" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A20 para um switch NVIDIA SN2100:</block>
-  <block id="84c81745f11cf4b9dd01463dfef9dbc3" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A50 para um switch NVIDIA SN2100:</block>
-  <block id="035caab2257a510c9564c10c61d3be85" category="paragraph">Reveja as atribuições de portas da plataforma para o cabo de um sistema FAS70, AFF A70, AFF C80, FAS90, AFF A90 ou AFF A1K para um switch NVIDIA SN2100:</block>
   <block id="831ac3266017b395cbffe218fe03bd88" category="list-text">Você deve fazer o cabeamento de todos os nós da mesma maneira. Se houver diferentes opções de combinação de portas disponíveis para fazer o cabeamento dos nós, todos os nós devem usar as mesmas combinações de portas. Por exemplo, e1a em node1 e e1a em node2 devem ser conetados a um interrutor. Da mesma forma, a segunda porta de ambos os nós deve ser conetada ao segundo switch.</block>
-  <block id="7e045fcc35aa6e7b8247a2404c520e67" category="list-text">O<block ref="b3f8a8564bd91efeacbc3b6197426c6e" category="inline-link-rx"></block> também fornece uma visão geral do cabeamento por porta para cada switch. Use esta visão geral do cabeamento para verificar o cabeamento.</block>
   <block id="df37dda7d3f4fd0dda442a98ec30d071" category="paragraph">O ONTAP é compatível com as seguintes migrações do MetroCluster SVM:</block>
   <block id="1066b653c05c9422872505d252585c67" category="list-text">Migração de um SVM entre um par de HA que não seja da MetroCluster e uma configuração MetroCluster IP</block>
   <block id="5816bf9644a6b97b7fab54df8e6d7b87" category="list-text">Migração de um SVM entre duas configurações de MetroCluster IP</block>
@@ -12720,7 +12507,6 @@
   <block id="050f8b121af1c77b0d9da988edad7d47" category="paragraph">Os sistemas listados na tabela a seguir usam portas MetroCluster/HA compartilhadas:</block>
   <block id="390d12d84818f7c716a940532ce50205" category="section-title">Defina a correção de erro de avanço para sistemas que utilizam conetividade de 25 Gbps</block>
   <block id="63c0e07285d0bc5e3f178d40a2cc138a" category="paragraph">Se o sistema estiver configurado usando conetividade de 25 Gbps, defina manualmente o parâmetro Correção de erros de Avanço (fec) para Desativado após aplicar o RCF. O RCF não aplica esta definição.</block>
-  <block id="2b06467580858574b4de36094cbe0f09" category="list-text">Esta tarefa aplica-se apenas a plataformas que utilizam conetividade de 25 Gbps. <block ref="9778b8e12bd12224da54abd0721799c9" category="inline-link-macro-rx"></block>Consulte a .</block>
   <block id="cf176f6e59c0efd3aa8a1d07663e5a99" category="list-text">É necessário atualizar cada porta do switch individualmente, não é possível especificar várias portas ou intervalos de portas no comando.</block>
   <block id="a756347fcced8a90ebe1a3f908f44775" category="list-text">Defina o<block ref="68e129acd99d4b65789a3c9e07fcbfc0" prefix=" " category="inline-code"></block> parâmetro como Desligado para a primeira porta do switch que usa conetividade de 25 Gbps:</block>
   <block id="c74173a1567bd19c3837172c99113a4e" category="paragraph"><block ref="1c9e50455fa99a855bbafb050c6ba1b5" prefix="" category="inline-code"></block></block>
@@ -12823,135 +12609,6 @@
   <block id="f7bbc76208ab5ade611be3b207fc4964" category="paragraph">As partições internas são divididas em quatro grupos iguais (trimestres). Cada trimestre é atribuído automaticamente a um pool separado. As unidades nas gavetas externas são divididas em quatro grupos iguais (trimestres). Cada compartimento é atribuído automaticamente a um pool separado.</block>
   <block id="951ecdd1fc2eee9520c3a6959e6b80fd" category="section-title">Atribuição de disco em sistemas FAS50</block>
   <block id="eac1566268bcf590649d38dfbbc071d8" category="paragraph">AFF A30, AFF C30, AFF C60, FAS50</block>
-  <block id="d7c09c5c93549b76361e49c52e9d96da" category="cell">AFF A150, ASA A150 FAS2750, AFF A220 FAS500f, AFF C250, ASA C250 AFF A250, ASA A250</block>
-  <block id="ed0a8c1dcd72cbf4d807c21d5b375b44" category="inline-xref">Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 1)</block>
-  <block id="f4d9a05d20269fa8131e3f2ad476038b" category="cell"><block ref="2617a916d647f27524de777e23ed7a4f" category="inline-xref-macro-rx"></block></block>
-  <block id="2d0104bee0c422b5f888265258715398" category="inline-xref">Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 2)</block>
-  <block id="01861fc1534333e6f46a254828d6f9e4" category="cell"><block ref="3ba764bfdfb400a3de21b6050f6d79f8" category="inline-xref-macro-rx"></block></block>
-  <block id="c53e044ea472203092cf961cfaa90ba7" category="cell">AFF A30, AFF C30 FAS50 AFF C60</block>
-  <block id="356570243533cc6975cfb5ceea4cfd23" category="paragraph">A tabela a seguir depende se você está usando uma placa Ethernet 25G (grupo 3a) ou 100g (grupo 3b).</block>
-  <block id="9f0cd6d623c01edf5643b74fa00cd6fd" category="inline-xref">Atribuições de porta de plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 3a - 25G)</block>
-  <block id="85f6ab131a3e5448cde1e4a2d4b95c39" category="list-text"><block ref="94417a7d020366abeef0b0723f8d67ad" category="inline-xref-macro-rx"></block></block>
-  <block id="9b8bf89b3c0f9c6a5c38bf7ff19b0c58" category="inline-xref">Atribuições de porta de plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 3b - 100g)</block>
-  <block id="5128f839046943d98d1e49dd120ce493" category="list-text"><block ref="2e2492272ee4139c0b8d30b59a7dc0bc" category="inline-xref-macro-rx"></block></block>
-  <block id="c6cdb33f9e222d46d2a4fab60b01cbab" category="inline-xref">Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 4)</block>
-  <block id="60a9877d1de8d00431b38c0566e97d0c" category="cell"><block ref="a1b77c438fb720f0e3e018673390c7f6" category="inline-xref-macro-rx"></block></block>
-  <block id="dc0296952b3f70332ec16b784a712ff2" category="inline-xref">Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 5)</block>
-  <block id="015efe401ca2c1dbd2725cda225c9d5e" category="cell"><block ref="93ef23795c012b746e5389151e3c7579" category="inline-xref-macro-rx"></block></block>
-  <block id="d67fae545b3910a786e8629d54b45203" category="inline-xref">Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 6)</block>
-  <block id="41ad9af52e987c25dff55bd1112cd533" category="cell"><block ref="67a1026696a68dd85ede9571a0d5e50a" category="inline-xref-macro-rx"></block></block>
-  <block id="25308fcfd3741ca03a84c440665e77af" category="inline-xref">Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 7)</block>
-  <block id="1d8eb67d43491daaf3be918501e45849" category="cell"><block ref="bd67821e1c951fc75bbad01f30e523a0" category="inline-xref-macro-rx"></block></block>
-  <block id="b579f4faad8d9cdb9cfc4fe6124fc3d9" category="inline-xref">Atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 8)</block>
-  <block id="6bfae65709a0b9238f0ec0555e860dd9" category="cell"><block ref="cf10d01655dbe0c1aeda215f90ae4552" category="inline-xref-macro-rx"></block></block>
-  <block id="1640e00122751bafa542f181ee67ce43" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A150, ASA A150, FAS2750, AFF A220, FAS500f, AFF C250, ASA C250, AFF A250 ou ASA A250 para um switch Cisco 3232C ou 9336C-FX2:</block>
-  <block id="12724d26e78004fbe0e1d54bb774c032" category="inline-image-macro">Mostra atribuições de porta da plataforma Cisco 3232C ou Cisco 9336C-FX2</block>
-  <block id="e5a48d1e7dc73a2ef0139129774d8c2a" category="paragraph"><block ref="e5a48d1e7dc73a2ef0139129774d8c2a" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="02be91f0404cbcd51f0cbcd45f546f02" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A20 para um switch Cisco 3232C ou 9336C-FX2:</block>
-  <block id="0f3f5975a2227dfdb9d8f300639c20f2" category="paragraph"><block ref="0f3f5975a2227dfdb9d8f300639c20f2" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="ffedbefed87e595ccfa63ecb9855338e" category="paragraph-title">Atribuições de porta de plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 3a)</block>
-  <block id="47229de680ac21164a8516156805e1ac" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 para um switch Cisco 3232C ou 9336C-FX2 usando uma placa Ethernet 25G de quatro portas.</block>
-  <block id="c078bfa4b8bc74a683eac22ce3ce6c56" category="admonition">Essa configuração requer uma placa Ethernet 25G de quatro portas no slot 4 para conetar o cluster local e as interfaces HA.</block>
-  <block id="b2813804beaabdc4be6fdf8a4997209b" category="paragraph"><block ref="b2813804beaabdc4be6fdf8a4997209b" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="dee69df4c30b5bc8e497535073fb1c9d" category="paragraph-title">Atribuições de porta de plataforma Cisco 3232C ou Cisco 9336C-FX2 (grupo 3b)</block>
-  <block id="89744653da413368bba74f828b23743e" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 para um switch Cisco 3232C ou 9336C-FX2 usando uma placa Ethernet 100g de duas portas.</block>
-  <block id="a24a7f7fce891faea9ff510d6a00b23a" category="admonition">Essa configuração requer uma placa ETHERNET 100g de duas portas no slot 4 para conetar o cluster local e as interfaces HA.</block>
-  <block id="4644d5e69b146d9d0ff600d483678d60" category="paragraph"><block ref="4644d5e69b146d9d0ff600d483678d60" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="01b2af111136cb4bcc5ad69612648e1a" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabo de um sistema FAS8200 ou AFF A300 para um switch Cisco 3232C ou 9336C-FX2:</block>
-  <block id="df10fc4b1e04550b3f257f780c5ad4d1" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A320, FAS8300, AFF C400, ASA C400, FAS8700, AFF A400 ou ASA A400 para um switch Cisco 3232C ou 9336C-FX2:</block>
-  <block id="be1bb56d98cc7f8289e47cfd478f0896" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A50 para um switch Cisco 3232C ou 9336C-FX2:</block>
-  <block id="a46b0b81f79736912aabc245374edb1e" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema FAS9000, AFF A700, AFF C800, ASA C800, AFF A800, ASA A800, FAS9500, AFF A900 ou ASA A900 para um switch Cisco 3232C ou 9336C-FX2:</block>
-  <block id="0d3017d486c8217c6fd8ab61555e1cba" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A70, FAS70, AFF C80, FAS90, AFF A90 ou AFF A1K para um switch Cisco 3232C ou 9336C-FX2:</block>
-  <block id="4b19e8be7b088862285a882fc40c46eb" category="paragraph"><block ref="4b19e8be7b088862285a882fc40c46eb" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="81831b2f87876ca86e780e32db6c147b" category="inline-xref">Tabelas de cabeamento para controladores que conectam as gavetas NS224 conectadas ao switch</block>
-  <block id="52c7315ab051ee37478d469443321dba" category="list-text"><block ref="00f586e7c20fe471e99ea3d5eded6927" category="inline-xref-macro-rx"></block></block>
-  <block id="de97d5568eefaebab398acd69978f881" category="inline-xref">Tabelas de cabeamento para controladores que não conectam as gavetas NS224 conectadas ao switch</block>
-  <block id="eba155d5569b8147cc0e843694acf2d4" category="list-text"><block ref="e5bf56183cc95b8553efe8a86fa2b0b1" category="inline-xref-macro-rx"></block></block>
-  <block id="be572f1f8a76f85bd07c0436427d2a5f" category="section-title">Controladores que conectam as NS224 gavetas conectadas ao switch</block>
-  <block id="0056b60c7096f2e045b1ccb66afc6894" category="paragraph">Determine a tabela de atribuições de portas que você deve seguir para os controladores que conectam as gavetas NS224 conectadas ao switch.</block>
-  <block id="83f2a5b610dfb7c0551195a75b8756a1" category="paragraph">A tabela a seguir depende se você está usando uma placa Ethernet 25G (grupo 1a) ou 100g (grupo 1b).</block>
-  <block id="ca496ec8ec3ead0878b8508a07b543e2" category="inline-xref">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 1a - 25G)</block>
-  <block id="b84999f81a5ca484ac466660f39b9a2e" category="list-text"><block ref="565e7613250d5ac33e28ff0e25c37f14" category="inline-xref-macro-rx"></block></block>
-  <block id="377912c6dca3d99bd95ba164330b17fa" category="inline-xref">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 1b - 100g)</block>
-  <block id="41ee5f1818bda0e0bbabf0085b68ac28" category="list-text"><block ref="9e7616ca3329b72b52127b7cd58a0f4e" category="inline-xref-macro-rx"></block></block>
-  <block id="f14613af0655f02473df53f2652785b1" category="inline-xref">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 2)</block>
-  <block id="672a2caadf2174985cc759241ea1dfe9" category="cell"><block ref="214688b1665482dce258814a43c9cdf7" category="inline-xref-macro-rx"></block></block>
-  <block id="a38c7c6d45e707435a851ae2e41cf375" category="inline-xref">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 3)</block>
-  <block id="14de414a4f55c47c9c700c9e0947b111" category="cell"><block ref="23879577dffa023cc7ed3810b8c4c0df" category="inline-xref-macro-rx"></block></block>
-  <block id="b4b51fcd741abc234c8929d569245c11" category="inline-xref">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 4)</block>
-  <block id="48814e38ddd1eecab02fb9a28d3852c3" category="cell"><block ref="cbad1100120b64e7d785a4185eace341" category="inline-xref-macro-rx"></block></block>
-  <block id="faa310ef03e8cc13789ce37fd9d433e5" category="inline-xref">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 5)</block>
-  <block id="eb6843c11ff72f26f6d0e24823f98f90" category="cell"><block ref="6fd3f73e5da43279ea1b84516a37ba17" category="inline-xref-macro-rx"></block></block>
-  <block id="a738138cb9e4b016ac3f949b92aa8374" category="paragraph-title">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 1a)</block>
-  <block id="c105e193363f2077bee9b984780df36b" category="paragraph">Revise as atribuições de portas da plataforma para fazer um cabo de um sistema AFF A30, AFF C30 ou AFF C60 que esteja conetando prateleiras NSS24 conetadas a switches a um switch Cisco 9336C-FX2 usando uma placa Ethernet 25G de quatro portas.</block>
-  <block id="ebb3fa78fb5003535cef7567aa556ce2" category="inline-image-macro">Mostra o switch Cisco 9336C-FX2 que coneta atribuições de porta de plataforma de armazenamento NS224</block>
-  <block id="11c0c74f69fc2a0c746578c6aad3ccca" category="paragraph"><block ref="11c0c74f69fc2a0c746578c6aad3ccca" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="26f9489a1c833a65aa538d673c844ff9" category="paragraph-title">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 1b)</block>
-  <block id="05ddb7b459f4d1e351fac0a9f717e9c7" category="paragraph">Revise as atribuições de portas da plataforma para fazer um cabo de um sistema AFF A30, AFF C30 ou AFF C60 que esteja conetando prateleiras NSS24 conetadas a switches a um switch Cisco 9336C-FX2 usando uma placa Ethernet 100g de duas portas.</block>
-  <block id="96d9eeeab1f8d3cf26b9ac95515dc576" category="paragraph"><block ref="96d9eeeab1f8d3cf26b9ac95515dc576" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c236cc3ec0da6886912e7ad250b61eab" category="paragraph-title">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 2)</block>
-  <block id="09b260a1b067f9a582c157a8e605c8e9" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A320, AFF C400, ASA C400, AFF A400 ou ASA A400 que esteja conetando gavetas NSS24 conetadas a um switch Cisco 9336C-FX2:</block>
-  <block id="7465602bfd4a9479562cb8388c74c71c" category="paragraph-title">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 3)</block>
-  <block id="ffc3bc2e4b34b45fefb2567de9411642" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A50 que esteja conetando prateleiras NSS24 conetadas a um switch Cisco 9336C-FX2:</block>
-  <block id="0d827a57d928b98c476f3cb1739a9d5d" category="paragraph"><block ref="0d827a57d928b98c476f3cb1739a9d5d" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="22b68caf8dbffdf88eb7f5f39a558951" category="paragraph-title">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 4)</block>
-  <block id="e94f7d9d6398a652cbdfeb1dae77c47a" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A700, AFF C800, ASA C800, AFF A800, AFF A900 ou ASA A900 que esteja conetando as gavetas NSS24 conetadas a um switch Cisco 9336C-FX2:</block>
-  <block id="5460d7f5fec2905f3003320c765ea0c7" category="paragraph"><block ref="5460d7f5fec2905f3003320c765ea0c7" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="8b663287a5e6f449fd57f7ff16d8eeea" category="paragraph-title">Switch Cisco 9336C-FX2 que coneta atribuições de portas de plataforma de storage NS224 (grupo 5)</block>
-  <block id="3622897798545e09105b3ad1d3653063" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A70, AFF C80, AFF A90 ou AFF A1K que esteja conetando gavetas NSS24 conetadas a um switch Cisco 9336C-FX2:</block>
-  <block id="ccab0fc4fd83108faa5f30b7c68bc19d" category="section-title">Controladores não conectando gavetas NS224 conectadas por switch</block>
-  <block id="2f608c0d58894f791c41096f2cc6b9ba" category="paragraph">Determine a tabela de atribuições de portas que você deve seguir para os controladores que não estão conetando as gavetas NS224 conetadas a switch.</block>
-  <block id="7bb43f00945b89f658e73a251593adee" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 6)</block>
-  <block id="93f0d83f9cb0b25a29c497e531de1319" category="cell"><block ref="0acf1173c64f13905d848c17861d436b" category="inline-xref-macro-rx"></block></block>
-  <block id="5d116ac6469b554365af09df6ba5d554" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 7)</block>
-  <block id="49f99537358147cf4f6dc452a0796893" category="cell"><block ref="fd2799f59c55d28b66298668f9222eab" category="inline-xref-macro-rx"></block></block>
-  <block id="02a5ee0891192d3eb9dcf14a23a4d1f7" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 8)</block>
-  <block id="5148ab0ba980f2129e753142f66d6100" category="cell"><block ref="e1f5a75cfe513ad775461d1069e28449" category="inline-xref-macro-rx"></block></block>
-  <block id="44e285bb7713a99a383a813130b0fcc1" category="cell">AFF C30, AFF A30 FAS50 AFF C60</block>
-  <block id="a0ff0785aa6728bf6cd92eb98394bc85" category="paragraph">A tabela a seguir depende se você está usando uma placa Ethernet 25G (grupo 9a) ou 100g (grupo 9b).</block>
-  <block id="4508ecab81d43c8d0428c62e4c5f614c" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 9a)</block>
-  <block id="145811c254ae6665243f5df2a064718a" category="list-text"><block ref="11c2cf00b8f8a7c7deeea639d897f5b1" category="inline-xref-macro-rx"></block></block>
-  <block id="8bb10235352f378fca0245d9df3fe35b" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 9b)</block>
-  <block id="6384fb9589b17739eff38675bb336c51" category="list-text"><block ref="799c19593c51462d76e3e35a26f2501d" category="inline-xref-macro-rx"></block></block>
-  <block id="cec98ffd6090e26973950fe3452c3bcd" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 10)</block>
-  <block id="dcfe540fce92be277afe0cdbbe632c13" category="cell"><block ref="e79ba5db1ff62b3ff07fdf838d78216d" category="inline-xref-macro-rx"></block></block>
-  <block id="9c8e1e68707a017f6fc41cfcea385650" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 11)</block>
-  <block id="009e8eb0c5f78b00d7f7da4a5ec87949" category="cell"><block ref="8385577091ec2b578deeb37f79ef6bef" category="inline-xref-macro-rx"></block></block>
-  <block id="f776cc1c5ed25b61dcb9d071c32a1da5" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 12)</block>
-  <block id="5d06f7930cbcf01ef08e34586c797954" category="cell"><block ref="aa34378d7dd83b3f1296d8b68c05d010" category="inline-xref-macro-rx"></block></block>
-  <block id="3912f04efc5b48e8b0ce60f344a70999" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 13)</block>
-  <block id="1cd621efb25211cc3d15a7ff4ca1c693" category="cell"><block ref="0908c8fab4467851cc96278817ace622" category="inline-xref-macro-rx"></block></block>
-  <block id="1465d175c6ce0e241d5677bf9384d9ec" category="inline-xref">O switch Cisco 9336C-FX2 não coneta atribuições de portas da plataforma de storage NS224 (grupo 14)</block>
-  <block id="400ed63e00fec3e7a62ba1e1acf84b1f" category="cell"><block ref="76e2a5f9d2cd6c0f8a626df3dfd2d549" category="inline-xref-macro-rx"></block></block>
-  <block id="a6cb91fff03d7e25bc8953fdc96a013f" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A150, ASA A150, FAS2750 ou AFF A220 que não esteja conetando prateleiras NSS24 conetadas a um switch Cisco 9336C-FX2:</block>
-  <block id="c542648982a05f977ce667101f8efa8c" category="image-alt">Mostra o switch Cisco 9336C-FX2 não conetando atribuições de porta da plataforma de armazenamento NS224</block>
-  <block id="ac3ae29f44804b42d07e44aaff0e181e" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A20 que não esteja conetando prateleiras NSS24 conetadas a um switch Cisco 9336C-FX2:</block>
-  <block id="fc60167844c648557e47a9825d816561" category="paragraph"><block ref="fc60167844c648557e47a9825d816561" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="681b4b6137a07b7fed939ed03c0d8a11" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema FAS500f, AFF C250, ASA C250, AFF A250 ou ASA A250 que não esteja conetando as gavetas NSS24 conetadas a switch a um switch Cisco 9336C-FX2:</block>
-  <block id="b17db933ffceac0d14ecaed410c9b4b3" category="paragraph">Revise as atribuições de portas da plataforma para realizar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 que não esteja conetando prateleiras NSS24 conetadas a um switch Cisco 9336C-FX2 usando uma placa Ethernet 25G de quatro portas:</block>
-  <block id="0880116c770efd6d7b130d2265ff161c" category="paragraph"><block ref="0880116c770efd6d7b130d2265ff161c" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b6293ddb80a04e84f2102b72a8f60d47" category="paragraph">Revise as atribuições de portas da plataforma para realizar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 que não esteja conetando prateleiras NSS24 conetadas a um switch Cisco 9336C-FX2 usando uma placa Ethernet 100g de duas portas:</block>
-  <block id="a1bc8f8ee00e2acf0d7eaa2ebf3f02f0" category="paragraph"><block ref="a1bc8f8ee00e2acf0d7eaa2ebf3f02f0" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="a6a7d27b4f38670eb52bfc739edbcab6" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema FAS8200 ou AFF A300 que não esteja conetando as gavetas NSS24 conetadas a switch a um switch Cisco 9336C-FX2:</block>
-  <block id="d1fac8cb5ba3c69c7b0151776a9d2b97" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A320 ASA A400, FAS8700 Cisco, AFF C400 AFF A400 ou ASA C400 que não esteja conetando as gavetas NSS24 conetadas a um switch FAS8300 9336C-FX2:</block>
-  <block id="854e83700ad56cd3066ff32dbbb27e13" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A50 que não esteja conetando prateleiras NSS24 conetadas a um switch Cisco 9336C-FX2:</block>
-  <block id="a0d7040157255e2857be956d49e402cc" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabo de um sistema FAS9000 Cisco, AFF A800 AFF A900, ASA A800 ASA A900, FAS9500, AFF A700 ou AFF C800 que não esteja conetando as gavetas NSS24 conetadas a um switch ASA C800 9336C-FX2:</block>
-  <block id="37d0ebec67a9c1e4ef4eb11a13c2fdd4" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A70, FAS70, AFF C80, FAS90, AFF A90 ou AFF A1K que não esteja conetando as gavetas NSS24 conetadas a um switch Cisco 9336C-FX2:</block>
-  <block id="b745b3078e5e02c9ad0466c2376632e0" category="inline-xref">Atribuições de porta de plataforma Broadcom BES-53248 (grupo 7)</block>
-  <block id="b1d2e952c9c4a1b92f30e09d2aba62de" category="cell"><block ref="291ff012c96cac6897586e062c05d97a" category="inline-xref-macro-rx"></block></block>
-  <block id="d871146b1b5d4005fb234cebdd63c835" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabo de um sistema AFF A20 para um switch BES-53248 Broadcom:</block>
-  <block id="e3ced3f8081430abe4171e125084c129" category="paragraph"><block ref="e3ced3f8081430abe4171e125084c129" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="fb7482f14dfe20757399def03deaeb5a" category="paragraph">Revise as atribuições de portas da plataforma para fazer o cabeamento de um sistema AFF A30, AFF C30, AFF C60 ou FAS50 para um switch BES-53248 Broadcom usando uma placa Ethernet 25G de quatro portas.</block>
-  <block id="c853e89e76b8a6a88e07b597fc6eb2dc" category="list-text">Esta configuração requer um adaptador QSFP-to-SFP na placa do controlador para suportar uma velocidade de rede de 25GbpsMbps.</block>
-  <block id="f9f6063ab2e4c652dd2dddd9b4d5788d" category="paragraph"><block ref="f9f6063ab2e4c652dd2dddd9b4d5788d" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="defd0914b5a5958473fb3fab60cdee58" category="inline-xref">Atribuições de porta da plataforma NVIDIA SN2100 (grupo 3a -25G)</block>
-  <block id="11fa795c472f2bc01c0bf86aa73ed31b" category="list-text"><block ref="908dbeac718daa394d9d438b49ad2f7b" category="inline-xref-macro-rx"></block></block>
-  <block id="8f75153142ad93fe23335651eeaa3d65" category="inline-xref">Atribuições de porta da plataforma NVIDIA SN2100 (grupo 3b -100g)</block>
-  <block id="db095e1576be6850def49105024e16d1" category="list-text"><block ref="b6cf0b7861b6ddd48cf527a5abdbbcac" category="inline-xref-macro-rx"></block></block>
-  <block id="c52ee8ff8f4ed67e7d05c5c94fa6d9aa" category="paragraph-title">Atribuições de portas da plataforma NVIDIA SN2100 (grupo 3a)</block>
-  <block id="3bd797350913b6b33458e6193a3b3979" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 para um switch NVIDIA SN2100 usando uma placa Ethernet 25G de quatro portas:</block>
-  <block id="2370a37bab400a0e8d33f8044d531556" category="paragraph-title">Atribuições de portas da plataforma NVIDIA SN2100 (grupo 3b)</block>
-  <block id="a53cad8e3bc7be708a9abd5a9cb4b705" category="paragraph">Revise as atribuições de portas da plataforma para enviar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 para um switch NVIDIA SN2100 usando uma placa Ethernet 100g de duas portas:</block>
   <block id="d885a516b306a52c5c6d20f267bd0c2f" category="paragraph">Depois que ambos os clusters tiverem sido configurados, inicializados e configurados, execute o <block ref="8179a385c1f3477c35e40695f98692e3" category="inline-link-macro-rx"></block> procedimento.</block>
   <block id="93d56b045c52fef746c56d3757e8b1ca" category="list-text">Cada cluster na configuração IP do MetroCluster deve ter seu próprio servidor ou servidores NTP separados usados pelos nós e switches IP nesse site do MetroCluster.</block>
   <block id="1710bbbb86f98005a1733d849713bff0" category="list-text">Se você estiver usando o tiebreaker do MetroCluster ou o Mediador do ONTAP, ele também deve ter seu próprio servidor NTP separado.</block>
@@ -13264,62 +12921,9 @@
   <block id="ba17277e87e849f2a38d0126b17905d8" category="list-text">Verifique se o armazenamento está visível no modo de manutenção.</block>
   <block id="ef1806576a0dffd58481510c7525ed90" category="list-text">Inicialize no modo de manutenção:</block>
   <block id="41af2ca5f1002ab08c75f010d70581a4" category="list-text">Verifique se o armazenamento está visível a partir do local sobrevivente.</block>
-  <block id="93ba613931cbee0caca0df20b5380feb" category="doc">Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 12 portas</block>
-  <block id="a696f18cbd32872428df323dcf124b0f" category="list-text">As tabelas nesta seção são para switches Cisco 9336C-FX2 de 12 portas.</block>
-  <block id="9e1541acccf8eedc84b54f8f9ba9022a" category="inline-link-macro">Atribuições de portas de plataforma para switches Cisco 3232C ou Cisco 9336C-FX2 de 36 portas</block>
-  <block id="c144049e87444b7880d439a35cc6dcb2" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 36 portas que não esteja conectando prateleiras NS224, use as tabelas em <block ref="5e1610ecd3627713f0895c655a667651" category="inline-link-macro-rx"></block> .</block>
-  <block id="7092da1e1fea0fcc1131162478f82fda" category="inline-link-macro">Atribuições de porta de plataforma para um switch Cisco 9336C-FX2 de 36 portas conectando armazenamento NS224</block>
-  <block id="c0fa50622de6b0941fc67782df76fef3" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 36 portas e pelo menos uma configuração MetroCluster ou grupo DR estiver conectando prateleiras NS224 ao switch MetroCluster, use as tabelas em <block ref="0bde9be66bb65d34d39560c7bec9f5ff" category="inline-link-macro-rx"></block> .</block>
   <block id="347cf39e3d412a2e80f417e602ae78af" category="admonition">O switch Cisco 9336C-FX2 de 12 portas não suporta a conexão de prateleiras NS224 ao switch MetroCluster.</block>
   <block id="23aa6285fa7c3546b4aa52950c9ac869" category="list-text">Não é possível configurar os switches com portas de velocidades diferentes (por exemplo, uma mistura de portas de 100 Gbps e portas de 40 Gbps).</block>
-  <block id="4f713bc0f7eb8977f1792b2dbce2b165" category="paragraph">Monitore o grupo de portas do MetroCluster (MetroCluster 1, MetroCluster 2). Você precisará dele ao usar a ferramenta RcfFileGenerator, conforme descrito posteriormente neste procedimento de configuração.</block>
-  <block id="897239c8574f5b63edd50dd13c6d7cf3" category="cell">AFF A150, ASA A150 FAS500f AFF C250, ASA C250 AFF A250, ASA A250</block>
-  <block id="80b2c26f194ad890539872b7c92f3895" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 1)</block>
-  <block id="85a14427800ed439393b5bb470be7d80" category="cell"><block ref="3b548f50ac951005c3b57697db89b587" category="inline-xref-macro-rx"></block></block>
-  <block id="ae8f6037879765647f43daa463c2d9f6" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 2)</block>
-  <block id="57ced6fae2801d6d06484d467d1b63a8" category="cell"><block ref="c72ebc3377994a6acace391540a4f437" category="inline-xref-macro-rx"></block></block>
-  <block id="43a85af0db0b94c52523571a361da240" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 3a - 25G)</block>
-  <block id="d9ccb9e9bd638d71976fd2fd85b324fc" category="list-text"><block ref="7c0cdee2b7c5be6b24b403e15778ce3c" category="inline-xref-macro-rx"></block></block>
-  <block id="1dad8ed122139324dfbff2465006f86b" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 3b - 100G)</block>
-  <block id="69e8634976c147c576f1e214a0550e9a" category="list-text"><block ref="5b9cf5c0f4a61285ad67d0bb263ce927" category="inline-xref-macro-rx"></block></block>
-  <block id="faf0f53c2e9a3fadbedb926822ee4f24" category="cell">FAS8300, AFF C400, ASA C400, FAS8700 AFF A400, ASA A400</block>
-  <block id="6acd1e486078b3860e26aa16cc1b08e4" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 4)</block>
-  <block id="98c2e72a6811dff2a23cd82069bf1526" category="cell"><block ref="7f59e713b9cd81ce166c2146060aa315" category="inline-xref-macro-rx"></block></block>
-  <block id="0edb652fa75412b08f664efe991094b6" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 5)</block>
-  <block id="9985428e868977a96682979580a7f4fe" category="cell"><block ref="74b8e214ff73dc8452e34a7234af634f" category="inline-xref-macro-rx"></block></block>
-  <block id="900e51ace73e4af65fb0f92750aed2cd" category="cell">AFF C800, ASA C800, AFF A800, ASA A800 FAS9500, AFF A900, ASA A900</block>
-  <block id="4761e464022d0e7898566aca053e3d5d" category="inline-xref">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 6)</block>
-  <block id="a78dfa75a27672d9dcf736e820aea965" category="cell"><block ref="bd344fa4a429b5434b9580b2e855451e" category="inline-xref-macro-rx"></block></block>
-  <block id="9f87e37a7ba63b4c380dfb27098af511" category="inline-xref">Atribuições de portas da plataforma Cisco 9336C-FX2 de 12 portas (grupo 7)</block>
-  <block id="22b08261fbebc7afc5117f5ecf037d83" category="cell"><block ref="efd81923e5d5e6f3bb4df0963dc6cdf6" category="inline-xref-macro-rx"></block></block>
-  <block id="eee1675a365933d14d4875fe05b47f41" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF A150, ASA A150, FAS500f, AFF C250, ASA C250, AFF A250 ou ASA A250 a um switch Cisco 9336C-FX2 de 12 portas:</block>
-  <block id="1b751257539482b3f103553b01553514" category="inline-image-macro">Mostra as atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas</block>
-  <block id="469dff43e2041efcb134544af24084bd" category="paragraph"><block ref="469dff43e2041efcb134544af24084bd" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="dbb5afc1b3ce5a4d7ef4e08f5bbcd1bc" category="paragraph">*Observação 1:* Você só pode configurar as portas 19 e 20 *ou* as portas 21 e 22. Se você usar as portas 19 e 20 primeiro, as portas 21 e 22 serão bloqueadas. Se você usar as portas 21 e 22 primeiro, as portas 19 e 20 serão bloqueadas.</block>
-  <block id="a8860ed3e6d63bb3e5748a3216f78f95" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF A20 a um switch Cisco 9336C-FX2 de 12 portas:</block>
-  <block id="ead11a9d0b6c45c78bafddaa95af4a5f" category="paragraph"><block ref="ead11a9d0b6c45c78bafddaa95af4a5f" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="9f89da036eea3b2de29658c5897d57aa" category="paragraph-title">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 3a)</block>
-  <block id="4b70457b584f1d886a4ef66e6a7dae3d" category="paragraph">Revise as atribuições de porta da plataforma para conectar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 a um switch Cisco 9336C-FX2 de 12 portas usando uma placa Ethernet 25G de quatro portas.</block>
-  <block id="54555a6009e372e2ba222be819e827ce" category="paragraph"><block ref="54555a6009e372e2ba222be819e827ce" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1e978c01908eb6448e1c901bc64974fd" category="paragraph-title">Atribuições de porta da plataforma Cisco 9336C-FX2 de 12 portas (grupo 3b)</block>
-  <block id="b324ed6fa7073456924606243edae554" category="paragraph">Revise as atribuições de porta da plataforma para conectar um sistema AFF A30, AFF C30, AFF C60 ou FAS50 a um switch Cisco 9336C-FX2 de 12 portas usando uma placa Ethernet 100G de duas portas.</block>
-  <block id="b1360434e23230f6a7d340c38e9303bf" category="paragraph"><block ref="b1360434e23230f6a7d340c38e9303bf" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b3d5e9e94a54d8bdabf7080283b01dad" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema FAS8300, AFF C400, ASA C400, FAS8700, AFF A400 ou ASA A400 a um switch Cisco 9336C-FX2 de 12 portas:</block>
-  <block id="4d0ccc5efafaf248ac4b73006cd81b20" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF A50 a um switch Cisco 9336C-FX2 de 12 portas:</block>
-  <block id="23135c110d0e57e34de1287d76a39da3" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF C800, ASA C800, AFF A800, ASA A800, FAS9500, AFF A900 ou ASA A900 a um switch Cisco 9336C-FX2 de 12 portas:</block>
-  <block id="9e60ac33bc092c405a097555835b594f" category="paragraph">*Nota 2:* Use as portas e4a e e4e ou e4a e e8a se estiver usando um adaptador X91440A (40 Gbps). Utilize as portas e4a e e4b ou e4a e e8a se estiver a utilizar um adaptador X91153A (100Gbps).</block>
-  <block id="c69b12ce9784f26bc437bc6fde404a3a" category="paragraph">Revise as atribuições de porta da plataforma para cabear um sistema AFF A70, FAS70, AFF C80, FAS90, AFF A90 ou AFF A1K a um switch Cisco 9336C-FX2 de 12 portas:</block>
-  <block id="d1a900bdae5e9590c4fdafef8c37dedf" category="paragraph"><block ref="d1a900bdae5e9590c4fdafef8c37dedf" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="18b57c847127e5c2b7dd8598cc05067c" category="list-text">As tabelas nesta seção são para switches Cisco 3232C ou switches Cisco 9336C-FX2 de 36 portas que não conectam armazenamento NS224.</block>
-  <block id="ca2ba184117d249efe6f978511379d06" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 12 portas, use as tabelas em <block ref="67221021aed93298a4f5ea2fd779fba0" category="inline-link-macro-rx"></block> .</block>
-  <block id="045ecf3a2dbe25ed7ed0298e865ad8aa" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 36 portas e pelo menos uma configuração MetroCluster ou grupo DR estiver conectando prateleiras NS224 ao switch MetroCluster, use as tabelas em <block ref="0bde9be66bb65d34d39560c7bec9f5ff" category="inline-link-macro-rx"></block> .</block>
-  <block id="24a2b83846d1cc0fd499ffd7c44a8766" category="list-text">As tabelas nesta seção são para switches Cisco 9336C-FX2 de 36 portas quando pelo menos uma configuração MetroCluster ou grupo DR está conectando prateleiras NS224 ao switch MetroCluster.</block>
-  <block id="67f1cdced842853dcaa748f1574de4a2" category="inline-link-macro">Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 12 portas</block>
-  <block id="38f841f1e9d996375153a7c10a011d16" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 12 portas, use as tabelas em <block ref="ce9e67085330d921aaa0fff0495dc70b" category="inline-link-macro-rx"></block> .</block>
-  <block id="674e97a0c22c1388979c98f80b98f4b5" category="inline-xref">tabelas de cabeamento para controladores que não conectam prateleiras NS224 conectadas a switches</block>
   <block id="b3e24b8d0d23855e43550444290c1574" category="list-text">Mantenha o controle do grupo de portas MetroCluster (MetroCluster 1, MetroCluster 2, etc.). Você precisará dessas informações ao usar a ferramenta RcfFileGenerator, conforme descrito posteriormente neste procedimento de configuração.</block>
-  <block id="b8b3268e24f1bc7df35cfea685b9683b" category="paragraph">Ao conectar mais de uma configuração do MetroCluster a um switch, conecte cada MetroCluster de acordo com a tabela apropriada. Por exemplo, se você estiver conectando um FAS2750 e um AFF A700 ao mesmo switch, conecte o FAS2750 conforme "MetroCluster 1" na Tabela 1 e o AFF A700 conforme "MetroCluster 2" ou "MetroCluster 3" na Tabela 2. Não é possível ligar fisicamente o FAS2750 e o AFF A700 como "MetroCluster 1".</block>
-  <block id="663e9f366c9d01f8e5aae5c69a84c421" category="paragraph">Para configurações de oito nós, use o mesmo método descrito acima. Em vez de um segundo MetroCluster, você está fazendo o cabeamento de um grupo adicional de DR de quatro nós.</block>
   <block id="ae82224d59846a6a4a61ec394a0de4cc" category="paragraph">9336C-FX2 (12 portas)</block>
   <block id="912e887f8c2036c3f03ac7df63957dfd" category="paragraph">9336C-FX2 (36 portas)</block>
   <block id="5f972a786e3a36fb039bc945267e120a" category="paragraph">3132Q-V</block>
@@ -13641,9 +13245,6 @@
   <block id="63ede7390ebddcb1a19c634b663be885" category="doc">Configurar um site IP do MetroCluster com o ONTAP System Manager</block>
   <block id="d5df0ed1fddd51c59b0d672a06332803" category="doc">Fluxo de trabalho de instalação do MetroCluster IP</block>
   <block id="81f48308d9009b082bbfb2492185ce99" category="doc">Requisitos de link entre switches para configurações de IP do MetroCluster</block>
-  <block id="f0668925279d53112795bb2ac4afc864" category="doc">Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 12 portas em uma configuração IP MetroCluster</block>
-  <block id="27399dcd320ca6d758e2655c39a8e386" category="doc">Atribuições de portas de plataforma para switches Cisco 3132Q-V em uma configuração IP MetroCluster</block>
-  <block id="60f2042ee9b23bda52c2e2a535331331" category="doc">Atribuições de porta de plataforma para switches Cisco 3232C ou Cisco 9336C de 36 portas em uma configuração IP MetroCluster</block>
   <block id="48d2b86e5ac14fbcf8457bec5a32528c" category="doc">Onde encontrar informações adicionais sobre o MetroCluster IP</block>
   <block id="72456fb865518b277c5bd9ff404c6c1e" category="doc">Configurar o peering de IP do MetroCluster com o ONTAP System Manager</block>
   <block id="535fa0516d99c874e893ea2540a883dc" category="doc">Configurar um site IP do MetroCluster com o ONTAP System Manager</block>
@@ -13733,7 +13334,6 @@
   <block id="d321eb0a25003ddc996afe17a7149d6f" category="paragraph">Execute esta etapa em cada cluster.</block>
   <block id="e1bde148bbf0582fd279d9a3c915b31a" category="list-text">Defina o nível de privilégio do administrador:</block>
   <block id="5465fc7f055cf03040fda6f777f9a2da" category="list-text">Verifique se o cluster HA está habilitado no novo grupo DR.  Se necessário, reative o cluster HA:</block>
-  <block id="4e7f0491b8337902ce9619e04977796b" category="sidebar">Atribuições de portas de plataforma para switches Cisco 9336C-FX2 de 36 portas conectando armazenamento NS224</block>
   <block id="8228ee21c2ba287b99721837a199bf49" category="image-alt">Oito grupos de DR do MetroCluster de nós com falha de controlador único</block>
   <block id="b6209f83f0e19d02dd6f9274a888a749" category="image-alt">Oito grupos de DR do MetroCluster de nós com falha de vários controladores</block>
   <block id="323510b9950e698debea09d8e3c3a7c9" category="image-alt">Oito grupos de DR do MetroCluster de nós com duas falhas de controlador único</block>
@@ -14055,17 +13655,12 @@
   <block id="55417ec59fd4af1a5afffacb42333c5a" category="paragraph">Exemplo usado neste procedimento: controller_B_1</block>
   <block id="1acb751c22e164e9d61c762caf509e82" category="paragraph">Exemplo usado neste procedimento: controller_B_2</block>
   <block id="eccb3ce2fe6ad5d172a57438aae17dae" category="doc">Crie um agregado de dados espelhado em cada nó FC do MetroCluster</block>
-  <block id="e5287e41bb7b528f560b85847eb683be" category="paragraph">Se você tiver um switch Cisco 9336C-FX2 de 36 portas e não planeja conectar o armazenamento NS224 ao switch, use as tabelas em <block ref="5e1610ecd3627713f0895c655a667651" category="inline-link-macro-rx"></block>.</block>
   <block id="b68398936049bd282794c33831e2aea9" category="paragraph">Suporte para atualizações de sistema de AFF A70 para AFF A90 e de FAS70 para FAS90 usando <block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos em uma configuração IP MetroCluster.</block>
   <block id="2691309e1710cb6a0083f4722ac33e8d" category="admonition">As atualizações para ONTAP 9.18.1 e versões posteriores em plataformas que atualmente não atendem ao requisito de ISL de 100 Gbps não estão bloqueadas e podem prosseguir. No entanto, a NetApp recomenda fortemente que os clientes migrem para a conectividade ISL de 100 Gbps para manter os níveis esperados de desempenho e disponibilidade.</block>
   <block id="2424b4c07e55bece1d1a95007a6782a8" category="list-text">Deve haver pelo menos uma porta ISL de 10Gbps por malha.</block>
   <block id="925adb23a78386992d24bff6e6e1b4e2" category="list-text">Ao cabear um switch Cisco 9336C-FX2 conectando o armazenamento NS224, você pode ter no máximo duas configurações ou grupos de DR MetroCluster. Pelo menos uma configuração ou grupo de DR MetroCluster deve estar conectando os shelves NS224 ao switch MetroCluster.</block>
-  <block id="13baaedd5f262910c30e90b130030634" category="paragraph">Se uma de suas MetroCluster configurações ou grupos de DR não conectar os gabinetes NS224 ao MetroCluster switch, siga o <block ref="b9dbe6880b7454d3bcbbe8f7d7793db4" category="inline-xref-macro-rx"></block>.</block>
   <block id="2b4028f1ab41ecd91ee89bedc51fffa6" category="list-text">Se você estiver expandindo uma configuração MetroCluster padrão que não oferece suporte ao armazenamento NS224 conectado a um switch e quiser adicionar uma configuração MetroCluster que tenha armazenamento NS224 conectado a um switch, revise as seguintes informações:</block>
-  <block id="3db561d9980a9a0ff52dc6f6b5be80fb" category="list-text">Na <block ref="46a459674905c476821f71bc8486a4ba" category="inline-link-macro-rx"></block> ferramenta, primeiro você deve selecionar a plataforma que suporta armazenamento NS224 conectado a switch e, em seguida, selecionar a plataforma que não suporta armazenamento NS224 conectado a switch.</block>
   <block id="88ecaca9811ed8ee2d07d6be6c37393b" category="paragraph">Isso significa que, ao gerar o RCF para sua nova configuração, você pode precisar selecionar as plataformas na ferramenta RcfFileGenerator na seguinte ordem:</block>
-  <block id="e1560ebf4cdefb3656321c70615b070a" category="list-text">Selecione a plataforma que suporta o armazenamento NS224 conectado ao switch no *segundo campo suspenso*.</block>
-  <block id="6671def4e7da861590fb38e5fc66314e" category="list-text">Selecione a plataforma que não suporta armazenamento NS224 conectado por switch no *primeiro campo suspenso*.</block>
   <block id="2782611b81a323af0ab55dcdc0bed9b0" category="paragraph">MetroCluster os nós IP podem acessar os discos de mailbox do ONTAP Mediator usando sessões iSCSI, que têm um tempo limite de conexão padrão de 10 segundos, incluindo uma única tentativa após 5 segundos. Dependendo da sua versão do ONTAP e do seu ambiente, você pode aumentar o tempo limite da mailbox para um máximo de 60 segundos para evitar interrupção no switchover assistido por Mediator não planejado (MAUSO).</block>
   <block id="5989de7ef1290d3b1851ce9197407a9a" category="paragraph">Você deve avaliar a janela de interrupção, ou seja, o tempo necessário para reconectar os nós IP do MetroCluster ao ONTAP Mediator. Se esse tempo for superior a 10 segundos, você deve definir o valor de tempo limite para alguns segundos a mais do que o tempo necessário para reconectar os nós IP do MetroCluster.</block>
   <block id="96da1e735aedafb1dcf6dc852a630b69" category="paragraph">Se a conectividade for mantida de forma independente em cada site e a interrupção em um site não afetar a conectividade com o ONTAP Mediator a partir do site em funcionamento, o valor padrão de 10 segundos é suficiente e você não deve alterar o mailbox timeout.</block>
@@ -14435,16 +14030,12 @@
   <block id="052bf57f898d3892d0551c66dc793e8b" category="list-text">Verifique o estado dos MetroCluster nós:</block>
   <block id="53c1dca890ccf51d340a7239987710a8" category="list-text">Você deve usar a versão de software de switch compatível. Consulte o <block ref="ed4326c3351d8ac0e334b8b4d9b37c82" category="inline-link-rx"></block>.</block>
   <block id="fdb08440fb03aec95dda7df506525f73" category="list-text">Repita os passos anteriores nos três switches IP restantes na configuração IP do MetroCluster.</block>
-  <block id="0a87ee4fa6163be20e6bf1d980e5a277" category="paragraph">Você precisa entender como usar as informações nas tabelas de portas para gerar corretamente seus arquivos de configuração de referência (RCFs).</block>
   <block id="350ebdbb66bf03c8efc403678120e39d" category="admonition">Se você estiver usando um switch Cisco 9336C-FX2 em uma configuração compartilhada conectando os shelves NS224, alterar as ISLs pode exigir um novo arquivo de configuração (RCF). Você não precisa de um novo RCF se as velocidades atuais e novas das ISLs forem 40 Gbps e 100 Gbps. Todas as outras alterações na velocidade da ISL exigem um novo RCF. Por exemplo, alterar a velocidade da ISL de 40 Gbps para 100 Gbps não exige um novo RCF, mas alterar a velocidade da ISL de 10 Gbps para 40 Gbps exige um novo RCF.</block>
   <block id="6c5a911225660b72c17cb2db5923a54a" category="inline-link-macro">Atualize os RCFs nos switches IP do MetroCluster.</block>
   <block id="69cb6427980eccf80b5d0c17f1aab875" category="admonition">Se você estiver usando os switches Cisco 9336C-FX2 em uma configuração compartilhada conectando os shelves NS224 e precisar atualizar o RCF e aplicar a nova configuração para as novas portas ISL, siga as etapas para <block ref="c3ee1b38b8c2251d663b314073e9cd8a" category="inline-link-macro-rx"></block></block>
   <block id="8707fdff465b4f0541eaf591583954a7" category="list-text"><block ref="b0e11f8bc3115af6f46ef95760b7108a" category="inline-link-macro-rx"></block>.</block>
   <block id="856a04ccf59d2820da6a47984fbd3ea0" category="admonition">Você deve atualizar os switches na seguinte ordem: Switch_A_1, Switch_B_1, Switch_A_2, Switch_B_2. Você deve repetir os passos para mover os LIFs do cluster na segunda malha (Switch_A_2, Switch_B_2) depois de ter configurado os switches na primeira malha (Switch_A_1, Switch_B_1). Consulte <block ref="5f804b3f3e9acee141e0ae306b7a6f59" category="inline-link-macro-rx"></block>.</block>
   <block id="8dc1f99634c85a613352ad949b508cf1" category="paragraph">Você pode seguir os passos em <block ref="7176836221733e9bf6fcbaccc1aa9ffd" category="inline-link-macro-rx"></block>.</block>
-  <block id="0d35a64434c5cb583e6703803b6a3251" category="paragraph">Se o novo switch for igual, ligue o novo switch. Se você estiver atualizando ou fazendo downgrade dos switches, ligue ambos os switches. A configuração pode operar com dois switches diferentes em cada site até que a segunda malha seja atualizada.</block>
-  <block id="acc1856da35d6d8c04024997f2eb6084" category="paragraph">Se você estiver atualizando ou fazendo downgrade dos switches na primeira malha, poderá ver alguns alertas relacionados ao clustering local.</block>
-  <block id="73d919208b85f9e19c80b7413d6e453e" category="admonition">Se você fizer um upgrade ou downgrade do fabric, repita todas as etapas para o segundo fabric.</block>
   <block id="73117420b1d3da1446aeff431e81d9c6" category="list-text"><block ref="b0e11f8bc3115af6f46ef95760b7108a" category="inline-link-macro-rx"></block>antes de você iniciar a atualização.</block>
   <block id="19bc1d3a8e5db6fb9ca5ed1d6e53ad7f" category="list-text">Repita os passos anteriores para cada um dos switches.</block>
   <block id="31bbe12313f1a40b18eaa501279a0be3" category="admonition">Após configurar os switches na primeira malha (Switch_A_1, Switch_B_1), você deve repetir os passos para mover os LIFs do cluster na segunda malha (Switch_A_2, Switch_B_2). Consulte <block ref="5f804b3f3e9acee141e0ae306b7a6f59" category="inline-link-macro-rx"></block>.</block>
@@ -14506,10 +14097,8 @@
   <block id="f38043ab9f34b68e3463d7b1fb38b361" category="doc">Ilustração de pontes FC-para-SAS redundantes em uma configuração FC do MetroCluster</block>
   <block id="e3dd1a90c13a22d51e73cec3e510f688" category="doc">Ilustração dos pares HA locais em uma configuração FC do MetroCluster</block>
   <block id="dff9dc7617c0b722a258b6e77d1f3726" category="doc">Atribuições de porta para sistemas FC do MetroCluster usando duas portas do iniciador</block>
-  <block id="05585309d52edd75bfe06dd78ae82f9e" category="doc">Prepare-se para a instalação do MetroCluster FC</block>
   <block id="fb45e1fe4b65e4d3f577f1313e3192ff" category="doc">Matrizes de comutação redundantes em uma configuração FC do MetroCluster</block>
   <block id="07fea3e7242e3b7feb95daab8ac382f1" category="doc">Requisitos TDM/WDM para uma configuração FC do MetroCluster</block>
-  <block id="05098029b983a3408b44325185438949" category="doc">Configure os switches FC Cisco MetroCluster com arquivos RCF</block>
   <block id="76438cbc2291f6d0b6a5155d9952e6a8" category="doc">MetroCluster fluxo de trabalho de instalação do FC</block>
   <block id="5fd61de5dd5b6d796a4f4d8bccbbbe9f" category="doc">Planilhas de configuração para o MetroCluster switches FC e pontes FC-para-SAS</block>
   <block id="7e175f581dd885fe7ee193e78b5ac58b" category="doc">Onde encontrar informações adicionais sobre o MetroCluster</block>
@@ -14519,15 +14108,11 @@
   <block id="8026f4ec611bd118ac269a01492de7eb" category="doc">Conecte o cabo da interconexão HA em uma configuração FC do MetroCluster</block>
   <block id="aaa5c9b8858e5d0e6662b2456ce875a7" category="doc">Conecte os ISLs entre os sites FC do MetroCluster</block>
   <block id="f524fb27981b728db058331580747fa9" category="doc">Conecte os cabos de gerenciamento e de dados em uma configuração FC do MetroCluster</block>
-  <block id="fb67e9a3985fd88e6ec3c17af42c7c9f" category="doc">Configure as portas FC-VI para uma placa de quatro portas X1132A-R6 em sistemas FAS8020 em uma configuração FC do MetroCluster</block>
   <block id="c820136efafeb14232a7bb0ecdc3a5e7" category="doc">Baixe e instale os arquivos RCF do switch Cisco FC em uma configuração FC do MetroCluster</block>
   <block id="c8c019807a214ed01c2fd3737fb66653" category="doc">Baixe e instale o software Cisco FC switch NX-OS em uma configuração FC do MetroCluster</block>
   <block id="c107653dfa4a6cb420e91b134316934d" category="doc">Baixe o arquivo RCF do switch Brocade FC em uma configuração FC do MetroCluster</block>
   <block id="dd1861d8b8089cce9bcd65dcd9ef90fd" category="doc">Configure manualmente os switches Brocade FC em uma configuração FC do MetroCluster</block>
   <block id="f94ef2b75d467a78aa84ce1bb33652ce" category="doc">Configure os switches Cisco manualmente em uma configuração FC do MetroCluster</block>
-  <block id="6a6da24da3fa4ff67dafeb9d87d9bb82" category="doc">Configure os switches FC em uma configuração FC do MetroCluster</block>
-  <block id="fbeac99c1940e86ea53691da26e16aba" category="doc">Configure os switches FC do MetroCluster usando um RCF</block>
-  <block id="1e53200e2bde9fd5a7c07ac8f5113781" category="doc">Reative a matriz de comutação FC do MetroCluster e verifique o funcionamento</block>
   <block id="673e8727c55ac5d36e4061912da38e7d" category="doc">Instale pontes FC-para-SAS e prateleiras de discos SAS em uma configuração FC do MetroCluster</block>
   <block id="1b6b8ad2d32c11d213c91b42df59504b" category="doc">Instale o arquivo RCF do switch Brocade FC em uma configuração FC do MetroCluster</block>
   <block id="1dee6fb030f3706cd70f3b48dccd2685" category="doc">Instale os componentes de hardware em uma configuração FC do MetroCluster</block>
@@ -14546,9 +14131,6 @@
   <block id="d00a37ec3ed10fdae786e846d6202c4b" category="doc">Saiba mais sobre os componentes de hardware IP do MetroCluster</block>
   <block id="80912cc1e5476db748420db1e0a28016" category="doc">Saiba mais sobre ferramentas de gerenciamento adicionais para uma configuração IP do MetroCluster</block>
   <block id="c8375b50501a97bc27bc3b6bc67d4f09" category="doc">Requisitos de conformidade do switch para uma configuração IP do MetroCluster</block>
-  <block id="9273588da9a6272994f1e27930548949" category="doc">Atribuição de portas da plataforma para switches Cisco 9336C-FX2 de 36 portas conectando o armazenamento NS224 em uma configuração IP do MetroCluster</block>
-  <block id="42c46f91d3f244390a44e37864ce9683" category="doc">Atribuição de portas da plataforma para switches Broadcom BES-53248 compatíveis em uma configuração IP do MetroCluster</block>
-  <block id="44ace228b2eb030d54fecba30dd1a868" category="doc">Atribuição de portas de plataforma para os switches NVIDIA SN2100 em uma configuração IP do MetroCluster</block>
   <block id="51440f859949d5811d109b8d1c100400" category="doc">Mova as LIFs do cluster antes de uma alteração de switch, RCF ou firmware em uma configuração IP do MetroCluster</block>
   <block id="5a4e415e369e28ea14ea5533cfae711b" category="doc">Instale o arquivo CSHM para um switch IP NVIDIA SN2100 MetroCluster</block>
   <block id="d4f664f68579fcf672c8bfe170cc8ff2" category="doc">Fluxo de trabalho de configuração de switches para MetroCluster IP</block>
@@ -14563,7 +14145,6 @@
   <block id="7755f44a0cc80ad6e3eaa79c1a79b257" category="doc">Configure a criptografia MACsec nos switches Cisco 9336C em MetroCluster IP</block>
   <block id="edb9b445f13c3e9e05b61cc6e0b3efdc" category="doc">Configure os switches NVIDIA IP SN2100 para uma configuração IP do MetroCluster</block>
   <block id="20e757ff864b6acd14ec41e7165a63f9" category="doc">Aumente o tempo limite da caixa de correio do ONTAP Mediator em uma configuração IP do MetroCluster</block>
-  <block id="f081a35160d006cd5323e0740d06220e" category="doc">Tabelas de portas para MetroCluster IP configurações</block>
   <block id="e0ff38f1490ce2495524f7429045ad81" category="inline-link-macro">o artigo da Knowledge Base "Cluster and HA communication issues during back-end switch replacement"</block>
   <block id="93c539486532bcd2c15f294efff69106" category="admonition">Se você precisar realizar a substituição de um switch nas plataformas AFF A220, AFF A250 ou FAS2750, consulte <block ref="3468e696d0ad9ec4d429e1b845c952a7" category="inline-link-macro-rx"></block>.</block>
   <block id="fe4617c4a015a1feba78882255c11625" category="paragraph">Velocidades de link mistas não são suportadas em plataformas que usam uma placa de interface de rede X60134A. Para verificar se sua plataforma é afetada, consulte o <block ref="a9613e1dbacf145285c45df4264fe797" category="inline-link-rx"></block>.</block>
@@ -14619,35 +14200,28 @@
   <block id="e1a4449ad60ee5725611b4752da28734" category="doc">Agregados não espelhados em uma configuração stretch do MetroCluster</block>
   <block id="f2810cc121b365a0d944d01fb0049c3c" category="doc">Remover uma configuração stretch do MetroCluster</block>
   <block id="5a7797c27c8c6f252cd34f8aa48a076a" category="doc">Utilizando o ONTAP em uma configuração MetroCluster stretch</block>
-  <block id="1e8934c8c7222043dfa312d5c47d1e7e" category="doc">Gerenciamento em banda de pontes FC-para-SAS em uma configuração estendida do MetroCluster</block>
   <block id="55df9ce68c674f1a62c154a24c032440" category="doc">Componentes de hardware e nomenclatura para uma configuração estendida conectada via SAS do MetroCluster</block>
   <block id="fc363c855fcd7a513f6fb1461d09f397" category="doc">Componentes de hardware e nomenclatura para uma configuração stretch conectada à bridge do MetroCluster</block>
   <block id="ce525a64a34c14afdb1f2bae36c9bf40" category="doc">Saiba mais sobre ferramentas de gerenciamento adicionais para uma configuração estendida do MetroCluster</block>
   <block id="5d0555cf7082cbbc66c492a83c958f19" category="doc">Fluxo de trabalho de instalação do MetroCluster Stretch</block>
   <block id="b328c98b6e599f40c1249734c7d3e25b" category="doc">Planilha de coleta de informações para pontes stretch MetroCluster FC-para-SAS</block>
   <block id="c8df4892e1c9a9ad385fe299b25f8daf" category="doc">Componentes de cabos do MetroCluster para uma configuração stretch SAS de dois nós</block>
-  <block id="c5af558971f7e07c02f80c5f9244379f" category="doc">Conecte uma ponte FibreBridge 7600N ou 7500N com prateleiras de discos usando módulos IOM12 em uma configuração stretch do MetroCluster</block>
   <block id="29dfc27962ea9801cc723674240608f2" category="doc">Conecte os cabos de peering do cluster para uma configuração stretch do MetroCluster</block>
   <block id="d2e7b877c94959078edc26bb1d793bbd" category="doc">Estique os cabos dos controladores MetroCluster e das prateleiras de armazenamento</block>
   <block id="a31c31ec1e817272b4e2bfc0bfcccfa9" category="doc">Conecte os controladores entre si em uma configuração stretch do MetroCluster</block>
   <block id="53e42689c2779f2b84d74462236ac01a" category="doc">Conecte os cabos de gerenciamento e de dados para uma configuração stretch do MetroCluster</block>
-  <block id="8403df386d5e44695ba3cd53a4cb6aff" category="doc">Configure as pontes FC-para-SAS para uma configuração stretch do MetroCluster</block>
-  <block id="90ed5a22c4d0a70a6245d26b5fa675ca" category="doc">Habilite o acesso à porta IP na ponte FibreBridge 7600N em uma configuração stretch do MetroCluster</block>
   <block id="9f7c46564969b0cfb9b9e45ae84a29d7" category="doc">Instale pontes FC-para-SAS e prateleiras de discos SAS para uma configuração stretch do MetroCluster</block>
-  <block id="59934c58920f4d9b56664a042b0f6e54" category="doc">Instale a ponte FC-para-SAS e os shelves SAS para uma configuração stretch do MetroCluster</block>
   <block id="a83e3e6e3a220eeb17b49b43c1655725" category="doc">Instale os componentes de hardware para uma configuração SAS estendida do MetroCluster</block>
   <block id="097bca5cb9be45382f00a23eb10b7140" category="doc">Monte os componentes de hardware para uma configuração ATTO stretch do MetroCluster</block>
   <block id="9aee2f9aee8d698f16801aa31eb11681" category="doc">Sincronize a hora do sistema usando NTP em uma configuração stretch do MetroCluster</block>
   <block id="ad3e9ee83d885118d791b30d7789593a" category="doc">Teste a configuração stretch do MetroCluster</block>
   <block id="1c0dc7dc20231fb007558112b4101e11" category="doc">Atualize uma configuração stretch do MetroCluster para fabric-attached</block>
-  <block id="6e9b2d39813d19801e17d7337411ee8e" category="doc">MetroCluster procedimentos de manutenção de hardware</block>
   <block id="be1545b72fb197704b29d14fd4e788d2" category="doc">Identifique o local de armazenamento em uma configuração IP do MetroCluster</block>
   <block id="44eb0895da6b191732abef4a42f2cce6" category="doc">Gerenciamento em banda de pontes FC-para-SAS em uma configuração FC do MetroCluster</block>
   <block id="fbeed7d2620206346bbe1c2cb5d31493" category="doc">Migrar um volume raiz em uma configuração do MetroCluster</block>
   <block id="9b84dbb91fed044928b63e89f8e0a283" category="doc">Remova o ONTAP Mediator ou o Tiebreaker antes da manutenção do MetroCluster</block>
   <block id="dec731af24ab567a7853f6e8ed987402" category="doc">Ferramenta de Matriz de Interoperabilidade para uma configuração MetroCluster</block>
   <block id="b49afa10805d1aa8054708ecc2e078b1" category="doc">Ative o registro de logs no console antes da manutenção do MetroCluster</block>
-  <block id="8ce7b7e34cb11f43975cc30edc308270" category="doc">Saiba mais sobre a manutenção dos componentes de hardware do MetroCluster</block>
   <block id="4898af4d8956fe8e7cc33dbf47eaa26d" category="doc">Substitua a quente um módulo de fonte de alimentação com defeito em um FibreBridge em uma configuração FC do MetroCluster</block>
   <block id="ac830315d226a9e8bcfb4606ee6162ad" category="doc">Requisitos da interface de gerenciamento de ponte FibreBridge em uma configuração FC do MetroCluster</block>
   <block id="b5eca7d3ce20c76279ae0123a24eaba0" category="doc">Saiba mais sobre como manter uma configuração do MetroCluster</block>
@@ -14685,7 +14259,6 @@
   <block id="bcdc28b2e67f5f7f9c37ca00aa655509" category="doc">Monitore e proteja a consistência do sistema de arquivos no MetroCluster usando NVFAIL</block>
   <block id="c9b7b9ad5537e92c2ecebbcf203c8047" category="doc">Monitorar a configuração do MetroCluster</block>
   <block id="f5c7abd13c7c24bc61ae327889127742" category="doc">Saiba mais sobre o MetroCluster para proteção de dados e recuperação de desastres</block>
-  <block id="8fb996f3ce7f4d3b7bda08edfd1e9a26" category="doc">Saiba mais sobre a gestão do MetroCluster</block>
   <block id="449629aa4b1c2ed0843fd41d689b41ea" category="doc">Comandos para o MetroCluster switchover, healing e switchback</block>
   <block id="34652c95da82a187b943db9c3ccee905" category="doc">Saiba mais sobre a configuração e operação do MetroCluster</block>
   <block id="a19b5bf6df9a45fe058f3f423784db99" category="doc">Use o System Manager para switchover e switchback em uma configuração IP do MetroCluster</block>
@@ -14700,7 +14273,6 @@
   <block id="5565fd5ef917dd8d807bcf122d0655fd" category="doc">Verifique se um sistema MetroCluster está pronto para switchover</block>
   <block id="5a24fe0a0c873a090cc8f53d6d1e537f" category="doc">Verifique se as SVMs em uma configuração do MetroCluster estão em execução e se os agregados estão online</block>
   <block id="4ac8fe6e8a05cc71d2e00c1b1f7f2f59" category="doc">Verifique se o switchback do MetroCluster foi bem-sucedido</block>
-  <block id="de0f30e08a5f77d28e460449b68dd2c6" category="doc">Saiba mais sobre a instalação e configuração do MetroCluster Tiebreaker</block>
   <block id="ce9b5a38a69418f5e59849681ff4326a" category="doc">Monitore a configuração do MetroCluster com o MetroCluster Tiebreaker</block>
   <block id="26614674af5884942223cb1c8189145a" category="doc">Saiba mais sobre o MetroCluster Tiebreaker</block>
   <block id="051242ca625cd0e7b3d4d0995224916b" category="doc">Escolha o procedimento de instalação do MetroCluster Tiebreaker</block>
@@ -14718,7 +14290,6 @@
   <block id="117c2b3405e20131a540d871714f52e7" category="doc">Atualize o host que executa o MetroCluster Tiebreaker</block>
   <block id="864eae39caa7940d5967641365011192" category="doc">MetroCluster opções de procedimento de transição FC-para-IP</block>
   <block id="86fdbbe0b7817b7ec654264332bc9696" category="doc">Requisitos de switch IP em uma transição do MetroCluster</block>
-  <block id="59205d896d3e43c52f5e6ba6390ab90a" category="doc">Decidindo qual procedimento do MetroCluster usar</block>
   <block id="426d7b12fe14ec05a1e1bd3536ed0c61" category="doc">Exemplo de nomenclatura para uma transição FC-para-IP de dois nós do MetroCluster</block>
   <block id="96c9ada18748c9cf0f166238d0beb7a1" category="doc">Exemplo de nomenclatura para o MetroCluster FC-to-IP transition</block>
   <block id="f04302b341f052937752550feb95fcbd" category="doc">Mensagens de alerta e suporte de ferramentas durante a transição do MetroCluster</block>
@@ -14825,11 +14396,9 @@
   <block id="b9e6e4e52311c3db33c84678847f4a37" category="summary">A partir do ONTAP 9.5, o ONTAP oferece suporte à conectividade de camada 3 usando IP virtual (VIP) e Border Gateway Protocol (BGP), fornecendo uma solução de recuperação de desastres de camada 3.</block>
   <block id="977014be01c1da5d8e97c5c5fa7ba63b" category="summary">Você pode remover a configuração do MetroCluster de todos os nós na configuração do MetroCluster ou de todos os nós em um grupo de recuperação de desastres (DR).</block>
   <block id="36b3a1d2b2ad844d1cd218d61a616b63" category="summary">Cada matriz de comutação inclui links entre switches (ISLs) que conectam os sites e replicam os dados entre eles. Cada matriz de comutação deve usar caminhos físicos diferentes para redundância.</block>
-  <block id="23197f65e201d3f36f70090e1c399981" category="summary">Para configurar um switch FC Cisco, redefina as configurações do switch para os padrões de fábrica, instale o software do switch e aplique os arquivos de configuração de referência (RCF).</block>
   <block id="b5909b79c9831ace5a37a88ecc8d8221" category="summary">Você deve baixar o arquivo de configuração de referência (RCF) para cada switch na configuração de malha do MetroCluster.</block>
   <block id="39ec26365619809aba88eabe9e933017" category="summary">A partir da versão 9.5 do ONTAP, o ONTAP oferece suporte à conectividade de camada 3 usando Virtual IP (VIP) e Border Gateway Protocol (BGP), fornecendo uma solução de recuperação de desastres de camada 3.</block>
   <block id="d4646c837bdf223cb573e0df82f56091" category="summary">Você pode remover a configuração do MetroCluster de todos os nós em um grupo de DR e ajustar a conectividade de disco e as interconexões para um estado compatível. Entre em contato com o suporte técnico se precisar de ajuda.</block>
-  <block id="ae1af88699b3a1ba9c46e056fc8976f0" category="summary">Estas informações descrevem como instalar e configurar os componentes de hardware e software do MetroCluster em uma configuração estendida, ou SAS óptica.</block>
   <block id="e673a28c59f148030d8d6fe7e77d7f96" category="summary">Se você usa uma versão do ONTAP anterior à 9.5 ou precisa de acesso fora de banda à ponte FibreBridge 7600N usando telnet ou outros protocolos de porta IP, habilite os serviços de acesso pela porta de console.</block>
   <block id="bdedaf393ca472370b58c2395331b073" category="summary">Você pode precisar substituir um switch com defeito ou fazer upgrade ou downgrade de um switch. O novo switch pode ser igual ao antigo ou você pode alterar o tipo de switch.</block>
   <block id="4d9bd7824ed952ced3e1e1f846baa716" category="summary">Após corrigir a configuração do MetroCluster, execute a operação de switchback para retornar à operação normal, com as SVMs de origem da sincronização no local de desastre ativas e fornecendo dados.</block>
@@ -14871,4 +14440,67 @@
   <block id="756bb9840619872518b56de349470f31" category="paragraph">Caso a correção seja vetada, você pode reenviar o<block ref="c85b4996143a93edc62c1214c1b80d15" prefix=" " category="inline-code"></block> comando com o<block ref="5b8353fafaa1c451a58b0b87dede3fc0" prefix=" " category="inline-code"></block> parâmetro para ignorar quaisquer vetos temporários que impeçam a operação de correção.</block>
   <block id="4510065cdf938bdc660bae11b415e4ca" category="admonition">Você deve verificar se a localização das LIFs de dados está correta nos novos nós antes de realizar um switchback. Ao reverter a configuração, o ONTAP tenta retomar o tráfego na porta inicial usada pelas LIFs. Pode ocorrer falha de E/S se a conexão da porta inicial com a porta do switch e a VLAN estiver incorreta. Se você encontrar algum problema ao colocar as LIFs nos nós ou nas portas corretos, não prossiga com o switchback e entre em contato com o suporte técnico da NetApp.</block>
   <block id="ded79adea8538afbad271b9f9dc6c6e2" category="admonition">Em um ambiente FC do MetroCluster, "connections" deve aparecer como "not-applicable" na saída do comando.</block>
+  <block id="01f44091e61d132b8e4dc56c7fcfcc71" category="paragraph"><block ref="01f44091e61d132b8e4dc56c7fcfcc71" category="inline-link-macro-rx"></block></block>
+  <block id="226243cd84acf57fb8c77be957702aa1" category="paragraph"><block ref="226243cd84acf57fb8c77be957702aa1" category="inline-link-macro-rx"></block></block>
+  <block id="12cac6e64767d38d9aaa5b5131662deb" category="cell"><block ref="12cac6e64767d38d9aaa5b5131662deb" category="inline-link-macro-rx"></block></block>
+  <block id="94f5ed71556c5274f2e7342d6c6fbad6" category="list-text">Use os procedimentos de switchover negociado, recuperação e switchback mencionados em <block ref="01f44091e61d132b8e4dc56c7fcfcc71" category="inline-link-macro-rx"></block>.</block>
+  <block id="628fe06d5fdcf8cfd63d9481e9421183" category="paragraph"><block ref="628fe06d5fdcf8cfd63d9481e9421183" category="inline-link-macro-rx"></block></block>
+  <block id="05c730c8f0fa3379526c0f4e5ba33319" category="paragraph"><block ref="05c730c8f0fa3379526c0f4e5ba33319" category="inline-link-rx"></block></block>
+  <block id="be160c024bea52924fe77cb9e78214f7" category="doc">Conecte seus switches IP do MetroCluster usando a ferramenta RCFfilegenerator e o Hardware Universe</block>
+  <block id="8b12e7e13d2ff1b2841ecba6c80afa67" category="paragraph">Você precisa entender como usar a ferramenta RCFfilegenerator e as informações do NetApp Hardware Universe para conectar seus switches corretamente.</block>
+  <block id="3d562770c682300a997f1e00bac01722" category="inline-link-macro">Saiba mais sobre o cabeamento dos switches IP MetroCluster</block>
+  <block id="ae2885f58ccc0c791f7169082157887e" category="paragraph">Analise as informações em <block ref="52ab614863b142a43989450caa4ed4fd" category="inline-link-macro-rx"></block> antes de realizar esta tarefa.</block>
+  <block id="81833438865b86da3eae915c86c65e4b" category="list-text">Faça o download e instale a <block ref="b3f8a8564bd91efeacbc3b6197426c6e" category="inline-link-rx"></block>ferramenta no site de suporte da NetApp.</block>
+  <block id="f266fa9b742f8f46ec5cc0a346ab64af" category="inline-link-macro">Como usar o gerador de RCF para o MetroCluster IP</block>
+  <block id="4154f6fe2cf5a90d3ca82edb905336d3" category="list-text">Siga as etapas em <block ref="70532001d180a8a85d3c9176f279e960" category="inline-link-macro-rx"></block> para preencher os campos da sua configuração.</block>
+  <block id="dbf3fb325989b6f7e8666dc746cfe848" category="paragraph">A ferramenta gera uma visão geral do cabeamento por porta para cada switch.</block>
+  <block id="ef6b355be31ded7505f00b1456e8fd03" category="list-text">Navegue até o <block ref="9c7de71dec60e8515e88c561306df4fe" category="inline-link-macro-rx"></block></block>
+  <block id="c0ec3f370a1995360f913e558275fa22" category="list-text">Selecione o tipo de plataforma na aba *Produtos* e, em seguida, selecione a sua plataforma específica e se você está cabeando uma configuração IP do MetroCluster de quatro ou oito nós.</block>
+  <block id="e0983146dc288451127566a34711b59f" category="list-text">Selecione a versão do ONTAP na janela de exibição e, em seguida, selecione *Mostrar resultados*.</block>
+  <block id="7d43c1b103119e38ebdca74971aab1ec" category="list-text">Selecione *Conexões compatíveis* e selecione a guia *Conexão de armazenamento*</block>
+  <block id="36b6e8d5997c4b535f156961b72cd921" category="list-text">Reúna as informações da porta do controlador para a sua configuração.</block>
+  <block id="b872b33e7f6ccee2c35feaa458b552e2" category="admonition">As informações da porta do controlador não estão incluídas na visão geral do cabeamento gerada pela ferramenta RcfFileGenerator, portanto você deve usar o Hardware Universe para coletar essas informações.</block>
+  <block id="b497bbdd397098bdb0a5b9c82e81b592" category="admonition">Se você estiver repetindo este procedimento para os switches na segunda malha depois de já ter atualizado os switches na primeira malha, você pode pular esta etapa.</block>
+  <block id="52ab614863b142a43989450caa4ed4fd" category="paragraph"><block ref="52ab614863b142a43989450caa4ed4fd" category="inline-link-macro-rx"></block></block>
+  <block id="ffb7b8dc7878c5af634a1c1963efd3e8" category="list-text">Esta tarefa se aplica apenas a plataformas que usam conectividade de 25 Gbps. Consulte <block ref="8f458b2972809c149e69565eae68571c" category="inline-link-macro-rx"></block>.</block>
+  <block id="812220e4b62a0f5f44496bc6e73454ef" category="summary">Você precisa entender como usar as informações nas tabelas de portas para gerar corretamente seus RCFs.</block>
+  <block id="0d6d7b89fc651602a7674f3e0b0a6cad" category="paragraph">Antes de começar o cabeamento dos switches IP do MetroCluster, verifique os requisitos.</block>
+  <block id="22f0210d647b309440165a35638eca03" category="paragraph">Analise estes pontos antes de conectar os cabos dos switches:</block>
+  <block id="e955f460feb4d5e634b06a077ecc6834" category="list-text">O mesmo cabeamento é usado no local A e no local B.</block>
+  <block id="bfa00546869e33cdfc39a7b9c57691d7" category="admonition">A versão do arquivo de configuração de referência (RCF) é diferente da versão da ferramenta RCFfilegenerator usada para gerar o arquivo. Por exemplo, você pode gerar uma versão 2.00 do RCF usando o RCFfilegenerator v1.6c.</block>
+  <block id="68e38b15d403cba354efbb856bec085e" category="section-title">Requisitos de cabeamento com base no tipo de switch</block>
+  <block id="caccbdcfc15b46d00a77e0dc179919fa" category="paragraph">A seguir, apresentamos uma lista dos requisitos de cabeamento com base no tipo específico de switch.</block>
+  <block id="a2f7f48fb4a19613fcc4df95033a540d" category="paragraph">Se você configurar o switch para a transição de FC para IP do MetroCluster, a porta 5 ou a porta 6 poderão ser usadas para conectar as interfaces de cluster locais do nó FC do MetroCluster. Consulte o <block ref="3d323bfcd2e7c90d6e420b3bfd1a01ed" category="inline-link-macro-rx"></block> e os arquivos de cabeamento gerados para obter mais detalhes sobre o cabeamento dessa configuração.</block>
+  <block id="16ad81b983d29eabaac26419a8e9d36c" category="section-title">Cisco 3232C ou Cisco 9336C de 36 portas</block>
+  <block id="f25b3cab99a06613f3972b9ffa2ddc00" category="list-text">Se você configurar o switch para a transição de FC para IP do MetroCluster, as portas 5, 6, 13 ou 14 podem ser usadas para conectar as interfaces de cluster locais do nó FC do MetroCluster. Consulte o <block ref="3d323bfcd2e7c90d6e420b3bfd1a01ed" category="inline-link-macro-rx"></block> e os arquivos de cabeamento gerados para obter mais detalhes sobre o cabeamento dessa configuração.</block>
+  <block id="ac80f7aa757a8212f8da0933008a60ec" category="list-text">A versão RCF v2.10 ou posterior é necessária para o modo breakout de 25G para as ISLs do MetroCluster em plataformas compatíveis.</block>
+  <block id="c6ef679fd1b71db32cebc1cf708fb044" category="list-text">O ONTAP 9.13.1 ou posterior e a versão 2.00 do RCF são necessários para usar uma plataforma diferente de FAS8200 ou AFF A300 no grupo "MetroCluster 4".</block>
+  <block id="2b653dfc64d1489ccd5bc704a57aeccb" category="section-title">Cisco 9336C-FX2 de 12 portas</block>
+  <block id="68185ac0418f6ffb733128e68a6f36a3" category="section-title">switch Cisco 9336C-FX2 de 36 portas conectando o armazenamento NS224</block>
+  <block id="ac97f2a0cb79caa642d48fad3d64c6d5" category="paragraph">Na ferramenta RcfFileGenerator, primeiro você deve selecionar a plataforma que oferece suporte ao armazenamento NS224 conectado ao switch e, em seguida, selecionar a plataforma que não oferece suporte ao armazenamento NS224 conectado ao switch.</block>
+  <block id="261363fef6f14342e0ccd5c8d2faf811" category="list-text">Selecione a plataforma que oferece suporte ao armazenamento NS224 conectado ao switch na segunda lista suspensa.</block>
+  <block id="4663a094fba2f8ca654db7cbc149185d" category="list-text">Selecione a plataforma que não suporta armazenamento NS224 conectado a switch no primeiro campo suspenso.</block>
+  <block id="fa5b814d48ac821e68293bef271cf120" category="paragraph">A conexão de uma configuração de oito nós ou de duas configurações de quatro nós do MetroCluster requer o ONTAP 9.14.1 ou posterior e a versão 2.00 do RCF ou posterior.</block>
+  <block id="32486353af9a4754ef33ae03184ab6d7" category="list-text">Você deve revisar os detalhes do cabeamento em <block ref="cea2fd4771b05b7ea9ce532bc64116c7" category="inline-link-macro-rx"></block>.</block>
+  <block id="e985da9479fcb3f44a4c5f076074eaf6" category="list-text">Se a sua configuração IP do MetroCluster tiver gavetas NVMe conectadas aos switches IP do MetroCluster, execute os seguintes comandos para verificar o status das gavetas.</block>
+  <block id="d819c52357ffe7f71e3c843024bdbe18" category="list-text">Mostre o status do shelf:</block>
+  <block id="f4b7655f7d76ca23a9695a4ffe76039c" category="paragraph"><block ref="3ad8650cdeae2fa45b589036916df12e" prefix="" category="inline-code"></block></block>
+  <block id="ac8d180c4267e0df23b009be4027ab47" category="list-text">Mostre a conectividade das gavetas NVMe conectadas ao switch:</block>
+  <block id="5fc82d0ea86cdaa1b54f25b008f2750c" category="paragraph"><block ref="3aa9198f13a1c4d5e1bdc3f6712da154" prefix="" category="inline-code"></block></block>
+  <block id="af68aba3687cc5437c6b462f3b89ed8e" category="list-text">Caso necessário, colete os nomes dos dispositivos remotos (switch do MetroCluster):</block>
+  <block id="995c3399c2408827f9b94b6d926ad97c" category="list-text">Mostre a conectividade das portas da gaveta para as gavetas NVMe conectadas ao switch:</block>
+  <block id="d2d1f0a727ba625d880200f9c6cdc405" category="paragraph"><block ref="de79727fd6f21996e51e237681ccfa11" prefix="" category="inline-code"></block></block>
+  <block id="cca2862e841bd5351871f3854f099f36" category="inline-xref">a etapa para desconectar as conexões do switch antigo</block>
+  <block id="0297445d3de0b6fe85f613bb40365469" category="paragraph">Se você estiver reutilizando switches existentes, prossiga para <block ref="7867de4cfcb7c229fa301f1c54c0e436" category="inline-xref-macro-rx"></block>.</block>
+  <block id="f26125432e5c15e33fabd2ecf4d87bad" category="list-text">[[existing_disconnect]]Desconecte as conexões do switch antigo.</block>
+  <block id="a2c13d6f2894fd6c7707179deabf72bf" category="inline-xref">a etapa para configurar os switches existentes</block>
+  <block id="5a932dab89d70c59f3458a7a2a6255a4" category="paragraph">Se você estiver reutilizando switches existentes, prossiga para <block ref="0fed829a50304d9091a3f81d3433c447" category="inline-xref-macro-rx"></block>.</block>
+  <block id="5208a656dbba596d158d8d8217323eb4" category="list-text">[[existing_configure]]Configure os switches existentes.</block>
+  <block id="7b8fd5c92335d18d75c0fd265bd69a61" category="paragraph">Se o novo switch for igual, ligue o novo switch. Se você estiver atualizando ou fazendo downgrade dos switches, ligue ambos os switches.</block>
+  <block id="d1142c8e374a52d6f1d19700961a549b" category="list-text">Repita os passos anteriores para a segunda malha (Switch_A_2 e Switch_B_2) depois de ter atualizado a primeira malha (Switch_A_1 e Switch_B_1).</block>
+  <block id="91b0176196970d50b9aa5e39acce63b8" category="admonition">Se você estiver substituindo um switch com defeito por um do mesmo tipo, basta atualizar o switch com defeito, sem precisar repetir as etapas para o segundo fabric.</block>
+  <block id="cd7399d5e4a063a357198427ec26081e" category="paragraph"><block ref="cd7399d5e4a063a357198427ec26081e" category="inline-link-macro-rx"></block></block>
+  <block id="4362ba43074608918c83408e89d7c0ff" category="list-text">Se você estiver atualizando o firmware nos switches IP Cisco ou Broadcom do MetroCluster, poderá salvar uma cópia da configuração atual do switch antes de prosseguir com a atualização.</block>
+  <block id="b85394c1aa7243bdf5cf7a0f05d8f93f" category="admonition">Se o seu fluxo de trabalho exigir que você reinicie o switch para atualizar o RCF após a atualização do firmware, você pode ignorar esta etapa, pois a reinicialização apaga a configuração salva do switch.</block>
+  <block id="498ba59acaecdd7d242002ff07605b27" category="sidebar">Faça o cabeamento dos switches IP do MetoCluster</block>
 </blocks>

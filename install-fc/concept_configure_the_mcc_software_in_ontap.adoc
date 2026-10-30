@@ -3507,7 +3507,7 @@ link:https://docs.netapp.com/us-en/ontap/cloud/high-availability-concept.html["C
 Você deve verificar as operações de switchover, recuperação e switchback da configuração do MetroCluster.
 
 .Passo
-. Use os procedimentos para comutação negociada, cura e switchback que são mencionados no https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["Recuperar de um desastre"] .
+. Use os procedimentos de switchover negociado, recuperação e switchback mencionados em link:../manage/task_perform_switchover_for_tests_or_maintenance.html["Execute o switchover para testes ou manutenção"].
 
 
 

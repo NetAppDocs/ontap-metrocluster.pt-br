@@ -30,14 +30,14 @@ indexpage:
       url: "/install-ip/concept_mediator_requirements.html"
   - title: Manutenção
     links:
-    - title: Switches FC
-      url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html"
-    - title: Switches IP
-      url: "/maintain/task_replace_an_ip_switch.html"
-    - title: Pontes ATTO
+    - title: Saiba mais sobre a manutenção do MetroCluster
+      url: "/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html"
+    - title: Manutenção da ponte FC-para-SAS
       url: "/maintain/concept_using_fibrebridge_7600n_bridges_in_mcc_configurations.html"
-    - title: Compartimentos de unidades
-      url: "/maintain/index.html"
+    - title: Manutenção e substituição do comutador FC
+      url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html"
+    - title: Manutenção e substituição do interrutor IP
+      url: "/maintain/task_replace_an_ip_switch.html"
   - title: Ficheiros RCF
     links:
     - title: Arquivos RCF do MetroCluster

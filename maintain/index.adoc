@@ -1,16 +1,8 @@
 ---
 permalink: maintain/index.html 
-sidebar: sidebar 
-keywords: metrocluster, maintain, service 
-summary: Você pode manter os componentes de hardware específicos do MetroCluster na configuração do MetroCluster. 
+redirect: ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html 
 ---
-= Saiba mais sobre a manutenção dos componentes de hardware do MetroCluster
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
-[role="lead"]
-Você pode usar os procedimentos a seguir para manter os componentes de hardware específicos do MetroCluster na configuração do MetroCluster.
-
-Os procedimentos de serviço para sistemas MetroCluster incluem procedimentos de atualização de firmware e substituição de hardware para compartimentos de unidades, switches IP, switches FC, pontes FC para SAS e cabos SAS.

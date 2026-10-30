@@ -40,7 +40,7 @@ Switches FC em uma configuração MetroCluster FC
 .. Instale os novos interrutores.
 .. Faça o cabo das ligações ISL. Não ligue os switches FC no momento.
 
-| link:../maintain/index.html["Mantenha os componentes do MetroCluster"] 
+| link:../maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Mantenha os componentes do MetroCluster"] 
 
 
  a| 
