@@ -16,9 +16,9 @@ Para atualizar ou fazer downgrade do firmware em um switch Brocade FC, você dev
 .Antes de começar
 Analise cuidadosamente as seguintes informações antes de utilizar este procedimento:
 
-* A partir do Fabric OS 10.x, Brocade oferece suporte apenas ao SHA-512 para autenticação SNMP. ONTAP atualmente não oferece suporte ao SHA-512, sendo o suporte limitado ao SHA-256.
+* A partir do ONTAP 9.20.1, o ONTAP oferece suporte a SHA-512 para autenticação SNMP. No Fabric OS 10.x e versões posteriores, a Brocade oferece suporte apenas a SHA-512 para autenticação SNMP.
 +
-Se você atualizar o firmware do switch FC do MetroCluster para o Fabric OS 10.x, a visibilidade do monitoramento SNMP a partir do ONTAP será perdida. Isso aumenta o risco durante a solução de problemas e leva à perda de alertas proativos.
+Se você estiver executando uma versão do ONTAP anterior à 9.20.1 e atualizar o firmware do switch FC do MetroCluster para o Fabric OS 10.x, a visibilidade do monitoramento SNMP a partir do ONTAP será perdida. Isso aumenta o risco durante a solução de problemas e leva à perda de alertas proativos.
 
 +
 Se você atualizar ou fizer downgrade do Fabric OS 10.x, deverá executar as tarefas obrigatórias descritas em link:https://techdocs.broadcom.com/us/en/fibre-channel-networking/fabric-os/fabric-os-software-upgrade/10-0-x/Upgrading-and-Downgrading-Firmware/v24512876.html["Brocade Fabric OS Software Upgrade Guide, 10.0.x - Pré-requisitos para atualização ou downgrade"^].

@@ -1,0 +1,178 @@
+---
+permalink: install-ip/mcc-congestion-control.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, congestion, control, flow, network, isl, bandwidths, replication, traffic, throttling, enable, disable, 
+summary: 'A partir do ONTAP 9.20.1, as configurações IP do MetroCluster que utilizam adaptadores de rede de 100 Gbps podem se conectar por Inter-Switch Links (ISLs) operando com larguras de banda menores ou mistas, como 10 Gbps, 25 Gbps ou 40 Gbps.' 
+---
+= Configure o controle de congestionamento de ISL WAN IP do MetroCluster
+:allow-uri-read: 
+
+
+[role="lead"]
+A partir do ONTAP 9.20.1, você pode habilitar o controle de congestionamento de WAN Inter-Switch Link (ISL) em configurações IP do MetroCluster, para que ISLs executados com larguras de banda menores ou mistas, como 10 Gbps, 25 Gbps ou 40 Gbps, possam ser usados com plataformas que têm velocidade de porta de back-end IP do MetroCluster de 100 Gbps.
+
+O tráfego de replicação gerado pelo adaptador de 100 Gbps pode sobrecarregar ISLs com menor velocidade de link, causando pressão no buffer do switch, contrapressão PAUSE, perda de pacotes e possível instabilidade na replicação. O controle de congestionamento de ISL da WAN resolve esse problema calculando um limite máximo para a taxa de transferência de saída usando a largura de banda do ISL e a contagem de nós. O limite máximo atua como um limiar de taxa de transferência de saída que controla o tráfego de transferência da interconexão. Se a taxa de transferência de saída medida estiver acima do limite máximo calculado, a transferência será rejeitada, impondo o limiar de taxa de transferência de saída na rede de interconexão.
+
+
+CAUTION: Configurar o controle de congestionamento WAN ISL *não* garante que problemas de desempenho que possam estar presentes ao usar ISLs com menor largura de banda não ocorrerão. NetApp recomenda fortemente que você faça a transição para a conectividade ISL de 100 Gbps para obter o desempenho ideal.
+
+.Sobre esta tarefa
+* A configuração IP do MetroCluster deve estar em execução no ONTAP 9.20.1 ou posterior.
+* O controle de congestionamento da WAN ISL está desativado por padrão e você precisa ativá-lo explicitamente.
+* Você precisa entrar em contato com o suporte da NetApp para configurar esse recurso nos seguintes cenários:
++
+** Se as informações do ISL não puderem ser obtidas automaticamente ao tentar ativar ou atualizar o recurso
+** Se você tiver duas configurações IP de quatro nós do MetroCluster conectadas aos mesmos switches
+** Caso precise modificar o teto calculado após a ativação do recurso
+
+
+* Você deve atualizar a configuração de controle de congestionamento para calcular o novo limite máximo se a topologia mudar após a ativação do controle de congestionamento. Por exemplo, se a quantidade ou a velocidade dos ISLs mudar, ou se você adicionar um novo nó à configuração IP do MetroCluster.
+* Cada site calcula seu teto de forma independente. Ao executar o `metrocluster interconnect congestion-control enable` comando no site local, isso aciona as seguintes ações:
++
+** O site local prepara e calcula seu limite máximo.
+** O site parceiro também prepara e calcula o limite máximo, separadamente do site local onde o comando é executado. Embora tecnicamente improvável, limites máximos diferentes podem ser calculados para os sites local e parceiro. Este é o comportamento esperado e não indica uma falha ou configuração incorreta.
+** Cada site grava o valor calculado como o estado desejado, e o kernel então o aplica.
+
+
+* O controle de congestionamento do WAN ISL opera automaticamente após ser ativado.
+
+
+
+
+[[enable-congestion-control]]
+== Ativar o controle de congestionamento
+
+Para habilitar o controle de congestionamento WAN ISL, conclua estas etapas no cluster local.
+
+
+CAUTION: Se você tiver duas configurações IP de quatro nós do MetroCluster conectadas aos mesmos switches, entre em contato com o suporte da NetApp para habilitar esse recurso.
+
+.Passos
+. Ative o controle de congestionamento da WAN ISL no cluster_A:
++
+[source, cli]
+----
+metrocluster interconnect congestion-control enable
+----
++
+Se o comando falhar com o `MCC_CC_ISL_INFO_UNAVAILABLE` erro, as informações de ISL não poderão ser obtidas automaticamente e você deverá entrar em contato com o suporte da NetApp para habilitar esse recurso.
+
+. Verifique se o controle de congestionamento WAN ISL está ativado:
++
+[source, cli]
+----
+metrocluster interconnect congestion-control show
+----
++
+[listing]
+----
+cluster_A::> metrocluster interconnect congestion-control show
+
+Node            Enabled Ceiling (MiB/s)
+--------------- ------- ---------------
+cluster_A-01    true    1250
+cluster_A-02    true    1250
+2 entries were displayed.
+----
+
+
+
+NOTE: Caso precise modificar o valor máximo calculado após a ativação deste recurso, entre em contato com o NetApp Support.
+
+
+
+[[refresh-congestion-control]]
+== Atualizar controle de congestionamento
+
+Para atualizar a configuração de controle de congestionamento da WAN ISL, siga estas etapas no cluster local. Você deve atualizar a configuração de controle de congestionamento sempre que a topologia mudar, por exemplo, quando a contagem ou a velocidade dos ISLs mudarem ou quando um novo nó for adicionado à configuração IP do MetroCluster.
+
+.Passos
+. Atualize a configuração de controle de congestionamento da WAN ISL no cluster_A:
++
+[source, cli]
+----
+metrocluster interconnect congestion-control refresh
+----
++
+O ONTAP calcula um novo limite máximo com base nas condições atuais da rede e o aplica automaticamente.
+
++
+Se o comando falhar com o `MCC_CC_ISL_INFO_UNAVAILABLE` erro, não será possível obter automaticamente as informações de ISL, e você deverá entrar em contato com o suporte da NetApp para atualizar sua configuração.
+
+
+
+
+
+[[monitor-wan-isl-congestion-control-activity]]
+== Monitorar a atividade de controle de congestionamento da WAN ISL
+
+Você pode usar o seguinte comando para verificar se o controle de congestionamento está funcionando conforme o esperado:
+
+[source, cli]
+----
+metrocluster interconnect congestion-control show
+----
+Quando ativado, o resultado deverá ser semelhante ao seguinte exemplo:
+
+[listing]
+----
+cluster_A::> metrocluster interconnect congestion-control show
+
+Node            Enabled Ceiling (MiB/s)
+--------------- ------- ---------------
+cluster_A-01    true    1250
+cluster_A-02    true    1250
+2 entries were displayed.
+----
+Você também pode visualizar informações mais detalhadas para cada nó usando o `-instance` parâmetro:
+
+[source, cli]
+----
+metrocluster interconnect congestion-control show -instance
+----
+[listing]
+----
+cluster_A::> metrocluster interconnect congestion-control show -instance
+
+                        Node Name: cluster_A-01
+       Congestion Control Enabled: true
+       Throughput Ceiling (MiB/s): 1250
+
+                        Node Name: cluster_A-02
+       Congestion Control Enabled: true
+       Throughput Ceiling (MiB/s): 1250
+2 entries were displayed.
+----
+
+
+[[disable-congestion-control]]
+== Desative o controle de congestionamento
+
+.Passos
+. Desative o controle de congestionamento da WAN ISL no cluster_A:
++
+[source, cli]
+----
+metrocluster interconnect congestion-control disable
+----
+. Verifique se o recurso está desativado:
++
+[source, cli]
+----
+metrocluster interconnect congestion-control show
+----
++
+O resultado deve ser semelhante ao seguinte exemplo:
+
++
+[listing]
+----
+cluster_A::> metrocluster interconnect congestion-control show
+
+Node            Enabled Ceiling (MiB/s)
+--------------- ------- ---------------
+cluster_A-01    false   -
+cluster_A-02    false   -
+2 entries were displayed.
+----
+

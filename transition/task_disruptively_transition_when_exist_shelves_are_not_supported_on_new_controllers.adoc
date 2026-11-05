@@ -149,6 +149,9 @@ Consulte os requisitos e procedimentos em link:../maintain/task_hot_add_a_sas_di
 .Sobre esta tarefa
 Essa tarefa é executada antes da transição nos nós existentes (node_A_1-FC e node_B_1-FC).
 
+
+NOTE: Antes de executar um switchover, revise o link:../manage/switchover-limitations.html["Limitações quando a configuração do MetroCluster está em switchover"].
+
 .Passos
 . Execute um switchover negociado a partir do nó do controlador_B_1-FC:
 +

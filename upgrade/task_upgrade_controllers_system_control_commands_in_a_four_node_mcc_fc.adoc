@@ -360,6 +360,9 @@ A operação de automação inicia as operações de comutação, `heal-aggregat
 Antes de iniciar o switchover, a operação de automação é interrompida para que você possa verificar manualmente se todos os LIFs estão "up" no local B. se necessário, traga quaisquer LIFs que são "próprios" para "'up" e retome a operação de automação usando o `system controller replace resume` comando.
 
 
+NOTE: Antes de executar um switchover, revise o link:../manage/switchover-limitations.html["Limitações quando a configuração do MetroCluster está em switchover"].
+
+
 
 [[prepare-the-network-configuration-of-the-old-controllers]]
 === Prepare a configuração de rede dos controladores antigos

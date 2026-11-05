@@ -112,6 +112,8 @@ entries:
     - title: Adicione, remova ou altere portas ISL sem interrupções nos switches IP
         Cisco
       url: "/maintain/task_add_remove_or_change_isl_ports_nondisruptively.html"
+  - title: Configure o controle de congestionamento de ISL WAN IP do MetroCluster
+    url: "/maintain/mcc-congestion-control.html"
   - title: Como identificar o armazenamento em uma configuração IP do MetroCluster
     url: "/maintain/concept_identifying_storage_in_a_mcc_ip_configuration.html"
   - title: Adicione compartimentos a uma configuração MetroCluster IP usando os switches

@@ -1700,5 +1700,6 @@ node_A_4-new      false
 ----
 
 
+. Se a sua configuração IP do MetroCluster tiver o controle de congestionamento WAN ISL ativado, você deve link:../maintain/mcc-congestion-control.html#refresh-congestion-control["Atualize a configuração de controle de congestionamento do ISL da WAN"].
 . Se o sistema oferecer suporte a criptografia completa, você poderá link:../maintain/task-configure-encryption.html#enable-end-to-end-encryption["Ative a criptografia de ponta a ponta"] no novo grupo de DR.
 

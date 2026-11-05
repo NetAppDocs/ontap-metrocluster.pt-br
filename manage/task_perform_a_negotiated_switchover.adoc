@@ -13,6 +13,7 @@ summary: Um switchover negociado desliga os processos no local do parceiro de fo
 [role="lead"]
 Um switchover negociado desliga os processos no local do parceiro de forma limpa e, em seguida, alterna as operações do local do parceiro. Você pode usar um switchover negociado para executar a manutenção em um local de MetroCluster ou para testar a funcionalidade de switchover.
 
+.Antes de começar
 * Todas as alterações de configuração anteriores devem ser concluídas antes de executar uma operação de switchback.
 +
 Isto destina-se a evitar a concorrência com a operação de comutação negociada ou de comutação.
@@ -29,11 +30,12 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["Admin
 * A opção replication.create_data_protection_rels.enable deve ser definida como ON EM ambos os sites em uma configuração MetroCluster antes de criar uma nova relação SnapMirror.
 * Para uma configuração de MetroCluster de dois nós, uma nova relação do SnapMirror não deve ser criada durante uma atualização quando houver versões incompatíveis do ONTAP entre os sites.
 * Para uma configuração de MetroCluster de quatro nós, as versões incompatíveis do ONTAP entre os sites não são suportadas.
+* Analise link:switchover-limitations.html["Limitações quando a configuração do MetroCluster está em switchover"] antes de executar um switchover negociado.
 
 
 O local de recuperação pode levar algumas horas para ser capaz de executar a operação de switchback.
 
-O comando MetroCluster switchover alterna entre os nós em todos os grupos de DR na configuração MetroCluster. Por exemplo, em uma configuração de MetroCluster de oito nós, ele alterna entre os nós em ambos os grupos de DR.
+O `metrocluster switchover` comando alterna entre os nós em todos os grupos de DR na configuração MetroCluster. Por exemplo, em uma configuração de MetroCluster de oito nós, ele alterna entre os nós em ambos os grupos de DR.
 
 Ao se preparar e executar um switchover negociado, você não deve fazer alterações de configuração no cluster nem executar nenhuma takeover ou operações de giveback.
 
@@ -47,7 +49,7 @@ Para configurações de MetroCluster FC:
 Para configurações IP do MetroCluster:
 
 
-NOTE: Antes de executar tarefas de manutenção, você deve remover o monitoramento se a configuração do MetroCluster for monitorada com o utilitário tiebreaker ou Mediator. link:../maintain/concept_remove_mediator_or_tiebreaker_when_performing_maintenance_tasks.html["Remova a monitorização do Mediador ONTAP ou do tiebreaker antes de executar tarefas de manutenção"]
+NOTE: Antes de executar tarefas de manutenção, você deve remover o monitoramento se a configuração do MetroCluster for monitorada com o utilitário Tiebreaker ou Mediator. link:../maintain/concept_remove_mediator_or_tiebreaker_when_performing_maintenance_tasks.html["Remova a monitorização do Mediador ONTAP ou do tiebreaker antes de executar tarefas de manutenção"].
 
 * Para o ONTAP 9.4 e versões anteriores:
 +
@@ -63,13 +65,17 @@ NOTE: Antes de executar tarefas de manutenção, você deve remover o monitorame
 * Para o ONTAP 9.8 e posterior:
 +
 ** Agregados não espelhados localizados no local de desastre ficarão indisponíveis se o acesso ao storage remoto for perdido. Isso pode levar a uma interrupção do controlador.
-+
-... Use os comandos MetroCluster check run, MetroCluster check show e MetroCluster check config-replication show para garantir que nenhuma atualização de configuração esteja em andamento ou pendente. Emita estes comandos do site que permanecerão ativos e operacionais.
-... A partir do local que permanecerá ativo e operacional, implemente a transição: `metrocluster switchover`
+
+
+
+
+.Passos
+. Use os comandos MetroCluster check run, MetroCluster check show e MetroCluster check config-replication show para garantir que nenhuma atualização de configuração esteja em andamento ou pendente. Emita estes comandos do site que permanecerão ativos e operacionais.
+. A partir do local que permanecerá ativo e operacional, implemente a transição: `metrocluster switchover`
 +
 A operação pode levar vários minutos para ser concluída.
 
-... Monitorize a conclusão da mudança: `metrocluster operation show`
+. Monitorize a conclusão da mudança: `metrocluster operation show`
 +
 [listing]
 ----
@@ -87,9 +93,5 @@ cluster_A::*> metrocluster operation show
    End time: 10/4/2012 19:04:22
      Errors: -
 ----
-... Restabelecer qualquer configuração SnapMirror ou SnapVault.
-
-
-
-
+. Restabelecer qualquer configuração SnapMirror ou SnapVault.
 

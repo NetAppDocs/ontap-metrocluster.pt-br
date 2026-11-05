@@ -11,7 +11,7 @@ summary: Você deve verificar a integridade e a conectividade da configuração 
 
 
 [role="lead"]
-Você deve verificar a integridade e a conectividade da configuração do MetroCluster antes de executar a transição
+Você deve verificar a integridade e a conectividade da configuração do MetroCluster antes de executar a transição.
 
 . Verifique a operação da configuração do MetroCluster no ONTAP:
 +

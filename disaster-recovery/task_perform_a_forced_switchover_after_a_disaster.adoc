@@ -55,6 +55,9 @@ Isto destina-se a evitar a concorrência com a operação de comutação negocia
 .Sobre esta tarefa
 O `metrocluster switchover` comando alterna entre os nós em todos os grupos de DR na configuração MetroCluster. Por exemplo, em uma configuração de MetroCluster de oito nós, ele alterna entre os nós em ambos os grupos de DR.
 
+
+NOTE: Antes de executar um switchover, revise o link:../manage/switchover-limitations.html["Limitações quando a configuração do MetroCluster está em switchover"].
+
 .Passos
 . Execute o switchover executando o seguinte comando no local sobrevivente:
 +

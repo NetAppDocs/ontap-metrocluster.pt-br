@@ -23,7 +23,7 @@ entries:
       url: "/install-ip/overview-isl-requirements.html"
     - title: Switches validados pela NetApp e compatíveis com MetroCluster
       url: "/install-ip/mcc-compliant-netapp-validated-switches.html"
-    - title: Considerações para ISLs
+    - title: Requisitos para ISLs
       url: "/install-ip/concept-requirements-isls.html"
     - title: Considerações ao implantar o MetroCluster em redes compartilhadas da
         camada 2 ou da camada 3
@@ -115,6 +115,8 @@ entries:
       url: "/install-ip/task_sw_config_setup_ontap.html"
     - title: Configure os clusters em uma configuração do MetroCluster
       url: "/install-ip/task_sw_config_configure_clusters.html"
+    - title: Configurar o controle de congestionamento do ISL da WAN
+      url: "/install-ip/mcc-congestion-control.html"
     - title: Configurar criptografia de ponta a ponta
       url: "/install-ip/task-configure-end-to-end-encryption.html"
     - title: Configure o software tiebreaker MetroCluster ou o ONTAP Mediator
