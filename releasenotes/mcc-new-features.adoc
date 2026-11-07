@@ -24,6 +24,10 @@ Para obter detalhes sobre problemas conhecidos, limitações e cuidados de atual
 Suporte para SHA-512 para autenticação SNMPv3
  a| 
 ONTAP suporta SHA-512 para autenticação SNMPv3 nos switches MetroCluster.
+
+* link:../install-ip/config-snmpv3.html["Configurar SNMPv3 para monitorar a integridade dos switches IP do MetroCluster"]
+* link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#snmpv3-mcc-fc["Configurar o SNMPv3 em uma configuração FC do MetroCluster"]
+
  a| 
 ONTAP 9.20.1
 
@@ -56,7 +60,7 @@ Suporte do MetroCluster para o gerenciamento do ciclo de vida de buckets do ONTA
  a| 
 É possível criar regras de gerenciamento do ciclo de vida de buckets S3 do ONTAP para buckets S3 nativos em uma configuração de MetroCluster.
 
-https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-lifecycle-rule-task.html["Criar uma regra de gerenciamento de ciclo de vida de bucket do ONTAP S3"]
+https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-lifecycle-rule-task.html["Criar uma regra de gerenciamento de ciclo de vida de bucket do ONTAP S3"^]
  a| 
 ONTAP 9.20.1
 

@@ -12721,11 +12721,8 @@
   <block id="b00500f501ccb5c8ab2313d810b6ff29" category="list-text">Para autenticação *MD5/SHA com criptografia AES/DES*:</block>
   <block id="ce23d8cb44ce288570eb2dcc49f1f2f7" category="paragraph">O seguinte comando configura um nome de usuário SNMPv3 no lado ONTAP:</block>
   <block id="760c6e9b6b587e6f977e0e7116b69f45" category="paragraph">O seguinte comando estabelece o nome de usuário SNMPv3 com CSHM:</block>
-  <block id="d3280214c17ea96ca13a6e79765d0b3c" category="list-text">Configure o usuário SNMPv3 no switch para usar autenticação e criptografia:</block>
   <block id="8379e83fc1ad68bfb1ad877f1b7fda6b" category="list-text">Configure o usuário SNMPv3 no lado ONTAP:</block>
   <block id="6b9f542dd155c40aa5e4484b5ff61711" category="list-text">Configure o CSHM para monitorar com o novo usuário SNMPv3:</block>
-  <block id="f1d85c8d2abe8fba947527035ed0f381" category="list-text">Após aguardar o período de pesquisa do CSHM, verifique se o número de série do switch Ethernet está preenchido.</block>
-  <block id="d4d693d9dd779d0daf149c2e448b60b2" category="list-text">Verifique se o número de série a ser consultado com o usuário SNMPv3 recém-criado é o mesmo que detalhado na etapa anterior após o período de polling CSHM ter sido concluído.</block>
   <block id="05918726f836c344025fecbcf0275f1b" category="open-title">NVIDIA - CL 5.4.0</block>
   <block id="8ae4eeaa7baed19106cc30ea02483c5e" category="paragraph">O monitor de integridade do switch Ethernet (CSHM) é responsável por garantir a integridade operacional dos switches de rede Cluster e Storage e coletar logs de switch para fins de depuração.</block>
   <block id="4ae61f4d1ec2f0efafd8ee4274e49ccf" category="section-title">Notas importantes para configurar o CSHM em uma configuração de IP do MetroCluster</block>
@@ -13948,10 +13945,7 @@
   <block id="59a93fe50b25a85e88bed38108e0196c" category="list-text">A partir do cluster de DR, verifique se um switchover do cluster em funcionamento para o cluster de DR é possível:</block>
   <block id="59ded25db2e6cefacbcb41c378e0b709" category="list-text">A partir do cluster sobrevivente, verifique se um switchover do cluster de recuperação de desastres para o cluster sobrevivente é possível:</block>
   <block id="2c7ea164e9295a29d20e890710cfcc1d" category="admonition">Em um ambiente FC do MetroCluster, "conexões" devem aparecer como "não aplicável" na saída do comando.</block>
-  <block id="706bc34d657098e3dcd81db43d280c53" category="paragraph">Configure um nome de usuário SNMPv3 SNMPv3_USER nos switches Cisco Nexus:</block>
-  <block id="5a523817621c85574dfcbf0b11c07075" category="paragraph">Configure um nome de usuário SNMPv3 SNMPv3_USER em switches NVIDIA Cumulus executando CL 5.4.0:</block>
   <block id="4451c276144ff12f4a59bad51c0a1181" category="open-title">NVIDIA - CL 5.11.0+</block>
-  <block id="d1f08b7bd68bdc79984e047bc1939c5d" category="paragraph">Configure um nome de usuário SNMPv3 SNMPv3_USER em switches NVIDIA Cumulus executando a CLI 5.11.0 ou posterior:</block>
   <block id="5c70de9aa6fac7d71c4ddfb2d31ae25a" category="list-text">Prepare os switches IP para a aplicação dos novos arquivos de configuração de referência (RCFs).</block>
   <block id="cf638fa08203ce9c082e7eecde22e20f" category="paragraph">Você deve baixar o arquivo de configuração (RCF) para cada switch na configuração de MetroCluster fabric.</block>
   <block id="91cd9003fc7afacd92d0952d1578d48b" category="paragraph">Existem quatro RCFs, um para cada um dos quatro switches na configuração de fabric do MetroCluster. Você deve usar os RCFs corretos para o modelo de switch que está utilizando.</block>
@@ -14580,11 +14574,26 @@
   <block id="3f85a822280c700a358c8d4b09ac0917" category="paragraph">Suporte do MetroCluster para o gerenciamento do ciclo de vida de buckets do ONTAP S3</block>
   <block id="49819d508ad6d5fbf96df43937292b87" category="paragraph">É possível criar regras de gerenciamento do ciclo de vida de buckets S3 do ONTAP para buckets S3 nativos em uma configuração de MetroCluster.</block>
   <block id="ff1c4451ae73de7655c2635dffe868fb" category="inline-link">Criar uma regra de gerenciamento de ciclo de vida de bucket do ONTAP S3</block>
-  <block id="d6837f6be46a885f34bcefc1a964e5ee" category="paragraph"><block ref="d6837f6be46a885f34bcefc1a964e5ee" category="inline-link-rx"></block></block>
   <block id="97eda9c538679f681ab334965088e974" category="paragraph">Suporte IP do MetroCluster para limites de capacidade de SVM do ONTAP</block>
   <block id="128922b8a646dde62f70fcbd94afb280" category="paragraph">É possível configurar limites de armazenamento para SVMs que fazem parte de uma configuração IP do MetroCluster.</block>
   <block id="43f2553b95ee26a6e9f0fa1b40212bd9" category="inline-link">Gerenciar limites de capacidade do SVM do ONTAP</block>
   <block id="ddfa7b0fce9c19992d2518f83e5178bd" category="paragraph"><block ref="ddfa7b0fce9c19992d2518f83e5178bd" category="inline-link-rx"></block></block>
   <block id="2cad3e9201231f96baf0aecb159146b8" category="list-text">Se a sua configuração IP do MetroCluster tiver o controle de congestionamento WAN ISL ativado, você deve <block ref="84e4437719ed2680822f1999f770e8a1" category="inline-link-macro-rx"></block>.</block>
   <block id="4ddce8b1a7285d62eebe8f187b9294d6" category="sidebar">Requisitos para ISLs</block>
+  <block id="e6fb84558de7078767b104ca13b55d79" category="admonition">A partir do ONTAP 9.20.1, você pode configurar a autenticação SHA-512 nos switches Broadcom.</block>
+  <block id="3dbb7476f9c2ebc70cf21948afa0cd9d" category="list-text">Para *autenticação MD5/SHA/SHA-512*:</block>
+  <block id="4fc1797aada9784a0d12d54fd394cd62" category="list-text">Para autenticação *MD5/SHA/SHA-512 com criptografia AES/DES*:</block>
+  <block id="c4ee5379f9ca6f1a0a5bf5cad388ada5" category="list-title">Passos de exemplo</block>
+  <block id="1dae6f6450cde6628715c8de87b21a2a" category="list-text">Configure o usuário SNMPv3 no switch para usar autenticação SHA e criptografia AES-128:</block>
+  <block id="df714ebd186f65d53f3ec7b187fc3f1d" category="list-text">Após aguardar o período de coleta de dados do CSHM, verifique se a opção "Motivo para não monitorar" está definida como "Nenhum".</block>
+  <block id="1ca543b8df71f7fea0988934cb5fbbdb" category="paragraph">Configure um nome de usuário SNMPv3<block ref="1d01e49b925b678020532b8f0e9ee3fa" prefix=" " category="inline-code"></block> nos switches Cisco Nexus.</block>
+  <block id="66192d10cca900d3c24ad9104d86b9e4" category="admonition">A partir do ONTAP 9.20.1, é possível configurar a autenticação SHA-512 ou SHA-256 em switches Cisco.</block>
+  <block id="aa1770478094ea74329bcba08e9a34b7" category="list-text">Para *autenticação MD5/SHA/SHA-256/SHA-512*:</block>
+  <block id="cf4344df088f1ec77d17a3dae71447b4" category="list-text">Para autenticação MD5/SHA/SHA-256/SHA-512 com criptografia AES/DES*:</block>
+  <block id="48dbdd390fa480b5eda78d1e7f0d3b54" category="paragraph">Configure um nome de usuário SNMPv3<block ref="1d01e49b925b678020532b8f0e9ee3fa" prefix=" " category="inline-code"></block> nos switches NVIDIA Cumulus que executam CL 5.4.0:</block>
+  <block id="7ef0886eac0b0f59b0747fa52398c0c3" category="paragraph">Configure um nome de usuário SNMPv3<block ref="1d01e49b925b678020532b8f0e9ee3fa" prefix=" " category="inline-code"></block> nos switches NVIDIA Cumulus que executam a CLI 5.11.0 e posteriores:</block>
+  <block id="9328157334dc4a57cb65e0b9c3d128e4" category="list-text"><block ref="9328157334dc4a57cb65e0b9c3d128e4" category="inline-link-macro-rx"></block></block>
+  <block id="d767cb0daa2b9f99d4df03c9aab82dcf" category="inline-link-macro">Configurar o SNMPv3 em uma configuração FC do MetroCluster</block>
+  <block id="03566696538cfda6a95b84d024de7471" category="list-text"><block ref="03566696538cfda6a95b84d024de7471" category="inline-link-macro-rx"></block></block>
+  <block id="b764b19381cd7173232f5f43720ae5ab" category="paragraph"><block ref="b764b19381cd7173232f5f43720ae5ab" category="inline-link-rx"></block></block>
 </blocks>
